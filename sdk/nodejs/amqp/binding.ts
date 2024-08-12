@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+ * Provides a RabbitMQ (AMQP) Binding resource.
  *
  * For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
  *
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.amqp.Instance("default", {
  *     instanceType: "enterprise",
  *     maxTps: "3000",
@@ -27,33 +29,32 @@ import * as utilities from "../utilities";
  *     supportEip: false,
  *     maxEipTps: "128",
  *     paymentType: "Subscription",
- *     period: 1,
  * });
  * const defaultVirtualHost = new alicloud.amqp.VirtualHost("default", {
  *     instanceId: _default.id,
- *     virtualHostName: "tf-example",
+ *     virtualHostName: name,
  * });
  * const defaultExchange = new alicloud.amqp.Exchange("default", {
- *     autoDeleteState: false,
- *     exchangeName: "tf-example",
- *     exchangeType: "HEADERS",
  *     instanceId: _default.id,
- *     internal: false,
  *     virtualHostName: defaultVirtualHost.virtualHostName,
+ *     exchangeName: name,
+ *     exchangeType: "HEADERS",
+ *     autoDeleteState: false,
+ *     internal: false,
  * });
  * const defaultQueue = new alicloud.amqp.Queue("default", {
  *     instanceId: _default.id,
- *     queueName: "tf-example",
  *     virtualHostName: defaultVirtualHost.virtualHostName,
+ *     queueName: name,
  * });
  * const defaultBinding = new alicloud.amqp.Binding("default", {
- *     argument: "x-match:all",
- *     bindingKey: defaultQueue.queueName,
- *     bindingType: "QUEUE",
- *     destinationName: "tf-example",
  *     instanceId: _default.id,
- *     sourceExchange: defaultExchange.exchangeName,
  *     virtualHostName: defaultVirtualHost.virtualHostName,
+ *     sourceExchange: defaultExchange.exchangeName,
+ *     destinationName: name,
+ *     bindingType: "QUEUE",
+ *     bindingKey: defaultQueue.queueName,
+ *     argument: "x-match:all",
  * });
  * ```
  *
@@ -94,11 +95,9 @@ export class Binding extends pulumi.CustomResource {
     }
 
     /**
-     * X-match Attributes. Valid Values: 
-     * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     *
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      */
     public readonly argument!: pulumi.Output<string>;
     /**
@@ -111,23 +110,23 @@ export class Binding extends pulumi.CustomResource {
      */
     public readonly bindingKey!: pulumi.Output<string>;
     /**
-     * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      */
     public readonly bindingType!: pulumi.Output<string>;
     /**
-     * The Target Queue Or Exchange of the Name.
+     * The name of the object that you want to bind to the source exchange.
      */
     public readonly destinationName!: pulumi.Output<string>;
     /**
-     * Instance Id.
+     * The ID of the instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The Source Exchange Name.
+     * The name of the source exchange.
      */
     public readonly sourceExchange!: pulumi.Output<string>;
     /**
-     * Virtualhost Name.
+     * The name of the vhost.
      */
     public readonly virtualHostName!: pulumi.Output<string>;
 
@@ -189,11 +188,9 @@ export class Binding extends pulumi.CustomResource {
  */
 export interface BindingState {
     /**
-     * X-match Attributes. Valid Values: 
-     * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     *
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      */
     argument?: pulumi.Input<string>;
     /**
@@ -206,23 +203,23 @@ export interface BindingState {
      */
     bindingKey?: pulumi.Input<string>;
     /**
-     * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      */
     bindingType?: pulumi.Input<string>;
     /**
-     * The Target Queue Or Exchange of the Name.
+     * The name of the object that you want to bind to the source exchange.
      */
     destinationName?: pulumi.Input<string>;
     /**
-     * Instance Id.
+     * The ID of the instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The Source Exchange Name.
+     * The name of the source exchange.
      */
     sourceExchange?: pulumi.Input<string>;
     /**
-     * Virtualhost Name.
+     * The name of the vhost.
      */
     virtualHostName?: pulumi.Input<string>;
 }
@@ -232,11 +229,9 @@ export interface BindingState {
  */
 export interface BindingArgs {
     /**
-     * X-match Attributes. Valid Values: 
-     * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     *
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      */
     argument?: pulumi.Input<string>;
     /**
@@ -249,23 +244,23 @@ export interface BindingArgs {
      */
     bindingKey: pulumi.Input<string>;
     /**
-     * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      */
     bindingType: pulumi.Input<string>;
     /**
-     * The Target Queue Or Exchange of the Name.
+     * The name of the object that you want to bind to the source exchange.
      */
     destinationName: pulumi.Input<string>;
     /**
-     * Instance Id.
+     * The ID of the instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The Source Exchange Name.
+     * The name of the source exchange.
      */
     sourceExchange: pulumi.Input<string>;
     /**
-     * Virtualhost Name.
+     * The name of the vhost.
      */
     virtualHostName: pulumi.Input<string>;
 }

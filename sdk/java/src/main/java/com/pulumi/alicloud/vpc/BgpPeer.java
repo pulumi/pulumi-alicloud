@@ -190,14 +190,14 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="peerIpAddress", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> peerIpAddress;
+    private Output<String> peerIpAddress;
 
     /**
      * @return The IP address of the BGP peer.
      * 
      */
-    public Output<Optional<String>> peerIpAddress() {
-        return Codegen.optional(this.peerIpAddress);
+    public Output<String> peerIpAddress() {
+        return this.peerIpAddress;
     }
     /**
      * Status of BGP neighbors.

@@ -18,14 +18,14 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     public static final AggregateDeliveryState Empty = new AggregateDeliveryState();
 
     /**
-     * The ID of the Aggregator.
+     * Aggregator ID.
      * 
      */
     @Import(name="aggregatorId")
     private @Nullable Output<String> aggregatorId;
 
     /**
-     * @return The ID of the Aggregator.
+     * @return Aggregator ID.
      * 
      */
     public Optional<Output<String>> aggregatorId() {
@@ -33,14 +33,18 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Open or close delivery configuration change history.
+     * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+     * - true: The specified destination receives resource change logs.
+     * - false: The specified destination does not receive resource change logs.
      * 
      */
     @Import(name="configurationItemChangeNotification")
     private @Nullable Output<Boolean> configurationItemChangeNotification;
 
     /**
-     * @return Open or close delivery configuration change history.
+     * @return Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+     * - true: The specified destination receives resource change logs.
+     * - false: The specified destination does not receive resource change logs.
      * 
      */
     public Optional<Output<Boolean>> configurationItemChangeNotification() {
@@ -48,14 +52,18 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
+     * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+     * - true: The specified destination receives scheduled resource snapshots.
+     * - false: The specified destination does not receive scheduled resource snapshots.
      * 
      */
     @Import(name="configurationSnapshot")
     private @Nullable Output<Boolean> configurationSnapshot;
 
     /**
-     * @return Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
+     * @return Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+     * - true: The specified destination receives scheduled resource snapshots.
+     * - false: The specified destination does not receive scheduled resource snapshots.
      * 
      */
     public Optional<Output<Boolean>> configurationSnapshot() {
@@ -63,14 +71,34 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
+     * The rule that is attached to the delivery channel.
+     * 
+     * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+     * 
+     * If you specify the risk level or resource types for subscription events, this is as follows:
+     * 
+     * The lowest risk level of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;RuleRiskLevel&#34;,&#34;value&#34;:&#34;1&#34;,&#34;multiple&#34;:false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+     * 
+     * The setting of the resource types of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ACK::Cluster&#34;,&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;],&#34;multiple&#34;:true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+     * 
+     * Examples:[{&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;,&#34;ACS::CDN::Domain&#34;,&#34;ACS::CEN::CenBandwidthPackage&#34;,&#34;ACS::CEN::CenInstance&#34;,&#34;ACS::CEN::Flowlog&#34;,&#34;ACS::DdosCoo::Instance&#34;],&#34;multiple&#34;:true}].
      * 
      */
     @Import(name="deliveryChannelCondition")
     private @Nullable Output<String> deliveryChannelCondition;
 
     /**
-     * @return The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
+     * @return The rule that is attached to the delivery channel.
+     * 
+     * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+     * 
+     * If you specify the risk level or resource types for subscription events, this is as follows:
+     * 
+     * The lowest risk level of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;RuleRiskLevel&#34;,&#34;value&#34;:&#34;1&#34;,&#34;multiple&#34;:false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+     * 
+     * The setting of the resource types of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ACK::Cluster&#34;,&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;],&#34;multiple&#34;:true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+     * 
+     * Examples:[{&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;,&#34;ACS::CDN::Domain&#34;,&#34;ACS::CEN::CenBandwidthPackage&#34;,&#34;ACS::CEN::CenInstance&#34;,&#34;ACS::CEN::Flowlog&#34;,&#34;ACS::DdosCoo::Instance&#34;],&#34;multiple&#34;:true}].
      * 
      */
     public Optional<Output<String>> deliveryChannelCondition() {
@@ -78,14 +106,14 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the delivery method.
+     * The ID of the delivery method. This parameter is required when you modify a delivery method.
      * 
      */
     @Import(name="deliveryChannelId")
     private @Nullable Output<String> deliveryChannelId;
 
     /**
-     * @return The ID of the delivery method.
+     * @return The ID of the delivery method. This parameter is required when you modify a delivery method.
      * 
      */
     public Optional<Output<String>> deliveryChannelId() {
@@ -93,14 +121,14 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the delivery method.
+     * The name of the delivery channel.
      * 
      */
     @Import(name="deliveryChannelName")
     private @Nullable Output<String> deliveryChannelName;
 
     /**
-     * @return The name of the delivery method.
+     * @return The name of the delivery channel.
      * 
      */
     public Optional<Output<String>> deliveryChannelName() {
@@ -108,20 +136,20 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+     * The ARN of the delivery destination.
+     * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+     * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+     * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      * 
      */
     @Import(name="deliveryChannelTargetArn")
     private @Nullable Output<String> deliveryChannelTargetArn;
 
     /**
-     * @return The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+     * @return The ARN of the delivery destination.
+     * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+     * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+     * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      * 
      */
     public Optional<Output<String>> deliveryChannelTargetArn() {
@@ -129,14 +157,20 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery channel. Valid values:
+     * - OSS: Object Storage Service (OSS)
+     * - MNS: Message Service (MNS)
+     * - SLS: Log Service
      * 
      */
     @Import(name="deliveryChannelType")
     private @Nullable Output<String> deliveryChannelType;
 
     /**
-     * @return The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * @return The type of the delivery channel. Valid values:
+     * - OSS: Object Storage Service (OSS)
+     * - MNS: Message Service (MNS)
+     * - SLS: Log Service
      * 
      */
     public Optional<Output<String>> deliveryChannelType() {
@@ -159,14 +193,18 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
+     * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
+     * - true: The specified destination receives resource non-compliance events.
+     * - false: The specified destination does not receive resource non-compliance events.
      * 
      */
     @Import(name="nonCompliantNotification")
     private @Nullable Output<Boolean> nonCompliantNotification;
 
     /**
-     * @return Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
+     * @return Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
+     * - true: The specified destination receives resource non-compliance events.
+     * - false: The specified destination does not receive resource non-compliance events.
      * 
      */
     public Optional<Output<Boolean>> nonCompliantNotification() {
@@ -174,18 +212,14 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit.
-     * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+     * The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
      * 
      */
     @Import(name="oversizedDataOssTargetArn")
     private @Nullable Output<String> oversizedDataOssTargetArn;
 
     /**
-     * @return The oss ARN of the delivery channel when the value data oversized limit.
-     * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+     * @return The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
      * 
      */
     public Optional<Output<String>> oversizedDataOssTargetArn() {
@@ -193,14 +227,18 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+     * The status of the delivery method. Valid values:
+     * - 0: The delivery method is disabled.
+     * - 1: The delivery destination is enabled. This is the default value.
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+     * @return The status of the delivery method. Valid values:
+     * - 0: The delivery method is disabled.
+     * - 1: The delivery destination is enabled. This is the default value.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -243,7 +281,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param aggregatorId The ID of the Aggregator.
+         * @param aggregatorId Aggregator ID.
          * 
          * @return builder
          * 
@@ -254,7 +292,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param aggregatorId The ID of the Aggregator.
+         * @param aggregatorId Aggregator ID.
          * 
          * @return builder
          * 
@@ -264,7 +302,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configurationItemChangeNotification Open or close delivery configuration change history.
+         * @param configurationItemChangeNotification Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+         * - true: The specified destination receives resource change logs.
+         * - false: The specified destination does not receive resource change logs.
          * 
          * @return builder
          * 
@@ -275,7 +315,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configurationItemChangeNotification Open or close delivery configuration change history.
+         * @param configurationItemChangeNotification Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+         * - true: The specified destination receives resource change logs.
+         * - false: The specified destination does not receive resource change logs.
          * 
          * @return builder
          * 
@@ -285,7 +327,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configurationSnapshot Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
+         * @param configurationSnapshot Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+         * - true: The specified destination receives scheduled resource snapshots.
+         * - false: The specified destination does not receive scheduled resource snapshots.
          * 
          * @return builder
          * 
@@ -296,7 +340,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param configurationSnapshot Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
+         * @param configurationSnapshot Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+         * - true: The specified destination receives scheduled resource snapshots.
+         * - false: The specified destination does not receive scheduled resource snapshots.
          * 
          * @return builder
          * 
@@ -306,7 +352,17 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelCondition The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
+         * @param deliveryChannelCondition The rule that is attached to the delivery channel.
+         * 
+         * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+         * 
+         * If you specify the risk level or resource types for subscription events, this is as follows:
+         * 
+         * The lowest risk level of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;RuleRiskLevel&#34;,&#34;value&#34;:&#34;1&#34;,&#34;multiple&#34;:false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+         * 
+         * The setting of the resource types of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ACK::Cluster&#34;,&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;],&#34;multiple&#34;:true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+         * 
+         * Examples:[{&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;,&#34;ACS::CDN::Domain&#34;,&#34;ACS::CEN::CenBandwidthPackage&#34;,&#34;ACS::CEN::CenInstance&#34;,&#34;ACS::CEN::Flowlog&#34;,&#34;ACS::DdosCoo::Instance&#34;],&#34;multiple&#34;:true}].
          * 
          * @return builder
          * 
@@ -317,7 +373,17 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelCondition The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
+         * @param deliveryChannelCondition The rule that is attached to the delivery channel.
+         * 
+         * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+         * 
+         * If you specify the risk level or resource types for subscription events, this is as follows:
+         * 
+         * The lowest risk level of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;RuleRiskLevel&#34;,&#34;value&#34;:&#34;1&#34;,&#34;multiple&#34;:false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+         * 
+         * The setting of the resource types of the events to which you want to subscribe is in the following format: {&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ACK::Cluster&#34;,&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;],&#34;multiple&#34;:true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+         * 
+         * Examples:[{&#34;filterType&#34;:&#34;ResourceType&#34;,&#34;values&#34;:[&#34;ACS::ActionTrail::Trail&#34;,&#34;ACS::CBWP::CommonBandwidthPackage&#34;,&#34;ACS::CDN::Domain&#34;,&#34;ACS::CEN::CenBandwidthPackage&#34;,&#34;ACS::CEN::CenInstance&#34;,&#34;ACS::CEN::Flowlog&#34;,&#34;ACS::DdosCoo::Instance&#34;],&#34;multiple&#34;:true}].
          * 
          * @return builder
          * 
@@ -327,7 +393,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelId The ID of the delivery method.
+         * @param deliveryChannelId The ID of the delivery method. This parameter is required when you modify a delivery method.
          * 
          * @return builder
          * 
@@ -338,7 +404,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelId The ID of the delivery method.
+         * @param deliveryChannelId The ID of the delivery method. This parameter is required when you modify a delivery method.
          * 
          * @return builder
          * 
@@ -348,7 +414,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelName The name of the delivery method.
+         * @param deliveryChannelName The name of the delivery channel.
          * 
          * @return builder
          * 
@@ -359,7 +425,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelName The name of the delivery method.
+         * @param deliveryChannelName The name of the delivery channel.
          * 
          * @return builder
          * 
@@ -369,10 +435,10 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelTargetArn The ARN of the delivery destination. The value must be in one of the following formats:
-         * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-         * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-         * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+         * @param deliveryChannelTargetArn The ARN of the delivery destination.
+         * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+         * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+         * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
          * 
          * @return builder
          * 
@@ -383,10 +449,10 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelTargetArn The ARN of the delivery destination. The value must be in one of the following formats:
-         * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-         * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-         * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+         * @param deliveryChannelTargetArn The ARN of the delivery destination.
+         * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+         * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+         * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
          * 
          * @return builder
          * 
@@ -396,7 +462,10 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelType The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+         * @param deliveryChannelType The type of the delivery channel. Valid values:
+         * - OSS: Object Storage Service (OSS)
+         * - MNS: Message Service (MNS)
+         * - SLS: Log Service
          * 
          * @return builder
          * 
@@ -407,7 +476,10 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deliveryChannelType The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+         * @param deliveryChannelType The type of the delivery channel. Valid values:
+         * - OSS: Object Storage Service (OSS)
+         * - MNS: Message Service (MNS)
+         * - SLS: Log Service
          * 
          * @return builder
          * 
@@ -438,7 +510,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nonCompliantNotification Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
+         * @param nonCompliantNotification Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
+         * - true: The specified destination receives resource non-compliance events.
+         * - false: The specified destination does not receive resource non-compliance events.
          * 
          * @return builder
          * 
@@ -449,7 +523,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nonCompliantNotification Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
+         * @param nonCompliantNotification Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
+         * - true: The specified destination receives resource non-compliance events.
+         * - false: The specified destination does not receive resource non-compliance events.
          * 
          * @return builder
          * 
@@ -459,9 +535,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param oversizedDataOssTargetArn The oss ARN of the delivery channel when the value data oversized limit.
-         * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-         * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+         * @param oversizedDataOssTargetArn The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
          * 
          * @return builder
          * 
@@ -472,9 +546,7 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param oversizedDataOssTargetArn The oss ARN of the delivery channel when the value data oversized limit.
-         * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-         * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+         * @param oversizedDataOssTargetArn The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
          * 
          * @return builder
          * 
@@ -484,7 +556,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+         * @param status The status of the delivery method. Valid values:
+         * - 0: The delivery method is disabled.
+         * - 1: The delivery destination is enabled. This is the default value.
          * 
          * @return builder
          * 
@@ -495,7 +569,9 @@ public final class AggregateDeliveryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+         * @param status The status of the delivery method. Valid values:
+         * - 0: The delivery method is disabled.
+         * - 1: The delivery destination is enabled. This is the default value.
          * 
          * @return builder
          * 

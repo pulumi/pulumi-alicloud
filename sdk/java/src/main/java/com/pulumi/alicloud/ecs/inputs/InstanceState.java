@@ -1000,14 +1000,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      * 
      */
     @Import(name="secondaryPrivateIps")
     private @Nullable Output<List<String>> secondaryPrivateIps;
 
     /**
-     * @return A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * @return A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      * 
      */
     public Optional<Output<List<String>>> secondaryPrivateIps() {
@@ -2843,7 +2843,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
          * 
          * @return builder
          * 
@@ -2854,7 +2854,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
          * 
          * @return builder
          * 
@@ -2864,7 +2864,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+         * @param secondaryPrivateIps A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
          * 
          * @return builder
          * 

@@ -199,7 +199,6 @@ class BgpIp(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_resource_groups()
-        current = alicloud.get_account()
         instance = alicloud.ddos.DdosBgpInstance("instance",
             name=name,
             base_bandwidth=20,
@@ -212,8 +211,7 @@ class BgpIp(pulumi.CustomResource):
         default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id,
-            member_uid=current.id)
+            resource_group_id=default.groups[0].id)
         ```
 
         ## Import
@@ -257,7 +255,6 @@ class BgpIp(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_resource_groups()
-        current = alicloud.get_account()
         instance = alicloud.ddos.DdosBgpInstance("instance",
             name=name,
             base_bandwidth=20,
@@ -270,8 +267,7 @@ class BgpIp(pulumi.CustomResource):
         default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id,
-            member_uid=current.id)
+            resource_group_id=default.groups[0].id)
         ```
 
         ## Import

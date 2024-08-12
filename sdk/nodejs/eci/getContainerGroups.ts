@@ -83,7 +83,7 @@ export interface GetContainerGroupsArgs {
     status?: string;
     tags?: {[key: string]: any};
     /**
-     * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+     * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
     vswitchId?: string;
     withEvent?: boolean;
@@ -177,7 +177,7 @@ export interface GetContainerGroupsOutputArgs {
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+     * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
     vswitchId?: pulumi.Input<string>;
     withEvent?: pulumi.Input<boolean>;

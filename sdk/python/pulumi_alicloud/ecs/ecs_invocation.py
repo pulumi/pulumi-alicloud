@@ -357,7 +357,7 @@ class EcsInvocation(pulumi.CustomResource):
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("default",
@@ -454,7 +454,7 @@ class EcsInvocation(pulumi.CustomResource):
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_network = alicloud.vpc.Network("default",

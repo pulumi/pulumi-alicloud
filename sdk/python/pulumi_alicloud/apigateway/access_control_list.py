@@ -23,9 +23,13 @@ class AccessControlListArgs:
         The set of arguments for constructing a AccessControlList resource.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+               **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         pulumi.set(__self__, "access_control_list_name", access_control_list_name)
+        if acl_entrys is not None:
+            warnings.warn("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entrys is deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
         if acl_entrys is not None:
             pulumi.set(__self__, "acl_entrys", acl_entrys)
         if address_ip_version is not None:
@@ -45,9 +49,11 @@ class AccessControlListArgs:
 
     @property
     @pulumi.getter(name="aclEntrys")
+    @_utilities.deprecated("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
     def acl_entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
         """
         Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+        **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         """
         return pulumi.get(self, "acl_entrys")
 
@@ -78,10 +84,14 @@ class _AccessControlListState:
         Input properties used for looking up and filtering AccessControlList resources.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+               **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         if access_control_list_name is not None:
             pulumi.set(__self__, "access_control_list_name", access_control_list_name)
+        if acl_entrys is not None:
+            warnings.warn("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entrys is deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
         if acl_entrys is not None:
             pulumi.set(__self__, "acl_entrys", acl_entrys)
         if address_ip_version is not None:
@@ -101,9 +111,11 @@ class _AccessControlListState:
 
     @property
     @pulumi.getter(name="aclEntrys")
+    @_utilities.deprecated("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
     def acl_entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
         """
         Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+        **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         """
         return pulumi.get(self, "acl_entrys")
 
@@ -160,10 +172,6 @@ class AccessControlList(pulumi.CustomResource):
             payment_type="PayAsYouGo")
         default = alicloud.apigateway.AccessControlList("default",
             access_control_list_name=name,
-            acl_entrys=[{
-                "acl_entry_ip": "128.0.0.1/32",
-                "acl_entry_comment": "example comment",
-            }],
             address_ip_version="ipv4")
         ```
 
@@ -179,6 +187,7 @@ class AccessControlList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+               **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         ...
@@ -214,10 +223,6 @@ class AccessControlList(pulumi.CustomResource):
             payment_type="PayAsYouGo")
         default = alicloud.apigateway.AccessControlList("default",
             access_control_list_name=name,
-            acl_entrys=[{
-                "acl_entry_ip": "128.0.0.1/32",
-                "acl_entry_comment": "example comment",
-            }],
             address_ip_version="ipv4")
         ```
 
@@ -285,6 +290,7 @@ class AccessControlList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+               **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -306,9 +312,11 @@ class AccessControlList(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclEntrys")
-    def acl_entrys(self) -> pulumi.Output[Optional[Sequence['outputs.AccessControlListAclEntry']]]:
+    @_utilities.deprecated("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
+    def acl_entrys(self) -> pulumi.Output[Sequence['outputs.AccessControlListAclEntry']]:
         """
         Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+        **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
         """
         return pulumi.get(self, "acl_entrys")
 

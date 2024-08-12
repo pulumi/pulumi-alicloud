@@ -128,6 +128,112 @@ func (o DbClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.IntInput) D
 	}).(DbClusterDbClusterAccessWhiteListOutput)
 }
 
+type DbClusterMultiZoneVswitchList struct {
+	// The ID of the vswitch.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the vswitch.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// DbClusterMultiZoneVswitchListInput is an input type that accepts DbClusterMultiZoneVswitchListArgs and DbClusterMultiZoneVswitchListOutput values.
+// You can construct a concrete instance of `DbClusterMultiZoneVswitchListInput` via:
+//
+//	DbClusterMultiZoneVswitchListArgs{...}
+type DbClusterMultiZoneVswitchListInput interface {
+	pulumi.Input
+
+	ToDbClusterMultiZoneVswitchListOutput() DbClusterMultiZoneVswitchListOutput
+	ToDbClusterMultiZoneVswitchListOutputWithContext(context.Context) DbClusterMultiZoneVswitchListOutput
+}
+
+type DbClusterMultiZoneVswitchListArgs struct {
+	// The ID of the vswitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID of the vswitch.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (DbClusterMultiZoneVswitchListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbClusterMultiZoneVswitchList)(nil)).Elem()
+}
+
+func (i DbClusterMultiZoneVswitchListArgs) ToDbClusterMultiZoneVswitchListOutput() DbClusterMultiZoneVswitchListOutput {
+	return i.ToDbClusterMultiZoneVswitchListOutputWithContext(context.Background())
+}
+
+func (i DbClusterMultiZoneVswitchListArgs) ToDbClusterMultiZoneVswitchListOutputWithContext(ctx context.Context) DbClusterMultiZoneVswitchListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbClusterMultiZoneVswitchListOutput)
+}
+
+// DbClusterMultiZoneVswitchListArrayInput is an input type that accepts DbClusterMultiZoneVswitchListArray and DbClusterMultiZoneVswitchListArrayOutput values.
+// You can construct a concrete instance of `DbClusterMultiZoneVswitchListArrayInput` via:
+//
+//	DbClusterMultiZoneVswitchListArray{ DbClusterMultiZoneVswitchListArgs{...} }
+type DbClusterMultiZoneVswitchListArrayInput interface {
+	pulumi.Input
+
+	ToDbClusterMultiZoneVswitchListArrayOutput() DbClusterMultiZoneVswitchListArrayOutput
+	ToDbClusterMultiZoneVswitchListArrayOutputWithContext(context.Context) DbClusterMultiZoneVswitchListArrayOutput
+}
+
+type DbClusterMultiZoneVswitchListArray []DbClusterMultiZoneVswitchListInput
+
+func (DbClusterMultiZoneVswitchListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbClusterMultiZoneVswitchList)(nil)).Elem()
+}
+
+func (i DbClusterMultiZoneVswitchListArray) ToDbClusterMultiZoneVswitchListArrayOutput() DbClusterMultiZoneVswitchListArrayOutput {
+	return i.ToDbClusterMultiZoneVswitchListArrayOutputWithContext(context.Background())
+}
+
+func (i DbClusterMultiZoneVswitchListArray) ToDbClusterMultiZoneVswitchListArrayOutputWithContext(ctx context.Context) DbClusterMultiZoneVswitchListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbClusterMultiZoneVswitchListArrayOutput)
+}
+
+type DbClusterMultiZoneVswitchListOutput struct{ *pulumi.OutputState }
+
+func (DbClusterMultiZoneVswitchListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbClusterMultiZoneVswitchList)(nil)).Elem()
+}
+
+func (o DbClusterMultiZoneVswitchListOutput) ToDbClusterMultiZoneVswitchListOutput() DbClusterMultiZoneVswitchListOutput {
+	return o
+}
+
+func (o DbClusterMultiZoneVswitchListOutput) ToDbClusterMultiZoneVswitchListOutputWithContext(ctx context.Context) DbClusterMultiZoneVswitchListOutput {
+	return o
+}
+
+// The ID of the vswitch.
+func (o DbClusterMultiZoneVswitchListOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v DbClusterMultiZoneVswitchList) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the vswitch.
+func (o DbClusterMultiZoneVswitchListOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbClusterMultiZoneVswitchList) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type DbClusterMultiZoneVswitchListArrayOutput struct{ *pulumi.OutputState }
+
+func (DbClusterMultiZoneVswitchListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbClusterMultiZoneVswitchList)(nil)).Elem()
+}
+
+func (o DbClusterMultiZoneVswitchListArrayOutput) ToDbClusterMultiZoneVswitchListArrayOutput() DbClusterMultiZoneVswitchListArrayOutput {
+	return o
+}
+
+func (o DbClusterMultiZoneVswitchListArrayOutput) ToDbClusterMultiZoneVswitchListArrayOutputWithContext(ctx context.Context) DbClusterMultiZoneVswitchListArrayOutput {
+	return o
+}
+
+func (o DbClusterMultiZoneVswitchListArrayOutput) Index(i pulumi.IntInput) DbClusterMultiZoneVswitchListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbClusterMultiZoneVswitchList {
+		return vs[0].([]DbClusterMultiZoneVswitchList)[vs[1].(int)]
+	}).(DbClusterMultiZoneVswitchListOutput)
+}
+
 type GetAccountsAccount struct {
 	// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -1286,6 +1392,8 @@ func (o GetRegionsRegionZoneIdArrayOutput) Index(i pulumi.IntInput) GetRegionsRe
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterDbClusterAccessWhiteListInput)(nil)).Elem(), DbClusterDbClusterAccessWhiteListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterDbClusterAccessWhiteListArrayInput)(nil)).Elem(), DbClusterDbClusterAccessWhiteListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterMultiZoneVswitchListInput)(nil)).Elem(), DbClusterMultiZoneVswitchListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterMultiZoneVswitchListArrayInput)(nil)).Elem(), DbClusterMultiZoneVswitchListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyInput)(nil)).Elem(), GetBackupPoliciesPolicyArgs{})
@@ -1302,6 +1410,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneIdArrayInput)(nil)).Elem(), GetRegionsRegionZoneIdArray{})
 	pulumi.RegisterOutputType(DbClusterDbClusterAccessWhiteListOutput{})
 	pulumi.RegisterOutputType(DbClusterDbClusterAccessWhiteListArrayOutput{})
+	pulumi.RegisterOutputType(DbClusterMultiZoneVswitchListOutput{})
+	pulumi.RegisterOutputType(DbClusterMultiZoneVswitchListArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPoliciesPolicyOutput{})

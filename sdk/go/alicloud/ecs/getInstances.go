@@ -102,7 +102,7 @@ type GetInstancesArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the instances.
+	// ID of the vSwitch linked to the instances.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -137,7 +137,7 @@ type GetInstancesResult struct {
 	TotalCount int                    `pulumi:"totalCount"`
 	// ID of the VPC the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch the instance belongs to.
+	// ID of the vSwitch the instance belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -205,7 +205,7 @@ type GetInstancesOutputArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the instances.
+	// ID of the vSwitch linked to the instances.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -311,7 +311,7 @@ func (o GetInstancesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// ID of the VSwitch the instance belongs to.
+// ID of the vSwitch the instance belongs to.
 func (o GetInstancesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

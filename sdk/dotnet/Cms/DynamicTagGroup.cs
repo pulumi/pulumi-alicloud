@@ -28,25 +28,25 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
-    ///         AlarmContactGroupName = "example_value",
-    ///         Describe = "example_value",
-    ///         EnableSubscribed = true,
+    ///         AlarmContactGroupName = name,
     ///     });
     /// 
     ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("default", new()
     ///     {
+    ///         TagKey = name,
     ///         ContactGroupLists = new[]
     ///         {
     ///             @default.Id,
     ///         },
-    ///         TagKey = "your_tag_key",
     ///         MatchExpresses = new[]
     ///         {
     ///             new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
     ///             {
-    ///                 TagValue = "your_tag_value",
+    ///                 TagValue = name,
     ///                 TagValueMatchFunction = "all",
     ///             },
     ///         },
@@ -67,37 +67,37 @@ namespace Pulumi.AliCloud.Cms
     public partial class DynamicTagGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+        /// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         /// </summary>
         [Output("contactGroupLists")]
         public Output<ImmutableArray<string>> ContactGroupLists { get; private set; } = null!;
 
         /// <summary>
-        /// The relationship between conditional expressions. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         /// </summary>
         [Output("matchExpressFilterRelation")]
         public Output<string> MatchExpressFilterRelation { get; private set; } = null!;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
         /// </summary>
         [Output("matchExpresses")]
         public Output<ImmutableArray<Outputs.DynamicTagGroupMatchExpress>> MatchExpresses { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+        /// The status of the Dynamic Tag Group.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag key of the tag.
+        /// The tag keys of the cloud resources.
         /// </summary>
         [Output("tagKey")]
         public Output<string> TagKey { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm template ID list.
+        /// The IDs of the alert templates.
         /// </summary>
         [Output("templateIdLists")]
         public Output<ImmutableArray<string>> TemplateIdLists { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<string>? _contactGroupLists;
 
         /// <summary>
-        /// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+        /// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         /// </summary>
         public InputList<string> ContactGroupLists
         {
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The relationship between conditional expressions. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressArgs>? _matchExpresses;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressArgs> MatchExpresses
         {
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The tag key of the tag.
+        /// The tag keys of the cloud resources.
         /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<string>? _templateIdLists;
 
         /// <summary>
-        /// Alarm template ID list.
+        /// The IDs of the alert templates.
         /// </summary>
         public InputList<string> TemplateIdLists
         {
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<string>? _contactGroupLists;
 
         /// <summary>
-        /// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+        /// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         /// </summary>
         public InputList<string> ContactGroupLists
         {
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The relationship between conditional expressions. Valid values: `and`, `or`.
+        /// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         /// </summary>
         [Input("matchExpressFilterRelation")]
         public Input<string>? MatchExpressFilterRelation { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<Inputs.DynamicTagGroupMatchExpressGetArgs>? _matchExpresses;
 
         /// <summary>
-        /// The label generates a matching expression that applies the grouping. See `match_express` below.
+        /// The conditional expressions used to create an application group based on the tag. See `match_express` below.
         /// </summary>
         public InputList<Inputs.DynamicTagGroupMatchExpressGetArgs> MatchExpresses
         {
@@ -235,13 +235,13 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+        /// The status of the Dynamic Tag Group.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The tag key of the tag.
+        /// The tag keys of the cloud resources.
         /// </summary>
         [Input("tagKey")]
         public Input<string>? TagKey { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.Cms
         private InputList<string>? _templateIdLists;
 
         /// <summary>
-        /// Alarm template ID list.
+        /// The IDs of the alert templates.
         /// </summary>
         public InputList<string> TemplateIdLists
         {

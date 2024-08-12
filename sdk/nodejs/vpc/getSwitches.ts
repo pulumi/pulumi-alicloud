@@ -68,11 +68,11 @@ export interface GetSwitchesArgs {
      */
     dryRun?: boolean;
     /**
-     * A list of VSwitch IDs.
+     * A list of vSwitch IDs.
      */
     ids?: string[];
     /**
-     * Indicate whether the VSwitch is created by the system.
+     * Indicate whether the vSwitch is created by the system.
      */
     isDefault?: boolean;
     /**
@@ -88,11 +88,11 @@ export interface GetSwitchesArgs {
      */
     resourceGroupId?: string;
     /**
-     * The route table ID of the VSwitch.
+     * The route table ID of the vSwitch.
      */
     routeTableId?: string;
     /**
-     * The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * The status of the vSwitch. Valid values: `Available` and `Pending`.
      */
     status?: string;
     /**
@@ -100,19 +100,19 @@ export interface GetSwitchesArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * ID of the VPC that owns the VSwitch.
+     * ID of the VPC that owns the vSwitch.
      */
     vpcId?: string;
     /**
-     * The name of the VSwitch.
+     * The name of the vSwitch.
      */
     vswitchName?: string;
     /**
-     * The VSwitch owner id.
+     * The vSwitch owner id.
      */
     vswitchOwnerId?: number;
     /**
-     * The availability zone of the VSwitch.
+     * The availability zone of the vSwitch.
      */
     zoneId?: string;
 }
@@ -122,7 +122,7 @@ export interface GetSwitchesArgs {
  */
 export interface GetSwitchesResult {
     /**
-     * CIDR block of the VSwitch.
+     * CIDR block of the vSwitch.
      */
     readonly cidrBlock?: string;
     readonly dryRun?: boolean;
@@ -131,41 +131,41 @@ export interface GetSwitchesResult {
      */
     readonly id: string;
     /**
-     * A list of VSwitch IDs.
+     * A list of vSwitch IDs.
      */
     readonly ids: string[];
     /**
-     * Whether the VSwitch is the default one in the region.
+     * Whether the vSwitch is the default one in the region.
      */
     readonly isDefault?: boolean;
     readonly nameRegex?: string;
     /**
-     * A list of VSwitch names.
+     * A list of vSwitch names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The resource group ID of the VSwitch.
+     * The resource group ID of the vSwitch.
      */
     readonly resourceGroupId?: string;
     /**
-     * The route table ID of the VSwitch.
+     * The route table ID of the vSwitch.
      */
     readonly routeTableId?: string;
     /**
-     * The status of the VSwitch.
+     * The status of the vSwitch.
      */
     readonly status?: string;
     /**
-     * The Tags of the VSwitch.
+     * The Tags of the vSwitch.
      */
     readonly tags?: {[key: string]: any};
     /**
-     * ID of the VPC that owns the VSwitch.
+     * ID of the VPC that owns the vSwitch.
      */
     readonly vpcId?: string;
     /**
-     * Name of the VSwitch.
+     * Name of the vSwitch.
      */
     readonly vswitchName?: string;
     readonly vswitchOwnerId?: number;
@@ -174,7 +174,7 @@ export interface GetSwitchesResult {
      */
     readonly vswitches: outputs.vpc.GetSwitchesVswitch[];
     /**
-     * ID of the availability zone where the VSwitch is located.
+     * ID of the availability zone where the vSwitch is located.
      */
     readonly zoneId?: string;
 }
@@ -222,11 +222,11 @@ export interface GetSwitchesOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * A list of VSwitch IDs.
+     * A list of vSwitch IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicate whether the VSwitch is created by the system.
+     * Indicate whether the vSwitch is created by the system.
      */
     isDefault?: pulumi.Input<boolean>;
     /**
@@ -242,11 +242,11 @@ export interface GetSwitchesOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The route table ID of the VSwitch.
+     * The route table ID of the vSwitch.
      */
     routeTableId?: pulumi.Input<string>;
     /**
-     * The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * The status of the vSwitch. Valid values: `Available` and `Pending`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -254,19 +254,19 @@ export interface GetSwitchesOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * ID of the VPC that owns the VSwitch.
+     * ID of the VPC that owns the vSwitch.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The name of the VSwitch.
+     * The name of the vSwitch.
      */
     vswitchName?: pulumi.Input<string>;
     /**
-     * The VSwitch owner id.
+     * The vSwitch owner id.
      */
     vswitchOwnerId?: pulumi.Input<number>;
     /**
-     * The availability zone of the VSwitch.
+     * The availability zone of the vSwitch.
      */
     zoneId?: pulumi.Input<string>;
 }

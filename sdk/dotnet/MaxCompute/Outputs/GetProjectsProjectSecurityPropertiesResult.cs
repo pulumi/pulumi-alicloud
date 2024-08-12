@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class GetProjectsProjectSecurityPropertiesResult
     {
         /// <summary>
-        /// Whether to enable download permission check.
+        /// Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
         /// </summary>
         public readonly bool EnableDownloadPrivilege;
         /// <summary>
-        /// Label authorization.
+        /// Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
         /// </summary>
         public readonly bool LabelSecurity;
         /// <summary>
-        /// Project creator permissions.
+        /// Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
         /// </summary>
         public readonly bool ObjectCreatorHasAccessPermission;
         /// <summary>
-        /// Does the project creator have authorization rights.
+        /// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         /// </summary>
         public readonly bool ObjectCreatorHasGrantPermission;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly Outputs.GetProjectsProjectSecurityPropertiesProjectProtectionResult ProjectProtection;
         /// <summary>
-        /// Whether to turn on ACL.
+        /// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         /// </summary>
         public readonly bool UsingAcl;
         /// <summary>
-        /// Whether to enable Policy.
+        /// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         /// </summary>
         public readonly bool UsingPolicy;
 

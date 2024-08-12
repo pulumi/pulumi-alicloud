@@ -16,14 +16,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     public static final LoadBalancerZoneMappingLoadBalancerAddressArgs Empty = new LoadBalancerZoneMappingLoadBalancerAddressArgs();
 
     /**
-     * IP Address. The Public IP Address, and Private IP Address from the Address Type.
+     * IP address. The Public IP Address, and Private IP Address from the Address Type.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return IP Address. The Public IP Address, and Private IP Address from the Address Type.
+     * @return IP address. The Public IP Address, and Private IP Address from the Address Type.
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,14 +31,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The ID of the EIP instance.
+     * The ID of the EIP.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP instance.
+     * @return The ID of the EIP.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -46,14 +46,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The type of the EIP instance.
+     * The type of the EIP.
      * 
      */
     @Import(name="eipType")
     private @Nullable Output<String> eipType;
 
     /**
-     * @return The type of the EIP instance.
+     * @return The type of the EIP.
      * 
      */
     public Optional<Output<String>> eipType() {
@@ -103,7 +103,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type.
+         * @param address IP address. The Public IP Address, and Private IP Address from the Address Type.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type.
+         * @param address IP address. The Public IP Address, and Private IP Address from the Address Type.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP instance.
+         * @param allocationId The ID of the EIP.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP instance.
+         * @param allocationId The ID of the EIP.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP instance.
+         * @param eipType The type of the EIP.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP instance.
+         * @param eipType The type of the EIP.
          * 
          * @return builder
          * 

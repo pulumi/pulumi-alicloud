@@ -68,8 +68,8 @@ import (
 type LoginProfile struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
-	MfaBindRequired pulumi.BoolPtrOutput `pulumi:"mfaBindRequired"`
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	MfaBindRequired pulumi.BoolOutput `pulumi:"mfaBindRequired"`
 	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
@@ -121,7 +121,7 @@ func GetLoginProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoginProfile resources.
 type loginProfileState struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
 	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password *string `pulumi:"password"`
@@ -132,7 +132,7 @@ type loginProfileState struct {
 }
 
 type LoginProfileState struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
 	MfaBindRequired pulumi.BoolPtrInput
 	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringPtrInput
@@ -147,7 +147,7 @@ func (LoginProfileState) ElementType() reflect.Type {
 }
 
 type loginProfileArgs struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
 	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password string `pulumi:"password"`
@@ -159,7 +159,7 @@ type loginProfileArgs struct {
 
 // The set of arguments for constructing a LoginProfile resource.
 type LoginProfileArgs struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
 	MfaBindRequired pulumi.BoolPtrInput
 	// The logon password of the RAM user. The password must meet the password strength requirements.
 	Password pulumi.StringInput
@@ -256,9 +256,9 @@ func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
-func (o LoginProfileOutput) MfaBindRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.MfaBindRequired }).(pulumi.BoolPtrOutput)
+// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+func (o LoginProfileOutput) MfaBindRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.BoolOutput { return v.MfaBindRequired }).(pulumi.BoolOutput)
 }
 
 // The logon password of the RAM user. The password must meet the password strength requirements.

@@ -1666,9 +1666,9 @@ func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbPortEnabled() pulu
 }
 
 type LoadBalancerAccessLogConfig struct {
-	// This Log Storage Project.
+	// The project to which the access log is shipped.
 	LogProject string `pulumi:"logProject"`
-	// This Log Storage Method Is Increased.
+	// The Logstore to which the access log is shipped.
 	LogStore string `pulumi:"logStore"`
 }
 
@@ -1684,9 +1684,9 @@ type LoadBalancerAccessLogConfigInput interface {
 }
 
 type LoadBalancerAccessLogConfigArgs struct {
-	// This Log Storage Project.
+	// The project to which the access log is shipped.
 	LogProject pulumi.StringInput `pulumi:"logProject"`
-	// This Log Storage Method Is Increased.
+	// The Logstore to which the access log is shipped.
 	LogStore pulumi.StringInput `pulumi:"logStore"`
 }
 
@@ -1767,12 +1767,12 @@ func (o LoadBalancerAccessLogConfigOutput) ToLoadBalancerAccessLogConfigPtrOutpu
 	}).(LoadBalancerAccessLogConfigPtrOutput)
 }
 
-// This Log Storage Project.
+// The project to which the access log is shipped.
 func (o LoadBalancerAccessLogConfigOutput) LogProject() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerAccessLogConfig) string { return v.LogProject }).(pulumi.StringOutput)
 }
 
-// This Log Storage Method Is Increased.
+// The Logstore to which the access log is shipped.
 func (o LoadBalancerAccessLogConfigOutput) LogStore() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerAccessLogConfig) string { return v.LogStore }).(pulumi.StringOutput)
 }
@@ -1801,7 +1801,7 @@ func (o LoadBalancerAccessLogConfigPtrOutput) Elem() LoadBalancerAccessLogConfig
 	}).(LoadBalancerAccessLogConfigOutput)
 }
 
-// This Log Storage Project.
+// The project to which the access log is shipped.
 func (o LoadBalancerAccessLogConfigPtrOutput) LogProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerAccessLogConfig) *string {
 		if v == nil {
@@ -1811,7 +1811,7 @@ func (o LoadBalancerAccessLogConfigPtrOutput) LogProject() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// This Log Storage Method Is Increased.
+// The Logstore to which the access log is shipped.
 func (o LoadBalancerAccessLogConfigPtrOutput) LogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerAccessLogConfig) *string {
 		if v == nil {
@@ -1822,7 +1822,7 @@ func (o LoadBalancerAccessLogConfigPtrOutput) LogStore() pulumi.StringPtrOutput 
 }
 
 type LoadBalancerLoadBalancerBillingConfig struct {
-	// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+	// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
 	PayType string `pulumi:"payType"`
 }
 
@@ -1838,7 +1838,7 @@ type LoadBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type LoadBalancerLoadBalancerBillingConfigArgs struct {
-	// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+	// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -1919,7 +1919,7 @@ func (o LoadBalancerLoadBalancerBillingConfigOutput) ToLoadBalancerLoadBalancerB
 	}).(LoadBalancerLoadBalancerBillingConfigPtrOutput)
 }
 
-// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
 func (o LoadBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -1948,7 +1948,7 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) Elem() LoadBalancerLoadB
 	}).(LoadBalancerLoadBalancerBillingConfigOutput)
 }
 
-// Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+// The billing method of the ALB instance. Valid values: `PayAsYouGo`.
 func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) PayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerLoadBalancerBillingConfig) *string {
 		if v == nil {
@@ -1959,9 +1959,9 @@ func (o LoadBalancerLoadBalancerBillingConfigPtrOutput) PayType() pulumi.StringP
 }
 
 type LoadBalancerModificationProtectionConfig struct {
-	// Managed Instance.
+	// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
 	Reason *string `pulumi:"reason"`
-	// Load Balancing Modify the Protection Status.
+	// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
 	Status *string `pulumi:"status"`
 }
 
@@ -1977,9 +1977,9 @@ type LoadBalancerModificationProtectionConfigInput interface {
 }
 
 type LoadBalancerModificationProtectionConfigArgs struct {
-	// Managed Instance.
+	// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// Load Balancing Modify the Protection Status.
+	// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -2060,12 +2060,12 @@ func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificati
 	}).(LoadBalancerModificationProtectionConfigPtrOutput)
 }
 
-// Managed Instance.
+// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
 func (o LoadBalancerModificationProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
-// Load Balancing Modify the Protection Status.
+// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
 func (o LoadBalancerModificationProtectionConfigOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -2094,7 +2094,7 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Elem() LoadBalancerMo
 	}).(LoadBalancerModificationProtectionConfigOutput)
 }
 
-// Managed Instance.
+// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -2104,7 +2104,7 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Load Balancing Modify the Protection Status.
+// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -2115,11 +2115,11 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.Strin
 }
 
 type LoadBalancerZoneMapping struct {
-	// The SLB Instance Address.
+	// The IP address of the ALB instance.
 	LoadBalancerAddresses []LoadBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The ID of the VSwitch.
 	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone to which the SLB instance belongs.
+	// The zone ID of the ALB instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -2135,11 +2135,11 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The SLB Instance Address.
+	// The IP address of the ALB instance.
 	LoadBalancerAddresses LoadBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The ID of the VSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone to which the SLB instance belongs.
+	// The zone ID of the ALB instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -2194,19 +2194,19 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The SLB Instance Address.
+// The IP address of the ALB instance.
 func (o LoadBalancerZoneMappingOutput) LoadBalancerAddresses() LoadBalancerZoneMappingLoadBalancerAddressArrayOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) []LoadBalancerZoneMappingLoadBalancerAddress {
 		return v.LoadBalancerAddresses
 	}).(LoadBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
-// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+// The ID of the VSwitch.
 func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the SLB instance belongs.
+// The zone ID of the ALB instance.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -2232,11 +2232,11 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddress struct {
-	// IP Address. The Public IP Address, and Private IP Address from the Address Type.
+	// IP address. The Public IP Address, and Private IP Address from the Address Type.
 	Address *string `pulumi:"address"`
-	// The ID of the EIP instance.
+	// The ID of the EIP.
 	AllocationId *string `pulumi:"allocationId"`
-	// The type of the EIP instance.
+	// The type of the EIP.
 	EipType *string `pulumi:"eipType"`
 	// Ipv6 address.
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -2254,11 +2254,11 @@ type LoadBalancerZoneMappingLoadBalancerAddressInput interface {
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddressArgs struct {
-	// IP Address. The Public IP Address, and Private IP Address from the Address Type.
+	// IP address. The Public IP Address, and Private IP Address from the Address Type.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The ID of the EIP instance.
+	// The ID of the EIP.
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
-	// The type of the EIP instance.
+	// The type of the EIP.
 	EipType pulumi.StringPtrInput `pulumi:"eipType"`
 	// Ipv6 address.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
@@ -2315,17 +2315,17 @@ func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) ToLoadBalancerZoneMapp
 	return o
 }
 
-// IP Address. The Public IP Address, and Private IP Address from the Address Type.
+// IP address. The Public IP Address, and Private IP Address from the Address Type.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the EIP instance.
+// The ID of the EIP.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) AllocationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the EIP instance.
+// The type of the EIP.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) EipType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.EipType }).(pulumi.StringPtrOutput)
 }

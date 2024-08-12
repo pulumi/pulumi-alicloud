@@ -140,14 +140,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipWhiteList);
     }
     /**
-     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      * 
      */
     @Export(name="isLogical", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> isLogical;
 
     /**
-     * @return Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * @return Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      * 
      */
     public Output<Optional<String>> isLogical() {

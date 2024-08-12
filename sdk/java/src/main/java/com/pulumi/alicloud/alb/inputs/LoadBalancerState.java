@@ -24,14 +24,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerState Empty = new LoadBalancerState();
 
     /**
-     * The Access Logging Configuration Structure. See `access_log_config` below.
+     * The configuration of the access log. See `access_log_config` below.
      * 
      */
     @Import(name="accessLogConfig")
     private @Nullable Output<LoadBalancerAccessLogConfigArgs> accessLogConfig;
 
     /**
-     * @return The Access Logging Configuration Structure. See `access_log_config` below.
+     * @return The configuration of the access log. See `access_log_config` below.
      * 
      */
     public Optional<Output<LoadBalancerAccessLogConfigArgs>> accessLogConfig() {
@@ -39,14 +39,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+     * The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
      * 
      */
     @Import(name="addressAllocatedMode")
     private @Nullable Output<String> addressAllocatedMode;
 
     /**
-     * @return The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+     * @return The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
      * 
      */
     public Optional<Output<String>> addressAllocatedMode() {
@@ -54,18 +54,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol version. Value:
-     * - **IPv4**:IPv4 type.
-     * - **DualStack**: the dual-stack type.
+     * The protocol version. Valid values: `IPv4`, `DualStack`.
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Value:
-     * - **IPv4**:IPv4 type.
-     * - **DualStack**: the dual-stack type.
+     * @return The protocol version. Valid values: `IPv4`, `DualStack`.
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -73,14 +69,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of IP address that the SLB instance uses to provide services.
+     * The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     @Import(name="addressType")
     private @Nullable Output<String> addressType;
 
     /**
-     * @return The type of IP address that the SLB instance uses to provide services.
+     * @return The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     public Optional<Output<String>> addressType() {
@@ -88,14 +84,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+     * The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
      * 
      */
     @Import(name="bandwidthPackageId")
     private @Nullable Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+     * @return The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
      * 
      */
     public Optional<Output<String>> bandwidthPackageId() {
@@ -103,14 +99,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the resource.
+     * The time when the resource was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The time when the resource was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -118,14 +114,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable delete protection. Value:true: on.false (default): Off.
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      * 
      */
     @Import(name="deletionProtectionEnabled")
     private @Nullable Output<Boolean> deletionProtectionEnabled;
 
     /**
-     * @return Whether to enable delete protection. Value:true: on.false (default): Off.
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
@@ -133,14 +129,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+     * (Available since v1.158.0) The domain name of the ALB instance.
      * 
      */
     @Import(name="dnsName")
     private @Nullable Output<String> dnsName;
 
     /**
-     * @return The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+     * @return (Available since v1.158.0) The domain name of the ALB instance.
      * 
      */
     public Optional<Output<String>> dnsName() {
@@ -148,14 +144,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -163,14 +159,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The address type of Ipv6.
+     * The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
      * 
      */
     @Import(name="ipv6AddressType")
     private @Nullable Output<String> ipv6AddressType;
 
     /**
-     * @return The address type of Ipv6.
+     * @return The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
      * 
      */
     public Optional<Output<String>> ipv6AddressType() {
@@ -178,14 +174,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the billing method. See `load_balancer_billing_config` below.
+     * The billing method of the ALB instance. See `load_balancer_billing_config` below.
      * 
      */
     @Import(name="loadBalancerBillingConfig")
     private @Nullable Output<LoadBalancerLoadBalancerBillingConfigArgs> loadBalancerBillingConfig;
 
     /**
-     * @return The configuration of the billing method. See `load_balancer_billing_config` below.
+     * @return The billing method of the ALB instance. See `load_balancer_billing_config` below.
      * 
      */
     public Optional<Output<LoadBalancerLoadBalancerBillingConfigArgs>> loadBalancerBillingConfig() {
@@ -193,14 +189,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of the ALB instance.
+     * The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
      * 
      */
     @Import(name="loadBalancerEdition")
     private @Nullable Output<String> loadBalancerEdition;
 
     /**
-     * @return The edition of the ALB instance.
+     * @return The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
      * 
      */
     public Optional<Output<String>> loadBalancerEdition() {
@@ -208,14 +204,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource.
+     * The name of the ALB instance.
      * 
      */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the ALB instance.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -223,14 +219,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Modify the Protection Configuration. See `modification_protection_config` below.
+     * The configuration of the read-only mode. See `modification_protection_config` below.
      * 
      */
     @Import(name="modificationProtectionConfig")
     private @Nullable Output<LoadBalancerModificationProtectionConfigArgs> modificationProtectionConfig;
 
     /**
-     * @return Modify the Protection Configuration. See `modification_protection_config` below.
+     * @return The configuration of the read-only mode. See `modification_protection_config` below.
      * 
      */
     public Optional<Output<LoadBalancerModificationProtectionConfigArgs>> modificationProtectionConfig() {
@@ -253,14 +249,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+     * The status of the Load Balancer.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+     * @return The status of the Load Balancer.
      * 
      */
     public Optional<Output<String>> status() {
@@ -268,14 +264,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -283,14 +279,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+     * The ID of the VPC.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+     * @return The ID of the VPC.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -298,14 +294,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+     * The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+     * @return The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingArgs>>> zoneMappings() {
@@ -355,7 +351,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogConfig The Access Logging Configuration Structure. See `access_log_config` below.
+         * @param accessLogConfig The configuration of the access log. See `access_log_config` below.
          * 
          * @return builder
          * 
@@ -366,7 +362,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessLogConfig The Access Logging Configuration Structure. See `access_log_config` below.
+         * @param accessLogConfig The configuration of the access log. See `access_log_config` below.
          * 
          * @return builder
          * 
@@ -376,7 +372,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressAllocatedMode The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+         * @param addressAllocatedMode The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
          * 
          * @return builder
          * 
@@ -387,7 +383,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressAllocatedMode The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+         * @param addressAllocatedMode The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
          * 
          * @return builder
          * 
@@ -397,9 +393,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - **IPv4**:IPv4 type.
-         * - **DualStack**: the dual-stack type.
+         * @param addressIpVersion The protocol version. Valid values: `IPv4`, `DualStack`.
          * 
          * @return builder
          * 
@@ -410,9 +404,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - **IPv4**:IPv4 type.
-         * - **DualStack**: the dual-stack type.
+         * @param addressIpVersion The protocol version. Valid values: `IPv4`, `DualStack`.
          * 
          * @return builder
          * 
@@ -422,7 +414,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressType The type of IP address that the SLB instance uses to provide services.
+         * @param addressType The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -433,7 +425,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressType The type of IP address that the SLB instance uses to provide services.
+         * @param addressType The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -443,7 +435,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidthPackageId The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+         * @param bandwidthPackageId The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
          * 
          * @return builder
          * 
@@ -454,7 +446,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidthPackageId The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+         * @param bandwidthPackageId The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
          * 
          * @return builder
          * 
@@ -464,7 +456,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The time when the resource was created.
          * 
          * @return builder
          * 
@@ -475,7 +467,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The time when the resource was created.
          * 
          * @return builder
          * 
@@ -485,7 +477,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionEnabled Whether to enable delete protection. Value:true: on.false (default): Off.
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -496,7 +488,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionEnabled Whether to enable delete protection. Value:true: on.false (default): Off.
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -506,7 +498,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsName The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+         * @param dnsName (Available since v1.158.0) The domain name of the ALB instance.
          * 
          * @return builder
          * 
@@ -517,7 +509,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsName The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+         * @param dnsName (Available since v1.158.0) The domain name of the ALB instance.
          * 
          * @return builder
          * 
@@ -527,7 +519,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -538,7 +530,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -548,7 +540,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6AddressType The address type of Ipv6.
+         * @param ipv6AddressType The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -559,7 +551,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6AddressType The address type of Ipv6.
+         * @param ipv6AddressType The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -569,7 +561,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerBillingConfig The configuration of the billing method. See `load_balancer_billing_config` below.
+         * @param loadBalancerBillingConfig The billing method of the ALB instance. See `load_balancer_billing_config` below.
          * 
          * @return builder
          * 
@@ -580,7 +572,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerBillingConfig The configuration of the billing method. See `load_balancer_billing_config` below.
+         * @param loadBalancerBillingConfig The billing method of the ALB instance. See `load_balancer_billing_config` below.
          * 
          * @return builder
          * 
@@ -590,7 +582,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerEdition The edition of the ALB instance.
+         * @param loadBalancerEdition The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
          * 
          * @return builder
          * 
@@ -601,7 +593,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerEdition The edition of the ALB instance.
+         * @param loadBalancerEdition The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
          * 
          * @return builder
          * 
@@ -611,7 +603,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the resource.
+         * @param loadBalancerName The name of the ALB instance.
          * 
          * @return builder
          * 
@@ -622,7 +614,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the resource.
+         * @param loadBalancerName The name of the ALB instance.
          * 
          * @return builder
          * 
@@ -632,7 +624,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify the Protection Configuration. See `modification_protection_config` below.
+         * @param modificationProtectionConfig The configuration of the read-only mode. See `modification_protection_config` below.
          * 
          * @return builder
          * 
@@ -643,7 +635,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify the Protection Configuration. See `modification_protection_config` below.
+         * @param modificationProtectionConfig The configuration of the read-only mode. See `modification_protection_config` below.
          * 
          * @return builder
          * 
@@ -674,7 +666,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+         * @param status The status of the Load Balancer.
          * 
          * @return builder
          * 
@@ -685,7 +677,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+         * @param status The status of the Load Balancer.
          * 
          * @return builder
          * 
@@ -695,7 +687,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -706,7 +698,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -716,7 +708,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+         * @param vpcId The ID of the VPC.
          * 
          * @return builder
          * 
@@ -727,7 +719,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+         * @param vpcId The ID of the VPC.
          * 
          * @return builder
          * 
@@ -737,7 +729,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+         * @param zoneMappings The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -748,7 +740,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+         * @param zoneMappings The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -758,7 +750,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+         * @param zoneMappings The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
          * 
          * @return builder
          * 

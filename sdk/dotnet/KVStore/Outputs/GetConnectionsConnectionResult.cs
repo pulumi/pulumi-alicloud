@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string VpcInstanceId;
         /// <summary>
-        /// The ID of the VSwitch.
+        /// The ID of the vSwitch.
         /// </summary>
         public readonly string VswitchId;
 

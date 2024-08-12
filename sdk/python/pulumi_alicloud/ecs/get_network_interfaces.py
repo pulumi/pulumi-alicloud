@@ -204,7 +204,7 @@ class GetNetworkInterfacesResult:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        ID of the VSwitch that the ENI is linked to.
+        ID of the vSwitch that the ENI is linked to.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -324,7 +324,7 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     * `ids` - (Optional)  A list of ENI IDs.
     * `name_regex` - (Optional) A regex string to filter results by ENI name.
     * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-    * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+    * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
     * `private_ip` - (Optional) The primary private IP address of the ENI.
     * `security_group_id` - (Optional) The security group ID linked to ENIs.
     * `name` - (Optional) The name of the ENIs.
@@ -342,7 +342,7 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     :param str status: Current status of the ENI.
     :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
     :param str vpc_id: ID of the VPC that the ENI belongs to.
-    :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
+    :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -475,7 +475,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     * `ids` - (Optional)  A list of ENI IDs.
     * `name_regex` - (Optional) A regex string to filter results by ENI name.
     * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-    * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+    * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
     * `private_ip` - (Optional) The primary private IP address of the ENI.
     * `security_group_id` - (Optional) The security group ID linked to ENIs.
     * `name` - (Optional) The name of the ENIs.
@@ -493,6 +493,6 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str status: Current status of the ENI.
     :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
     :param str vpc_id: ID of the VPC that the ENI belongs to.
-    :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
+    :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
     """
     ...

@@ -2605,6 +2605,8 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.204.0+.
      * 
+     * &gt; **NOTE:** deprecated since v1.228.0.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -2658,6 +2660,8 @@ public final class ArmsFunctions {
      * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * &gt; **NOTE:** deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -2713,6 +2717,8 @@ public final class ArmsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.204.0+.
      * 
+     * &gt; **NOTE:** deprecated since v1.228.0.
+     * 
      * ## Example Usage
      * 
      * Basic Usage
@@ -2766,6 +2772,8 @@ public final class ArmsFunctions {
      * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * &gt; **NOTE:** deprecated since v1.228.0.
      * 
      * ## Example Usage
      * 

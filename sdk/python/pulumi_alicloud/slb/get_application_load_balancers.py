@@ -291,7 +291,7 @@ class GetApplicationLoadBalancersResult:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        ID of the VSwitch the SLB belongs to.
+        ID of the vSwitch the SLB belongs to.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -392,7 +392,7 @@ def get_application_load_balancers(address: Optional[str] = None,
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
     :param str vpc_id: ID of the VPC linked to the SLBs.
-    :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+    :param str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -512,6 +512,6 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
     :param str vpc_id: ID of the VPC linked to the SLBs.
-    :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+    :param str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
     ...

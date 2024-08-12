@@ -846,8 +846,8 @@ class LoadBalancerAccessLogConfig(dict):
                  log_project: str,
                  log_store: str):
         """
-        :param str log_project: This Log Storage Project.
-        :param str log_store: This Log Storage Method Is Increased.
+        :param str log_project: The project to which the access log is shipped.
+        :param str log_store: The Logstore to which the access log is shipped.
         """
         pulumi.set(__self__, "log_project", log_project)
         pulumi.set(__self__, "log_store", log_store)
@@ -856,7 +856,7 @@ class LoadBalancerAccessLogConfig(dict):
     @pulumi.getter(name="logProject")
     def log_project(self) -> str:
         """
-        This Log Storage Project.
+        The project to which the access log is shipped.
         """
         return pulumi.get(self, "log_project")
 
@@ -864,7 +864,7 @@ class LoadBalancerAccessLogConfig(dict):
     @pulumi.getter(name="logStore")
     def log_store(self) -> str:
         """
-        This Log Storage Method Is Increased.
+        The Logstore to which the access log is shipped.
         """
         return pulumi.get(self, "log_store")
 
@@ -891,7 +891,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     def __init__(__self__, *,
                  pay_type: str):
         """
-        :param str pay_type: Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+        :param str pay_type: The billing method of the ALB instance. Valid values: `PayAsYouGo`.
         """
         pulumi.set(__self__, "pay_type", pay_type)
 
@@ -899,7 +899,7 @@ class LoadBalancerLoadBalancerBillingConfig(dict):
     @pulumi.getter(name="payType")
     def pay_type(self) -> str:
         """
-        Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+        The billing method of the ALB instance. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "pay_type")
 
@@ -910,8 +910,8 @@ class LoadBalancerModificationProtectionConfig(dict):
                  reason: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str reason: Managed Instance.
-        :param str status: Load Balancing Modify the Protection Status.
+        :param str reason: The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
+        :param str status: Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
         """
         if reason is not None:
             pulumi.set(__self__, "reason", reason)
@@ -922,7 +922,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        Managed Instance.
+        The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
         """
         return pulumi.get(self, "reason")
 
@@ -930,7 +930,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Load Balancing Modify the Protection Status.
+        Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
         """
         return pulumi.get(self, "status")
 
@@ -963,9 +963,9 @@ class LoadBalancerZoneMapping(dict):
                  zone_id: str,
                  load_balancer_addresses: Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']] = None):
         """
-        :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        :param str zone_id: The ID of the zone to which the SLB instance belongs.
-        :param Sequence['LoadBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: The SLB Instance Address.
+        :param str vswitch_id: The ID of the VSwitch.
+        :param str zone_id: The zone ID of the ALB instance.
+        :param Sequence['LoadBalancerZoneMappingLoadBalancerAddressArgs'] load_balancer_addresses: The IP address of the ALB instance.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -976,7 +976,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        The ID of the VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -984,7 +984,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The ID of the zone to which the SLB instance belongs.
+        The zone ID of the ALB instance.
         """
         return pulumi.get(self, "zone_id")
 
@@ -992,7 +992,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="loadBalancerAddresses")
     def load_balancer_addresses(self) -> Optional[Sequence['outputs.LoadBalancerZoneMappingLoadBalancerAddress']]:
         """
-        The SLB Instance Address.
+        The IP address of the ALB instance.
         """
         return pulumi.get(self, "load_balancer_addresses")
 
@@ -1026,9 +1026,9 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
                  eip_type: Optional[str] = None,
                  ipv6_address: Optional[str] = None):
         """
-        :param str address: IP Address. The Public IP Address, and Private IP Address from the Address Type.
-        :param str allocation_id: The ID of the EIP instance.
-        :param str eip_type: The type of the EIP instance.
+        :param str address: IP address. The Public IP Address, and Private IP Address from the Address Type.
+        :param str allocation_id: The ID of the EIP.
+        :param str eip_type: The type of the EIP.
         :param str ipv6_address: Ipv6 address.
         """
         if address is not None:
@@ -1044,7 +1044,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        IP Address. The Public IP Address, and Private IP Address from the Address Type.
+        IP address. The Public IP Address, and Private IP Address from the Address Type.
         """
         return pulumi.get(self, "address")
 
@@ -1052,7 +1052,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[str]:
         """
-        The ID of the EIP instance.
+        The ID of the EIP.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -1060,7 +1060,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress(dict):
     @pulumi.getter(name="eipType")
     def eip_type(self) -> Optional[str]:
         """
-        The type of the EIP instance.
+        The type of the EIP.
         """
         return pulumi.get(self, "eip_type")
 

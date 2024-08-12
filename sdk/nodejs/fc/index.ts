@@ -75,6 +75,41 @@ export type V2Function = import("./v2function").V2Function;
 export const V2Function: typeof import("./v2function").V2Function = null as any;
 utilities.lazyLoad(exports, ["V2Function"], () => require("./v2function"));
 
+export { V3AliasArgs, V3AliasState } from "./v3alias";
+export type V3Alias = import("./v3alias").V3Alias;
+export const V3Alias: typeof import("./v3alias").V3Alias = null as any;
+utilities.lazyLoad(exports, ["V3Alias"], () => require("./v3alias"));
+
+export { V3AsyncInvokeConfigArgs, V3AsyncInvokeConfigState } from "./v3asyncInvokeConfig";
+export type V3AsyncInvokeConfig = import("./v3asyncInvokeConfig").V3AsyncInvokeConfig;
+export const V3AsyncInvokeConfig: typeof import("./v3asyncInvokeConfig").V3AsyncInvokeConfig = null as any;
+utilities.lazyLoad(exports, ["V3AsyncInvokeConfig"], () => require("./v3asyncInvokeConfig"));
+
+export { V3ConcurrencyConfigArgs, V3ConcurrencyConfigState } from "./v3concurrencyConfig";
+export type V3ConcurrencyConfig = import("./v3concurrencyConfig").V3ConcurrencyConfig;
+export const V3ConcurrencyConfig: typeof import("./v3concurrencyConfig").V3ConcurrencyConfig = null as any;
+utilities.lazyLoad(exports, ["V3ConcurrencyConfig"], () => require("./v3concurrencyConfig"));
+
+export { V3CustomDomainArgs, V3CustomDomainState } from "./v3customDomain";
+export type V3CustomDomain = import("./v3customDomain").V3CustomDomain;
+export const V3CustomDomain: typeof import("./v3customDomain").V3CustomDomain = null as any;
+utilities.lazyLoad(exports, ["V3CustomDomain"], () => require("./v3customDomain"));
+
+export { V3FunctionArgs, V3FunctionState } from "./v3function";
+export type V3Function = import("./v3function").V3Function;
+export const V3Function: typeof import("./v3function").V3Function = null as any;
+utilities.lazyLoad(exports, ["V3Function"], () => require("./v3function"));
+
+export { V3FunctionVersionArgs, V3FunctionVersionState } from "./v3functionVersion";
+export type V3FunctionVersion = import("./v3functionVersion").V3FunctionVersion;
+export const V3FunctionVersion: typeof import("./v3functionVersion").V3FunctionVersion = null as any;
+utilities.lazyLoad(exports, ["V3FunctionVersion"], () => require("./v3functionVersion"));
+
+export { V3TriggerArgs, V3TriggerState } from "./v3trigger";
+export type V3Trigger = import("./v3trigger").V3Trigger;
+export const V3Trigger: typeof import("./v3trigger").V3Trigger = null as any;
+utilities.lazyLoad(exports, ["V3Trigger"], () => require("./v3trigger"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -96,6 +131,20 @@ const _module = {
                 return new Trigger(name, <any>undefined, { urn })
             case "alicloud:fc/v2Function:V2Function":
                 return new V2Function(name, <any>undefined, { urn })
+            case "alicloud:fc/v3Alias:V3Alias":
+                return new V3Alias(name, <any>undefined, { urn })
+            case "alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig":
+                return new V3AsyncInvokeConfig(name, <any>undefined, { urn })
+            case "alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig":
+                return new V3ConcurrencyConfig(name, <any>undefined, { urn })
+            case "alicloud:fc/v3CustomDomain:V3CustomDomain":
+                return new V3CustomDomain(name, <any>undefined, { urn })
+            case "alicloud:fc/v3Function:V3Function":
+                return new V3Function(name, <any>undefined, { urn })
+            case "alicloud:fc/v3FunctionVersion:V3FunctionVersion":
+                return new V3FunctionVersion(name, <any>undefined, { urn })
+            case "alicloud:fc/v3Trigger:V3Trigger":
+                return new V3Trigger(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -109,3 +158,10 @@ pulumi.runtime.registerResourceModule("alicloud", "fc/layerVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/service", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/trigger", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/v2Function", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3Alias", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3AsyncInvokeConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3ConcurrencyConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3CustomDomain", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3Function", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3FunctionVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3Trigger", _module)

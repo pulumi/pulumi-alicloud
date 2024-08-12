@@ -254,7 +254,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         server_attachment_network = alicloud.vpc.Network("server_attachment",
@@ -347,7 +347,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         server_attachment_network = alicloud.vpc.Network("server_attachment",

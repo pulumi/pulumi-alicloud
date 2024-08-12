@@ -259,7 +259,7 @@ class GetVpcEndpointZonesZoneResult(dict):
         :param str eni_ip: IP address of the terminal node network card.
         :param str id: The ID of the Vpc Endpoint Zone.
         :param str status: The Status of Vpc Endpoint Zone..
-        :param str vswitch_id: The VSwitch id.
+        :param str vswitch_id: The vSwitch id.
         :param str zone_domain: The Zone Domain.
         :param str zone_id: The Zone Id.
         """
@@ -307,7 +307,7 @@ class GetVpcEndpointZonesZoneResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The VSwitch id.
+        The vSwitch id.
         """
         return pulumi.get(self, "vswitch_id")
 

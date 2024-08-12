@@ -108,8 +108,8 @@ public final class Config {
  * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
  * 
  */
-    public String region() {
-        return Codegen.stringProp("region").config(config).env("ALICLOUD_REGION").require();
+    public Optional<String> region() {
+        return Codegen.stringProp("region").config(config).env("ALICLOUD_REGION").get();
     }
 /**
  * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud

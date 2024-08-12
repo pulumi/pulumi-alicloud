@@ -33,6 +33,36 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    @Import(name="contentTypeCategory")
+    private @Nullable Output<String> contentTypeCategory;
+
+    /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    public Optional<Output<String>> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+
+    /**
+     * The content type value of backend service.
+     * 
+     */
+    @Import(name="contentTypeValue")
+    private @Nullable Output<String> contentTypeValue;
+
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    public Optional<Output<String>> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
+    }
+
+    /**
      * The http method of backend service.
      * 
      */
@@ -92,14 +122,32 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         return this.timeout;
     }
 
+    /**
+     * The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+     * 
+     */
+    @Import(name="vpcScheme")
+    private @Nullable Output<String> vpcScheme;
+
+    /**
+     * @return The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+     * 
+     */
+    public Optional<Output<String>> vpcScheme() {
+        return Optional.ofNullable(this.vpcScheme);
+    }
+
     private ApiHttpVpcServiceConfigArgs() {}
 
     private ApiHttpVpcServiceConfigArgs(ApiHttpVpcServiceConfigArgs $) {
         this.aoneName = $.aoneName;
+        this.contentTypeCategory = $.contentTypeCategory;
+        this.contentTypeValue = $.contentTypeValue;
         this.method = $.method;
         this.name = $.name;
         this.path = $.path;
         this.timeout = $.timeout;
+        this.vpcScheme = $.vpcScheme;
     }
 
     public static Builder builder() {
@@ -139,6 +187,48 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder aoneName(String aoneName) {
             return aoneName(Output.of(aoneName));
+        }
+
+        /**
+         * @param contentTypeCategory The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(@Nullable Output<String> contentTypeCategory) {
+            $.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+
+        /**
+         * @param contentTypeCategory The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(String contentTypeCategory) {
+            return contentTypeCategory(Output.of(contentTypeCategory));
+        }
+
+        /**
+         * @param contentTypeValue The content type value of backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(@Nullable Output<String> contentTypeValue) {
+            $.contentTypeValue = contentTypeValue;
+            return this;
+        }
+
+        /**
+         * @param contentTypeValue The content type value of backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(String contentTypeValue) {
+            return contentTypeValue(Output.of(contentTypeValue));
         }
 
         /**
@@ -223,6 +313,27 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
+        }
+
+        /**
+         * @param vpcScheme The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScheme(@Nullable Output<String> vpcScheme) {
+            $.vpcScheme = vpcScheme;
+            return this;
+        }
+
+        /**
+         * @param vpcScheme The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcScheme(String vpcScheme) {
+            return vpcScheme(Output.of(vpcScheme));
         }
 
         public ApiHttpVpcServiceConfigArgs build() {

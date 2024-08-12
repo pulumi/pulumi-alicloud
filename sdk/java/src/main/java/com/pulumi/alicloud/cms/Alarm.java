@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cms.AlarmArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmState;
+import com.pulumi.alicloud.cms.outputs.AlarmCompositeExpression;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsCritical;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsInfo;
 import com.pulumi.alicloud.cms.outputs.AlarmEscalationsWarn;
@@ -162,6 +163,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/alarm:Alarm")
 public class Alarm extends com.pulumi.resources.CustomResource {
     /**
+     * The trigger conditions for multiple metrics. See `composite_expression` below.
+     * 
+     */
+    @Export(name="compositeExpression", refs={AlarmCompositeExpression.class}, tree="[0]")
+    private Output</* @Nullable */ AlarmCompositeExpression> compositeExpression;
+
+    /**
+     * @return The trigger conditions for multiple metrics. See `composite_expression` below.
+     * 
+     */
+    public Output<Optional<AlarmCompositeExpression>> compositeExpression() {
+        return Codegen.optional(this.compositeExpression);
+    }
+    /**
      * List contact groups of the alarm rule, which must have been created on the console.
      * 
      */
@@ -194,14 +209,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.dimensions;
     }
     /**
-     * The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+     * The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
      * 
      */
     @Export(name="effectiveInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveInterval;
 
     /**
-     * @return The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+     * @return The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
      * 
      */
     public Output<Optional<String>> effectiveInterval() {
@@ -324,14 +339,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * The statistical period of the metric. Unit: seconds. Default value: `300`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * @return The statistical period of the metric. Unit: seconds. Default value: `300`.
      * 
      */
     public Output<Optional<Integer>> period() {

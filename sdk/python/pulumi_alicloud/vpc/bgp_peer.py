@@ -482,7 +482,7 @@ class BgpPeer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> pulumi.Output[Optional[str]]:
+    def peer_ip_address(self) -> pulumi.Output[str]:
         """
         The IP address of the BGP peer.
         """

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0+.
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
  *
@@ -45,6 +45,9 @@ export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: p
  * A collection of arguments for invoking getKubernetesClusters.
  */
 export interface GetKubernetesClustersArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
@@ -92,7 +95,7 @@ export interface GetKubernetesClustersResult {
 /**
  * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.34.0+.
+ * > **NOTE:** Available since v1.34.0+.
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
  *
@@ -119,6 +122,9 @@ export function getKubernetesClustersOutput(args?: GetKubernetesClustersOutputAr
  * A collection of arguments for invoking getKubernetesClusters.
  */
 export interface GetKubernetesClustersOutputArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * Cluster IDs to filter.

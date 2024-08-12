@@ -36,11 +36,10 @@ import * as utilities from "../utilities";
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const exampleGetImages = exampleGetInstanceTypes.then(exampleGetInstanceTypes => alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ * const exampleGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
- *     instanceType: exampleGetInstanceTypes.instanceTypes?.[0]?.id,
- * }));
+ * });
  * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",

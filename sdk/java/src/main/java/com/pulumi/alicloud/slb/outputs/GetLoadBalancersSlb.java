@@ -109,7 +109,7 @@ public final class GetLoadBalancersSlb {
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     private String vswitchId;
@@ -235,7 +235,7 @@ public final class GetLoadBalancersSlb {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     public String vswitchId() {

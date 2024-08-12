@@ -59,10 +59,10 @@ namespace Pulumi.AliCloud.Ram
     public partial class LoginProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         /// </summary>
         [Output("mfaBindRequired")]
-        public Output<bool?> MfaBindRequired { get; private set; } = null!;
+        public Output<bool> MfaBindRequired { get; private set; } = null!;
 
         /// <summary>
         /// The logon password of the RAM user. The password must meet the password strength requirements.
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }

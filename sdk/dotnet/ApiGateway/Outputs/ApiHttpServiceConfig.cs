@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? AoneName;
         /// <summary>
+        /// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        /// </summary>
+        public readonly string? ContentTypeCategory;
+        /// <summary>
+        /// The content type value of backend service.
+        /// </summary>
+        public readonly string? ContentTypeValue;
+        /// <summary>
         /// The http method of backend service.
         /// </summary>
         public readonly string Method;
@@ -40,6 +48,10 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
 
             string? aoneName,
 
+            string? contentTypeCategory,
+
+            string? contentTypeValue,
+
             string method,
 
             string path,
@@ -48,6 +60,8 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         {
             Address = address;
             AoneName = aoneName;
+            ContentTypeCategory = contentTypeCategory;
+            ContentTypeValue = contentTypeValue;
             Method = method;
             Path = path;
             Timeout = timeout;

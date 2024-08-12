@@ -224,6 +224,12 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable automatic minor version update. Valid values:
+        /// </summary>
+        [Output("isAutoUpgradeOpen")]
+        public Output<string> IsAutoUpgradeOpen { get; private set; } = null!;
+
+        /// <summary>
         /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
@@ -671,6 +677,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable automatic minor version update. Valid values:
+        /// </summary>
+        [Input("isAutoUpgradeOpen")]
+        public Input<string>? IsAutoUpgradeOpen { get; set; }
 
         /// <summary>
         /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -1125,6 +1137,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable automatic minor version update. Valid values:
+        /// </summary>
+        [Input("isAutoUpgradeOpen")]
+        public Input<string>? IsAutoUpgradeOpen { get; set; }
 
         /// <summary>
         /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.

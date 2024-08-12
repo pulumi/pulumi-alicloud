@@ -12,13 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmTarget {
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+     * @return ARN uniquely identifies the resource that the alert targets.
+     * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+     * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     private @Nullable String arn;
     /**
-     * @return The parameters of the alert callback. The parameters are in the JSON format.
+     * @return Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
      * 
      */
     private @Nullable String jsonParams;
@@ -28,22 +29,23 @@ public final class AlarmTarget {
      */
     private @Nullable String level;
     /**
-     * @return The ID of the resource for which alerts are triggered.
+     * @return The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
      * 
      */
     private @Nullable String targetId;
 
     private AlarmTarget() {}
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+     * @return ARN uniquely identifies the resource that the alert targets.
+     * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+     * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
     /**
-     * @return The parameters of the alert callback. The parameters are in the JSON format.
+     * @return Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
      * 
      */
     public Optional<String> jsonParams() {
@@ -57,7 +59,7 @@ public final class AlarmTarget {
         return Optional.ofNullable(this.level);
     }
     /**
-     * @return The ID of the resource for which alerts are triggered.
+     * @return The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
      * 
      */
     public Optional<String> targetId() {

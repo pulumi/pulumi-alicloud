@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.MaxCompute
     public static class GetProjects
     {
         /// <summary>
-        /// This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+        /// This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -27,27 +27,23 @@ namespace Pulumi.AliCloud.MaxCompute
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf_testaccmp";
+        ///     var name = config.Get("name") ?? "tf_example_acc";
         ///     var defaultProject = new AliCloud.MaxCompute.Project("default", new()
         ///     {
         ///         DefaultQuota = "默认后付费Quota",
         ///         ProjectName = name,
         ///         Comment = name,
-        ///         ProductType = "PAYASYOUGO",
+        ///         ProductType = "PayAsYouGo",
         ///     });
         /// 
         ///     var @default = AliCloud.MaxCompute.GetProjects.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultProject.Id,
-        ///         },
-        ///         NameRegex = defaultProject.Name,
+        ///         NameRegex = defaultProject.ProjectName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id)),
+        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.ProjectName)),
         ///     };
         /// });
         /// ```
@@ -56,9 +52,9 @@ namespace Pulumi.AliCloud.MaxCompute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:maxcompute/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+        /// This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -71,27 +67,23 @@ namespace Pulumi.AliCloud.MaxCompute
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf_testaccmp";
+        ///     var name = config.Get("name") ?? "tf_example_acc";
         ///     var defaultProject = new AliCloud.MaxCompute.Project("default", new()
         ///     {
         ///         DefaultQuota = "默认后付费Quota",
         ///         ProjectName = name,
         ///         Comment = name,
-        ///         ProductType = "PAYASYOUGO",
+        ///         ProductType = "PayAsYouGo",
         ///     });
         /// 
         ///     var @default = AliCloud.MaxCompute.GetProjects.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             defaultProject.Id,
-        ///         },
-        ///         NameRegex = defaultProject.Name,
+        ///         NameRegex = defaultProject.ProjectName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id)),
+        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.ProjectName)),
         ///     };
         /// });
         /// ```

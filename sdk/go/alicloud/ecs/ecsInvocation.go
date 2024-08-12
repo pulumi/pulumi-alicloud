@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu"),
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
 //			}, nil)

@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class DynamicTagGroupMatchExpress {
     /**
-     * @return The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+     * @return The tag values of the cloud resources.
      * 
      */
     private String tagValue;
     /**
-     * @return Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+     * @return The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
      * 
      */
     private String tagValueMatchFunction;
 
     private DynamicTagGroupMatchExpress() {}
     /**
-     * @return The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+     * @return The tag values of the cloud resources.
      * 
      */
     public String tagValue() {
         return this.tagValue;
     }
     /**
-     * @return Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+     * @return The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
      * 
      */
     public String tagValueMatchFunction() {

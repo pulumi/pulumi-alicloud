@@ -229,14 +229,14 @@ public final class GetNetworksPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter results by the specified VSwitch.
+     * Filter results by the specified vSwitch.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return Filter results by the specified VSwitch.
+     * @return Filter results by the specified vSwitch.
      * 
      */
     public Optional<String> vswitchId() {
@@ -446,7 +446,7 @@ public final class GetNetworksPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vswitchId Filter results by the specified VSwitch.
+         * @param vswitchId Filter results by the specified vSwitch.
          * 
          * @return builder
          * 

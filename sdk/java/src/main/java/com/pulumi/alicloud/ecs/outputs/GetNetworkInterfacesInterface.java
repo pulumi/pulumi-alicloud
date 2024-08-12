@@ -37,6 +37,7 @@ public final class GetNetworkInterfacesInterface {
      * 
      */
     private String instanceId;
+    private List<String> ipv6Sets;
     /**
      * @return MAC address of the ENI.
      * 
@@ -94,7 +95,7 @@ public final class GetNetworkInterfacesInterface {
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch that the ENI is linked to.
+     * @return ID of the vSwitch that the ENI is linked to.
      * 
      */
     private String vswitchId;
@@ -135,6 +136,9 @@ public final class GetNetworkInterfacesInterface {
      */
     public String instanceId() {
         return this.instanceId;
+    }
+    public List<String> ipv6Sets() {
+        return this.ipv6Sets;
     }
     /**
      * @return MAC address of the ENI.
@@ -233,7 +237,7 @@ public final class GetNetworkInterfacesInterface {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch that the ENI is linked to.
+     * @return ID of the vSwitch that the ENI is linked to.
      * 
      */
     public String vswitchId() {
@@ -261,6 +265,7 @@ public final class GetNetworkInterfacesInterface {
         private String description;
         private String id;
         private String instanceId;
+        private List<String> ipv6Sets;
         private String mac;
         private String name;
         private String networkInterfaceId;
@@ -291,6 +296,7 @@ public final class GetNetworkInterfacesInterface {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.ipv6Sets = defaults.ipv6Sets;
     	      this.mac = defaults.mac;
     	      this.name = defaults.name;
     	      this.networkInterfaceId = defaults.networkInterfaceId;
@@ -357,6 +363,17 @@ public final class GetNetworkInterfacesInterface {
             }
             this.instanceId = instanceId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Sets(List<String> ipv6Sets) {
+            if (ipv6Sets == null) {
+              throw new MissingRequiredPropertyException("GetNetworkInterfacesInterface", "ipv6Sets");
+            }
+            this.ipv6Sets = ipv6Sets;
+            return this;
+        }
+        public Builder ipv6Sets(String... ipv6Sets) {
+            return ipv6Sets(List.of(ipv6Sets));
         }
         @CustomType.Setter
         public Builder mac(String mac) {
@@ -553,6 +570,7 @@ public final class GetNetworkInterfacesInterface {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.ipv6Sets = ipv6Sets;
             _resultValue.mac = mac;
             _resultValue.name = name;
             _resultValue.networkInterfaceId = networkInterfaceId;

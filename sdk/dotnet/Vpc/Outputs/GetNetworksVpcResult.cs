@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string VrouterId;
         /// <summary>
-        /// List of VSwitch IDs in the specified VPC
+        /// List of vSwitch IDs in the specified VPC
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
 

@@ -46,7 +46,7 @@ public final class GetEcsKeyPairsKeyPairInstance {
     private String regionId;
     private String status;
     /**
-     * @return The ID of the VSwitch attached to the ECS instance.
+     * @return The ID of the vSwitch attached to the ECS instance.
      * 
      */
     private String vswitchId;
@@ -110,7 +110,7 @@ public final class GetEcsKeyPairsKeyPairInstance {
         return this.status;
     }
     /**
-     * @return The ID of the VSwitch attached to the ECS instance.
+     * @return The ID of the vSwitch attached to the ECS instance.
      * 
      */
     public String vswitchId() {

@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
@@ -63,9 +64,13 @@ import * as utilities from "../utilities";
  *     instanceName: `${name}readonly`,
  *     vswitchId: exampleSwitch.id,
  * });
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("example", {
  *     instanceId: exampleReadOnlyInstance.masterDbInstanceId,
- *     connectionPrefix: "example-con-123",
+ *     connectionPrefix: `example-con-${_default.result}`,
  *     distributionType: "Standard",
  * });
  * ```

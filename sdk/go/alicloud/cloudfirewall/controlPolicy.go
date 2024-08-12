@@ -29,21 +29,27 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfirewall.NewControlPolicy(ctx, "example", &cloudfirewall.ControlPolicyArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewControlPolicy(ctx, "default", &cloudfirewall.ControlPolicyArgs{
+//				Direction:       pulumi.String("in"),
 //				ApplicationName: pulumi.String("ANY"),
+//				Description:     pulumi.String(name),
 //				AclAction:       pulumi.String("accept"),
-//				Description:     pulumi.String("example"),
-//				DestinationType: pulumi.String("net"),
-//				Destination:     pulumi.String("100.1.1.0/24"),
-//				Direction:       pulumi.String("out"),
-//				Proto:           pulumi.String("ANY"),
-//				Source:          pulumi.String("1.2.3.0/24"),
+//				Source:          pulumi.String("127.0.0.1/32"),
 //				SourceType:      pulumi.String("net"),
+//				Destination:     pulumi.String("127.0.0.2/32"),
+//				DestinationType: pulumi.String("net"),
+//				Proto:           pulumi.String("ANY"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,31 +79,31 @@ type ControlPolicy struct {
 	ApplicationName pulumi.StringOutput `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 	DestPort pulumi.StringOutput `pulumi:"destPort"`
-	// The destination port address book defined in the access control policy.
-	DestPortGroup pulumi.StringOutput `pulumi:"destPortGroup"`
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
+	DestPortGroup pulumi.StringPtrOutput `pulumi:"destPortGroup"`
+	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType pulumi.StringOutput `pulumi:"destPortType"`
-	// The destination address defined in the access control policy.
+	// The destination address in the access control policy.
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 	DestinationType pulumi.StringOutput `pulumi:"destinationType"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// The ip version.
-	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
-	// DestPortGroupPorts. Valid values: `en`, `zh`.
+	// The IP version supported by the access control policy. Default value: `4`. Valid values:
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+	// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 	Proto pulumi.StringOutput `pulumi:"proto"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// The status of the access control policy. Valid values: `true`, `false`.
 	Release pulumi.StringOutput `pulumi:"release"`
-	// Source.
+	// The source address in the access control policy.
 	Source pulumi.StringOutput `pulumi:"source"`
-	// The source ip.
-	SourceIp pulumi.StringOutput `pulumi:"sourceIp"`
-	// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The source IP address of the request.
+	SourceIp pulumi.StringPtrOutput `pulumi:"sourceIp"`
+	// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 }
 
@@ -167,31 +173,31 @@ type controlPolicyState struct {
 	ApplicationName *string `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description *string `pulumi:"description"`
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 	DestPort *string `pulumi:"destPort"`
-	// The destination port address book defined in the access control policy.
+	// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
 	DestPortGroup *string `pulumi:"destPortGroup"`
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType *string `pulumi:"destPortType"`
-	// The destination address defined in the access control policy.
+	// The destination address in the access control policy.
 	Destination *string `pulumi:"destination"`
-	// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 	DestinationType *string `pulumi:"destinationType"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction *string `pulumi:"direction"`
-	// The ip version.
+	// The IP version supported by the access control policy. Default value: `4`. Valid values:
 	IpVersion *string `pulumi:"ipVersion"`
-	// DestPortGroupPorts. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
-	// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+	// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 	Proto *string `pulumi:"proto"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// The status of the access control policy. Valid values: `true`, `false`.
 	Release *string `pulumi:"release"`
-	// Source.
+	// The source address in the access control policy.
 	Source *string `pulumi:"source"`
-	// The source ip.
+	// The source IP address of the request.
 	SourceIp *string `pulumi:"sourceIp"`
-	// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 	SourceType *string `pulumi:"sourceType"`
 }
 
@@ -205,31 +211,31 @@ type ControlPolicyState struct {
 	ApplicationName pulumi.StringPtrInput
 	// The description of the access control policy.
 	Description pulumi.StringPtrInput
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 	DestPort pulumi.StringPtrInput
-	// The destination port address book defined in the access control policy.
+	// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
 	DestPortGroup pulumi.StringPtrInput
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType pulumi.StringPtrInput
-	// The destination address defined in the access control policy.
+	// The destination address in the access control policy.
 	Destination pulumi.StringPtrInput
-	// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 	DestinationType pulumi.StringPtrInput
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringPtrInput
-	// The ip version.
+	// The IP version supported by the access control policy. Default value: `4`. Valid values:
 	IpVersion pulumi.StringPtrInput
-	// DestPortGroupPorts. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
-	// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+	// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 	Proto pulumi.StringPtrInput
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// The status of the access control policy. Valid values: `true`, `false`.
 	Release pulumi.StringPtrInput
-	// Source.
+	// The source address in the access control policy.
 	Source pulumi.StringPtrInput
-	// The source ip.
+	// The source IP address of the request.
 	SourceIp pulumi.StringPtrInput
-	// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 	SourceType pulumi.StringPtrInput
 }
 
@@ -245,31 +251,31 @@ type controlPolicyArgs struct {
 	ApplicationName string `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description string `pulumi:"description"`
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 	DestPort *string `pulumi:"destPort"`
-	// The destination port address book defined in the access control policy.
+	// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
 	DestPortGroup *string `pulumi:"destPortGroup"`
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType *string `pulumi:"destPortType"`
-	// The destination address defined in the access control policy.
+	// The destination address in the access control policy.
 	Destination string `pulumi:"destination"`
-	// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 	DestinationType string `pulumi:"destinationType"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction string `pulumi:"direction"`
-	// The ip version.
+	// The IP version supported by the access control policy. Default value: `4`. Valid values:
 	IpVersion *string `pulumi:"ipVersion"`
-	// DestPortGroupPorts. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
-	// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+	// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 	Proto string `pulumi:"proto"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// The status of the access control policy. Valid values: `true`, `false`.
 	Release *string `pulumi:"release"`
-	// Source.
+	// The source address in the access control policy.
 	Source string `pulumi:"source"`
-	// The source ip.
+	// The source IP address of the request.
 	SourceIp *string `pulumi:"sourceIp"`
-	// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 	SourceType string `pulumi:"sourceType"`
 }
 
@@ -282,31 +288,31 @@ type ControlPolicyArgs struct {
 	ApplicationName pulumi.StringInput
 	// The description of the access control policy.
 	Description pulumi.StringInput
-	// The destination port defined in the access control policy.
+	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 	DestPort pulumi.StringPtrInput
-	// The destination port address book defined in the access control policy.
+	// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
 	DestPortGroup pulumi.StringPtrInput
-	// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+	// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 	DestPortType pulumi.StringPtrInput
-	// The destination address defined in the access control policy.
+	// The destination address in the access control policy.
 	Destination pulumi.StringInput
-	// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 	DestinationType pulumi.StringInput
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringInput
-	// The ip version.
+	// The IP version supported by the access control policy. Default value: `4`. Valid values:
 	IpVersion pulumi.StringPtrInput
-	// DestPortGroupPorts. Valid values: `en`, `zh`.
+	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
-	// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+	// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 	Proto pulumi.StringInput
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+	// The status of the access control policy. Valid values: `true`, `false`.
 	Release pulumi.StringPtrInput
-	// Source.
+	// The source address in the access control policy.
 	Source pulumi.StringInput
-	// The source ip.
+	// The source IP address of the request.
 	SourceIp pulumi.StringPtrInput
-	// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+	// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 	SourceType pulumi.StringInput
 }
 
@@ -418,67 +424,67 @@ func (o ControlPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The destination port defined in the access control policy.
+// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
 func (o ControlPolicyOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPort }).(pulumi.StringOutput)
 }
 
-// The destination port address book defined in the access control policy.
-func (o ControlPolicyOutput) DestPortGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPortGroup }).(pulumi.StringOutput)
+// The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
+func (o ControlPolicyOutput) DestPortGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.DestPortGroup }).(pulumi.StringPtrOutput)
 }
 
-// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+// The type of the destination port in the access control policy. Valid values: `port`, `group`.
 func (o ControlPolicyOutput) DestPortType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestPortType }).(pulumi.StringOutput)
 }
 
-// The destination address defined in the access control policy.
+// The destination address in the access control policy.
 func (o ControlPolicyOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
 
-// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
 func (o ControlPolicyOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.DestinationType }).(pulumi.StringOutput)
 }
 
-// Direction. Valid values: `in`, `out`.
+// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 func (o ControlPolicyOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The ip version.
-func (o ControlPolicyOutput) IpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+// The IP version supported by the access control policy. Default value: `4`. Valid values:
+func (o ControlPolicyOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// DestPortGroupPorts. Valid values: `en`, `zh`.
+// The language of the content within the request and response. Valid values: `zh`, `en`.
 func (o ControlPolicyOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+// The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
 func (o ControlPolicyOutput) Proto() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Proto }).(pulumi.StringOutput)
 }
 
-// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+// The status of the access control policy. Valid values: `true`, `false`.
 func (o ControlPolicyOutput) Release() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Release }).(pulumi.StringOutput)
 }
 
-// Source.
+// The source address in the access control policy.
 func (o ControlPolicyOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
-// The source ip.
-func (o ControlPolicyOutput) SourceIp() pulumi.StringOutput {
-	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.SourceIp }).(pulumi.StringOutput)
+// The source IP address of the request.
+func (o ControlPolicyOutput) SourceIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlPolicy) pulumi.StringPtrOutput { return v.SourceIp }).(pulumi.StringPtrOutput)
 }
 
-// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
 func (o ControlPolicyOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
 }

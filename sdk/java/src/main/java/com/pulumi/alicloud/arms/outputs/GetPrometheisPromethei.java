@@ -108,7 +108,7 @@ public final class GetPrometheisPromethei {
      */
     private String vpcId;
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch.
      * 
      */
     private String vswitchId;
@@ -248,7 +248,7 @@ public final class GetPrometheisPromethei {
         return this.vpcId;
     }
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch.
      * 
      */
     public String vswitchId() {

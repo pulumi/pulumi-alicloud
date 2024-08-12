@@ -320,14 +320,18 @@ class ImageImport(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-image-import-example"
-        default = alicloud.oss.Bucket("default", bucket=name)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")
         default_bucket_object = alicloud.oss.BucketObject("default",
-            bucket=default.id,
+            bucket=default_bucket.id,
             key="fc/hello.zip",
             content=\"\"\"    # -*- coding: utf-8 -*-
             def handler(event, context):
@@ -342,7 +346,7 @@ class ImageImport(pulumi.CustomResource):
             image_name=name,
             description=name,
             disk_device_mappings=[{
-                "oss_bucket": default.id,
+                "oss_bucket": default_bucket.id,
                 "oss_object": default_bucket_object.id,
                 "disk_image_size": 5,
             }])
@@ -392,14 +396,18 @@ class ImageImport(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-image-import-example"
-        default = alicloud.oss.Bucket("default", bucket=name)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"{name}-{default['result']}")
         default_bucket_object = alicloud.oss.BucketObject("default",
-            bucket=default.id,
+            bucket=default_bucket.id,
             key="fc/hello.zip",
             content=\"\"\"    # -*- coding: utf-8 -*-
             def handler(event, context):
@@ -414,7 +422,7 @@ class ImageImport(pulumi.CustomResource):
             image_name=name,
             description=name,
             disk_device_mappings=[{
-                "oss_bucket": default.id,
+                "oss_bucket": default_bucket.id,
                 "oss_object": default_bucket_object.id,
                 "disk_image_size": 5,
             }])

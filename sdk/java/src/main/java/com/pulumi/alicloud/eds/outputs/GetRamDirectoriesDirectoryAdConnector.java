@@ -26,7 +26,7 @@ public final class GetRamDirectoriesDirectoryAdConnector {
      */
     private String networkInterfaceId;
     /**
-     * @return The ID of VSwitch.
+     * @return The ID of vSwitch.
      * 
      */
     private String vswitchId;
@@ -54,7 +54,7 @@ public final class GetRamDirectoriesDirectoryAdConnector {
         return this.networkInterfaceId;
     }
     /**
-     * @return The ID of VSwitch.
+     * @return The ID of vSwitch.
      * 
      */
     public String vswitchId() {

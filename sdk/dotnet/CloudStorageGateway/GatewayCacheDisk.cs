@@ -16,67 +16,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     /// &gt; **NOTE:** Available since v1.144.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
-    ///     {
-    ///         GatewayClass = "Standard",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
-    ///     {
-    ///         StorageBundleName = name,
-    ///     });
-    /// 
-    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("default", new()
-    ///     {
-    ///         Description = name,
-    ///         GatewayClass = "Standard",
-    ///         Type = "File",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         ReleaseAfterExpiration = true,
-    ///         StorageBundleId = defaultStorageBundle.Id,
-    ///         Location = "Cloud",
-    ///         GatewayName = name,
-    ///     });
-    /// 
-    ///     var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("default", new()
-    ///     {
-    ///         GatewayId = defaultGateway.Id,
-    ///         CacheDiskSizeInGb = 50,
-    ///         CacheDiskCategory = "cloud_efficiency",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.

@@ -104,7 +104,7 @@ public final class GetAdConnectorDirectoriesDirectory {
      */
     private String vpcId;
     /**
-     * @return List of VSwitch IDs in the directory.
+     * @return List of vSwitch IDs in the directory.
      * 
      */
     private List<String> vswitchIds;
@@ -237,7 +237,7 @@ public final class GetAdConnectorDirectoriesDirectory {
         return this.vpcId;
     }
     /**
-     * @return List of VSwitch IDs in the directory.
+     * @return List of vSwitch IDs in the directory.
      * 
      */
     public List<String> vswitchIds() {

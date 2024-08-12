@@ -76,6 +76,7 @@ import * as ackone from "./ackone";
 import * as actiontrail from "./actiontrail";
 import * as adb from "./adb";
 import * as alb from "./alb";
+import * as aligreen from "./aligreen";
 import * as alikafka from "./alikafka";
 import * as amqp from "./amqp";
 import * as apigateway from "./apigateway";
@@ -138,6 +139,7 @@ import * as expressconnect from "./expressconnect";
 import * as fc from "./fc";
 import * as fnf from "./fnf";
 import * as ga from "./ga";
+import * as governance from "./governance";
 import * as gpdb from "./gpdb";
 import * as graphdatabase from "./graphdatabase";
 import * as hbase from "./hbase";
@@ -207,6 +209,7 @@ export {
     actiontrail,
     adb,
     alb,
+    aligreen,
     alikafka,
     amqp,
     apigateway,
@@ -269,6 +272,7 @@ export {
     fc,
     fnf,
     ga,
+    governance,
     gpdb,
     graphdatabase,
     hbase,

@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Ecs
         /// * `ids` - (Optional)  A list of ENI IDs.
         /// * `name_regex` - (Optional) A regex string to filter results by ENI name.
         /// * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-        /// * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+        /// * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
         /// * `private_ip` - (Optional) The primary private IP address of the ENI.
         /// * `security_group_id` - (Optional) The security group ID linked to ENIs.
         /// * `name` - (Optional) The name of the ENIs.
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Ecs
         /// * `ids` - (Optional)  A list of ENI IDs.
         /// * `name_regex` - (Optional) A regex string to filter results by ENI name.
         /// * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-        /// * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+        /// * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
         /// * `private_ip` - (Optional) The primary private IP address of the ENI.
         /// * `security_group_id` - (Optional) The security group ID linked to ENIs.
         /// * `name` - (Optional) The name of the ENIs.
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch that the ENI is linked to.
+        /// ID of the vSwitch that the ENI is linked to.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch that the ENI is linked to.
+        /// ID of the vSwitch that the ENI is linked to.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// ID of the VSwitch that the ENI is linked to.
+        /// ID of the vSwitch that the ENI is linked to.
         /// </summary>
         public readonly string? VswitchId;
 

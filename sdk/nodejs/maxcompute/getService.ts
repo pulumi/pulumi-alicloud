@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.117.0+
  *
+ * > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,6 +69,8 @@ export interface GetServiceResult {
  * For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
  *
  * > **NOTE:** Available in v1.117.0+
+ *
+ * > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
  *
  * ## Example Usage
  *

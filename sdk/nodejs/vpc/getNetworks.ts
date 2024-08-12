@@ -106,7 +106,7 @@ export interface GetNetworksArgs {
      */
     vpcOwnerId?: number;
     /**
-     * Filter results by the specified VSwitch.
+     * Filter results by the specified vSwitch.
      */
     vswitchId?: string;
 }
@@ -243,7 +243,7 @@ export interface GetNetworksOutputArgs {
      */
     vpcOwnerId?: pulumi.Input<number>;
     /**
-     * Filter results by the specified VSwitch.
+     * Filter results by the specified vSwitch.
      */
     vswitchId?: pulumi.Input<string>;
 }

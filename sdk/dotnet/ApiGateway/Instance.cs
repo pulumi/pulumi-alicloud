@@ -37,8 +37,76 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         HttpsPolicy = "HTTPS2_TLS1_0",
     ///         ZoneId = "cn-hangzhou-MAZ6",
     ///         PaymentType = "PayAsYouGo",
-    ///         UserVpcId = "1709116870",
     ///         InstanceType = "normal",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var vswitch1 = new AliCloud.Vpc.Switch("vswitch_1", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         ZoneId = "cn-hangzhou-j",
+    ///         VswitchName = $"{name}_1",
+    ///     });
+    /// 
+    ///     var vswitch2 = new AliCloud.Vpc.Switch("vswitch_2", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.17.0.0/16",
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         VswitchName = $"{name}_2",
+    ///     });
+    /// 
+    ///     var securityGroup = new AliCloud.Ecs.SecurityGroup("security_group", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var vpcIntegrationInstance = new AliCloud.ApiGateway.Instance("vpc_integration_instance", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         HttpsPolicy = "HTTPS2_TLS1_0",
+    ///         InstanceSpec = "api.s1.small",
+    ///         InstanceType = "vpc_connect",
+    ///         PaymentType = "PayAsYouGo",
+    ///         UserVpcId = vpc.Id,
+    ///         InstanceCidr = "192.168.0.0/16",
+    ///         ZoneVswitchSecurityGroups = new[]
+    ///         {
+    ///             new AliCloud.ApiGateway.Inputs.InstanceZoneVswitchSecurityGroupArgs
+    ///             {
+    ///                 ZoneId = vswitch1.ZoneId,
+    ///                 VswitchId = vswitch1.Id,
+    ///                 CidrBlock = vswitch1.CidrBlock,
+    ///                 SecurityGroup = securityGroup.Id,
+    ///             },
+    ///             new AliCloud.ApiGateway.Inputs.InstanceZoneVswitchSecurityGroupArgs
+    ///             {
+    ///                 ZoneId = vswitch2.ZoneId,
+    ///                 VswitchId = vswitch2.Id,
+    ///                 CidrBlock = vswitch2.CidrBlock,
+    ///                 SecurityGroup = securityGroup.Id,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -56,10 +124,22 @@ namespace Pulumi.AliCloud.ApiGateway
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+        /// </summary>
+        [Output("connectCidrBlocks")]
+        public Output<string> ConnectCidrBlocks { get; private set; } = null!;
+
+        /// <summary>
         /// Creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// </summary>
+        [Output("deleteVpcIpBlock")]
+        public Output<string?> DeleteVpcIpBlock { get; private set; } = null!;
 
         /// <summary>
         /// The time of the instance package. Valid values:
@@ -72,7 +152,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<int?> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// Does IPV6 Capability Support.
+        /// Specifies whether IPv6 egress capability is enabled.
         /// </summary>
         [Output("egressIpv6Enable")]
         public Output<bool?> EgressIpv6Enable { get; private set; } = null!;
@@ -82,6 +162,14 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Output("httpsPolicy")]
         public Output<string> HttpsPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The CIDR block for the instance deployment. Valid values are:
+        /// - `192.168.0.0/16`.
+        /// - `172.16.0.0/12`.
+        /// </summary>
+        [Output("instanceCidr")]
+        public Output<string> InstanceCidr { get; private set; } = null!;
 
         /// <summary>
         /// Instance name.
@@ -96,10 +184,16 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type-normal: traditional exclusive instance.
+        /// The type of the instance. Valid values are:
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether IPv6 ingress capability is enabled.
+        /// </summary>
+        [Output("ipv6Enabled")]
+        public Output<bool?> Ipv6Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The payment type of the resource.
@@ -108,10 +202,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription instance is of the subscription year or month type. The value range is as follows:
-        /// - **year**: year
-        /// - **month**: month
-        /// &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
@@ -126,7 +217,13 @@ namespace Pulumi.AliCloud.ApiGateway
         /// Does ipv6 support.
         /// </summary>
         [Output("supportIpv6")]
-        public Output<bool?> SupportIpv6 { get; private set; } = null!;
+        public Output<bool> SupportIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        /// </summary>
+        [Output("toConnectVpcIpBlock")]
+        public Output<Outputs.InstanceToConnectVpcIpBlock?> ToConnectVpcIpBlock { get; private set; } = null!;
 
         /// <summary>
         /// User's VpcID.
@@ -145,6 +242,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// </summary>
+        [Output("zoneVswitchSecurityGroups")]
+        public Output<ImmutableArray<Outputs.InstanceZoneVswitchSecurityGroup>> ZoneVswitchSecurityGroups { get; private set; } = null!;
 
 
         /// <summary>
@@ -193,6 +296,12 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// </summary>
+        [Input("deleteVpcIpBlock")]
+        public Input<string>? DeleteVpcIpBlock { get; set; }
+
+        /// <summary>
         /// The time of the instance package. Valid values:
         /// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
         /// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
@@ -203,7 +312,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Does IPV6 Capability Support.
+        /// Specifies whether IPv6 egress capability is enabled.
         /// </summary>
         [Input("egressIpv6Enable")]
         public Input<bool>? EgressIpv6Enable { get; set; }
@@ -213,6 +322,14 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("httpsPolicy", required: true)]
         public Input<string> HttpsPolicy { get; set; } = null!;
+
+        /// <summary>
+        /// The CIDR block for the instance deployment. Valid values are:
+        /// - `192.168.0.0/16`.
+        /// - `172.16.0.0/12`.
+        /// </summary>
+        [Input("instanceCidr")]
+        public Input<string>? InstanceCidr { get; set; }
 
         /// <summary>
         /// Instance name.
@@ -227,10 +344,16 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> InstanceSpec { get; set; } = null!;
 
         /// <summary>
-        /// Instance type-normal: traditional exclusive instance.
+        /// The type of the instance. Valid values are:
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether IPv6 ingress capability is enabled.
+        /// </summary>
+        [Input("ipv6Enabled")]
+        public Input<bool>? Ipv6Enabled { get; set; }
 
         /// <summary>
         /// The payment type of the resource.
@@ -239,19 +362,16 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The subscription instance is of the subscription year or month type. The value range is as follows:
-        /// - **year**: year
-        /// - **month**: month
-        /// &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// Does ipv6 support.
+        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         /// </summary>
-        [Input("supportIpv6")]
-        public Input<bool>? SupportIpv6 { get; set; }
+        [Input("toConnectVpcIpBlock")]
+        public Input<Inputs.InstanceToConnectVpcIpBlockArgs>? ToConnectVpcIpBlock { get; set; }
 
         /// <summary>
         /// User's VpcID.
@@ -271,6 +391,18 @@ namespace Pulumi.AliCloud.ApiGateway
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
+        [Input("zoneVswitchSecurityGroups")]
+        private InputList<Inputs.InstanceZoneVswitchSecurityGroupArgs>? _zoneVswitchSecurityGroups;
+
+        /// <summary>
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// </summary>
+        public InputList<Inputs.InstanceZoneVswitchSecurityGroupArgs> ZoneVswitchSecurityGroups
+        {
+            get => _zoneVswitchSecurityGroups ?? (_zoneVswitchSecurityGroups = new InputList<Inputs.InstanceZoneVswitchSecurityGroupArgs>());
+            set => _zoneVswitchSecurityGroups = value;
+        }
+
         public InstanceArgs()
         {
         }
@@ -280,10 +412,22 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+        /// </summary>
+        [Input("connectCidrBlocks")]
+        public Input<string>? ConnectCidrBlocks { get; set; }
+
+        /// <summary>
         /// Creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        /// </summary>
+        [Input("deleteVpcIpBlock")]
+        public Input<string>? DeleteVpcIpBlock { get; set; }
 
         /// <summary>
         /// The time of the instance package. Valid values:
@@ -296,7 +440,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Does IPV6 Capability Support.
+        /// Specifies whether IPv6 egress capability is enabled.
         /// </summary>
         [Input("egressIpv6Enable")]
         public Input<bool>? EgressIpv6Enable { get; set; }
@@ -306,6 +450,14 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("httpsPolicy")]
         public Input<string>? HttpsPolicy { get; set; }
+
+        /// <summary>
+        /// The CIDR block for the instance deployment. Valid values are:
+        /// - `192.168.0.0/16`.
+        /// - `172.16.0.0/12`.
+        /// </summary>
+        [Input("instanceCidr")]
+        public Input<string>? InstanceCidr { get; set; }
 
         /// <summary>
         /// Instance name.
@@ -320,10 +472,16 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? InstanceSpec { get; set; }
 
         /// <summary>
-        /// Instance type-normal: traditional exclusive instance.
+        /// The type of the instance. Valid values are:
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Specifies whether IPv6 ingress capability is enabled.
+        /// </summary>
+        [Input("ipv6Enabled")]
+        public Input<bool>? Ipv6Enabled { get; set; }
 
         /// <summary>
         /// The payment type of the resource.
@@ -332,10 +490,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The subscription instance is of the subscription year or month type. The value range is as follows:
-        /// - **year**: year
-        /// - **month**: month
-        /// &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
@@ -353,6 +508,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<bool>? SupportIpv6 { get; set; }
 
         /// <summary>
+        /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        /// </summary>
+        [Input("toConnectVpcIpBlock")]
+        public Input<Inputs.InstanceToConnectVpcIpBlockGetArgs>? ToConnectVpcIpBlock { get; set; }
+
+        /// <summary>
         /// User's VpcID.
         /// </summary>
         [Input("userVpcId")]
@@ -369,6 +530,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        [Input("zoneVswitchSecurityGroups")]
+        private InputList<Inputs.InstanceZoneVswitchSecurityGroupGetArgs>? _zoneVswitchSecurityGroups;
+
+        /// <summary>
+        /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        /// </summary>
+        public InputList<Inputs.InstanceZoneVswitchSecurityGroupGetArgs> ZoneVswitchSecurityGroups
+        {
+            get => _zoneVswitchSecurityGroups ?? (_zoneVswitchSecurityGroups = new InputList<Inputs.InstanceZoneVswitchSecurityGroupGetArgs>());
+            set => _zoneVswitchSecurityGroups = value;
+        }
 
         public InstanceState()
         {

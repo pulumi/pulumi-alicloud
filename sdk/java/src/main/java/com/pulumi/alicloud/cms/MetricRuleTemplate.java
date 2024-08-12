@@ -106,14 +106,18 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alertTemplates);
     }
     /**
-     * The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+     * The mode in which the alert template is applied. Valid values:
+     * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      * 
      */
     @Export(name="applyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applyMode;
 
     /**
-     * @return The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+     * @return The mode in which the alert template is applied. Valid values:
+     * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      * 
      */
     public Output<Optional<String>> applyMode() {
@@ -134,28 +138,28 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+     * The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      * 
      */
     @Export(name="enableEndTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableEndTime;
 
     /**
-     * @return The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+     * @return The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      * 
      */
     public Output<Optional<String>> enableEndTime() {
         return Codegen.optional(this.enableEndTime);
     }
     /**
-     * The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+     * The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      * 
      */
     @Export(name="enableStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableStartTime;
 
     /**
-     * @return The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+     * @return The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      * 
      */
     public Output<Optional<String>> enableStartTime() {
@@ -190,50 +194,42 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
         return this.metricRuleTemplateName;
     }
     /**
-     * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+     * The alert notification method. Valid values:
      * 
      */
     @Export(name="notifyLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notifyLevel;
 
     /**
-     * @return The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+     * @return The alert notification method. Valid values:
      * 
      */
     public Output<Optional<String>> notifyLevel() {
         return Codegen.optional(this.notifyLevel);
     }
     /**
-     * The version of the alert template to be modified.
-     * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+     * The version of the alert template.
      * 
      */
     @Export(name="restVersion", refs={String.class}, tree="[0]")
     private Output<String> restVersion;
 
     /**
-     * @return The version of the alert template to be modified.
-     * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+     * @return The version of the alert template.
      * 
      */
     public Output<String> restVersion() {
         return this.restVersion;
     }
     /**
-     * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-     * 
-     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+     * The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      * 
      */
     @Export(name="silenceTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> silenceTime;
 
     /**
-     * @return The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-     * 
-     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+     * @return The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      * 
      */
     public Output<Optional<Integer>> silenceTime() {

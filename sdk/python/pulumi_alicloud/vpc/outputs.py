@@ -3860,7 +3860,7 @@ class GetNetworksVpcResult(dict):
         :param str vpc_id: ID of the VPC.
         :param str vpc_name: The name of the VPC.
         :param str vrouter_id: ID of the VRouter.
-        :param Sequence[str] vswitch_ids: List of VSwitch IDs in the specified VPC
+        :param Sequence[str] vswitch_ids: List of vSwitch IDs in the specified VPC
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -4021,7 +4021,7 @@ class GetNetworksVpcResult(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Sequence[str]:
         """
-        List of VSwitch IDs in the specified VPC
+        List of vSwitch IDs in the specified VPC
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -5364,22 +5364,22 @@ class GetSwitchesVswitchResult(dict):
                  vswitch_name: str,
                  zone_id: str):
         """
-        :param int available_ip_address_count: The available ip address count of the VSwitch.
+        :param int available_ip_address_count: The available ip address count of the vSwitch.
         :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         :param str creation_time: Time of creation.
-        :param str description: Description of the VSwitch.
-        :param str id: ID of the VSwitch.
+        :param str description: Description of the vSwitch.
+        :param str id: ID of the vSwitch.
         :param str ipv6_cidr_block: The IPv6 CIDR block of the switch.
-        :param bool is_default: Indicate whether the VSwitch is created by the system.
-        :param str name: Name of the VSwitch.
+        :param bool is_default: Indicate whether the vSwitch is created by the system.
+        :param str name: Name of the vSwitch.
         :param str resource_group_id: The Id of resource group which VSWitch belongs.
-        :param str route_table_id: The route table ID of the VSwitch.
-        :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
+        :param str route_table_id: The route table ID of the vSwitch.
+        :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-        :param str vpc_id: ID of the VPC that owns the VSwitch.
-        :param str vswitch_id: ID of the VSwitch.
-        :param str vswitch_name: The name of the VSwitch.
-        :param str zone_id: The availability zone of the VSwitch.
+        :param str vpc_id: ID of the VPC that owns the vSwitch.
+        :param str vswitch_id: ID of the vSwitch.
+        :param str vswitch_name: The name of the vSwitch.
+        :param str zone_id: The availability zone of the vSwitch.
         """
         pulumi.set(__self__, "available_ip_address_count", available_ip_address_count)
         pulumi.set(__self__, "cidr_block", cidr_block)
@@ -5402,7 +5402,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="availableIpAddressCount")
     def available_ip_address_count(self) -> int:
         """
-        The available ip address count of the VSwitch.
+        The available ip address count of the vSwitch.
         """
         return pulumi.get(self, "available_ip_address_count")
 
@@ -5426,7 +5426,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the VSwitch.
+        Description of the vSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -5434,7 +5434,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the VSwitch.
+        ID of the vSwitch.
         """
         return pulumi.get(self, "id")
 
@@ -5450,7 +5450,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
         """
-        Indicate whether the VSwitch is created by the system.
+        Indicate whether the vSwitch is created by the system.
         """
         return pulumi.get(self, "is_default")
 
@@ -5458,7 +5458,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the VSwitch.
+        Name of the vSwitch.
         """
         return pulumi.get(self, "name")
 
@@ -5474,7 +5474,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> str:
         """
-        The route table ID of the VSwitch.
+        The route table ID of the vSwitch.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -5482,7 +5482,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the VSwitch. Valid values: `Available` and `Pending`.
+        The status of the vSwitch. Valid values: `Available` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -5498,7 +5498,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        ID of the VPC that owns the VSwitch.
+        ID of the VPC that owns the vSwitch.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -5506,7 +5506,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch.
+        ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -5514,7 +5514,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> str:
         """
-        The name of the VSwitch.
+        The name of the vSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -5522,7 +5522,7 @@ class GetSwitchesVswitchResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The availability zone of the VSwitch.
+        The availability zone of the vSwitch.
         """
         return pulumi.get(self, "zone_id")
 

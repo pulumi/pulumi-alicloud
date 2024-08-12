@@ -29,42 +29,62 @@ namespace Pulumi.AliCloud.Adb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "192.168.0.0/16",
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VswitchName = name,
     ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "192.168.192.0/24",
+    ///         CidrBlock = "10.4.0.0/24",
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("default", new()
     ///     {
-    ///         ComputeResource = "32Core128GB",
+    ///         ComputeResource = "48Core192GB",
     ///         DbClusterCategory = "MixedStorage",
+    ///         DbClusterVersion = "3.0",
+    ///         DbNodeClass = "E32",
+    ///         DbNodeStorage = 100,
     ///         Description = name,
     ///         ElasticIoResource = 1,
+    ///         MaintainTime = "04:00Z-05:00Z",
     ///         Mode = "flexible",
     ///         PaymentType = "PayAsYouGo",
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "10.168.1.11",
+    ///         },
     ///         VpcId = defaultNetwork.Id,
     ///         VswitchId = defaultSwitch.Id,
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
     ///     });
     /// 
     ///     var defaultResourceGroup = new AliCloud.Adb.ResourceGroup("default", new()
     ///     {
-    ///         DbClusterId = defaultDBCluster.Id,
-    ///         GroupName = name,
+    ///         GroupName = "TF_EXAMPLE",
     ///         GroupType = "batch",
-    ///         NodeNum = 1,
+    ///         NodeNum = 0,
+    ///         DbClusterId = defaultDBCluster.Id,
     ///     });
     /// 
     /// });

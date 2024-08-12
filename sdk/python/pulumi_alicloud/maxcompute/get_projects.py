@@ -104,9 +104,9 @@ def get_projects(ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
-    This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+    This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 
@@ -117,15 +117,14 @@ def get_projects(ids: Optional[Sequence[str]] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf_testaccmp"
+        name = "tf_example_acc"
     default_project = alicloud.maxcompute.Project("default",
         default_quota="默认后付费Quota",
         project_name=name,
         comment=name,
-        product_type="PAYASYOUGO")
-    default = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
-        name_regex=default_project.name))
-    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].id)
+        product_type="PayAsYouGo")
+    default = alicloud.maxcompute.get_projects_output(name_regex=default_project.project_name)
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].project_name)
     ```
 
 
@@ -155,9 +154,9 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
     """
-    This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+    This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 
@@ -168,15 +167,14 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf_testaccmp"
+        name = "tf_example_acc"
     default_project = alicloud.maxcompute.Project("default",
         default_quota="默认后付费Quota",
         project_name=name,
         comment=name,
-        product_type="PAYASYOUGO")
-    default = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
-        name_regex=default_project.name))
-    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].id)
+        product_type="PayAsYouGo")
+    default = alicloud.maxcompute.get_projects_output(name_regex=default_project.project_name)
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].project_name)
     ```
 
 

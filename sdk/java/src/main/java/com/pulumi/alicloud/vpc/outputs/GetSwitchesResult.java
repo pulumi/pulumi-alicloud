@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSwitchesResult {
     /**
-     * @return CIDR block of the VSwitch.
+     * @return CIDR block of the vSwitch.
      * 
      */
     private @Nullable String cidrBlock;
@@ -30,49 +30,49 @@ public final class GetSwitchesResult {
      */
     private String id;
     /**
-     * @return A list of VSwitch IDs.
+     * @return A list of vSwitch IDs.
      * 
      */
     private List<String> ids;
     /**
-     * @return Whether the VSwitch is the default one in the region.
+     * @return Whether the vSwitch is the default one in the region.
      * 
      */
     private @Nullable Boolean isDefault;
     private @Nullable String nameRegex;
     /**
-     * @return A list of VSwitch names.
+     * @return A list of vSwitch names.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The resource group ID of the VSwitch.
+     * @return The resource group ID of the vSwitch.
      * 
      */
     private @Nullable String resourceGroupId;
     /**
-     * @return The route table ID of the VSwitch.
+     * @return The route table ID of the vSwitch.
      * 
      */
     private @Nullable String routeTableId;
     /**
-     * @return The status of the VSwitch.
+     * @return The status of the vSwitch.
      * 
      */
     private @Nullable String status;
     /**
-     * @return The Tags of the VSwitch.
+     * @return The Tags of the vSwitch.
      * 
      */
     private @Nullable Map<String,Object> tags;
     /**
-     * @return ID of the VPC that owns the VSwitch.
+     * @return ID of the VPC that owns the vSwitch.
      * 
      */
     private @Nullable String vpcId;
     /**
-     * @return Name of the VSwitch.
+     * @return Name of the vSwitch.
      * 
      */
     private @Nullable String vswitchName;
@@ -83,14 +83,14 @@ public final class GetSwitchesResult {
      */
     private List<GetSwitchesVswitch> vswitches;
     /**
-     * @return ID of the availability zone where the VSwitch is located.
+     * @return ID of the availability zone where the vSwitch is located.
      * 
      */
     private @Nullable String zoneId;
 
     private GetSwitchesResult() {}
     /**
-     * @return CIDR block of the VSwitch.
+     * @return CIDR block of the vSwitch.
      * 
      */
     public Optional<String> cidrBlock() {
@@ -107,14 +107,14 @@ public final class GetSwitchesResult {
         return this.id;
     }
     /**
-     * @return A list of VSwitch IDs.
+     * @return A list of vSwitch IDs.
      * 
      */
     public List<String> ids() {
         return this.ids;
     }
     /**
-     * @return Whether the VSwitch is the default one in the region.
+     * @return Whether the vSwitch is the default one in the region.
      * 
      */
     public Optional<Boolean> isDefault() {
@@ -124,7 +124,7 @@ public final class GetSwitchesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of VSwitch names.
+     * @return A list of vSwitch names.
      * 
      */
     public List<String> names() {
@@ -134,42 +134,42 @@ public final class GetSwitchesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The resource group ID of the VSwitch.
+     * @return The resource group ID of the vSwitch.
      * 
      */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return The route table ID of the VSwitch.
+     * @return The route table ID of the vSwitch.
      * 
      */
     public Optional<String> routeTableId() {
         return Optional.ofNullable(this.routeTableId);
     }
     /**
-     * @return The status of the VSwitch.
+     * @return The status of the vSwitch.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The Tags of the VSwitch.
+     * @return The Tags of the vSwitch.
      * 
      */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return ID of the VPC that owns the VSwitch.
+     * @return ID of the VPC that owns the vSwitch.
      * 
      */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return Name of the VSwitch.
+     * @return Name of the vSwitch.
      * 
      */
     public Optional<String> vswitchName() {
@@ -186,7 +186,7 @@ public final class GetSwitchesResult {
         return this.vswitches;
     }
     /**
-     * @return ID of the availability zone where the VSwitch is located.
+     * @return ID of the availability zone where the vSwitch is located.
      * 
      */
     public Optional<String> zoneId() {

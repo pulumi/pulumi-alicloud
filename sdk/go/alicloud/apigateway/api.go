@@ -31,6 +31,7 @@ import (
 //			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
 //				Name:        pulumi.String("tf-example"),
 //				Description: pulumi.String("tf-example"),
+//				BasePath:    pulumi.String("/"),
 //			})
 //			if err != nil {
 //				return err

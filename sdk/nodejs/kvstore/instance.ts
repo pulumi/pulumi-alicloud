@@ -192,6 +192,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable automatic minor version update. Valid values:
+     */
+    public readonly isAutoUpgradeOpen!: pulumi.Output<string>;
+    /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
@@ -383,6 +387,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceReleaseProtection"] = state ? state.instanceReleaseProtection : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["isAutoUpgradeOpen"] = state ? state.isAutoUpgradeOpen : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
@@ -448,6 +453,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceReleaseProtection"] = args ? args.instanceReleaseProtection : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["isAutoUpgradeOpen"] = args ? args.isAutoUpgradeOpen : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
@@ -646,6 +652,10 @@ export interface InstanceState {
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable automatic minor version update. Valid values:
+     */
+    isAutoUpgradeOpen?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
@@ -927,6 +937,10 @@ export interface InstanceArgs {
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable automatic minor version update. Valid values:
+     */
+    isAutoUpgradeOpen?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */

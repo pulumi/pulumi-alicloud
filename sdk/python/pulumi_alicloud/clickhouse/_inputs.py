@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'DbClusterDbClusterAccessWhiteListArgs',
+    'DbClusterMultiZoneVswitchListArgs',
 ]
 
 @pulumi.input_type
@@ -66,5 +67,43 @@ class DbClusterDbClusterAccessWhiteListArgs:
     @security_ip_list.setter
     def security_ip_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_list", value)
+
+
+@pulumi.input_type
+class DbClusterMultiZoneVswitchListArgs:
+    def __init__(__self__, *,
+                 vswitch_id: pulumi.Input[str],
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
+        :param pulumi.Input[str] zone_id: The zone ID of the vswitch.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the vswitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the vswitch.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 

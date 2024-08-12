@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleGetImages = Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => alicloud.ecs.getImages({
  *     instanceType: example.instanceTypes[length - 1].id,
- *     nameRegex: "^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+ *     nameRegex: "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
  *     owners: "system",
  * }));
  * const default = alicloud.vpc.getNetworks({

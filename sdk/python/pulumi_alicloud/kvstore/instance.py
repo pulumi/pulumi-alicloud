@@ -45,6 +45,7 @@ class InstanceArgs:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_release_protection: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -112,6 +113,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
+        :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -223,6 +225,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_release_protection", instance_release_protection)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if is_auto_upgrade_open is not None:
+            pulumi.set(__self__, "is_auto_upgrade_open", is_auto_upgrade_open)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
@@ -652,6 +656,18 @@ class InstanceArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="isAutoUpgradeOpen")
+    def is_auto_upgrade_open(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable automatic minor version update. Valid values:
+        """
+        return pulumi.get(self, "is_auto_upgrade_open")
+
+    @is_auto_upgrade_open.setter
+    def is_auto_upgrade_open(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_auto_upgrade_open", value)
+
+    @property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1079,6 +1095,7 @@ class _InstanceState:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_release_protection: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -1152,6 +1169,7 @@ class _InstanceState:
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
+        :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -1276,6 +1294,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_release_protection", instance_release_protection)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if is_auto_upgrade_open is not None:
+            pulumi.set(__self__, "is_auto_upgrade_open", is_auto_upgrade_open)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
@@ -1758,6 +1778,18 @@ class _InstanceState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="isAutoUpgradeOpen")
+    def is_auto_upgrade_open(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable automatic minor version update. Valid values:
+        """
+        return pulumi.get(self, "is_auto_upgrade_open")
+
+    @is_auto_upgrade_open.setter
+    def is_auto_upgrade_open(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_auto_upgrade_open", value)
+
+    @property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2207,6 +2239,7 @@ class Instance(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_release_protection: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -2284,6 +2317,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
+        :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -2381,6 +2415,7 @@ class Instance(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_release_protection: Optional[pulumi.Input[bool]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -2451,6 +2486,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_release_protection"] = instance_release_protection
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["is_auto_upgrade_open"] = is_auto_upgrade_open
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["maintain_end_time"] = maintain_end_time
@@ -2534,6 +2570,7 @@ class Instance(pulumi.CustomResource):
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_release_protection: Optional[pulumi.Input[bool]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             maintain_end_time: Optional[pulumi.Input[str]] = None,
@@ -2612,6 +2649,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
+        :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -2689,6 +2727,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_release_protection"] = instance_release_protection
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["is_auto_upgrade_open"] = is_auto_upgrade_open
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["maintain_end_time"] = maintain_end_time
@@ -2998,6 +3037,14 @@ class Instance(pulumi.CustomResource):
         The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="isAutoUpgradeOpen")
+    def is_auto_upgrade_open(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable automatic minor version update. Valid values:
+        """
+        return pulumi.get(self, "is_auto_upgrade_open")
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")

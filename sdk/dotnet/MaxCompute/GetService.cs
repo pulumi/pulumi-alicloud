@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+
         /// 
+        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -49,6 +51,8 @@ namespace Pulumi.AliCloud.MaxCompute
         /// For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+
+        /// 
+        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
         /// 
         /// ## Example Usage
         /// 

@@ -13,15 +13,22 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     [OutputType]
     public sealed class GetProjectsProjectResult
     {
+        /// <summary>
+        /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+        /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// Default Computing Resource Group
+        /// View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+        /// </summary>
+        public readonly string CostStorage;
+        /// <summary>
+        /// Represents the creation time of the project
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
+        /// Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         public readonly string DefaultQuota;
-        /// <summary>
-        /// Project ID. The value is the same as `project_name`.
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// IP whitelist
         /// </summary>
@@ -31,7 +38,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string Owner;
         /// <summary>
-        /// The name of the resource
+        /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>
@@ -43,7 +50,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly Outputs.GetProjectsProjectSecurityPropertiesResult SecurityProperties;
         /// <summary>
-        /// The status of the resource
+        /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -55,9 +62,11 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         private GetProjectsProjectResult(
             string comment,
 
-            string defaultQuota,
+            string costStorage,
 
-            string id,
+            string createTime,
+
+            string defaultQuota,
 
             Outputs.GetProjectsProjectIpWhiteListResult ipWhiteList,
 
@@ -74,8 +83,9 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
             string type)
         {
             Comment = comment;
+            CostStorage = costStorage;
+            CreateTime = createTime;
             DefaultQuota = defaultQuota;
-            Id = id;
             IpWhiteList = ipWhiteList;
             Owner = owner;
             ProjectName = projectName;

@@ -31,7 +31,7 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
      */
     private String securityGroupId;
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     private String vswitchId;
@@ -66,7 +66,7 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
         return this.securityGroupId;
     }
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     public String vswitchId() {

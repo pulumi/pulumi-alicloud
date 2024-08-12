@@ -19,6 +19,7 @@ class AlarmArgs:
                  contact_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  metric: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -41,8 +42,9 @@ class AlarmArgs:
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
+        :param pulumi.Input['AlarmCompositeExpressionArgs'] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
@@ -50,7 +52,7 @@ class AlarmArgs:
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
-        :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        :param pulumi.Input[int] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
@@ -61,6 +63,8 @@ class AlarmArgs:
         pulumi.set(__self__, "contact_groups", contact_groups)
         pulumi.set(__self__, "metric", metric)
         pulumi.set(__self__, "project", project)
+        if composite_expression is not None:
+            pulumi.set(__self__, "composite_expression", composite_expression)
         if dimensions is not None:
             warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
             pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
@@ -141,6 +145,18 @@ class AlarmArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="compositeExpression")
+    def composite_expression(self) -> Optional[pulumi.Input['AlarmCompositeExpressionArgs']]:
+        """
+        The trigger conditions for multiple metrics. See `composite_expression` below.
+        """
+        return pulumi.get(self, "composite_expression")
+
+    @composite_expression.setter
+    def composite_expression(self, value: Optional[pulumi.Input['AlarmCompositeExpressionArgs']]):
+        pulumi.set(self, "composite_expression", value)
+
+    @property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
@@ -157,7 +173,7 @@ class AlarmArgs:
     @pulumi.getter(name="effectiveInterval")
     def effective_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         """
         return pulumi.get(self, "effective_interval")
 
@@ -254,7 +270,7 @@ class AlarmArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
@@ -339,6 +355,7 @@ class AlarmArgs:
 @pulumi.input_type
 class _AlarmState:
     def __init__(__self__, *,
+                 composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
@@ -361,9 +378,10 @@ class _AlarmState:
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
+        :param pulumi.Input['AlarmCompositeExpressionArgs'] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
@@ -372,7 +390,7 @@ class _AlarmState:
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
-        :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        :param pulumi.Input[int] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
@@ -383,6 +401,8 @@ class _AlarmState:
         :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
+        if composite_expression is not None:
+            pulumi.set(__self__, "composite_expression", composite_expression)
         if contact_groups is not None:
             pulumi.set(__self__, "contact_groups", contact_groups)
         if dimensions is not None:
@@ -434,6 +454,18 @@ class _AlarmState:
             pulumi.set(__self__, "webhook", webhook)
 
     @property
+    @pulumi.getter(name="compositeExpression")
+    def composite_expression(self) -> Optional[pulumi.Input['AlarmCompositeExpressionArgs']]:
+        """
+        The trigger conditions for multiple metrics. See `composite_expression` below.
+        """
+        return pulumi.get(self, "composite_expression")
+
+    @composite_expression.setter
+    def composite_expression(self, value: Optional[pulumi.Input['AlarmCompositeExpressionArgs']]):
+        pulumi.set(self, "composite_expression", value)
+
+    @property
     @pulumi.getter(name="contactGroups")
     def contact_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -462,7 +494,7 @@ class _AlarmState:
     @pulumi.getter(name="effectiveInterval")
     def effective_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         """
         return pulumi.get(self, "effective_interval")
 
@@ -571,7 +603,7 @@ class _AlarmState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
@@ -683,6 +715,7 @@ class Alarm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
@@ -779,9 +812,10 @@ class Alarm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
@@ -790,7 +824,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
-        :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        :param pulumi.Input[int] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
@@ -895,6 +929,7 @@ class Alarm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
@@ -923,6 +958,7 @@ class Alarm(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlarmArgs.__new__(AlarmArgs)
 
+            __props__.__dict__["composite_expression"] = composite_expression
             if contact_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'contact_groups'")
             __props__.__dict__["contact_groups"] = contact_groups
@@ -959,6 +995,7 @@ class Alarm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             effective_interval: Optional[pulumi.Input[str]] = None,
@@ -986,9 +1023,10 @@ class Alarm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
@@ -997,7 +1035,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
-        :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        :param pulumi.Input[int] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
@@ -1012,6 +1050,7 @@ class Alarm(pulumi.CustomResource):
 
         __props__ = _AlarmState.__new__(_AlarmState)
 
+        __props__.__dict__["composite_expression"] = composite_expression
         __props__.__dict__["contact_groups"] = contact_groups
         __props__.__dict__["dimensions"] = dimensions
         __props__.__dict__["effective_interval"] = effective_interval
@@ -1035,6 +1074,14 @@ class Alarm(pulumi.CustomResource):
         return Alarm(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="compositeExpression")
+    def composite_expression(self) -> pulumi.Output[Optional['outputs.AlarmCompositeExpression']]:
+        """
+        The trigger conditions for multiple metrics. See `composite_expression` below.
+        """
+        return pulumi.get(self, "composite_expression")
+
+    @property
     @pulumi.getter(name="contactGroups")
     def contact_groups(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -1055,7 +1102,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter(name="effectiveInterval")
     def effective_interval(self) -> pulumi.Output[Optional[str]]:
         """
-        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         """
         return pulumi.get(self, "effective_interval")
 
@@ -1128,7 +1175,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 

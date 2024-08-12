@@ -80,7 +80,7 @@ public final class GetNetworkInterfacesResult {
      */
     private @Nullable String vpcId;
     /**
-     * @return ID of the VSwitch that the ENI is linked to.
+     * @return ID of the vSwitch that the ENI is linked to.
      * 
      */
     private @Nullable String vswitchId;
@@ -185,7 +185,7 @@ public final class GetNetworkInterfacesResult {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return ID of the VSwitch that the ENI is linked to.
+     * @return ID of the vSwitch that the ENI is linked to.
      * 
      */
     public Optional<String> vswitchId() {

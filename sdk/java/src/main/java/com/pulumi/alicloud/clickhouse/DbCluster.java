@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.clickhouse.DbClusterArgs;
 import com.pulumi.alicloud.clickhouse.inputs.DbClusterState;
 import com.pulumi.alicloud.clickhouse.outputs.DbClusterDbClusterAccessWhiteList;
+import com.pulumi.alicloud.clickhouse.outputs.DbClusterMultiZoneVswitchList;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -58,9 +59,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
- *             .current(true)
+ *             .regionId(region)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -76,13 +78,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
- *             .dbClusterVersion("22.8.5.29")
+ *             .dbClusterVersion("23.8")
  *             .category("Basic")
  *             .dbClusterClass("S8")
  *             .dbClusterNetworkType("vpc")
  *             .dbNodeGroupCount("1")
  *             .paymentType("PayAsYouGo")
- *             .dbNodeStorage("500")
+ *             .dbNodeStorage("100")
  *             .storageType("cloud_essd")
  *             .vswitchId(defaultSwitch.id())
  *             .vpcId(defaultNetwork.id())
@@ -276,6 +278,22 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> maintainTime() {
         return this.maintainTime;
+    }
+    /**
+     * The zone IDs and
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * 
+     */
+    @Export(name="multiZoneVswitchLists", refs={List.class,DbClusterMultiZoneVswitchList.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DbClusterMultiZoneVswitchList>> multiZoneVswitchLists;
+
+    /**
+     * @return The zone IDs and
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * 
+     */
+    public Output<Optional<List<DbClusterMultiZoneVswitchList>>> multiZoneVswitchLists() {
+        return Codegen.optional(this.multiZoneVswitchLists);
     }
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.

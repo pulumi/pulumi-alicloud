@@ -52,7 +52,7 @@ public final class GetServerlessKubernetesClustersCluster {
      */
     private String vpcId;
     /**
-     * @return The ID of VSwitch where the current cluster is located.
+     * @return The ID of vSwitch where the current cluster is located.
      * 
      */
     private String vswitchId;
@@ -114,7 +114,7 @@ public final class GetServerlessKubernetesClustersCluster {
         return this.vpcId;
     }
     /**
-     * @return The ID of VSwitch where the current cluster is located.
+     * @return The ID of vSwitch where the current cluster is located.
      * 
      */
     public String vswitchId() {

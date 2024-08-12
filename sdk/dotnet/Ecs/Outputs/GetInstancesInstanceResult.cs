@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the VSwitch linked to the instances.
+        /// ID of the vSwitch linked to the instances.
         /// </summary>
         public readonly string VswitchId;
 

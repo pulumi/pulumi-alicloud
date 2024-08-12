@@ -18,6 +18,14 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? AoneName;
         /// <summary>
+        /// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        /// </summary>
+        public readonly string? ContentTypeCategory;
+        /// <summary>
+        /// The content type value of backend service.
+        /// </summary>
+        public readonly string? ContentTypeValue;
+        /// <summary>
         /// The http method of backend service.
         /// </summary>
         public readonly string Method;
@@ -33,10 +41,18 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// Backend service time-out time. Unit: millisecond.
         /// </summary>
         public readonly int Timeout;
+        /// <summary>
+        /// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+        /// </summary>
+        public readonly string? VpcScheme;
 
         [OutputConstructor]
         private ApiHttpVpcServiceConfig(
             string? aoneName,
+
+            string? contentTypeCategory,
+
+            string? contentTypeValue,
 
             string method,
 
@@ -44,13 +60,18 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
 
             string path,
 
-            int timeout)
+            int timeout,
+
+            string? vpcScheme)
         {
             AoneName = aoneName;
+            ContentTypeCategory = contentTypeCategory;
+            ContentTypeValue = contentTypeValue;
             Method = method;
             Name = name;
             Path = path;
             Timeout = timeout;
+            VpcScheme = vpcScheme;
         }
     }
 }

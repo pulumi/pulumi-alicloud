@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
 
         /// <summary>
-        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         /// </summary>
         [Output("isLogical")]
         public Output<string?> IsLogical { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
 
         /// <summary>
-        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         /// </summary>
         [Input("isLogical")]
         public Input<string>? IsLogical { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
 
         /// <summary>
-        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         /// </summary>
         [Input("isLogical")]
         public Input<string>? IsLogical { get; set; }

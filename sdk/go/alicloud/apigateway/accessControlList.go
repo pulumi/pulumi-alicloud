@@ -52,13 +52,7 @@ import (
 //			}
 //			_, err = apigateway.NewAccessControlList(ctx, "default", &apigateway.AccessControlListArgs{
 //				AccessControlListName: pulumi.String(name),
-//				AclEntrys: apigateway.AccessControlListAclEntryArray{
-//					&apigateway.AccessControlListAclEntryArgs{
-//						AclEntryIp:      pulumi.String("128.0.0.1/32"),
-//						AclEntryComment: pulumi.String("example comment"),
-//					},
-//				},
-//				AddressIpVersion: pulumi.String("ipv4"),
+//				AddressIpVersion:      pulumi.String("ipv4"),
 //			})
 //			if err != nil {
 //				return err
@@ -82,6 +76,9 @@ type AccessControlList struct {
 	// Access control list name.
 	AccessControlListName pulumi.StringOutput `pulumi:"accessControlListName"`
 	// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+	// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+	//
+	// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 	AclEntrys AccessControlListAclEntryArrayOutput `pulumi:"aclEntrys"`
 	// The IP version. Valid values: ipv4 and ipv6.
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
@@ -130,6 +127,9 @@ type accessControlListState struct {
 	// Access control list name.
 	AccessControlListName *string `pulumi:"accessControlListName"`
 	// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+	// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+	//
+	// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 	AclEntrys []AccessControlListAclEntry `pulumi:"aclEntrys"`
 	// The IP version. Valid values: ipv4 and ipv6.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
@@ -139,6 +139,9 @@ type AccessControlListState struct {
 	// Access control list name.
 	AccessControlListName pulumi.StringPtrInput
 	// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+	// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+	//
+	// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 	AclEntrys AccessControlListAclEntryArrayInput
 	// The IP version. Valid values: ipv4 and ipv6.
 	AddressIpVersion pulumi.StringPtrInput
@@ -152,6 +155,9 @@ type accessControlListArgs struct {
 	// Access control list name.
 	AccessControlListName string `pulumi:"accessControlListName"`
 	// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+	// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+	//
+	// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 	AclEntrys []AccessControlListAclEntry `pulumi:"aclEntrys"`
 	// The IP version. Valid values: ipv4 and ipv6.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
@@ -162,6 +168,9 @@ type AccessControlListArgs struct {
 	// Access control list name.
 	AccessControlListName pulumi.StringInput
 	// Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+	// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+	//
+	// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 	AclEntrys AccessControlListAclEntryArrayInput
 	// The IP version. Valid values: ipv4 and ipv6.
 	AddressIpVersion pulumi.StringPtrInput
@@ -260,6 +269,9 @@ func (o AccessControlListOutput) AccessControlListName() pulumi.StringOutput {
 }
 
 // Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
+// **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
+//
+// Deprecated: Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
 func (o AccessControlListOutput) AclEntrys() AccessControlListAclEntryArrayOutput {
 	return o.ApplyT(func(v *AccessControlList) AccessControlListAclEntryArrayOutput { return v.AclEntrys }).(AccessControlListAclEntryArrayOutput)
 }

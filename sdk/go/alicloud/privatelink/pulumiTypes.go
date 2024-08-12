@@ -536,7 +536,7 @@ type GetVpcEndpointZonesZone struct {
 	Id string `pulumi:"id"`
 	// The Status of Vpc Endpoint Zone..
 	Status string `pulumi:"status"`
-	// The VSwitch id.
+	// The vSwitch id.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone Domain.
 	ZoneDomain string `pulumi:"zoneDomain"`
@@ -564,7 +564,7 @@ type GetVpcEndpointZonesZoneArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Status of Vpc Endpoint Zone..
 	Status pulumi.StringInput `pulumi:"status"`
-	// The VSwitch id.
+	// The vSwitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The Zone Domain.
 	ZoneDomain pulumi.StringInput `pulumi:"zoneDomain"`
@@ -643,7 +643,7 @@ func (o GetVpcEndpointZonesZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The VSwitch id.
+// The vSwitch id.
 func (o GetVpcEndpointZonesZoneOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointZonesZone) string { return v.VswitchId }).(pulumi.StringOutput)
 }

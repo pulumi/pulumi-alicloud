@@ -278,7 +278,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
             name="tf-example",
             description="New security group",
             vpc_id=default_network.id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_instance = alicloud.ecs.Instance("default",
@@ -364,7 +364,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
             name="tf-example",
             description="New security group",
             vpc_id=default_network.id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_instance = alicloud.ecs.Instance("default",

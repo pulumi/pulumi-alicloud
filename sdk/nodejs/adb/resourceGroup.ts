@@ -20,34 +20,50 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "tf_example";
  * const default = alicloud.adb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
- *     cidrBlock: "192.168.0.0/16",
+ *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: "192.168.192.0/24",
+ *     cidrBlock: "10.4.0.0/24",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
  * const defaultDBCluster = new alicloud.adb.DBCluster("default", {
- *     computeResource: "32Core128GB",
+ *     computeResource: "48Core192GB",
  *     dbClusterCategory: "MixedStorage",
+ *     dbClusterVersion: "3.0",
+ *     dbNodeClass: "E32",
+ *     dbNodeStorage: 100,
  *     description: name,
  *     elasticIoResource: 1,
+ *     maintainTime: "04:00Z-05:00Z",
  *     mode: "flexible",
  *     paymentType: "PayAsYouGo",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
+ *     securityIps: [
+ *         "10.168.1.12",
+ *         "10.168.1.11",
+ *     ],
  *     vpcId: defaultNetwork.id,
  *     vswitchId: defaultSwitch.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
  * const defaultResourceGroup = new alicloud.adb.ResourceGroup("default", {
- *     dbClusterId: defaultDBCluster.id,
- *     groupName: name,
+ *     groupName: "TF_EXAMPLE",
  *     groupType: "batch",
- *     nodeNum: 1,
+ *     nodeNum: 0,
+ *     dbClusterId: defaultDBCluster.id,
  * });
  * ```
  *

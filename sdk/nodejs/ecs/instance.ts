@@ -392,7 +392,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly secondaryPrivateIpAddressCount!: pulumi.Output<number>;
     /**
-     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      */
     public readonly secondaryPrivateIps!: pulumi.Output<string[]>;
     /**
@@ -976,7 +976,7 @@ export interface InstanceState {
      */
     secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
-     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      */
     secondaryPrivateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1340,7 +1340,7 @@ export interface InstanceArgs {
      */
     secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
-     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      */
     secondaryPrivateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         NameRegex = "^ubuntu_18.*64",
     ///         Owners = "system",
     ///     });
     /// 
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         /// </summary>
         [Output("instanceName")]
         public Output<string?> InstanceName { get; private set; } = null!;
@@ -565,7 +565,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -891,7 +891,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }

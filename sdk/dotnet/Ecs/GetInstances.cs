@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch linked to the instances.
+        /// ID of the vSwitch linked to the instances.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch linked to the instances.
+        /// ID of the vSwitch linked to the instances.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// ID of the VSwitch the instance belongs to.
+        /// ID of the vSwitch the instance belongs to.
         /// </summary>
         public readonly string? VswitchId;
 

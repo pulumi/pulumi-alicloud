@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Group("default", GroupArgs.builder()
  *             .name("tf_example")
  *             .description("tf_example")
+ *             .basePath("/")
  *             .build());
  * 
  *     }
@@ -64,6 +65,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:apigateway/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
+    /**
+     * The base path of the api gateway group. Defaults to `/`.
+     * 
+     */
+    @Export(name="basePath", refs={String.class}, tree="[0]")
+    private Output<String> basePath;
+
+    /**
+     * @return The base path of the api gateway group. Defaults to `/`.
+     * 
+     */
+    public Output<String> basePath() {
+        return this.basePath;
+    }
     /**
      * The description of the api gateway group. Defaults to null.
      * 

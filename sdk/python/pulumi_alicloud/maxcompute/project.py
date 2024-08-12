@@ -31,7 +31,7 @@ class ProjectArgs:
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
@@ -100,7 +100,7 @@ class ProjectArgs:
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> Optional[pulumi.Input[str]]:
         """
-        Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         """
         return pulumi.get(self, "is_logical")
 
@@ -203,7 +203,7 @@ class _ProjectState:
         :param pulumi.Input[str] create_time: Represents the creation time of the project
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input['ProjectIpWhiteListArgs'] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] owner: Project owner
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -292,7 +292,7 @@ class _ProjectState:
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> Optional[pulumi.Input[str]]:
         """
-        Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         """
         return pulumi.get(self, "is_logical")
 
@@ -456,7 +456,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
@@ -589,7 +589,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Represents the creation time of the project
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
-        :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        :param pulumi.Input[str] is_logical: Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] owner: Project owner
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -654,7 +654,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="isLogical")
     def is_logical(self) -> pulumi.Output[Optional[str]]:
         """
-        Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
         """
         return pulumi.get(self, "is_logical")
 

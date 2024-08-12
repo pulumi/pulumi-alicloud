@@ -31,7 +31,7 @@ public final class GetVpcEndpointZonesZone {
      */
     private String status;
     /**
-     * @return The VSwitch id.
+     * @return The vSwitch id.
      * 
      */
     private String vswitchId;
@@ -76,7 +76,7 @@ public final class GetVpcEndpointZonesZone {
         return this.status;
     }
     /**
-     * @return The VSwitch id.
+     * @return The vSwitch id.
      * 
      */
     public String vswitchId() {

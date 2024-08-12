@@ -805,59 +805,59 @@ export namespace alb {
 
     export interface LoadBalancerAccessLogConfig {
         /**
-         * This Log Storage Project.
+         * The project to which the access log is shipped.
          */
         logProject: pulumi.Input<string>;
         /**
-         * This Log Storage Method Is Increased.
+         * The Logstore to which the access log is shipped.
          */
         logStore: pulumi.Input<string>;
     }
 
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+         * The billing method of the ALB instance. Valid values: `PayAsYouGo`.
          */
         payType: pulumi.Input<string>;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * Managed Instance.
+         * The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
          */
         reason?: pulumi.Input<string>;
         /**
-         * Load Balancing Modify the Protection Status.
+         * Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
          */
         status?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The SLB Instance Address.
+         * The IP address of the ALB instance.
          */
         loadBalancerAddresses?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMappingLoadBalancerAddress>[]>;
         /**
-         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * The ID of the VSwitch.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The ID of the zone to which the SLB instance belongs.
+         * The zone ID of the ALB instance.
          */
         zoneId: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP Address. The Public IP Address, and Private IP Address from the Address Type.
+         * IP address. The Public IP Address, and Private IP Address from the Address Type.
          */
         address?: pulumi.Input<string>;
         /**
-         * The ID of the EIP instance.
+         * The ID of the EIP.
          */
         allocationId?: pulumi.Input<string>;
         /**
-         * The type of the EIP instance.
+         * The type of the EIP.
          */
         eipType?: pulumi.Input<string>;
         /**
@@ -1419,6 +1419,14 @@ export namespace apigateway {
          */
         aoneName?: pulumi.Input<string>;
         /**
+         * The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+         */
+        contentTypeCategory?: pulumi.Input<string>;
+        /**
+         * The content type value of backend service.
+         */
+        contentTypeValue?: pulumi.Input<string>;
+        /**
          * The http method of backend service.
          */
         method: pulumi.Input<string>;
@@ -1438,6 +1446,14 @@ export namespace apigateway {
          */
         aoneName?: pulumi.Input<string>;
         /**
+         * The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+         */
+        contentTypeCategory?: pulumi.Input<string>;
+        /**
+         * The content type value of backend service.
+         */
+        contentTypeValue?: pulumi.Input<string>;
+        /**
          * The http method of backend service.
          */
         method: pulumi.Input<string>;
@@ -1453,6 +1469,10 @@ export namespace apigateway {
          * Backend service time-out time. Unit: millisecond.
          */
         timeout: pulumi.Input<number>;
+        /**
+         * The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+         */
+        vpcScheme?: pulumi.Input<string>;
     }
 
     export interface ApiMockServiceConfig {
@@ -1539,6 +1559,43 @@ export namespace apigateway {
         nameService: pulumi.Input<string>;
     }
 
+    export interface InstanceToConnectVpcIpBlock {
+        /**
+         * The CIDR block of the VSwitch.
+         */
+        cidrBlock: pulumi.Input<string>;
+        /**
+         * Specifies whether the IP block is customized.
+         */
+        customized?: pulumi.Input<boolean>;
+        /**
+         * The VSwitch ID.
+         */
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * The zone ID.
+         */
+        zoneId?: pulumi.Input<string>;
+    }
+
+    export interface InstanceZoneVswitchSecurityGroup {
+        /**
+         * The CIDR block of the VSwitch.
+         */
+        cidrBlock: pulumi.Input<string>;
+        /**
+         * The ID of the security group.
+         */
+        securityGroup: pulumi.Input<string>;
+        /**
+         * The VSwitch ID.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The zone ID.
+         */
+        zoneId: pulumi.Input<string>;
+    }
 }
 
 export namespace arms {
@@ -2554,6 +2611,17 @@ export namespace clickhouse {
         securityIpList?: pulumi.Input<string>;
     }
 
+    export interface DbClusterMultiZoneVswitchList {
+        /**
+         * The ID of the vswitch.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The zone ID of the vswitch.
+         */
+        zoneId?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cloudauth {
@@ -2912,6 +2980,49 @@ export namespace cloudstoragegateway {
 }
 
 export namespace cms {
+    export interface AlarmCompositeExpression {
+        /**
+         * The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+         */
+        expressionListJoin?: pulumi.Input<string>;
+        /**
+         * The trigger conditions that are created in standard mode. See `expressionList` below.
+         */
+        expressionLists?: pulumi.Input<pulumi.Input<inputs.cms.AlarmCompositeExpressionExpressionList>[]>;
+        /**
+         * The trigger conditions that are created by using expressions.
+         */
+        expressionRaw?: pulumi.Input<string>;
+        /**
+         * The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * The number of consecutive triggers.
+         */
+        times?: pulumi.Input<number>;
+    }
+
+    export interface AlarmCompositeExpressionExpressionList {
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The metric that is used to monitor the cloud service.
+         */
+        metricName?: pulumi.Input<string>;
+        /**
+         * The statistical period of the metric. Unit: seconds. Default value: `300`.
+         */
+        period?: pulumi.Input<string>;
+        /**
+         * Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+         */
+        threshold?: pulumi.Input<string>;
+    }
+
     export interface AlarmEscalationsCritical {
         /**
          * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
@@ -2990,12 +3101,13 @@ export namespace cms {
 
     export interface AlarmTarget {
         /**
-         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * ARN uniquely identifies the resource that the alert targets.
+         * > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
          * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         arn?: pulumi.Input<string>;
         /**
-         * The parameters of the alert callback. The parameters are in the JSON format.
+         * Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
          */
         jsonParams?: pulumi.Input<string>;
         /**
@@ -3003,18 +3115,18 @@ export namespace cms {
          */
         level?: pulumi.Input<string>;
         /**
-         * The ID of the resource for which alerts are triggered.
+         * The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
          */
         targetId?: pulumi.Input<string>;
     }
 
     export interface DynamicTagGroupMatchExpress {
         /**
-         * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         * The tag values of the cloud resources.
          */
         tagValue: pulumi.Input<string>;
         /**
-         * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         * The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
          */
         tagValueMatchFunction: pulumi.Input<string>;
     }
@@ -3389,7 +3501,8 @@ export namespace cms {
 
     export interface MetricRuleTemplateAlertTemplate {
         /**
-         * The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+         * The abbreviation of the Alibaba Cloud service name.
+         * > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
          */
         category: pulumi.Input<string>;
         /**
@@ -3398,13 +3511,11 @@ export namespace cms {
         escalations?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalations>;
         /**
          * The name of the metric.
-         *
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         metricName: pulumi.Input<string>;
         /**
-         * The namespace of the service.
-         *
+         * The namespace of the cloud service.
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         namespace: pulumi.Input<string>;
@@ -3435,57 +3546,57 @@ export namespace cms {
 
     export interface MetricRuleTemplateAlertTemplateEscalationsCritical {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsInfo {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsWarn {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
@@ -8996,6 +9107,432 @@ export namespace fc {
          */
         timeout?: pulumi.Input<number>;
     }
+
+    export interface V3AsyncInvokeConfigDestinationConfig {
+        /**
+         * Failed callback target structure. See `onFailure` below.
+         */
+        onFailure?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfigOnFailure>;
+        /**
+         * Successful callback target structure. See `onSuccess` below.
+         */
+        onSuccess?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfigOnSuccess>;
+    }
+
+    export interface V3AsyncInvokeConfigDestinationConfigOnFailure {
+        /**
+         * Asynchronous call target Resource Descriptor.
+         */
+        destination?: pulumi.Input<string>;
+    }
+
+    export interface V3AsyncInvokeConfigDestinationConfigOnSuccess {
+        /**
+         * Asynchronous call target Resource Descriptor.
+         */
+        destination?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainAuthConfig {
+        /**
+         * Authentication Information.
+         */
+        authInfo?: pulumi.Input<string>;
+        /**
+         * Authentication type. anonymous, function, or jwt.
+         */
+        authType?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainCertConfig {
+        /**
+         * Certificate Name.
+         */
+        certName?: pulumi.Input<string>;
+        /**
+         * PEM format certificate.
+         */
+        certificate?: pulumi.Input<string>;
+        /**
+         * Private Key in PEM format.
+         */
+        privateKey?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainRouteConfig {
+        /**
+         * Routing Configuration List. See `routes` below.
+         */
+        routes?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRoute>[]>;
+    }
+
+    export interface V3CustomDomainRouteConfigRoute {
+        /**
+         * Function name.
+         */
+        functionName?: pulumi.Input<string>;
+        /**
+         * List of supported HTTP methods.
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Route matching rule.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Version or Alias.
+         */
+        qualifier?: pulumi.Input<string>;
+        /**
+         * Override Configuration. See `rewriteConfig` below.
+         */
+        rewriteConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfig>;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfig {
+        /**
+         * Exact Match Rule List. See `equalRules` below.
+         */
+        equalRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule>[]>;
+        /**
+         * Regular match rule list. See `regexRules` below.
+         */
+        regexRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule>[]>;
+        /**
+         * List of wildcard matching rules. See `wildcardRules` below.
+         */
+        wildcardRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule>[]>;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
+        /**
+         * Matching Rules.
+         */
+        match?: pulumi.Input<string>;
+        /**
+         * Replace Rules.
+         */
+        replacement?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
+        /**
+         * Matching Rules.
+         */
+        match?: pulumi.Input<string>;
+        /**
+         * Replace Rules.
+         */
+        replacement?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
+        /**
+         * Matching Rules.
+         */
+        match?: pulumi.Input<string>;
+        /**
+         * Replace Rules.
+         */
+        replacement?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainTlsConfig {
+        /**
+         * List of TLS cipher suites.
+         */
+        cipherSuites?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         */
+        maxVersion?: pulumi.Input<string>;
+        /**
+         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         */
+        minVersion?: pulumi.Input<string>;
+    }
+
+    export interface V3CustomDomainWafConfig {
+        /**
+         * Enable WAF protection.
+         */
+        enableWaf?: pulumi.Input<boolean>;
+    }
+
+    export interface V3FunctionCode {
+        /**
+         * The CRC-64 value of the function code package.
+         */
+        checksum?: pulumi.Input<string>;
+        /**
+         * The name of the OSS Bucket that stores the function code ZIP package.
+         */
+        ossBucketName?: pulumi.Input<string>;
+        /**
+         * The name of the OSS Object that stores the function code ZIP package.
+         */
+        ossObjectName?: pulumi.Input<string>;
+        /**
+         * The Base 64 encoding of the function code ZIP package.
+         */
+        zipFile?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionCustomContainerConfig {
+        /**
+         * (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+         *
+         * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+         */
+        accelerationInfo?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigAccelerationInfo>;
+        /**
+         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         *
+         * @deprecated Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+         */
+        accelerationType?: pulumi.Input<string>;
+        /**
+         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         *
+         * @deprecated Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+         */
+        acrInstanceId?: pulumi.Input<string>;
+        /**
+         * Container startup parameters.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Container start command.
+         */
+        entrypoints?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Function custom health check configuration. See `healthCheckConfig` below.
+         */
+        healthCheckConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig>;
+        /**
+         * The container Image address.
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * The listening port of the HTTP Server when the custom container runs.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+         */
+        resolvedImageUri?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionCustomContainerConfigAccelerationInfo {
+        /**
+         * Image Acceleration Status (Deprecated).
+         *
+         * @deprecated Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionCustomContainerConfigHealthCheckConfig {
+        failureThreshold?: pulumi.Input<number>;
+        httpGetUrl?: pulumi.Input<string>;
+        initialDelaySeconds?: pulumi.Input<number>;
+        periodSeconds?: pulumi.Input<number>;
+        successThreshold?: pulumi.Input<number>;
+        timeoutSeconds?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionCustomDns {
+        /**
+         * List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+         */
+        dnsOptions?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionCustomDnsDnsOption>[]>;
+        /**
+         * IP Address List of DNS servers.
+         */
+        nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * DNS search domain list.
+         */
+        searches?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface V3FunctionCustomDnsDnsOption {
+        /**
+         * Configuration Item Name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Configuration Item Value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionCustomRuntimeConfig {
+        /**
+         * Instance startup parameters.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance start command.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Function custom health check configuration. See `healthCheckConfig` below.
+         */
+        healthCheckConfig?: pulumi.Input<inputs.fc.V3FunctionCustomRuntimeConfigHealthCheckConfig>;
+        /**
+         * The listening port of the HTTP Server.
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionCustomRuntimeConfigHealthCheckConfig {
+        failureThreshold?: pulumi.Input<number>;
+        httpGetUrl?: pulumi.Input<string>;
+        initialDelaySeconds?: pulumi.Input<number>;
+        periodSeconds?: pulumi.Input<number>;
+        successThreshold?: pulumi.Input<number>;
+        timeoutSeconds?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionGpuConfig {
+        /**
+         * GPU memory specification, unit: MB, multiple of 1024MB.
+         */
+        gpuMemorySize?: pulumi.Input<number>;
+        /**
+         * GPU card architecture.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+         */
+        gpuType?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfig {
+        /**
+         * Initializer handler method configuration. See `initializer` below.
+         */
+        initializer?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfigInitializer>;
+        /**
+         * PreStop handler method configuration. See `preStop` below.
+         */
+        preStop?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfigPreStop>;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfigInitializer {
+        /**
+         * Function Handler: the call entry for the function compute system to run your function.
+         */
+        handler?: pulumi.Input<string>;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfigPreStop {
+        /**
+         * Function Handler: the call entry for the function compute system to run your function.
+         */
+        handler?: pulumi.Input<string>;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionLogConfig {
+        /**
+         * After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+         */
+        enableInstanceMetrics?: pulumi.Input<boolean>;
+        /**
+         * After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+         */
+        enableRequestMetrics?: pulumi.Input<boolean>;
+        /**
+         * Log Line First Matching Rules.
+         */
+        logBeginRule?: pulumi.Input<string>;
+        /**
+         * The Logstore name of log service.
+         */
+        logstore?: pulumi.Input<string>;
+        /**
+         * The name of the log service Project.
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionNasConfig {
+        /**
+         * Group ID.
+         */
+        groupId?: pulumi.Input<number>;
+        /**
+         * Mount point list. See `mountPoints` below.
+         */
+        mountPoints?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionNasConfigMountPoint>[]>;
+        /**
+         * Account ID.
+         */
+        userId?: pulumi.Input<number>;
+    }
+
+    export interface V3FunctionNasConfigMountPoint {
+        /**
+         * Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+         */
+        enableTls?: pulumi.Input<boolean>;
+        mountDir?: pulumi.Input<string>;
+        /**
+         * NAS server address.
+         */
+        serverAddr?: pulumi.Input<string>;
+    }
+
+    export interface V3FunctionOssMountConfig {
+        /**
+         * OSS mount point list. See `mountPoints` below.
+         */
+        mountPoints?: pulumi.Input<pulumi.Input<inputs.fc.V3FunctionOssMountConfigMountPoint>[]>;
+    }
+
+    export interface V3FunctionOssMountConfigMountPoint {
+        /**
+         * OSS Bucket name.
+         */
+        bucketName?: pulumi.Input<string>;
+        /**
+         * Path of the mounted OSS Bucket.
+         */
+        bucketPath?: pulumi.Input<string>;
+        /**
+         * OSS access endpoint.
+         */
+        endpoint?: pulumi.Input<string>;
+        mountDir?: pulumi.Input<string>;
+        /**
+         * Read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface V3FunctionVpcConfig {
+        /**
+         * Security group ID.
+         */
+        securityGroupId?: pulumi.Input<string>;
+        /**
+         * VPC network ID.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * Switch List.
+         */
+        vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
 export namespace fnf {
@@ -9168,6 +9705,24 @@ export namespace ga {
          */
         toPort: pulumi.Input<number>;
     }
+}
+
+export namespace governance {
+    export interface BaselineBaselineItem {
+        /**
+         * Baseline item configuration. The format is a JSON string.
+         */
+        config?: pulumi.Input<string>;
+        /**
+         * The baseline item name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The baseline item version.
+         */
+        version?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace gpdb {

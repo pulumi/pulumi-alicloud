@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * * `ids` - (Optional)  A list of ENI IDs.
  * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
  * * `vpcId` - (Optional) The VPC ID linked to ENIs.
- * * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
+ * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
  * * `privateIp` - (Optional) The primary private IP address of the ENI.
  * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
  * * `name` - (Optional) The name of the ENIs.
@@ -164,7 +164,7 @@ export interface GetNetworkInterfacesArgs {
      */
     vpcId?: string;
     /**
-     * ID of the VSwitch that the ENI is linked to.
+     * ID of the vSwitch that the ENI is linked to.
      */
     vswitchId?: string;
 }
@@ -223,7 +223,7 @@ export interface GetNetworkInterfacesResult {
      */
     readonly vpcId?: string;
     /**
-     * ID of the VSwitch that the ENI is linked to.
+     * ID of the vSwitch that the ENI is linked to.
      */
     readonly vswitchId?: string;
 }
@@ -306,7 +306,7 @@ export interface GetNetworkInterfacesResult {
  * * `ids` - (Optional)  A list of ENI IDs.
  * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
  * * `vpcId` - (Optional) The VPC ID linked to ENIs.
- * * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
+ * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
  * * `privateIp` - (Optional) The primary private IP address of the ENI.
  * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
  * * `name` - (Optional) The name of the ENIs.
@@ -365,7 +365,7 @@ export interface GetNetworkInterfacesOutputArgs {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * ID of the VSwitch that the ENI is linked to.
+     * ID of the vSwitch that the ENI is linked to.
      */
     vswitchId?: pulumi.Input<string>;
 }

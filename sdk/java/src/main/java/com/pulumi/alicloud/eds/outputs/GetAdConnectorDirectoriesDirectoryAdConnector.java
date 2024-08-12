@@ -36,7 +36,7 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
      */
     private String trustKey;
     /**
-     * @return The ID of VSwitch.
+     * @return The ID of vSwitch.
      * 
      */
     private String vswitchId;
@@ -78,7 +78,7 @@ public final class GetAdConnectorDirectoriesDirectoryAdConnector {
         return this.trustKey;
     }
     /**
-     * @return The ID of VSwitch.
+     * @return The ID of vSwitch.
      * 
      */
     public String vswitchId() {

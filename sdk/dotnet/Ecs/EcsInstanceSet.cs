@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         NameRegex = "^ubuntu_18.*64",
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });

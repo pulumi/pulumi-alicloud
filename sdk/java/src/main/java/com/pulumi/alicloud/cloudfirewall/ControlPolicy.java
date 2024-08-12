@@ -48,16 +48,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ControlPolicy("default", ControlPolicyArgs.builder()
+ *             .direction("in")
  *             .applicationName("ANY")
+ *             .description(name)
  *             .aclAction("accept")
- *             .description("example")
- *             .destinationType("net")
- *             .destination("100.1.1.0/24")
- *             .direction("out")
- *             .proto("ANY")
- *             .source("1.2.3.0/24")
+ *             .source("127.0.0.1/32")
  *             .sourceType("net")
+ *             .destination("127.0.0.2/32")
+ *             .destinationType("net")
+ *             .proto("ANY")
  *             .build());
  * 
  *     }
@@ -136,182 +138,182 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * The destination port defined in the access control policy.
+     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
      * 
      */
     @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
-     * @return The destination port defined in the access control policy.
+     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
      * 
      */
     public Output<String> destPort() {
         return this.destPort;
     }
     /**
-     * The destination port address book defined in the access control policy.
+     * The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
      * 
      */
     @Export(name="destPortGroup", refs={String.class}, tree="[0]")
-    private Output<String> destPortGroup;
+    private Output</* @Nullable */ String> destPortGroup;
 
     /**
-     * @return The destination port address book defined in the access control policy.
+     * @return The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
      * 
      */
-    public Output<String> destPortGroup() {
-        return this.destPortGroup;
+    public Output<Optional<String>> destPortGroup() {
+        return Codegen.optional(this.destPortGroup);
     }
     /**
-     * The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
     @Export(name="destPortType", refs={String.class}, tree="[0]")
     private Output<String> destPortType;
 
     /**
-     * @return The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * @return The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
     public Output<String> destPortType() {
         return this.destPortType;
     }
     /**
-     * The destination address defined in the access control policy.
+     * The destination address in the access control policy.
      * 
      */
     @Export(name="destination", refs={String.class}, tree="[0]")
     private Output<String> destination;
 
     /**
-     * @return The destination address defined in the access control policy.
+     * @return The destination address in the access control policy.
      * 
      */
     public Output<String> destination() {
         return this.destination;
     }
     /**
-     * DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
      * 
      */
     @Export(name="destinationType", refs={String.class}, tree="[0]")
     private Output<String> destinationType;
 
     /**
-     * @return DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * @return The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
      * 
      */
     public Output<String> destinationType() {
         return this.destinationType;
     }
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
-     * @return Direction. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Output<String> direction() {
         return this.direction;
     }
     /**
-     * The ip version.
+     * The IP version supported by the access control policy. Default value: `4`. Valid values:
      * 
      */
     @Export(name="ipVersion", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipVersion;
+    private Output<String> ipVersion;
 
     /**
-     * @return The ip version.
+     * @return The IP version supported by the access control policy. Default value: `4`. Valid values:
      * 
      */
-    public Output<Optional<String>> ipVersion() {
-        return Codegen.optional(this.ipVersion);
+    public Output<String> ipVersion() {
+        return this.ipVersion;
     }
     /**
-     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
-     * @return DestPortGroupPorts. Valid values: `en`, `zh`.
+     * @return The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
     }
     /**
-     * Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+     * The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      * 
      */
     @Export(name="proto", refs={String.class}, tree="[0]")
     private Output<String> proto;
 
     /**
-     * @return Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+     * @return The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      * 
      */
     public Output<String> proto() {
         return this.proto;
     }
     /**
-     * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * The status of the access control policy. Valid values: `true`, `false`.
      * 
      */
     @Export(name="release", refs={String.class}, tree="[0]")
     private Output<String> release;
 
     /**
-     * @return Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * @return The status of the access control policy. Valid values: `true`, `false`.
      * 
      */
     public Output<String> release() {
         return this.release;
     }
     /**
-     * Source.
+     * The source address in the access control policy.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
-     * @return Source.
+     * @return The source address in the access control policy.
      * 
      */
     public Output<String> source() {
         return this.source;
     }
     /**
-     * The source ip.
+     * The source IP address of the request.
      * 
      */
     @Export(name="sourceIp", refs={String.class}, tree="[0]")
-    private Output<String> sourceIp;
+    private Output</* @Nullable */ String> sourceIp;
 
     /**
-     * @return The source ip.
+     * @return The source IP address of the request.
      * 
      */
-    public Output<String> sourceIp() {
-        return this.sourceIp;
+    public Output<Optional<String>> sourceIp() {
+        return Codegen.optional(this.sourceIp);
     }
     /**
-     * SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      * 
      */
     @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output<String> sourceType;
 
     /**
-     * @return SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * @return The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      * 
      */
     public Output<String> sourceType() {

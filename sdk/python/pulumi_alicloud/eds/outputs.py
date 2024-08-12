@@ -294,7 +294,7 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
         :param str sub_domain_name: The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
         :param str trust_password: The trust password.
         :param str vpc_id: The ID of the vpc.
-        :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
+        :param Sequence[str] vswitch_ids: List of vSwitch IDs in the directory.
         """
         pulumi.set(__self__, "ad_connector_directory_id", ad_connector_directory_id)
         pulumi.set(__self__, "ad_connectors", ad_connectors)
@@ -464,7 +464,7 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Sequence[str]:
         """
-        List of VSwitch IDs in the directory.
+        List of vSwitch IDs in the directory.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -484,7 +484,7 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
         :param str network_interface_id: The ID of the network interface.
         :param str specification: The AD Connector specifications.
         :param str trust_key: The AD Connector control trust password.
-        :param str vswitch_id: The ID of VSwitch.
+        :param str vswitch_id: The ID of vSwitch.
         """
         pulumi.set(__self__, "ad_connector_address", ad_connector_address)
         pulumi.set(__self__, "connector_status", connector_status)
@@ -537,7 +537,7 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of VSwitch.
+        The ID of vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -890,7 +890,7 @@ class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
         :param str ad_connector_address: AD Connector across Zones, Its Connection Addresses.
         :param str connector_status: AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
         :param str network_interface_id: AD Connector Mount of the Card ID.
-        :param str vswitch_id: AD Connector in the Network Corresponding to the ID of the VSwitch in.
+        :param str vswitch_id: AD Connector in the Network Corresponding to the ID of the vSwitch in.
         """
         pulumi.set(__self__, "ad_connector_address", ad_connector_address)
         pulumi.set(__self__, "connector_status", connector_status)
@@ -925,7 +925,7 @@ class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        AD Connector in the Network Corresponding to the ID of the VSwitch in.
+        AD Connector in the Network Corresponding to the ID of the vSwitch in.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -2639,7 +2639,7 @@ class GetRamDirectoriesDirectoryResult(dict):
         :param str sub_domain_name: The Name of the sub-domain.
         :param str trust_password: The trust password.
         :param str vpc_id: The ID of the vpc.
-        :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
+        :param Sequence[str] vswitch_ids: List of vSwitch IDs in the directory.
         """
         pulumi.set(__self__, "ad_connectors", ad_connectors)
         pulumi.set(__self__, "create_time", create_time)
@@ -2881,7 +2881,7 @@ class GetRamDirectoriesDirectoryResult(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Sequence[str]:
         """
-        List of VSwitch IDs in the directory.
+        List of vSwitch IDs in the directory.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -2897,7 +2897,7 @@ class GetRamDirectoriesDirectoryAdConnectorResult(dict):
         :param str ad_connector_address: The address of AD connector.
         :param str connector_status: The status of connector.
         :param str network_interface_id: The ID of the network interface.
-        :param str vswitch_id: The ID of VSwitch.
+        :param str vswitch_id: The ID of vSwitch.
         """
         pulumi.set(__self__, "ad_connector_address", ad_connector_address)
         pulumi.set(__self__, "connector_status", connector_status)
@@ -2932,7 +2932,7 @@ class GetRamDirectoriesDirectoryAdConnectorResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of VSwitch.
+        The ID of vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

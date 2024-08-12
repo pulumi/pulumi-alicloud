@@ -14,21 +14,37 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
+                 base_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
         """
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base path of the api gateway group. Defaults to `/`.
+        """
+        return pulumi.get(self, "base_path")
+
+    @base_path.setter
+    def base_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_path", value)
 
     @property
     @pulumi.getter
@@ -70,6 +86,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 base_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -77,12 +94,15 @@ class _GroupState:
                  vpc_domain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
         :param pulumi.Input[str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
         :param pulumi.Input[str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         """
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_id is not None:
@@ -93,6 +113,18 @@ class _GroupState:
             pulumi.set(__self__, "sub_domain", sub_domain)
         if vpc_domain is not None:
             pulumi.set(__self__, "vpc_domain", vpc_domain)
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base path of the api gateway group. Defaults to `/`.
+        """
+        return pulumi.get(self, "base_path")
+
+    @base_path.setter
+    def base_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_path", value)
 
     @property
     @pulumi.getter
@@ -160,6 +192,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -175,7 +208,8 @@ class Group(pulumi.CustomResource):
 
         default = alicloud.apigateway.Group("default",
             name="tf_example",
-            description="tf_example")
+            description="tf_example",
+            base_path="/")
         ```
 
         ## Import
@@ -188,6 +222,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
@@ -209,7 +244,8 @@ class Group(pulumi.CustomResource):
 
         default = alicloud.apigateway.Group("default",
             name="tf_example",
-            description="tf_example")
+            description="tf_example",
+            base_path="/")
         ```
 
         ## Import
@@ -235,6 +271,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -247,6 +284,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["base_path"] = base_path
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
@@ -262,6 +300,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            base_path: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -274,6 +313,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
@@ -284,12 +324,21 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["base_path"] = base_path
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
         __props__.__dict__["sub_domain"] = sub_domain
         __props__.__dict__["vpc_domain"] = vpc_domain
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> pulumi.Output[str]:
+        """
+        The base path of the api gateway group. Defaults to `/`.
+        """
+        return pulumi.get(self, "base_path")
 
     @property
     @pulumi.getter

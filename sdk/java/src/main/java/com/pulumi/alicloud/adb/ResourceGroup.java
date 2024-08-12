@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.adb.AdbFunctions;
  * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -59,38 +61,54 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AdbFunctions.getZones();
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
- *             .cidrBlock("192.168.0.0/16")
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock("192.168.192.0/24")
+ *             .cidrBlock("10.4.0.0/24")
  *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultDBCluster = new DBCluster("defaultDBCluster", DBClusterArgs.builder()
- *             .computeResource("32Core128GB")
+ *             .computeResource("48Core192GB")
  *             .dbClusterCategory("MixedStorage")
+ *             .dbClusterVersion("3.0")
+ *             .dbNodeClass("E32")
+ *             .dbNodeStorage(100)
  *             .description(name)
  *             .elasticIoResource(1)
+ *             .maintainTime("04:00Z-05:00Z")
  *             .mode("flexible")
  *             .paymentType("PayAsYouGo")
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .securityIps(            
+ *                 "10.168.1.12",
+ *                 "10.168.1.11")
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(default_.zones()[0].id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
  *             .build());
  * 
  *         var defaultResourceGroup = new ResourceGroup("defaultResourceGroup", ResourceGroupArgs.builder()
- *             .dbClusterId(defaultDBCluster.id())
- *             .groupName(name)
+ *             .groupName("TF_EXAMPLE")
  *             .groupType("batch")
- *             .nodeNum(1)
+ *             .nodeNum(0)
+ *             .dbClusterId(defaultDBCluster.id())
  *             .build());
  * 
  *     }

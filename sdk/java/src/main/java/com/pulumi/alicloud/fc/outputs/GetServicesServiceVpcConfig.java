@@ -22,7 +22,7 @@ public final class GetServicesServiceVpcConfig {
      */
     private String vpcId;
     /**
-     * @return Associated VSwitch IDs.
+     * @return Associated vSwitch IDs.
      * 
      */
     private List<String> vswitchIds;
@@ -43,7 +43,7 @@ public final class GetServicesServiceVpcConfig {
         return this.vpcId;
     }
     /**
-     * @return Associated VSwitch IDs.
+     * @return Associated vSwitch IDs.
      * 
      */
     public List<String> vswitchIds() {

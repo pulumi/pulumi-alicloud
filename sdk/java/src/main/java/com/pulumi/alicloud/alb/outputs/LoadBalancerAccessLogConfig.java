@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class LoadBalancerAccessLogConfig {
     /**
-     * @return This Log Storage Project.
+     * @return The project to which the access log is shipped.
      * 
      */
     private String logProject;
     /**
-     * @return This Log Storage Method Is Increased.
+     * @return The Logstore to which the access log is shipped.
      * 
      */
     private String logStore;
 
     private LoadBalancerAccessLogConfig() {}
     /**
-     * @return This Log Storage Project.
+     * @return The project to which the access log is shipped.
      * 
      */
     public String logProject() {
         return this.logProject;
     }
     /**
-     * @return This Log Storage Method Is Increased.
+     * @return The Logstore to which the access log is shipped.
      * 
      */
     public String logStore() {

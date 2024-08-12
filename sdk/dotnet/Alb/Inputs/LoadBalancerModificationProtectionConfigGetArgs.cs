@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerModificationProtectionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Managed Instance.
+        /// The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
         /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// Load Balancing Modify the Protection Status.
+        /// Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

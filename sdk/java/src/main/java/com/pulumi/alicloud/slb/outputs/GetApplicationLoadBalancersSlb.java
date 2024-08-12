@@ -50,7 +50,7 @@ public final class GetApplicationLoadBalancersSlb {
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     private String vswitchId;
@@ -117,7 +117,7 @@ public final class GetApplicationLoadBalancersSlb {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     public String vswitchId() {

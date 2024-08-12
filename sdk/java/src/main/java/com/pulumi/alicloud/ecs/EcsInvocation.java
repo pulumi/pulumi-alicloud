@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu")
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
  *             .owners("system")
  *             .build());

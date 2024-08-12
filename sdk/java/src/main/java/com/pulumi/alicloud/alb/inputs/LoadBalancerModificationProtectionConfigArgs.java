@@ -16,14 +16,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     public static final LoadBalancerModificationProtectionConfigArgs Empty = new LoadBalancerModificationProtectionConfigArgs();
 
     /**
-     * Managed Instance.
+     * The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
      * 
      */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
     /**
-     * @return Managed Instance.
+     * @return The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -31,14 +31,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     }
 
     /**
-     * Load Balancing Modify the Protection Status.
+     * Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Load Balancing Modify the Protection Status.
+     * @return Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -71,7 +71,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason Managed Instance.
+         * @param reason The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason Managed Instance.
+         * @param reason The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status Load Balancing Modify the Protection Status.
+         * @param status Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status Load Balancing Modify the Protection Status.
+         * @param status Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
          * 
          * @return builder
          * 

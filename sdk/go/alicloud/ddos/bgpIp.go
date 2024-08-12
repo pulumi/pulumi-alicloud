@@ -27,7 +27,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
@@ -44,10 +43,6 @@ import (
 //				name = param
 //			}
 //			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			current, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -73,7 +68,6 @@ import (
 //				InstanceId:      instance.ID(),
 //				Ip:              defaultEipAddress.IpAddress,
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-//				MemberUid:       pulumi.String(current.Id),
 //			})
 //			if err != nil {
 //				return err

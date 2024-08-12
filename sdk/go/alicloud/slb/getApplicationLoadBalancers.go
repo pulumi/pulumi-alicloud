@@ -96,7 +96,7 @@ type GetApplicationLoadBalancersArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -146,7 +146,7 @@ type GetApplicationLoadBalancersResult struct {
 	TotalCount int                    `pulumi:"totalCount"`
 	// ID of the VPC the SLB belongs to.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch the SLB belongs to.
+	// ID of the vSwitch the SLB belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -204,7 +204,7 @@ type GetApplicationLoadBalancersOutputArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -349,7 +349,7 @@ func (o GetApplicationLoadBalancersResultOutput) VpcId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// ID of the VSwitch the SLB belongs to.
+// ID of the vSwitch the SLB belongs to.
 func (o GetApplicationLoadBalancersResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

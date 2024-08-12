@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.1+.
+        /// &gt; **NOTE:** Available since v1.123.1.
         /// 
         /// ## Example Usage
         /// 
@@ -30,11 +30,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var example = AliCloud.Ecs.GetEcsNetworkInterfaces.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "eni-abcd1234",
-        ///         },
-        ///         NameRegex = "tf-testAcc",
+        ///         NameRegex = "eni-ipv6",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -50,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.123.1+.
+        /// &gt; **NOTE:** Available since v1.123.1.
         /// 
         /// ## Example Usage
         /// 
@@ -66,11 +62,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var example = AliCloud.Ecs.GetEcsNetworkInterfaces.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "eni-abcd1234",
-        ///         },
-        ///         NameRegex = "tf-testAcc",
+        ///         NameRegex = "eni-ipv6",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -326,22 +318,64 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The instance id.
+        /// </summary>
         public readonly string? InstanceId;
+        /// <summary>
+        /// A list of Ecs Network Interfaces. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsNetworkInterfacesInterfaceResult> Interfaces;
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Network Interface names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The network interface name.
+        /// </summary>
         public readonly string? NetworkInterfaceName;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The primary private IP address of the ENI.
+        /// </summary>
         public readonly string? PrimaryIpAddress;
+        /// <summary>
+        /// The primary private IP address of the ENI.
+        /// </summary>
         public readonly string? PrivateIp;
+        /// <summary>
+        /// The resource group id.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly string? SecurityGroupId;
+        /// <summary>
+        /// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+        /// </summary>
         public readonly bool? ServiceManaged;
+        /// <summary>
+        /// The status of the ENI.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// The type of the ENI.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// The Vpc Id.
+        /// </summary>
         public readonly string? VpcId;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string? VswitchId;
 
         [OutputConstructor]

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string NetworkInterfaceId;
         /// <summary>
-        /// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+        /// AD Connector in the Network Corresponding to the ID of the vSwitch in.
         /// </summary>
         public readonly string VswitchId;
 

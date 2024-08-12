@@ -1090,7 +1090,7 @@ type GetApplicationLoadBalancersBalancer struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -1168,7 +1168,7 @@ type GetApplicationLoadBalancersBalancerArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -1384,7 +1384,7 @@ func (o GetApplicationLoadBalancersBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch linked to the SLBs.
+// ID of the vSwitch linked to the SLBs.
 func (o GetApplicationLoadBalancersBalancerOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -1791,7 +1791,7 @@ type GetApplicationLoadBalancersSlb struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -1825,7 +1825,7 @@ type GetApplicationLoadBalancersSlbArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -1934,7 +1934,7 @@ func (o GetApplicationLoadBalancersSlbOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch linked to the SLBs.
+// ID of the vSwitch linked to the SLBs.
 func (o GetApplicationLoadBalancersSlbOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -2989,7 +2989,7 @@ type GetLoadBalancersBalancer struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -3066,7 +3066,7 @@ type GetLoadBalancersBalancerArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -3282,7 +3282,7 @@ func (o GetLoadBalancersBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch linked to the SLBs.
+// ID of the vSwitch linked to the SLBs.
 func (o GetLoadBalancersBalancerOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -3685,7 +3685,7 @@ type GetLoadBalancersSlb struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -3748,7 +3748,7 @@ type GetLoadBalancersSlbArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the SLBs.
+	// ID of the vSwitch linked to the SLBs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -3889,7 +3889,7 @@ func (o GetLoadBalancersSlbOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch linked to the SLBs.
+// ID of the vSwitch linked to the SLBs.
 func (o GetLoadBalancersSlbOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.VswitchId }).(pulumi.StringOutput)
 }

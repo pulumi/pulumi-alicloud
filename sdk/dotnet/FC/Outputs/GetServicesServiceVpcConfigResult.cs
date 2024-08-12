@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// Associated VSwitch IDs.
+        /// Associated vSwitch IDs.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
 

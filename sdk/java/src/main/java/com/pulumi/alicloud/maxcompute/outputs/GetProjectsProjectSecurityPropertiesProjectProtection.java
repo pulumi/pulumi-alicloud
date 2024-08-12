@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectSecurityPropertiesProjectProtection {
     /**
-     * @return Exclusion policy.
+     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
      * 
      */
     private String exceptionPolicy;
     /**
-     * @return Is it turned on.
+     * @return Whether enabled, value:(true/false).
      * 
      */
     private Boolean protected_;
 
     private GetProjectsProjectSecurityPropertiesProjectProtection() {}
     /**
-     * @return Exclusion policy.
+     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
      * 
      */
     public String exceptionPolicy() {
         return this.exceptionPolicy;
     }
     /**
-     * @return Is it turned on.
+     * @return Whether enabled, value:(true/false).
      * 
      */
     public Boolean protected_() {

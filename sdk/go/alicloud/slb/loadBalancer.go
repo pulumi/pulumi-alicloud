@@ -161,7 +161,7 @@ type LoadBalancer struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -252,7 +252,7 @@ type loadBalancerState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -314,7 +314,7 @@ type LoadBalancerState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -380,7 +380,7 @@ type loadBalancerArgs struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -443,7 +443,7 @@ type LoadBalancerArgs struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -651,7 +651,7 @@ func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 func (o LoadBalancerOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

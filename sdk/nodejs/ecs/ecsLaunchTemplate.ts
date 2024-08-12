@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: _default.zones?.[0]?.id,
  * }));
  * const defaultGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
@@ -191,7 +191,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
      */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
@@ -523,7 +523,7 @@ export interface EcsLaunchTemplateState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -739,7 +739,7 @@ export interface EcsLaunchTemplateArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
      */
     instanceName?: pulumi.Input<string>;
     /**

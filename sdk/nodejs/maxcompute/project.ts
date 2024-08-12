@@ -88,7 +88,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
-     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      */
     public readonly isLogical!: pulumi.Output<string | undefined>;
     /**
@@ -192,7 +192,7 @@ export interface ProjectState {
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
-     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      */
     isLogical?: pulumi.Input<string>;
     /**
@@ -246,7 +246,7 @@ export interface ProjectArgs {
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
-     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      */
     isLogical?: pulumi.Input<string>;
     /**

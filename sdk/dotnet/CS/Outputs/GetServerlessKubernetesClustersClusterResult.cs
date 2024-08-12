@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The ID of VSwitch where the current cluster is located.
+        /// The ID of vSwitch where the current cluster is located.
         /// </summary>
         public readonly string VswitchId;
 

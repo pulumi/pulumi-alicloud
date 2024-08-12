@@ -186,7 +186,7 @@ class GetInstancesResult:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        ID of the VSwitch the instance belongs to.
+        ID of the vSwitch the instance belongs to.
         """
         return pulumi.get(self, "vswitch_id")
 

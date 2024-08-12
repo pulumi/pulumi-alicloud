@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The VSwitch id.
+        /// The vSwitch id.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

@@ -120,7 +120,7 @@ public final class GetApplicationLoadBalancersResult {
      */
     private @Nullable String vpcId;
     /**
-     * @return ID of the VSwitch the SLB belongs to.
+     * @return ID of the vSwitch the SLB belongs to.
      * 
      */
     private @Nullable String vswitchId;
@@ -279,7 +279,7 @@ public final class GetApplicationLoadBalancersResult {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return ID of the VSwitch the SLB belongs to.
+     * @return ID of the vSwitch the SLB belongs to.
      * 
      */
     public Optional<String> vswitchId() {

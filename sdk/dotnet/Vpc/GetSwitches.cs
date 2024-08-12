@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Vpc
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of VSwitch IDs.
+        /// A list of vSwitch IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Indicate whether the VSwitch is created by the system.
+        /// Indicate whether the vSwitch is created by the system.
         /// </summary>
         [Input("isDefault")]
         public bool? IsDefault { get; set; }
@@ -148,13 +148,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The route table ID of the VSwitch.
+        /// The route table ID of the vSwitch.
         /// </summary>
         [Input("routeTableId")]
         public string? RouteTableId { get; set; }
 
         /// <summary>
-        /// The status of the VSwitch. Valid values: `Available` and `Pending`.
+        /// The status of the vSwitch. Valid values: `Available` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -172,25 +172,25 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// ID of the VPC that owns the VSwitch.
+        /// ID of the VPC that owns the vSwitch.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the vSwitch.
         /// </summary>
         [Input("vswitchName")]
         public string? VswitchName { get; set; }
 
         /// <summary>
-        /// The VSwitch owner id.
+        /// The vSwitch owner id.
         /// </summary>
         [Input("vswitchOwnerId")]
         public int? VswitchOwnerId { get; set; }
 
         /// <summary>
-        /// The availability zone of the VSwitch.
+        /// The availability zone of the vSwitch.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of VSwitch IDs.
+        /// A list of vSwitch IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Indicate whether the VSwitch is created by the system.
+        /// Indicate whether the vSwitch is created by the system.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -252,13 +252,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The route table ID of the VSwitch.
+        /// The route table ID of the vSwitch.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The status of the VSwitch. Valid values: `Available` and `Pending`.
+        /// The status of the vSwitch. Valid values: `Available` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -276,25 +276,25 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// ID of the VPC that owns the VSwitch.
+        /// ID of the VPC that owns the vSwitch.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the vSwitch.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
 
         /// <summary>
-        /// The VSwitch owner id.
+        /// The vSwitch owner id.
         /// </summary>
         [Input("vswitchOwnerId")]
         public Input<int>? VswitchOwnerId { get; set; }
 
         /// <summary>
-        /// The availability zone of the VSwitch.
+        /// The availability zone of the vSwitch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetSwitchesResult
     {
         /// <summary>
-        /// CIDR block of the VSwitch.
+        /// CIDR block of the vSwitch.
         /// </summary>
         public readonly string? CidrBlock;
         public readonly bool? DryRun;
@@ -319,41 +319,41 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of VSwitch IDs.
+        /// A list of vSwitch IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// Whether the VSwitch is the default one in the region.
+        /// Whether the vSwitch is the default one in the region.
         /// </summary>
         public readonly bool? IsDefault;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of VSwitch names.
+        /// A list of vSwitch names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The resource group ID of the VSwitch.
+        /// The resource group ID of the vSwitch.
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// The route table ID of the VSwitch.
+        /// The route table ID of the vSwitch.
         /// </summary>
         public readonly string? RouteTableId;
         /// <summary>
-        /// The status of the VSwitch.
+        /// The status of the vSwitch.
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The Tags of the VSwitch.
+        /// The Tags of the vSwitch.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// ID of the VPC that owns the VSwitch.
+        /// ID of the VPC that owns the vSwitch.
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// Name of the VSwitch.
+        /// Name of the vSwitch.
         /// </summary>
         public readonly string? VswitchName;
         public readonly int? VswitchOwnerId;
@@ -362,7 +362,7 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSwitchesVswitchResult> Vswitches;
         /// <summary>
-        /// ID of the availability zone where the VSwitch is located.
+        /// ID of the availability zone where the vSwitch is located.
         /// </summary>
         public readonly string? ZoneId;
 

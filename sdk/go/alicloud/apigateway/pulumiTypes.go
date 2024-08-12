@@ -575,6 +575,10 @@ type ApiHttpServiceConfig struct {
 	Address string `pulumi:"address"`
 	// The name of aone.
 	AoneName *string `pulumi:"aoneName"`
+	// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+	ContentTypeCategory *string `pulumi:"contentTypeCategory"`
+	// The content type value of backend service.
+	ContentTypeValue *string `pulumi:"contentTypeValue"`
 	// The http method of backend service.
 	Method string `pulumi:"method"`
 	// The path of backend service.
@@ -599,6 +603,10 @@ type ApiHttpServiceConfigArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The name of aone.
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
+	// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+	ContentTypeCategory pulumi.StringPtrInput `pulumi:"contentTypeCategory"`
+	// The content type value of backend service.
+	ContentTypeValue pulumi.StringPtrInput `pulumi:"contentTypeValue"`
 	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
 	// The path of backend service.
@@ -694,6 +702,16 @@ func (o ApiHttpServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
+// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+func (o ApiHttpServiceConfigOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.ContentTypeCategory }).(pulumi.StringPtrOutput)
+}
+
+// The content type value of backend service.
+func (o ApiHttpServiceConfigOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.ContentTypeValue }).(pulumi.StringPtrOutput)
+}
+
 // The http method of backend service.
 func (o ApiHttpServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
@@ -753,6 +771,26 @@ func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+func (o ApiHttpServiceConfigPtrOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeCategory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content type value of backend service.
+func (o ApiHttpServiceConfigPtrOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // The http method of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
@@ -786,6 +824,10 @@ func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 type ApiHttpVpcServiceConfig struct {
 	// The name of aone.
 	AoneName *string `pulumi:"aoneName"`
+	// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+	ContentTypeCategory *string `pulumi:"contentTypeCategory"`
+	// The content type value of backend service.
+	ContentTypeValue *string `pulumi:"contentTypeValue"`
 	// The http method of backend service.
 	Method string `pulumi:"method"`
 	// The name of vpc instance.
@@ -794,6 +836,8 @@ type ApiHttpVpcServiceConfig struct {
 	Path string `pulumi:"path"`
 	// Backend service time-out time. Unit: millisecond.
 	Timeout int `pulumi:"timeout"`
+	// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+	VpcScheme *string `pulumi:"vpcScheme"`
 }
 
 // ApiHttpVpcServiceConfigInput is an input type that accepts ApiHttpVpcServiceConfigArgs and ApiHttpVpcServiceConfigOutput values.
@@ -810,6 +854,10 @@ type ApiHttpVpcServiceConfigInput interface {
 type ApiHttpVpcServiceConfigArgs struct {
 	// The name of aone.
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
+	// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+	ContentTypeCategory pulumi.StringPtrInput `pulumi:"contentTypeCategory"`
+	// The content type value of backend service.
+	ContentTypeValue pulumi.StringPtrInput `pulumi:"contentTypeValue"`
 	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
 	// The name of vpc instance.
@@ -818,6 +866,8 @@ type ApiHttpVpcServiceConfigArgs struct {
 	Path pulumi.StringInput `pulumi:"path"`
 	// Backend service time-out time. Unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+	VpcScheme pulumi.StringPtrInput `pulumi:"vpcScheme"`
 }
 
 func (ApiHttpVpcServiceConfigArgs) ElementType() reflect.Type {
@@ -902,6 +952,16 @@ func (o ApiHttpVpcServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
+// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+func (o ApiHttpVpcServiceConfigOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.ContentTypeCategory }).(pulumi.StringPtrOutput)
+}
+
+// The content type value of backend service.
+func (o ApiHttpVpcServiceConfigOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.ContentTypeValue }).(pulumi.StringPtrOutput)
+}
+
 // The http method of backend service.
 func (o ApiHttpVpcServiceConfigOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
@@ -920,6 +980,11 @@ func (o ApiHttpVpcServiceConfigOutput) Path() pulumi.StringOutput {
 // Backend service time-out time. Unit: millisecond.
 func (o ApiHttpVpcServiceConfigOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+func (o ApiHttpVpcServiceConfigOutput) VpcScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.VpcScheme }).(pulumi.StringPtrOutput)
 }
 
 type ApiHttpVpcServiceConfigPtrOutput struct{ *pulumi.OutputState }
@@ -953,6 +1018,26 @@ func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.AoneName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+func (o ApiHttpVpcServiceConfigPtrOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeCategory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content type value of backend service.
+func (o ApiHttpVpcServiceConfigPtrOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeValue
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -994,6 +1079,16 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
 		}
 		return &v.Timeout
 	}).(pulumi.IntPtrOutput)
+}
+
+// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+func (o ApiHttpVpcServiceConfigPtrOutput) VpcScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcScheme
+	}).(pulumi.StringPtrOutput)
 }
 
 type ApiMockServiceConfig struct {
@@ -1638,6 +1733,324 @@ func (o ApiSystemParameterArrayOutput) Index(i pulumi.IntInput) ApiSystemParamet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiSystemParameter {
 		return vs[0].([]ApiSystemParameter)[vs[1].(int)]
 	}).(ApiSystemParameterOutput)
+}
+
+type InstanceToConnectVpcIpBlock struct {
+	// The CIDR block of the VSwitch.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Specifies whether the IP block is customized.
+	Customized *bool `pulumi:"customized"`
+	// The VSwitch ID.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// InstanceToConnectVpcIpBlockInput is an input type that accepts InstanceToConnectVpcIpBlockArgs and InstanceToConnectVpcIpBlockOutput values.
+// You can construct a concrete instance of `InstanceToConnectVpcIpBlockInput` via:
+//
+//	InstanceToConnectVpcIpBlockArgs{...}
+type InstanceToConnectVpcIpBlockInput interface {
+	pulumi.Input
+
+	ToInstanceToConnectVpcIpBlockOutput() InstanceToConnectVpcIpBlockOutput
+	ToInstanceToConnectVpcIpBlockOutputWithContext(context.Context) InstanceToConnectVpcIpBlockOutput
+}
+
+type InstanceToConnectVpcIpBlockArgs struct {
+	// The CIDR block of the VSwitch.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Specifies whether the IP block is customized.
+	Customized pulumi.BoolPtrInput `pulumi:"customized"`
+	// The VSwitch ID.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (InstanceToConnectVpcIpBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceToConnectVpcIpBlock)(nil)).Elem()
+}
+
+func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockOutput() InstanceToConnectVpcIpBlockOutput {
+	return i.ToInstanceToConnectVpcIpBlockOutputWithContext(context.Background())
+}
+
+func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockOutput)
+}
+
+func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
+	return i.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceToConnectVpcIpBlockArgs) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockOutput).ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx)
+}
+
+// InstanceToConnectVpcIpBlockPtrInput is an input type that accepts InstanceToConnectVpcIpBlockArgs, InstanceToConnectVpcIpBlockPtr and InstanceToConnectVpcIpBlockPtrOutput values.
+// You can construct a concrete instance of `InstanceToConnectVpcIpBlockPtrInput` via:
+//
+//	        InstanceToConnectVpcIpBlockArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceToConnectVpcIpBlockPtrInput interface {
+	pulumi.Input
+
+	ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput
+	ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Context) InstanceToConnectVpcIpBlockPtrOutput
+}
+
+type instanceToConnectVpcIpBlockPtrType InstanceToConnectVpcIpBlockArgs
+
+func InstanceToConnectVpcIpBlockPtr(v *InstanceToConnectVpcIpBlockArgs) InstanceToConnectVpcIpBlockPtrInput {
+	return (*instanceToConnectVpcIpBlockPtrType)(v)
+}
+
+func (*instanceToConnectVpcIpBlockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceToConnectVpcIpBlock)(nil)).Elem()
+}
+
+func (i *instanceToConnectVpcIpBlockPtrType) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
+	return i.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceToConnectVpcIpBlockPtrType) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceToConnectVpcIpBlockPtrOutput)
+}
+
+type InstanceToConnectVpcIpBlockOutput struct{ *pulumi.OutputState }
+
+func (InstanceToConnectVpcIpBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceToConnectVpcIpBlock)(nil)).Elem()
+}
+
+func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockOutput() InstanceToConnectVpcIpBlockOutput {
+	return o
+}
+
+func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockOutput {
+	return o
+}
+
+func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
+	return o.ToInstanceToConnectVpcIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceToConnectVpcIpBlockOutput) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceToConnectVpcIpBlock) *InstanceToConnectVpcIpBlock {
+		return &v
+	}).(InstanceToConnectVpcIpBlockPtrOutput)
+}
+
+// The CIDR block of the VSwitch.
+func (o InstanceToConnectVpcIpBlockOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceToConnectVpcIpBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Specifies whether the IP block is customized.
+func (o InstanceToConnectVpcIpBlockOutput) Customized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceToConnectVpcIpBlock) *bool { return v.Customized }).(pulumi.BoolPtrOutput)
+}
+
+// The VSwitch ID.
+func (o InstanceToConnectVpcIpBlockOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceToConnectVpcIpBlock) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID.
+func (o InstanceToConnectVpcIpBlockOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceToConnectVpcIpBlock) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceToConnectVpcIpBlockPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceToConnectVpcIpBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceToConnectVpcIpBlock)(nil)).Elem()
+}
+
+func (o InstanceToConnectVpcIpBlockPtrOutput) ToInstanceToConnectVpcIpBlockPtrOutput() InstanceToConnectVpcIpBlockPtrOutput {
+	return o
+}
+
+func (o InstanceToConnectVpcIpBlockPtrOutput) ToInstanceToConnectVpcIpBlockPtrOutputWithContext(ctx context.Context) InstanceToConnectVpcIpBlockPtrOutput {
+	return o
+}
+
+func (o InstanceToConnectVpcIpBlockPtrOutput) Elem() InstanceToConnectVpcIpBlockOutput {
+	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) InstanceToConnectVpcIpBlock {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceToConnectVpcIpBlock
+		return ret
+	}).(InstanceToConnectVpcIpBlockOutput)
+}
+
+// The CIDR block of the VSwitch.
+func (o InstanceToConnectVpcIpBlockPtrOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the IP block is customized.
+func (o InstanceToConnectVpcIpBlockPtrOutput) Customized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Customized
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The VSwitch ID.
+func (o InstanceToConnectVpcIpBlockPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The zone ID.
+func (o InstanceToConnectVpcIpBlockPtrOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceToConnectVpcIpBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceZoneVswitchSecurityGroup struct {
+	// The CIDR block of the VSwitch.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The ID of the security group.
+	SecurityGroup string `pulumi:"securityGroup"`
+	// The VSwitch ID.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// InstanceZoneVswitchSecurityGroupInput is an input type that accepts InstanceZoneVswitchSecurityGroupArgs and InstanceZoneVswitchSecurityGroupOutput values.
+// You can construct a concrete instance of `InstanceZoneVswitchSecurityGroupInput` via:
+//
+//	InstanceZoneVswitchSecurityGroupArgs{...}
+type InstanceZoneVswitchSecurityGroupInput interface {
+	pulumi.Input
+
+	ToInstanceZoneVswitchSecurityGroupOutput() InstanceZoneVswitchSecurityGroupOutput
+	ToInstanceZoneVswitchSecurityGroupOutputWithContext(context.Context) InstanceZoneVswitchSecurityGroupOutput
+}
+
+type InstanceZoneVswitchSecurityGroupArgs struct {
+	// The CIDR block of the VSwitch.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// The ID of the security group.
+	SecurityGroup pulumi.StringInput `pulumi:"securityGroup"`
+	// The VSwitch ID.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (InstanceZoneVswitchSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZoneVswitchSecurityGroup)(nil)).Elem()
+}
+
+func (i InstanceZoneVswitchSecurityGroupArgs) ToInstanceZoneVswitchSecurityGroupOutput() InstanceZoneVswitchSecurityGroupOutput {
+	return i.ToInstanceZoneVswitchSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceZoneVswitchSecurityGroupArgs) ToInstanceZoneVswitchSecurityGroupOutputWithContext(ctx context.Context) InstanceZoneVswitchSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZoneVswitchSecurityGroupOutput)
+}
+
+// InstanceZoneVswitchSecurityGroupArrayInput is an input type that accepts InstanceZoneVswitchSecurityGroupArray and InstanceZoneVswitchSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `InstanceZoneVswitchSecurityGroupArrayInput` via:
+//
+//	InstanceZoneVswitchSecurityGroupArray{ InstanceZoneVswitchSecurityGroupArgs{...} }
+type InstanceZoneVswitchSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToInstanceZoneVswitchSecurityGroupArrayOutput() InstanceZoneVswitchSecurityGroupArrayOutput
+	ToInstanceZoneVswitchSecurityGroupArrayOutputWithContext(context.Context) InstanceZoneVswitchSecurityGroupArrayOutput
+}
+
+type InstanceZoneVswitchSecurityGroupArray []InstanceZoneVswitchSecurityGroupInput
+
+func (InstanceZoneVswitchSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZoneVswitchSecurityGroup)(nil)).Elem()
+}
+
+func (i InstanceZoneVswitchSecurityGroupArray) ToInstanceZoneVswitchSecurityGroupArrayOutput() InstanceZoneVswitchSecurityGroupArrayOutput {
+	return i.ToInstanceZoneVswitchSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceZoneVswitchSecurityGroupArray) ToInstanceZoneVswitchSecurityGroupArrayOutputWithContext(ctx context.Context) InstanceZoneVswitchSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceZoneVswitchSecurityGroupArrayOutput)
+}
+
+type InstanceZoneVswitchSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (InstanceZoneVswitchSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceZoneVswitchSecurityGroup)(nil)).Elem()
+}
+
+func (o InstanceZoneVswitchSecurityGroupOutput) ToInstanceZoneVswitchSecurityGroupOutput() InstanceZoneVswitchSecurityGroupOutput {
+	return o
+}
+
+func (o InstanceZoneVswitchSecurityGroupOutput) ToInstanceZoneVswitchSecurityGroupOutputWithContext(ctx context.Context) InstanceZoneVswitchSecurityGroupOutput {
+	return o
+}
+
+// The CIDR block of the VSwitch.
+func (o InstanceZoneVswitchSecurityGroupOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceZoneVswitchSecurityGroup) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o InstanceZoneVswitchSecurityGroupOutput) SecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceZoneVswitchSecurityGroup) string { return v.SecurityGroup }).(pulumi.StringOutput)
+}
+
+// The VSwitch ID.
+func (o InstanceZoneVswitchSecurityGroupOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceZoneVswitchSecurityGroup) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o InstanceZoneVswitchSecurityGroupOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceZoneVswitchSecurityGroup) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type InstanceZoneVswitchSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceZoneVswitchSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceZoneVswitchSecurityGroup)(nil)).Elem()
+}
+
+func (o InstanceZoneVswitchSecurityGroupArrayOutput) ToInstanceZoneVswitchSecurityGroupArrayOutput() InstanceZoneVswitchSecurityGroupArrayOutput {
+	return o
+}
+
+func (o InstanceZoneVswitchSecurityGroupArrayOutput) ToInstanceZoneVswitchSecurityGroupArrayOutputWithContext(ctx context.Context) InstanceZoneVswitchSecurityGroupArrayOutput {
+	return o
+}
+
+func (o InstanceZoneVswitchSecurityGroupArrayOutput) Index(i pulumi.IntInput) InstanceZoneVswitchSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceZoneVswitchSecurityGroup {
+		return vs[0].([]InstanceZoneVswitchSecurityGroup)[vs[1].(int)]
+	}).(InstanceZoneVswitchSecurityGroupOutput)
 }
 
 type GetApisApi struct {
@@ -2758,6 +3171,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestParameterArrayInput)(nil)).Elem(), ApiRequestParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterInput)(nil)).Elem(), ApiSystemParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterArrayInput)(nil)).Elem(), ApiSystemParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockPtrInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneVswitchSecurityGroupInput)(nil)).Elem(), InstanceZoneVswitchSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneVswitchSecurityGroupArrayInput)(nil)).Elem(), InstanceZoneVswitchSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiInput)(nil)).Elem(), GetApisApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiArrayInput)(nil)).Elem(), GetApisApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppInput)(nil)).Elem(), GetAppsAppArgs{})
@@ -2790,6 +3207,10 @@ func init() {
 	pulumi.RegisterOutputType(ApiRequestParameterArrayOutput{})
 	pulumi.RegisterOutputType(ApiSystemParameterOutput{})
 	pulumi.RegisterOutputType(ApiSystemParameterArrayOutput{})
+	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockOutput{})
+	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockPtrOutput{})
+	pulumi.RegisterOutputType(InstanceZoneVswitchSecurityGroupOutput{})
+	pulumi.RegisterOutputType(InstanceZoneVswitchSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetApisApiOutput{})
 	pulumi.RegisterOutputType(GetApisApiArrayOutput{})
 	pulumi.RegisterOutputType(GetAppsAppOutput{})

@@ -541,7 +541,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
         :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param str vpc_id: ID of the VPC linked to the SLBs.
-        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_ip_version", address_ip_version)
@@ -828,7 +828,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch linked to the SLBs.
+        ID of the vSwitch linked to the SLBs.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -998,7 +998,7 @@ class GetApplicationLoadBalancersSlbResult(dict):
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
         :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param str vpc_id: ID of the VPC linked to the SLBs.
-        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -1096,7 +1096,7 @@ class GetApplicationLoadBalancersSlbResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch linked to the SLBs.
+        ID of the vSwitch linked to the SLBs.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1833,7 +1833,7 @@ class GetLoadBalancersBalancerResult(dict):
                })
                ```
         :param str vpc_id: ID of the VPC linked to the SLBs.
-        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_ip_version", address_ip_version)
@@ -2057,7 +2057,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch linked to the SLBs.
+        ID of the vSwitch linked to the SLBs.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -2192,7 +2192,7 @@ class GetLoadBalancersSlbResult(dict):
                })
                ```
         :param str vpc_id: ID of the VPC linked to the SLBs.
-        :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+        :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -2317,7 +2317,7 @@ class GetLoadBalancersSlbResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch linked to the SLBs.
+        ID of the vSwitch linked to the SLBs.
         """
         return pulumi.get(self, "vswitch_id")
 

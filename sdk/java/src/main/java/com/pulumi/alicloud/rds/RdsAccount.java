@@ -119,74 +119,114 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rds/rdsAccount:RdsAccount")
 public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+     * 
+     * &gt; **NOTE:** The name cannot start with http:// or https://.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output<String> accountDescription;
 
     /**
-     * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+     * 
+     * &gt; **NOTE:** The name cannot start with http:// or https://.
      * 
      */
     public Output<String> accountDescription() {
         return this.accountDescription;
     }
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+     * The name of the database account.
+     * * The name must be unique.
+     * * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+     * * The name must start with a letter and end with a letter or digit.
+     * * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+     * * The length of the value must meet the following requirements:
+     * * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+     * * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+     * * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+     * * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+     * * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+     * * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+     * * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+     * @return The name of the database account.
+     * * The name must be unique.
+     * * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+     * * The name must start with a letter and end with a letter or digit.
+     * * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+     * * The length of the value must meet the following requirements:
+     * * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+     * * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+     * * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+     * * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+     * * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+     * * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+     * * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * The password of the account.
+     * * The value must be 8 to 32 characters in length.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+     * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+     * @return The password of the account.
+     * * The value must be 8 to 32 characters in length.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+     * * Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     public Output<String> accountPassword() {
         return this.accountPassword;
     }
     /**
-     * Privilege type of account. Default to `Normal`.
-     * `Normal`: Common privilege.
-     * `Super`: High privilege.
+     * The account type. Valid values:
+     * * Normal: standard account (default).
+     * * Super: privileged account.
+     * * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+     * 
+     * &gt; **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      * 
      */
     @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output<String> accountType;
 
     /**
-     * @return Privilege type of account. Default to `Normal`.
-     * `Normal`: Common privilege.
-     * `Super`: High privilege.
+     * @return The account type. Valid values:
+     * * Normal: standard account (default).
+     * * Super: privileged account.
+     * * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+     * 
+     * &gt; **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      * 
      */
     public Output<String> accountType() {
         return this.accountType;
     }
     /**
-     * The Id of instance in which account belongs.
+     * The ID of the instance.
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The Id of instance in which account belongs.
+     * @return The ID of the instance.
      * 
      */
     public Output<String> dbInstanceId() {

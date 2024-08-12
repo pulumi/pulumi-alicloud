@@ -70,9 +70,9 @@ export class LoginProfile extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      */
-    public readonly mfaBindRequired!: pulumi.Output<boolean | undefined>;
+    public readonly mfaBindRequired!: pulumi.Output<boolean>;
     /**
      * The logon password of the RAM user. The password must meet the password strength requirements.
      */
@@ -128,7 +128,7 @@ export class LoginProfile extends pulumi.CustomResource {
  */
 export interface LoginProfileState {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**
@@ -150,7 +150,7 @@ export interface LoginProfileState {
  */
 export interface LoginProfileArgs {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**

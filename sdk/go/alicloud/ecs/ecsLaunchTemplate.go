@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
@@ -183,7 +183,7 @@ type EcsLaunchTemplate struct {
 	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
@@ -329,7 +329,7 @@ type ecsLaunchTemplateState struct {
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
@@ -446,7 +446,7 @@ type EcsLaunchTemplateState struct {
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
@@ -567,7 +567,7 @@ type ecsLaunchTemplateArgs struct {
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
@@ -685,7 +685,7 @@ type EcsLaunchTemplateArgs struct {
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Valid values: `PostPaid`, `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
@@ -921,7 +921,7 @@ func (o EcsLaunchTemplateOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+// The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
 func (o EcsLaunchTemplateOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }

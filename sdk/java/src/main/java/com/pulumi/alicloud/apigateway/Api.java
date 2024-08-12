@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *         var example = new Group("example", GroupArgs.builder()
  *             .name("tf-example")
  *             .description("tf-example")
+ *             .basePath("/")
  *             .build());
  * 
  *         var exampleApi = new Api("exampleApi", ApiArgs.builder()

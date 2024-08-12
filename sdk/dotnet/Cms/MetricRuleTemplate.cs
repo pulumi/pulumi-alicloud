@@ -76,7 +76,9 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<Outputs.MetricRuleTemplateAlertTemplate>> AlertTemplates { get; private set; } = null!;
 
         /// <summary>
-        /// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+        /// The mode in which the alert template is applied. Valid values:
+        /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Output("applyMode")]
         public Output<string?> ApplyMode { get; private set; } = null!;
@@ -88,13 +90,13 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+        /// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         /// </summary>
         [Output("enableEndTime")]
         public Output<string?> EnableEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+        /// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
         /// </summary>
         [Output("enableStartTime")]
         public Output<string?> EnableStartTime { get; private set; } = null!;
@@ -112,23 +114,19 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> MetricRuleTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+        /// The alert notification method. Valid values:
         /// </summary>
         [Output("notifyLevel")]
         public Output<string?> NotifyLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the alert template to be modified.
-        /// 
-        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+        /// The version of the alert template.
         /// </summary>
         [Output("restVersion")]
         public Output<string> RestVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-        /// 
-        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+        /// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
         /// </summary>
         [Output("silenceTime")]
         public Output<int?> SilenceTime { get; private set; } = null!;
@@ -198,7 +196,9 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+        /// The mode in which the alert template is applied. Valid values:
+        /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Input("applyMode")]
         public Input<string>? ApplyMode { get; set; }
@@ -210,13 +210,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+        /// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         /// </summary>
         [Input("enableEndTime")]
         public Input<string>? EnableEndTime { get; set; }
 
         /// <summary>
-        /// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+        /// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
         /// </summary>
         [Input("enableStartTime")]
         public Input<string>? EnableStartTime { get; set; }
@@ -234,23 +234,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string> MetricRuleTemplateName { get; set; } = null!;
 
         /// <summary>
-        /// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+        /// The alert notification method. Valid values:
         /// </summary>
         [Input("notifyLevel")]
         public Input<string>? NotifyLevel { get; set; }
 
         /// <summary>
-        /// The version of the alert template to be modified.
-        /// 
-        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-        /// </summary>
-        [Input("restVersion")]
-        public Input<string>? RestVersion { get; set; }
-
-        /// <summary>
-        /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-        /// 
-        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+        /// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
@@ -282,7 +272,9 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+        /// The mode in which the alert template is applied. Valid values:
+        /// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+        /// - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
         /// </summary>
         [Input("applyMode")]
         public Input<string>? ApplyMode { get; set; }
@@ -294,13 +286,13 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+        /// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         /// </summary>
         [Input("enableEndTime")]
         public Input<string>? EnableEndTime { get; set; }
 
         /// <summary>
-        /// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+        /// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
         /// </summary>
         [Input("enableStartTime")]
         public Input<string>? EnableStartTime { get; set; }
@@ -318,23 +310,19 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? MetricRuleTemplateName { get; set; }
 
         /// <summary>
-        /// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+        /// The alert notification method. Valid values:
         /// </summary>
         [Input("notifyLevel")]
         public Input<string>? NotifyLevel { get; set; }
 
         /// <summary>
-        /// The version of the alert template to be modified.
-        /// 
-        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+        /// The version of the alert template.
         /// </summary>
         [Input("restVersion")]
         public Input<string>? RestVersion { get; set; }
 
         /// <summary>
-        /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-        /// 
-        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+        /// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }

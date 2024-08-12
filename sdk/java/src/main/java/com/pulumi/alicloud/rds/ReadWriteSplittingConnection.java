@@ -45,6 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rds.InstanceArgs;
  * import com.pulumi.alicloud.rds.ReadOnlyInstance;
  * import com.pulumi.alicloud.rds.ReadOnlyInstanceArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnection;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnectionArgs;
  * import java.util.List;
@@ -114,9 +116,14 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", ReadWriteSplittingConnectionArgs.builder()
  *             .instanceId(exampleReadOnlyInstance.masterDbInstanceId())
- *             .connectionPrefix("example-con-123")
+ *             .connectionPrefix(String.format("example-con-%s", default_.result()))
  *             .distributionType("Standard")
  *             .build());
  * 

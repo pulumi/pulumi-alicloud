@@ -301,7 +301,7 @@ type GetConnectionsConnection struct {
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
 	VpcInstanceId string `pulumi:"vpcInstanceId"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -335,7 +335,7 @@ type GetConnectionsConnectionArgs struct {
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
 	VpcInstanceId pulumi.StringInput `pulumi:"vpcInstanceId"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -438,7 +438,7 @@ func (o GetConnectionsConnectionOutput) VpcInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VpcInstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch.
+// The ID of the vSwitch.
 func (o GetConnectionsConnectionOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VswitchId }).(pulumi.StringOutput)
 }

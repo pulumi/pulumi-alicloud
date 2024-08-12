@@ -103,6 +103,8 @@ type Instance struct {
 	InstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	// Specifies whether to enable automatic minor version update. Valid values:
+	IsAutoUpgradeOpen pulumi.StringOutput `pulumi:"isAutoUpgradeOpen"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -301,6 +303,8 @@ type instanceState struct {
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
+	// Specifies whether to enable automatic minor version update. Valid values:
+	IsAutoUpgradeOpen *string `pulumi:"isAutoUpgradeOpen"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -463,6 +467,8 @@ type InstanceState struct {
 	InstanceReleaseProtection pulumi.BoolPtrInput
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrInput
+	// Specifies whether to enable automatic minor version update. Valid values:
+	IsAutoUpgradeOpen pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -619,6 +625,8 @@ type instanceArgs struct {
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType *string `pulumi:"instanceType"`
+	// Specifies whether to enable automatic minor version update. Valid values:
+	IsAutoUpgradeOpen *string `pulumi:"isAutoUpgradeOpen"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -768,6 +776,8 @@ type InstanceArgs struct {
 	InstanceReleaseProtection pulumi.BoolPtrInput
 	// The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 	InstanceType pulumi.StringPtrInput
+	// Specifies whether to enable automatic minor version update. Valid values:
+	IsAutoUpgradeOpen pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -1109,6 +1119,11 @@ func (o InstanceOutput) InstanceReleaseProtection() pulumi.BoolPtrOutput {
 // The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
 func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable automatic minor version update. Valid values:
+func (o InstanceOutput) IsAutoUpgradeOpen() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IsAutoUpgradeOpen }).(pulumi.StringOutput)
 }
 
 // An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.

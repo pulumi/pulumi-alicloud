@@ -8,13 +8,14 @@ import com.pulumi.alicloud.maxcompute.outputs.GetProjectsProjectPropertiesTableL
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProjectProperties {
     /**
-     * @return Whether to allow full table scan.
+     * @return Whether to allow full table scan. Default: false.
      * 
      */
     private Boolean allowFullScan;
@@ -24,39 +25,39 @@ public final class GetProjectsProjectProperties {
      */
     private Boolean enableDecimal2;
     /**
-     * @return Whether encryption is turned on.
+     * @return Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)&gt; **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
      * 
      */
     private GetProjectsProjectPropertiesEncryption encryption;
     /**
-     * @return Job default retention time.
+     * @return Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
      * 
      */
-    private String retentionDays;
+    private Integer retentionDays;
     /**
-     * @return SQL charge limit.
+     * @return Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
      * 
      */
     private String sqlMeteringMax;
     /**
-     * @return Life cycle of tables.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
      * 
      */
     private GetProjectsProjectPropertiesTableLifecycle tableLifecycle;
     /**
-     * @return Project time zone.
+     * @return Project time zone, example value: Asia/Shanghai.
      * 
      */
     private String timezone;
     /**
-     * @return Type system.
+     * @return Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
      * 
      */
     private String typeSystem;
 
     private GetProjectsProjectProperties() {}
     /**
-     * @return Whether to allow full table scan.
+     * @return Whether to allow full table scan. Default: false.
      * 
      */
     public Boolean allowFullScan() {
@@ -70,42 +71,42 @@ public final class GetProjectsProjectProperties {
         return this.enableDecimal2;
     }
     /**
-     * @return Whether encryption is turned on.
+     * @return Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)&gt; **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
      * 
      */
     public GetProjectsProjectPropertiesEncryption encryption() {
         return this.encryption;
     }
     /**
-     * @return Job default retention time.
+     * @return Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
      * 
      */
-    public String retentionDays() {
+    public Integer retentionDays() {
         return this.retentionDays;
     }
     /**
-     * @return SQL charge limit.
+     * @return Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
      * 
      */
     public String sqlMeteringMax() {
         return this.sqlMeteringMax;
     }
     /**
-     * @return Life cycle of tables.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
      * 
      */
     public GetProjectsProjectPropertiesTableLifecycle tableLifecycle() {
         return this.tableLifecycle;
     }
     /**
-     * @return Project time zone.
+     * @return Project time zone, example value: Asia/Shanghai.
      * 
      */
     public String timezone() {
         return this.timezone;
     }
     /**
-     * @return Type system.
+     * @return Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
      * 
      */
     public String typeSystem() {
@@ -124,7 +125,7 @@ public final class GetProjectsProjectProperties {
         private Boolean allowFullScan;
         private Boolean enableDecimal2;
         private GetProjectsProjectPropertiesEncryption encryption;
-        private String retentionDays;
+        private Integer retentionDays;
         private String sqlMeteringMax;
         private GetProjectsProjectPropertiesTableLifecycle tableLifecycle;
         private String timezone;
@@ -167,7 +168,7 @@ public final class GetProjectsProjectProperties {
             return this;
         }
         @CustomType.Setter
-        public Builder retentionDays(String retentionDays) {
+        public Builder retentionDays(Integer retentionDays) {
             if (retentionDays == null) {
               throw new MissingRequiredPropertyException("GetProjectsProjectProperties", "retentionDays");
             }

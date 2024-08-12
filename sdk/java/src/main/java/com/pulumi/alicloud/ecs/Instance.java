@@ -1054,14 +1054,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.secondaryPrivateIpAddressCount;
     }
     /**
-     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      * 
      */
     @Export(name="secondaryPrivateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> secondaryPrivateIps;
 
     /**
-     * @return A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     * @return A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
      * 
      */
     public Output<List<String>> secondaryPrivateIps() {

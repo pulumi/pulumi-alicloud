@@ -22,7 +22,7 @@ class LoginProfileArgs:
         The set of arguments for constructing a LoginProfile resource.
         :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
         :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "password", password)
@@ -60,7 +60,7 @@ class LoginProfileArgs:
     @pulumi.getter(name="mfaBindRequired")
     def mfa_bind_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         """
         return pulumi.get(self, "mfa_bind_required")
 
@@ -90,7 +90,7 @@ class _LoginProfileState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoginProfile resources.
-        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
         :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
@@ -108,7 +108,7 @@ class _LoginProfileState:
     @pulumi.getter(name="mfaBindRequired")
     def mfa_bind_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         """
         return pulumi.get(self, "mfa_bind_required")
 
@@ -200,7 +200,7 @@ class LoginProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
         :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
@@ -305,7 +305,7 @@ class LoginProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] mfa_bind_required: Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         :param pulumi.Input[str] password: The logon password of the RAM user. The password must meet the password strength requirements.
         :param pulumi.Input[bool] password_reset_required: Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] user_name: The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
@@ -322,9 +322,9 @@ class LoginProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mfaBindRequired")
-    def mfa_bind_required(self) -> pulumi.Output[Optional[bool]]:
+    def mfa_bind_required(self) -> pulumi.Output[bool]:
         """
-        Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+        Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
         """
         return pulumi.get(self, "mfa_bind_required")
 

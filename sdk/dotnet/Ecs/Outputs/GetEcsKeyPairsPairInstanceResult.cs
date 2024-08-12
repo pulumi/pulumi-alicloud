@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string RegionId;
         public readonly string Status;
         /// <summary>
-        /// The ID of the VSwitch attached to the ECS instance.
+        /// The ID of the vSwitch attached to the ECS instance.
         /// </summary>
         public readonly string VswitchId;
 

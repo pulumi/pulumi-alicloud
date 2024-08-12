@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the VSwitch the cluster belongs to.
+        /// ID of the vSwitch the cluster belongs to.
         /// </summary>
         public readonly string VswitchId;
 

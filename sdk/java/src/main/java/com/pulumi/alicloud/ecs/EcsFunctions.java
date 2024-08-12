@@ -4484,7 +4484,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4514,8 +4514,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -4532,7 +4531,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4562,8 +4561,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -4580,7 +4578,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4610,8 +4608,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -4628,7 +4625,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4658,8 +4655,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -4676,7 +4672,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4706,8 +4702,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -4724,7 +4719,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.123.1+.
+     * &gt; **NOTE:** Available since v1.123.1.
      * 
      * ## Example Usage
      * 
@@ -4754,8 +4749,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids("eni-abcd1234")
-     *             .nameRegex("tf-testAcc")
+     *             .nameRegex("eni-ipv6")
      *             .build());
      * 
      *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
@@ -9261,7 +9255,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
@@ -9395,7 +9389,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
@@ -9529,7 +9523,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
@@ -9663,7 +9657,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
@@ -9797,7 +9791,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.
@@ -9931,7 +9925,7 @@ public final class EcsFunctions {
      * * `ids` - (Optional)  A list of ENI IDs.
      * * `name_regex` - (Optional) A regex string to filter results by ENI name.
      * * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-     * * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+     * * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
      * * `private_ip` - (Optional) The primary private IP address of the ENI.
      * * `security_group_id` - (Optional) The security group ID linked to ENIs.
      * * `name` - (Optional) The name of the ENIs.

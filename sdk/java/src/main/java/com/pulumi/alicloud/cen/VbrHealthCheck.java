@@ -161,14 +161,14 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> healthCheckSourceIp;
+    private Output<String> healthCheckSourceIp;
 
     /**
      * @return The source IP address of health checks.
      * 
      */
-    public Output<Optional<String>> healthCheckSourceIp() {
-        return Codegen.optional(this.healthCheckSourceIp);
+    public Output<String> healthCheckSourceIp() {
+        return this.healthCheckSourceIp;
     }
     /**
      * The destination IP address of health checks.

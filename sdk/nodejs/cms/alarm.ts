@@ -118,6 +118,10 @@ export class Alarm extends pulumi.CustomResource {
     }
 
     /**
+     * The trigger conditions for multiple metrics. See `compositeExpression` below.
+     */
+    public readonly compositeExpression!: pulumi.Output<outputs.cms.AlarmCompositeExpression | undefined>;
+    /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
     public readonly contactGroups!: pulumi.Output<string[]>;
@@ -128,7 +132,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
     public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
@@ -166,7 +170,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -218,6 +222,7 @@ export class Alarm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
+            resourceInputs["compositeExpression"] = state ? state.compositeExpression : undefined;
             resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
             resourceInputs["dimensions"] = state ? state.dimensions : undefined;
             resourceInputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
@@ -249,6 +254,7 @@ export class Alarm extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            resourceInputs["compositeExpression"] = args ? args.compositeExpression : undefined;
             resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
             resourceInputs["dimensions"] = args ? args.dimensions : undefined;
             resourceInputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
@@ -280,6 +286,10 @@ export class Alarm extends pulumi.CustomResource {
  */
 export interface AlarmState {
     /**
+     * The trigger conditions for multiple metrics. See `compositeExpression` below.
+     */
+    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression>;
+    /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
     contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -290,7 +300,7 @@ export interface AlarmState {
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
@@ -328,7 +338,7 @@ export interface AlarmState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
     period?: pulumi.Input<number>;
     /**
@@ -373,6 +383,10 @@ export interface AlarmState {
  */
 export interface AlarmArgs {
     /**
+     * The trigger conditions for multiple metrics. See `compositeExpression` below.
+     */
+    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression>;
+    /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
     contactGroups: pulumi.Input<pulumi.Input<string>[]>;
@@ -383,7 +397,7 @@ export interface AlarmArgs {
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+     * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
     effectiveInterval?: pulumi.Input<string>;
     /**
@@ -421,7 +435,7 @@ export interface AlarmArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
     period?: pulumi.Input<number>;
     /**

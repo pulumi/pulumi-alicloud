@@ -552,7 +552,8 @@ class Api(pulumi.CustomResource):
 
         example = alicloud.apigateway.Group("example",
             name="tf-example",
-            description="tf-example")
+            description="tf-example",
+            base_path="/")
         example_api = alicloud.apigateway.Api("example",
             group_id=example.id,
             name="tf-example",
@@ -630,7 +631,8 @@ class Api(pulumi.CustomResource):
 
         example = alicloud.apigateway.Group("example",
             name="tf-example",
-            description="tf-example")
+            description="tf-example",
+            base_path="/")
         example_api = alicloud.apigateway.Api("example",
             group_id=example.id,
             name="tf-example",

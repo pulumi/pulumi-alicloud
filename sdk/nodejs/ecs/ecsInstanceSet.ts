@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     memorySize: 2,
  * }));
  * const defaultGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });

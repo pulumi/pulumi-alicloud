@@ -3400,6 +3400,4983 @@ func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) Timeout() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+type V3AsyncInvokeConfigDestinationConfig struct {
+	// Failed callback target structure. See `onFailure` below.
+	OnFailure *V3AsyncInvokeConfigDestinationConfigOnFailure `pulumi:"onFailure"`
+	// Successful callback target structure. See `onSuccess` below.
+	OnSuccess *V3AsyncInvokeConfigDestinationConfigOnSuccess `pulumi:"onSuccess"`
+}
+
+// V3AsyncInvokeConfigDestinationConfigInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigArgs and V3AsyncInvokeConfigDestinationConfigOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigInput` via:
+//
+//	V3AsyncInvokeConfigDestinationConfigArgs{...}
+type V3AsyncInvokeConfigDestinationConfigInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigOutput() V3AsyncInvokeConfigDestinationConfigOutput
+	ToV3AsyncInvokeConfigDestinationConfigOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigOutput
+}
+
+type V3AsyncInvokeConfigDestinationConfigArgs struct {
+	// Failed callback target structure. See `onFailure` below.
+	OnFailure V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput `pulumi:"onFailure"`
+	// Successful callback target structure. See `onSuccess` below.
+	OnSuccess V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput `pulumi:"onSuccess"`
+}
+
+func (V3AsyncInvokeConfigDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigArgs) ToV3AsyncInvokeConfigDestinationConfigOutput() V3AsyncInvokeConfigDestinationConfigOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigArgs) ToV3AsyncInvokeConfigDestinationConfigOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOutput)
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigArgs) ToV3AsyncInvokeConfigDestinationConfigPtrOutput() V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigArgs) ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOutput).ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// V3AsyncInvokeConfigDestinationConfigPtrInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigArgs, V3AsyncInvokeConfigDestinationConfigPtr and V3AsyncInvokeConfigDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigPtrInput` via:
+//
+//	        V3AsyncInvokeConfigDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3AsyncInvokeConfigDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigPtrOutput() V3AsyncInvokeConfigDestinationConfigPtrOutput
+	ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigPtrOutput
+}
+
+type v3asyncInvokeConfigDestinationConfigPtrType V3AsyncInvokeConfigDestinationConfigArgs
+
+func V3AsyncInvokeConfigDestinationConfigPtr(v *V3AsyncInvokeConfigDestinationConfigArgs) V3AsyncInvokeConfigDestinationConfigPtrInput {
+	return (*v3asyncInvokeConfigDestinationConfigPtrType)(v)
+}
+
+func (*v3asyncInvokeConfigDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigPtrType) ToV3AsyncInvokeConfigDestinationConfigPtrOutput() V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigPtrType) ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOutput) ToV3AsyncInvokeConfigDestinationConfigOutput() V3AsyncInvokeConfigDestinationConfigOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOutput) ToV3AsyncInvokeConfigDestinationConfigOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOutput) ToV3AsyncInvokeConfigDestinationConfigPtrOutput() V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return o.ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOutput) ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfig {
+		return &v
+	}).(V3AsyncInvokeConfigDestinationConfigPtrOutput)
+}
+
+// Failed callback target structure. See `onFailure` below.
+func (o V3AsyncInvokeConfigDestinationConfigOutput) OnFailure() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnFailure {
+		return v.OnFailure
+	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Successful callback target structure. See `onSuccess` below.
+func (o V3AsyncInvokeConfigDestinationConfigOutput) OnSuccess() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnSuccess {
+		return v.OnSuccess
+	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfig)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) ToV3AsyncInvokeConfigDestinationConfigPtrOutput() V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) ToV3AsyncInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigPtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) Elem() V3AsyncInvokeConfigDestinationConfigOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfig) V3AsyncInvokeConfigDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3AsyncInvokeConfigDestinationConfig
+		return ret
+	}).(V3AsyncInvokeConfigDestinationConfigOutput)
+}
+
+// Failed callback target structure. See `onFailure` below.
+func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailure
+	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Successful callback target structure. See `onSuccess` below.
+func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnSuccess {
+		if v == nil {
+			return nil
+		}
+		return v.OnSuccess
+	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnFailure struct {
+	// Asynchronous call target Resource Descriptor.
+	Destination *string `pulumi:"destination"`
+}
+
+// V3AsyncInvokeConfigDestinationConfigOnFailureInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigOnFailureArgs and V3AsyncInvokeConfigDestinationConfigOnFailureOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigOnFailureInput` via:
+//
+//	V3AsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+type V3AsyncInvokeConfigDestinationConfigOnFailureInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigOnFailureOutput() V3AsyncInvokeConfigDestinationConfigOnFailureOutput
+	ToV3AsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigOnFailureOutput
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnFailureArgs struct {
+	// Asynchronous call target Resource Descriptor.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (V3AsyncInvokeConfigDestinationConfigOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnFailureArgs) ToV3AsyncInvokeConfigDestinationConfigOnFailureOutput() V3AsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnFailureArgs) ToV3AsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnFailureOutput)
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnFailureArgs) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnFailureArgs) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnFailureOutput).ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx)
+}
+
+// V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigOnFailureArgs, V3AsyncInvokeConfigDestinationConfigOnFailurePtr and V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput` via:
+//
+//	        V3AsyncInvokeConfigDestinationConfigOnFailureArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput
+	ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput
+}
+
+type v3asyncInvokeConfigDestinationConfigOnFailurePtrType V3AsyncInvokeConfigDestinationConfigOnFailureArgs
+
+func V3AsyncInvokeConfigDestinationConfigOnFailurePtr(v *V3AsyncInvokeConfigDestinationConfigOnFailureArgs) V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput {
+	return (*v3asyncInvokeConfigDestinationConfigOnFailurePtrType)(v)
+}
+
+func (*v3asyncInvokeConfigDestinationConfigOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigOnFailurePtrType) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigOnFailurePtrType) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnFailureOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailureOutput() V3AsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailureOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3AsyncInvokeConfigDestinationConfigOnFailure) *V3AsyncInvokeConfigDestinationConfigOnFailure {
+		return &v
+	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
+}
+
+// Asynchronous call target Resource Descriptor.
+func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfigOnFailure) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfigOnFailure)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) ToV3AsyncInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Elem() V3AsyncInvokeConfigDestinationConfigOnFailureOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnFailure) V3AsyncInvokeConfigDestinationConfigOnFailure {
+		if v != nil {
+			return *v
+		}
+		var ret V3AsyncInvokeConfigDestinationConfigOnFailure
+		return ret
+	}).(V3AsyncInvokeConfigDestinationConfigOnFailureOutput)
+}
+
+// Asynchronous call target Resource Descriptor.
+func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnFailure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnSuccess struct {
+	// Asynchronous call target Resource Descriptor.
+	Destination *string `pulumi:"destination"`
+}
+
+// V3AsyncInvokeConfigDestinationConfigOnSuccessInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigOnSuccessArgs and V3AsyncInvokeConfigDestinationConfigOnSuccessOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigOnSuccessInput` via:
+//
+//	V3AsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+type V3AsyncInvokeConfigDestinationConfigOnSuccessInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessOutput
+	ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessOutput
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnSuccessArgs struct {
+	// Asynchronous call target Resource Descriptor.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnSuccessOutput)
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnSuccessOutput).ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx)
+}
+
+// V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput is an input type that accepts V3AsyncInvokeConfigDestinationConfigOnSuccessArgs, V3AsyncInvokeConfigDestinationConfigOnSuccessPtr and V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput values.
+// You can construct a concrete instance of `V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput` via:
+//
+//	        V3AsyncInvokeConfigDestinationConfigOnSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput interface {
+	pulumi.Input
+
+	ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput
+	ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput
+}
+
+type v3asyncInvokeConfigDestinationConfigOnSuccessPtrType V3AsyncInvokeConfigDestinationConfigOnSuccessArgs
+
+func V3AsyncInvokeConfigDestinationConfigOnSuccessPtr(v *V3AsyncInvokeConfigDestinationConfigOnSuccessArgs) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput {
+	return (*v3asyncInvokeConfigDestinationConfigOnSuccessPtrType)(v)
+}
+
+func (*v3asyncInvokeConfigDestinationConfigOnSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigOnSuccessPtrType) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return i.ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *v3asyncInvokeConfigDestinationConfigOnSuccessPtrType) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnSuccessOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3AsyncInvokeConfigDestinationConfigOnSuccess) *V3AsyncInvokeConfigDestinationConfigOnSuccess {
+		return &v
+	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
+}
+
+// Asynchronous call target Resource Descriptor.
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfigOnSuccess) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3AsyncInvokeConfigDestinationConfigOnSuccess)(nil)).Elem()
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) ToV3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
+	return o
+}
+
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() V3AsyncInvokeConfigDestinationConfigOnSuccessOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnSuccess) V3AsyncInvokeConfigDestinationConfigOnSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret V3AsyncInvokeConfigDestinationConfigOnSuccess
+		return ret
+	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessOutput)
+}
+
+// Asynchronous call target Resource Descriptor.
+func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainAuthConfig struct {
+	// Authentication Information.
+	AuthInfo *string `pulumi:"authInfo"`
+	// Authentication type. anonymous, function, or jwt.
+	AuthType *string `pulumi:"authType"`
+}
+
+// V3CustomDomainAuthConfigInput is an input type that accepts V3CustomDomainAuthConfigArgs and V3CustomDomainAuthConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainAuthConfigInput` via:
+//
+//	V3CustomDomainAuthConfigArgs{...}
+type V3CustomDomainAuthConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainAuthConfigOutput() V3CustomDomainAuthConfigOutput
+	ToV3CustomDomainAuthConfigOutputWithContext(context.Context) V3CustomDomainAuthConfigOutput
+}
+
+type V3CustomDomainAuthConfigArgs struct {
+	// Authentication Information.
+	AuthInfo pulumi.StringPtrInput `pulumi:"authInfo"`
+	// Authentication type. anonymous, function, or jwt.
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+}
+
+func (V3CustomDomainAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainAuthConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainAuthConfigArgs) ToV3CustomDomainAuthConfigOutput() V3CustomDomainAuthConfigOutput {
+	return i.ToV3CustomDomainAuthConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainAuthConfigArgs) ToV3CustomDomainAuthConfigOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainAuthConfigOutput)
+}
+
+func (i V3CustomDomainAuthConfigArgs) ToV3CustomDomainAuthConfigPtrOutput() V3CustomDomainAuthConfigPtrOutput {
+	return i.ToV3CustomDomainAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainAuthConfigArgs) ToV3CustomDomainAuthConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainAuthConfigOutput).ToV3CustomDomainAuthConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainAuthConfigPtrInput is an input type that accepts V3CustomDomainAuthConfigArgs, V3CustomDomainAuthConfigPtr and V3CustomDomainAuthConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainAuthConfigPtrInput` via:
+//
+//	        V3CustomDomainAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainAuthConfigPtrOutput() V3CustomDomainAuthConfigPtrOutput
+	ToV3CustomDomainAuthConfigPtrOutputWithContext(context.Context) V3CustomDomainAuthConfigPtrOutput
+}
+
+type v3customDomainAuthConfigPtrType V3CustomDomainAuthConfigArgs
+
+func V3CustomDomainAuthConfigPtr(v *V3CustomDomainAuthConfigArgs) V3CustomDomainAuthConfigPtrInput {
+	return (*v3customDomainAuthConfigPtrType)(v)
+}
+
+func (*v3customDomainAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainAuthConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainAuthConfigPtrType) ToV3CustomDomainAuthConfigPtrOutput() V3CustomDomainAuthConfigPtrOutput {
+	return i.ToV3CustomDomainAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainAuthConfigPtrType) ToV3CustomDomainAuthConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainAuthConfigPtrOutput)
+}
+
+type V3CustomDomainAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainAuthConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainAuthConfigOutput) ToV3CustomDomainAuthConfigOutput() V3CustomDomainAuthConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainAuthConfigOutput) ToV3CustomDomainAuthConfigOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainAuthConfigOutput) ToV3CustomDomainAuthConfigPtrOutput() V3CustomDomainAuthConfigPtrOutput {
+	return o.ToV3CustomDomainAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainAuthConfigOutput) ToV3CustomDomainAuthConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainAuthConfig) *V3CustomDomainAuthConfig {
+		return &v
+	}).(V3CustomDomainAuthConfigPtrOutput)
+}
+
+// Authentication Information.
+func (o V3CustomDomainAuthConfigOutput) AuthInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainAuthConfig) *string { return v.AuthInfo }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type. anonymous, function, or jwt.
+func (o V3CustomDomainAuthConfigOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainAuthConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainAuthConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainAuthConfigPtrOutput) ToV3CustomDomainAuthConfigPtrOutput() V3CustomDomainAuthConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainAuthConfigPtrOutput) ToV3CustomDomainAuthConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainAuthConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainAuthConfigPtrOutput) Elem() V3CustomDomainAuthConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainAuthConfig) V3CustomDomainAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainAuthConfig
+		return ret
+	}).(V3CustomDomainAuthConfigOutput)
+}
+
+// Authentication Information.
+func (o V3CustomDomainAuthConfigPtrOutput) AuthInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthInfo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type. anonymous, function, or jwt.
+func (o V3CustomDomainAuthConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainCertConfig struct {
+	// Certificate Name.
+	CertName *string `pulumi:"certName"`
+	// PEM format certificate.
+	Certificate *string `pulumi:"certificate"`
+	// Private Key in PEM format.
+	PrivateKey *string `pulumi:"privateKey"`
+}
+
+// V3CustomDomainCertConfigInput is an input type that accepts V3CustomDomainCertConfigArgs and V3CustomDomainCertConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainCertConfigInput` via:
+//
+//	V3CustomDomainCertConfigArgs{...}
+type V3CustomDomainCertConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainCertConfigOutput() V3CustomDomainCertConfigOutput
+	ToV3CustomDomainCertConfigOutputWithContext(context.Context) V3CustomDomainCertConfigOutput
+}
+
+type V3CustomDomainCertConfigArgs struct {
+	// Certificate Name.
+	CertName pulumi.StringPtrInput `pulumi:"certName"`
+	// PEM format certificate.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Private Key in PEM format.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+}
+
+func (V3CustomDomainCertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainCertConfigArgs) ToV3CustomDomainCertConfigOutput() V3CustomDomainCertConfigOutput {
+	return i.ToV3CustomDomainCertConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainCertConfigArgs) ToV3CustomDomainCertConfigOutputWithContext(ctx context.Context) V3CustomDomainCertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCertConfigOutput)
+}
+
+func (i V3CustomDomainCertConfigArgs) ToV3CustomDomainCertConfigPtrOutput() V3CustomDomainCertConfigPtrOutput {
+	return i.ToV3CustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainCertConfigArgs) ToV3CustomDomainCertConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCertConfigOutput).ToV3CustomDomainCertConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainCertConfigPtrInput is an input type that accepts V3CustomDomainCertConfigArgs, V3CustomDomainCertConfigPtr and V3CustomDomainCertConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainCertConfigPtrInput` via:
+//
+//	        V3CustomDomainCertConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainCertConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainCertConfigPtrOutput() V3CustomDomainCertConfigPtrOutput
+	ToV3CustomDomainCertConfigPtrOutputWithContext(context.Context) V3CustomDomainCertConfigPtrOutput
+}
+
+type v3customDomainCertConfigPtrType V3CustomDomainCertConfigArgs
+
+func V3CustomDomainCertConfigPtr(v *V3CustomDomainCertConfigArgs) V3CustomDomainCertConfigPtrInput {
+	return (*v3customDomainCertConfigPtrType)(v)
+}
+
+func (*v3customDomainCertConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainCertConfigPtrType) ToV3CustomDomainCertConfigPtrOutput() V3CustomDomainCertConfigPtrOutput {
+	return i.ToV3CustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainCertConfigPtrType) ToV3CustomDomainCertConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCertConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainCertConfigPtrOutput)
+}
+
+type V3CustomDomainCertConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainCertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainCertConfigOutput) ToV3CustomDomainCertConfigOutput() V3CustomDomainCertConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainCertConfigOutput) ToV3CustomDomainCertConfigOutputWithContext(ctx context.Context) V3CustomDomainCertConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainCertConfigOutput) ToV3CustomDomainCertConfigPtrOutput() V3CustomDomainCertConfigPtrOutput {
+	return o.ToV3CustomDomainCertConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainCertConfigOutput) ToV3CustomDomainCertConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCertConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainCertConfig) *V3CustomDomainCertConfig {
+		return &v
+	}).(V3CustomDomainCertConfigPtrOutput)
+}
+
+// Certificate Name.
+func (o V3CustomDomainCertConfigOutput) CertName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
+}
+
+// PEM format certificate.
+func (o V3CustomDomainCertConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Private Key in PEM format.
+func (o V3CustomDomainCertConfigOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainCertConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainCertConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainCertConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainCertConfigPtrOutput) ToV3CustomDomainCertConfigPtrOutput() V3CustomDomainCertConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainCertConfigPtrOutput) ToV3CustomDomainCertConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainCertConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainCertConfigPtrOutput) Elem() V3CustomDomainCertConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainCertConfig) V3CustomDomainCertConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainCertConfig
+		return ret
+	}).(V3CustomDomainCertConfigOutput)
+}
+
+// Certificate Name.
+func (o V3CustomDomainCertConfigPtrOutput) CertName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertName
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM format certificate.
+func (o V3CustomDomainCertConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Key in PEM format.
+func (o V3CustomDomainCertConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainRouteConfig struct {
+	// Routing Configuration List. See `routes` below.
+	Routes []V3CustomDomainRouteConfigRoute `pulumi:"routes"`
+}
+
+// V3CustomDomainRouteConfigInput is an input type that accepts V3CustomDomainRouteConfigArgs and V3CustomDomainRouteConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigInput` via:
+//
+//	V3CustomDomainRouteConfigArgs{...}
+type V3CustomDomainRouteConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigOutput() V3CustomDomainRouteConfigOutput
+	ToV3CustomDomainRouteConfigOutputWithContext(context.Context) V3CustomDomainRouteConfigOutput
+}
+
+type V3CustomDomainRouteConfigArgs struct {
+	// Routing Configuration List. See `routes` below.
+	Routes V3CustomDomainRouteConfigRouteArrayInput `pulumi:"routes"`
+}
+
+func (V3CustomDomainRouteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigArgs) ToV3CustomDomainRouteConfigOutput() V3CustomDomainRouteConfigOutput {
+	return i.ToV3CustomDomainRouteConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigArgs) ToV3CustomDomainRouteConfigOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigOutput)
+}
+
+func (i V3CustomDomainRouteConfigArgs) ToV3CustomDomainRouteConfigPtrOutput() V3CustomDomainRouteConfigPtrOutput {
+	return i.ToV3CustomDomainRouteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigArgs) ToV3CustomDomainRouteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigOutput).ToV3CustomDomainRouteConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainRouteConfigPtrInput is an input type that accepts V3CustomDomainRouteConfigArgs, V3CustomDomainRouteConfigPtr and V3CustomDomainRouteConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigPtrInput` via:
+//
+//	        V3CustomDomainRouteConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainRouteConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigPtrOutput() V3CustomDomainRouteConfigPtrOutput
+	ToV3CustomDomainRouteConfigPtrOutputWithContext(context.Context) V3CustomDomainRouteConfigPtrOutput
+}
+
+type v3customDomainRouteConfigPtrType V3CustomDomainRouteConfigArgs
+
+func V3CustomDomainRouteConfigPtr(v *V3CustomDomainRouteConfigArgs) V3CustomDomainRouteConfigPtrInput {
+	return (*v3customDomainRouteConfigPtrType)(v)
+}
+
+func (*v3customDomainRouteConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainRouteConfigPtrType) ToV3CustomDomainRouteConfigPtrOutput() V3CustomDomainRouteConfigPtrOutput {
+	return i.ToV3CustomDomainRouteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainRouteConfigPtrType) ToV3CustomDomainRouteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigPtrOutput)
+}
+
+type V3CustomDomainRouteConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigOutput) ToV3CustomDomainRouteConfigOutput() V3CustomDomainRouteConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigOutput) ToV3CustomDomainRouteConfigOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigOutput) ToV3CustomDomainRouteConfigPtrOutput() V3CustomDomainRouteConfigPtrOutput {
+	return o.ToV3CustomDomainRouteConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainRouteConfigOutput) ToV3CustomDomainRouteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainRouteConfig) *V3CustomDomainRouteConfig {
+		return &v
+	}).(V3CustomDomainRouteConfigPtrOutput)
+}
+
+// Routing Configuration List. See `routes` below.
+func (o V3CustomDomainRouteConfigOutput) Routes() V3CustomDomainRouteConfigRouteArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfig) []V3CustomDomainRouteConfigRoute { return v.Routes }).(V3CustomDomainRouteConfigRouteArrayOutput)
+}
+
+type V3CustomDomainRouteConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainRouteConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigPtrOutput) ToV3CustomDomainRouteConfigPtrOutput() V3CustomDomainRouteConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigPtrOutput) ToV3CustomDomainRouteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigPtrOutput) Elem() V3CustomDomainRouteConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfig) V3CustomDomainRouteConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainRouteConfig
+		return ret
+	}).(V3CustomDomainRouteConfigOutput)
+}
+
+// Routing Configuration List. See `routes` below.
+func (o V3CustomDomainRouteConfigPtrOutput) Routes() V3CustomDomainRouteConfigRouteArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfig) []V3CustomDomainRouteConfigRoute {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(V3CustomDomainRouteConfigRouteArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRoute struct {
+	// Function name.
+	FunctionName *string `pulumi:"functionName"`
+	// List of supported HTTP methods.
+	Methods []string `pulumi:"methods"`
+	// Route matching rule.
+	Path *string `pulumi:"path"`
+	// Version or Alias.
+	Qualifier *string `pulumi:"qualifier"`
+	// Override Configuration. See `rewriteConfig` below.
+	RewriteConfig *V3CustomDomainRouteConfigRouteRewriteConfig `pulumi:"rewriteConfig"`
+}
+
+// V3CustomDomainRouteConfigRouteInput is an input type that accepts V3CustomDomainRouteConfigRouteArgs and V3CustomDomainRouteConfigRouteOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteInput` via:
+//
+//	V3CustomDomainRouteConfigRouteArgs{...}
+type V3CustomDomainRouteConfigRouteInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteOutput() V3CustomDomainRouteConfigRouteOutput
+	ToV3CustomDomainRouteConfigRouteOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteOutput
+}
+
+type V3CustomDomainRouteConfigRouteArgs struct {
+	// Function name.
+	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
+	// List of supported HTTP methods.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Route matching rule.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Version or Alias.
+	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
+	// Override Configuration. See `rewriteConfig` below.
+	RewriteConfig V3CustomDomainRouteConfigRouteRewriteConfigPtrInput `pulumi:"rewriteConfig"`
+}
+
+func (V3CustomDomainRouteConfigRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRoute)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteArgs) ToV3CustomDomainRouteConfigRouteOutput() V3CustomDomainRouteConfigRouteOutput {
+	return i.ToV3CustomDomainRouteConfigRouteOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteArgs) ToV3CustomDomainRouteConfigRouteOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteOutput)
+}
+
+// V3CustomDomainRouteConfigRouteArrayInput is an input type that accepts V3CustomDomainRouteConfigRouteArray and V3CustomDomainRouteConfigRouteArrayOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteArrayInput` via:
+//
+//	V3CustomDomainRouteConfigRouteArray{ V3CustomDomainRouteConfigRouteArgs{...} }
+type V3CustomDomainRouteConfigRouteArrayInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteArrayOutput() V3CustomDomainRouteConfigRouteArrayOutput
+	ToV3CustomDomainRouteConfigRouteArrayOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteArrayOutput
+}
+
+type V3CustomDomainRouteConfigRouteArray []V3CustomDomainRouteConfigRouteInput
+
+func (V3CustomDomainRouteConfigRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRoute)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteArray) ToV3CustomDomainRouteConfigRouteArrayOutput() V3CustomDomainRouteConfigRouteArrayOutput {
+	return i.ToV3CustomDomainRouteConfigRouteArrayOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteArray) ToV3CustomDomainRouteConfigRouteArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRoute)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteOutput) ToV3CustomDomainRouteConfigRouteOutput() V3CustomDomainRouteConfigRouteOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteOutput) ToV3CustomDomainRouteConfigRouteOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteOutput {
+	return o
+}
+
+// Function name.
+func (o V3CustomDomainRouteConfigRouteOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+}
+
+// List of supported HTTP methods.
+func (o V3CustomDomainRouteConfigRouteOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Route matching rule.
+func (o V3CustomDomainRouteConfigRouteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Version or Alias.
+func (o V3CustomDomainRouteConfigRouteOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
+}
+
+// Override Configuration. See `rewriteConfig` below.
+func (o V3CustomDomainRouteConfigRouteOutput) RewriteConfig() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *V3CustomDomainRouteConfigRouteRewriteConfig {
+		return v.RewriteConfig
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput)
+}
+
+type V3CustomDomainRouteConfigRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRoute)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteArrayOutput) ToV3CustomDomainRouteConfigRouteArrayOutput() V3CustomDomainRouteConfigRouteArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteArrayOutput) ToV3CustomDomainRouteConfigRouteArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteArrayOutput) Index(i pulumi.IntInput) V3CustomDomainRouteConfigRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3CustomDomainRouteConfigRoute {
+		return vs[0].([]V3CustomDomainRouteConfigRoute)[vs[1].(int)]
+	}).(V3CustomDomainRouteConfigRouteOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfig struct {
+	// Exact Match Rule List. See `equalRules` below.
+	EqualRules []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule `pulumi:"equalRules"`
+	// Regular match rule list. See `regexRules` below.
+	RegexRules []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule `pulumi:"regexRules"`
+	// List of wildcard matching rules. See `wildcardRules` below.
+	WildcardRules []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule `pulumi:"wildcardRules"`
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigArgs and V3CustomDomainRouteConfigRouteRewriteConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigArgs{...}
+type V3CustomDomainRouteConfigRouteRewriteConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigOutput() V3CustomDomainRouteConfigRouteRewriteConfigOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigArgs struct {
+	// Exact Match Rule List. See `equalRules` below.
+	EqualRules V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput `pulumi:"equalRules"`
+	// Regular match rule list. See `regexRules` below.
+	RegexRules V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput `pulumi:"regexRules"`
+	// List of wildcard matching rules. See `wildcardRules` below.
+	WildcardRules V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput `pulumi:"wildcardRules"`
+}
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigOutput() V3CustomDomainRouteConfigRouteRewriteConfigOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigOutput)
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutput() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigOutput).ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigPtrInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigArgs, V3CustomDomainRouteConfigRouteRewriteConfigPtr and V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigPtrInput` via:
+//
+//	        V3CustomDomainRouteConfigRouteRewriteConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainRouteConfigRouteRewriteConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutput() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput
+}
+
+type v3customDomainRouteConfigRouteRewriteConfigPtrType V3CustomDomainRouteConfigRouteRewriteConfigArgs
+
+func V3CustomDomainRouteConfigRouteRewriteConfigPtr(v *V3CustomDomainRouteConfigRouteRewriteConfigArgs) V3CustomDomainRouteConfigRouteRewriteConfigPtrInput {
+	return (*v3customDomainRouteConfigRouteRewriteConfigPtrType)(v)
+}
+
+func (*v3customDomainRouteConfigRouteRewriteConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainRouteConfigRouteRewriteConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainRouteConfigRouteRewriteConfigPtrType) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutput() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainRouteConfigRouteRewriteConfigPtrType) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigOutput() V3CustomDomainRouteConfigRouteRewriteConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutput() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return o.ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainRouteConfigRouteRewriteConfig) *V3CustomDomainRouteConfigRouteRewriteConfig {
+		return &v
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput)
+}
+
+// Exact Match Rule List. See `equalRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) EqualRules() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
+		return v.EqualRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput)
+}
+
+// Regular match rule list. See `regexRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) RegexRules() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
+		return v.RegexRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput)
+}
+
+// List of wildcard matching rules. See `wildcardRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) WildcardRules() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
+		return v.WildcardRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainRouteConfigRouteRewriteConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutput() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) Elem() V3CustomDomainRouteConfigRouteRewriteConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) V3CustomDomainRouteConfigRouteRewriteConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainRouteConfigRouteRewriteConfig
+		return ret
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigOutput)
+}
+
+// Exact Match Rule List. See `equalRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) EqualRules() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
+		if v == nil {
+			return nil
+		}
+		return v.EqualRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput)
+}
+
+// Regular match rule list. See `regexRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) RegexRules() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
+		if v == nil {
+			return nil
+		}
+		return v.RegexRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput)
+}
+
+// List of wildcard matching rules. See `wildcardRules` below.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) WildcardRules() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
+		if v == nil {
+			return nil
+		}
+		return v.WildcardRules
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRule struct {
+	// Matching Rules.
+	Match *string `pulumi:"match"`
+	// Replace Rules.
+	Replacement *string `pulumi:"replacement"`
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs and V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs{...}
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs struct {
+	// Matching Rules.
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// Replace Rules.
+	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
+}
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigEqualRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput)
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray and V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray{ V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs{...} }
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray []V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigEqualRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigEqualRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput {
+	return o
+}
+
+// Matching Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigEqualRule) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// Replace Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) Replacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigEqualRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigEqualRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput) Index(i pulumi.IntInput) V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
+		return vs[0].([]V3CustomDomainRouteConfigRouteRewriteConfigEqualRule)[vs[1].(int)]
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRule struct {
+	// Matching Rules.
+	Match *string `pulumi:"match"`
+	// Replace Rules.
+	Replacement *string `pulumi:"replacement"`
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs and V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs{...}
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs struct {
+	// Matching Rules.
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// Replace Rules.
+	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
+}
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigRegexRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput)
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray and V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray{ V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs{...} }
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray []V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigRegexRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigRegexRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput {
+	return o
+}
+
+// Matching Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigRegexRule) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// Replace Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) Replacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigRegexRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigRegexRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput) Index(i pulumi.IntInput) V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
+		return vs[0].([]V3CustomDomainRouteConfigRouteRewriteConfigRegexRule)[vs[1].(int)]
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule struct {
+	// Matching Rules.
+	Match *string `pulumi:"match"`
+	// Replace Rules.
+	Replacement *string `pulumi:"replacement"`
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs and V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs{...}
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs struct {
+	// Matching Rules.
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// Replace Rules.
+	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
+}
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput)
+}
+
+// V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput is an input type that accepts V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray and V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput values.
+// You can construct a concrete instance of `V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput` via:
+//
+//	V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray{ V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs{...} }
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput
+	ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutputWithContext(context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule)(nil)).Elem()
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return i.ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput {
+	return o
+}
+
+// Matching Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// Replace Rules.
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) Replacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule)(nil)).Elem()
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput) ToV3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutputWithContext(ctx context.Context) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
+	return o
+}
+
+func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput) Index(i pulumi.IntInput) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
+		return vs[0].([]V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule)[vs[1].(int)]
+	}).(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput)
+}
+
+type V3CustomDomainTlsConfig struct {
+	// List of TLS cipher suites.
+	CipherSuites []string `pulumi:"cipherSuites"`
+	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	MaxVersion *string `pulumi:"maxVersion"`
+	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	MinVersion *string `pulumi:"minVersion"`
+}
+
+// V3CustomDomainTlsConfigInput is an input type that accepts V3CustomDomainTlsConfigArgs and V3CustomDomainTlsConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainTlsConfigInput` via:
+//
+//	V3CustomDomainTlsConfigArgs{...}
+type V3CustomDomainTlsConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainTlsConfigOutput() V3CustomDomainTlsConfigOutput
+	ToV3CustomDomainTlsConfigOutputWithContext(context.Context) V3CustomDomainTlsConfigOutput
+}
+
+type V3CustomDomainTlsConfigArgs struct {
+	// List of TLS cipher suites.
+	CipherSuites pulumi.StringArrayInput `pulumi:"cipherSuites"`
+	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	MaxVersion pulumi.StringPtrInput `pulumi:"maxVersion"`
+	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	MinVersion pulumi.StringPtrInput `pulumi:"minVersion"`
+}
+
+func (V3CustomDomainTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainTlsConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainTlsConfigArgs) ToV3CustomDomainTlsConfigOutput() V3CustomDomainTlsConfigOutput {
+	return i.ToV3CustomDomainTlsConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainTlsConfigArgs) ToV3CustomDomainTlsConfigOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainTlsConfigOutput)
+}
+
+func (i V3CustomDomainTlsConfigArgs) ToV3CustomDomainTlsConfigPtrOutput() V3CustomDomainTlsConfigPtrOutput {
+	return i.ToV3CustomDomainTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainTlsConfigArgs) ToV3CustomDomainTlsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainTlsConfigOutput).ToV3CustomDomainTlsConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainTlsConfigPtrInput is an input type that accepts V3CustomDomainTlsConfigArgs, V3CustomDomainTlsConfigPtr and V3CustomDomainTlsConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainTlsConfigPtrInput` via:
+//
+//	        V3CustomDomainTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainTlsConfigPtrOutput() V3CustomDomainTlsConfigPtrOutput
+	ToV3CustomDomainTlsConfigPtrOutputWithContext(context.Context) V3CustomDomainTlsConfigPtrOutput
+}
+
+type v3customDomainTlsConfigPtrType V3CustomDomainTlsConfigArgs
+
+func V3CustomDomainTlsConfigPtr(v *V3CustomDomainTlsConfigArgs) V3CustomDomainTlsConfigPtrInput {
+	return (*v3customDomainTlsConfigPtrType)(v)
+}
+
+func (*v3customDomainTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainTlsConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainTlsConfigPtrType) ToV3CustomDomainTlsConfigPtrOutput() V3CustomDomainTlsConfigPtrOutput {
+	return i.ToV3CustomDomainTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainTlsConfigPtrType) ToV3CustomDomainTlsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainTlsConfigPtrOutput)
+}
+
+type V3CustomDomainTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainTlsConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainTlsConfigOutput) ToV3CustomDomainTlsConfigOutput() V3CustomDomainTlsConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainTlsConfigOutput) ToV3CustomDomainTlsConfigOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainTlsConfigOutput) ToV3CustomDomainTlsConfigPtrOutput() V3CustomDomainTlsConfigPtrOutput {
+	return o.ToV3CustomDomainTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainTlsConfigOutput) ToV3CustomDomainTlsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainTlsConfig) *V3CustomDomainTlsConfig {
+		return &v
+	}).(V3CustomDomainTlsConfigPtrOutput)
+}
+
+// List of TLS cipher suites.
+func (o V3CustomDomainTlsConfigOutput) CipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3CustomDomainTlsConfig) []string { return v.CipherSuites }).(pulumi.StringArrayOutput)
+}
+
+// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+func (o V3CustomDomainTlsConfigOutput) MaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainTlsConfig) *string { return v.MaxVersion }).(pulumi.StringPtrOutput)
+}
+
+// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+func (o V3CustomDomainTlsConfigOutput) MinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainTlsConfig) *string { return v.MinVersion }).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainTlsConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainTlsConfigPtrOutput) ToV3CustomDomainTlsConfigPtrOutput() V3CustomDomainTlsConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainTlsConfigPtrOutput) ToV3CustomDomainTlsConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainTlsConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainTlsConfigPtrOutput) Elem() V3CustomDomainTlsConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainTlsConfig) V3CustomDomainTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainTlsConfig
+		return ret
+	}).(V3CustomDomainTlsConfigOutput)
+}
+
+// List of TLS cipher suites.
+func (o V3CustomDomainTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3CustomDomainTlsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CipherSuites
+	}).(pulumi.StringArrayOutput)
+}
+
+// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+func (o V3CustomDomainTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+func (o V3CustomDomainTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3CustomDomainWafConfig struct {
+	// Enable WAF protection.
+	EnableWaf *bool `pulumi:"enableWaf"`
+}
+
+// V3CustomDomainWafConfigInput is an input type that accepts V3CustomDomainWafConfigArgs and V3CustomDomainWafConfigOutput values.
+// You can construct a concrete instance of `V3CustomDomainWafConfigInput` via:
+//
+//	V3CustomDomainWafConfigArgs{...}
+type V3CustomDomainWafConfigInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainWafConfigOutput() V3CustomDomainWafConfigOutput
+	ToV3CustomDomainWafConfigOutputWithContext(context.Context) V3CustomDomainWafConfigOutput
+}
+
+type V3CustomDomainWafConfigArgs struct {
+	// Enable WAF protection.
+	EnableWaf pulumi.BoolPtrInput `pulumi:"enableWaf"`
+}
+
+func (V3CustomDomainWafConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainWafConfig)(nil)).Elem()
+}
+
+func (i V3CustomDomainWafConfigArgs) ToV3CustomDomainWafConfigOutput() V3CustomDomainWafConfigOutput {
+	return i.ToV3CustomDomainWafConfigOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainWafConfigArgs) ToV3CustomDomainWafConfigOutputWithContext(ctx context.Context) V3CustomDomainWafConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainWafConfigOutput)
+}
+
+func (i V3CustomDomainWafConfigArgs) ToV3CustomDomainWafConfigPtrOutput() V3CustomDomainWafConfigPtrOutput {
+	return i.ToV3CustomDomainWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3CustomDomainWafConfigArgs) ToV3CustomDomainWafConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainWafConfigOutput).ToV3CustomDomainWafConfigPtrOutputWithContext(ctx)
+}
+
+// V3CustomDomainWafConfigPtrInput is an input type that accepts V3CustomDomainWafConfigArgs, V3CustomDomainWafConfigPtr and V3CustomDomainWafConfigPtrOutput values.
+// You can construct a concrete instance of `V3CustomDomainWafConfigPtrInput` via:
+//
+//	        V3CustomDomainWafConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3CustomDomainWafConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3CustomDomainWafConfigPtrOutput() V3CustomDomainWafConfigPtrOutput
+	ToV3CustomDomainWafConfigPtrOutputWithContext(context.Context) V3CustomDomainWafConfigPtrOutput
+}
+
+type v3customDomainWafConfigPtrType V3CustomDomainWafConfigArgs
+
+func V3CustomDomainWafConfigPtr(v *V3CustomDomainWafConfigArgs) V3CustomDomainWafConfigPtrInput {
+	return (*v3customDomainWafConfigPtrType)(v)
+}
+
+func (*v3customDomainWafConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainWafConfig)(nil)).Elem()
+}
+
+func (i *v3customDomainWafConfigPtrType) ToV3CustomDomainWafConfigPtrOutput() V3CustomDomainWafConfigPtrOutput {
+	return i.ToV3CustomDomainWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3customDomainWafConfigPtrType) ToV3CustomDomainWafConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3CustomDomainWafConfigPtrOutput)
+}
+
+type V3CustomDomainWafConfigOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainWafConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3CustomDomainWafConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainWafConfigOutput) ToV3CustomDomainWafConfigOutput() V3CustomDomainWafConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainWafConfigOutput) ToV3CustomDomainWafConfigOutputWithContext(ctx context.Context) V3CustomDomainWafConfigOutput {
+	return o
+}
+
+func (o V3CustomDomainWafConfigOutput) ToV3CustomDomainWafConfigPtrOutput() V3CustomDomainWafConfigPtrOutput {
+	return o.ToV3CustomDomainWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3CustomDomainWafConfigOutput) ToV3CustomDomainWafConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainWafConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3CustomDomainWafConfig) *V3CustomDomainWafConfig {
+		return &v
+	}).(V3CustomDomainWafConfigPtrOutput)
+}
+
+// Enable WAF protection.
+func (o V3CustomDomainWafConfigOutput) EnableWaf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3CustomDomainWafConfig) *bool { return v.EnableWaf }).(pulumi.BoolPtrOutput)
+}
+
+type V3CustomDomainWafConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3CustomDomainWafConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3CustomDomainWafConfig)(nil)).Elem()
+}
+
+func (o V3CustomDomainWafConfigPtrOutput) ToV3CustomDomainWafConfigPtrOutput() V3CustomDomainWafConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainWafConfigPtrOutput) ToV3CustomDomainWafConfigPtrOutputWithContext(ctx context.Context) V3CustomDomainWafConfigPtrOutput {
+	return o
+}
+
+func (o V3CustomDomainWafConfigPtrOutput) Elem() V3CustomDomainWafConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomainWafConfig) V3CustomDomainWafConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3CustomDomainWafConfig
+		return ret
+	}).(V3CustomDomainWafConfigOutput)
+}
+
+// Enable WAF protection.
+func (o V3CustomDomainWafConfigPtrOutput) EnableWaf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3CustomDomainWafConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWaf
+	}).(pulumi.BoolPtrOutput)
+}
+
+type V3FunctionCode struct {
+	// The CRC-64 value of the function code package.
+	Checksum *string `pulumi:"checksum"`
+	// The name of the OSS Bucket that stores the function code ZIP package.
+	OssBucketName *string `pulumi:"ossBucketName"`
+	// The name of the OSS Object that stores the function code ZIP package.
+	OssObjectName *string `pulumi:"ossObjectName"`
+	// The Base 64 encoding of the function code ZIP package.
+	ZipFile *string `pulumi:"zipFile"`
+}
+
+// V3FunctionCodeInput is an input type that accepts V3FunctionCodeArgs and V3FunctionCodeOutput values.
+// You can construct a concrete instance of `V3FunctionCodeInput` via:
+//
+//	V3FunctionCodeArgs{...}
+type V3FunctionCodeInput interface {
+	pulumi.Input
+
+	ToV3FunctionCodeOutput() V3FunctionCodeOutput
+	ToV3FunctionCodeOutputWithContext(context.Context) V3FunctionCodeOutput
+}
+
+type V3FunctionCodeArgs struct {
+	// The CRC-64 value of the function code package.
+	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// The name of the OSS Bucket that stores the function code ZIP package.
+	OssBucketName pulumi.StringPtrInput `pulumi:"ossBucketName"`
+	// The name of the OSS Object that stores the function code ZIP package.
+	OssObjectName pulumi.StringPtrInput `pulumi:"ossObjectName"`
+	// The Base 64 encoding of the function code ZIP package.
+	ZipFile pulumi.StringPtrInput `pulumi:"zipFile"`
+}
+
+func (V3FunctionCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCode)(nil)).Elem()
+}
+
+func (i V3FunctionCodeArgs) ToV3FunctionCodeOutput() V3FunctionCodeOutput {
+	return i.ToV3FunctionCodeOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCodeArgs) ToV3FunctionCodeOutputWithContext(ctx context.Context) V3FunctionCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCodeOutput)
+}
+
+func (i V3FunctionCodeArgs) ToV3FunctionCodePtrOutput() V3FunctionCodePtrOutput {
+	return i.ToV3FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCodeArgs) ToV3FunctionCodePtrOutputWithContext(ctx context.Context) V3FunctionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCodeOutput).ToV3FunctionCodePtrOutputWithContext(ctx)
+}
+
+// V3FunctionCodePtrInput is an input type that accepts V3FunctionCodeArgs, V3FunctionCodePtr and V3FunctionCodePtrOutput values.
+// You can construct a concrete instance of `V3FunctionCodePtrInput` via:
+//
+//	        V3FunctionCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCodePtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCodePtrOutput() V3FunctionCodePtrOutput
+	ToV3FunctionCodePtrOutputWithContext(context.Context) V3FunctionCodePtrOutput
+}
+
+type v3functionCodePtrType V3FunctionCodeArgs
+
+func V3FunctionCodePtr(v *V3FunctionCodeArgs) V3FunctionCodePtrInput {
+	return (*v3functionCodePtrType)(v)
+}
+
+func (*v3functionCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCode)(nil)).Elem()
+}
+
+func (i *v3functionCodePtrType) ToV3FunctionCodePtrOutput() V3FunctionCodePtrOutput {
+	return i.ToV3FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCodePtrType) ToV3FunctionCodePtrOutputWithContext(ctx context.Context) V3FunctionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCodePtrOutput)
+}
+
+type V3FunctionCodeOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCode)(nil)).Elem()
+}
+
+func (o V3FunctionCodeOutput) ToV3FunctionCodeOutput() V3FunctionCodeOutput {
+	return o
+}
+
+func (o V3FunctionCodeOutput) ToV3FunctionCodeOutputWithContext(ctx context.Context) V3FunctionCodeOutput {
+	return o
+}
+
+func (o V3FunctionCodeOutput) ToV3FunctionCodePtrOutput() V3FunctionCodePtrOutput {
+	return o.ToV3FunctionCodePtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCodeOutput) ToV3FunctionCodePtrOutputWithContext(ctx context.Context) V3FunctionCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCode) *V3FunctionCode {
+		return &v
+	}).(V3FunctionCodePtrOutput)
+}
+
+// The CRC-64 value of the function code package.
+func (o V3FunctionCodeOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCode) *string { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS Bucket that stores the function code ZIP package.
+func (o V3FunctionCodeOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCode) *string { return v.OssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS Object that stores the function code ZIP package.
+func (o V3FunctionCodeOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCode) *string { return v.OssObjectName }).(pulumi.StringPtrOutput)
+}
+
+// The Base 64 encoding of the function code ZIP package.
+func (o V3FunctionCodeOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCode) *string { return v.ZipFile }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCodePtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCode)(nil)).Elem()
+}
+
+func (o V3FunctionCodePtrOutput) ToV3FunctionCodePtrOutput() V3FunctionCodePtrOutput {
+	return o
+}
+
+func (o V3FunctionCodePtrOutput) ToV3FunctionCodePtrOutputWithContext(ctx context.Context) V3FunctionCodePtrOutput {
+	return o
+}
+
+func (o V3FunctionCodePtrOutput) Elem() V3FunctionCodeOutput {
+	return o.ApplyT(func(v *V3FunctionCode) V3FunctionCode {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCode
+		return ret
+	}).(V3FunctionCodeOutput)
+}
+
+// The CRC-64 value of the function code package.
+func (o V3FunctionCodePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS Bucket that stores the function code ZIP package.
+func (o V3FunctionCodePtrOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssBucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OSS Object that stores the function code ZIP package.
+func (o V3FunctionCodePtrOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssObjectName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Base 64 encoding of the function code ZIP package.
+func (o V3FunctionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZipFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfig struct {
+	// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+	//
+	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+	AccelerationInfo *V3FunctionCustomContainerConfigAccelerationInfo `pulumi:"accelerationInfo"`
+	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+	//
+	// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+	AccelerationType *string `pulumi:"accelerationType"`
+	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+	//
+	// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+	AcrInstanceId *string `pulumi:"acrInstanceId"`
+	// Container startup parameters.
+	Commands []string `pulumi:"commands"`
+	// Container start command.
+	Entrypoints []string `pulumi:"entrypoints"`
+	// Function custom health check configuration. See `healthCheckConfig` below.
+	HealthCheckConfig *V3FunctionCustomContainerConfigHealthCheckConfig `pulumi:"healthCheckConfig"`
+	// The container Image address.
+	Image *string `pulumi:"image"`
+	// The listening port of the HTTP Server when the custom container runs.
+	Port *int `pulumi:"port"`
+	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+	ResolvedImageUri *string `pulumi:"resolvedImageUri"`
+}
+
+// V3FunctionCustomContainerConfigInput is an input type that accepts V3FunctionCustomContainerConfigArgs and V3FunctionCustomContainerConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigArgs{...}
+type V3FunctionCustomContainerConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigOutput() V3FunctionCustomContainerConfigOutput
+	ToV3FunctionCustomContainerConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigOutput
+}
+
+type V3FunctionCustomContainerConfigArgs struct {
+	// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+	//
+	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+	AccelerationInfo V3FunctionCustomContainerConfigAccelerationInfoPtrInput `pulumi:"accelerationInfo"`
+	// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+	//
+	// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+	AccelerationType pulumi.StringPtrInput `pulumi:"accelerationType"`
+	// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+	//
+	// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+	AcrInstanceId pulumi.StringPtrInput `pulumi:"acrInstanceId"`
+	// Container startup parameters.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Container start command.
+	Entrypoints pulumi.StringArrayInput `pulumi:"entrypoints"`
+	// Function custom health check configuration. See `healthCheckConfig` below.
+	HealthCheckConfig V3FunctionCustomContainerConfigHealthCheckConfigPtrInput `pulumi:"healthCheckConfig"`
+	// The container Image address.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// The listening port of the HTTP Server when the custom container runs.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+	ResolvedImageUri pulumi.StringPtrInput `pulumi:"resolvedImageUri"`
+}
+
+func (V3FunctionCustomContainerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigArgs) ToV3FunctionCustomContainerConfigOutput() V3FunctionCustomContainerConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigArgs) ToV3FunctionCustomContainerConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigArgs) ToV3FunctionCustomContainerConfigPtrOutput() V3FunctionCustomContainerConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigArgs) ToV3FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigOutput).ToV3FunctionCustomContainerConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigArgs, V3FunctionCustomContainerConfigPtr and V3FunctionCustomContainerConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigPtrOutput() V3FunctionCustomContainerConfigPtrOutput
+	ToV3FunctionCustomContainerConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigPtrType V3FunctionCustomContainerConfigArgs
+
+func V3FunctionCustomContainerConfigPtr(v *V3FunctionCustomContainerConfigArgs) V3FunctionCustomContainerConfigPtrInput {
+	return (*v3functionCustomContainerConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigPtrType) ToV3FunctionCustomContainerConfigPtrOutput() V3FunctionCustomContainerConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigPtrType) ToV3FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfigOutput() V3FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfigPtrOutput() V3FunctionCustomContainerConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigPtrOutput)
+}
+
+// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+//
+// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+func (o V3FunctionCustomContainerConfigOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigAccelerationInfo {
+		return v.AccelerationInfo
+	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
+}
+
+// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+//
+// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+func (o V3FunctionCustomContainerConfigOutput) AccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.AccelerationType }).(pulumi.StringPtrOutput)
+}
+
+// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+//
+// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+func (o V3FunctionCustomContainerConfigOutput) AcrInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.AcrInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Container startup parameters.
+func (o V3FunctionCustomContainerConfigOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Container start command.
+func (o V3FunctionCustomContainerConfigOutput) Entrypoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) []string { return v.Entrypoints }).(pulumi.StringArrayOutput)
+}
+
+// Function custom health check configuration. See `healthCheckConfig` below.
+func (o V3FunctionCustomContainerConfigOutput) HealthCheckConfig() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigHealthCheckConfig {
+		return v.HealthCheckConfig
+	}).(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput)
+}
+
+// The container Image address.
+func (o V3FunctionCustomContainerConfigOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The listening port of the HTTP Server when the custom container runs.
+func (o V3FunctionCustomContainerConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+func (o V3FunctionCustomContainerConfigOutput) ResolvedImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *string { return v.ResolvedImageUri }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigPtrOutput) ToV3FunctionCustomContainerConfigPtrOutput() V3FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigPtrOutput) ToV3FunctionCustomContainerConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigPtrOutput) Elem() V3FunctionCustomContainerConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) V3FunctionCustomContainerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigOutput)
+}
+
+// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+//
+// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigAccelerationInfo {
+		if v == nil {
+			return nil
+		}
+		return v.AccelerationInfo
+	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
+}
+
+// Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+//
+// Deprecated: Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccelerationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+//
+// Deprecated: Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+func (o V3FunctionCustomContainerConfigPtrOutput) AcrInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcrInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container startup parameters.
+func (o V3FunctionCustomContainerConfigPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Container start command.
+func (o V3FunctionCustomContainerConfigPtrOutput) Entrypoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Entrypoints
+	}).(pulumi.StringArrayOutput)
+}
+
+// Function custom health check configuration. See `healthCheckConfig` below.
+func (o V3FunctionCustomContainerConfigPtrOutput) HealthCheckConfig() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigHealthCheckConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckConfig
+	}).(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput)
+}
+
+// The container Image address.
+func (o V3FunctionCustomContainerConfigPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// The listening port of the HTTP Server when the custom container runs.
+func (o V3FunctionCustomContainerConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+func (o V3FunctionCustomContainerConfigPtrOutput) ResolvedImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResolvedImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigAccelerationInfo struct {
+	// Image Acceleration Status (Deprecated).
+	//
+	// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+	Status *string `pulumi:"status"`
+}
+
+// V3FunctionCustomContainerConfigAccelerationInfoInput is an input type that accepts V3FunctionCustomContainerConfigAccelerationInfoArgs and V3FunctionCustomContainerConfigAccelerationInfoOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigAccelerationInfoInput` via:
+//
+//	V3FunctionCustomContainerConfigAccelerationInfoArgs{...}
+type V3FunctionCustomContainerConfigAccelerationInfoInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigAccelerationInfoOutput() V3FunctionCustomContainerConfigAccelerationInfoOutput
+	ToV3FunctionCustomContainerConfigAccelerationInfoOutputWithContext(context.Context) V3FunctionCustomContainerConfigAccelerationInfoOutput
+}
+
+type V3FunctionCustomContainerConfigAccelerationInfoArgs struct {
+	// Image Acceleration Status (Deprecated).
+	//
+	// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (V3FunctionCustomContainerConfigAccelerationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigAccelerationInfo)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigAccelerationInfoArgs) ToV3FunctionCustomContainerConfigAccelerationInfoOutput() V3FunctionCustomContainerConfigAccelerationInfoOutput {
+	return i.ToV3FunctionCustomContainerConfigAccelerationInfoOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigAccelerationInfoArgs) ToV3FunctionCustomContainerConfigAccelerationInfoOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigAccelerationInfoOutput)
+}
+
+func (i V3FunctionCustomContainerConfigAccelerationInfoArgs) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutput() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigAccelerationInfoArgs) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigAccelerationInfoOutput).ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigAccelerationInfoPtrInput is an input type that accepts V3FunctionCustomContainerConfigAccelerationInfoArgs, V3FunctionCustomContainerConfigAccelerationInfoPtr and V3FunctionCustomContainerConfigAccelerationInfoPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigAccelerationInfoPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigAccelerationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigAccelerationInfoPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutput() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput
+	ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigAccelerationInfoPtrOutput
+}
+
+type v3functionCustomContainerConfigAccelerationInfoPtrType V3FunctionCustomContainerConfigAccelerationInfoArgs
+
+func V3FunctionCustomContainerConfigAccelerationInfoPtr(v *V3FunctionCustomContainerConfigAccelerationInfoArgs) V3FunctionCustomContainerConfigAccelerationInfoPtrInput {
+	return (*v3functionCustomContainerConfigAccelerationInfoPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigAccelerationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigAccelerationInfo)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigAccelerationInfoPtrType) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutput() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigAccelerationInfoPtrType) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigAccelerationInfoOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigAccelerationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigAccelerationInfo)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) ToV3FunctionCustomContainerConfigAccelerationInfoOutput() V3FunctionCustomContainerConfigAccelerationInfoOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) ToV3FunctionCustomContainerConfigAccelerationInfoOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutput() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigAccelerationInfo) *V3FunctionCustomContainerConfigAccelerationInfo {
+		return &v
+	}).(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput)
+}
+
+// Image Acceleration Status (Deprecated).
+//
+// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+func (o V3FunctionCustomContainerConfigAccelerationInfoOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigAccelerationInfo) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigAccelerationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigAccelerationInfo)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutput() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) ToV3FunctionCustomContainerConfigAccelerationInfoPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) Elem() V3FunctionCustomContainerConfigAccelerationInfoOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigAccelerationInfo) V3FunctionCustomContainerConfigAccelerationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigAccelerationInfo
+		return ret
+	}).(V3FunctionCustomContainerConfigAccelerationInfoOutput)
+}
+
+// Image Acceleration Status (Deprecated).
+//
+// Deprecated: Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+func (o V3FunctionCustomContainerConfigAccelerationInfoPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigAccelerationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigHealthCheckConfig struct {
+	FailureThreshold    *int    `pulumi:"failureThreshold"`
+	HttpGetUrl          *string `pulumi:"httpGetUrl"`
+	InitialDelaySeconds *int    `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       *int    `pulumi:"periodSeconds"`
+	SuccessThreshold    *int    `pulumi:"successThreshold"`
+	TimeoutSeconds      *int    `pulumi:"timeoutSeconds"`
+}
+
+// V3FunctionCustomContainerConfigHealthCheckConfigInput is an input type that accepts V3FunctionCustomContainerConfigHealthCheckConfigArgs and V3FunctionCustomContainerConfigHealthCheckConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigHealthCheckConfigInput` via:
+//
+//	V3FunctionCustomContainerConfigHealthCheckConfigArgs{...}
+type V3FunctionCustomContainerConfigHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigHealthCheckConfigOutput() V3FunctionCustomContainerConfigHealthCheckConfigOutput
+	ToV3FunctionCustomContainerConfigHealthCheckConfigOutputWithContext(context.Context) V3FunctionCustomContainerConfigHealthCheckConfigOutput
+}
+
+type V3FunctionCustomContainerConfigHealthCheckConfigArgs struct {
+	FailureThreshold    pulumi.IntPtrInput    `pulumi:"failureThreshold"`
+	HttpGetUrl          pulumi.StringPtrInput `pulumi:"httpGetUrl"`
+	InitialDelaySeconds pulumi.IntPtrInput    `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntPtrInput    `pulumi:"periodSeconds"`
+	SuccessThreshold    pulumi.IntPtrInput    `pulumi:"successThreshold"`
+	TimeoutSeconds      pulumi.IntPtrInput    `pulumi:"timeoutSeconds"`
+}
+
+func (V3FunctionCustomContainerConfigHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomContainerConfigHealthCheckConfigArgs) ToV3FunctionCustomContainerConfigHealthCheckConfigOutput() V3FunctionCustomContainerConfigHealthCheckConfigOutput {
+	return i.ToV3FunctionCustomContainerConfigHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigHealthCheckConfigArgs) ToV3FunctionCustomContainerConfigHealthCheckConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigHealthCheckConfigOutput)
+}
+
+func (i V3FunctionCustomContainerConfigHealthCheckConfigArgs) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutput() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomContainerConfigHealthCheckConfigArgs) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigHealthCheckConfigOutput).ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomContainerConfigHealthCheckConfigPtrInput is an input type that accepts V3FunctionCustomContainerConfigHealthCheckConfigArgs, V3FunctionCustomContainerConfigHealthCheckConfigPtr and V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomContainerConfigHealthCheckConfigPtrInput` via:
+//
+//	        V3FunctionCustomContainerConfigHealthCheckConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomContainerConfigHealthCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutput() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput
+	ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(context.Context) V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput
+}
+
+type v3functionCustomContainerConfigHealthCheckConfigPtrType V3FunctionCustomContainerConfigHealthCheckConfigArgs
+
+func V3FunctionCustomContainerConfigHealthCheckConfigPtr(v *V3FunctionCustomContainerConfigHealthCheckConfigArgs) V3FunctionCustomContainerConfigHealthCheckConfigPtrInput {
+	return (*v3functionCustomContainerConfigHealthCheckConfigPtrType)(v)
+}
+
+func (*v3functionCustomContainerConfigHealthCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomContainerConfigHealthCheckConfigPtrType) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutput() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return i.ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomContainerConfigHealthCheckConfigPtrType) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigOutput() V3FunctionCustomContainerConfigHealthCheckConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutput() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o.ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomContainerConfigHealthCheckConfig) *V3FunctionCustomContainerConfigHealthCheckConfig {
+		return &v
+	}).(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *string { return v.HttpGetUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomContainerConfigHealthCheckConfig) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomContainerConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutput() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) ToV3FunctionCustomContainerConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) Elem() V3FunctionCustomContainerConfigHealthCheckConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) V3FunctionCustomContainerConfigHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomContainerConfigHealthCheckConfig
+		return ret
+	}).(V3FunctionCustomContainerConfigHealthCheckConfigOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGetUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomContainerConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomDns struct {
+	// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+	DnsOptions []V3FunctionCustomDnsDnsOption `pulumi:"dnsOptions"`
+	// IP Address List of DNS servers.
+	NameServers []string `pulumi:"nameServers"`
+	// DNS search domain list.
+	Searches []string `pulumi:"searches"`
+}
+
+// V3FunctionCustomDnsInput is an input type that accepts V3FunctionCustomDnsArgs and V3FunctionCustomDnsOutput values.
+// You can construct a concrete instance of `V3FunctionCustomDnsInput` via:
+//
+//	V3FunctionCustomDnsArgs{...}
+type V3FunctionCustomDnsInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomDnsOutput() V3FunctionCustomDnsOutput
+	ToV3FunctionCustomDnsOutputWithContext(context.Context) V3FunctionCustomDnsOutput
+}
+
+type V3FunctionCustomDnsArgs struct {
+	// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+	DnsOptions V3FunctionCustomDnsDnsOptionArrayInput `pulumi:"dnsOptions"`
+	// IP Address List of DNS servers.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+	// DNS search domain list.
+	Searches pulumi.StringArrayInput `pulumi:"searches"`
+}
+
+func (V3FunctionCustomDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomDns)(nil)).Elem()
+}
+
+func (i V3FunctionCustomDnsArgs) ToV3FunctionCustomDnsOutput() V3FunctionCustomDnsOutput {
+	return i.ToV3FunctionCustomDnsOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomDnsArgs) ToV3FunctionCustomDnsOutputWithContext(ctx context.Context) V3FunctionCustomDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomDnsOutput)
+}
+
+func (i V3FunctionCustomDnsArgs) ToV3FunctionCustomDnsPtrOutput() V3FunctionCustomDnsPtrOutput {
+	return i.ToV3FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomDnsArgs) ToV3FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V3FunctionCustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomDnsOutput).ToV3FunctionCustomDnsPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomDnsPtrInput is an input type that accepts V3FunctionCustomDnsArgs, V3FunctionCustomDnsPtr and V3FunctionCustomDnsPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomDnsPtrInput` via:
+//
+//	        V3FunctionCustomDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomDnsPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomDnsPtrOutput() V3FunctionCustomDnsPtrOutput
+	ToV3FunctionCustomDnsPtrOutputWithContext(context.Context) V3FunctionCustomDnsPtrOutput
+}
+
+type v3functionCustomDnsPtrType V3FunctionCustomDnsArgs
+
+func V3FunctionCustomDnsPtr(v *V3FunctionCustomDnsArgs) V3FunctionCustomDnsPtrInput {
+	return (*v3functionCustomDnsPtrType)(v)
+}
+
+func (*v3functionCustomDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomDns)(nil)).Elem()
+}
+
+func (i *v3functionCustomDnsPtrType) ToV3FunctionCustomDnsPtrOutput() V3FunctionCustomDnsPtrOutput {
+	return i.ToV3FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomDnsPtrType) ToV3FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V3FunctionCustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomDnsPtrOutput)
+}
+
+type V3FunctionCustomDnsOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomDns)(nil)).Elem()
+}
+
+func (o V3FunctionCustomDnsOutput) ToV3FunctionCustomDnsOutput() V3FunctionCustomDnsOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsOutput) ToV3FunctionCustomDnsOutputWithContext(ctx context.Context) V3FunctionCustomDnsOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsOutput) ToV3FunctionCustomDnsPtrOutput() V3FunctionCustomDnsPtrOutput {
+	return o.ToV3FunctionCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomDnsOutput) ToV3FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V3FunctionCustomDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomDns) *V3FunctionCustomDns {
+		return &v
+	}).(V3FunctionCustomDnsPtrOutput)
+}
+
+// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+func (o V3FunctionCustomDnsOutput) DnsOptions() V3FunctionCustomDnsDnsOptionArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomDns) []V3FunctionCustomDnsDnsOption { return v.DnsOptions }).(V3FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+// IP Address List of DNS servers.
+func (o V3FunctionCustomDnsOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomDns) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+// DNS search domain list.
+func (o V3FunctionCustomDnsOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomDns) []string { return v.Searches }).(pulumi.StringArrayOutput)
+}
+
+type V3FunctionCustomDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomDns)(nil)).Elem()
+}
+
+func (o V3FunctionCustomDnsPtrOutput) ToV3FunctionCustomDnsPtrOutput() V3FunctionCustomDnsPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsPtrOutput) ToV3FunctionCustomDnsPtrOutputWithContext(ctx context.Context) V3FunctionCustomDnsPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsPtrOutput) Elem() V3FunctionCustomDnsOutput {
+	return o.ApplyT(func(v *V3FunctionCustomDns) V3FunctionCustomDns {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomDns
+		return ret
+	}).(V3FunctionCustomDnsOutput)
+}
+
+// List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+func (o V3FunctionCustomDnsPtrOutput) DnsOptions() V3FunctionCustomDnsDnsOptionArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomDns) []V3FunctionCustomDnsDnsOption {
+		if v == nil {
+			return nil
+		}
+		return v.DnsOptions
+	}).(V3FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+// IP Address List of DNS servers.
+func (o V3FunctionCustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// DNS search domain list.
+func (o V3FunctionCustomDnsPtrOutput) Searches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Searches
+	}).(pulumi.StringArrayOutput)
+}
+
+type V3FunctionCustomDnsDnsOption struct {
+	// Configuration Item Name.
+	Name *string `pulumi:"name"`
+	// Configuration Item Value.
+	Value *string `pulumi:"value"`
+}
+
+// V3FunctionCustomDnsDnsOptionInput is an input type that accepts V3FunctionCustomDnsDnsOptionArgs and V3FunctionCustomDnsDnsOptionOutput values.
+// You can construct a concrete instance of `V3FunctionCustomDnsDnsOptionInput` via:
+//
+//	V3FunctionCustomDnsDnsOptionArgs{...}
+type V3FunctionCustomDnsDnsOptionInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomDnsDnsOptionOutput() V3FunctionCustomDnsDnsOptionOutput
+	ToV3FunctionCustomDnsDnsOptionOutputWithContext(context.Context) V3FunctionCustomDnsDnsOptionOutput
+}
+
+type V3FunctionCustomDnsDnsOptionArgs struct {
+	// Configuration Item Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configuration Item Value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (V3FunctionCustomDnsDnsOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (i V3FunctionCustomDnsDnsOptionArgs) ToV3FunctionCustomDnsDnsOptionOutput() V3FunctionCustomDnsDnsOptionOutput {
+	return i.ToV3FunctionCustomDnsDnsOptionOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomDnsDnsOptionArgs) ToV3FunctionCustomDnsDnsOptionOutputWithContext(ctx context.Context) V3FunctionCustomDnsDnsOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomDnsDnsOptionOutput)
+}
+
+// V3FunctionCustomDnsDnsOptionArrayInput is an input type that accepts V3FunctionCustomDnsDnsOptionArray and V3FunctionCustomDnsDnsOptionArrayOutput values.
+// You can construct a concrete instance of `V3FunctionCustomDnsDnsOptionArrayInput` via:
+//
+//	V3FunctionCustomDnsDnsOptionArray{ V3FunctionCustomDnsDnsOptionArgs{...} }
+type V3FunctionCustomDnsDnsOptionArrayInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomDnsDnsOptionArrayOutput() V3FunctionCustomDnsDnsOptionArrayOutput
+	ToV3FunctionCustomDnsDnsOptionArrayOutputWithContext(context.Context) V3FunctionCustomDnsDnsOptionArrayOutput
+}
+
+type V3FunctionCustomDnsDnsOptionArray []V3FunctionCustomDnsDnsOptionInput
+
+func (V3FunctionCustomDnsDnsOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (i V3FunctionCustomDnsDnsOptionArray) ToV3FunctionCustomDnsDnsOptionArrayOutput() V3FunctionCustomDnsDnsOptionArrayOutput {
+	return i.ToV3FunctionCustomDnsDnsOptionArrayOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomDnsDnsOptionArray) ToV3FunctionCustomDnsDnsOptionArrayOutputWithContext(ctx context.Context) V3FunctionCustomDnsDnsOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomDnsDnsOptionArrayOutput)
+}
+
+type V3FunctionCustomDnsDnsOptionOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomDnsDnsOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (o V3FunctionCustomDnsDnsOptionOutput) ToV3FunctionCustomDnsDnsOptionOutput() V3FunctionCustomDnsDnsOptionOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsDnsOptionOutput) ToV3FunctionCustomDnsDnsOptionOutputWithContext(ctx context.Context) V3FunctionCustomDnsDnsOptionOutput {
+	return o
+}
+
+// Configuration Item Name.
+func (o V3FunctionCustomDnsDnsOptionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomDnsDnsOption) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configuration Item Value.
+func (o V3FunctionCustomDnsDnsOptionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomDnsDnsOption) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionCustomDnsDnsOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomDnsDnsOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionCustomDnsDnsOption)(nil)).Elem()
+}
+
+func (o V3FunctionCustomDnsDnsOptionArrayOutput) ToV3FunctionCustomDnsDnsOptionArrayOutput() V3FunctionCustomDnsDnsOptionArrayOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsDnsOptionArrayOutput) ToV3FunctionCustomDnsDnsOptionArrayOutputWithContext(ctx context.Context) V3FunctionCustomDnsDnsOptionArrayOutput {
+	return o
+}
+
+func (o V3FunctionCustomDnsDnsOptionArrayOutput) Index(i pulumi.IntInput) V3FunctionCustomDnsDnsOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3FunctionCustomDnsDnsOption {
+		return vs[0].([]V3FunctionCustomDnsDnsOption)[vs[1].(int)]
+	}).(V3FunctionCustomDnsDnsOptionOutput)
+}
+
+type V3FunctionCustomRuntimeConfig struct {
+	// Instance startup parameters.
+	Args []string `pulumi:"args"`
+	// Instance start command.
+	Commands []string `pulumi:"commands"`
+	// Function custom health check configuration. See `healthCheckConfig` below.
+	HealthCheckConfig *V3FunctionCustomRuntimeConfigHealthCheckConfig `pulumi:"healthCheckConfig"`
+	// The listening port of the HTTP Server.
+	Port *int `pulumi:"port"`
+}
+
+// V3FunctionCustomRuntimeConfigInput is an input type that accepts V3FunctionCustomRuntimeConfigArgs and V3FunctionCustomRuntimeConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomRuntimeConfigInput` via:
+//
+//	V3FunctionCustomRuntimeConfigArgs{...}
+type V3FunctionCustomRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomRuntimeConfigOutput() V3FunctionCustomRuntimeConfigOutput
+	ToV3FunctionCustomRuntimeConfigOutputWithContext(context.Context) V3FunctionCustomRuntimeConfigOutput
+}
+
+type V3FunctionCustomRuntimeConfigArgs struct {
+	// Instance startup parameters.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Instance start command.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Function custom health check configuration. See `healthCheckConfig` below.
+	HealthCheckConfig V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput `pulumi:"healthCheckConfig"`
+	// The listening port of the HTTP Server.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (V3FunctionCustomRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomRuntimeConfigArgs) ToV3FunctionCustomRuntimeConfigOutput() V3FunctionCustomRuntimeConfigOutput {
+	return i.ToV3FunctionCustomRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomRuntimeConfigArgs) ToV3FunctionCustomRuntimeConfigOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigOutput)
+}
+
+func (i V3FunctionCustomRuntimeConfigArgs) ToV3FunctionCustomRuntimeConfigPtrOutput() V3FunctionCustomRuntimeConfigPtrOutput {
+	return i.ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomRuntimeConfigArgs) ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigOutput).ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomRuntimeConfigPtrInput is an input type that accepts V3FunctionCustomRuntimeConfigArgs, V3FunctionCustomRuntimeConfigPtr and V3FunctionCustomRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomRuntimeConfigPtrInput` via:
+//
+//	        V3FunctionCustomRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomRuntimeConfigPtrOutput() V3FunctionCustomRuntimeConfigPtrOutput
+	ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(context.Context) V3FunctionCustomRuntimeConfigPtrOutput
+}
+
+type v3functionCustomRuntimeConfigPtrType V3FunctionCustomRuntimeConfigArgs
+
+func V3FunctionCustomRuntimeConfigPtr(v *V3FunctionCustomRuntimeConfigArgs) V3FunctionCustomRuntimeConfigPtrInput {
+	return (*v3functionCustomRuntimeConfigPtrType)(v)
+}
+
+func (*v3functionCustomRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomRuntimeConfigPtrType) ToV3FunctionCustomRuntimeConfigPtrOutput() V3FunctionCustomRuntimeConfigPtrOutput {
+	return i.ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomRuntimeConfigPtrType) ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigPtrOutput)
+}
+
+type V3FunctionCustomRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomRuntimeConfigOutput) ToV3FunctionCustomRuntimeConfigOutput() V3FunctionCustomRuntimeConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigOutput) ToV3FunctionCustomRuntimeConfigOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigOutput) ToV3FunctionCustomRuntimeConfigPtrOutput() V3FunctionCustomRuntimeConfigPtrOutput {
+	return o.ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomRuntimeConfigOutput) ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomRuntimeConfig) *V3FunctionCustomRuntimeConfig {
+		return &v
+	}).(V3FunctionCustomRuntimeConfigPtrOutput)
+}
+
+// Instance startup parameters.
+func (o V3FunctionCustomRuntimeConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Instance start command.
+func (o V3FunctionCustomRuntimeConfigOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfig) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Function custom health check configuration. See `healthCheckConfig` below.
+func (o V3FunctionCustomRuntimeConfigOutput) HealthCheckConfig() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfig) *V3FunctionCustomRuntimeConfigHealthCheckConfig {
+		return v.HealthCheckConfig
+	}).(V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput)
+}
+
+// The listening port of the HTTP Server.
+func (o V3FunctionCustomRuntimeConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomRuntimeConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomRuntimeConfigPtrOutput) ToV3FunctionCustomRuntimeConfigPtrOutput() V3FunctionCustomRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigPtrOutput) ToV3FunctionCustomRuntimeConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigPtrOutput) Elem() V3FunctionCustomRuntimeConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfig) V3FunctionCustomRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomRuntimeConfig
+		return ret
+	}).(V3FunctionCustomRuntimeConfigOutput)
+}
+
+// Instance startup parameters.
+func (o V3FunctionCustomRuntimeConfigPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Instance start command.
+func (o V3FunctionCustomRuntimeConfigPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// Function custom health check configuration. See `healthCheckConfig` below.
+func (o V3FunctionCustomRuntimeConfigPtrOutput) HealthCheckConfig() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfig) *V3FunctionCustomRuntimeConfigHealthCheckConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckConfig
+	}).(V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput)
+}
+
+// The listening port of the HTTP Server.
+func (o V3FunctionCustomRuntimeConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomRuntimeConfigHealthCheckConfig struct {
+	FailureThreshold    *int    `pulumi:"failureThreshold"`
+	HttpGetUrl          *string `pulumi:"httpGetUrl"`
+	InitialDelaySeconds *int    `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       *int    `pulumi:"periodSeconds"`
+	SuccessThreshold    *int    `pulumi:"successThreshold"`
+	TimeoutSeconds      *int    `pulumi:"timeoutSeconds"`
+}
+
+// V3FunctionCustomRuntimeConfigHealthCheckConfigInput is an input type that accepts V3FunctionCustomRuntimeConfigHealthCheckConfigArgs and V3FunctionCustomRuntimeConfigHealthCheckConfigOutput values.
+// You can construct a concrete instance of `V3FunctionCustomRuntimeConfigHealthCheckConfigInput` via:
+//
+//	V3FunctionCustomRuntimeConfigHealthCheckConfigArgs{...}
+type V3FunctionCustomRuntimeConfigHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigOutput
+	ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutputWithContext(context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigOutput
+}
+
+type V3FunctionCustomRuntimeConfigHealthCheckConfigArgs struct {
+	FailureThreshold    pulumi.IntPtrInput    `pulumi:"failureThreshold"`
+	HttpGetUrl          pulumi.StringPtrInput `pulumi:"httpGetUrl"`
+	InitialDelaySeconds pulumi.IntPtrInput    `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntPtrInput    `pulumi:"periodSeconds"`
+	SuccessThreshold    pulumi.IntPtrInput    `pulumi:"successThreshold"`
+	TimeoutSeconds      pulumi.IntPtrInput    `pulumi:"timeoutSeconds"`
+}
+
+func (V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomRuntimeConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (i V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigOutput {
+	return i.ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigHealthCheckConfigOutput)
+}
+
+func (i V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return i.ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigHealthCheckConfigOutput).ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput is an input type that accepts V3FunctionCustomRuntimeConfigHealthCheckConfigArgs, V3FunctionCustomRuntimeConfigHealthCheckConfigPtr and V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput` via:
+//
+//	        V3FunctionCustomRuntimeConfigHealthCheckConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput
+	ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput
+}
+
+type v3functionCustomRuntimeConfigHealthCheckConfigPtrType V3FunctionCustomRuntimeConfigHealthCheckConfigArgs
+
+func V3FunctionCustomRuntimeConfigHealthCheckConfigPtr(v *V3FunctionCustomRuntimeConfigHealthCheckConfigArgs) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput {
+	return (*v3functionCustomRuntimeConfigHealthCheckConfigPtrType)(v)
+}
+
+func (*v3functionCustomRuntimeConfigHealthCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomRuntimeConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (i *v3functionCustomRuntimeConfigHealthCheckConfigPtrType) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return i.ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionCustomRuntimeConfigHealthCheckConfigPtrType) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput)
+}
+
+type V3FunctionCustomRuntimeConfigHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionCustomRuntimeConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o.ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionCustomRuntimeConfigHealthCheckConfig) *V3FunctionCustomRuntimeConfigHealthCheckConfig {
+		return &v
+	}).(V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *string { return v.HttpGetUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionCustomRuntimeConfigHealthCheckConfig) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionCustomRuntimeConfigHealthCheckConfig)(nil)).Elem()
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput() V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) ToV3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutputWithContext(ctx context.Context) V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) Elem() V3FunctionCustomRuntimeConfigHealthCheckConfigOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) V3FunctionCustomRuntimeConfigHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionCustomRuntimeConfigHealthCheckConfig
+		return ret
+	}).(V3FunctionCustomRuntimeConfigHealthCheckConfigOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) HttpGetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGetUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionCustomRuntimeConfigHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionGpuConfig struct {
+	// GPU memory specification, unit: MB, multiple of 1024MB.
+	GpuMemorySize *int `pulumi:"gpuMemorySize"`
+	// GPU card architecture.
+	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+	GpuType *string `pulumi:"gpuType"`
+}
+
+// V3FunctionGpuConfigInput is an input type that accepts V3FunctionGpuConfigArgs and V3FunctionGpuConfigOutput values.
+// You can construct a concrete instance of `V3FunctionGpuConfigInput` via:
+//
+//	V3FunctionGpuConfigArgs{...}
+type V3FunctionGpuConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionGpuConfigOutput() V3FunctionGpuConfigOutput
+	ToV3FunctionGpuConfigOutputWithContext(context.Context) V3FunctionGpuConfigOutput
+}
+
+type V3FunctionGpuConfigArgs struct {
+	// GPU memory specification, unit: MB, multiple of 1024MB.
+	GpuMemorySize pulumi.IntPtrInput `pulumi:"gpuMemorySize"`
+	// GPU card architecture.
+	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+	GpuType pulumi.StringPtrInput `pulumi:"gpuType"`
+}
+
+func (V3FunctionGpuConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionGpuConfig)(nil)).Elem()
+}
+
+func (i V3FunctionGpuConfigArgs) ToV3FunctionGpuConfigOutput() V3FunctionGpuConfigOutput {
+	return i.ToV3FunctionGpuConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionGpuConfigArgs) ToV3FunctionGpuConfigOutputWithContext(ctx context.Context) V3FunctionGpuConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionGpuConfigOutput)
+}
+
+func (i V3FunctionGpuConfigArgs) ToV3FunctionGpuConfigPtrOutput() V3FunctionGpuConfigPtrOutput {
+	return i.ToV3FunctionGpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionGpuConfigArgs) ToV3FunctionGpuConfigPtrOutputWithContext(ctx context.Context) V3FunctionGpuConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionGpuConfigOutput).ToV3FunctionGpuConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionGpuConfigPtrInput is an input type that accepts V3FunctionGpuConfigArgs, V3FunctionGpuConfigPtr and V3FunctionGpuConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionGpuConfigPtrInput` via:
+//
+//	        V3FunctionGpuConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionGpuConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionGpuConfigPtrOutput() V3FunctionGpuConfigPtrOutput
+	ToV3FunctionGpuConfigPtrOutputWithContext(context.Context) V3FunctionGpuConfigPtrOutput
+}
+
+type v3functionGpuConfigPtrType V3FunctionGpuConfigArgs
+
+func V3FunctionGpuConfigPtr(v *V3FunctionGpuConfigArgs) V3FunctionGpuConfigPtrInput {
+	return (*v3functionGpuConfigPtrType)(v)
+}
+
+func (*v3functionGpuConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionGpuConfig)(nil)).Elem()
+}
+
+func (i *v3functionGpuConfigPtrType) ToV3FunctionGpuConfigPtrOutput() V3FunctionGpuConfigPtrOutput {
+	return i.ToV3FunctionGpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionGpuConfigPtrType) ToV3FunctionGpuConfigPtrOutputWithContext(ctx context.Context) V3FunctionGpuConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionGpuConfigPtrOutput)
+}
+
+type V3FunctionGpuConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionGpuConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionGpuConfig)(nil)).Elem()
+}
+
+func (o V3FunctionGpuConfigOutput) ToV3FunctionGpuConfigOutput() V3FunctionGpuConfigOutput {
+	return o
+}
+
+func (o V3FunctionGpuConfigOutput) ToV3FunctionGpuConfigOutputWithContext(ctx context.Context) V3FunctionGpuConfigOutput {
+	return o
+}
+
+func (o V3FunctionGpuConfigOutput) ToV3FunctionGpuConfigPtrOutput() V3FunctionGpuConfigPtrOutput {
+	return o.ToV3FunctionGpuConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionGpuConfigOutput) ToV3FunctionGpuConfigPtrOutputWithContext(ctx context.Context) V3FunctionGpuConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionGpuConfig) *V3FunctionGpuConfig {
+		return &v
+	}).(V3FunctionGpuConfigPtrOutput)
+}
+
+// GPU memory specification, unit: MB, multiple of 1024MB.
+func (o V3FunctionGpuConfigOutput) GpuMemorySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionGpuConfig) *int { return v.GpuMemorySize }).(pulumi.IntPtrOutput)
+}
+
+// GPU card architecture.
+// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+func (o V3FunctionGpuConfigOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionGpuConfig) *string { return v.GpuType }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionGpuConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionGpuConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionGpuConfig)(nil)).Elem()
+}
+
+func (o V3FunctionGpuConfigPtrOutput) ToV3FunctionGpuConfigPtrOutput() V3FunctionGpuConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionGpuConfigPtrOutput) ToV3FunctionGpuConfigPtrOutputWithContext(ctx context.Context) V3FunctionGpuConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionGpuConfigPtrOutput) Elem() V3FunctionGpuConfigOutput {
+	return o.ApplyT(func(v *V3FunctionGpuConfig) V3FunctionGpuConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionGpuConfig
+		return ret
+	}).(V3FunctionGpuConfigOutput)
+}
+
+// GPU memory specification, unit: MB, multiple of 1024MB.
+func (o V3FunctionGpuConfigPtrOutput) GpuMemorySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionGpuConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GpuMemorySize
+	}).(pulumi.IntPtrOutput)
+}
+
+// GPU card architecture.
+// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+func (o V3FunctionGpuConfigPtrOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionGpuConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuType
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfig struct {
+	// Initializer handler method configuration. See `initializer` below.
+	Initializer *V3FunctionInstanceLifecycleConfigInitializer `pulumi:"initializer"`
+	// PreStop handler method configuration. See `preStop` below.
+	PreStop *V3FunctionInstanceLifecycleConfigPreStop `pulumi:"preStop"`
+}
+
+// V3FunctionInstanceLifecycleConfigInput is an input type that accepts V3FunctionInstanceLifecycleConfigArgs and V3FunctionInstanceLifecycleConfigOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigInput` via:
+//
+//	V3FunctionInstanceLifecycleConfigArgs{...}
+type V3FunctionInstanceLifecycleConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigOutput() V3FunctionInstanceLifecycleConfigOutput
+	ToV3FunctionInstanceLifecycleConfigOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigOutput
+}
+
+type V3FunctionInstanceLifecycleConfigArgs struct {
+	// Initializer handler method configuration. See `initializer` below.
+	Initializer V3FunctionInstanceLifecycleConfigInitializerPtrInput `pulumi:"initializer"`
+	// PreStop handler method configuration. See `preStop` below.
+	PreStop V3FunctionInstanceLifecycleConfigPreStopPtrInput `pulumi:"preStop"`
+}
+
+func (V3FunctionInstanceLifecycleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (i V3FunctionInstanceLifecycleConfigArgs) ToV3FunctionInstanceLifecycleConfigOutput() V3FunctionInstanceLifecycleConfigOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigArgs) ToV3FunctionInstanceLifecycleConfigOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigOutput)
+}
+
+func (i V3FunctionInstanceLifecycleConfigArgs) ToV3FunctionInstanceLifecycleConfigPtrOutput() V3FunctionInstanceLifecycleConfigPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigArgs) ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigOutput).ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionInstanceLifecycleConfigPtrInput is an input type that accepts V3FunctionInstanceLifecycleConfigArgs, V3FunctionInstanceLifecycleConfigPtr and V3FunctionInstanceLifecycleConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigPtrInput` via:
+//
+//	        V3FunctionInstanceLifecycleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionInstanceLifecycleConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigPtrOutput() V3FunctionInstanceLifecycleConfigPtrOutput
+	ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigPtrOutput
+}
+
+type v3functionInstanceLifecycleConfigPtrType V3FunctionInstanceLifecycleConfigArgs
+
+func V3FunctionInstanceLifecycleConfigPtr(v *V3FunctionInstanceLifecycleConfigArgs) V3FunctionInstanceLifecycleConfigPtrInput {
+	return (*v3functionInstanceLifecycleConfigPtrType)(v)
+}
+
+func (*v3functionInstanceLifecycleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (i *v3functionInstanceLifecycleConfigPtrType) ToV3FunctionInstanceLifecycleConfigPtrOutput() V3FunctionInstanceLifecycleConfigPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionInstanceLifecycleConfigPtrType) ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigOutput) ToV3FunctionInstanceLifecycleConfigOutput() V3FunctionInstanceLifecycleConfigOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigOutput) ToV3FunctionInstanceLifecycleConfigOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigOutput) ToV3FunctionInstanceLifecycleConfigPtrOutput() V3FunctionInstanceLifecycleConfigPtrOutput {
+	return o.ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionInstanceLifecycleConfigOutput) ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfig {
+		return &v
+	}).(V3FunctionInstanceLifecycleConfigPtrOutput)
+}
+
+// Initializer handler method configuration. See `initializer` below.
+func (o V3FunctionInstanceLifecycleConfigOutput) Initializer() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigInitializer {
+		return v.Initializer
+	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
+}
+
+// PreStop handler method configuration. See `preStop` below.
+func (o V3FunctionInstanceLifecycleConfigOutput) PreStop() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigPreStop { return v.PreStop }).(V3FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfig)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigPtrOutput) ToV3FunctionInstanceLifecycleConfigPtrOutput() V3FunctionInstanceLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPtrOutput) ToV3FunctionInstanceLifecycleConfigPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPtrOutput) Elem() V3FunctionInstanceLifecycleConfigOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfig) V3FunctionInstanceLifecycleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionInstanceLifecycleConfig
+		return ret
+	}).(V3FunctionInstanceLifecycleConfigOutput)
+}
+
+// Initializer handler method configuration. See `initializer` below.
+func (o V3FunctionInstanceLifecycleConfigPtrOutput) Initializer() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigInitializer {
+		if v == nil {
+			return nil
+		}
+		return v.Initializer
+	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
+}
+
+// PreStop handler method configuration. See `preStop` below.
+func (o V3FunctionInstanceLifecycleConfigPtrOutput) PreStop() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigPreStop {
+		if v == nil {
+			return nil
+		}
+		return v.PreStop
+	}).(V3FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigInitializer struct {
+	// Function Handler: the call entry for the function compute system to run your function.
+	Handler *string `pulumi:"handler"`
+	// The maximum running time of the function, in seconds.
+	Timeout *int `pulumi:"timeout"`
+}
+
+// V3FunctionInstanceLifecycleConfigInitializerInput is an input type that accepts V3FunctionInstanceLifecycleConfigInitializerArgs and V3FunctionInstanceLifecycleConfigInitializerOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigInitializerInput` via:
+//
+//	V3FunctionInstanceLifecycleConfigInitializerArgs{...}
+type V3FunctionInstanceLifecycleConfigInitializerInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigInitializerOutput() V3FunctionInstanceLifecycleConfigInitializerOutput
+	ToV3FunctionInstanceLifecycleConfigInitializerOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigInitializerOutput
+}
+
+type V3FunctionInstanceLifecycleConfigInitializerArgs struct {
+	// Function Handler: the call entry for the function compute system to run your function.
+	Handler pulumi.StringPtrInput `pulumi:"handler"`
+	// The maximum running time of the function, in seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (V3FunctionInstanceLifecycleConfigInitializerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInitializer)(nil)).Elem()
+}
+
+func (i V3FunctionInstanceLifecycleConfigInitializerArgs) ToV3FunctionInstanceLifecycleConfigInitializerOutput() V3FunctionInstanceLifecycleConfigInitializerOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigInitializerOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigInitializerArgs) ToV3FunctionInstanceLifecycleConfigInitializerOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigInitializerOutput)
+}
+
+func (i V3FunctionInstanceLifecycleConfigInitializerArgs) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutput() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigInitializerArgs) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigInitializerOutput).ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(ctx)
+}
+
+// V3FunctionInstanceLifecycleConfigInitializerPtrInput is an input type that accepts V3FunctionInstanceLifecycleConfigInitializerArgs, V3FunctionInstanceLifecycleConfigInitializerPtr and V3FunctionInstanceLifecycleConfigInitializerPtrOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigInitializerPtrInput` via:
+//
+//	        V3FunctionInstanceLifecycleConfigInitializerArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionInstanceLifecycleConfigInitializerPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigInitializerPtrOutput() V3FunctionInstanceLifecycleConfigInitializerPtrOutput
+	ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigInitializerPtrOutput
+}
+
+type v3functionInstanceLifecycleConfigInitializerPtrType V3FunctionInstanceLifecycleConfigInitializerArgs
+
+func V3FunctionInstanceLifecycleConfigInitializerPtr(v *V3FunctionInstanceLifecycleConfigInitializerArgs) V3FunctionInstanceLifecycleConfigInitializerPtrInput {
+	return (*v3functionInstanceLifecycleConfigInitializerPtrType)(v)
+}
+
+func (*v3functionInstanceLifecycleConfigInitializerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfigInitializer)(nil)).Elem()
+}
+
+func (i *v3functionInstanceLifecycleConfigInitializerPtrType) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutput() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionInstanceLifecycleConfigInitializerPtrType) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigInitializerOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigInitializerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInitializer)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) ToV3FunctionInstanceLifecycleConfigInitializerOutput() V3FunctionInstanceLifecycleConfigInitializerOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) ToV3FunctionInstanceLifecycleConfigInitializerOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutput() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o.ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionInstanceLifecycleConfigInitializer) *V3FunctionInstanceLifecycleConfigInitializer {
+		return &v
+	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
+}
+
+// Function Handler: the call entry for the function compute system to run your function.
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigInitializer) *string { return v.Handler }).(pulumi.StringPtrOutput)
+}
+
+// The maximum running time of the function, in seconds.
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigInitializer) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigInitializerPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigInitializerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfigInitializer)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutput() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) ToV3FunctionInstanceLifecycleConfigInitializerPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) Elem() V3FunctionInstanceLifecycleConfigInitializerOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigInitializer) V3FunctionInstanceLifecycleConfigInitializer {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionInstanceLifecycleConfigInitializer
+		return ret
+	}).(V3FunctionInstanceLifecycleConfigInitializerOutput)
+}
+
+// Function Handler: the call entry for the function compute system to run your function.
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigInitializer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Handler
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum running time of the function, in seconds.
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigInitializer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigPreStop struct {
+	// Function Handler: the call entry for the function compute system to run your function.
+	Handler *string `pulumi:"handler"`
+	// The maximum running time of the function, in seconds.
+	Timeout *int `pulumi:"timeout"`
+}
+
+// V3FunctionInstanceLifecycleConfigPreStopInput is an input type that accepts V3FunctionInstanceLifecycleConfigPreStopArgs and V3FunctionInstanceLifecycleConfigPreStopOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigPreStopInput` via:
+//
+//	V3FunctionInstanceLifecycleConfigPreStopArgs{...}
+type V3FunctionInstanceLifecycleConfigPreStopInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigPreStopOutput() V3FunctionInstanceLifecycleConfigPreStopOutput
+	ToV3FunctionInstanceLifecycleConfigPreStopOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigPreStopOutput
+}
+
+type V3FunctionInstanceLifecycleConfigPreStopArgs struct {
+	// Function Handler: the call entry for the function compute system to run your function.
+	Handler pulumi.StringPtrInput `pulumi:"handler"`
+	// The maximum running time of the function, in seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (V3FunctionInstanceLifecycleConfigPreStopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (i V3FunctionInstanceLifecycleConfigPreStopArgs) ToV3FunctionInstanceLifecycleConfigPreStopOutput() V3FunctionInstanceLifecycleConfigPreStopOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigPreStopOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigPreStopArgs) ToV3FunctionInstanceLifecycleConfigPreStopOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigPreStopOutput)
+}
+
+func (i V3FunctionInstanceLifecycleConfigPreStopArgs) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutput() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInstanceLifecycleConfigPreStopArgs) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigPreStopOutput).ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx)
+}
+
+// V3FunctionInstanceLifecycleConfigPreStopPtrInput is an input type that accepts V3FunctionInstanceLifecycleConfigPreStopArgs, V3FunctionInstanceLifecycleConfigPreStopPtr and V3FunctionInstanceLifecycleConfigPreStopPtrOutput values.
+// You can construct a concrete instance of `V3FunctionInstanceLifecycleConfigPreStopPtrInput` via:
+//
+//	        V3FunctionInstanceLifecycleConfigPreStopArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionInstanceLifecycleConfigPreStopPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionInstanceLifecycleConfigPreStopPtrOutput() V3FunctionInstanceLifecycleConfigPreStopPtrOutput
+	ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Context) V3FunctionInstanceLifecycleConfigPreStopPtrOutput
+}
+
+type v3functionInstanceLifecycleConfigPreStopPtrType V3FunctionInstanceLifecycleConfigPreStopArgs
+
+func V3FunctionInstanceLifecycleConfigPreStopPtr(v *V3FunctionInstanceLifecycleConfigPreStopArgs) V3FunctionInstanceLifecycleConfigPreStopPtrInput {
+	return (*v3functionInstanceLifecycleConfigPreStopPtrType)(v)
+}
+
+func (*v3functionInstanceLifecycleConfigPreStopPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (i *v3functionInstanceLifecycleConfigPreStopPtrType) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutput() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return i.ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionInstanceLifecycleConfigPreStopPtrType) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigPreStopOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigPreStopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) ToV3FunctionInstanceLifecycleConfigPreStopOutput() V3FunctionInstanceLifecycleConfigPreStopOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) ToV3FunctionInstanceLifecycleConfigPreStopOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutput() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionInstanceLifecycleConfigPreStop) *V3FunctionInstanceLifecycleConfigPreStop {
+		return &v
+	}).(V3FunctionInstanceLifecycleConfigPreStopPtrOutput)
+}
+
+// Function Handler: the call entry for the function compute system to run your function.
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigPreStop) *string { return v.Handler }).(pulumi.StringPtrOutput)
+}
+
+// The maximum running time of the function, in seconds.
+func (o V3FunctionInstanceLifecycleConfigPreStopOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigPreStop) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionInstanceLifecycleConfigPreStopPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInstanceLifecycleConfigPreStopPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInstanceLifecycleConfigPreStop)(nil)).Elem()
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutput() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) ToV3FunctionInstanceLifecycleConfigPreStopPtrOutputWithContext(ctx context.Context) V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
+	return o
+}
+
+func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) Elem() V3FunctionInstanceLifecycleConfigPreStopOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigPreStop) V3FunctionInstanceLifecycleConfigPreStop {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionInstanceLifecycleConfigPreStop
+		return ret
+	}).(V3FunctionInstanceLifecycleConfigPreStopOutput)
+}
+
+// Function Handler: the call entry for the function compute system to run your function.
+func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) Handler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigPreStop) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Handler
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum running time of the function, in seconds.
+func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigPreStop) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionLogConfig struct {
+	// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+	EnableInstanceMetrics *bool `pulumi:"enableInstanceMetrics"`
+	// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+	EnableRequestMetrics *bool `pulumi:"enableRequestMetrics"`
+	// Log Line First Matching Rules.
+	LogBeginRule *string `pulumi:"logBeginRule"`
+	// The Logstore name of log service.
+	Logstore *string `pulumi:"logstore"`
+	// The name of the log service Project.
+	Project *string `pulumi:"project"`
+}
+
+// V3FunctionLogConfigInput is an input type that accepts V3FunctionLogConfigArgs and V3FunctionLogConfigOutput values.
+// You can construct a concrete instance of `V3FunctionLogConfigInput` via:
+//
+//	V3FunctionLogConfigArgs{...}
+type V3FunctionLogConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionLogConfigOutput() V3FunctionLogConfigOutput
+	ToV3FunctionLogConfigOutputWithContext(context.Context) V3FunctionLogConfigOutput
+}
+
+type V3FunctionLogConfigArgs struct {
+	// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+	EnableInstanceMetrics pulumi.BoolPtrInput `pulumi:"enableInstanceMetrics"`
+	// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+	EnableRequestMetrics pulumi.BoolPtrInput `pulumi:"enableRequestMetrics"`
+	// Log Line First Matching Rules.
+	LogBeginRule pulumi.StringPtrInput `pulumi:"logBeginRule"`
+	// The Logstore name of log service.
+	Logstore pulumi.StringPtrInput `pulumi:"logstore"`
+	// The name of the log service Project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (V3FunctionLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionLogConfig)(nil)).Elem()
+}
+
+func (i V3FunctionLogConfigArgs) ToV3FunctionLogConfigOutput() V3FunctionLogConfigOutput {
+	return i.ToV3FunctionLogConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionLogConfigArgs) ToV3FunctionLogConfigOutputWithContext(ctx context.Context) V3FunctionLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionLogConfigOutput)
+}
+
+func (i V3FunctionLogConfigArgs) ToV3FunctionLogConfigPtrOutput() V3FunctionLogConfigPtrOutput {
+	return i.ToV3FunctionLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionLogConfigArgs) ToV3FunctionLogConfigPtrOutputWithContext(ctx context.Context) V3FunctionLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionLogConfigOutput).ToV3FunctionLogConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionLogConfigPtrInput is an input type that accepts V3FunctionLogConfigArgs, V3FunctionLogConfigPtr and V3FunctionLogConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionLogConfigPtrInput` via:
+//
+//	        V3FunctionLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionLogConfigPtrOutput() V3FunctionLogConfigPtrOutput
+	ToV3FunctionLogConfigPtrOutputWithContext(context.Context) V3FunctionLogConfigPtrOutput
+}
+
+type v3functionLogConfigPtrType V3FunctionLogConfigArgs
+
+func V3FunctionLogConfigPtr(v *V3FunctionLogConfigArgs) V3FunctionLogConfigPtrInput {
+	return (*v3functionLogConfigPtrType)(v)
+}
+
+func (*v3functionLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionLogConfig)(nil)).Elem()
+}
+
+func (i *v3functionLogConfigPtrType) ToV3FunctionLogConfigPtrOutput() V3FunctionLogConfigPtrOutput {
+	return i.ToV3FunctionLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionLogConfigPtrType) ToV3FunctionLogConfigPtrOutputWithContext(ctx context.Context) V3FunctionLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionLogConfigPtrOutput)
+}
+
+type V3FunctionLogConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionLogConfig)(nil)).Elem()
+}
+
+func (o V3FunctionLogConfigOutput) ToV3FunctionLogConfigOutput() V3FunctionLogConfigOutput {
+	return o
+}
+
+func (o V3FunctionLogConfigOutput) ToV3FunctionLogConfigOutputWithContext(ctx context.Context) V3FunctionLogConfigOutput {
+	return o
+}
+
+func (o V3FunctionLogConfigOutput) ToV3FunctionLogConfigPtrOutput() V3FunctionLogConfigPtrOutput {
+	return o.ToV3FunctionLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionLogConfigOutput) ToV3FunctionLogConfigPtrOutputWithContext(ctx context.Context) V3FunctionLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionLogConfig) *V3FunctionLogConfig {
+		return &v
+	}).(V3FunctionLogConfigPtrOutput)
+}
+
+// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+func (o V3FunctionLogConfigOutput) EnableInstanceMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionLogConfig) *bool { return v.EnableInstanceMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+func (o V3FunctionLogConfigOutput) EnableRequestMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionLogConfig) *bool { return v.EnableRequestMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// Log Line First Matching Rules.
+func (o V3FunctionLogConfigOutput) LogBeginRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionLogConfig) *string { return v.LogBeginRule }).(pulumi.StringPtrOutput)
+}
+
+// The Logstore name of log service.
+func (o V3FunctionLogConfigOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionLogConfig) *string { return v.Logstore }).(pulumi.StringPtrOutput)
+}
+
+// The name of the log service Project.
+func (o V3FunctionLogConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionLogConfig)(nil)).Elem()
+}
+
+func (o V3FunctionLogConfigPtrOutput) ToV3FunctionLogConfigPtrOutput() V3FunctionLogConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionLogConfigPtrOutput) ToV3FunctionLogConfigPtrOutputWithContext(ctx context.Context) V3FunctionLogConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionLogConfigPtrOutput) Elem() V3FunctionLogConfigOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) V3FunctionLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionLogConfig
+		return ret
+	}).(V3FunctionLogConfigOutput)
+}
+
+// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+func (o V3FunctionLogConfigPtrOutput) EnableInstanceMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInstanceMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+func (o V3FunctionLogConfigPtrOutput) EnableRequestMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRequestMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Log Line First Matching Rules.
+func (o V3FunctionLogConfigPtrOutput) LogBeginRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogBeginRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Logstore name of log service.
+func (o V3FunctionLogConfigPtrOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the log service Project.
+func (o V3FunctionLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionNasConfig struct {
+	// Group ID.
+	GroupId *int `pulumi:"groupId"`
+	// Mount point list. See `mountPoints` below.
+	MountPoints []V3FunctionNasConfigMountPoint `pulumi:"mountPoints"`
+	// Account ID.
+	UserId *int `pulumi:"userId"`
+}
+
+// V3FunctionNasConfigInput is an input type that accepts V3FunctionNasConfigArgs and V3FunctionNasConfigOutput values.
+// You can construct a concrete instance of `V3FunctionNasConfigInput` via:
+//
+//	V3FunctionNasConfigArgs{...}
+type V3FunctionNasConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionNasConfigOutput() V3FunctionNasConfigOutput
+	ToV3FunctionNasConfigOutputWithContext(context.Context) V3FunctionNasConfigOutput
+}
+
+type V3FunctionNasConfigArgs struct {
+	// Group ID.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// Mount point list. See `mountPoints` below.
+	MountPoints V3FunctionNasConfigMountPointArrayInput `pulumi:"mountPoints"`
+	// Account ID.
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (V3FunctionNasConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionNasConfig)(nil)).Elem()
+}
+
+func (i V3FunctionNasConfigArgs) ToV3FunctionNasConfigOutput() V3FunctionNasConfigOutput {
+	return i.ToV3FunctionNasConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionNasConfigArgs) ToV3FunctionNasConfigOutputWithContext(ctx context.Context) V3FunctionNasConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionNasConfigOutput)
+}
+
+func (i V3FunctionNasConfigArgs) ToV3FunctionNasConfigPtrOutput() V3FunctionNasConfigPtrOutput {
+	return i.ToV3FunctionNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionNasConfigArgs) ToV3FunctionNasConfigPtrOutputWithContext(ctx context.Context) V3FunctionNasConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionNasConfigOutput).ToV3FunctionNasConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionNasConfigPtrInput is an input type that accepts V3FunctionNasConfigArgs, V3FunctionNasConfigPtr and V3FunctionNasConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionNasConfigPtrInput` via:
+//
+//	        V3FunctionNasConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionNasConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionNasConfigPtrOutput() V3FunctionNasConfigPtrOutput
+	ToV3FunctionNasConfigPtrOutputWithContext(context.Context) V3FunctionNasConfigPtrOutput
+}
+
+type v3functionNasConfigPtrType V3FunctionNasConfigArgs
+
+func V3FunctionNasConfigPtr(v *V3FunctionNasConfigArgs) V3FunctionNasConfigPtrInput {
+	return (*v3functionNasConfigPtrType)(v)
+}
+
+func (*v3functionNasConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionNasConfig)(nil)).Elem()
+}
+
+func (i *v3functionNasConfigPtrType) ToV3FunctionNasConfigPtrOutput() V3FunctionNasConfigPtrOutput {
+	return i.ToV3FunctionNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionNasConfigPtrType) ToV3FunctionNasConfigPtrOutputWithContext(ctx context.Context) V3FunctionNasConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionNasConfigPtrOutput)
+}
+
+type V3FunctionNasConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionNasConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionNasConfig)(nil)).Elem()
+}
+
+func (o V3FunctionNasConfigOutput) ToV3FunctionNasConfigOutput() V3FunctionNasConfigOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigOutput) ToV3FunctionNasConfigOutputWithContext(ctx context.Context) V3FunctionNasConfigOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigOutput) ToV3FunctionNasConfigPtrOutput() V3FunctionNasConfigPtrOutput {
+	return o.ToV3FunctionNasConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionNasConfigOutput) ToV3FunctionNasConfigPtrOutputWithContext(ctx context.Context) V3FunctionNasConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionNasConfig) *V3FunctionNasConfig {
+		return &v
+	}).(V3FunctionNasConfigPtrOutput)
+}
+
+// Group ID.
+func (o V3FunctionNasConfigOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionNasConfig) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// Mount point list. See `mountPoints` below.
+func (o V3FunctionNasConfigOutput) MountPoints() V3FunctionNasConfigMountPointArrayOutput {
+	return o.ApplyT(func(v V3FunctionNasConfig) []V3FunctionNasConfigMountPoint { return v.MountPoints }).(V3FunctionNasConfigMountPointArrayOutput)
+}
+
+// Account ID.
+func (o V3FunctionNasConfigOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3FunctionNasConfig) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionNasConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionNasConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionNasConfig)(nil)).Elem()
+}
+
+func (o V3FunctionNasConfigPtrOutput) ToV3FunctionNasConfigPtrOutput() V3FunctionNasConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigPtrOutput) ToV3FunctionNasConfigPtrOutputWithContext(ctx context.Context) V3FunctionNasConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigPtrOutput) Elem() V3FunctionNasConfigOutput {
+	return o.ApplyT(func(v *V3FunctionNasConfig) V3FunctionNasConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionNasConfig
+		return ret
+	}).(V3FunctionNasConfigOutput)
+}
+
+// Group ID.
+func (o V3FunctionNasConfigPtrOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionNasConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mount point list. See `mountPoints` below.
+func (o V3FunctionNasConfigPtrOutput) MountPoints() V3FunctionNasConfigMountPointArrayOutput {
+	return o.ApplyT(func(v *V3FunctionNasConfig) []V3FunctionNasConfigMountPoint {
+		if v == nil {
+			return nil
+		}
+		return v.MountPoints
+	}).(V3FunctionNasConfigMountPointArrayOutput)
+}
+
+// Account ID.
+func (o V3FunctionNasConfigPtrOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V3FunctionNasConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.IntPtrOutput)
+}
+
+type V3FunctionNasConfigMountPoint struct {
+	// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+	EnableTls *bool   `pulumi:"enableTls"`
+	MountDir  *string `pulumi:"mountDir"`
+	// NAS server address.
+	ServerAddr *string `pulumi:"serverAddr"`
+}
+
+// V3FunctionNasConfigMountPointInput is an input type that accepts V3FunctionNasConfigMountPointArgs and V3FunctionNasConfigMountPointOutput values.
+// You can construct a concrete instance of `V3FunctionNasConfigMountPointInput` via:
+//
+//	V3FunctionNasConfigMountPointArgs{...}
+type V3FunctionNasConfigMountPointInput interface {
+	pulumi.Input
+
+	ToV3FunctionNasConfigMountPointOutput() V3FunctionNasConfigMountPointOutput
+	ToV3FunctionNasConfigMountPointOutputWithContext(context.Context) V3FunctionNasConfigMountPointOutput
+}
+
+type V3FunctionNasConfigMountPointArgs struct {
+	// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+	EnableTls pulumi.BoolPtrInput   `pulumi:"enableTls"`
+	MountDir  pulumi.StringPtrInput `pulumi:"mountDir"`
+	// NAS server address.
+	ServerAddr pulumi.StringPtrInput `pulumi:"serverAddr"`
+}
+
+func (V3FunctionNasConfigMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i V3FunctionNasConfigMountPointArgs) ToV3FunctionNasConfigMountPointOutput() V3FunctionNasConfigMountPointOutput {
+	return i.ToV3FunctionNasConfigMountPointOutputWithContext(context.Background())
+}
+
+func (i V3FunctionNasConfigMountPointArgs) ToV3FunctionNasConfigMountPointOutputWithContext(ctx context.Context) V3FunctionNasConfigMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionNasConfigMountPointOutput)
+}
+
+// V3FunctionNasConfigMountPointArrayInput is an input type that accepts V3FunctionNasConfigMountPointArray and V3FunctionNasConfigMountPointArrayOutput values.
+// You can construct a concrete instance of `V3FunctionNasConfigMountPointArrayInput` via:
+//
+//	V3FunctionNasConfigMountPointArray{ V3FunctionNasConfigMountPointArgs{...} }
+type V3FunctionNasConfigMountPointArrayInput interface {
+	pulumi.Input
+
+	ToV3FunctionNasConfigMountPointArrayOutput() V3FunctionNasConfigMountPointArrayOutput
+	ToV3FunctionNasConfigMountPointArrayOutputWithContext(context.Context) V3FunctionNasConfigMountPointArrayOutput
+}
+
+type V3FunctionNasConfigMountPointArray []V3FunctionNasConfigMountPointInput
+
+func (V3FunctionNasConfigMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionNasConfigMountPoint)(nil)).Elem()
+}
+
+func (i V3FunctionNasConfigMountPointArray) ToV3FunctionNasConfigMountPointArrayOutput() V3FunctionNasConfigMountPointArrayOutput {
+	return i.ToV3FunctionNasConfigMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i V3FunctionNasConfigMountPointArray) ToV3FunctionNasConfigMountPointArrayOutputWithContext(ctx context.Context) V3FunctionNasConfigMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionNasConfigMountPointArrayOutput)
+}
+
+type V3FunctionNasConfigMountPointOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionNasConfigMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o V3FunctionNasConfigMountPointOutput) ToV3FunctionNasConfigMountPointOutput() V3FunctionNasConfigMountPointOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigMountPointOutput) ToV3FunctionNasConfigMountPointOutputWithContext(ctx context.Context) V3FunctionNasConfigMountPointOutput {
+	return o
+}
+
+// Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+func (o V3FunctionNasConfigMountPointOutput) EnableTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionNasConfigMountPoint) *bool { return v.EnableTls }).(pulumi.BoolPtrOutput)
+}
+
+func (o V3FunctionNasConfigMountPointOutput) MountDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionNasConfigMountPoint) *string { return v.MountDir }).(pulumi.StringPtrOutput)
+}
+
+// NAS server address.
+func (o V3FunctionNasConfigMountPointOutput) ServerAddr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionNasConfigMountPoint) *string { return v.ServerAddr }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionNasConfigMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionNasConfigMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionNasConfigMountPoint)(nil)).Elem()
+}
+
+func (o V3FunctionNasConfigMountPointArrayOutput) ToV3FunctionNasConfigMountPointArrayOutput() V3FunctionNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigMountPointArrayOutput) ToV3FunctionNasConfigMountPointArrayOutputWithContext(ctx context.Context) V3FunctionNasConfigMountPointArrayOutput {
+	return o
+}
+
+func (o V3FunctionNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) V3FunctionNasConfigMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3FunctionNasConfigMountPoint {
+		return vs[0].([]V3FunctionNasConfigMountPoint)[vs[1].(int)]
+	}).(V3FunctionNasConfigMountPointOutput)
+}
+
+type V3FunctionOssMountConfig struct {
+	// OSS mount point list. See `mountPoints` below.
+	MountPoints []V3FunctionOssMountConfigMountPoint `pulumi:"mountPoints"`
+}
+
+// V3FunctionOssMountConfigInput is an input type that accepts V3FunctionOssMountConfigArgs and V3FunctionOssMountConfigOutput values.
+// You can construct a concrete instance of `V3FunctionOssMountConfigInput` via:
+//
+//	V3FunctionOssMountConfigArgs{...}
+type V3FunctionOssMountConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionOssMountConfigOutput() V3FunctionOssMountConfigOutput
+	ToV3FunctionOssMountConfigOutputWithContext(context.Context) V3FunctionOssMountConfigOutput
+}
+
+type V3FunctionOssMountConfigArgs struct {
+	// OSS mount point list. See `mountPoints` below.
+	MountPoints V3FunctionOssMountConfigMountPointArrayInput `pulumi:"mountPoints"`
+}
+
+func (V3FunctionOssMountConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionOssMountConfig)(nil)).Elem()
+}
+
+func (i V3FunctionOssMountConfigArgs) ToV3FunctionOssMountConfigOutput() V3FunctionOssMountConfigOutput {
+	return i.ToV3FunctionOssMountConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionOssMountConfigArgs) ToV3FunctionOssMountConfigOutputWithContext(ctx context.Context) V3FunctionOssMountConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionOssMountConfigOutput)
+}
+
+func (i V3FunctionOssMountConfigArgs) ToV3FunctionOssMountConfigPtrOutput() V3FunctionOssMountConfigPtrOutput {
+	return i.ToV3FunctionOssMountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionOssMountConfigArgs) ToV3FunctionOssMountConfigPtrOutputWithContext(ctx context.Context) V3FunctionOssMountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionOssMountConfigOutput).ToV3FunctionOssMountConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionOssMountConfigPtrInput is an input type that accepts V3FunctionOssMountConfigArgs, V3FunctionOssMountConfigPtr and V3FunctionOssMountConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionOssMountConfigPtrInput` via:
+//
+//	        V3FunctionOssMountConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionOssMountConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionOssMountConfigPtrOutput() V3FunctionOssMountConfigPtrOutput
+	ToV3FunctionOssMountConfigPtrOutputWithContext(context.Context) V3FunctionOssMountConfigPtrOutput
+}
+
+type v3functionOssMountConfigPtrType V3FunctionOssMountConfigArgs
+
+func V3FunctionOssMountConfigPtr(v *V3FunctionOssMountConfigArgs) V3FunctionOssMountConfigPtrInput {
+	return (*v3functionOssMountConfigPtrType)(v)
+}
+
+func (*v3functionOssMountConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionOssMountConfig)(nil)).Elem()
+}
+
+func (i *v3functionOssMountConfigPtrType) ToV3FunctionOssMountConfigPtrOutput() V3FunctionOssMountConfigPtrOutput {
+	return i.ToV3FunctionOssMountConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionOssMountConfigPtrType) ToV3FunctionOssMountConfigPtrOutputWithContext(ctx context.Context) V3FunctionOssMountConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionOssMountConfigPtrOutput)
+}
+
+type V3FunctionOssMountConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionOssMountConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionOssMountConfig)(nil)).Elem()
+}
+
+func (o V3FunctionOssMountConfigOutput) ToV3FunctionOssMountConfigOutput() V3FunctionOssMountConfigOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigOutput) ToV3FunctionOssMountConfigOutputWithContext(ctx context.Context) V3FunctionOssMountConfigOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigOutput) ToV3FunctionOssMountConfigPtrOutput() V3FunctionOssMountConfigPtrOutput {
+	return o.ToV3FunctionOssMountConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionOssMountConfigOutput) ToV3FunctionOssMountConfigPtrOutputWithContext(ctx context.Context) V3FunctionOssMountConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionOssMountConfig) *V3FunctionOssMountConfig {
+		return &v
+	}).(V3FunctionOssMountConfigPtrOutput)
+}
+
+// OSS mount point list. See `mountPoints` below.
+func (o V3FunctionOssMountConfigOutput) MountPoints() V3FunctionOssMountConfigMountPointArrayOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfig) []V3FunctionOssMountConfigMountPoint { return v.MountPoints }).(V3FunctionOssMountConfigMountPointArrayOutput)
+}
+
+type V3FunctionOssMountConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionOssMountConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionOssMountConfig)(nil)).Elem()
+}
+
+func (o V3FunctionOssMountConfigPtrOutput) ToV3FunctionOssMountConfigPtrOutput() V3FunctionOssMountConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigPtrOutput) ToV3FunctionOssMountConfigPtrOutputWithContext(ctx context.Context) V3FunctionOssMountConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigPtrOutput) Elem() V3FunctionOssMountConfigOutput {
+	return o.ApplyT(func(v *V3FunctionOssMountConfig) V3FunctionOssMountConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionOssMountConfig
+		return ret
+	}).(V3FunctionOssMountConfigOutput)
+}
+
+// OSS mount point list. See `mountPoints` below.
+func (o V3FunctionOssMountConfigPtrOutput) MountPoints() V3FunctionOssMountConfigMountPointArrayOutput {
+	return o.ApplyT(func(v *V3FunctionOssMountConfig) []V3FunctionOssMountConfigMountPoint {
+		if v == nil {
+			return nil
+		}
+		return v.MountPoints
+	}).(V3FunctionOssMountConfigMountPointArrayOutput)
+}
+
+type V3FunctionOssMountConfigMountPoint struct {
+	// OSS Bucket name.
+	BucketName *string `pulumi:"bucketName"`
+	// Path of the mounted OSS Bucket.
+	BucketPath *string `pulumi:"bucketPath"`
+	// OSS access endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	MountDir *string `pulumi:"mountDir"`
+	// Read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// V3FunctionOssMountConfigMountPointInput is an input type that accepts V3FunctionOssMountConfigMountPointArgs and V3FunctionOssMountConfigMountPointOutput values.
+// You can construct a concrete instance of `V3FunctionOssMountConfigMountPointInput` via:
+//
+//	V3FunctionOssMountConfigMountPointArgs{...}
+type V3FunctionOssMountConfigMountPointInput interface {
+	pulumi.Input
+
+	ToV3FunctionOssMountConfigMountPointOutput() V3FunctionOssMountConfigMountPointOutput
+	ToV3FunctionOssMountConfigMountPointOutputWithContext(context.Context) V3FunctionOssMountConfigMountPointOutput
+}
+
+type V3FunctionOssMountConfigMountPointArgs struct {
+	// OSS Bucket name.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// Path of the mounted OSS Bucket.
+	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
+	// OSS access endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	MountDir pulumi.StringPtrInput `pulumi:"mountDir"`
+	// Read-only.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (V3FunctionOssMountConfigMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionOssMountConfigMountPoint)(nil)).Elem()
+}
+
+func (i V3FunctionOssMountConfigMountPointArgs) ToV3FunctionOssMountConfigMountPointOutput() V3FunctionOssMountConfigMountPointOutput {
+	return i.ToV3FunctionOssMountConfigMountPointOutputWithContext(context.Background())
+}
+
+func (i V3FunctionOssMountConfigMountPointArgs) ToV3FunctionOssMountConfigMountPointOutputWithContext(ctx context.Context) V3FunctionOssMountConfigMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionOssMountConfigMountPointOutput)
+}
+
+// V3FunctionOssMountConfigMountPointArrayInput is an input type that accepts V3FunctionOssMountConfigMountPointArray and V3FunctionOssMountConfigMountPointArrayOutput values.
+// You can construct a concrete instance of `V3FunctionOssMountConfigMountPointArrayInput` via:
+//
+//	V3FunctionOssMountConfigMountPointArray{ V3FunctionOssMountConfigMountPointArgs{...} }
+type V3FunctionOssMountConfigMountPointArrayInput interface {
+	pulumi.Input
+
+	ToV3FunctionOssMountConfigMountPointArrayOutput() V3FunctionOssMountConfigMountPointArrayOutput
+	ToV3FunctionOssMountConfigMountPointArrayOutputWithContext(context.Context) V3FunctionOssMountConfigMountPointArrayOutput
+}
+
+type V3FunctionOssMountConfigMountPointArray []V3FunctionOssMountConfigMountPointInput
+
+func (V3FunctionOssMountConfigMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionOssMountConfigMountPoint)(nil)).Elem()
+}
+
+func (i V3FunctionOssMountConfigMountPointArray) ToV3FunctionOssMountConfigMountPointArrayOutput() V3FunctionOssMountConfigMountPointArrayOutput {
+	return i.ToV3FunctionOssMountConfigMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i V3FunctionOssMountConfigMountPointArray) ToV3FunctionOssMountConfigMountPointArrayOutputWithContext(ctx context.Context) V3FunctionOssMountConfigMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionOssMountConfigMountPointArrayOutput)
+}
+
+type V3FunctionOssMountConfigMountPointOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionOssMountConfigMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionOssMountConfigMountPoint)(nil)).Elem()
+}
+
+func (o V3FunctionOssMountConfigMountPointOutput) ToV3FunctionOssMountConfigMountPointOutput() V3FunctionOssMountConfigMountPointOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigMountPointOutput) ToV3FunctionOssMountConfigMountPointOutputWithContext(ctx context.Context) V3FunctionOssMountConfigMountPointOutput {
+	return o
+}
+
+// OSS Bucket name.
+func (o V3FunctionOssMountConfigMountPointOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// Path of the mounted OSS Bucket.
+func (o V3FunctionOssMountConfigMountPointOutput) BucketPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
+}
+
+// OSS access endpoint.
+func (o V3FunctionOssMountConfigMountPointOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o V3FunctionOssMountConfigMountPointOutput) MountDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *string { return v.MountDir }).(pulumi.StringPtrOutput)
+}
+
+// Read-only.
+func (o V3FunctionOssMountConfigMountPointOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionOssMountConfigMountPoint) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type V3FunctionOssMountConfigMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionOssMountConfigMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3FunctionOssMountConfigMountPoint)(nil)).Elem()
+}
+
+func (o V3FunctionOssMountConfigMountPointArrayOutput) ToV3FunctionOssMountConfigMountPointArrayOutput() V3FunctionOssMountConfigMountPointArrayOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigMountPointArrayOutput) ToV3FunctionOssMountConfigMountPointArrayOutputWithContext(ctx context.Context) V3FunctionOssMountConfigMountPointArrayOutput {
+	return o
+}
+
+func (o V3FunctionOssMountConfigMountPointArrayOutput) Index(i pulumi.IntInput) V3FunctionOssMountConfigMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3FunctionOssMountConfigMountPoint {
+		return vs[0].([]V3FunctionOssMountConfigMountPoint)[vs[1].(int)]
+	}).(V3FunctionOssMountConfigMountPointOutput)
+}
+
+type V3FunctionVpcConfig struct {
+	// Security group ID.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// VPC network ID.
+	VpcId *string `pulumi:"vpcId"`
+	// Switch List.
+	VswitchIds []string `pulumi:"vswitchIds"`
+}
+
+// V3FunctionVpcConfigInput is an input type that accepts V3FunctionVpcConfigArgs and V3FunctionVpcConfigOutput values.
+// You can construct a concrete instance of `V3FunctionVpcConfigInput` via:
+//
+//	V3FunctionVpcConfigArgs{...}
+type V3FunctionVpcConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionVpcConfigOutput() V3FunctionVpcConfigOutput
+	ToV3FunctionVpcConfigOutputWithContext(context.Context) V3FunctionVpcConfigOutput
+}
+
+type V3FunctionVpcConfigArgs struct {
+	// Security group ID.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// VPC network ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Switch List.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+}
+
+func (V3FunctionVpcConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionVpcConfig)(nil)).Elem()
+}
+
+func (i V3FunctionVpcConfigArgs) ToV3FunctionVpcConfigOutput() V3FunctionVpcConfigOutput {
+	return i.ToV3FunctionVpcConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionVpcConfigArgs) ToV3FunctionVpcConfigOutputWithContext(ctx context.Context) V3FunctionVpcConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionVpcConfigOutput)
+}
+
+func (i V3FunctionVpcConfigArgs) ToV3FunctionVpcConfigPtrOutput() V3FunctionVpcConfigPtrOutput {
+	return i.ToV3FunctionVpcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionVpcConfigArgs) ToV3FunctionVpcConfigPtrOutputWithContext(ctx context.Context) V3FunctionVpcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionVpcConfigOutput).ToV3FunctionVpcConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionVpcConfigPtrInput is an input type that accepts V3FunctionVpcConfigArgs, V3FunctionVpcConfigPtr and V3FunctionVpcConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionVpcConfigPtrInput` via:
+//
+//	        V3FunctionVpcConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionVpcConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionVpcConfigPtrOutput() V3FunctionVpcConfigPtrOutput
+	ToV3FunctionVpcConfigPtrOutputWithContext(context.Context) V3FunctionVpcConfigPtrOutput
+}
+
+type v3functionVpcConfigPtrType V3FunctionVpcConfigArgs
+
+func V3FunctionVpcConfigPtr(v *V3FunctionVpcConfigArgs) V3FunctionVpcConfigPtrInput {
+	return (*v3functionVpcConfigPtrType)(v)
+}
+
+func (*v3functionVpcConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionVpcConfig)(nil)).Elem()
+}
+
+func (i *v3functionVpcConfigPtrType) ToV3FunctionVpcConfigPtrOutput() V3FunctionVpcConfigPtrOutput {
+	return i.ToV3FunctionVpcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionVpcConfigPtrType) ToV3FunctionVpcConfigPtrOutputWithContext(ctx context.Context) V3FunctionVpcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionVpcConfigPtrOutput)
+}
+
+type V3FunctionVpcConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionVpcConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionVpcConfig)(nil)).Elem()
+}
+
+func (o V3FunctionVpcConfigOutput) ToV3FunctionVpcConfigOutput() V3FunctionVpcConfigOutput {
+	return o
+}
+
+func (o V3FunctionVpcConfigOutput) ToV3FunctionVpcConfigOutputWithContext(ctx context.Context) V3FunctionVpcConfigOutput {
+	return o
+}
+
+func (o V3FunctionVpcConfigOutput) ToV3FunctionVpcConfigPtrOutput() V3FunctionVpcConfigPtrOutput {
+	return o.ToV3FunctionVpcConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionVpcConfigOutput) ToV3FunctionVpcConfigPtrOutputWithContext(ctx context.Context) V3FunctionVpcConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionVpcConfig) *V3FunctionVpcConfig {
+		return &v
+	}).(V3FunctionVpcConfigPtrOutput)
+}
+
+// Security group ID.
+func (o V3FunctionVpcConfigOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionVpcConfig) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// VPC network ID.
+func (o V3FunctionVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// Switch List.
+func (o V3FunctionVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+type V3FunctionVpcConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionVpcConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionVpcConfig)(nil)).Elem()
+}
+
+func (o V3FunctionVpcConfigPtrOutput) ToV3FunctionVpcConfigPtrOutput() V3FunctionVpcConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionVpcConfigPtrOutput) ToV3FunctionVpcConfigPtrOutputWithContext(ctx context.Context) V3FunctionVpcConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionVpcConfigPtrOutput) Elem() V3FunctionVpcConfigOutput {
+	return o.ApplyT(func(v *V3FunctionVpcConfig) V3FunctionVpcConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionVpcConfig
+		return ret
+	}).(V3FunctionVpcConfigOutput)
+}
+
+// Security group ID.
+func (o V3FunctionVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionVpcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC network ID.
+func (o V3FunctionVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionVpcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Switch List.
+func (o V3FunctionVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionVpcConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchIds
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetCustomDomainsDomain struct {
 	// The account id.
 	AccountId string `pulumi:"accountId"`
@@ -4610,7 +9587,7 @@ type GetServicesServiceVpcConfig struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// Associated VPC ID.
 	VpcId string `pulumi:"vpcId"`
-	// Associated VSwitch IDs.
+	// Associated vSwitch IDs.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -4630,7 +9607,7 @@ type GetServicesServiceVpcConfigArgs struct {
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// Associated VPC ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// Associated VSwitch IDs.
+	// Associated vSwitch IDs.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -4670,7 +9647,7 @@ func (o GetServicesServiceVpcConfigOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesServiceVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// Associated VSwitch IDs.
+// Associated vSwitch IDs.
 func (o GetServicesServiceVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicesServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -4975,6 +9952,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreFreezePtrInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreFreezeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStopInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreStopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2FunctionInstanceLifecycleConfigPreStopPtrInput)(nil)).Elem(), V2FunctionInstanceLifecycleConfigPreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigPtrInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnFailureInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnSuccessInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput)(nil)).Elem(), V3AsyncInvokeConfigDestinationConfigOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainAuthConfigInput)(nil)).Elem(), V3CustomDomainAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainAuthConfigPtrInput)(nil)).Elem(), V3CustomDomainAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCertConfigInput)(nil)).Elem(), V3CustomDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainCertConfigPtrInput)(nil)).Elem(), V3CustomDomainCertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigInput)(nil)).Elem(), V3CustomDomainRouteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigPtrInput)(nil)).Elem(), V3CustomDomainRouteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteArrayInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigPtrInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput)(nil)).Elem(), V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainTlsConfigInput)(nil)).Elem(), V3CustomDomainTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainTlsConfigPtrInput)(nil)).Elem(), V3CustomDomainTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainWafConfigInput)(nil)).Elem(), V3CustomDomainWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3CustomDomainWafConfigPtrInput)(nil)).Elem(), V3CustomDomainWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCodeInput)(nil)).Elem(), V3FunctionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCodePtrInput)(nil)).Elem(), V3FunctionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigAccelerationInfoInput)(nil)).Elem(), V3FunctionCustomContainerConfigAccelerationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigAccelerationInfoPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigAccelerationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfigInput)(nil)).Elem(), V3FunctionCustomContainerConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomContainerConfigHealthCheckConfigPtrInput)(nil)).Elem(), V3FunctionCustomContainerConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsInput)(nil)).Elem(), V3FunctionCustomDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsPtrInput)(nil)).Elem(), V3FunctionCustomDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsDnsOptionInput)(nil)).Elem(), V3FunctionCustomDnsDnsOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomDnsDnsOptionArrayInput)(nil)).Elem(), V3FunctionCustomDnsDnsOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomRuntimeConfigInput)(nil)).Elem(), V3FunctionCustomRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomRuntimeConfigPtrInput)(nil)).Elem(), V3FunctionCustomRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomRuntimeConfigHealthCheckConfigInput)(nil)).Elem(), V3FunctionCustomRuntimeConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionCustomRuntimeConfigHealthCheckConfigPtrInput)(nil)).Elem(), V3FunctionCustomRuntimeConfigHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionGpuConfigInput)(nil)).Elem(), V3FunctionGpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionGpuConfigPtrInput)(nil)).Elem(), V3FunctionGpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPtrInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInitializerInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigInitializerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInitializerPtrInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigInitializerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStopInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigPreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStopPtrInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigPreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionLogConfigInput)(nil)).Elem(), V3FunctionLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionLogConfigPtrInput)(nil)).Elem(), V3FunctionLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionNasConfigInput)(nil)).Elem(), V3FunctionNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionNasConfigPtrInput)(nil)).Elem(), V3FunctionNasConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionNasConfigMountPointInput)(nil)).Elem(), V3FunctionNasConfigMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionNasConfigMountPointArrayInput)(nil)).Elem(), V3FunctionNasConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigInput)(nil)).Elem(), V3FunctionOssMountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigPtrInput)(nil)).Elem(), V3FunctionOssMountConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigMountPointInput)(nil)).Elem(), V3FunctionOssMountConfigMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigMountPointArrayInput)(nil)).Elem(), V3FunctionOssMountConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigPtrInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainArrayInput)(nil)).Elem(), GetCustomDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainCertConfigInput)(nil)).Elem(), GetCustomDomainsDomainCertConfigArgs{})
@@ -5037,6 +10076,68 @@ func init() {
 	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreFreezePtrOutput{})
 	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreStopOutput{})
 	pulumi.RegisterOutputType(V2FunctionInstanceLifecycleConfigPreStopPtrOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigOnFailureOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigOnSuccessOutput{})
+	pulumi.RegisterOutputType(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainAuthConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainCertConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainCertConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteArrayOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainTlsConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainWafConfigOutput{})
+	pulumi.RegisterOutputType(V3CustomDomainWafConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCodeOutput{})
+	pulumi.RegisterOutputType(V3FunctionCodePtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigAccelerationInfoOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigAccelerationInfoPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomDnsOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomDnsPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomDnsDnsOptionOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomDnsDnsOptionArrayOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomRuntimeConfigHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionCustomRuntimeConfigHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionGpuConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionGpuConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigInitializerOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigInitializerPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigPreStopOutput{})
+	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigPreStopPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionLogConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionNasConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionNasConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionNasConfigMountPointOutput{})
+	pulumi.RegisterOutputType(V3FunctionNasConfigMountPointArrayOutput{})
+	pulumi.RegisterOutputType(V3FunctionOssMountConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionOssMountConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionOssMountConfigMountPointOutput{})
+	pulumi.RegisterOutputType(V3FunctionOssMountConfigMountPointArrayOutput{})
+	pulumi.RegisterOutputType(V3FunctionVpcConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionVpcConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainCertConfigOutput{})

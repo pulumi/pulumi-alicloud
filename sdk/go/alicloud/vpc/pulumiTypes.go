@@ -5899,7 +5899,7 @@ type GetNetworksVpc struct {
 	VpcName string `pulumi:"vpcName"`
 	// ID of the VRouter.
 	VrouterId string `pulumi:"vrouterId"`
-	// List of VSwitch IDs in the specified VPC
+	// List of vSwitch IDs in the specified VPC
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -5949,7 +5949,7 @@ type GetNetworksVpcArgs struct {
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
 	// ID of the VRouter.
 	VrouterId pulumi.StringInput `pulumi:"vrouterId"`
-	// List of VSwitch IDs in the specified VPC
+	// List of vSwitch IDs in the specified VPC
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -6089,7 +6089,7 @@ func (o GetNetworksVpcOutput) VrouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworksVpc) string { return v.VrouterId }).(pulumi.StringOutput)
 }
 
-// List of VSwitch IDs in the specified VPC
+// List of vSwitch IDs in the specified VPC
 func (o GetNetworksVpcOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworksVpc) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -8182,37 +8182,37 @@ func (o GetSslVpnServersServerArrayOutput) Index(i pulumi.IntInput) GetSslVpnSer
 }
 
 type GetSwitchesVswitch struct {
-	// The available ip address count of the VSwitch.
+	// The available ip address count of the vSwitch.
 	AvailableIpAddressCount int `pulumi:"availableIpAddressCount"`
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock string `pulumi:"cidrBlock"`
 	// Time of creation.
 	CreationTime string `pulumi:"creationTime"`
-	// Description of the VSwitch.
+	// Description of the vSwitch.
 	Description string `pulumi:"description"`
-	// ID of the VSwitch.
+	// ID of the vSwitch.
 	Id string `pulumi:"id"`
 	// The IPv6 CIDR block of the switch.
 	Ipv6CidrBlock string `pulumi:"ipv6CidrBlock"`
-	// Indicate whether the VSwitch is created by the system.
+	// Indicate whether the vSwitch is created by the system.
 	IsDefault bool `pulumi:"isDefault"`
-	// Name of the VSwitch.
+	// Name of the vSwitch.
 	Name string `pulumi:"name"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The route table ID of the VSwitch.
+	// The route table ID of the vSwitch.
 	RouteTableId string `pulumi:"routeTableId"`
-	// The status of the VSwitch. Valid values: `Available` and `Pending`.
+	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// ID of the VPC that owns the VSwitch.
+	// ID of the VPC that owns the vSwitch.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch.
+	// ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
-	// The name of the VSwitch.
+	// The name of the vSwitch.
 	VswitchName string `pulumi:"vswitchName"`
-	// The availability zone of the VSwitch.
+	// The availability zone of the vSwitch.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -8228,37 +8228,37 @@ type GetSwitchesVswitchInput interface {
 }
 
 type GetSwitchesVswitchArgs struct {
-	// The available ip address count of the VSwitch.
+	// The available ip address count of the vSwitch.
 	AvailableIpAddressCount pulumi.IntInput `pulumi:"availableIpAddressCount"`
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
 	// Time of creation.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// Description of the VSwitch.
+	// Description of the vSwitch.
 	Description pulumi.StringInput `pulumi:"description"`
-	// ID of the VSwitch.
+	// ID of the vSwitch.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The IPv6 CIDR block of the switch.
 	Ipv6CidrBlock pulumi.StringInput `pulumi:"ipv6CidrBlock"`
-	// Indicate whether the VSwitch is created by the system.
+	// Indicate whether the vSwitch is created by the system.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// Name of the VSwitch.
+	// Name of the vSwitch.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The route table ID of the VSwitch.
+	// The route table ID of the vSwitch.
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// The status of the VSwitch. Valid values: `Available` and `Pending`.
+	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// ID of the VPC that owns the VSwitch.
+	// ID of the VPC that owns the vSwitch.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch.
+	// ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The name of the VSwitch.
+	// The name of the vSwitch.
 	VswitchName pulumi.StringInput `pulumi:"vswitchName"`
-	// The availability zone of the VSwitch.
+	// The availability zone of the vSwitch.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -8313,7 +8313,7 @@ func (o GetSwitchesVswitchOutput) ToGetSwitchesVswitchOutputWithContext(ctx cont
 	return o
 }
 
-// The available ip address count of the VSwitch.
+// The available ip address count of the vSwitch.
 func (o GetSwitchesVswitchOutput) AvailableIpAddressCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) int { return v.AvailableIpAddressCount }).(pulumi.IntOutput)
 }
@@ -8328,12 +8328,12 @@ func (o GetSwitchesVswitchOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// Description of the VSwitch.
+// Description of the vSwitch.
 func (o GetSwitchesVswitchOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch.
+// ID of the vSwitch.
 func (o GetSwitchesVswitchOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -8343,12 +8343,12 @@ func (o GetSwitchesVswitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
-// Indicate whether the VSwitch is created by the system.
+// Indicate whether the vSwitch is created by the system.
 func (o GetSwitchesVswitchOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// Name of the VSwitch.
+// Name of the vSwitch.
 func (o GetSwitchesVswitchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8358,12 +8358,12 @@ func (o GetSwitchesVswitchOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The route table ID of the VSwitch.
+// The route table ID of the vSwitch.
 func (o GetSwitchesVswitchOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The status of the VSwitch. Valid values: `Available` and `Pending`.
+// The status of the vSwitch. Valid values: `Available` and `Pending`.
 func (o GetSwitchesVswitchOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8373,22 +8373,22 @@ func (o GetSwitchesVswitchOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-// ID of the VPC that owns the VSwitch.
+// ID of the VPC that owns the vSwitch.
 func (o GetSwitchesVswitchOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch.
+// ID of the vSwitch.
 func (o GetSwitchesVswitchOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The name of the VSwitch.
+// The name of the vSwitch.
 func (o GetSwitchesVswitchOutput) VswitchName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.VswitchName }).(pulumi.StringOutput)
 }
 
-// The availability zone of the VSwitch.
+// The availability zone of the vSwitch.
 func (o GetSwitchesVswitchOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.ZoneId }).(pulumi.StringOutput)
 }

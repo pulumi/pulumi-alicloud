@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ga.BasicAccelerator("default", {
- *     bandwidthBillingType: "BandwidthPackage",
- *     autoPay: true,
  *     duration: 1,
  *     pricingCycle: "Month",
- *     autoUseCoupon: "true",
  *     basicAcceleratorName: "tf-example-value",
  *     description: "tf-example-value",
+ *     bandwidthBillingType: "BandwidthPackage",
+ *     autoPay: true,
+ *     autoUseCoupon: "true",
  * });
  * ```
  *

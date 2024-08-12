@@ -3,11 +3,14 @@
 
 package com.pulumi.alicloud.apigateway.inputs;
 
+import com.pulumi.alicloud.apigateway.inputs.InstanceToConnectVpcIpBlockArgs;
+import com.pulumi.alicloud.apigateway.inputs.InstanceZoneVswitchSecurityGroupArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,21 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+     * 
+     */
+    @Import(name="connectCidrBlocks")
+    private @Nullable Output<String> connectCidrBlocks;
+
+    /**
+     * @return (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+     * 
+     */
+    public Optional<Output<String>> connectCidrBlocks() {
+        return Optional.ofNullable(this.connectCidrBlocks);
+    }
 
     /**
      * Creation time.
@@ -30,6 +48,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * 
+     */
+    @Import(name="deleteVpcIpBlock")
+    private @Nullable Output<String> deleteVpcIpBlock;
+
+    /**
+     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * 
+     */
+    public Optional<Output<String>> deleteVpcIpBlock() {
+        return Optional.ofNullable(this.deleteVpcIpBlock);
     }
 
     /**
@@ -56,14 +89,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Does IPV6 Capability Support.
+     * Specifies whether IPv6 egress capability is enabled.
      * 
      */
     @Import(name="egressIpv6Enable")
     private @Nullable Output<Boolean> egressIpv6Enable;
 
     /**
-     * @return Does IPV6 Capability Support.
+     * @return Specifies whether IPv6 egress capability is enabled.
      * 
      */
     public Optional<Output<Boolean>> egressIpv6Enable() {
@@ -83,6 +116,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> httpsPolicy() {
         return Optional.ofNullable(this.httpsPolicy);
+    }
+
+    /**
+     * The CIDR block for the instance deployment. Valid values are:
+     * - `192.168.0.0/16`.
+     * - `172.16.0.0/12`.
+     * 
+     */
+    @Import(name="instanceCidr")
+    private @Nullable Output<String> instanceCidr;
+
+    /**
+     * @return The CIDR block for the instance deployment. Valid values are:
+     * - `192.168.0.0/16`.
+     * - `172.16.0.0/12`.
+     * 
+     */
+    public Optional<Output<String>> instanceCidr() {
+        return Optional.ofNullable(this.instanceCidr);
     }
 
     /**
@@ -116,18 +168,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance type-normal: traditional exclusive instance.
+     * The type of the instance. Valid values are:
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance type-normal: traditional exclusive instance.
+     * @return The type of the instance. Valid values are:
      * 
      */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
+     * Specifies whether IPv6 ingress capability is enabled.
+     * 
+     */
+    @Import(name="ipv6Enabled")
+    private @Nullable Output<Boolean> ipv6Enabled;
+
+    /**
+     * @return Specifies whether IPv6 ingress capability is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> ipv6Enabled() {
+        return Optional.ofNullable(this.ipv6Enabled);
     }
 
     /**
@@ -146,20 +213,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The subscription instance is of the subscription year or month type. The value range is as follows:
-     * - **year**: year
-     * - **month**: month
-     * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+     * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return The subscription instance is of the subscription year or month type. The value range is as follows:
-     * - **year**: year
-     * - **month**: month
-     * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+     * @return The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -194,6 +255,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> supportIpv6() {
         return Optional.ofNullable(this.supportIpv6);
+    }
+
+    /**
+     * The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * 
+     */
+    @Import(name="toConnectVpcIpBlock")
+    private @Nullable Output<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlock;
+
+    /**
+     * @return The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * 
+     */
+    public Optional<Output<InstanceToConnectVpcIpBlockArgs>> toConnectVpcIpBlock() {
+        return Optional.ofNullable(this.toConnectVpcIpBlock);
     }
 
     /**
@@ -241,23 +317,44 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.zoneId);
     }
 
+    /**
+     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * 
+     */
+    @Import(name="zoneVswitchSecurityGroups")
+    private @Nullable Output<List<InstanceZoneVswitchSecurityGroupArgs>> zoneVswitchSecurityGroups;
+
+    /**
+     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * 
+     */
+    public Optional<Output<List<InstanceZoneVswitchSecurityGroupArgs>>> zoneVswitchSecurityGroups() {
+        return Optional.ofNullable(this.zoneVswitchSecurityGroups);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.connectCidrBlocks = $.connectCidrBlocks;
         this.createTime = $.createTime;
+        this.deleteVpcIpBlock = $.deleteVpcIpBlock;
         this.duration = $.duration;
         this.egressIpv6Enable = $.egressIpv6Enable;
         this.httpsPolicy = $.httpsPolicy;
+        this.instanceCidr = $.instanceCidr;
         this.instanceName = $.instanceName;
         this.instanceSpec = $.instanceSpec;
         this.instanceType = $.instanceType;
+        this.ipv6Enabled = $.ipv6Enabled;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
         this.status = $.status;
         this.supportIpv6 = $.supportIpv6;
+        this.toConnectVpcIpBlock = $.toConnectVpcIpBlock;
         this.userVpcId = $.userVpcId;
         this.vpcSlbIntranetEnable = $.vpcSlbIntranetEnable;
         this.zoneId = $.zoneId;
+        this.zoneVswitchSecurityGroups = $.zoneVswitchSecurityGroups;
     }
 
     public static Builder builder() {
@@ -279,6 +376,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param connectCidrBlocks (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectCidrBlocks(@Nullable Output<String> connectCidrBlocks) {
+            $.connectCidrBlocks = connectCidrBlocks;
+            return this;
+        }
+
+        /**
+         * @param connectCidrBlocks (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectCidrBlocks(String connectCidrBlocks) {
+            return connectCidrBlocks(Output.of(connectCidrBlocks));
+        }
+
+        /**
          * @param createTime Creation time.
          * 
          * @return builder
@@ -297,6 +415,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteVpcIpBlock(@Nullable Output<String> deleteVpcIpBlock) {
+            $.deleteVpcIpBlock = deleteVpcIpBlock;
+            return this;
+        }
+
+        /**
+         * @param deleteVpcIpBlock Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteVpcIpBlock(String deleteVpcIpBlock) {
+            return deleteVpcIpBlock(Output.of(deleteVpcIpBlock));
         }
 
         /**
@@ -329,7 +468,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressIpv6Enable Does IPV6 Capability Support.
+         * @param egressIpv6Enable Specifies whether IPv6 egress capability is enabled.
          * 
          * @return builder
          * 
@@ -340,7 +479,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressIpv6Enable Does IPV6 Capability Support.
+         * @param egressIpv6Enable Specifies whether IPv6 egress capability is enabled.
          * 
          * @return builder
          * 
@@ -368,6 +507,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder httpsPolicy(String httpsPolicy) {
             return httpsPolicy(Output.of(httpsPolicy));
+        }
+
+        /**
+         * @param instanceCidr The CIDR block for the instance deployment. Valid values are:
+         * - `192.168.0.0/16`.
+         * - `172.16.0.0/12`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCidr(@Nullable Output<String> instanceCidr) {
+            $.instanceCidr = instanceCidr;
+            return this;
+        }
+
+        /**
+         * @param instanceCidr The CIDR block for the instance deployment. Valid values are:
+         * - `192.168.0.0/16`.
+         * - `172.16.0.0/12`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCidr(String instanceCidr) {
+            return instanceCidr(Output.of(instanceCidr));
         }
 
         /**
@@ -413,7 +577,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance type-normal: traditional exclusive instance.
+         * @param instanceType The type of the instance. Valid values are:
          * 
          * @return builder
          * 
@@ -424,13 +588,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance type-normal: traditional exclusive instance.
+         * @param instanceType The type of the instance. Valid values are:
          * 
          * @return builder
          * 
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param ipv6Enabled Specifies whether IPv6 ingress capability is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Enabled(@Nullable Output<Boolean> ipv6Enabled) {
+            $.ipv6Enabled = ipv6Enabled;
+            return this;
+        }
+
+        /**
+         * @param ipv6Enabled Specifies whether IPv6 ingress capability is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Enabled(Boolean ipv6Enabled) {
+            return ipv6Enabled(Output.of(ipv6Enabled));
         }
 
         /**
@@ -455,10 +640,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The subscription instance is of the subscription year or month type. The value range is as follows:
-         * - **year**: year
-         * - **month**: month
-         * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+         * @param pricingCycle The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
          * 
          * @return builder
          * 
@@ -469,10 +651,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The subscription instance is of the subscription year or month type. The value range is as follows:
-         * - **year**: year
-         * - **month**: month
-         * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+         * @param pricingCycle The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
          * 
          * @return builder
          * 
@@ -521,6 +700,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder supportIpv6(Boolean supportIpv6) {
             return supportIpv6(Output.of(supportIpv6));
+        }
+
+        /**
+         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toConnectVpcIpBlock(@Nullable Output<InstanceToConnectVpcIpBlockArgs> toConnectVpcIpBlock) {
+            $.toConnectVpcIpBlock = toConnectVpcIpBlock;
+            return this;
+        }
+
+        /**
+         * @param toConnectVpcIpBlock The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toConnectVpcIpBlock(InstanceToConnectVpcIpBlockArgs toConnectVpcIpBlock) {
+            return toConnectVpcIpBlock(Output.of(toConnectVpcIpBlock));
         }
 
         /**
@@ -584,6 +784,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
+        }
+
+        /**
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneVswitchSecurityGroups(@Nullable Output<List<InstanceZoneVswitchSecurityGroupArgs>> zoneVswitchSecurityGroups) {
+            $.zoneVswitchSecurityGroups = zoneVswitchSecurityGroups;
+            return this;
+        }
+
+        /**
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneVswitchSecurityGroups(List<InstanceZoneVswitchSecurityGroupArgs> zoneVswitchSecurityGroups) {
+            return zoneVswitchSecurityGroups(Output.of(zoneVswitchSecurityGroups));
+        }
+
+        /**
+         * @param zoneVswitchSecurityGroups Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneVswitchSecurityGroups(InstanceZoneVswitchSecurityGroupArgs... zoneVswitchSecurityGroups) {
+            return zoneVswitchSecurityGroups(List.of(zoneVswitchSecurityGroups));
         }
 
         public InstanceState build() {

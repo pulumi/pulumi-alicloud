@@ -5040,7 +5040,7 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
         :param str key_name: The Key Pair Name.
         :param str private_ip: The private IP address of the ECS instance.
         :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        :param str vswitch_id: The ID of the vSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -5132,7 +5132,7 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch attached to the ECS instance.
+        The ID of the vSwitch attached to the ECS instance.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -5239,7 +5239,7 @@ class GetEcsKeyPairsPairInstanceResult(dict):
         :param str key_name: The Key Pair Name.
         :param str private_ip: The private IP address of the ECS instance.
         :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        :param str vswitch_id: The ID of the vSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -5331,7 +5331,7 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch attached to the ECS instance.
+        The ID of the vSwitch attached to the ECS instance.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -5924,7 +5924,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
         :param str name: The ENI name.
         :param str primary_ip: The primary private IP address of the ENI.
         :param str security_group_id: The security group ID must be one in the same VPC.
-        :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param str vswitch_id: The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -5968,7 +5968,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -6149,6 +6149,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
                  description: str,
                  id: str,
                  instance_id: str,
+                 ipv6_sets: Sequence[str],
                  mac: str,
                  name: str,
                  network_interface_id: str,
@@ -6177,14 +6178,16 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param str description: The description of the ENI.
         :param str id: The ID of the Network Interface.
         :param str instance_id: The instance id.
+        :param Sequence[str] ipv6_sets: A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
         :param str mac: The MAC address of the ENI.
-        :param str name: The network interface name.
+        :param str name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param str network_interface_id: The network interface id.
         :param str network_interface_name: The network interface name.
         :param str network_interface_traffic_mode: The communication mode of the elastic network card.
         :param str owner_id: The ID of the account to which the ENIC belongs.
         :param str primary_ip_address: The primary private IP address of the ENI.
-        :param str private_ip: The primary private IP address of the ENI.
+        :param str private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
+        :param Sequence[str] private_ip_addresses: A list of secondary private IP address that is assigned to the ENI.
         :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
         :param int queue_number: Number of network card queues.
         :param str resource_group_id: The resource group id.
@@ -6192,10 +6195,10 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param Sequence[str] security_groups: The security groups.
         :param int service_id: The service id.
         :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
-        :param str status: The status of the ENI.
-        :param Mapping[str, Any] tags: The tags.
-        :param str type: The type of the ENI.
-        :param str vpc_id: The Vpc Id.
+        :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
+        :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+        :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
+        :param str vpc_id: The vpc id.
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone id.
         """
@@ -6204,6 +6207,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "ipv6_sets", ipv6_sets)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
@@ -6268,6 +6272,14 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="ipv6Sets")
+    def ipv6_sets(self) -> Sequence[str]:
+        """
+        A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+        """
+        return pulumi.get(self, "ipv6_sets")
+
+    @property
     @pulumi.getter
     def mac(self) -> str:
         """
@@ -6279,7 +6291,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The network interface name.
+        Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         """
         return pulumi.get(self, "name")
 
@@ -6327,13 +6339,16 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
         """
-        The primary private IP address of the ENI.
+        Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="privateIpAddresses")
     def private_ip_addresses(self) -> Sequence[str]:
+        """
+        A list of secondary private IP address that is assigned to the ENI.
+        """
         return pulumi.get(self, "private_ip_addresses")
 
     @property
@@ -6396,7 +6411,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the ENI.
+        The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
         """
         return pulumi.get(self, "status")
 
@@ -6404,7 +6419,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, Any]:
         """
-        The tags.
+        A map of tags assigned to ENIs.
         """
         return pulumi.get(self, "tags")
 
@@ -6412,7 +6427,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the ENI.
+        The type of ENI. Valid Values: `Primary`, `Secondary`.
         """
         return pulumi.get(self, "type")
 
@@ -6420,7 +6435,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        The Vpc Id.
+        The vpc id.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -8786,7 +8801,7 @@ class GetInstancesInstanceResult(dict):
         :param str spot_strategy: Spot strategy the instance is using.
         :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
         :param str vpc_id: ID of the VPC linked to the instances.
-        :param str vswitch_id: ID of the VSwitch linked to the instances.
+        :param str vswitch_id: ID of the vSwitch linked to the instances.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
                ```python
                import pulumi
@@ -9004,7 +9019,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch linked to the instances.
+        ID of the vSwitch linked to the instances.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -9201,7 +9216,7 @@ class GetKeyPairsKeyPairInstanceResult(dict):
         :param str key_name: Name of the key pair.
         :param str private_ip: The private IP address of the ECS instance.
         :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        :param str vswitch_id: The ID of the vSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -9293,7 +9308,7 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch attached to the ECS instance.
+        The ID of the vSwitch attached to the ECS instance.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -9400,7 +9415,7 @@ class GetKeyPairsPairInstanceResult(dict):
         :param str key_name: Name of the key pair.
         :param str private_ip: The private IP address of the ECS instance.
         :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
+        :param str vswitch_id: The ID of the vSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -9492,7 +9507,7 @@ class GetKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch attached to the ECS instance.
+        The ID of the vSwitch attached to the ECS instance.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -9505,6 +9520,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  description: str,
                  id: str,
                  instance_id: str,
+                 ipv6_sets: Sequence[str],
                  mac: str,
                  name: str,
                  network_interface_id: str,
@@ -9541,7 +9557,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str status: Current status of the ENI.
         :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
         :param str vpc_id: ID of the VPC that the ENI belongs to.
-        :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
+        :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
         """
         pulumi.set(__self__, "associated_public_ips", associated_public_ips)
@@ -9549,6 +9565,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "ipv6_sets", ipv6_sets)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
@@ -9608,6 +9625,11 @@ class GetNetworkInterfacesInterfaceResult(dict):
         ID of the instance that the ENI is attached to.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="ipv6Sets")
+    def ipv6_sets(self) -> Sequence[str]:
+        return pulumi.get(self, "ipv6_sets")
 
     @property
     @pulumi.getter
@@ -9740,7 +9762,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch that the ENI is linked to.
+        ID of the vSwitch that the ENI is linked to.
         """
         return pulumi.get(self, "vswitch_id")
 

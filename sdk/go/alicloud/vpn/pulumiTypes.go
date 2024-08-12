@@ -5525,7 +5525,7 @@ type GetGatewaysGateway struct {
 	Description string `pulumi:"description"`
 	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryInternetIp string `pulumi:"disasterRecoveryInternetIp"`
-	// - The ID of the backup VSwitch to which the VPN gateway is attached.
+	// - The ID of the backup vSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId string `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec string `pulumi:"enableIpsec"`
@@ -5559,7 +5559,7 @@ type GetGatewaysGateway struct {
 	VpcId string `pulumi:"vpcId"`
 	// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
 	VpnType string `pulumi:"vpnType"`
-	// - The ID of the VSwitch to which the VPN gateway is attached.
+	// - The ID of the vSwitch to which the VPN gateway is attached.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -5585,7 +5585,7 @@ type GetGatewaysGatewayArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
 	DisasterRecoveryInternetIp pulumi.StringInput `pulumi:"disasterRecoveryInternetIp"`
-	// - The ID of the backup VSwitch to which the VPN gateway is attached.
+	// - The ID of the backup vSwitch to which the VPN gateway is attached.
 	DisasterRecoveryVswitchId pulumi.StringInput `pulumi:"disasterRecoveryVswitchId"`
 	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec pulumi.StringInput `pulumi:"enableIpsec"`
@@ -5619,7 +5619,7 @@ type GetGatewaysGatewayArgs struct {
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
 	VpnType pulumi.StringInput `pulumi:"vpnType"`
-	// - The ID of the VSwitch to which the VPN gateway is attached.
+	// - The ID of the vSwitch to which the VPN gateway is attached.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -5699,7 +5699,7 @@ func (o GetGatewaysGatewayOutput) DisasterRecoveryInternetIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.DisasterRecoveryInternetIp }).(pulumi.StringOutput)
 }
 
-// - The ID of the backup VSwitch to which the VPN gateway is attached.
+// - The ID of the backup vSwitch to which the VPN gateway is attached.
 func (o GetGatewaysGatewayOutput) DisasterRecoveryVswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.DisasterRecoveryVswitchId }).(pulumi.StringOutput)
 }
@@ -5784,7 +5784,7 @@ func (o GetGatewaysGatewayOutput) VpnType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VpnType }).(pulumi.StringOutput)
 }
 
-// - The ID of the VSwitch to which the VPN gateway is attached.
+// - The ID of the vSwitch to which the VPN gateway is attached.
 func (o GetGatewaysGatewayOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VswitchId }).(pulumi.StringOutput)
 }

@@ -80,27 +80,25 @@ type MetricRuleTemplate struct {
 
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayOutput `pulumi:"alertTemplates"`
-	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+	// The mode in which the alert template is applied. Valid values:
+	// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+	// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 	ApplyMode pulumi.StringPtrOutput `pulumi:"applyMode"`
 	// The description of the alert template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+	// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 	EnableEndTime pulumi.StringPtrOutput `pulumi:"enableEndTime"`
-	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+	// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 	EnableStartTime pulumi.StringPtrOutput `pulumi:"enableStartTime"`
 	// The ID of the application group.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// The name of the alert template.
 	MetricRuleTemplateName pulumi.StringOutput `pulumi:"metricRuleTemplateName"`
-	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	// The alert notification method. Valid values:
 	NotifyLevel pulumi.StringPtrOutput `pulumi:"notifyLevel"`
-	// The version of the alert template to be modified.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
+	// The version of the alert template.
 	RestVersion pulumi.StringOutput `pulumi:"restVersion"`
-	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-	//
-	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
@@ -141,27 +139,25 @@ func GetMetricRuleTemplate(ctx *pulumi.Context,
 type metricRuleTemplateState struct {
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates []MetricRuleTemplateAlertTemplate `pulumi:"alertTemplates"`
-	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+	// The mode in which the alert template is applied. Valid values:
+	// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+	// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 	ApplyMode *string `pulumi:"applyMode"`
 	// The description of the alert template.
 	Description *string `pulumi:"description"`
-	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+	// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 	EnableEndTime *string `pulumi:"enableEndTime"`
-	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+	// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 	EnableStartTime *string `pulumi:"enableStartTime"`
 	// The ID of the application group.
 	GroupId *string `pulumi:"groupId"`
 	// The name of the alert template.
 	MetricRuleTemplateName *string `pulumi:"metricRuleTemplateName"`
-	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	// The alert notification method. Valid values:
 	NotifyLevel *string `pulumi:"notifyLevel"`
-	// The version of the alert template to be modified.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
+	// The version of the alert template.
 	RestVersion *string `pulumi:"restVersion"`
-	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-	//
-	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `pulumi:"webhook"`
@@ -170,27 +166,25 @@ type metricRuleTemplateState struct {
 type MetricRuleTemplateState struct {
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayInput
-	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+	// The mode in which the alert template is applied. Valid values:
+	// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+	// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 	ApplyMode pulumi.StringPtrInput
 	// The description of the alert template.
 	Description pulumi.StringPtrInput
-	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+	// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 	EnableEndTime pulumi.StringPtrInput
-	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+	// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 	EnableStartTime pulumi.StringPtrInput
 	// The ID of the application group.
 	GroupId pulumi.StringPtrInput
 	// The name of the alert template.
 	MetricRuleTemplateName pulumi.StringPtrInput
-	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	// The alert notification method. Valid values:
 	NotifyLevel pulumi.StringPtrInput
-	// The version of the alert template to be modified.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
+	// The version of the alert template.
 	RestVersion pulumi.StringPtrInput
-	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-	//
-	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 	SilenceTime pulumi.IntPtrInput
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrInput
@@ -203,27 +197,23 @@ func (MetricRuleTemplateState) ElementType() reflect.Type {
 type metricRuleTemplateArgs struct {
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates []MetricRuleTemplateAlertTemplate `pulumi:"alertTemplates"`
-	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+	// The mode in which the alert template is applied. Valid values:
+	// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+	// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 	ApplyMode *string `pulumi:"applyMode"`
 	// The description of the alert template.
 	Description *string `pulumi:"description"`
-	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+	// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 	EnableEndTime *string `pulumi:"enableEndTime"`
-	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+	// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 	EnableStartTime *string `pulumi:"enableStartTime"`
 	// The ID of the application group.
 	GroupId *string `pulumi:"groupId"`
 	// The name of the alert template.
 	MetricRuleTemplateName string `pulumi:"metricRuleTemplateName"`
-	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	// The alert notification method. Valid values:
 	NotifyLevel *string `pulumi:"notifyLevel"`
-	// The version of the alert template to be modified.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
-	RestVersion *string `pulumi:"restVersion"`
-	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-	//
-	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `pulumi:"webhook"`
@@ -233,27 +223,23 @@ type metricRuleTemplateArgs struct {
 type MetricRuleTemplateArgs struct {
 	// The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
 	AlertTemplates MetricRuleTemplateAlertTemplateArrayInput
-	// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+	// The mode in which the alert template is applied. Valid values:
+	// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+	// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 	ApplyMode pulumi.StringPtrInput
 	// The description of the alert template.
 	Description pulumi.StringPtrInput
-	// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+	// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 	EnableEndTime pulumi.StringPtrInput
-	// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+	// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 	EnableStartTime pulumi.StringPtrInput
 	// The ID of the application group.
 	GroupId pulumi.StringPtrInput
 	// The name of the alert template.
 	MetricRuleTemplateName pulumi.StringInput
-	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+	// The alert notification method. Valid values:
 	NotifyLevel pulumi.StringPtrInput
-	// The version of the alert template to be modified.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
-	RestVersion pulumi.StringPtrInput
-	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-	//
-	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+	// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 	SilenceTime pulumi.IntPtrInput
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrInput
@@ -351,7 +337,9 @@ func (o MetricRuleTemplateOutput) AlertTemplates() MetricRuleTemplateAlertTempla
 	return o.ApplyT(func(v *MetricRuleTemplate) MetricRuleTemplateAlertTemplateArrayOutput { return v.AlertTemplates }).(MetricRuleTemplateAlertTemplateArrayOutput)
 }
 
-// The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+// The mode in which the alert template is applied. Valid values:
+// - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+// - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
 func (o MetricRuleTemplateOutput) ApplyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.ApplyMode }).(pulumi.StringPtrOutput)
 }
@@ -361,12 +349,12 @@ func (o MetricRuleTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+// The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
 func (o MetricRuleTemplateOutput) EnableEndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.EnableEndTime }).(pulumi.StringPtrOutput)
 }
 
-// The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+// The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
 func (o MetricRuleTemplateOutput) EnableStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.EnableStartTime }).(pulumi.StringPtrOutput)
 }
@@ -381,21 +369,17 @@ func (o MetricRuleTemplateOutput) MetricRuleTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringOutput { return v.MetricRuleTemplateName }).(pulumi.StringOutput)
 }
 
-// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+// The alert notification method. Valid values:
 func (o MetricRuleTemplateOutput) NotifyLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringPtrOutput { return v.NotifyLevel }).(pulumi.StringPtrOutput)
 }
 
-// The version of the alert template to be modified.
-//
-// > **NOTE:** The version changes with the number of times that the alert template is modified.
+// The version of the alert template.
 func (o MetricRuleTemplateOutput) RestVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringOutput { return v.RestVersion }).(pulumi.StringOutput)
 }
 
-// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-//
-// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+// The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
 func (o MetricRuleTemplateOutput) SilenceTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
 }

@@ -183,7 +183,7 @@ class InstanceArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -1034,7 +1034,7 @@ class InstanceArgs:
     @pulumi.getter(name="secondaryPrivateIps")
     def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "secondary_private_ips")
 
@@ -1510,7 +1510,7 @@ class _InstanceState:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -2476,7 +2476,7 @@ class _InstanceState:
     @pulumi.getter(name="secondaryPrivateIps")
     def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "secondary_private_ips")
 
@@ -3028,7 +3028,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -3534,7 +3534,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -4180,7 +4180,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="secondaryPrivateIps")
     def secondary_private_ips(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         """
         return pulumi.get(self, "secondary_private_ips")
 

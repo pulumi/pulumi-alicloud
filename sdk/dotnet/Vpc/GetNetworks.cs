@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Vpc
         public int? VpcOwnerId { get; set; }
 
         /// <summary>
-        /// Filter results by the specified VSwitch.
+        /// Filter results by the specified vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? VpcOwnerId { get; set; }
 
         /// <summary>
-        /// Filter results by the specified VSwitch.
+        /// Filter results by the specified vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

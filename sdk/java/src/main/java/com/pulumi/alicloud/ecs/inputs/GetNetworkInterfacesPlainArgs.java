@@ -196,14 +196,14 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * ID of the VSwitch that the ENI is linked to.
+     * ID of the vSwitch that the ENI is linked to.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return ID of the VSwitch that the ENI is linked to.
+     * @return ID of the vSwitch that the ENI is linked to.
      * 
      */
     public Optional<String> vswitchId() {
@@ -379,7 +379,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param vswitchId ID of the VSwitch that the ENI is linked to.
+         * @param vswitchId ID of the vSwitch that the ENI is linked to.
          * 
          * @return builder
          * 

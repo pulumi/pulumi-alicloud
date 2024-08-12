@@ -267,7 +267,7 @@ class GetLoadBalancersResult:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        ID of the VSwitch the SLB belongs to.
+        ID of the vSwitch the SLB belongs to.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -365,7 +365,7 @@ def get_load_balancers(address: Optional[str] = None,
            })
            ```
     :param str vpc_id: ID of the VPC linked to the SLBs.
-    :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+    :param str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -482,6 +482,6 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
            })
            ```
     :param str vpc_id: ID of the VPC linked to the SLBs.
-    :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+    :param str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
     ...

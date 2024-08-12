@@ -454,8 +454,9 @@ class ProjectSecurityPropertiesProjectProtection(dict):
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  comment: str,
+                 cost_storage: str,
+                 create_time: str,
                  default_quota: str,
-                 id: str,
                  ip_white_list: 'outputs.GetProjectsProjectIpWhiteListResult',
                  owner: str,
                  project_name: str,
@@ -464,19 +465,22 @@ class GetProjectsProjectResult(dict):
                  status: str,
                  type: str):
         """
-        :param str default_quota: Default Computing Resource Group
-        :param str id: Project ID. The value is the same as `project_name`.
+        :param str comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+        :param str cost_storage: View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+        :param str create_time: Represents the creation time of the project
+        :param str default_quota: Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         :param 'GetProjectsProjectIpWhiteListArgs' ip_white_list: IP whitelist
         :param str owner: Project owner
-        :param str project_name: The name of the resource
+        :param str project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         :param 'GetProjectsProjectPropertiesArgs' properties: Project base attributes
         :param 'GetProjectsProjectSecurityPropertiesArgs' security_properties: Security-related attributes
-        :param str status: The status of the resource
+        :param str status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param str type: Project type
         """
         pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "cost_storage", cost_storage)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "default_quota", default_quota)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_white_list", ip_white_list)
         pulumi.set(__self__, "owner", owner)
         pulumi.set(__self__, "project_name", project_name)
@@ -488,23 +492,34 @@ class GetProjectsProjectResult(dict):
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+        """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="costStorage")
+    def cost_storage(self) -> str:
+        """
+        View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+        """
+        return pulumi.get(self, "cost_storage")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Represents the creation time of the project
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="defaultQuota")
     def default_quota(self) -> str:
         """
-        Default Computing Resource Group
+        Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         """
         return pulumi.get(self, "default_quota")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Project ID. The value is the same as `project_name`.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipWhiteList")
@@ -526,7 +541,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
         """
-        The name of the resource
+        The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         """
         return pulumi.get(self, "project_name")
 
@@ -550,7 +565,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource
+        The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         """
         return pulumi.get(self, "status")
 
@@ -569,8 +584,8 @@ class GetProjectsProjectIpWhiteListResult(dict):
                  ip_list: str,
                  vpc_ip_list: str):
         """
-        :param str ip_list: Classic network IP white list.
-        :param str vpc_ip_list: VPC network whitelist.
+        :param str ip_list: Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+        :param str vpc_ip_list: Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
         """
         pulumi.set(__self__, "ip_list", ip_list)
         pulumi.set(__self__, "vpc_ip_list", vpc_ip_list)
@@ -579,7 +594,7 @@ class GetProjectsProjectIpWhiteListResult(dict):
     @pulumi.getter(name="ipList")
     def ip_list(self) -> str:
         """
-        Classic network IP white list.
+        Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
         """
         return pulumi.get(self, "ip_list")
 
@@ -587,7 +602,7 @@ class GetProjectsProjectIpWhiteListResult(dict):
     @pulumi.getter(name="vpcIpList")
     def vpc_ip_list(self) -> str:
         """
-        VPC network whitelist.
+        Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
         """
         return pulumi.get(self, "vpc_ip_list")
 
@@ -598,20 +613,20 @@ class GetProjectsProjectPropertiesResult(dict):
                  allow_full_scan: bool,
                  enable_decimal2: bool,
                  encryption: 'outputs.GetProjectsProjectPropertiesEncryptionResult',
-                 retention_days: str,
+                 retention_days: int,
                  sql_metering_max: str,
                  table_lifecycle: 'outputs.GetProjectsProjectPropertiesTableLifecycleResult',
                  timezone: str,
                  type_system: str):
         """
-        :param bool allow_full_scan: Whether to allow full table scan.
+        :param bool allow_full_scan: Whether to allow full table scan. Default: false.
         :param bool enable_decimal2: Whether to turn on Decimal2.0.
-        :param 'GetProjectsProjectPropertiesEncryptionArgs' encryption: Whether encryption is turned on.
-        :param str retention_days: Job default retention time.
-        :param str sql_metering_max: SQL charge limit.
-        :param 'GetProjectsProjectPropertiesTableLifecycleArgs' table_lifecycle: Life cycle of tables.
-        :param str timezone: Project time zone.
-        :param str type_system: Type system.
+        :param 'GetProjectsProjectPropertiesEncryptionArgs' encryption: Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
+        :param int retention_days: Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+        :param str sql_metering_max: Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
+        :param 'GetProjectsProjectPropertiesTableLifecycleArgs' table_lifecycle: Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
+        :param str timezone: Project time zone, example value: Asia/Shanghai.
+        :param str type_system: Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
         """
         pulumi.set(__self__, "allow_full_scan", allow_full_scan)
         pulumi.set(__self__, "enable_decimal2", enable_decimal2)
@@ -626,7 +641,7 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter(name="allowFullScan")
     def allow_full_scan(self) -> bool:
         """
-        Whether to allow full table scan.
+        Whether to allow full table scan. Default: false.
         """
         return pulumi.get(self, "allow_full_scan")
 
@@ -642,15 +657,15 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter
     def encryption(self) -> 'outputs.GetProjectsProjectPropertiesEncryptionResult':
         """
-        Whether encryption is turned on.
+        Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
         """
         return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> str:
+    def retention_days(self) -> int:
         """
-        Job default retention time.
+        Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
         """
         return pulumi.get(self, "retention_days")
 
@@ -658,7 +673,7 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter(name="sqlMeteringMax")
     def sql_metering_max(self) -> str:
         """
-        SQL charge limit.
+        Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
         """
         return pulumi.get(self, "sql_metering_max")
 
@@ -666,7 +681,7 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter(name="tableLifecycle")
     def table_lifecycle(self) -> 'outputs.GetProjectsProjectPropertiesTableLifecycleResult':
         """
-        Life cycle of tables.
+        Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
         """
         return pulumi.get(self, "table_lifecycle")
 
@@ -674,7 +689,7 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter
     def timezone(self) -> str:
         """
-        Project time zone.
+        Project time zone, example value: Asia/Shanghai.
         """
         return pulumi.get(self, "timezone")
 
@@ -682,7 +697,7 @@ class GetProjectsProjectPropertiesResult(dict):
     @pulumi.getter(name="typeSystem")
     def type_system(self) -> str:
         """
-        Type system.
+        Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
         """
         return pulumi.get(self, "type_system")
 
@@ -694,9 +709,9 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
                  enable: bool,
                  key: str):
         """
-        :param str algorithm: Algorithm.
-        :param bool enable: Whether to open.
-        :param str key: Encryption algorithm key.
+        :param str algorithm: The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
+        :param bool enable: Only enable function is supported. Value: (true).
+        :param str key: The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "enable", enable)
@@ -706,7 +721,7 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
     @pulumi.getter
     def algorithm(self) -> str:
         """
-        Algorithm.
+        The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
         """
         return pulumi.get(self, "algorithm")
 
@@ -714,7 +729,7 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
     @pulumi.getter
     def enable(self) -> bool:
         """
-        Whether to open.
+        Only enable function is supported. Value: (true).
         """
         return pulumi.get(self, "enable")
 
@@ -722,7 +737,7 @@ class GetProjectsProjectPropertiesEncryptionResult(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Encryption algorithm key.
+        The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
         """
         return pulumi.get(self, "key")
 
@@ -734,7 +749,7 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
                  value: str):
         """
         :param str type: Project type
-        :param str value: The value of the life cycle.
+        :param str value: The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -751,7 +766,7 @@ class GetProjectsProjectPropertiesTableLifecycleResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the life cycle.
+        The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         """
         return pulumi.get(self, "value")
 
@@ -767,13 +782,13 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
                  using_acl: bool,
                  using_policy: bool):
         """
-        :param bool enable_download_privilege: Whether to enable download permission check.
-        :param bool label_security: Label authorization.
-        :param bool object_creator_has_access_permission: Project creator permissions.
-        :param bool object_creator_has_grant_permission: Does the project creator have authorization rights.
+        :param bool enable_download_privilege: Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
+        :param bool label_security: Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
+        :param bool object_creator_has_access_permission: Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
+        :param bool object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         :param 'GetProjectsProjectSecurityPropertiesProjectProtectionArgs' project_protection: Project protection.
-        :param bool using_acl: Whether to turn on ACL.
-        :param bool using_policy: Whether to enable Policy.
+        :param bool using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        :param bool using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
         pulumi.set(__self__, "label_security", label_security)
@@ -787,7 +802,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="enableDownloadPrivilege")
     def enable_download_privilege(self) -> bool:
         """
-        Whether to enable download permission check.
+        Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
         """
         return pulumi.get(self, "enable_download_privilege")
 
@@ -795,7 +810,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="labelSecurity")
     def label_security(self) -> bool:
         """
-        Label authorization.
+        Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
         """
         return pulumi.get(self, "label_security")
 
@@ -803,7 +818,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="objectCreatorHasAccessPermission")
     def object_creator_has_access_permission(self) -> bool:
         """
-        Project creator permissions.
+        Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
         """
         return pulumi.get(self, "object_creator_has_access_permission")
 
@@ -811,7 +826,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="objectCreatorHasGrantPermission")
     def object_creator_has_grant_permission(self) -> bool:
         """
-        Does the project creator have authorization rights.
+        The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         """
         return pulumi.get(self, "object_creator_has_grant_permission")
 
@@ -827,7 +842,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="usingAcl")
     def using_acl(self) -> bool:
         """
-        Whether to turn on ACL.
+        Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_acl")
 
@@ -835,7 +850,7 @@ class GetProjectsProjectSecurityPropertiesResult(dict):
     @pulumi.getter(name="usingPolicy")
     def using_policy(self) -> bool:
         """
-        Whether to enable Policy.
+        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 
@@ -846,8 +861,8 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
                  exception_policy: str,
                  protected: bool):
         """
-        :param str exception_policy: Exclusion policy.
-        :param bool protected: Is it turned on.
+        :param str exception_policy: Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+        :param bool protected: Whether enabled, value:(true/false).
         """
         pulumi.set(__self__, "exception_policy", exception_policy)
         pulumi.set(__self__, "protected", protected)
@@ -856,7 +871,7 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
     @pulumi.getter(name="exceptionPolicy")
     def exception_policy(self) -> str:
         """
-        Exclusion policy.
+        Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
         """
         return pulumi.get(self, "exception_policy")
 
@@ -864,7 +879,7 @@ class GetProjectsProjectSecurityPropertiesProjectProtectionResult(dict):
     @pulumi.getter
     def protected(self) -> bool:
         """
-        Is it turned on.
+        Whether enabled, value:(true/false).
         """
         return pulumi.get(self, "protected")
 

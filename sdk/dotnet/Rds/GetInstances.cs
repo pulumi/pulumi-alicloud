@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// ID of the VSwitch the instance belongs to.
+        /// ID of the vSwitch the instance belongs to.
         /// </summary>
         public readonly string? VswitchId;
 

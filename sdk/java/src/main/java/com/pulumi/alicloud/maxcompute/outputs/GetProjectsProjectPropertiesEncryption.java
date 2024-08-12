@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectPropertiesEncryption {
     /**
-     * @return Algorithm.
+     * @return The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     private String algorithm;
     /**
-     * @return Whether to open.
+     * @return Only enable function is supported. Value: (true).
      * 
      */
     private Boolean enable;
     /**
-     * @return Encryption algorithm key.
+     * @return The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     private String key;
 
     private GetProjectsProjectPropertiesEncryption() {}
     /**
-     * @return Algorithm.
+     * @return The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     public String algorithm() {
         return this.algorithm;
     }
     /**
-     * @return Whether to open.
+     * @return Only enable function is supported. Value: (true).
      * 
      */
     public Boolean enable() {
         return this.enable;
     }
     /**
-     * @return Encryption algorithm key.
+     * @return The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     public String key() {

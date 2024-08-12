@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSwitchesVswitch {
     /**
-     * @return The available ip address count of the VSwitch.
+     * @return The available ip address count of the vSwitch.
      * 
      */
     private Integer availableIpAddressCount;
@@ -30,12 +30,12 @@ public final class GetSwitchesVswitch {
      */
     private String creationTime;
     /**
-     * @return Description of the VSwitch.
+     * @return Description of the vSwitch.
      * 
      */
     private String description;
     /**
-     * @return ID of the VSwitch.
+     * @return ID of the vSwitch.
      * 
      */
     private String id;
@@ -45,12 +45,12 @@ public final class GetSwitchesVswitch {
      */
     private String ipv6CidrBlock;
     /**
-     * @return Indicate whether the VSwitch is created by the system.
+     * @return Indicate whether the vSwitch is created by the system.
      * 
      */
     private Boolean isDefault;
     /**
-     * @return Name of the VSwitch.
+     * @return Name of the vSwitch.
      * 
      */
     private String name;
@@ -60,12 +60,12 @@ public final class GetSwitchesVswitch {
      */
     private String resourceGroupId;
     /**
-     * @return The route table ID of the VSwitch.
+     * @return The route table ID of the vSwitch.
      * 
      */
     private String routeTableId;
     /**
-     * @return The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * @return The status of the vSwitch. Valid values: `Available` and `Pending`.
      * 
      */
     private String status;
@@ -75,29 +75,29 @@ public final class GetSwitchesVswitch {
      */
     private Map<String,Object> tags;
     /**
-     * @return ID of the VPC that owns the VSwitch.
+     * @return ID of the VPC that owns the vSwitch.
      * 
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch.
+     * @return ID of the vSwitch.
      * 
      */
     private String vswitchId;
     /**
-     * @return The name of the VSwitch.
+     * @return The name of the vSwitch.
      * 
      */
     private String vswitchName;
     /**
-     * @return The availability zone of the VSwitch.
+     * @return The availability zone of the vSwitch.
      * 
      */
     private String zoneId;
 
     private GetSwitchesVswitch() {}
     /**
-     * @return The available ip address count of the VSwitch.
+     * @return The available ip address count of the vSwitch.
      * 
      */
     public Integer availableIpAddressCount() {
@@ -118,14 +118,14 @@ public final class GetSwitchesVswitch {
         return this.creationTime;
     }
     /**
-     * @return Description of the VSwitch.
+     * @return Description of the vSwitch.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return ID of the VSwitch.
+     * @return ID of the vSwitch.
      * 
      */
     public String id() {
@@ -139,14 +139,14 @@ public final class GetSwitchesVswitch {
         return this.ipv6CidrBlock;
     }
     /**
-     * @return Indicate whether the VSwitch is created by the system.
+     * @return Indicate whether the vSwitch is created by the system.
      * 
      */
     public Boolean isDefault() {
         return this.isDefault;
     }
     /**
-     * @return Name of the VSwitch.
+     * @return Name of the vSwitch.
      * 
      */
     public String name() {
@@ -160,14 +160,14 @@ public final class GetSwitchesVswitch {
         return this.resourceGroupId;
     }
     /**
-     * @return The route table ID of the VSwitch.
+     * @return The route table ID of the vSwitch.
      * 
      */
     public String routeTableId() {
         return this.routeTableId;
     }
     /**
-     * @return The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * @return The status of the vSwitch. Valid values: `Available` and `Pending`.
      * 
      */
     public String status() {
@@ -181,28 +181,28 @@ public final class GetSwitchesVswitch {
         return this.tags;
     }
     /**
-     * @return ID of the VPC that owns the VSwitch.
+     * @return ID of the VPC that owns the vSwitch.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch.
+     * @return ID of the vSwitch.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The name of the VSwitch.
+     * @return The name of the vSwitch.
      * 
      */
     public String vswitchName() {
         return this.vswitchName;
     }
     /**
-     * @return The availability zone of the VSwitch.
+     * @return The availability zone of the vSwitch.
      * 
      */
     public String zoneId() {

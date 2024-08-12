@@ -15,14 +15,14 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
     public static final DynamicTagGroupMatchExpressArgs Empty = new DynamicTagGroupMatchExpressArgs();
 
     /**
-     * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+     * The tag values of the cloud resources.
      * 
      */
     @Import(name="tagValue", required=true)
     private Output<String> tagValue;
 
     /**
-     * @return The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+     * @return The tag values of the cloud resources.
      * 
      */
     public Output<String> tagValue() {
@@ -30,14 +30,14 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
     }
 
     /**
-     * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+     * The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
      * 
      */
     @Import(name="tagValueMatchFunction", required=true)
     private Output<String> tagValueMatchFunction;
 
     /**
-     * @return Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+     * @return The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
      * 
      */
     public Output<String> tagValueMatchFunction() {
@@ -70,7 +70,7 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tagValue The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         * @param tagValue The tag values of the cloud resources.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tagValue The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         * @param tagValue The tag values of the cloud resources.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tagValueMatchFunction Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         * @param tagValueMatchFunction The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class DynamicTagGroupMatchExpressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tagValueMatchFunction Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         * @param tagValueMatchFunction The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
          * 
          * @return builder
          * 

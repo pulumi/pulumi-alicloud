@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.Cms
     public partial class Alarm : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// </summary>
+        [Output("compositeExpression")]
+        public Output<Outputs.AlarmCompositeExpression?> CompositeExpression { get; private set; } = null!;
+
+        /// <summary>
         /// List contact groups of the alarm rule, which must have been created on the console.
         /// </summary>
         [Output("contactGroups")]
@@ -140,7 +146,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         /// </summary>
         [Output("effectiveInterval")]
         public Output<string?> EffectiveInterval { get; private set; } = null!;
@@ -194,7 +200,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        /// The statistical period of the metric. Unit: seconds. Default value: `300`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -294,6 +300,12 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class AlarmArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// </summary>
+        [Input("compositeExpression")]
+        public Input<Inputs.AlarmCompositeExpressionArgs>? CompositeExpression { get; set; }
+
         [Input("contactGroups", required: true)]
         private InputList<string>? _contactGroups;
 
@@ -320,7 +332,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
@@ -374,7 +386,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        /// The statistical period of the metric. Unit: seconds. Default value: `300`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -448,6 +460,12 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class AlarmState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The trigger conditions for multiple metrics. See `composite_expression` below.
+        /// </summary>
+        [Input("compositeExpression")]
+        public Input<Inputs.AlarmCompositeExpressionGetArgs>? CompositeExpression { get; set; }
+
         [Input("contactGroups")]
         private InputList<string>? _contactGroups;
 
@@ -474,7 +492,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+        /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
@@ -528,7 +546,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+        /// The statistical period of the metric. Unit: seconds. Default value: `300`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

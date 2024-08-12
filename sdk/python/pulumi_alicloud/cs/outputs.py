@@ -4943,7 +4943,7 @@ class GetServerlessKubernetesClustersClusterResult(dict):
         :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param str security_group_id: The ID of security group where the current cluster  is located.
         :param str vpc_id: The ID of VPC where the current cluster is located.
-        :param str vswitch_id: The ID of VSwitch where the current cluster is located.
+        :param str vswitch_id: The ID of vSwitch where the current cluster is located.
         """
         pulumi.set(__self__, "connections", connections)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -5026,7 +5026,7 @@ class GetServerlessKubernetesClustersClusterResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of VSwitch where the current cluster is located.
+        The ID of vSwitch where the current cluster is located.
         """
         return pulumi.get(self, "vswitch_id")
 

@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AlarmCompositeExpressionArgs',
+    'AlarmCompositeExpressionExpressionListArgs',
     'AlarmEscalationsCriticalArgs',
     'AlarmEscalationsInfoArgs',
     'AlarmEscalationsWarnArgs',
@@ -45,6 +47,176 @@ __all__ = [
     'SiteMonitorIspCityArgs',
     'SlsGroupSlsGroupConfigArgs',
 ]
+
+@pulumi.input_type
+class AlarmCompositeExpressionArgs:
+    def __init__(__self__, *,
+                 expression_list_join: Optional[pulumi.Input[str]] = None,
+                 expression_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]] = None,
+                 expression_raw: Optional[pulumi.Input[str]] = None,
+                 level: Optional[pulumi.Input[str]] = None,
+                 times: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] expression_list_join: The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]] expression_lists: The trigger conditions that are created in standard mode. See `expression_list` below.
+        :param pulumi.Input[str] expression_raw: The trigger conditions that are created by using expressions.
+        :param pulumi.Input[str] level: The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+        :param pulumi.Input[int] times: The number of consecutive triggers.
+        """
+        if expression_list_join is not None:
+            pulumi.set(__self__, "expression_list_join", expression_list_join)
+        if expression_lists is not None:
+            pulumi.set(__self__, "expression_lists", expression_lists)
+        if expression_raw is not None:
+            pulumi.set(__self__, "expression_raw", expression_raw)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="expressionListJoin")
+    def expression_list_join(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+        """
+        return pulumi.get(self, "expression_list_join")
+
+    @expression_list_join.setter
+    def expression_list_join(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression_list_join", value)
+
+    @property
+    @pulumi.getter(name="expressionLists")
+    def expression_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]:
+        """
+        The trigger conditions that are created in standard mode. See `expression_list` below.
+        """
+        return pulumi.get(self, "expression_lists")
+
+    @expression_lists.setter
+    def expression_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]):
+        pulumi.set(self, "expression_lists", value)
+
+    @property
+    @pulumi.getter(name="expressionRaw")
+    def expression_raw(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger conditions that are created by using expressions.
+        """
+        return pulumi.get(self, "expression_raw")
+
+    @expression_raw.setter
+    def expression_raw(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression_raw", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive triggers.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class AlarmCompositeExpressionExpressionListArgs:
+    def __init__(__self__, *,
+                 comparison_operator: Optional[pulumi.Input[str]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metric_name: The metric that is used to monitor the cloud service.
+        :param pulumi.Input[str] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
+        :param pulumi.Input[str] statistics: Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+        :param pulumi.Input[str] threshold: Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metric that is used to monitor the cloud service.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistical period of the metric. Unit: seconds. Default value: `300`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
 
 @pulumi.input_type
 class AlarmEscalationsCriticalArgs:
@@ -338,11 +510,12 @@ class AlarmTargetArgs:
                  level: Optional[pulumi.Input[str]] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+        :param pulumi.Input[str] arn: ARN uniquely identifies the resource that the alert targets.
+               > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-        :param pulumi.Input[str] json_params: The parameters of the alert callback. The parameters are in the JSON format.
+        :param pulumi.Input[str] json_params: Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
         :param pulumi.Input[str] level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-        :param pulumi.Input[str] target_id: The ID of the resource for which alerts are triggered.
+        :param pulumi.Input[str] target_id: The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -357,7 +530,8 @@ class AlarmTargetArgs:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of the resource.
+        ARN uniquely identifies the resource that the alert targets.
+        > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
         > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "arn")
@@ -370,7 +544,7 @@ class AlarmTargetArgs:
     @pulumi.getter(name="jsonParams")
     def json_params(self) -> Optional[pulumi.Input[str]]:
         """
-        The parameters of the alert callback. The parameters are in the JSON format.
+        Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
         """
         return pulumi.get(self, "json_params")
 
@@ -394,7 +568,7 @@ class AlarmTargetArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource for which alerts are triggered.
+        The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
         """
         return pulumi.get(self, "target_id")
 
@@ -409,8 +583,8 @@ class DynamicTagGroupMatchExpressArgs:
                  tag_value: pulumi.Input[str],
                  tag_value_match_function: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
-        :param pulumi.Input[str] tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        :param pulumi.Input[str] tag_value: The tag values of the cloud resources.
+        :param pulumi.Input[str] tag_value_match_function: The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         """
         pulumi.set(__self__, "tag_value", tag_value)
         pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
@@ -419,7 +593,7 @@ class DynamicTagGroupMatchExpressArgs:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[str]:
         """
-        The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        The tag values of the cloud resources.
         """
         return pulumi.get(self, "tag_value")
 
@@ -431,7 +605,7 @@ class DynamicTagGroupMatchExpressArgs:
     @pulumi.getter(name="tagValueMatchFunction")
     def tag_value_match_function(self) -> pulumi.Input[str]:
         """
-        Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         """
         return pulumi.get(self, "tag_value_match_function")
 
@@ -1806,12 +1980,11 @@ class MetricRuleTemplateAlertTemplateArgs:
                  escalations: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] category: The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+        :param pulumi.Input[str] category: The abbreviation of the Alibaba Cloud service name.
+               > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         :param pulumi.Input[str] metric_name: The name of the metric.
-               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] namespace: The namespace of the service.
-               
+        :param pulumi.Input[str] namespace: The namespace of the cloud service.
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] rule_name: The name of the alert rule.
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs'] escalations: The information about the trigger condition based on the alert level. See `escalations` below.
@@ -1830,7 +2003,8 @@ class MetricRuleTemplateAlertTemplateArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
         """
-        The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+        The abbreviation of the Alibaba Cloud service name.
+        > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         """
         return pulumi.get(self, "category")
 
@@ -1843,7 +2017,6 @@ class MetricRuleTemplateAlertTemplateArgs:
     def metric_name(self) -> pulumi.Input[str]:
         """
         The name of the metric.
-
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_name")
@@ -1856,8 +2029,7 @@ class MetricRuleTemplateAlertTemplateArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        The namespace of the service.
-
+        The namespace of the cloud service.
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "namespace")
@@ -1966,10 +2138,10 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param pulumi.Input[str] statistics: The statistical aggregation method for critical-level alerts.
-        :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
-        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -1984,7 +2156,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -1996,7 +2168,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
     @pulumi.getter
     def statistics(self) -> Optional[pulumi.Input[str]]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -2008,7 +2180,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -2020,7 +2192,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[str]]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -2037,10 +2209,10 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param pulumi.Input[str] statistics: The statistical aggregation method for critical-level alerts.
-        :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
-        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -2055,7 +2227,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -2067,7 +2239,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
     @pulumi.getter
     def statistics(self) -> Optional[pulumi.Input[str]]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -2079,7 +2251,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -2091,7 +2263,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[str]]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -2108,10 +2280,10 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
                  threshold: Optional[pulumi.Input[str]] = None,
                  times: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param pulumi.Input[str] statistics: The statistical aggregation method for critical-level alerts.
-        :param pulumi.Input[str] threshold: The threshold for critical-level alerts.
-        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param pulumi.Input[str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param pulumi.Input[str] statistics: The statistical aggregation method for warn-level alerts.
+        :param pulumi.Input[str] threshold: The threshold for warn-level alerts.
+        :param pulumi.Input[str] times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -2126,7 +2298,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -2138,7 +2310,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
     @pulumi.getter
     def statistics(self) -> Optional[pulumi.Input[str]]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -2150,7 +2322,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[str]]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -2162,7 +2334,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
     @pulumi.getter
     def times(self) -> Optional[pulumi.Input[str]]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 

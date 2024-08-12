@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the VSwitch linked to the SLBs.
+        /// ID of the vSwitch linked to the SLBs.
         /// </summary>
         public readonly string VswitchId;
 

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+// Provides a RabbitMQ (AMQP) Binding resource.
 //
 // For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
 //
@@ -29,11 +29,17 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
@@ -42,45 +48,44 @@ import (
 //				SupportEip:    pulumi.Bool(false),
 //				MaxEipTps:     pulumi.String("128"),
 //				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
 //				InstanceId:      _default.ID(),
-//				VirtualHostName: pulumi.String("tf-example"),
+//				VirtualHostName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultExchange, err := amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
-//				AutoDeleteState: pulumi.Bool(false),
-//				ExchangeName:    pulumi.String("tf-example"),
-//				ExchangeType:    pulumi.String("HEADERS"),
 //				InstanceId:      _default.ID(),
-//				Internal:        pulumi.Bool(false),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
+//				ExchangeName:    pulumi.String(name),
+//				ExchangeType:    pulumi.String("HEADERS"),
+//				AutoDeleteState: pulumi.Bool(false),
+//				Internal:        pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultQueue, err := amqp.NewQueue(ctx, "default", &amqp.QueueArgs{
 //				InstanceId:      _default.ID(),
-//				QueueName:       pulumi.String("tf-example"),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
+//				QueueName:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = amqp.NewBinding(ctx, "default", &amqp.BindingArgs{
-//				Argument:        pulumi.String("x-match:all"),
-//				BindingKey:      defaultQueue.QueueName,
-//				BindingType:     pulumi.String("QUEUE"),
-//				DestinationName: pulumi.String("tf-example"),
 //				InstanceId:      _default.ID(),
-//				SourceExchange:  defaultExchange.ExchangeName,
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
+//				SourceExchange:  defaultExchange.ExchangeName,
+//				DestinationName: pulumi.String(name),
+//				BindingType:     pulumi.String("QUEUE"),
+//				BindingKey:      defaultQueue.QueueName,
+//				Argument:        pulumi.String("x-match:all"),
 //			})
 //			if err != nil {
 //				return err
@@ -101,11 +106,9 @@ import (
 type Binding struct {
 	pulumi.CustomResourceState
 
-	// X-match Attributes. Valid Values:
-	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-	//
-	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 	Argument pulumi.StringOutput `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -114,15 +117,15 @@ type Binding struct {
 	//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
 	//   The binding key must be 1 to 255 characters in length.
 	BindingKey pulumi.StringOutput `pulumi:"bindingKey"`
-	// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+	// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 	BindingType pulumi.StringOutput `pulumi:"bindingType"`
-	// The Target Queue Or Exchange of the Name.
+	// The name of the object that you want to bind to the source exchange.
 	DestinationName pulumi.StringOutput `pulumi:"destinationName"`
-	// Instance Id.
+	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The Source Exchange Name.
+	// The name of the source exchange.
 	SourceExchange pulumi.StringOutput `pulumi:"sourceExchange"`
-	// Virtualhost Name.
+	// The name of the vhost.
 	VirtualHostName pulumi.StringOutput `pulumi:"virtualHostName"`
 }
 
@@ -174,11 +177,9 @@ func GetBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Binding resources.
 type bindingState struct {
-	// X-match Attributes. Valid Values:
-	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-	//
-	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -187,24 +188,22 @@ type bindingState struct {
 	//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
 	//   The binding key must be 1 to 255 characters in length.
 	BindingKey *string `pulumi:"bindingKey"`
-	// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+	// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 	BindingType *string `pulumi:"bindingType"`
-	// The Target Queue Or Exchange of the Name.
+	// The name of the object that you want to bind to the source exchange.
 	DestinationName *string `pulumi:"destinationName"`
-	// Instance Id.
+	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The Source Exchange Name.
+	// The name of the source exchange.
 	SourceExchange *string `pulumi:"sourceExchange"`
-	// Virtualhost Name.
+	// The name of the vhost.
 	VirtualHostName *string `pulumi:"virtualHostName"`
 }
 
 type BindingState struct {
-	// X-match Attributes. Valid Values:
-	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-	//
-	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -213,15 +212,15 @@ type BindingState struct {
 	//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
 	//   The binding key must be 1 to 255 characters in length.
 	BindingKey pulumi.StringPtrInput
-	// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+	// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 	BindingType pulumi.StringPtrInput
-	// The Target Queue Or Exchange of the Name.
+	// The name of the object that you want to bind to the source exchange.
 	DestinationName pulumi.StringPtrInput
-	// Instance Id.
+	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
-	// The Source Exchange Name.
+	// The name of the source exchange.
 	SourceExchange pulumi.StringPtrInput
-	// Virtualhost Name.
+	// The name of the vhost.
 	VirtualHostName pulumi.StringPtrInput
 }
 
@@ -230,11 +229,9 @@ func (BindingState) ElementType() reflect.Type {
 }
 
 type bindingArgs struct {
-	// X-match Attributes. Valid Values:
-	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-	//
-	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -243,25 +240,23 @@ type bindingArgs struct {
 	//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
 	//   The binding key must be 1 to 255 characters in length.
 	BindingKey string `pulumi:"bindingKey"`
-	// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+	// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 	BindingType string `pulumi:"bindingType"`
-	// The Target Queue Or Exchange of the Name.
+	// The name of the object that you want to bind to the source exchange.
 	DestinationName string `pulumi:"destinationName"`
-	// Instance Id.
+	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The Source Exchange Name.
+	// The name of the source exchange.
 	SourceExchange string `pulumi:"sourceExchange"`
-	// Virtualhost Name.
+	// The name of the vhost.
 	VirtualHostName string `pulumi:"virtualHostName"`
 }
 
 // The set of arguments for constructing a Binding resource.
 type BindingArgs struct {
-	// X-match Attributes. Valid Values:
-	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-	//
-	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -270,15 +265,15 @@ type BindingArgs struct {
 	//   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
 	//   The binding key must be 1 to 255 characters in length.
 	BindingKey pulumi.StringInput
-	// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+	// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 	BindingType pulumi.StringInput
-	// The Target Queue Or Exchange of the Name.
+	// The name of the object that you want to bind to the source exchange.
 	DestinationName pulumi.StringInput
-	// Instance Id.
+	// The ID of the instance.
 	InstanceId pulumi.StringInput
-	// The Source Exchange Name.
+	// The name of the source exchange.
 	SourceExchange pulumi.StringInput
-	// Virtualhost Name.
+	// The name of the vhost.
 	VirtualHostName pulumi.StringInput
 }
 
@@ -369,11 +364,9 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 	return o
 }
 
-// X-match Attributes. Valid Values:
-// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-//
-// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
 func (o BindingOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Argument }).(pulumi.StringOutput)
 }
@@ -388,27 +381,27 @@ func (o BindingOutput) BindingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.BindingKey }).(pulumi.StringOutput)
 }
 
-// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
 func (o BindingOutput) BindingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.BindingType }).(pulumi.StringOutput)
 }
 
-// The Target Queue Or Exchange of the Name.
+// The name of the object that you want to bind to the source exchange.
 func (o BindingOutput) DestinationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.DestinationName }).(pulumi.StringOutput)
 }
 
-// Instance Id.
+// The ID of the instance.
 func (o BindingOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The Source Exchange Name.
+// The name of the source exchange.
 func (o BindingOutput) SourceExchange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.SourceExchange }).(pulumi.StringOutput)
 }
 
-// Virtualhost Name.
+// The name of the vhost.
 func (o BindingOutput) VirtualHostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.VirtualHostName }).(pulumi.StringOutput)
 }

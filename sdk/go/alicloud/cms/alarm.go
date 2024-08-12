@@ -154,13 +154,15 @@ import (
 type Alarm struct {
 	pulumi.CustomResourceState
 
+	// The trigger conditions for multiple metrics. See `compositeExpression` below.
+	CompositeExpression AlarmCompositeExpressionPtrOutput `pulumi:"compositeExpression"`
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -180,7 +182,7 @@ type Alarm struct {
 	MetricDimensions pulumi.StringOutput `pulumi:"metricDimensions"`
 	// The name of the alert rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -242,13 +244,15 @@ func GetAlarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alarm resources.
 type alarmState struct {
+	// The trigger conditions for multiple metrics. See `compositeExpression` below.
+	CompositeExpression *AlarmCompositeExpression `pulumi:"compositeExpression"`
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -268,7 +272,7 @@ type alarmState struct {
 	MetricDimensions *string `pulumi:"metricDimensions"`
 	// The name of the alert rule.
 	Name *string `pulumi:"name"`
-	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
 	Period *int `pulumi:"period"`
 	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -292,13 +296,15 @@ type alarmState struct {
 }
 
 type AlarmState struct {
+	// The trigger conditions for multiple metrics. See `compositeExpression` below.
+	CompositeExpression AlarmCompositeExpressionPtrInput
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -318,7 +324,7 @@ type AlarmState struct {
 	MetricDimensions pulumi.StringPtrInput
 	// The name of the alert rule.
 	Name pulumi.StringPtrInput
-	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
 	Period pulumi.IntPtrInput
 	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -346,13 +352,15 @@ func (AlarmState) ElementType() reflect.Type {
 }
 
 type alarmArgs struct {
+	// The trigger conditions for multiple metrics. See `compositeExpression` below.
+	CompositeExpression *AlarmCompositeExpression `pulumi:"compositeExpression"`
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled *bool `pulumi:"enabled"`
@@ -372,7 +380,7 @@ type alarmArgs struct {
 	MetricDimensions *string `pulumi:"metricDimensions"`
 	// The name of the alert rule.
 	Name *string `pulumi:"name"`
-	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
 	Period *int `pulumi:"period"`
 	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -395,13 +403,15 @@ type alarmArgs struct {
 
 // The set of arguments for constructing a Alarm resource.
 type AlarmArgs struct {
+	// The trigger conditions for multiple metrics. See `compositeExpression` below.
+	CompositeExpression AlarmCompositeExpressionPtrInput
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default value: `true`.
 	Enabled pulumi.BoolPtrInput
@@ -421,7 +431,7 @@ type AlarmArgs struct {
 	MetricDimensions pulumi.StringPtrInput
 	// The name of the alert rule.
 	Name pulumi.StringPtrInput
-	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
 	Period pulumi.IntPtrInput
 	// The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	// **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -529,6 +539,11 @@ func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return o
 }
 
+// The trigger conditions for multiple metrics. See `compositeExpression` below.
+func (o AlarmOutput) CompositeExpression() AlarmCompositeExpressionPtrOutput {
+	return o.ApplyT(func(v *Alarm) AlarmCompositeExpressionPtrOutput { return v.CompositeExpression }).(AlarmCompositeExpressionPtrOutput)
+}
+
 // List contact groups of the alarm rule, which must have been created on the console.
 func (o AlarmOutput) ContactGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringArrayOutput { return v.ContactGroups }).(pulumi.StringArrayOutput)
@@ -541,7 +556,7 @@ func (o AlarmOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
 }
 
-// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 func (o AlarmOutput) EffectiveInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.EffectiveInterval }).(pulumi.StringPtrOutput)
 }
@@ -588,7 +603,7 @@ func (o AlarmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+// The statistical period of the metric. Unit: seconds. Default value: `300`.
 func (o AlarmOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

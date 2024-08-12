@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetricRuleTemplateAlertTemplate {
     /**
-     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * @return The abbreviation of the Alibaba Cloud service name.
+     * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
      * 
      */
     private String category;
@@ -25,14 +26,12 @@ public final class MetricRuleTemplateAlertTemplate {
     private @Nullable MetricRuleTemplateAlertTemplateEscalations escalations;
     /**
      * @return The name of the metric.
-     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     private String metricName;
     /**
-     * @return The namespace of the service.
-     * 
+     * @return The namespace of the cloud service.
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -50,7 +49,8 @@ public final class MetricRuleTemplateAlertTemplate {
 
     private MetricRuleTemplateAlertTemplate() {}
     /**
-     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * @return The abbreviation of the Alibaba Cloud service name.
+     * &gt; **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
      * 
      */
     public String category() {
@@ -65,7 +65,6 @@ public final class MetricRuleTemplateAlertTemplate {
     }
     /**
      * @return The name of the metric.
-     * 
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
@@ -73,8 +72,7 @@ public final class MetricRuleTemplateAlertTemplate {
         return this.metricName;
     }
     /**
-     * @return The namespace of the service.
-     * 
+     * @return The namespace of the cloud service.
      * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
