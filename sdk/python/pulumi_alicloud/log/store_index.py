@@ -160,8 +160,8 @@ class StoreIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
-                 full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
+                 field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
+                 full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -194,18 +194,18 @@ class StoreIndex(pulumi.CustomResource):
         example_store_index = alicloud.log.StoreIndex("example",
             project=example.name,
             logstore=example_store.name,
-            full_text=alicloud.log.StoreIndexFullTextArgs(
-                case_sensitive=True,
-                token=\"\"\" #$^*\\x0d
+            full_text={
+                "case_sensitive": True,
+                "token": \"\"\" #$^*\\x0d
         \\x09\"\"\",
-            ),
-            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
-                name="terraform-example",
-                enable_analytics=True,
-                type="text",
-                token=\"\"\" #$^*\\x0d
+            },
+            field_searches=[{
+                "name": "terraform-example",
+                "enable_analytics": True,
+                "type": "text",
+                "token": \"\"\" #$^*\\x0d
         \\x09\"\"\",
-            )])
+            }])
         ```
 
         ## Module Support
@@ -223,8 +223,8 @@ class StoreIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. Valid item as follows:
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
@@ -263,18 +263,18 @@ class StoreIndex(pulumi.CustomResource):
         example_store_index = alicloud.log.StoreIndex("example",
             project=example.name,
             logstore=example_store.name,
-            full_text=alicloud.log.StoreIndexFullTextArgs(
-                case_sensitive=True,
-                token=\"\"\" #$^*\\x0d
+            full_text={
+                "case_sensitive": True,
+                "token": \"\"\" #$^*\\x0d
         \\x09\"\"\",
-            ),
-            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
-                name="terraform-example",
-                enable_analytics=True,
-                type="text",
-                token=\"\"\" #$^*\\x0d
+            },
+            field_searches=[{
+                "name": "terraform-example",
+                "enable_analytics": True,
+                "type": "text",
+                "token": \"\"\" #$^*\\x0d
         \\x09\"\"\",
-            )])
+            }])
         ```
 
         ## Module Support
@@ -305,8 +305,8 @@ class StoreIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
-                 full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
+                 field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
+                 full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -336,8 +336,8 @@ class StoreIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]]] = None,
-            full_text: Optional[pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']]] = None,
+            field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
+            full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
             logstore: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'StoreIndex':
         """
@@ -347,8 +347,8 @@ class StoreIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreIndexFieldSearchArgs']]]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input[pulumi.InputType['StoreIndexFullTextArgs']] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. Valid item as follows:
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """

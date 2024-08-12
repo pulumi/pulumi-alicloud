@@ -230,7 +230,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TemplateApplications(String name) {
+    public TemplateApplications(java.lang.String name) {
         this(name, TemplateApplicationsArgs.Empty);
     }
     /**
@@ -238,7 +238,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TemplateApplications(String name, TemplateApplicationsArgs args) {
+    public TemplateApplications(java.lang.String name, TemplateApplicationsArgs args) {
         this(name, args, null);
     }
     /**
@@ -247,15 +247,22 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TemplateApplications(String name, TemplateApplicationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/templateApplications:TemplateApplications", name, args == null ? TemplateApplicationsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TemplateApplications(java.lang.String name, TemplateApplicationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/templateApplications:TemplateApplications", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TemplateApplications(String name, Output<String> id, @Nullable TemplateApplicationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/templateApplications:TemplateApplications", name, state, makeResourceOptions(options, id));
+    private TemplateApplications(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateApplicationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/templateApplications:TemplateApplications", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TemplateApplicationsArgs makeArgs(TemplateApplicationsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TemplateApplicationsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -271,7 +278,7 @@ public class TemplateApplications extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TemplateApplications get(String name, Output<String> id, @Nullable TemplateApplicationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TemplateApplications get(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateApplicationsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TemplateApplications(name, id, state, options);
     }
 }

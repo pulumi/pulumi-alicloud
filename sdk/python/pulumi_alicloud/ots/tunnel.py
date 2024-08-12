@@ -296,18 +296,18 @@ class Tunnel(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ])
         default_tunnel = alicloud.ots.Tunnel("default",
             instance_name=default_instance.name,
@@ -374,18 +374,18 @@ class Tunnel(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ])
         default_tunnel = alicloud.ots.Tunnel("default",
             instance_name=default_instance.name,
@@ -458,7 +458,7 @@ class Tunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TunnelChannelArgs']]]]] = None,
+            channels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             expired: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -475,7 +475,7 @@ class Tunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TunnelChannelArgs']]]] channels: The channels of OTS tunnel. Each element contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]] channels: The channels of OTS tunnel. Each element contains the following attributes:
         :param pulumi.Input[int] create_time: The creation time of the Tunnel.
         :param pulumi.Input[bool] expired: Whether the tunnel has expired.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.

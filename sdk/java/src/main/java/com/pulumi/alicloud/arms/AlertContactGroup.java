@@ -45,16 +45,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new AlertContact("example", AlertContactArgs.builder()
  *             .alertContactName("example_value")
  *             .dingRobotWebhookUrl("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****")
- *             .email("someone{@literal @}example.com")
+ *             .email("someone}{@literal @}{@code example.com")
  *             .phoneNum("1381111****")
  *             .build());
  * 
@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .contactIds(example.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -113,7 +113,7 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AlertContactGroup(String name) {
+    public AlertContactGroup(java.lang.String name) {
         this(name, AlertContactGroupArgs.Empty);
     }
     /**
@@ -121,7 +121,7 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlertContactGroup(String name, AlertContactGroupArgs args) {
+    public AlertContactGroup(java.lang.String name, AlertContactGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -130,15 +130,22 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlertContactGroup(String name, AlertContactGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/alertContactGroup:AlertContactGroup", name, args == null ? AlertContactGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AlertContactGroup(java.lang.String name, AlertContactGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/alertContactGroup:AlertContactGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AlertContactGroup(String name, Output<String> id, @Nullable AlertContactGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/alertContactGroup:AlertContactGroup", name, state, makeResourceOptions(options, id));
+    private AlertContactGroup(java.lang.String name, Output<java.lang.String> id, @Nullable AlertContactGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/alertContactGroup:AlertContactGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AlertContactGroupArgs makeArgs(AlertContactGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AlertContactGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -154,7 +161,7 @@ public class AlertContactGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AlertContactGroup get(String name, Output<String> id, @Nullable AlertContactGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AlertContactGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable AlertContactGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AlertContactGroup(name, id, state, options);
     }
 }

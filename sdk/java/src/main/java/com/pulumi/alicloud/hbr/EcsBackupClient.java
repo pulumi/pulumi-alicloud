@@ -302,7 +302,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsBackupClient(String name) {
+    public EcsBackupClient(java.lang.String name) {
         this(name, EcsBackupClientArgs.Empty);
     }
     /**
@@ -310,7 +310,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsBackupClient(String name, EcsBackupClientArgs args) {
+    public EcsBackupClient(java.lang.String name, EcsBackupClientArgs args) {
         this(name, args, null);
     }
     /**
@@ -319,15 +319,22 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsBackupClient(String name, EcsBackupClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/ecsBackupClient:EcsBackupClient", name, args == null ? EcsBackupClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsBackupClient(java.lang.String name, EcsBackupClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/ecsBackupClient:EcsBackupClient", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsBackupClient(String name, Output<String> id, @Nullable EcsBackupClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/ecsBackupClient:EcsBackupClient", name, state, makeResourceOptions(options, id));
+    private EcsBackupClient(java.lang.String name, Output<java.lang.String> id, @Nullable EcsBackupClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/ecsBackupClient:EcsBackupClient", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsBackupClientArgs makeArgs(EcsBackupClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsBackupClientArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -343,7 +350,7 @@ public class EcsBackupClient extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsBackupClient get(String name, Output<String> id, @Nullable EcsBackupClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsBackupClient get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsBackupClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsBackupClient(name, id, state, options);
     }
 }

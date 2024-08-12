@@ -122,7 +122,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VbrHa(String name) {
+    public VbrHa(java.lang.String name) {
         this(name, VbrHaArgs.Empty);
     }
     /**
@@ -130,7 +130,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VbrHa(String name, VbrHaArgs args) {
+    public VbrHa(java.lang.String name, VbrHaArgs args) {
         this(name, args, null);
     }
     /**
@@ -139,15 +139,22 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VbrHa(String name, VbrHaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/vbrHa:VbrHa", name, args == null ? VbrHaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VbrHa(java.lang.String name, VbrHaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/vbrHa:VbrHa", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VbrHa(String name, Output<String> id, @Nullable VbrHaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/vbrHa:VbrHa", name, state, makeResourceOptions(options, id));
+    private VbrHa(java.lang.String name, Output<java.lang.String> id, @Nullable VbrHaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/vbrHa:VbrHa", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VbrHaArgs makeArgs(VbrHaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VbrHaArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -163,7 +170,7 @@ public class VbrHa extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VbrHa get(String name, Output<String> id, @Nullable VbrHaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VbrHa get(java.lang.String name, Output<java.lang.String> id, @Nullable VbrHaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VbrHa(name, id, state, options);
     }
 }

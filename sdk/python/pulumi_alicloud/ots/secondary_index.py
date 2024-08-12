@@ -295,32 +295,32 @@ class SecondaryIndex(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ],
             defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
+                {
+                    "name": "col1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "col2",
+                    "type": "String",
+                },
+                {
+                    "name": "col3",
+                    "type": "Binary",
+                },
             ])
         default_secondary_index = alicloud.ots.SecondaryIndex("default",
             instance_name=default_instance.name,
@@ -401,32 +401,32 @@ class SecondaryIndex(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ],
             defined_columns=[
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col1",
-                    type="Integer",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col2",
-                    type="String",
-                ),
-                alicloud.ots.TableDefinedColumnArgs(
-                    name="col3",
-                    type="Binary",
-                ),
+                {
+                    "name": "col1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "col2",
+                    "type": "String",
+                },
+                {
+                    "name": "col3",
+                    "type": "Binary",
+                },
             ])
         default_secondary_index = alicloud.ots.SecondaryIndex("default",
             instance_name=default_instance.name,

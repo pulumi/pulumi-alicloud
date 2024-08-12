@@ -318,7 +318,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Chain(String name) {
+    public Chain(java.lang.String name) {
         this(name, ChainArgs.Empty);
     }
     /**
@@ -326,7 +326,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Chain(String name, ChainArgs args) {
+    public Chain(java.lang.String name, ChainArgs args) {
         this(name, args, null);
     }
     /**
@@ -335,15 +335,22 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Chain(String name, ChainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/chain:Chain", name, args == null ? ChainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Chain(java.lang.String name, ChainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/chain:Chain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Chain(String name, Output<String> id, @Nullable ChainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/chain:Chain", name, state, makeResourceOptions(options, id));
+    private Chain(java.lang.String name, Output<java.lang.String> id, @Nullable ChainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/chain:Chain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ChainArgs makeArgs(ChainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ChainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -359,7 +366,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Chain get(String name, Output<String> id, @Nullable ChainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Chain get(java.lang.String name, Output<java.lang.String> id, @Nullable ChainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Chain(name, id, state, options);
     }
 }

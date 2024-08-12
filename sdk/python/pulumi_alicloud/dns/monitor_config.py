@@ -286,7 +286,7 @@ class MonitorConfig(pulumi.CustomResource):
                  addr_pool_id: Optional[pulumi.Input[str]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]]] = None,
+                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  monitor_extend_info: Optional[pulumi.Input[str]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
@@ -330,24 +330,24 @@ class MonitorConfig(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
             type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
+            addresses=[{
+                "attribute_info": "{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                "remark": "address_remark",
+                "address": "1.1.1.1",
+                "mode": "SMART",
+                "lba_weight": 1,
+            }])
         default_monitor_config = alicloud.dns.MonitorConfig("default",
             addr_pool_id=default_address_pool.id,
             evaluation_count=1,
@@ -355,10 +355,10 @@ class MonitorConfig(pulumi.CustomResource):
             timeout=5000,
             protocol_type="TCP",
             monitor_extend_info="{\\"failureRate\\":50,\\"port\\":80}",
-            isp_city_nodes=[alicloud.dns.MonitorConfigIspCityNodeArgs(
-                city_code="503",
-                isp_code="465",
-            )])
+            isp_city_nodes=[{
+                "city_code": "503",
+                "isp_code": "465",
+            }])
         ```
 
         ## Import
@@ -374,7 +374,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[str] lang: The lang.
         :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
@@ -424,24 +424,24 @@ class MonitorConfig(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
             type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info="{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
+            addresses=[{
+                "attribute_info": "{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                "remark": "address_remark",
+                "address": "1.1.1.1",
+                "mode": "SMART",
+                "lba_weight": 1,
+            }])
         default_monitor_config = alicloud.dns.MonitorConfig("default",
             addr_pool_id=default_address_pool.id,
             evaluation_count=1,
@@ -449,10 +449,10 @@ class MonitorConfig(pulumi.CustomResource):
             timeout=5000,
             protocol_type="TCP",
             monitor_extend_info="{\\"failureRate\\":50,\\"port\\":80}",
-            isp_city_nodes=[alicloud.dns.MonitorConfigIspCityNodeArgs(
-                city_code="503",
-                isp_code="465",
-            )])
+            isp_city_nodes=[{
+                "city_code": "503",
+                "isp_code": "465",
+            }])
         ```
 
         ## Import
@@ -481,7 +481,7 @@ class MonitorConfig(pulumi.CustomResource):
                  addr_pool_id: Optional[pulumi.Input[str]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]]] = None,
+                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  monitor_extend_info: Optional[pulumi.Input[str]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class MonitorConfig(pulumi.CustomResource):
             addr_pool_id: Optional[pulumi.Input[str]] = None,
             evaluation_count: Optional[pulumi.Input[int]] = None,
             interval: Optional[pulumi.Input[int]] = None,
-            isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]]] = None,
+            isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
             lang: Optional[pulumi.Input[str]] = None,
             monitor_extend_info: Optional[pulumi.Input[str]] = None,
             protocol_type: Optional[pulumi.Input[str]] = None,
@@ -545,7 +545,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool.
         :param pulumi.Input[int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[str] lang: The lang.
         :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.

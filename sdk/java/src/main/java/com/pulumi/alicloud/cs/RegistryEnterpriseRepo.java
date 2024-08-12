@@ -201,7 +201,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegistryEnterpriseRepo(String name) {
+    public RegistryEnterpriseRepo(java.lang.String name) {
         this(name, RegistryEnterpriseRepoArgs.Empty);
     }
     /**
@@ -209,7 +209,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegistryEnterpriseRepo(String name, RegistryEnterpriseRepoArgs args) {
+    public RegistryEnterpriseRepo(java.lang.String name, RegistryEnterpriseRepoArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,15 +218,22 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegistryEnterpriseRepo(String name, RegistryEnterpriseRepoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", name, args == null ? RegistryEnterpriseRepoArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegistryEnterpriseRepo(java.lang.String name, RegistryEnterpriseRepoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegistryEnterpriseRepo(String name, Output<String> id, @Nullable RegistryEnterpriseRepoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", name, state, makeResourceOptions(options, id));
+    private RegistryEnterpriseRepo(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryEnterpriseRepoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegistryEnterpriseRepoArgs makeArgs(RegistryEnterpriseRepoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegistryEnterpriseRepoArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +249,7 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegistryEnterpriseRepo get(String name, Output<String> id, @Nullable RegistryEnterpriseRepoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegistryEnterpriseRepo get(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryEnterpriseRepoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegistryEnterpriseRepo(name, id, state, options);
     }
 }

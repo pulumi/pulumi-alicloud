@@ -48,7 +48,7 @@ import (
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
 //				EnableAdminAccess: pulumi.Bool(true),
 //				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName:    pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				OfficeSiteName:    pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err

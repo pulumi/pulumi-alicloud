@@ -455,7 +455,7 @@ class StackGroup(pulumi.CustomResource):
                  execution_role_name: Optional[pulumi.Input[str]] = None,
                  operation_description: Optional[pulumi.Input[str]] = None,
                  operation_preferences: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
                  region_ids: Optional[pulumi.Input[str]] = None,
                  stack_group_name: Optional[pulumi.Input[str]] = None,
                  template_body: Optional[pulumi.Input[str]] = None,
@@ -501,7 +501,7 @@ class StackGroup(pulumi.CustomResource):
         :param pulumi.Input[str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
         :param pulumi.Input[str] operation_description: The description of the operation.
         :param pulumi.Input[str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
         :param pulumi.Input[str] stack_group_name: The name of the stack group. The name must be unique in a region.
         :param pulumi.Input[str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
@@ -566,7 +566,7 @@ class StackGroup(pulumi.CustomResource):
                  execution_role_name: Optional[pulumi.Input[str]] = None,
                  operation_description: Optional[pulumi.Input[str]] = None,
                  operation_preferences: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
                  region_ids: Optional[pulumi.Input[str]] = None,
                  stack_group_name: Optional[pulumi.Input[str]] = None,
                  template_body: Optional[pulumi.Input[str]] = None,
@@ -613,7 +613,7 @@ class StackGroup(pulumi.CustomResource):
             execution_role_name: Optional[pulumi.Input[str]] = None,
             operation_description: Optional[pulumi.Input[str]] = None,
             operation_preferences: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
             region_ids: Optional[pulumi.Input[str]] = None,
             stack_group_id: Optional[pulumi.Input[str]] = None,
             stack_group_name: Optional[pulumi.Input[str]] = None,
@@ -634,7 +634,7 @@ class StackGroup(pulumi.CustomResource):
         :param pulumi.Input[str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
         :param pulumi.Input[str] operation_description: The description of the operation.
         :param pulumi.Input[str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackGroupParameterArgs']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
         :param pulumi.Input[str] stack_group_id: The id of Stack Group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group. The name must be unique in a region.

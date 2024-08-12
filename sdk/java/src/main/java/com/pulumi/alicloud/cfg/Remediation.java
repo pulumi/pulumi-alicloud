@@ -218,7 +218,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Remediation(String name) {
+    public Remediation(java.lang.String name) {
         this(name, RemediationArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Remediation(String name, RemediationArgs args) {
+    public Remediation(java.lang.String name, RemediationArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Remediation(String name, RemediationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/remediation:Remediation", name, args == null ? RemediationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Remediation(java.lang.String name, RemediationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/remediation:Remediation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Remediation(String name, Output<String> id, @Nullable RemediationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/remediation:Remediation", name, state, makeResourceOptions(options, id));
+    private Remediation(java.lang.String name, Output<java.lang.String> id, @Nullable RemediationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/remediation:Remediation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RemediationArgs makeArgs(RemediationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RemediationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -259,7 +266,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Remediation get(String name, Output<String> id, @Nullable RemediationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Remediation get(java.lang.String name, Output<java.lang.String> id, @Nullable RemediationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Remediation(name, id, state, options);
     }
 }

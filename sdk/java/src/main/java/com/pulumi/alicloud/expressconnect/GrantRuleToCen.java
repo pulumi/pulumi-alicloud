@@ -156,7 +156,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GrantRuleToCen(String name) {
+    public GrantRuleToCen(java.lang.String name) {
         this(name, GrantRuleToCenArgs.Empty);
     }
     /**
@@ -164,7 +164,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GrantRuleToCen(String name, GrantRuleToCenArgs args) {
+    public GrantRuleToCen(java.lang.String name, GrantRuleToCenArgs args) {
         this(name, args, null);
     }
     /**
@@ -173,15 +173,22 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GrantRuleToCen(String name, GrantRuleToCenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen", name, args == null ? GrantRuleToCenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GrantRuleToCen(java.lang.String name, GrantRuleToCenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GrantRuleToCen(String name, Output<String> id, @Nullable GrantRuleToCenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen", name, state, makeResourceOptions(options, id));
+    private GrantRuleToCen(java.lang.String name, Output<java.lang.String> id, @Nullable GrantRuleToCenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/grantRuleToCen:GrantRuleToCen", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GrantRuleToCenArgs makeArgs(GrantRuleToCenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GrantRuleToCenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +204,7 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GrantRuleToCen get(String name, Output<String> id, @Nullable GrantRuleToCenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GrantRuleToCen get(java.lang.String name, Output<java.lang.String> id, @Nullable GrantRuleToCenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GrantRuleToCen(name, id, state, options);
     }
 }

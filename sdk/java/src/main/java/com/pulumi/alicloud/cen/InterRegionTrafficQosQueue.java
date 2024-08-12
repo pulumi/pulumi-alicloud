@@ -226,7 +226,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InterRegionTrafficQosQueue(String name) {
+    public InterRegionTrafficQosQueue(java.lang.String name) {
         this(name, InterRegionTrafficQosQueueArgs.Empty);
     }
     /**
@@ -234,7 +234,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InterRegionTrafficQosQueue(String name, InterRegionTrafficQosQueueArgs args) {
+    public InterRegionTrafficQosQueue(java.lang.String name, InterRegionTrafficQosQueueArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,15 +243,22 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InterRegionTrafficQosQueue(String name, InterRegionTrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue", name, args == null ? InterRegionTrafficQosQueueArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InterRegionTrafficQosQueue(java.lang.String name, InterRegionTrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InterRegionTrafficQosQueue(String name, Output<String> id, @Nullable InterRegionTrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue", name, state, makeResourceOptions(options, id));
+    private InterRegionTrafficQosQueue(java.lang.String name, Output<java.lang.String> id, @Nullable InterRegionTrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InterRegionTrafficQosQueueArgs makeArgs(InterRegionTrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InterRegionTrafficQosQueueArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -267,7 +274,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InterRegionTrafficQosQueue get(String name, Output<String> id, @Nullable InterRegionTrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InterRegionTrafficQosQueue get(java.lang.String name, Output<java.lang.String> id, @Nullable InterRegionTrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InterRegionTrafficQosQueue(name, id, state, options);
     }
 }

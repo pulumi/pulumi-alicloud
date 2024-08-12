@@ -244,7 +244,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationScale(String name) {
+    public ApplicationScale(java.lang.String name) {
         this(name, ApplicationScaleArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationScale(String name, ApplicationScaleArgs args) {
+    public ApplicationScale(java.lang.String name, ApplicationScaleArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,15 +261,22 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationScale(String name, ApplicationScaleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/applicationScale:ApplicationScale", name, args == null ? ApplicationScaleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationScale(java.lang.String name, ApplicationScaleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/applicationScale:ApplicationScale", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationScale(String name, Output<String> id, @Nullable ApplicationScaleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/applicationScale:ApplicationScale", name, state, makeResourceOptions(options, id));
+    private ApplicationScale(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationScaleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/applicationScale:ApplicationScale", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationScaleArgs makeArgs(ApplicationScaleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationScaleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -285,7 +292,7 @@ public class ApplicationScale extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationScale get(String name, Output<String> id, @Nullable ApplicationScaleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationScale get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationScaleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationScale(name, id, state, options);
     }
 }

@@ -306,7 +306,7 @@ class SiteMonitor(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]]] = None,
+                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
                  options_json: Optional[pulumi.Input[str]] = None,
                  task_name: Optional[pulumi.Input[str]] = None,
                  task_type: Optional[pulumi.Input[str]] = None,
@@ -330,10 +330,10 @@ class SiteMonitor(pulumi.CustomResource):
             task_name="tf-example",
             task_type="HTTP",
             interval=5,
-            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-                city="546",
-                isp="465",
-            )],
+            isp_cities=[{
+                "city": "546",
+                "isp": "465",
+            }],
             options_json=\"\"\"{
             "http_method": "get",
             "waitTime_after_completion": null,
@@ -365,7 +365,7 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
         :param pulumi.Input[int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
         :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
@@ -395,10 +395,10 @@ class SiteMonitor(pulumi.CustomResource):
             task_name="tf-example",
             task_type="HTTP",
             interval=5,
-            isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-                city="546",
-                isp="465",
-            )],
+            isp_cities=[{
+                "city": "546",
+                "isp": "465",
+            }],
             options_json=\"\"\"{
             "http_method": "get",
             "waitTime_after_completion": null,
@@ -443,7 +443,7 @@ class SiteMonitor(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  interval: Optional[pulumi.Input[int]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]]] = None,
+                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
                  options_json: Optional[pulumi.Input[str]] = None,
                  task_name: Optional[pulumi.Input[str]] = None,
                  task_type: Optional[pulumi.Input[str]] = None,
@@ -486,7 +486,7 @@ class SiteMonitor(pulumi.CustomResource):
             alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             interval: Optional[pulumi.Input[int]] = None,
-            isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]]] = None,
+            isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
             options_json: Optional[pulumi.Input[str]] = None,
             task_name: Optional[pulumi.Input[str]] = None,
             task_state: Optional[pulumi.Input[str]] = None,
@@ -503,7 +503,7 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
         :param pulumi.Input[str] create_time: The time when the site monitoring task was created.
         :param pulumi.Input[int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteMonitorIspCityArgs']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
         :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[str] task_state: The status of the site monitoring task.

@@ -211,7 +211,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RouteService(String name) {
+    public RouteService(java.lang.String name) {
         this(name, RouteServiceArgs.Empty);
     }
     /**
@@ -219,7 +219,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RouteService(String name, RouteServiceArgs args) {
+    public RouteService(java.lang.String name, RouteServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -228,15 +228,22 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RouteService(String name, RouteServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/routeService:RouteService", name, args == null ? RouteServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RouteService(java.lang.String name, RouteServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/routeService:RouteService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RouteService(String name, Output<String> id, @Nullable RouteServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/routeService:RouteService", name, state, makeResourceOptions(options, id));
+    private RouteService(java.lang.String name, Output<java.lang.String> id, @Nullable RouteServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/routeService:RouteService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RouteServiceArgs makeArgs(RouteServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouteServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -252,7 +259,7 @@ public class RouteService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RouteService get(String name, Output<String> id, @Nullable RouteServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RouteService get(java.lang.String name, Output<java.lang.String> id, @Nullable RouteServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RouteService(name, id, state, options);
     }
 }

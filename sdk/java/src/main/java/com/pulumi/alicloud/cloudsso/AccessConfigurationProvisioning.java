@@ -106,7 +106,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessConfigurationProvisioning(String name) {
+    public AccessConfigurationProvisioning(java.lang.String name) {
         this(name, AccessConfigurationProvisioningArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessConfigurationProvisioning(String name, AccessConfigurationProvisioningArgs args) {
+    public AccessConfigurationProvisioning(java.lang.String name, AccessConfigurationProvisioningArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessConfigurationProvisioning(String name, AccessConfigurationProvisioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", name, args == null ? AccessConfigurationProvisioningArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessConfigurationProvisioning(java.lang.String name, AccessConfigurationProvisioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessConfigurationProvisioning(String name, Output<String> id, @Nullable AccessConfigurationProvisioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", name, state, makeResourceOptions(options, id));
+    private AccessConfigurationProvisioning(java.lang.String name, Output<java.lang.String> id, @Nullable AccessConfigurationProvisioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessConfigurationProvisioningArgs makeArgs(AccessConfigurationProvisioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessConfigurationProvisioningArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessConfigurationProvisioning get(String name, Output<String> id, @Nullable AccessConfigurationProvisioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessConfigurationProvisioning get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessConfigurationProvisioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessConfigurationProvisioning(name, id, state, options);
     }
 }

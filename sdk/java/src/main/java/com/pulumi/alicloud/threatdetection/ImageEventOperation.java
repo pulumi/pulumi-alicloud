@@ -178,7 +178,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ImageEventOperation(String name) {
+    public ImageEventOperation(java.lang.String name) {
         this(name, ImageEventOperationArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ImageEventOperation(String name, @Nullable ImageEventOperationArgs args) {
+    public ImageEventOperation(java.lang.String name, @Nullable ImageEventOperationArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ImageEventOperation(String name, @Nullable ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, args == null ? ImageEventOperationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ImageEventOperation(java.lang.String name, @Nullable ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ImageEventOperation(String name, Output<String> id, @Nullable ImageEventOperationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, state, makeResourceOptions(options, id));
+    private ImageEventOperation(java.lang.String name, Output<java.lang.String> id, @Nullable ImageEventOperationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ImageEventOperationArgs makeArgs(@Nullable ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ImageEventOperationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +226,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ImageEventOperation get(String name, Output<String> id, @Nullable ImageEventOperationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ImageEventOperation get(java.lang.String name, Output<java.lang.String> id, @Nullable ImageEventOperationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ImageEventOperation(name, id, state, options);
     }
 }

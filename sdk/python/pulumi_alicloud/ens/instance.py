@@ -1280,7 +1280,7 @@ class Instance(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
                  force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
@@ -1306,7 +1306,7 @@ class Instance(pulumi.CustomResource):
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
                  security_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1335,7 +1335,7 @@ class Instance(pulumi.CustomResource):
                - cmcc (mobile)
                - unicom
                - telecom.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: Data disk specifications. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Data disk specifications. See `data_disk` below.
         :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
                - true: Force
@@ -1384,7 +1384,7 @@ class Instance(pulumi.CustomResource):
                - For regional scheduling, Concentrate, Disperse.
         :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
         :param pulumi.Input[str] status: Status of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
@@ -1424,7 +1424,7 @@ class Instance(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[str]] = None,
                  billing_cycle: Optional[pulumi.Input[str]] = None,
                  carrier: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
                  force_stop: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
@@ -1450,7 +1450,7 @@ class Instance(pulumi.CustomResource):
                  scheduling_strategy: Optional[pulumi.Input[str]] = None,
                  security_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
                  unique_suffix: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1521,7 +1521,7 @@ class Instance(pulumi.CustomResource):
             auto_use_coupon: Optional[pulumi.Input[str]] = None,
             billing_cycle: Optional[pulumi.Input[str]] = None,
             carrier: Optional[pulumi.Input[str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
             ens_region_id: Optional[pulumi.Input[str]] = None,
             force_stop: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
@@ -1547,7 +1547,7 @@ class Instance(pulumi.CustomResource):
             scheduling_strategy: Optional[pulumi.Input[str]] = None,
             security_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            system_disk: Optional[pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']]] = None,
+            system_disk: Optional[pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']]] = None,
             unique_suffix: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1571,7 +1571,7 @@ class Instance(pulumi.CustomResource):
                - cmcc (mobile)
                - unicom
                - telecom.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: Data disk specifications. See `data_disk` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Data disk specifications. See `data_disk` below.
         :param pulumi.Input[str] ens_region_id: The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
         :param pulumi.Input[str] force_stop: Whether to force the identity when operating the instance. Optional values:
                - true: Force
@@ -1620,7 +1620,7 @@ class Instance(pulumi.CustomResource):
                - For regional scheduling, Concentrate, Disperse.
         :param pulumi.Input[str] security_id: ID of the security group to which the instance belongs.
         :param pulumi.Input[str] status: Status of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceSystemDiskArgs']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
+        :param pulumi.Input[Union['InstanceSystemDiskArgs', 'InstanceSystemDiskArgsDict']] system_disk: System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `system_disk` below.
         :param pulumi.Input[bool] unique_suffix: Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
         :param pulumi.Input[str] user_data: User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.

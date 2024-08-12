@@ -733,16 +733,16 @@ public final class AlicloudFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
-     *             .email("123{@literal @}163.com")
+     *             .email("123}{@literal @}{@code 163.com")
      *             .mobile("153xxxxx906")
      *             .build());
      * 
@@ -751,8 +751,8 @@ public final class AlicloudFunctions {
      *             .type(1)
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -787,16 +787,16 @@ public final class AlicloudFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
-     *             .email("123{@literal @}163.com")
+     *             .email("123}{@literal @}{@code 163.com")
      *             .mobile("153xxxxx906")
      *             .build());
      * 
@@ -805,8 +805,8 @@ public final class AlicloudFunctions {
      *             .type(1)
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -841,16 +841,16 @@ public final class AlicloudFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
-     *             .email("123{@literal @}163.com")
+     *             .email("123}{@literal @}{@code 163.com")
      *             .mobile("153xxxxx906")
      *             .build());
      * 
@@ -859,8 +859,8 @@ public final class AlicloudFunctions {
      *             .type(1)
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -895,16 +895,16 @@ public final class AlicloudFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
-     *             .email("123{@literal @}163.com")
+     *             .email("123}{@literal @}{@code 163.com")
      *             .mobile("153xxxxx906")
      *             .build());
      * 
@@ -913,8 +913,8 @@ public final class AlicloudFunctions {
      *             .type(1)
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

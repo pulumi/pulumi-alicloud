@@ -244,7 +244,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GreyTagRoute(String name) {
+    public GreyTagRoute(java.lang.String name) {
         this(name, GreyTagRouteArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GreyTagRoute(String name, GreyTagRouteArgs args) {
+    public GreyTagRoute(java.lang.String name, GreyTagRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,15 +261,22 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GreyTagRoute(String name, GreyTagRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/greyTagRoute:GreyTagRoute", name, args == null ? GreyTagRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GreyTagRoute(java.lang.String name, GreyTagRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/greyTagRoute:GreyTagRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GreyTagRoute(String name, Output<String> id, @Nullable GreyTagRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/greyTagRoute:GreyTagRoute", name, state, makeResourceOptions(options, id));
+    private GreyTagRoute(java.lang.String name, Output<java.lang.String> id, @Nullable GreyTagRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/greyTagRoute:GreyTagRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GreyTagRouteArgs makeArgs(GreyTagRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GreyTagRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -285,7 +292,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GreyTagRoute get(String name, Output<String> id, @Nullable GreyTagRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GreyTagRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable GreyTagRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GreyTagRoute(name, id, state, options);
     }
 }

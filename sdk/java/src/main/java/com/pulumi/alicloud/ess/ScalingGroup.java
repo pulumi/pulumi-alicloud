@@ -627,7 +627,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ScalingGroup(String name) {
+    public ScalingGroup(java.lang.String name) {
         this(name, ScalingGroupArgs.Empty);
     }
     /**
@@ -635,7 +635,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ScalingGroup(String name, ScalingGroupArgs args) {
+    public ScalingGroup(java.lang.String name, ScalingGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -644,15 +644,22 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ScalingGroup(String name, ScalingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/scalingGroup:ScalingGroup", name, args == null ? ScalingGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ScalingGroup(java.lang.String name, ScalingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/scalingGroup:ScalingGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ScalingGroup(String name, Output<String> id, @Nullable ScalingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/scalingGroup:ScalingGroup", name, state, makeResourceOptions(options, id));
+    private ScalingGroup(java.lang.String name, Output<java.lang.String> id, @Nullable ScalingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/scalingGroup:ScalingGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ScalingGroupArgs makeArgs(ScalingGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ScalingGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -668,7 +675,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ScalingGroup get(String name, Output<String> id, @Nullable ScalingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ScalingGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable ScalingGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ScalingGroup(name, id, state, options);
     }
 }

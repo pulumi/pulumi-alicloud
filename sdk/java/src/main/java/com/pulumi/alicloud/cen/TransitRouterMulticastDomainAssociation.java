@@ -189,7 +189,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterMulticastDomainAssociation(String name) {
+    public TransitRouterMulticastDomainAssociation(java.lang.String name) {
         this(name, TransitRouterMulticastDomainAssociationArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterMulticastDomainAssociation(String name, TransitRouterMulticastDomainAssociationArgs args) {
+    public TransitRouterMulticastDomainAssociation(java.lang.String name, TransitRouterMulticastDomainAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterMulticastDomainAssociation(String name, TransitRouterMulticastDomainAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation", name, args == null ? TransitRouterMulticastDomainAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterMulticastDomainAssociation(java.lang.String name, TransitRouterMulticastDomainAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterMulticastDomainAssociation(String name, Output<String> id, @Nullable TransitRouterMulticastDomainAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation", name, state, makeResourceOptions(options, id));
+    private TransitRouterMulticastDomainAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterMulticastDomainAssociationArgs makeArgs(TransitRouterMulticastDomainAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterMulticastDomainAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterMulticastDomainAssociation get(String name, Output<String> id, @Nullable TransitRouterMulticastDomainAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterMulticastDomainAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterMulticastDomainAssociation(name, id, state, options);
     }
 }

@@ -155,18 +155,18 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
         env_language="zh",
         reason="example",
         dimensions=[
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="apiName",
-                value="GetProductQuotaDimension",
-            ),
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="apiVersion",
-                value="2020-05-10",
-            ),
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            ),
+            {
+                "key": "apiName",
+                "value": "GetProductQuotaDimension",
+            },
+            {
+                "key": "apiVersion",
+                "value": "2020-05-10",
+            },
+            {
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            },
         ])
     default_get_template_applications = alicloud.quotas.get_template_applications_output(ids=[default_template_applications.id],
         product_code="vpc",
@@ -234,18 +234,18 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
         env_language="zh",
         reason="example",
         dimensions=[
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="apiName",
-                value="GetProductQuotaDimension",
-            ),
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="apiVersion",
-                value="2020-05-10",
-            ),
-            alicloud.quotas.TemplateApplicationsDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            ),
+            {
+                "key": "apiName",
+                "value": "GetProductQuotaDimension",
+            },
+            {
+                "key": "apiVersion",
+                "value": "2020-05-10",
+            },
+            {
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            },
         ])
     default_get_template_applications = alicloud.quotas.get_template_applications_output(ids=[default_template_applications.id],
         product_code="vpc",

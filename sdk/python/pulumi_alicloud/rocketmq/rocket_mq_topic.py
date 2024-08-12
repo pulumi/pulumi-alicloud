@@ -227,22 +227,22 @@ class RocketMQTopic(pulumi.CustomResource):
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
             auto_renew_period=1,
-            product_info=alicloud.rocketmq.RocketMQInstanceProductInfoArgs(
-                msg_process_spec="rmq.p2.4xlarge",
-                send_receive_ratio=0.3,
-                message_retention_time=70,
-            ),
-            network_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoArgs(
-                vpc_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs(
-                    vpc_id=create_vpc.id,
-                    vswitch_id=create_vswitch.id,
-                ),
-                internet_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs(
-                    internet_spec="enable",
-                    flow_out_type="payByBandwidth",
-                    flow_out_bandwidth=30,
-                ),
-            ),
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            network_info={
+                "vpc_info": {
+                    "vpc_id": create_vpc.id,
+                    "vswitch_id": create_vswitch.id,
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 30,
+                },
+            },
             period=1,
             sub_series_code="cluster_ha",
             remark="example",
@@ -311,22 +311,22 @@ class RocketMQTopic(pulumi.CustomResource):
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
             auto_renew_period=1,
-            product_info=alicloud.rocketmq.RocketMQInstanceProductInfoArgs(
-                msg_process_spec="rmq.p2.4xlarge",
-                send_receive_ratio=0.3,
-                message_retention_time=70,
-            ),
-            network_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoArgs(
-                vpc_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs(
-                    vpc_id=create_vpc.id,
-                    vswitch_id=create_vswitch.id,
-                ),
-                internet_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs(
-                    internet_spec="enable",
-                    flow_out_type="payByBandwidth",
-                    flow_out_bandwidth=30,
-                ),
-            ),
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            network_info={
+                "vpc_info": {
+                    "vpc_id": create_vpc.id,
+                    "vswitch_id": create_vswitch.id,
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 30,
+                },
+            },
             period=1,
             sub_series_code="cluster_ha",
             remark="example",

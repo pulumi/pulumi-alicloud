@@ -223,7 +223,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SaslUser(String name) {
+    public SaslUser(java.lang.String name) {
         this(name, SaslUserArgs.Empty);
     }
     /**
@@ -231,7 +231,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SaslUser(String name, SaslUserArgs args) {
+    public SaslUser(java.lang.String name, SaslUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -240,15 +240,22 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SaslUser(String name, SaslUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/saslUser:SaslUser", name, args == null ? SaslUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SaslUser(java.lang.String name, SaslUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/saslUser:SaslUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SaslUser(String name, Output<String> id, @Nullable SaslUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/saslUser:SaslUser", name, state, makeResourceOptions(options, id));
+    private SaslUser(java.lang.String name, Output<java.lang.String> id, @Nullable SaslUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/saslUser:SaslUser", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SaslUserArgs makeArgs(SaslUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SaslUserArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -267,7 +274,7 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SaslUser get(String name, Output<String> id, @Nullable SaslUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SaslUser get(java.lang.String name, Output<java.lang.String> id, @Nullable SaslUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SaslUser(name, id, state, options);
     }
 }

@@ -217,7 +217,7 @@ public class AggregateDelivery extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AggregateDelivery(String name) {
+    public AggregateDelivery(java.lang.String name) {
         this(name, AggregateDeliveryArgs.Empty);
     }
     /**
@@ -225,7 +225,7 @@ public class AggregateDelivery extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AggregateDelivery(String name, AggregateDeliveryArgs args) {
+    public AggregateDelivery(java.lang.String name, AggregateDeliveryArgs args) {
         this(name, args, null);
     }
     /**
@@ -234,15 +234,22 @@ public class AggregateDelivery extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AggregateDelivery(String name, AggregateDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/aggregateDelivery:AggregateDelivery", name, args == null ? AggregateDeliveryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AggregateDelivery(java.lang.String name, AggregateDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/aggregateDelivery:AggregateDelivery", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AggregateDelivery(String name, Output<String> id, @Nullable AggregateDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/aggregateDelivery:AggregateDelivery", name, state, makeResourceOptions(options, id));
+    private AggregateDelivery(java.lang.String name, Output<java.lang.String> id, @Nullable AggregateDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/aggregateDelivery:AggregateDelivery", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AggregateDeliveryArgs makeArgs(AggregateDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AggregateDeliveryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -258,7 +265,7 @@ public class AggregateDelivery extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AggregateDelivery get(String name, Output<String> id, @Nullable AggregateDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AggregateDelivery get(java.lang.String name, Output<java.lang.String> id, @Nullable AggregateDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AggregateDelivery(name, id, state, options);
     }
 }

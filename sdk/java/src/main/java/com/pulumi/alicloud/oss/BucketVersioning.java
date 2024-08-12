@@ -58,7 +58,7 @@ public class BucketVersioning extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketVersioning(String name) {
+    public BucketVersioning(java.lang.String name) {
         this(name, BucketVersioningArgs.Empty);
     }
     /**
@@ -66,7 +66,7 @@ public class BucketVersioning extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketVersioning(String name, BucketVersioningArgs args) {
+    public BucketVersioning(java.lang.String name, BucketVersioningArgs args) {
         this(name, args, null);
     }
     /**
@@ -75,15 +75,22 @@ public class BucketVersioning extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketVersioning(String name, BucketVersioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketVersioning:BucketVersioning", name, args == null ? BucketVersioningArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketVersioning(java.lang.String name, BucketVersioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketVersioning:BucketVersioning", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketVersioning(String name, Output<String> id, @Nullable BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketVersioning:BucketVersioning", name, state, makeResourceOptions(options, id));
+    private BucketVersioning(java.lang.String name, Output<java.lang.String> id, @Nullable BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketVersioning:BucketVersioning", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketVersioningArgs makeArgs(BucketVersioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketVersioningArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -99,7 +106,7 @@ public class BucketVersioning extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketVersioning get(String name, Output<String> id, @Nullable BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketVersioning get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketVersioning(name, id, state, options);
     }
 }

@@ -60,7 +60,7 @@ import (
 //				},
 //				ThresholdPercent: pulumi.Float64(80),
 //				ProductCode:      pulumi.String("gws"),
-//				QuotaAlarmName:   pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				QuotaAlarmName:   pulumi.Sprintf("%v-%v", name, _default.Result),
 //				ThresholdType:    pulumi.String("used"),
 //			})
 //			if err != nil {

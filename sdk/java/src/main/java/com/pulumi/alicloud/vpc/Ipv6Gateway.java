@@ -272,7 +272,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ipv6Gateway(String name) {
+    public Ipv6Gateway(java.lang.String name) {
         this(name, Ipv6GatewayArgs.Empty);
     }
     /**
@@ -280,7 +280,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ipv6Gateway(String name, Ipv6GatewayArgs args) {
+    public Ipv6Gateway(java.lang.String name, Ipv6GatewayArgs args) {
         this(name, args, null);
     }
     /**
@@ -289,15 +289,22 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ipv6Gateway(String name, Ipv6GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6Gateway:Ipv6Gateway", name, args == null ? Ipv6GatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ipv6Gateway(java.lang.String name, Ipv6GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6Gateway:Ipv6Gateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ipv6Gateway(String name, Output<String> id, @Nullable Ipv6GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6Gateway:Ipv6Gateway", name, state, makeResourceOptions(options, id));
+    private Ipv6Gateway(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6Gateway:Ipv6Gateway", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Ipv6GatewayArgs makeArgs(Ipv6GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ipv6GatewayArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -313,7 +320,7 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ipv6Gateway get(String name, Output<String> id, @Nullable Ipv6GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ipv6Gateway get(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ipv6Gateway(name, id, state, options);
     }
 }

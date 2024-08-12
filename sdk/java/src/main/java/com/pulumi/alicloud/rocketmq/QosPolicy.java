@@ -195,7 +195,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosPolicy(String name) {
+    public QosPolicy(java.lang.String name) {
         this(name, QosPolicyArgs.Empty);
     }
     /**
@@ -203,7 +203,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosPolicy(String name, QosPolicyArgs args) {
+    public QosPolicy(java.lang.String name, QosPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -212,15 +212,22 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosPolicy(String name, QosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/qosPolicy:QosPolicy", name, args == null ? QosPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public QosPolicy(java.lang.String name, QosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/qosPolicy:QosPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosPolicy(String name, Output<String> id, @Nullable QosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/qosPolicy:QosPolicy", name, state, makeResourceOptions(options, id));
+    private QosPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable QosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/qosPolicy:QosPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static QosPolicyArgs makeArgs(QosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QosPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +243,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosPolicy get(String name, Output<String> id, @Nullable QosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable QosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosPolicy(name, id, state, options);
     }
 }

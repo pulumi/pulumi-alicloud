@@ -116,7 +116,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainGroup(String name) {
+    public DomainGroup(java.lang.String name) {
         this(name, DomainGroupArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainGroup(String name, @Nullable DomainGroupArgs args) {
+    public DomainGroup(java.lang.String name, @Nullable DomainGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,15 +133,22 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainGroup(String name, @Nullable DomainGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/domainGroup:DomainGroup", name, args == null ? DomainGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DomainGroup(java.lang.String name, @Nullable DomainGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/domainGroup:DomainGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainGroup(String name, Output<String> id, @Nullable DomainGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/domainGroup:DomainGroup", name, state, makeResourceOptions(options, id));
+    private DomainGroup(java.lang.String name, Output<java.lang.String> id, @Nullable DomainGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/domainGroup:DomainGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DomainGroupArgs makeArgs(@Nullable DomainGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DomainGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -157,7 +164,7 @@ public class DomainGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainGroup get(String name, Output<String> id, @Nullable DomainGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainGroup(name, id, state, options);
     }
 }

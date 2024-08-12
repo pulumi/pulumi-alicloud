@@ -261,10 +261,10 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
+            port_ranges=[{
+                "from_port": 10000,
+                "to_port": 16000,
+            }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,
@@ -335,10 +335,10 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
+            port_ranges=[{
+                "from_port": 10000,
+                "to_port": 16000,
+            }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,

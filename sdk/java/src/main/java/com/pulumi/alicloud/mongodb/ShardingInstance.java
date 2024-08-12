@@ -526,7 +526,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ShardingInstance(String name) {
+    public ShardingInstance(java.lang.String name) {
         this(name, ShardingInstanceArgs.Empty);
     }
     /**
@@ -534,7 +534,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ShardingInstance(String name, ShardingInstanceArgs args) {
+    public ShardingInstance(java.lang.String name, ShardingInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -543,15 +543,22 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ShardingInstance(String name, ShardingInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mongodb/shardingInstance:ShardingInstance", name, args == null ? ShardingInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ShardingInstance(java.lang.String name, ShardingInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mongodb/shardingInstance:ShardingInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ShardingInstance(String name, Output<String> id, @Nullable ShardingInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mongodb/shardingInstance:ShardingInstance", name, state, makeResourceOptions(options, id));
+    private ShardingInstance(java.lang.String name, Output<java.lang.String> id, @Nullable ShardingInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mongodb/shardingInstance:ShardingInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ShardingInstanceArgs makeArgs(ShardingInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ShardingInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -570,7 +577,7 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ShardingInstance get(String name, Output<String> id, @Nullable ShardingInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ShardingInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable ShardingInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ShardingInstance(name, id, state, options);
     }
 }

@@ -275,7 +275,7 @@ class StudioApplication(pulumi.CustomResource):
                  application_name: Optional[pulumi.Input[str]] = None,
                  area_id: Optional[pulumi.Input[str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StudioApplicationInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -306,11 +306,11 @@ class StudioApplication(pulumi.CustomResource):
             template_id="YAUUQIYRSV1CMFGX",
             resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="data.alicloud_instances.default.instances.0.id",
-                node_name="data.alicloud_instances.default.instances.0.name",
-                node_type="ecs",
-            )],
+            instances=[{
+                "id": "data.alicloud_instances.default.instances.0.id",
+                "node_name": "data.alicloud_instances.default.instances.0.name",
+                "node_type": "ecs",
+            }],
             configuration={
                 "enableMonitor": "1",
             },
@@ -332,7 +332,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StudioApplicationInstanceArgs']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[str] template_id: The id of the template.
         :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
@@ -369,11 +369,11 @@ class StudioApplication(pulumi.CustomResource):
             template_id="YAUUQIYRSV1CMFGX",
             resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
-            instances=[alicloud.bp.StudioApplicationInstanceArgs(
-                id="data.alicloud_instances.default.instances.0.id",
-                node_name="data.alicloud_instances.default.instances.0.name",
-                node_type="ecs",
-            )],
+            instances=[{
+                "id": "data.alicloud_instances.default.instances.0.id",
+                "node_name": "data.alicloud_instances.default.instances.0.name",
+                "node_type": "ecs",
+            }],
             configuration={
                 "enableMonitor": "1",
             },
@@ -408,7 +408,7 @@ class StudioApplication(pulumi.CustomResource):
                  application_name: Optional[pulumi.Input[str]] = None,
                  area_id: Optional[pulumi.Input[str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StudioApplicationInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -446,7 +446,7 @@ class StudioApplication(pulumi.CustomResource):
             application_name: Optional[pulumi.Input[str]] = None,
             area_id: Optional[pulumi.Input[str]] = None,
             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StudioApplicationInstanceArgs']]]]] = None,
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
@@ -461,7 +461,7 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] area_id: The id of the area.
         :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StudioApplicationInstanceArgs']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[str] status: The status of the Application.
         :param pulumi.Input[str] template_id: The id of the template.

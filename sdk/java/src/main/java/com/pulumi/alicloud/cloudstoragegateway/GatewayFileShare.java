@@ -515,7 +515,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayFileShare(String name) {
+    public GatewayFileShare(java.lang.String name) {
         this(name, GatewayFileShareArgs.Empty);
     }
     /**
@@ -523,7 +523,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayFileShare(String name, GatewayFileShareArgs args) {
+    public GatewayFileShare(java.lang.String name, GatewayFileShareArgs args) {
         this(name, args, null);
     }
     /**
@@ -532,15 +532,22 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayFileShare(String name, GatewayFileShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare", name, args == null ? GatewayFileShareArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayFileShare(java.lang.String name, GatewayFileShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayFileShare(String name, Output<String> id, @Nullable GatewayFileShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare", name, state, makeResourceOptions(options, id));
+    private GatewayFileShare(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayFileShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayFileShareArgs makeArgs(GatewayFileShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayFileShareArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -556,7 +563,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayFileShare get(String name, Output<String> id, @Nullable GatewayFileShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayFileShare get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayFileShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayFileShare(name, id, state, options);
     }
 }

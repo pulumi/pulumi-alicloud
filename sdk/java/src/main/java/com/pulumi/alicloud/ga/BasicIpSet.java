@@ -161,7 +161,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BasicIpSet(String name) {
+    public BasicIpSet(java.lang.String name) {
         this(name, BasicIpSetArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BasicIpSet(String name, BasicIpSetArgs args) {
+    public BasicIpSet(java.lang.String name, BasicIpSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,15 +178,22 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BasicIpSet(String name, BasicIpSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/basicIpSet:BasicIpSet", name, args == null ? BasicIpSetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BasicIpSet(java.lang.String name, BasicIpSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/basicIpSet:BasicIpSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BasicIpSet(String name, Output<String> id, @Nullable BasicIpSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/basicIpSet:BasicIpSet", name, state, makeResourceOptions(options, id));
+    private BasicIpSet(java.lang.String name, Output<java.lang.String> id, @Nullable BasicIpSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/basicIpSet:BasicIpSet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BasicIpSetArgs makeArgs(BasicIpSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BasicIpSetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -202,7 +209,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BasicIpSet get(String name, Output<String> id, @Nullable BasicIpSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BasicIpSet get(java.lang.String name, Output<java.lang.String> id, @Nullable BasicIpSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BasicIpSet(name, id, state, options);
     }
 }

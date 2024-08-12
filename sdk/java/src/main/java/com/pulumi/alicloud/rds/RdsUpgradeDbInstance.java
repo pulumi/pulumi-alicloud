@@ -1038,7 +1038,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RdsUpgradeDbInstance(String name) {
+    public RdsUpgradeDbInstance(java.lang.String name) {
         this(name, RdsUpgradeDbInstanceArgs.Empty);
     }
     /**
@@ -1046,7 +1046,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RdsUpgradeDbInstance(String name, RdsUpgradeDbInstanceArgs args) {
+    public RdsUpgradeDbInstance(java.lang.String name, RdsUpgradeDbInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1055,15 +1055,22 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RdsUpgradeDbInstance(String name, RdsUpgradeDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance", name, args == null ? RdsUpgradeDbInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RdsUpgradeDbInstance(java.lang.String name, RdsUpgradeDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RdsUpgradeDbInstance(String name, Output<String> id, @Nullable RdsUpgradeDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance", name, state, makeResourceOptions(options, id));
+    private RdsUpgradeDbInstance(java.lang.String name, Output<java.lang.String> id, @Nullable RdsUpgradeDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RdsUpgradeDbInstanceArgs makeArgs(RdsUpgradeDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RdsUpgradeDbInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1079,7 +1086,7 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RdsUpgradeDbInstance get(String name, Output<String> id, @Nullable RdsUpgradeDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RdsUpgradeDbInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable RdsUpgradeDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RdsUpgradeDbInstance(name, id, state, options);
     }
 }

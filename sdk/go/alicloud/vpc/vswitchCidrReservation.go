@@ -59,7 +59,7 @@ import (
 //			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("10.0.0.0/20"),
-//				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				VswitchName: pulumi.Sprintf("%v1", name),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {

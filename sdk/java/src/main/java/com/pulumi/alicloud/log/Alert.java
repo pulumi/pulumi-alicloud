@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
@@ -123,8 +123,8 @@ import javax.annotation.Nullable;
  *                 AlertNotificationListArgs.builder()
  *                     .type("Email")
  *                     .emailLists(                    
- *                         "aliyun{@literal @}alibaba-inc.com",
- *                         "tf-example{@literal @}123.com")
+ *                         "aliyun}{@literal @}{@code alibaba-inc.com",
+ *                         "tf-example}{@literal @}{@code 123.com")
  *                     .content("alert content")
  *                     .build(),
  *                 AlertNotificationListArgs.builder()
@@ -134,8 +134,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -825,7 +825,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Alert(String name) {
+    public Alert(java.lang.String name) {
         this(name, AlertArgs.Empty);
     }
     /**
@@ -833,7 +833,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Alert(String name, AlertArgs args) {
+    public Alert(java.lang.String name, AlertArgs args) {
         this(name, args, null);
     }
     /**
@@ -842,15 +842,22 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Alert(String name, AlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/alert:Alert", name, args == null ? AlertArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Alert(java.lang.String name, AlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/alert:Alert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Alert(String name, Output<String> id, @Nullable AlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/alert:Alert", name, state, makeResourceOptions(options, id));
+    private Alert(java.lang.String name, Output<java.lang.String> id, @Nullable AlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/alert:Alert", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AlertArgs makeArgs(AlertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AlertArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -866,7 +873,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Alert get(String name, Output<String> id, @Nullable AlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Alert get(java.lang.String name, Output<java.lang.String> id, @Nullable AlertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Alert(name, id, state, options);
     }
 }

@@ -127,7 +127,7 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WafDomain(String name) {
+    public WafDomain(java.lang.String name) {
         this(name, WafDomainArgs.Empty);
     }
     /**
@@ -135,7 +135,7 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WafDomain(String name, WafDomainArgs args) {
+    public WafDomain(java.lang.String name, WafDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -144,15 +144,22 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WafDomain(String name, WafDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafDomain:WafDomain", name, args == null ? WafDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WafDomain(java.lang.String name, WafDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafDomain:WafDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WafDomain(String name, Output<String> id, @Nullable WafDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafDomain:WafDomain", name, state, makeResourceOptions(options, id));
+    private WafDomain(java.lang.String name, Output<java.lang.String> id, @Nullable WafDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafDomain:WafDomain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WafDomainArgs makeArgs(WafDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WafDomainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -168,7 +175,7 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WafDomain get(String name, Output<String> id, @Nullable WafDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WafDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable WafDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WafDomain(name, id, state, options);
     }
 }

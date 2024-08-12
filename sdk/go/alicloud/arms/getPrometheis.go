@@ -72,7 +72,7 @@ import (
 //				VpcId:             pulumi.String(_default.Ids[0]),
 //				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
-//				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Ids[0])),
+//				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
 //				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),

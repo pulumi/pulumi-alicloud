@@ -447,14 +447,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
                  enable_dpd: Optional[pulumi.Input[bool]] = None,
                  enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']]] = None,
-                 ike_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']]] = None,
-                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']]] = None,
+                 ike_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']]] = None,
+                 ipsec_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']]] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnet: Optional[pulumi.Input[str]] = None,
@@ -490,37 +490,37 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
+            ike_config={
+                "ike_auth_alg": "md5",
+                "ike_enc_alg": "des",
+                "ike_version": "ikev2",
+                "ike_mode": "main",
+                "ike_lifetime": 86400,
+                "psk": "tf-testvpn2",
+                "ike_pfs": "group1",
+                "remote_id": "testbob2",
+                "local_id": "testalice2",
+            },
+            ipsec_config={
+                "ipsec_pfs": "group5",
+                "ipsec_enc_alg": "des",
+                "ipsec_auth_alg": "md5",
+                "ipsec_lifetime": 86400,
+            },
+            bgp_config={
+                "enable": True,
+                "local_asn": 45014,
+                "tunnel_cidr": "169.254.11.0/30",
+                "local_bgp_ip": "169.254.11.1",
+            },
+            health_check_config={
+                "enable": True,
+                "sip": "192.168.1.1",
+                "dip": "10.0.0.1",
+                "interval": 10,
+                "retry": 10,
+                "policy": "revoke_route",
+            },
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
@@ -536,14 +536,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See `bgp_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.
@@ -585,37 +585,37 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
+            ike_config={
+                "ike_auth_alg": "md5",
+                "ike_enc_alg": "des",
+                "ike_version": "ikev2",
+                "ike_mode": "main",
+                "ike_lifetime": 86400,
+                "psk": "tf-testvpn2",
+                "ike_pfs": "group1",
+                "remote_id": "testbob2",
+                "local_id": "testalice2",
+            },
+            ipsec_config={
+                "ipsec_pfs": "group5",
+                "ipsec_enc_alg": "des",
+                "ipsec_auth_alg": "md5",
+                "ipsec_lifetime": 86400,
+            },
+            bgp_config={
+                "enable": True,
+                "local_asn": 45014,
+                "tunnel_cidr": "169.254.11.0/30",
+                "local_bgp_ip": "169.254.11.1",
+            },
+            health_check_config={
+                "enable": True,
+                "sip": "192.168.1.1",
+                "dip": "10.0.0.1",
+                "interval": 10,
+                "retry": 10,
+                "policy": "revoke_route",
+            },
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
@@ -644,14 +644,14 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
                  enable_dpd: Optional[pulumi.Input[bool]] = None,
                  enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']]] = None,
-                 ike_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']]] = None,
-                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']]] = None,
+                 ike_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']]] = None,
+                 ipsec_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']]] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnet: Optional[pulumi.Input[str]] = None,
@@ -695,15 +695,15 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']]] = None,
+            bgp_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']]] = None,
             customer_gateway_id: Optional[pulumi.Input[str]] = None,
             effect_immediately: Optional[pulumi.Input[bool]] = None,
             enable_dpd: Optional[pulumi.Input[bool]] = None,
             enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
-            health_check_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']]] = None,
-            ike_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']]] = None,
+            health_check_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']]] = None,
+            ike_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
-            ipsec_config: Optional[pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']]] = None,
+            ipsec_config: Optional[pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']]] = None,
             local_subnet: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             remote_subnet: Optional[pulumi.Input[str]] = None,
@@ -716,15 +716,15 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentBgpConfigArgs']] bgp_config: Bgp configuration information. See `bgp_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentBgpConfigArgs', 'GatewayVpnAttachmentBgpConfigArgsDict']] bgp_config: Bgp configuration information. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Whether to enable the DPD (peer survival detection) function.
         :param pulumi.Input[bool] enable_nat_traversal: Allow NAT penetration.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentHealthCheckConfigArgs']] health_check_config: Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIkeConfigArgs']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']] health_check_config: Health check configuration information. See `health_check_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: Configuration negotiated in the second stage. See `ike_config` below.
         :param pulumi.Input[str] internet_ip: The VPN gateway IP.
-        :param pulumi.Input[pulumi.InputType['GatewayVpnAttachmentIpsecConfigArgs']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
+        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage. See `ipsec_config` below.
         :param pulumi.Input[str] local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] remote_subnet: The CIDR block of the on-premises data center.

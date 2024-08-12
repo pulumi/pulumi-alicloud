@@ -199,7 +199,7 @@ import (
 //				return err
 //			}
 //			defaultVpc2, err := vpc.NewNetwork(ctx, "defaultVpc2", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(fmt.Sprintf("%v6", name)),
+//				VpcName:   pulumi.Sprintf("%v6", name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {

@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "defaultdNz2qk", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("testname04"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err

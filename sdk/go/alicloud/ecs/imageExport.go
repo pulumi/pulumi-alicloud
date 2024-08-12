@@ -107,14 +107,14 @@ import (
 //			}
 //			defaultImage, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
 //				InstanceId:  defaultInstance.ID(),
-//				ImageName:   pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				ImageName:   pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

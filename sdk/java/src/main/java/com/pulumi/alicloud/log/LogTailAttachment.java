@@ -179,7 +179,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogTailAttachment(String name) {
+    public LogTailAttachment(java.lang.String name) {
         this(name, LogTailAttachmentArgs.Empty);
     }
     /**
@@ -187,7 +187,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogTailAttachment(String name, LogTailAttachmentArgs args) {
+    public LogTailAttachment(java.lang.String name, LogTailAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -196,15 +196,22 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogTailAttachment(String name, LogTailAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/logTailAttachment:LogTailAttachment", name, args == null ? LogTailAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LogTailAttachment(java.lang.String name, LogTailAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/logTailAttachment:LogTailAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogTailAttachment(String name, Output<String> id, @Nullable LogTailAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/logTailAttachment:LogTailAttachment", name, state, makeResourceOptions(options, id));
+    private LogTailAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable LogTailAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/logTailAttachment:LogTailAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LogTailAttachmentArgs makeArgs(LogTailAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LogTailAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -220,7 +227,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogTailAttachment get(String name, Output<String> id, @Nullable LogTailAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogTailAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable LogTailAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogTailAttachment(name, id, state, options);
     }
 }

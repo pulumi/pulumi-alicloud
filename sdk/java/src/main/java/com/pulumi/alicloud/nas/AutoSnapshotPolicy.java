@@ -204,7 +204,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AutoSnapshotPolicy(String name) {
+    public AutoSnapshotPolicy(java.lang.String name) {
         this(name, AutoSnapshotPolicyArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AutoSnapshotPolicy(String name, AutoSnapshotPolicyArgs args) {
+    public AutoSnapshotPolicy(java.lang.String name, AutoSnapshotPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,15 +221,22 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AutoSnapshotPolicy(String name, AutoSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy", name, args == null ? AutoSnapshotPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AutoSnapshotPolicy(java.lang.String name, AutoSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AutoSnapshotPolicy(String name, Output<String> id, @Nullable AutoSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy", name, state, makeResourceOptions(options, id));
+    private AutoSnapshotPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AutoSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AutoSnapshotPolicyArgs makeArgs(AutoSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AutoSnapshotPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +252,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AutoSnapshotPolicy get(String name, Output<String> id, @Nullable AutoSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AutoSnapshotPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AutoSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AutoSnapshotPolicy(name, id, state, options);
     }
 }

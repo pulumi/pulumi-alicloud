@@ -310,7 +310,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ingress(String name) {
+    public Ingress(java.lang.String name) {
         this(name, IngressArgs.Empty);
     }
     /**
@@ -318,7 +318,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ingress(String name, IngressArgs args) {
+    public Ingress(java.lang.String name, IngressArgs args) {
         this(name, args, null);
     }
     /**
@@ -327,15 +327,22 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ingress(String name, IngressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/ingress:Ingress", name, args == null ? IngressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ingress(java.lang.String name, IngressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/ingress:Ingress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ingress(String name, Output<String> id, @Nullable IngressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/ingress:Ingress", name, state, makeResourceOptions(options, id));
+    private Ingress(java.lang.String name, Output<java.lang.String> id, @Nullable IngressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/ingress:Ingress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IngressArgs makeArgs(IngressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IngressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -351,7 +358,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ingress get(String name, Output<String> id, @Nullable IngressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ingress get(java.lang.String name, Output<java.lang.String> id, @Nullable IngressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ingress(name, id, state, options);
     }
 }

@@ -207,7 +207,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuditLogConfig(String name) {
+    public AuditLogConfig(java.lang.String name) {
         this(name, AuditLogConfigArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuditLogConfig(String name, AuditLogConfigArgs args) {
+    public AuditLogConfig(java.lang.String name, AuditLogConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuditLogConfig(String name, AuditLogConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kvstore/auditLogConfig:AuditLogConfig", name, args == null ? AuditLogConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuditLogConfig(java.lang.String name, AuditLogConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kvstore/auditLogConfig:AuditLogConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuditLogConfig(String name, Output<String> id, @Nullable AuditLogConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kvstore/auditLogConfig:AuditLogConfig", name, state, makeResourceOptions(options, id));
+    private AuditLogConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AuditLogConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kvstore/auditLogConfig:AuditLogConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuditLogConfigArgs makeArgs(AuditLogConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuditLogConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +255,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuditLogConfig get(String name, Output<String> id, @Nullable AuditLogConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuditLogConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AuditLogConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuditLogConfig(name, id, state, options);
     }
 }

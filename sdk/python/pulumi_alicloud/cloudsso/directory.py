@@ -172,7 +172,7 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  directory_name: Optional[pulumi.Input[str]] = None,
                  mfa_authentication_status: Optional[pulumi.Input[str]] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']]] = None,
+                 saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
                  scim_synchronization_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -214,7 +214,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
         :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
                
                > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
@@ -277,7 +277,7 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  directory_name: Optional[pulumi.Input[str]] = None,
                  mfa_authentication_status: Optional[pulumi.Input[str]] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']]] = None,
+                 saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
                  scim_synchronization_status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -304,7 +304,7 @@ class Directory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             directory_name: Optional[pulumi.Input[str]] = None,
             mfa_authentication_status: Optional[pulumi.Input[str]] = None,
-            saml_identity_provider_configuration: Optional[pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']]] = None,
+            saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
             scim_synchronization_status: Optional[pulumi.Input[str]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
@@ -315,7 +315,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] directory_name: The name of the CloudSSO directory. The length is 2-64 characters, and it can contain lowercase letters, numbers, and dashes (-). It cannot start or end with a dash and cannot have two consecutive dashes. Need to be globally unique, and capitalization is not supported. Cannot start with `d-`.
         :param pulumi.Input[str] mfa_authentication_status: The mfa authentication status. Valid values: `Enabled` or `Disabled`. Default to `Enabled`.
-        :param pulumi.Input[pulumi.InputType['DirectorySamlIdentityProviderConfigurationArgs']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
+        :param pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']] saml_identity_provider_configuration: The saml identity provider configuration. See `saml_identity_provider_configuration` below.
                
                > **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         :param pulumi.Input[str] scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.

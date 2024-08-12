@@ -123,19 +123,19 @@ def get_policy_groups(ids: Optional[Sequence[str]] = None,
         local_drive="read",
         usb_redirect="off",
         watermark="off",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="my-description1",
-            cidr_ip="1.2.3.45/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="my-description",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="1.2.3.4/24",
-        )])
+        authorize_access_policy_rules=[{
+            "description": "my-description1",
+            "cidr_ip": "1.2.3.45/24",
+        }],
+        authorize_security_policy_rules=[{
+            "type": "inflow",
+            "policy": "accept",
+            "description": "my-description",
+            "port_range": "80/80",
+            "ip_protocol": "TCP",
+            "priority": "1",
+            "cidr_ip": "1.2.3.4/24",
+        }])
     name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
     pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
     ```
@@ -189,19 +189,19 @@ def get_policy_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         local_drive="read",
         usb_redirect="off",
         watermark="off",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="my-description1",
-            cidr_ip="1.2.3.45/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="my-description",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="1.2.3.4/24",
-        )])
+        authorize_access_policy_rules=[{
+            "description": "my-description1",
+            "cidr_ip": "1.2.3.45/24",
+        }],
+        authorize_security_policy_rules=[{
+            "type": "inflow",
+            "policy": "accept",
+            "description": "my-description",
+            "port_range": "80/80",
+            "ip_protocol": "TCP",
+            "priority": "1",
+            "cidr_ip": "1.2.3.4/24",
+        }])
     name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
     pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
     ```

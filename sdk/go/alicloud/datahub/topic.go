@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = datahub.NewTopic(ctx, "example_blob", &datahub.TopicArgs{
-//				Name:        pulumi.String(fmt.Sprintf("%v_blob", name)),
+//				Name:        pulumi.Sprintf("%v_blob", name),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("BLOB"),
 //				ShardCount:  pulumi.Int(3),
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = datahub.NewTopic(ctx, "example_tuple", &datahub.TopicArgs{
-//				Name:        pulumi.String(fmt.Sprintf("%v_tuple", name)),
+//				Name:        pulumi.Sprintf("%v_tuple", name),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("TUPLE"),
 //				RecordSchema: pulumi.Map{

@@ -46,17 +46,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var user = new User("user", UserArgs.builder()
  *             .name("terraform_example")
  *             .displayName("terraform_example")
  *             .mobile("86-18688888888")
- *             .email("hello.uuu{@literal @}aaa.com")
+ *             .email("hello.uuu}{@literal @}{@code aaa.com")
  *             .comments("terraform_example")
  *             .force(true)
  *             .build());
@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .password("Example_1234")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -144,7 +144,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoginProfile(String name) {
+    public LoginProfile(java.lang.String name) {
         this(name, LoginProfileArgs.Empty);
     }
     /**
@@ -152,7 +152,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoginProfile(String name, LoginProfileArgs args) {
+    public LoginProfile(java.lang.String name, LoginProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -161,15 +161,22 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoginProfile(String name, LoginProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/loginProfile:LoginProfile", name, args == null ? LoginProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LoginProfile(java.lang.String name, LoginProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/loginProfile:LoginProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoginProfile(String name, Output<String> id, @Nullable LoginProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/loginProfile:LoginProfile", name, state, makeResourceOptions(options, id));
+    private LoginProfile(java.lang.String name, Output<java.lang.String> id, @Nullable LoginProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/loginProfile:LoginProfile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LoginProfileArgs makeArgs(LoginProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoginProfileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -188,7 +195,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoginProfile get(String name, Output<String> id, @Nullable LoginProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoginProfile get(java.lang.String name, Output<java.lang.String> id, @Nullable LoginProfileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoginProfile(name, id, state, options);
     }
 }

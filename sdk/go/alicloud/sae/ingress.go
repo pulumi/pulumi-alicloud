@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
-//				NamespaceId:             pulumi.String(fmt.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result)),
+//				NamespaceId:             pulumi.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result),
 //				NamespaceName:           pulumi.String(name),
 //				NamespaceDescription:    pulumi.String(name),
 //				EnableMicroRegistration: pulumi.Bool(false),
@@ -99,9 +99,9 @@ import (
 //			}
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription:  pulumi.String(name),
-//				AppName:         pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				AppName:         pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				NamespaceId:     defaultNamespace.ID(),
-//				ImageUrl:        pulumi.String(fmt.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", _default.Regions[0].Id)),
+//				ImageUrl:        pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", _default.Regions[0].Id),
 //				PackageType:     pulumi.String("Image"),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VpcId:           defaultNetwork.ID(),

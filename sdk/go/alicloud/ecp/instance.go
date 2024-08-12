@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			defaultKeyPair, err := ecp.NewKeyPair(ctx, "default", &ecp.KeyPairArgs{
-//				KeyPairName:   pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				KeyPairName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				PublicKeyBody: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
 //			})
 //			if err != nil {
