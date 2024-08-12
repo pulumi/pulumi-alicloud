@@ -301,7 +301,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Trail(String name) {
+    public Trail(java.lang.String name) {
         this(name, TrailArgs.Empty);
     }
     /**
@@ -309,7 +309,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Trail(String name, @Nullable TrailArgs args) {
+    public Trail(java.lang.String name, @Nullable TrailArgs args) {
         this(name, args, null);
     }
     /**
@@ -318,15 +318,22 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Trail(String name, @Nullable TrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/trail:Trail", name, args == null ? TrailArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Trail(java.lang.String name, @Nullable TrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/trail:Trail", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Trail(String name, Output<String> id, @Nullable TrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/trail:Trail", name, state, makeResourceOptions(options, id));
+    private Trail(java.lang.String name, Output<java.lang.String> id, @Nullable TrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/trail:Trail", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TrailArgs makeArgs(@Nullable TrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrailArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -342,7 +349,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Trail get(String name, Output<String> id, @Nullable TrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Trail get(java.lang.String name, Output<java.lang.String> id, @Nullable TrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Trail(name, id, state, options);
     }
 }

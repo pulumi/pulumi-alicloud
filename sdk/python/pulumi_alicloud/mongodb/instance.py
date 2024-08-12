@@ -1482,7 +1482,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -1596,7 +1596,7 @@ class Instance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
@@ -1730,7 +1730,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -1843,11 +1843,11 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             readonly_replicas: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
-            replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]]] = None,
+            replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
@@ -1901,11 +1901,11 @@ class Instance(pulumi.CustomResource):
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]] replica_sets: Replica set instance information.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance data backup retention days. Available since v1.42.0.

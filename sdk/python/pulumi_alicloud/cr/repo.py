@@ -357,7 +357,7 @@ class Repo(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             detail: Optional[pulumi.Input[str]] = None,
-            domain_list: Optional[pulumi.Input[pulumi.InputType['RepoDomainListArgs']]] = None,
+            domain_list: Optional[pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             repo_type: Optional[pulumi.Input[str]] = None,
@@ -370,7 +370,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[pulumi.InputType['RepoDomainListArgs']] domain_list: The repository domain list.
+        :param pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']] domain_list: The repository domain list.
         :param pulumi.Input[str] name: Name of container registry repository.
         :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.

@@ -199,14 +199,14 @@ def get_transit_router_vpc_attachments(cen_id: Optional[str] = None,
         transit_router_attachment_name=name,
         transit_router_attachment_description=name,
         zone_mappings=[
-            alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                vswitch_id=default_master.vswitches[0].id,
-                zone_id=default_master.vswitches[0].zone_id,
-            ),
-            alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                vswitch_id=default_get_switches.vswitches[0].id,
-                zone_id=default_get_switches.vswitches[0].zone_id,
-            ),
+            {
+                "vswitch_id": default_master.vswitches[0].id,
+                "zone_id": default_master.vswitches[0].zone_id,
+            },
+            {
+                "vswitch_id": default_get_switches.vswitches[0].id,
+                "zone_id": default_get_switches.vswitches[0].zone_id,
+            },
         ])
     ids = alicloud.cen.get_transit_router_vpc_attachments_output(ids=[default_transit_router_vpc_attachment.id],
         cen_id=default_instance.id)
@@ -293,14 +293,14 @@ def get_transit_router_vpc_attachments_output(cen_id: Optional[pulumi.Input[str]
         transit_router_attachment_name=name,
         transit_router_attachment_description=name,
         zone_mappings=[
-            alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                vswitch_id=default_master.vswitches[0].id,
-                zone_id=default_master.vswitches[0].zone_id,
-            ),
-            alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                vswitch_id=default_get_switches.vswitches[0].id,
-                zone_id=default_get_switches.vswitches[0].zone_id,
-            ),
+            {
+                "vswitch_id": default_master.vswitches[0].id,
+                "zone_id": default_master.vswitches[0].zone_id,
+            },
+            {
+                "vswitch_id": default_get_switches.vswitches[0].id,
+                "zone_id": default_get_switches.vswitches[0].zone_id,
+            },
         ])
     ids = alicloud.cen.get_transit_router_vpc_attachments_output(ids=[default_transit_router_vpc_attachment.id],
         cen_id=default_instance.id)

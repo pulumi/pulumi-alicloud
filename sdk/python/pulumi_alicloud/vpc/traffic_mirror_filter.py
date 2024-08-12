@@ -283,8 +283,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterEgressRuleArgs']]]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterIngressRuleArgs']]]]] = None,
+                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
@@ -319,24 +319,24 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             traffic_mirror_filter_description="test",
             traffic_mirror_filter_name=name,
             resource_group_id=default3i_xhoa.id,
-            egress_rules=[alicloud.vpc.TrafficMirrorFilterEgressRuleArgs(
-                priority=1,
-                protocol="TCP",
-                action="accept",
-                destination_cidr_block="32.0.0.0/4",
-                destination_port_range="80/80",
-                source_cidr_block="16.0.0.0/4",
-                source_port_range="80/80",
-            )],
-            ingress_rules=[alicloud.vpc.TrafficMirrorFilterIngressRuleArgs(
-                priority=1,
-                protocol="TCP",
-                action="accept",
-                destination_cidr_block="10.64.0.0/10",
-                destination_port_range="80/80",
-                source_cidr_block="10.0.0.0/8",
-                source_port_range="80/80",
-            )])
+            egress_rules=[{
+                "priority": 1,
+                "protocol": "TCP",
+                "action": "accept",
+                "destination_cidr_block": "32.0.0.0/4",
+                "destination_port_range": "80/80",
+                "source_cidr_block": "16.0.0.0/4",
+                "source_port_range": "80/80",
+            }],
+            ingress_rules=[{
+                "priority": 1,
+                "protocol": "TCP",
+                "action": "accept",
+                "destination_cidr_block": "10.64.0.0/10",
+                "destination_port_range": "80/80",
+                "source_cidr_block": "10.0.0.0/8",
+                "source_port_range": "80/80",
+            }])
         ```
 
         ## Import
@@ -352,8 +352,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterEgressRuleArgs']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterIngressRuleArgs']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
@@ -394,24 +394,24 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             traffic_mirror_filter_description="test",
             traffic_mirror_filter_name=name,
             resource_group_id=default3i_xhoa.id,
-            egress_rules=[alicloud.vpc.TrafficMirrorFilterEgressRuleArgs(
-                priority=1,
-                protocol="TCP",
-                action="accept",
-                destination_cidr_block="32.0.0.0/4",
-                destination_port_range="80/80",
-                source_cidr_block="16.0.0.0/4",
-                source_port_range="80/80",
-            )],
-            ingress_rules=[alicloud.vpc.TrafficMirrorFilterIngressRuleArgs(
-                priority=1,
-                protocol="TCP",
-                action="accept",
-                destination_cidr_block="10.64.0.0/10",
-                destination_port_range="80/80",
-                source_cidr_block="10.0.0.0/8",
-                source_port_range="80/80",
-            )])
+            egress_rules=[{
+                "priority": 1,
+                "protocol": "TCP",
+                "action": "accept",
+                "destination_cidr_block": "32.0.0.0/4",
+                "destination_port_range": "80/80",
+                "source_cidr_block": "16.0.0.0/4",
+                "source_port_range": "80/80",
+            }],
+            ingress_rules=[{
+                "priority": 1,
+                "protocol": "TCP",
+                "action": "accept",
+                "destination_cidr_block": "10.64.0.0/10",
+                "destination_port_range": "80/80",
+                "source_cidr_block": "10.0.0.0/8",
+                "source_port_range": "80/80",
+            }])
         ```
 
         ## Import
@@ -438,8 +438,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterEgressRuleArgs']]]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterIngressRuleArgs']]]]] = None,
+                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
@@ -472,8 +472,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
-            egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterEgressRuleArgs']]]]] = None,
-            ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterIngressRuleArgs']]]]] = None,
+            egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+            ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -489,8 +489,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterEgressRuleArgs']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrafficMirrorFilterIngressRuleArgs']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {

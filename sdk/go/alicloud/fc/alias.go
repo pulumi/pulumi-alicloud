@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:        pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Name:        pulumi.Sprintf("example-value-%v", _default.Result),
 //				Description: pulumi.String("example-value"),
 //				Publish:     pulumi.Bool(true),
 //			})

@@ -258,7 +258,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Delivery(String name) {
+    public Delivery(java.lang.String name) {
         this(name, DeliveryArgs.Empty);
     }
     /**
@@ -266,7 +266,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Delivery(String name, DeliveryArgs args) {
+    public Delivery(java.lang.String name, DeliveryArgs args) {
         this(name, args, null);
     }
     /**
@@ -275,15 +275,22 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Delivery(String name, DeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/delivery:Delivery", name, args == null ? DeliveryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Delivery(java.lang.String name, DeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/delivery:Delivery", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Delivery(String name, Output<String> id, @Nullable DeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/delivery:Delivery", name, state, makeResourceOptions(options, id));
+    private Delivery(java.lang.String name, Output<java.lang.String> id, @Nullable DeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/delivery:Delivery", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DeliveryArgs makeArgs(DeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeliveryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +306,7 @@ public class Delivery extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Delivery get(String name, Output<String> id, @Nullable DeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Delivery get(java.lang.String name, Output<java.lang.String> id, @Nullable DeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Delivery(name, id, state, options);
     }
 }

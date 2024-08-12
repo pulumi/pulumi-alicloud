@@ -49,7 +49,7 @@ import (
 //			_, err := edas.NewNamespace(ctx, "default", &edas.NamespaceArgs{
 //				DebugEnable:        pulumi.Bool(false),
 //				Description:        pulumi.String(name),
-//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:%v", region, name)),
+//				NamespaceLogicalId: pulumi.Sprintf("%v:%v", region, name),
 //				NamespaceName:      pulumi.String(name),
 //			})
 //			if err != nil {

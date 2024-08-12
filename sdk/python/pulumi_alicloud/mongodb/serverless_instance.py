@@ -639,7 +639,7 @@ class ServerlessInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_price_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessInstanceSecurityIpGroupArgs']]]]] = None,
+                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -686,11 +686,11 @@ class ServerlessInstance(pulumi.CustomResource):
                 "Created": "MongodbServerlessInstance",
                 "For": "TF",
             },
-            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
-                security_ip_group_attribute="example_value",
-                security_ip_group_name="example_value",
-                security_ip_list="192.168.0.1",
-            )])
+            security_ip_groups=[{
+                "security_ip_group_attribute": "example_value",
+                "security_ip_group_name": "example_value",
+                "security_ip_list": "192.168.0.1",
+            }])
         ```
 
         ## Import
@@ -717,7 +717,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessInstanceSecurityIpGroupArgs']]]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network.
@@ -770,11 +770,11 @@ class ServerlessInstance(pulumi.CustomResource):
                 "Created": "MongodbServerlessInstance",
                 "For": "TF",
             },
-            security_ip_groups=[alicloud.mongodb.ServerlessInstanceSecurityIpGroupArgs(
-                security_ip_group_attribute="example_value",
-                security_ip_group_name="example_value",
-                security_ip_list="192.168.0.1",
-            )])
+            security_ip_groups=[{
+                "security_ip_group_attribute": "example_value",
+                "security_ip_group_name": "example_value",
+                "security_ip_list": "192.168.0.1",
+            }])
         ```
 
         ## Import
@@ -812,7 +812,7 @@ class ServerlessInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_price_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessInstanceSecurityIpGroupArgs']]]]] = None,
+                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -884,7 +884,7 @@ class ServerlessInstance(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             period_price_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessInstanceSecurityIpGroupArgs']]]]] = None,
+            security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -912,7 +912,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         :param pulumi.Input[str] period_price_type: The period price type. Valid values: `Day`, `Month`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessInstanceSecurityIpGroupArgs']]]] security_ip_groups: An array that consists of the information of IP whitelists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] status: The instance status. For more information, see the instance Status Table.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.

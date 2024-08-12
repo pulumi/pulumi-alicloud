@@ -652,7 +652,7 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -690,13 +690,13 @@ class Domain(pulumi.CustomResource):
         example = alicloud.dcdn.Domain("example",
             domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "port": 80,
+                "priority": "20",
+                "type": "ipaddr",
+                "weight": "10",
+            }])
         ```
 
         ## Import
@@ -720,7 +720,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scene: The Acceleration scen. Supported:
         :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: Source  See `sources` below.
         :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
@@ -764,13 +764,13 @@ class Domain(pulumi.CustomResource):
         example = alicloud.dcdn.Domain("example",
             domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "port": 80,
+                "priority": "20",
+                "type": "ipaddr",
+                "weight": "10",
+            }])
         ```
 
         ## Import
@@ -807,7 +807,7 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -870,7 +870,7 @@ class Domain(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scene: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
             ssl_pri: Optional[pulumi.Input[str]] = None,
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -897,7 +897,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         :param pulumi.Input[str] scene: The Acceleration scen. Supported:
         :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: Source  See `sources` below.
         :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.

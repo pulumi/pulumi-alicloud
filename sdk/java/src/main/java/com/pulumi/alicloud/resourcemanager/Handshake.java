@@ -200,7 +200,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Handshake(String name) {
+    public Handshake(java.lang.String name) {
         this(name, HandshakeArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Handshake(String name, HandshakeArgs args) {
+    public Handshake(java.lang.String name, HandshakeArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,15 +217,22 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Handshake(String name, HandshakeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/handshake:Handshake", name, args == null ? HandshakeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Handshake(java.lang.String name, HandshakeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/handshake:Handshake", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Handshake(String name, Output<String> id, @Nullable HandshakeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/handshake:Handshake", name, state, makeResourceOptions(options, id));
+    private Handshake(java.lang.String name, Output<java.lang.String> id, @Nullable HandshakeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/handshake:Handshake", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HandshakeArgs makeArgs(HandshakeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HandshakeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +248,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Handshake get(String name, Output<String> id, @Nullable HandshakeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Handshake get(java.lang.String name, Output<java.lang.String> id, @Nullable HandshakeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Handshake(name, id, state, options);
     }
 }

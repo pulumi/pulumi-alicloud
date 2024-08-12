@@ -183,9 +183,9 @@ class Image(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.ens.Instance("default",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-            ),
+            system_disk={
+                "size": 20,
+            },
             schedule_area_level="Region",
             image_id="centos_6_08_64_20G_alibase_20171208",
             payment_type="PayAsYouGo",
@@ -243,9 +243,9 @@ class Image(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.ens.Instance("default",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-            ),
+            system_disk={
+                "size": 20,
+            },
             schedule_area_level="Region",
             image_id="centos_6_08_64_20G_alibase_20171208",
             payment_type="PayAsYouGo",

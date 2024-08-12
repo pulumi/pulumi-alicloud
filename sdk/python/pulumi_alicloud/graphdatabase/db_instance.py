@@ -461,7 +461,7 @@ class DbInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]]] = None,
+                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
                  db_instance_network_type: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
@@ -514,7 +514,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
@@ -586,7 +586,7 @@ class DbInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]]] = None,
+                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
                  db_instance_network_type: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
@@ -647,7 +647,7 @@ class DbInstance(pulumi.CustomResource):
             connection_string: Optional[pulumi.Input[str]] = None,
             db_instance_category: Optional[pulumi.Input[str]] = None,
             db_instance_description: Optional[pulumi.Input[str]] = None,
-            db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]]] = None,
+            db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
             db_instance_network_type: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
@@ -669,7 +669,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string: (Available in 1.196.0+)  The connection string of the instance.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.

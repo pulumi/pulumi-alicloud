@@ -294,7 +294,7 @@ class AddressBook(pulumi.CustomResource):
                  address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]]] = None,
+                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
@@ -321,10 +321,10 @@ class AddressBook(pulumi.CustomResource):
             group_type="tag",
             tag_relation="and",
             auto_add_tag_ecs=0,
-            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
-                tag_key="created",
-                tag_value="tfTestAcc0",
-            )])
+            ecs_tags=[{
+                "tag_key": "created",
+                "tag_value": "tfTestAcc0",
+            }])
         ```
 
         ## Import
@@ -340,7 +340,7 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[str] description: The description of the Address Book.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
         :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
                **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
@@ -374,10 +374,10 @@ class AddressBook(pulumi.CustomResource):
             group_type="tag",
             tag_relation="and",
             auto_add_tag_ecs=0,
-            ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
-                tag_key="created",
-                tag_value="tfTestAcc0",
-            )])
+            ecs_tags=[{
+                "tag_key": "created",
+                "tag_value": "tfTestAcc0",
+            }])
         ```
 
         ## Import
@@ -406,7 +406,7 @@ class AddressBook(pulumi.CustomResource):
                  address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]]] = None,
+                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
@@ -447,7 +447,7 @@ class AddressBook(pulumi.CustomResource):
             address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             auto_add_tag_ecs: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]]] = None,
+            ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
             group_name: Optional[pulumi.Input[str]] = None,
             group_type: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None,
@@ -462,7 +462,7 @@ class AddressBook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lists: The list of addresses.
         :param pulumi.Input[int] auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         :param pulumi.Input[str] description: The description of the Address Book.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressBookEcsTagArgs']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]] ecs_tags: A list of ECS tags. See `ecs_tags` below.
         :param pulumi.Input[str] group_name: The name of the Address Book.
         :param pulumi.Input[str] group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
                **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.

@@ -508,20 +508,20 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]]] = None,
+                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]]] = None,
+                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
-                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
+                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  release_version: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
-                 subscription_config: Optional[pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']]] = None,
+                 subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -584,52 +584,52 @@ class Cluster(pulumi.CustomResource):
             force=True)
         default_cluster = alicloud.emrv2.Cluster("default",
             node_groups=[
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    vswitch_ids=[default_switch.id],
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=1,
-                    spot_instance_remedy=False,
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        count=3,
-                        category="cloud_essd",
-                        size=80,
-                        performance_level="PL0",
-                    )],
-                    node_group_name="emr-master",
-                    payment_type="PayAsYouGo",
-                    with_public_ip=False,
-                    graceful_shutdown=False,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        performance_level="PL0",
-                        count=1,
-                    ),
-                    node_group_type="MASTER",
-                ),
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    spot_instance_remedy=False,
-                    node_group_type="CORE",
-                    vswitch_ids=[default_switch.id],
-                    node_count=2,
-                    graceful_shutdown=False,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        performance_level="PL0",
-                        count=1,
-                        category="cloud_essd",
-                        size=80,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        count=3,
-                        performance_level="PL0",
-                        category="cloud_essd",
-                        size=80,
-                    )],
-                    node_group_name="emr-core",
-                    payment_type="PayAsYouGo",
-                    instance_types=["ecs.g7.xlarge"],
-                    with_public_ip=False,
-                ),
+                {
+                    "vswitch_ids": [default_switch.id],
+                    "instance_types": ["ecs.g7.xlarge"],
+                    "node_count": 1,
+                    "spot_instance_remedy": False,
+                    "data_disks": [{
+                        "count": 3,
+                        "category": "cloud_essd",
+                        "size": 80,
+                        "performance_level": "PL0",
+                    }],
+                    "node_group_name": "emr-master",
+                    "payment_type": "PayAsYouGo",
+                    "with_public_ip": False,
+                    "graceful_shutdown": False,
+                    "system_disk": {
+                        "category": "cloud_essd",
+                        "size": 80,
+                        "performance_level": "PL0",
+                        "count": 1,
+                    },
+                    "node_group_type": "MASTER",
+                },
+                {
+                    "spot_instance_remedy": False,
+                    "node_group_type": "CORE",
+                    "vswitch_ids": [default_switch.id],
+                    "node_count": 2,
+                    "graceful_shutdown": False,
+                    "system_disk": {
+                        "performance_level": "PL0",
+                        "count": 1,
+                        "category": "cloud_essd",
+                        "size": 80,
+                    },
+                    "data_disks": [{
+                        "count": 3,
+                        "performance_level": "PL0",
+                        "category": "cloud_essd",
+                        "size": 80,
+                    }],
+                    "node_group_name": "emr-core",
+                    "payment_type": "PayAsYouGo",
+                    "instance_types": ["ecs.g7.xlarge"],
+                    "with_public_ip": False,
+                },
             ],
             deploy_mode="NORMAL",
             tags={
@@ -642,15 +642,15 @@ class Cluster(pulumi.CustomResource):
                 "HDFS",
                 "YARN",
             ],
-            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                zone_id=default_get_zones.zones[0].id,
-                key_pair_name=default_ecs_key_pair.id,
-                data_disk_encrypted=True,
-                data_disk_kms_key_id=default_get_keys.ids[0],
-                vpc_id=default_network.id,
-                ram_role=default_role.name,
-                security_group_id=default_security_group.id,
-            )],
+            node_attributes=[{
+                "zone_id": default_get_zones.zones[0].id,
+                "key_pair_name": default_ecs_key_pair.id,
+                "data_disk_encrypted": True,
+                "data_disk_kms_key_id": default_get_keys.ids[0],
+                "vpc_id": default_network.id,
+                "ram_role": default_role.name,
+                "security_group_id": default_security_group.id,
+            }],
             resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -667,20 +667,20 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
+        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -749,52 +749,52 @@ class Cluster(pulumi.CustomResource):
             force=True)
         default_cluster = alicloud.emrv2.Cluster("default",
             node_groups=[
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    vswitch_ids=[default_switch.id],
-                    instance_types=["ecs.g7.xlarge"],
-                    node_count=1,
-                    spot_instance_remedy=False,
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        count=3,
-                        category="cloud_essd",
-                        size=80,
-                        performance_level="PL0",
-                    )],
-                    node_group_name="emr-master",
-                    payment_type="PayAsYouGo",
-                    with_public_ip=False,
-                    graceful_shutdown=False,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        category="cloud_essd",
-                        size=80,
-                        performance_level="PL0",
-                        count=1,
-                    ),
-                    node_group_type="MASTER",
-                ),
-                alicloud.emrv2.ClusterNodeGroupArgs(
-                    spot_instance_remedy=False,
-                    node_group_type="CORE",
-                    vswitch_ids=[default_switch.id],
-                    node_count=2,
-                    graceful_shutdown=False,
-                    system_disk=alicloud.emrv2.ClusterNodeGroupSystemDiskArgs(
-                        performance_level="PL0",
-                        count=1,
-                        category="cloud_essd",
-                        size=80,
-                    ),
-                    data_disks=[alicloud.emrv2.ClusterNodeGroupDataDiskArgs(
-                        count=3,
-                        performance_level="PL0",
-                        category="cloud_essd",
-                        size=80,
-                    )],
-                    node_group_name="emr-core",
-                    payment_type="PayAsYouGo",
-                    instance_types=["ecs.g7.xlarge"],
-                    with_public_ip=False,
-                ),
+                {
+                    "vswitch_ids": [default_switch.id],
+                    "instance_types": ["ecs.g7.xlarge"],
+                    "node_count": 1,
+                    "spot_instance_remedy": False,
+                    "data_disks": [{
+                        "count": 3,
+                        "category": "cloud_essd",
+                        "size": 80,
+                        "performance_level": "PL0",
+                    }],
+                    "node_group_name": "emr-master",
+                    "payment_type": "PayAsYouGo",
+                    "with_public_ip": False,
+                    "graceful_shutdown": False,
+                    "system_disk": {
+                        "category": "cloud_essd",
+                        "size": 80,
+                        "performance_level": "PL0",
+                        "count": 1,
+                    },
+                    "node_group_type": "MASTER",
+                },
+                {
+                    "spot_instance_remedy": False,
+                    "node_group_type": "CORE",
+                    "vswitch_ids": [default_switch.id],
+                    "node_count": 2,
+                    "graceful_shutdown": False,
+                    "system_disk": {
+                        "performance_level": "PL0",
+                        "count": 1,
+                        "category": "cloud_essd",
+                        "size": 80,
+                    },
+                    "data_disks": [{
+                        "count": 3,
+                        "performance_level": "PL0",
+                        "category": "cloud_essd",
+                        "size": 80,
+                    }],
+                    "node_group_name": "emr-core",
+                    "payment_type": "PayAsYouGo",
+                    "instance_types": ["ecs.g7.xlarge"],
+                    "with_public_ip": False,
+                },
             ],
             deploy_mode="NORMAL",
             tags={
@@ -807,15 +807,15 @@ class Cluster(pulumi.CustomResource):
                 "HDFS",
                 "YARN",
             ],
-            node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                zone_id=default_get_zones.zones[0].id,
-                key_pair_name=default_ecs_key_pair.id,
-                data_disk_encrypted=True,
-                data_disk_kms_key_id=default_get_keys.ids[0],
-                vpc_id=default_network.id,
-                ram_role=default_role.name,
-                security_group_id=default_security_group.id,
-            )],
+            node_attributes=[{
+                "zone_id": default_get_zones.zones[0].id,
+                "key_pair_name": default_ecs_key_pair.id,
+                "data_disk_encrypted": True,
+                "data_disk_kms_key_id": default_get_keys.ids[0],
+                "vpc_id": default_network.id,
+                "ram_role": default_role.name,
+                "security_group_id": default_security_group.id,
+            }],
             resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -845,20 +845,20 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]]] = None,
+                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
                  applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]]] = None,
+                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
-                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
+                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  release_version: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
-                 subscription_config: Optional[pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']]] = None,
+                 subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -906,20 +906,20 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]]] = None,
+            application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
             applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]]] = None,
+            bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             deploy_mode: Optional[pulumi.Input[str]] = None,
             log_collect_strategy: Optional[pulumi.Input[str]] = None,
-            node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
-            node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
+            node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+            node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             release_version: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_mode: Optional[pulumi.Input[str]] = None,
-            subscription_config: Optional[pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']]] = None,
+            subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -928,20 +928,20 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
-        :param pulumi.Input[pulumi.InputType['ClusterSubscriptionConfigArgs']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
+        :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

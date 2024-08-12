@@ -104,7 +104,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyPair(String name) {
+    public KeyPair(java.lang.String name) {
         this(name, KeyPairArgs.Empty);
     }
     /**
@@ -112,7 +112,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyPair(String name, KeyPairArgs args) {
+    public KeyPair(java.lang.String name, KeyPairArgs args) {
         this(name, args, null);
     }
     /**
@@ -121,15 +121,22 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyPair(String name, KeyPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/keyPair:KeyPair", name, args == null ? KeyPairArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KeyPair(java.lang.String name, KeyPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/keyPair:KeyPair", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeyPair(String name, Output<String> id, @Nullable KeyPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/keyPair:KeyPair", name, state, makeResourceOptions(options, id));
+    private KeyPair(java.lang.String name, Output<java.lang.String> id, @Nullable KeyPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/keyPair:KeyPair", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KeyPairArgs makeArgs(KeyPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyPairArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -145,7 +152,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyPair get(String name, Output<String> id, @Nullable KeyPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeyPair get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeyPair(name, id, state, options);
     }
 }

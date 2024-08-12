@@ -526,20 +526,20 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
-                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
+                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+                 fc_service_config: Optional[pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
                  force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
-                 http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
-                 mock_service_config: Optional[pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']]] = None,
+                 http_service_config: Optional[pulumi.Input[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict']]] = None,
+                 http_vpc_service_config: Optional[pulumi.Input[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict']]] = None,
+                 mock_service_config: Optional[pulumi.Input[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 request_config: Optional[pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']]] = None,
-                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
+                 request_config: Optional[pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']]] = None,
+                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
                  stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -559,28 +559,28 @@ class Api(pulumi.CustomResource):
             description="tf-example",
             auth_type="APP",
             force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
+            request_config={
+                "protocol": "HTTP",
+                "method": "GET",
+                "path": "/example/path",
+                "mode": "MAPPING",
+            },
             service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
+            http_service_config={
+                "address": "http://apigateway-backend.alicloudapi.com:8080",
+                "method": "GET",
+                "path": "/web/cloudapi",
+                "timeout": 12,
+                "aone_name": "cloudapi-openapi",
+            },
+            request_parameters=[{
+                "name": "example",
+                "type": "STRING",
+                "required": "OPTIONAL",
+                "in_": "QUERY",
+                "in_service": "QUERY",
+                "name_service": "exampleservice",
+            }],
             stage_names=[
                 "RELEASE",
                 "TEST",
@@ -598,20 +598,20 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
+        :param pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
-        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
-        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
+        :param pulumi.Input[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
+        :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         ...
     @overload
@@ -637,28 +637,28 @@ class Api(pulumi.CustomResource):
             description="tf-example",
             auth_type="APP",
             force_nonce_check=False,
-            request_config=alicloud.apigateway.ApiRequestConfigArgs(
-                protocol="HTTP",
-                method="GET",
-                path="/example/path",
-                mode="MAPPING",
-            ),
+            request_config={
+                "protocol": "HTTP",
+                "method": "GET",
+                "path": "/example/path",
+                "mode": "MAPPING",
+            },
             service_type="HTTP",
-            http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-                address="http://apigateway-backend.alicloudapi.com:8080",
-                method="GET",
-                path="/web/cloudapi",
-                timeout=12,
-                aone_name="cloudapi-openapi",
-            ),
-            request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-                name="example",
-                type="STRING",
-                required="OPTIONAL",
-                in_="QUERY",
-                in_service="QUERY",
-                name_service="exampleservice",
-            )],
+            http_service_config={
+                "address": "http://apigateway-backend.alicloudapi.com:8080",
+                "method": "GET",
+                "path": "/web/cloudapi",
+                "timeout": 12,
+                "aone_name": "cloudapi-openapi",
+            },
+            request_parameters=[{
+                "name": "example",
+                "type": "STRING",
+                "required": "OPTIONAL",
+                "in_": "QUERY",
+                "in_service": "QUERY",
+                "name_service": "exampleservice",
+            }],
             stage_names=[
                 "RELEASE",
                 "TEST",
@@ -689,20 +689,20 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
-                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
+                 constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+                 fc_service_config: Optional[pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
                  force_nonce_check: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
-                 http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
-                 mock_service_config: Optional[pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']]] = None,
+                 http_service_config: Optional[pulumi.Input[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict']]] = None,
+                 http_vpc_service_config: Optional[pulumi.Input[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict']]] = None,
+                 mock_service_config: Optional[pulumi.Input[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 request_config: Optional[pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']]] = None,
-                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
+                 request_config: Optional[pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']]] = None,
+                 request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]]] = None,
                  service_type: Optional[pulumi.Input[str]] = None,
                  stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -750,20 +750,20 @@ class Api(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_id: Optional[pulumi.Input[str]] = None,
             auth_type: Optional[pulumi.Input[str]] = None,
-            constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]]] = None,
+            constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            fc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']]] = None,
+            fc_service_config: Optional[pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
             force_nonce_check: Optional[pulumi.Input[bool]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            http_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']]] = None,
-            http_vpc_service_config: Optional[pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']]] = None,
-            mock_service_config: Optional[pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']]] = None,
+            http_service_config: Optional[pulumi.Input[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict']]] = None,
+            http_vpc_service_config: Optional[pulumi.Input[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict']]] = None,
+            mock_service_config: Optional[pulumi.Input[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            request_config: Optional[pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']]] = None,
-            request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]]] = None,
+            request_config: Optional[pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']]] = None,
+            request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]]] = None,
             service_type: Optional[pulumi.Input[str]] = None,
             stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]]] = None) -> 'Api':
+            system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]]] = None) -> 'Api':
         """
         Get an existing Api resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -773,20 +773,20 @@ class Api(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[str] description: The description of the api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
+        :param pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
-        :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
-        :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
+        :param pulumi.Input[Union['ApiHttpServiceConfigArgs', 'ApiHttpServiceConfigArgsDict']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'. See `http_service_config` below.
+        :param pulumi.Input[Union['ApiHttpVpcServiceConfigArgs', 'ApiHttpVpcServiceConfigArgsDict']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'. See `http_vpc_service_config` below.
+        :param pulumi.Input[Union['ApiMockServiceConfigArgs', 'ApiMockServiceConfigArgsDict']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
-        :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
+        :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiSystemParameterArgs']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

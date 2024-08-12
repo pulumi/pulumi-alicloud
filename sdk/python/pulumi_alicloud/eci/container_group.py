@@ -986,18 +986,18 @@ class ContainerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]]] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
-                 dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
+                 dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -1005,13 +1005,13 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
-                 security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
+                 security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1058,66 +1058,66 @@ class ContainerGroup(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             },
-            containers=[alicloud.eci.ContainerGroupContainerArgs(
-                image="registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                name="nginx",
-                working_dir="/tmp/nginx",
-                image_pull_policy="IfNotPresent",
-                commands=[
+            containers=[{
+                "image": "registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                "name": "nginx",
+                "working_dir": "/tmp/nginx",
+                "image_pull_policy": "IfNotPresent",
+                "commands": [
                     "/bin/sh",
                     "-c",
                     "sleep 9999",
                 ],
-                volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                    mount_path="/tmp/example",
-                    read_only=False,
-                    name="empty1",
-                )],
-                ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                    port=80,
-                    protocol="TCP",
-                )],
-                environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                    key="name",
-                    value="nginx",
-                )],
-                liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                    period_seconds=5,
-                    initial_delay_seconds=5,
-                    success_threshold=1,
-                    failure_threshold=3,
-                    timeout_seconds=1,
-                    execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                        commands=["cat /tmp/healthy"],
-                    )],
-                )],
-                readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                    period_seconds=5,
-                    initial_delay_seconds=5,
-                    success_threshold=1,
-                    failure_threshold=3,
-                    timeout_seconds=1,
-                    execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                        commands=["cat /tmp/healthy"],
-                    )],
-                )],
-            )],
-            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
-                name="init-busybox",
-                image="registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
-                image_pull_policy="IfNotPresent",
-                commands=["echo"],
-                args=["hello initcontainer"],
-            )],
+                "volume_mounts": [{
+                    "mount_path": "/tmp/example",
+                    "read_only": False,
+                    "name": "empty1",
+                }],
+                "ports": [{
+                    "port": 80,
+                    "protocol": "TCP",
+                }],
+                "environment_vars": [{
+                    "key": "name",
+                    "value": "nginx",
+                }],
+                "liveness_probes": [{
+                    "period_seconds": 5,
+                    "initial_delay_seconds": 5,
+                    "success_threshold": 1,
+                    "failure_threshold": 3,
+                    "timeout_seconds": 1,
+                    "execs": [{
+                        "commands": ["cat /tmp/healthy"],
+                    }],
+                }],
+                "readiness_probes": [{
+                    "period_seconds": 5,
+                    "initial_delay_seconds": 5,
+                    "success_threshold": 1,
+                    "failure_threshold": 3,
+                    "timeout_seconds": 1,
+                    "execs": [{
+                        "commands": ["cat /tmp/healthy"],
+                    }],
+                }],
+            }],
+            init_containers=[{
+                "name": "init-busybox",
+                "image": "registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                "image_pull_policy": "IfNotPresent",
+                "commands": ["echo"],
+                "args": ["hello initcontainer"],
+            }],
             volumes=[
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty1",
-                    type="EmptyDirVolume",
-                ),
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty2",
-                    type="EmptyDirVolume",
-                ),
+                {
+                    "name": "empty1",
+                    "type": "EmptyDirVolume",
+                },
+                {
+                    "name": "empty2",
+                    "type": "EmptyDirVolume",
+                },
             ])
         ```
 
@@ -1131,18 +1131,18 @@ class ContainerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
@@ -1150,7 +1150,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
+        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -1158,7 +1158,7 @@ class ContainerGroup(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
@@ -1212,66 +1212,66 @@ class ContainerGroup(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             },
-            containers=[alicloud.eci.ContainerGroupContainerArgs(
-                image="registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-                name="nginx",
-                working_dir="/tmp/nginx",
-                image_pull_policy="IfNotPresent",
-                commands=[
+            containers=[{
+                "image": "registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+                "name": "nginx",
+                "working_dir": "/tmp/nginx",
+                "image_pull_policy": "IfNotPresent",
+                "commands": [
                     "/bin/sh",
                     "-c",
                     "sleep 9999",
                 ],
-                volume_mounts=[alicloud.eci.ContainerGroupContainerVolumeMountArgs(
-                    mount_path="/tmp/example",
-                    read_only=False,
-                    name="empty1",
-                )],
-                ports=[alicloud.eci.ContainerGroupContainerPortArgs(
-                    port=80,
-                    protocol="TCP",
-                )],
-                environment_vars=[alicloud.eci.ContainerGroupContainerEnvironmentVarArgs(
-                    key="name",
-                    value="nginx",
-                )],
-                liveness_probes=[alicloud.eci.ContainerGroupContainerLivenessProbeArgs(
-                    period_seconds=5,
-                    initial_delay_seconds=5,
-                    success_threshold=1,
-                    failure_threshold=3,
-                    timeout_seconds=1,
-                    execs=[alicloud.eci.ContainerGroupContainerLivenessProbeExecArgs(
-                        commands=["cat /tmp/healthy"],
-                    )],
-                )],
-                readiness_probes=[alicloud.eci.ContainerGroupContainerReadinessProbeArgs(
-                    period_seconds=5,
-                    initial_delay_seconds=5,
-                    success_threshold=1,
-                    failure_threshold=3,
-                    timeout_seconds=1,
-                    execs=[alicloud.eci.ContainerGroupContainerReadinessProbeExecArgs(
-                        commands=["cat /tmp/healthy"],
-                    )],
-                )],
-            )],
-            init_containers=[alicloud.eci.ContainerGroupInitContainerArgs(
-                name="init-busybox",
-                image="registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
-                image_pull_policy="IfNotPresent",
-                commands=["echo"],
-                args=["hello initcontainer"],
-            )],
+                "volume_mounts": [{
+                    "mount_path": "/tmp/example",
+                    "read_only": False,
+                    "name": "empty1",
+                }],
+                "ports": [{
+                    "port": 80,
+                    "protocol": "TCP",
+                }],
+                "environment_vars": [{
+                    "key": "name",
+                    "value": "nginx",
+                }],
+                "liveness_probes": [{
+                    "period_seconds": 5,
+                    "initial_delay_seconds": 5,
+                    "success_threshold": 1,
+                    "failure_threshold": 3,
+                    "timeout_seconds": 1,
+                    "execs": [{
+                        "commands": ["cat /tmp/healthy"],
+                    }],
+                }],
+                "readiness_probes": [{
+                    "period_seconds": 5,
+                    "initial_delay_seconds": 5,
+                    "success_threshold": 1,
+                    "failure_threshold": 3,
+                    "timeout_seconds": 1,
+                    "execs": [{
+                        "commands": ["cat /tmp/healthy"],
+                    }],
+                }],
+            }],
+            init_containers=[{
+                "name": "init-busybox",
+                "image": "registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+                "image_pull_policy": "IfNotPresent",
+                "commands": ["echo"],
+                "args": ["hello initcontainer"],
+            }],
             volumes=[
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty1",
-                    type="EmptyDirVolume",
-                ),
-                alicloud.eci.ContainerGroupVolumeArgs(
-                    name="empty2",
-                    type="EmptyDirVolume",
-                ),
+                {
+                    "name": "empty1",
+                    "type": "EmptyDirVolume",
+                },
+                {
+                    "name": "empty2",
+                    "type": "EmptyDirVolume",
+                },
             ])
         ```
 
@@ -1298,18 +1298,18 @@ class ContainerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]]] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
-                 dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
+                 dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -1317,13 +1317,13 @@ class ContainerGroup(pulumi.CustomResource):
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
-                 security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
+                 security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1384,18 +1384,18 @@ class ContainerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]]] = None,
+            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
             auto_create_eip: Optional[pulumi.Input[bool]] = None,
             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
             container_group_name: Optional[pulumi.Input[str]] = None,
-            containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
+            containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
-            dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
+            dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
             eip_bandwidth: Optional[pulumi.Input[int]] = None,
             eip_instance_id: Optional[pulumi.Input[str]] = None,
-            host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
-            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
-            init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+            host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+            init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
             insecure_registry: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
@@ -1405,14 +1405,14 @@ class ContainerGroup(pulumi.CustomResource):
             ram_role_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             restart_policy: Optional[pulumi.Input[str]] = None,
-            security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']]] = None,
+            security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]]] = None,
+            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ContainerGroup':
         """
@@ -1422,18 +1422,18 @@ class ContainerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupAcrRegistryInfoArgs']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]] acr_registry_infos: The ACR enterprise edition example properties. See `acr_registry_info` below.
         :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers. See `containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
         :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[str] internet_ip: (Available since v1.170.0) The Public IP of the container group.
@@ -1443,7 +1443,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
-        :param pulumi.Input[pulumi.InputType['ContainerGroupSecurityContextArgs']] security_context: The security context of the container group. See `security_context` below.
+        :param pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -1452,7 +1452,7 @@ class ContainerGroup(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupVolumeArgs']]]] volumes: The list of volumes. See `volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.

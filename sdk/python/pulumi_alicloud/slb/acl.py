@@ -202,7 +202,7 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -261,7 +261,7 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         :param pulumi.Input[str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[str] name: Name of the access control list.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
@@ -339,7 +339,7 @@ class Acl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+                 entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -368,7 +368,7 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]]] = None,
+            entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -380,7 +380,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclEntryListArgs']]]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclEntryListArgs', 'AclEntryListArgsDict']]]] entry_lists: A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         :param pulumi.Input[str] ip_version: The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
         :param pulumi.Input[str] name: Name of the access control list.
         :param pulumi.Input[str] resource_group_id: Resource group ID.

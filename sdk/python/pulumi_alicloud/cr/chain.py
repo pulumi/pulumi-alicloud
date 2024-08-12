@@ -240,7 +240,7 @@ class Chain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]]] = None,
+                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -286,114 +286,114 @@ class Chain(pulumi.CustomResource):
             repo_type="PUBLIC",
             detail="this is a public repo")
         default_chain = alicloud.cr.Chain("default",
-            chain_configs=[alicloud.cr.ChainChainConfigArgs(
-                nodes=[
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="DOCKER_IMAGE_BUILD",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="DOCKER_IMAGE_PUSH",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="VULNERABILITY_SCANNING",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
-                                issue_level="MEDIUM",
-                                issue_count="1",
-                                action="BLOCK_DELETE_TAG",
-                                logic="AND",
-                            )],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="ACTIVATE_REPLICATION",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="TRIGGER",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=False,
-                        node_name="SNAPSHOT",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=False,
-                        node_name="TRIGGER_SNAPSHOT",
-                    ),
+            chain_configs=[{
+                "nodes": [
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "DOCKER_IMAGE_BUILD",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "DOCKER_IMAGE_PUSH",
+                    },
+                    {
+                        "enable": True,
+                        "node_name": "VULNERABILITY_SCANNING",
+                        "node_configs": [{
+                            "deny_policies": [{
+                                "issue_level": "MEDIUM",
+                                "issue_count": "1",
+                                "action": "BLOCK_DELETE_TAG",
+                                "logic": "AND",
+                            }],
+                        }],
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "ACTIVATE_REPLICATION",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "TRIGGER",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": False,
+                        "node_name": "SNAPSHOT",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": False,
+                        "node_name": "TRIGGER_SNAPSHOT",
+                    },
                 ],
-                routers=[
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="DOCKER_IMAGE_BUILD",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="DOCKER_IMAGE_PUSH",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="DOCKER_IMAGE_PUSH",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="ACTIVATE_REPLICATION",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="ACTIVATE_REPLICATION",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="TRIGGER",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="SNAPSHOT",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="SNAPSHOT",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="TRIGGER_SNAPSHOT",
-                        )],
-                    ),
+                "routers": [
+                    {
+                        "froms": [{
+                            "node_name": "DOCKER_IMAGE_BUILD",
+                        }],
+                        "tos": [{
+                            "node_name": "DOCKER_IMAGE_PUSH",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "DOCKER_IMAGE_PUSH",
+                        }],
+                        "tos": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                        "tos": [{
+                            "node_name": "ACTIVATE_REPLICATION",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "ACTIVATE_REPLICATION",
+                        }],
+                        "tos": [{
+                            "node_name": "TRIGGER",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                        "tos": [{
+                            "node_name": "SNAPSHOT",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "SNAPSHOT",
+                        }],
+                        "tos": [{
+                            "node_name": "TRIGGER_SNAPSHOT",
+                        }],
+                    },
                 ],
-            )],
+            }],
             chain_name=name,
             description=name,
             instance_id=default_registry_enterprise_namespace.instance_id,
@@ -411,7 +411,7 @@ class Chain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] description: The description delivery chain.
         :param pulumi.Input[str] instance_id: The ID of CR Enterprise Edition instance.
@@ -463,114 +463,114 @@ class Chain(pulumi.CustomResource):
             repo_type="PUBLIC",
             detail="this is a public repo")
         default_chain = alicloud.cr.Chain("default",
-            chain_configs=[alicloud.cr.ChainChainConfigArgs(
-                nodes=[
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="DOCKER_IMAGE_BUILD",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="DOCKER_IMAGE_PUSH",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="VULNERABILITY_SCANNING",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
-                                issue_level="MEDIUM",
-                                issue_count="1",
-                                action="BLOCK_DELETE_TAG",
-                                logic="AND",
-                            )],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="ACTIVATE_REPLICATION",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=True,
-                        node_name="TRIGGER",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=False,
-                        node_name="SNAPSHOT",
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                        enable=False,
-                        node_name="TRIGGER_SNAPSHOT",
-                    ),
+            chain_configs=[{
+                "nodes": [
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "DOCKER_IMAGE_BUILD",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "DOCKER_IMAGE_PUSH",
+                    },
+                    {
+                        "enable": True,
+                        "node_name": "VULNERABILITY_SCANNING",
+                        "node_configs": [{
+                            "deny_policies": [{
+                                "issue_level": "MEDIUM",
+                                "issue_count": "1",
+                                "action": "BLOCK_DELETE_TAG",
+                                "logic": "AND",
+                            }],
+                        }],
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "ACTIVATE_REPLICATION",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": True,
+                        "node_name": "TRIGGER",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": False,
+                        "node_name": "SNAPSHOT",
+                    },
+                    {
+                        "node_configs": [{
+                            "deny_policies": [{}],
+                        }],
+                        "enable": False,
+                        "node_name": "TRIGGER_SNAPSHOT",
+                    },
                 ],
-                routers=[
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="DOCKER_IMAGE_BUILD",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="DOCKER_IMAGE_PUSH",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="DOCKER_IMAGE_PUSH",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="ACTIVATE_REPLICATION",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="ACTIVATE_REPLICATION",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="TRIGGER",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="VULNERABILITY_SCANNING",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="SNAPSHOT",
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigRouterArgs(
-                        froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
-                            node_name="SNAPSHOT",
-                        )],
-                        tos=[alicloud.cr.ChainChainConfigRouterToArgs(
-                            node_name="TRIGGER_SNAPSHOT",
-                        )],
-                    ),
+                "routers": [
+                    {
+                        "froms": [{
+                            "node_name": "DOCKER_IMAGE_BUILD",
+                        }],
+                        "tos": [{
+                            "node_name": "DOCKER_IMAGE_PUSH",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "DOCKER_IMAGE_PUSH",
+                        }],
+                        "tos": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                        "tos": [{
+                            "node_name": "ACTIVATE_REPLICATION",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "ACTIVATE_REPLICATION",
+                        }],
+                        "tos": [{
+                            "node_name": "TRIGGER",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "VULNERABILITY_SCANNING",
+                        }],
+                        "tos": [{
+                            "node_name": "SNAPSHOT",
+                        }],
+                    },
+                    {
+                        "froms": [{
+                            "node_name": "SNAPSHOT",
+                        }],
+                        "tos": [{
+                            "node_name": "TRIGGER_SNAPSHOT",
+                        }],
+                    },
                 ],
-            )],
+            }],
             chain_name=name,
             description=name,
             instance_id=default_registry_enterprise_namespace.instance_id,
@@ -601,7 +601,7 @@ class Chain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]]] = None,
+                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -637,7 +637,7 @@ class Chain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]]] = None,
+            chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
             chain_id: Optional[pulumi.Input[str]] = None,
             chain_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -651,7 +651,7 @@ class Chain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ChainChainConfigArgs']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]] chain_configs: The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         :param pulumi.Input[str] chain_id: Delivery chain ID.
         :param pulumi.Input[str] chain_name: The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         :param pulumi.Input[str] description: The description delivery chain.

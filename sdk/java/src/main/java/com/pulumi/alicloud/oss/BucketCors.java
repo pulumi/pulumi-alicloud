@@ -141,7 +141,7 @@ public class BucketCors extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketCors(String name) {
+    public BucketCors(java.lang.String name) {
         this(name, BucketCorsArgs.Empty);
     }
     /**
@@ -149,7 +149,7 @@ public class BucketCors extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketCors(String name, BucketCorsArgs args) {
+    public BucketCors(java.lang.String name, BucketCorsArgs args) {
         this(name, args, null);
     }
     /**
@@ -158,15 +158,22 @@ public class BucketCors extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketCors(String name, BucketCorsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketCors:BucketCors", name, args == null ? BucketCorsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketCors(java.lang.String name, BucketCorsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketCors:BucketCors", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketCors(String name, Output<String> id, @Nullable BucketCorsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketCors:BucketCors", name, state, makeResourceOptions(options, id));
+    private BucketCors(java.lang.String name, Output<java.lang.String> id, @Nullable BucketCorsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketCors:BucketCors", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketCorsArgs makeArgs(BucketCorsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketCorsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -182,7 +189,7 @@ public class BucketCors extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketCors get(String name, Output<String> id, @Nullable BucketCorsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketCors get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketCorsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketCors(name, id, state, options);
     }
 }

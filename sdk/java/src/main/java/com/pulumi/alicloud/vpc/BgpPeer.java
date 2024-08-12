@@ -218,7 +218,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BgpPeer(String name) {
+    public BgpPeer(java.lang.String name) {
         this(name, BgpPeerArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BgpPeer(String name, BgpPeerArgs args) {
+    public BgpPeer(java.lang.String name, BgpPeerArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BgpPeer(String name, BgpPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/bgpPeer:BgpPeer", name, args == null ? BgpPeerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BgpPeer(java.lang.String name, BgpPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/bgpPeer:BgpPeer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BgpPeer(String name, Output<String> id, @Nullable BgpPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/bgpPeer:BgpPeer", name, state, makeResourceOptions(options, id));
+    private BgpPeer(java.lang.String name, Output<java.lang.String> id, @Nullable BgpPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/bgpPeer:BgpPeer", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BgpPeerArgs makeArgs(BgpPeerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpPeerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -259,7 +266,7 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BgpPeer get(String name, Output<String> id, @Nullable BgpPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BgpPeer get(java.lang.String name, Output<java.lang.String> id, @Nullable BgpPeerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BgpPeer(name, id, state, options);
     }
 }

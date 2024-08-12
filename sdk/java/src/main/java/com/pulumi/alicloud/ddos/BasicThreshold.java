@@ -237,7 +237,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BasicThreshold(String name) {
+    public BasicThreshold(java.lang.String name) {
         this(name, BasicThresholdArgs.Empty);
     }
     /**
@@ -245,7 +245,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BasicThreshold(String name, BasicThresholdArgs args) {
+    public BasicThreshold(java.lang.String name, BasicThresholdArgs args) {
         this(name, args, null);
     }
     /**
@@ -254,15 +254,22 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BasicThreshold(String name, BasicThresholdArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/basicThreshold:BasicThreshold", name, args == null ? BasicThresholdArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BasicThreshold(java.lang.String name, BasicThresholdArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/basicThreshold:BasicThreshold", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BasicThreshold(String name, Output<String> id, @Nullable BasicThresholdState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/basicThreshold:BasicThreshold", name, state, makeResourceOptions(options, id));
+    private BasicThreshold(java.lang.String name, Output<java.lang.String> id, @Nullable BasicThresholdState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/basicThreshold:BasicThreshold", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BasicThresholdArgs makeArgs(BasicThresholdArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BasicThresholdArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -278,7 +285,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BasicThreshold get(String name, Output<String> id, @Nullable BasicThresholdState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BasicThreshold get(java.lang.String name, Output<java.lang.String> id, @Nullable BasicThresholdState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BasicThreshold(name, id, state, options);
     }
 }

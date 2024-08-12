@@ -252,7 +252,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AlbServerGroupAttachment(String name) {
+    public AlbServerGroupAttachment(java.lang.String name) {
         this(name, AlbServerGroupAttachmentArgs.Empty);
     }
     /**
@@ -260,7 +260,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlbServerGroupAttachment(String name, AlbServerGroupAttachmentArgs args) {
+    public AlbServerGroupAttachment(java.lang.String name, AlbServerGroupAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -269,15 +269,22 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlbServerGroupAttachment(String name, AlbServerGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment", name, args == null ? AlbServerGroupAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AlbServerGroupAttachment(java.lang.String name, AlbServerGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AlbServerGroupAttachment(String name, Output<String> id, @Nullable AlbServerGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment", name, state, makeResourceOptions(options, id));
+    private AlbServerGroupAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable AlbServerGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AlbServerGroupAttachmentArgs makeArgs(AlbServerGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AlbServerGroupAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -293,7 +300,7 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AlbServerGroupAttachment get(String name, Output<String> id, @Nullable AlbServerGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AlbServerGroupAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable AlbServerGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AlbServerGroupAttachment(name, id, state, options);
     }
 }

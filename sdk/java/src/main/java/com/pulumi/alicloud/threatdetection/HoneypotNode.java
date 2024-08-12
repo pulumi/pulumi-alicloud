@@ -165,7 +165,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HoneypotNode(String name) {
+    public HoneypotNode(java.lang.String name) {
         this(name, HoneypotNodeArgs.Empty);
     }
     /**
@@ -173,7 +173,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HoneypotNode(String name, HoneypotNodeArgs args) {
+    public HoneypotNode(java.lang.String name, HoneypotNodeArgs args) {
         this(name, args, null);
     }
     /**
@@ -182,15 +182,22 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HoneypotNode(String name, HoneypotNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeypotNode:HoneypotNode", name, args == null ? HoneypotNodeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HoneypotNode(java.lang.String name, HoneypotNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeypotNode:HoneypotNode", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HoneypotNode(String name, Output<String> id, @Nullable HoneypotNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeypotNode:HoneypotNode", name, state, makeResourceOptions(options, id));
+    private HoneypotNode(java.lang.String name, Output<java.lang.String> id, @Nullable HoneypotNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeypotNode:HoneypotNode", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HoneypotNodeArgs makeArgs(HoneypotNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HoneypotNodeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -206,7 +213,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HoneypotNode get(String name, Output<String> id, @Nullable HoneypotNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HoneypotNode get(java.lang.String name, Output<java.lang.String> id, @Nullable HoneypotNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HoneypotNode(name, id, state, options);
     }
 }

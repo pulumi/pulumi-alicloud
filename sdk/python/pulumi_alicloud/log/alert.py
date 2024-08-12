@@ -978,27 +978,27 @@ class Alert(pulumi.CustomResource):
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
                  auto_annotation: Optional[pulumi.Input[bool]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
-                 group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
-                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
+                 group_configuration: Optional[pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
                  no_data_fire: Optional[pulumi.Input[bool]] = None,
                  no_data_severity: Optional[pulumi.Input[int]] = None,
-                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
-                 policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
+                 policy_configuration: Optional[pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
+                 schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
-                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
-                 template_configuration: Optional[pulumi.Input[pulumi.InputType['AlertTemplateConfigurationArgs']]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
+                 template_configuration: Optional[pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  throttling: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1041,43 +1041,43 @@ class Alert(pulumi.CustomResource):
             alert_displayname="example-alert",
             condition="count> 100",
             dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore=example_store.name,
-                chart_title="chart_title",
-                start="-60s",
-                end="20s",
-                query="* AND aliyun",
-            )],
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
+            query_lists=[{
+                "logstore": example_store.name,
+                "chart_title": "chart_title",
+                "start": "-60s",
+                "end": "20s",
+                "query": "* AND aliyun",
+            }],
             notification_lists=[
-                alicloud.log.AlertNotificationListArgs(
-                    type="SMS",
-                    mobile_lists=[
+                {
+                    "type": "SMS",
+                    "mobile_lists": [
                         "12345678",
                         "87654321",
                     ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="Email",
-                    email_lists=[
+                    "content": "alert content",
+                },
+                {
+                    "type": "Email",
+                    "email_lists": [
                         "aliyun@alibaba-inc.com",
                         "tf-example@123.com",
                     ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="DingTalk",
-                    service_uri="www.aliyun.com",
-                    content="alert content",
-                ),
+                    "content": "alert content",
+                },
+                {
+                    "type": "DingTalk",
+                    "service_uri": "www.aliyun.com",
+                    "content": "alert content",
+                },
             ])
         ```
 
@@ -1114,92 +1114,92 @@ class Alert(pulumi.CustomResource):
             send_resolved=True,
             auto_annotation=True,
             dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
             query_lists=[
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="* AND aliyun | select count(1) as cnt",
-                    power_sql_mode="auto",
-                ),
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="error | select count(1) as error_cnt",
-                    power_sql_mode="enable",
-                ),
+                {
+                    "store": example_store.name,
+                    "store_type": "log",
+                    "project": example.name,
+                    "region": "cn-heyuan",
+                    "chart_title": "chart_title",
+                    "start": "-60s",
+                    "end": "20s",
+                    "query": "* AND aliyun | select count(1) as cnt",
+                    "power_sql_mode": "auto",
+                },
+                {
+                    "store": example_store.name,
+                    "store_type": "log",
+                    "project": example.name,
+                    "region": "cn-heyuan",
+                    "chart_title": "chart_title",
+                    "start": "-60s",
+                    "end": "20s",
+                    "query": "error | select count(1) as error_cnt",
+                    "power_sql_mode": "enable",
+                },
             ],
-            labels=[alicloud.log.AlertLabelArgs(
-                key="env",
-                value="test",
-            )],
+            labels=[{
+                "key": "env",
+                "value": "test",
+            }],
             annotations=[
-                alicloud.log.AlertAnnotationArgs(
-                    key="title",
-                    value="alert title",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="desc",
-                    value="alert desc",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="test_key",
-                    value="test value",
-                ),
+                {
+                    "key": "title",
+                    "value": "alert title",
+                },
+                {
+                    "key": "desc",
+                    "value": "alert desc",
+                },
+                {
+                    "key": "test_key",
+                    "value": "test value",
+                },
             ],
-            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
-                type="custom",
-                fields=["cnt"],
-            ),
-            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
-                alert_policy_id="sls.bultin",
-                action_policy_id="sls_test_action",
-                repeat_interval="4h",
-            ),
+            group_configuration={
+                "type": "custom",
+                "fields": ["cnt"],
+            },
+            policy_configuration={
+                "alert_policy_id": "sls.bultin",
+                "action_policy_id": "sls_test_action",
+                "repeat_interval": "4h",
+            },
             severity_configurations=[
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=8,
-                    eval_condition={
+                {
+                    "severity": 8,
+                    "eval_condition": {
                         "condition": "cnt > 3",
                         "count_condition": "__count__ > 3",
                     },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition={
+                },
+                {
+                    "severity": 6,
+                    "eval_condition": {
                         "condition": "",
                         "count_condition": "__count__ > 0",
                     },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=2,
-                    eval_condition={
+                },
+                {
+                    "severity": 2,
+                    "eval_condition": {
                         "condition": "",
                         "count_condition": "",
                     },
-                ),
+                },
             ],
-            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
-                type="cross_join",
-                condition="",
-            )])
+            join_configurations=[{
+                "type": "cross_join",
+                "condition": "",
+            }])
         ```
 
         Basic Usage for alert template
@@ -1230,31 +1230,31 @@ class Alert(pulumi.CustomResource):
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
-                id="sls.app.sls_ack.node.down",
-                type="sys",
-                lang="cn",
-                annotations={},
-                tokens={
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
+            template_configuration={
+                "id": "sls.app.sls_ack.node.down",
+                "type": "sys",
+                "lang": "cn",
+                "annotations": {},
+                "tokens": {
                     "interval_minute": "5",
-                    "default.action_policy": "sls.app.ack.builtin",
-                    "default.severity": "6",
-                    "sendResolved": "false",
-                    "default.project": example.name,
-                    "default.logstore": "k8s-event",
-                    "default.repeatInterval": "4h",
+                    "default_action_policy": "sls.app.ack.builtin",
+                    "default_severity": "6",
+                    "send_resolved": "false",
+                    "default_project": example.name,
+                    "default_logstore": "k8s-event",
+                    "default_repeat_interval": "4h",
                     "trigger_threshold": "1",
-                    "default.clusterId": "example-cluster-id",
+                    "default_cluster_id": "example-cluster-id",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -1270,26 +1270,26 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_description: Alert description.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
         :param pulumi.Input[bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
-        :param pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
         :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: schedule for alert.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[pulumi.InputType['AlertTemplateConfigurationArgs']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']] template_configuration: Template configuration for alert, when `type` is `tpl`.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -1338,43 +1338,43 @@ class Alert(pulumi.CustomResource):
             alert_displayname="example-alert",
             condition="count> 100",
             dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore=example_store.name,
-                chart_title="chart_title",
-                start="-60s",
-                end="20s",
-                query="* AND aliyun",
-            )],
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
+            query_lists=[{
+                "logstore": example_store.name,
+                "chart_title": "chart_title",
+                "start": "-60s",
+                "end": "20s",
+                "query": "* AND aliyun",
+            }],
             notification_lists=[
-                alicloud.log.AlertNotificationListArgs(
-                    type="SMS",
-                    mobile_lists=[
+                {
+                    "type": "SMS",
+                    "mobile_lists": [
                         "12345678",
                         "87654321",
                     ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="Email",
-                    email_lists=[
+                    "content": "alert content",
+                },
+                {
+                    "type": "Email",
+                    "email_lists": [
                         "aliyun@alibaba-inc.com",
                         "tf-example@123.com",
                     ],
-                    content="alert content",
-                ),
-                alicloud.log.AlertNotificationListArgs(
-                    type="DingTalk",
-                    service_uri="www.aliyun.com",
-                    content="alert content",
-                ),
+                    "content": "alert content",
+                },
+                {
+                    "type": "DingTalk",
+                    "service_uri": "www.aliyun.com",
+                    "content": "alert content",
+                },
             ])
         ```
 
@@ -1411,92 +1411,92 @@ class Alert(pulumi.CustomResource):
             send_resolved=True,
             auto_annotation=True,
             dashboard="example-dashboard",
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
             query_lists=[
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="* AND aliyun | select count(1) as cnt",
-                    power_sql_mode="auto",
-                ),
-                alicloud.log.AlertQueryListArgs(
-                    store=example_store.name,
-                    store_type="log",
-                    project=example.name,
-                    region="cn-heyuan",
-                    chart_title="chart_title",
-                    start="-60s",
-                    end="20s",
-                    query="error | select count(1) as error_cnt",
-                    power_sql_mode="enable",
-                ),
+                {
+                    "store": example_store.name,
+                    "store_type": "log",
+                    "project": example.name,
+                    "region": "cn-heyuan",
+                    "chart_title": "chart_title",
+                    "start": "-60s",
+                    "end": "20s",
+                    "query": "* AND aliyun | select count(1) as cnt",
+                    "power_sql_mode": "auto",
+                },
+                {
+                    "store": example_store.name,
+                    "store_type": "log",
+                    "project": example.name,
+                    "region": "cn-heyuan",
+                    "chart_title": "chart_title",
+                    "start": "-60s",
+                    "end": "20s",
+                    "query": "error | select count(1) as error_cnt",
+                    "power_sql_mode": "enable",
+                },
             ],
-            labels=[alicloud.log.AlertLabelArgs(
-                key="env",
-                value="test",
-            )],
+            labels=[{
+                "key": "env",
+                "value": "test",
+            }],
             annotations=[
-                alicloud.log.AlertAnnotationArgs(
-                    key="title",
-                    value="alert title",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="desc",
-                    value="alert desc",
-                ),
-                alicloud.log.AlertAnnotationArgs(
-                    key="test_key",
-                    value="test value",
-                ),
+                {
+                    "key": "title",
+                    "value": "alert title",
+                },
+                {
+                    "key": "desc",
+                    "value": "alert desc",
+                },
+                {
+                    "key": "test_key",
+                    "value": "test value",
+                },
             ],
-            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
-                type="custom",
-                fields=["cnt"],
-            ),
-            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
-                alert_policy_id="sls.bultin",
-                action_policy_id="sls_test_action",
-                repeat_interval="4h",
-            ),
+            group_configuration={
+                "type": "custom",
+                "fields": ["cnt"],
+            },
+            policy_configuration={
+                "alert_policy_id": "sls.bultin",
+                "action_policy_id": "sls_test_action",
+                "repeat_interval": "4h",
+            },
             severity_configurations=[
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=8,
-                    eval_condition={
+                {
+                    "severity": 8,
+                    "eval_condition": {
                         "condition": "cnt > 3",
                         "count_condition": "__count__ > 3",
                     },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition={
+                },
+                {
+                    "severity": 6,
+                    "eval_condition": {
                         "condition": "",
                         "count_condition": "__count__ > 0",
                     },
-                ),
-                alicloud.log.AlertSeverityConfigurationArgs(
-                    severity=2,
-                    eval_condition={
+                },
+                {
+                    "severity": 2,
+                    "eval_condition": {
                         "condition": "",
                         "count_condition": "",
                     },
-                ),
+                },
             ],
-            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
-                type="cross_join",
-                condition="",
-            )])
+            join_configurations=[{
+                "type": "cross_join",
+                "condition": "",
+            }])
         ```
 
         Basic Usage for alert template
@@ -1527,31 +1527,31 @@ class Alert(pulumi.CustomResource):
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
-            schedule=alicloud.log.AlertScheduleArgs(
-                type="FixedRate",
-                interval="5m",
-                hour=0,
-                day_of_week=0,
-                delay=0,
-                run_immediately=False,
-            ),
-            template_configuration=alicloud.log.AlertTemplateConfigurationArgs(
-                id="sls.app.sls_ack.node.down",
-                type="sys",
-                lang="cn",
-                annotations={},
-                tokens={
+            schedule={
+                "type": "FixedRate",
+                "interval": "5m",
+                "hour": 0,
+                "day_of_week": 0,
+                "delay": 0,
+                "run_immediately": False,
+            },
+            template_configuration={
+                "id": "sls.app.sls_ack.node.down",
+                "type": "sys",
+                "lang": "cn",
+                "annotations": {},
+                "tokens": {
                     "interval_minute": "5",
-                    "default.action_policy": "sls.app.ack.builtin",
-                    "default.severity": "6",
-                    "sendResolved": "false",
-                    "default.project": example.name,
-                    "default.logstore": "k8s-event",
-                    "default.repeatInterval": "4h",
+                    "default_action_policy": "sls.app.ack.builtin",
+                    "default_severity": "6",
+                    "send_resolved": "false",
+                    "default_project": example.name,
+                    "default_logstore": "k8s-event",
+                    "default_repeat_interval": "4h",
                     "trigger_threshold": "1",
-                    "default.clusterId": "example-cluster-id",
+                    "default_cluster_id": "example-cluster-id",
                 },
-            ))
+            })
         ```
 
         ## Import
@@ -1580,27 +1580,27 @@ class Alert(pulumi.CustomResource):
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
                  auto_annotation: Optional[pulumi.Input[bool]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
-                 group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
-                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
+                 group_configuration: Optional[pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
                  no_data_fire: Optional[pulumi.Input[bool]] = None,
                  no_data_severity: Optional[pulumi.Input[int]] = None,
-                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
-                 policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
+                 policy_configuration: Optional[pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
+                 schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
-                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
-                 template_configuration: Optional[pulumi.Input[pulumi.InputType['AlertTemplateConfigurationArgs']]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
+                 template_configuration: Optional[pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
                  threshold: Optional[pulumi.Input[int]] = None,
                  throttling: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1661,27 +1661,27 @@ class Alert(pulumi.CustomResource):
             alert_description: Optional[pulumi.Input[str]] = None,
             alert_displayname: Optional[pulumi.Input[str]] = None,
             alert_name: Optional[pulumi.Input[str]] = None,
-            annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
+            annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]]] = None,
             auto_annotation: Optional[pulumi.Input[bool]] = None,
             condition: Optional[pulumi.Input[str]] = None,
             dashboard: Optional[pulumi.Input[str]] = None,
-            group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
-            join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
+            group_configuration: Optional[pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']]] = None,
+            join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]]] = None,
             mute_until: Optional[pulumi.Input[int]] = None,
             no_data_fire: Optional[pulumi.Input[bool]] = None,
             no_data_severity: Optional[pulumi.Input[int]] = None,
-            notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
+            notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]]] = None,
             notify_threshold: Optional[pulumi.Input[int]] = None,
-            policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
+            policy_configuration: Optional[pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
-            query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+            query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]]] = None,
+            schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
             schedule_interval: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
             send_resolved: Optional[pulumi.Input[bool]] = None,
-            severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
-            template_configuration: Optional[pulumi.Input[pulumi.InputType['AlertTemplateConfigurationArgs']]] = None,
+            severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]]] = None,
+            template_configuration: Optional[pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']]] = None,
             threshold: Optional[pulumi.Input[int]] = None,
             throttling: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1696,26 +1696,26 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_description: Alert description.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict']]]] annotations: Annotations for new alert.
         :param pulumi.Input[bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
-        :param pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict']]]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
         :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict']]]] query_lists: Multiple conditions for configured alarm query.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: schedule for alert.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[pulumi.InputType['AlertTemplateConfigurationArgs']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict']] template_configuration: Template configuration for alert, when `type` is `tpl`.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.

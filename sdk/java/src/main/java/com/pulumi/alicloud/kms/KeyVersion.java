@@ -106,7 +106,7 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyVersion(String name) {
+    public KeyVersion(java.lang.String name) {
         this(name, KeyVersionArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyVersion(String name, KeyVersionArgs args) {
+    public KeyVersion(java.lang.String name, KeyVersionArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyVersion(String name, KeyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kms/keyVersion:KeyVersion", name, args == null ? KeyVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KeyVersion(java.lang.String name, KeyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kms/keyVersion:KeyVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeyVersion(String name, Output<String> id, @Nullable KeyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kms/keyVersion:KeyVersion", name, state, makeResourceOptions(options, id));
+    private KeyVersion(java.lang.String name, Output<java.lang.String> id, @Nullable KeyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kms/keyVersion:KeyVersion", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KeyVersionArgs makeArgs(KeyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeyVersionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyVersion get(String name, Output<String> id, @Nullable KeyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeyVersion get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeyVersion(name, id, state, options);
     }
 }

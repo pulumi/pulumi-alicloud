@@ -203,7 +203,7 @@ public class DnsDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DnsDomain(String name) {
+    public DnsDomain(java.lang.String name) {
         this(name, DnsDomainArgs.Empty);
     }
     /**
@@ -211,7 +211,7 @@ public class DnsDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DnsDomain(String name, DnsDomainArgs args) {
+    public DnsDomain(java.lang.String name, DnsDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,15 +220,22 @@ public class DnsDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DnsDomain(String name, DnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/dnsDomain:DnsDomain", name, args == null ? DnsDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DnsDomain(java.lang.String name, DnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/dnsDomain:DnsDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DnsDomain(String name, Output<String> id, @Nullable DnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/dnsDomain:DnsDomain", name, state, makeResourceOptions(options, id));
+    private DnsDomain(java.lang.String name, Output<java.lang.String> id, @Nullable DnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/dnsDomain:DnsDomain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DnsDomainArgs makeArgs(DnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DnsDomainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +251,7 @@ public class DnsDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DnsDomain get(String name, Output<String> id, @Nullable DnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DnsDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable DnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DnsDomain(name, id, state, options);
     }
 }

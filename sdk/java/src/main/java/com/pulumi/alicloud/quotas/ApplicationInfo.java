@@ -133,7 +133,7 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationInfo(String name) {
+    public ApplicationInfo(java.lang.String name) {
         this(name, ApplicationInfoArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationInfo(String name, ApplicationInfoArgs args) {
+    public ApplicationInfo(java.lang.String name, ApplicationInfoArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationInfo(String name, ApplicationInfoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/applicationInfo:ApplicationInfo", name, args == null ? ApplicationInfoArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationInfo(java.lang.String name, ApplicationInfoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/applicationInfo:ApplicationInfo", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationInfo(String name, Output<String> id, @Nullable ApplicationInfoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/applicationInfo:ApplicationInfo", name, state, makeResourceOptions(options, id));
+    private ApplicationInfo(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationInfoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/applicationInfo:ApplicationInfo", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationInfoArgs makeArgs(ApplicationInfoArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationInfoArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +181,7 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationInfo get(String name, Output<String> id, @Nullable ApplicationInfoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationInfo get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationInfoState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationInfo(name, id, state, options);
     }
 }

@@ -224,7 +224,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AnycastEipAddress(String name) {
+    public AnycastEipAddress(java.lang.String name) {
         this(name, AnycastEipAddressArgs.Empty);
     }
     /**
@@ -232,7 +232,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AnycastEipAddress(String name, AnycastEipAddressArgs args) {
+    public AnycastEipAddress(java.lang.String name, AnycastEipAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -241,15 +241,22 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AnycastEipAddress(String name, AnycastEipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", name, args == null ? AnycastEipAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AnycastEipAddress(java.lang.String name, AnycastEipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AnycastEipAddress(String name, Output<String> id, @Nullable AnycastEipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", name, state, makeResourceOptions(options, id));
+    private AnycastEipAddress(java.lang.String name, Output<java.lang.String> id, @Nullable AnycastEipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AnycastEipAddressArgs makeArgs(AnycastEipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AnycastEipAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -265,7 +272,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AnycastEipAddress get(String name, Output<String> id, @Nullable AnycastEipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AnycastEipAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable AnycastEipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AnycastEipAddress(name, id, state, options);
     }
 }

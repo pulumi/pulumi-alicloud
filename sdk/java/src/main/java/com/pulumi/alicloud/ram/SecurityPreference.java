@@ -181,7 +181,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecurityPreference(String name) {
+    public SecurityPreference(java.lang.String name) {
         this(name, SecurityPreferenceArgs.Empty);
     }
     /**
@@ -189,7 +189,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecurityPreference(String name, @Nullable SecurityPreferenceArgs args) {
+    public SecurityPreference(java.lang.String name, @Nullable SecurityPreferenceArgs args) {
         this(name, args, null);
     }
     /**
@@ -198,15 +198,22 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecurityPreference(String name, @Nullable SecurityPreferenceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/securityPreference:SecurityPreference", name, args == null ? SecurityPreferenceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecurityPreference(java.lang.String name, @Nullable SecurityPreferenceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/securityPreference:SecurityPreference", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecurityPreference(String name, Output<String> id, @Nullable SecurityPreferenceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/securityPreference:SecurityPreference", name, state, makeResourceOptions(options, id));
+    private SecurityPreference(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityPreferenceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/securityPreference:SecurityPreference", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecurityPreferenceArgs makeArgs(@Nullable SecurityPreferenceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecurityPreferenceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -222,7 +229,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecurityPreference get(String name, Output<String> id, @Nullable SecurityPreferenceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecurityPreference get(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityPreferenceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecurityPreference(name, id, state, options);
     }
 }

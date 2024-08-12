@@ -131,7 +131,7 @@ public class BucketMetaQuery extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketMetaQuery(String name) {
+    public BucketMetaQuery(java.lang.String name) {
         this(name, BucketMetaQueryArgs.Empty);
     }
     /**
@@ -139,7 +139,7 @@ public class BucketMetaQuery extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketMetaQuery(String name, BucketMetaQueryArgs args) {
+    public BucketMetaQuery(java.lang.String name, BucketMetaQueryArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,15 +148,22 @@ public class BucketMetaQuery extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketMetaQuery(String name, BucketMetaQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketMetaQuery:BucketMetaQuery", name, args == null ? BucketMetaQueryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketMetaQuery(java.lang.String name, BucketMetaQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketMetaQuery:BucketMetaQuery", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketMetaQuery(String name, Output<String> id, @Nullable BucketMetaQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketMetaQuery:BucketMetaQuery", name, state, makeResourceOptions(options, id));
+    private BucketMetaQuery(java.lang.String name, Output<java.lang.String> id, @Nullable BucketMetaQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketMetaQuery:BucketMetaQuery", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketMetaQueryArgs makeArgs(BucketMetaQueryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketMetaQueryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -172,7 +179,7 @@ public class BucketMetaQuery extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketMetaQuery get(String name, Output<String> id, @Nullable BucketMetaQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketMetaQuery get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketMetaQueryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketMetaQuery(name, id, state, options);
     }
 }

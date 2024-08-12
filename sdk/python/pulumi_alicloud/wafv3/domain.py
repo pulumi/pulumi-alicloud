@@ -225,8 +225,8 @@ class Domain(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 listen: Optional[pulumi.Input[pulumi.InputType['DomainListenArgs']]] = None,
-                 redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+                 listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+                 redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Wafv3 Domain resource.
@@ -248,8 +248,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See `listen` below.
-        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
         """
         ...
     @overload
@@ -290,8 +290,8 @@ class Domain(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 listen: Optional[pulumi.Input[pulumi.InputType['DomainListenArgs']]] = None,
-                 redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+                 listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+                 redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,8 +329,8 @@ class Domain(pulumi.CustomResource):
             access_type: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
-            listen: Optional[pulumi.Input[pulumi.InputType['DomainListenArgs']]] = None,
-            redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+            listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+            redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
             resource_manager_resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
@@ -343,8 +343,8 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         :param pulumi.Input[str] domain: The name of the domain name to query.
         :param pulumi.Input[str] instance_id: WAF instance ID
-        :param pulumi.Input[pulumi.InputType['DomainListenArgs']] listen: Configure listening information. See `listen` below.
-        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
+        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] resource_manager_resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         """

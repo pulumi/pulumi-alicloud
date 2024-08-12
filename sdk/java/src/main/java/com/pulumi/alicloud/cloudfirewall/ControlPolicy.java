@@ -322,7 +322,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ControlPolicy(String name) {
+    public ControlPolicy(java.lang.String name) {
         this(name, ControlPolicyArgs.Empty);
     }
     /**
@@ -330,7 +330,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ControlPolicy(String name, ControlPolicyArgs args) {
+    public ControlPolicy(java.lang.String name, ControlPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -339,15 +339,22 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ControlPolicy(String name, ControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/controlPolicy:ControlPolicy", name, args == null ? ControlPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ControlPolicy(java.lang.String name, ControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/controlPolicy:ControlPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ControlPolicy(String name, Output<String> id, @Nullable ControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/controlPolicy:ControlPolicy", name, state, makeResourceOptions(options, id));
+    private ControlPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/controlPolicy:ControlPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ControlPolicyArgs makeArgs(ControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ControlPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -363,7 +370,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ControlPolicy get(String name, Output<String> id, @Nullable ControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ControlPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ControlPolicy(name, id, state, options);
     }
 }

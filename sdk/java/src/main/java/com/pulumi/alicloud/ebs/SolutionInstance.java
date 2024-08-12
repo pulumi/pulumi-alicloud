@@ -247,7 +247,7 @@ public class SolutionInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SolutionInstance(String name) {
+    public SolutionInstance(java.lang.String name) {
         this(name, SolutionInstanceArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class SolutionInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SolutionInstance(String name, SolutionInstanceArgs args) {
+    public SolutionInstance(java.lang.String name, SolutionInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class SolutionInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SolutionInstance(String name, SolutionInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/solutionInstance:SolutionInstance", name, args == null ? SolutionInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SolutionInstance(java.lang.String name, SolutionInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/solutionInstance:SolutionInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SolutionInstance(String name, Output<String> id, @Nullable SolutionInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/solutionInstance:SolutionInstance", name, state, makeResourceOptions(options, id));
+    private SolutionInstance(java.lang.String name, Output<java.lang.String> id, @Nullable SolutionInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/solutionInstance:SolutionInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SolutionInstanceArgs makeArgs(SolutionInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SolutionInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -288,7 +295,7 @@ public class SolutionInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SolutionInstance get(String name, Output<String> id, @Nullable SolutionInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SolutionInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable SolutionInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SolutionInstance(name, id, state, options);
     }
 }

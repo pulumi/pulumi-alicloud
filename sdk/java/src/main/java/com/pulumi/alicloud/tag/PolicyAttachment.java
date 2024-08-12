@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount();
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .policyDesc(name)
  *             .userType("USER")
  *             .policyContent("""
- * 		{"tags":{"CostCenter":{"tag_value":{"{@literal @@}assign":["Beijing","Shanghai"]},"tag_key":{"{@literal @@}assign":"CostCenter"}}}}
+ * 		}{{@code "tags":}{{@code "CostCenter":}{{@code "tag_value":}{{@code "}{@literal @@}{@code assign":["Beijing","Shanghai"]}}{@code ,"tag_key":}{{@code "}{@literal @@}{@code assign":"CostCenter"}}}}}{@code
  *             """)
  *             .build());
  * 
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .targetType("USER")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -133,7 +133,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolicyAttachment(String name) {
+    public PolicyAttachment(java.lang.String name) {
         this(name, PolicyAttachmentArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolicyAttachment(String name, PolicyAttachmentArgs args) {
+    public PolicyAttachment(java.lang.String name, PolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolicyAttachment(String name, PolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:tag/policyAttachment:PolicyAttachment", name, args == null ? PolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolicyAttachment(java.lang.String name, PolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:tag/policyAttachment:PolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolicyAttachment(String name, Output<String> id, @Nullable PolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:tag/policyAttachment:PolicyAttachment", name, state, makeResourceOptions(options, id));
+    private PolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:tag/policyAttachment:PolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolicyAttachmentArgs makeArgs(PolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +181,7 @@ public class PolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolicyAttachment get(String name, Output<String> id, @Nullable PolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolicyAttachment(name, id, state, options);
     }
 }

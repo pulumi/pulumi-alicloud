@@ -108,7 +108,7 @@ class AwaitableGetInstanceClassInfosResult(GetInstanceClassInfosResult):
 
 def get_instance_class_infos(commodity_code: Optional[str] = None,
                              db_instance_id: Optional[str] = None,
-                             infos: Optional[Sequence[pulumi.InputType['GetInstanceClassInfosInfoArgs']]] = None,
+                             infos: Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]] = None,
                              order_type: Optional[str] = None,
                              output_file: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceClassInfosResult:
@@ -130,7 +130,7 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_id: The ID of the primary instance.
-    :param Sequence[pulumi.InputType['GetInstanceClassInfosInfoArgs']] infos: A list of Rds available resource. Each element contains the following attributes:
+    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']] infos: A list of Rds available resource. Each element contains the following attributes:
     :param str order_type: FThe type of order that you want to query. Valid values:
            * **BUY**: specifies the query orders that are used to purchase instances.
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
@@ -162,7 +162,7 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
 @_utilities.lift_output_func(get_instance_class_infos)
 def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] = None,
                                     db_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    infos: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceClassInfosInfoArgs']]]]] = None,
+                                    infos: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]]]] = None,
                                     order_type: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClassInfosResult]:
@@ -184,7 +184,7 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_id: The ID of the primary instance.
-    :param Sequence[pulumi.InputType['GetInstanceClassInfosInfoArgs']] infos: A list of Rds available resource. Each element contains the following attributes:
+    :param Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']] infos: A list of Rds available resource. Each element contains the following attributes:
     :param str order_type: FThe type of order that you want to query. Valid values:
            * **BUY**: specifies the query orders that are used to purchase instances.
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.

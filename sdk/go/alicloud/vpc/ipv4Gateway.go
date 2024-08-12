@@ -52,13 +52,13 @@ import (
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "modify", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testAcc-rg298"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(fmt.Sprintf("%v2", name)),
+//				VpcName:   pulumi.Sprintf("%v2", name),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {

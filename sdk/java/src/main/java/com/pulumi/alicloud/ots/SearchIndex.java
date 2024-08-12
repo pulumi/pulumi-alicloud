@@ -173,7 +173,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SearchIndex(String name) {
+    public SearchIndex(java.lang.String name) {
         this(name, SearchIndexArgs.Empty);
     }
     /**
@@ -181,7 +181,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SearchIndex(String name, SearchIndexArgs args) {
+    public SearchIndex(java.lang.String name, SearchIndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -190,15 +190,22 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SearchIndex(String name, SearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ots/searchIndex:SearchIndex", name, args == null ? SearchIndexArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SearchIndex(java.lang.String name, SearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ots/searchIndex:SearchIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SearchIndex(String name, Output<String> id, @Nullable SearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ots/searchIndex:SearchIndex", name, state, makeResourceOptions(options, id));
+    private SearchIndex(java.lang.String name, Output<java.lang.String> id, @Nullable SearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ots/searchIndex:SearchIndex", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SearchIndexArgs makeArgs(SearchIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SearchIndexArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -214,7 +221,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SearchIndex get(String name, Output<String> id, @Nullable SearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SearchIndex get(java.lang.String name, Output<java.lang.String> id, @Nullable SearchIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SearchIndex(name, id, state, options);
     }
 }

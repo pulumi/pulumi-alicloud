@@ -221,7 +221,7 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RocketMQTopic(String name) {
+    public RocketMQTopic(java.lang.String name) {
         this(name, RocketMQTopicArgs.Empty);
     }
     /**
@@ -229,7 +229,7 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RocketMQTopic(String name, RocketMQTopicArgs args) {
+    public RocketMQTopic(java.lang.String name, RocketMQTopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -238,15 +238,22 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RocketMQTopic(String name, RocketMQTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/rocketMQTopic:RocketMQTopic", name, args == null ? RocketMQTopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RocketMQTopic(java.lang.String name, RocketMQTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/rocketMQTopic:RocketMQTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RocketMQTopic(String name, Output<String> id, @Nullable RocketMQTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/rocketMQTopic:RocketMQTopic", name, state, makeResourceOptions(options, id));
+    private RocketMQTopic(java.lang.String name, Output<java.lang.String> id, @Nullable RocketMQTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/rocketMQTopic:RocketMQTopic", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RocketMQTopicArgs makeArgs(RocketMQTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RocketMQTopicArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -262,7 +269,7 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RocketMQTopic get(String name, Output<String> id, @Nullable RocketMQTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RocketMQTopic get(java.lang.String name, Output<java.lang.String> id, @Nullable RocketMQTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RocketMQTopic(name, id, state, options);
     }
 }

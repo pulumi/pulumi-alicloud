@@ -283,7 +283,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VbrPconnAssociation(String name) {
+    public VbrPconnAssociation(java.lang.String name) {
         this(name, VbrPconnAssociationArgs.Empty);
     }
     /**
@@ -291,7 +291,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VbrPconnAssociation(String name, VbrPconnAssociationArgs args) {
+    public VbrPconnAssociation(java.lang.String name, VbrPconnAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -300,15 +300,22 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VbrPconnAssociation(String name, VbrPconnAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", name, args == null ? VbrPconnAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VbrPconnAssociation(java.lang.String name, VbrPconnAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VbrPconnAssociation(String name, Output<String> id, @Nullable VbrPconnAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", name, state, makeResourceOptions(options, id));
+    private VbrPconnAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable VbrPconnAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VbrPconnAssociationArgs makeArgs(VbrPconnAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VbrPconnAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -324,7 +331,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VbrPconnAssociation get(String name, Output<String> id, @Nullable VbrPconnAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VbrPconnAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable VbrPconnAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VbrPconnAssociation(name, id, state, options);
     }
 }

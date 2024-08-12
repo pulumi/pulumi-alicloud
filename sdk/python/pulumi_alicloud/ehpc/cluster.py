@@ -1980,8 +1980,8 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_type: Optional[pulumi.Input[str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]]] = None,
+                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -2013,7 +2013,7 @@ class Cluster(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  plugin: Optional[pulumi.Input[str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]]] = None,
+                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
                  ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  release_instance: Optional[pulumi.Input[bool]] = None,
@@ -2111,8 +2111,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See `application` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -2158,7 +2158,7 @@ class Cluster(pulumi.CustomResource):
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See `post_install_script` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.
@@ -2281,8 +2281,8 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_type: Optional[pulumi.Input[str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]]] = None,
+                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
@@ -2314,7 +2314,7 @@ class Cluster(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  plugin: Optional[pulumi.Input[str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]]] = None,
+                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
                  ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  release_instance: Optional[pulumi.Input[bool]] = None,
@@ -2433,8 +2433,8 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_type: Optional[pulumi.Input[str]] = None,
-            additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]]] = None,
-            applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]]] = None,
+            additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+            applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
@@ -2466,7 +2466,7 @@ class Cluster(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             plugin: Optional[pulumi.Input[str]] = None,
-            post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]]] = None,
+            post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
             ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ram_role_name: Optional[pulumi.Input[str]] = None,
             release_instance: Optional[pulumi.Input[bool]] = None,
@@ -2499,8 +2499,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_type: The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterAdditionalVolumeArgs']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationArgs']]]] applications: The application. See `application` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]] additional_volumes: The additional volumes. See `additional_volumes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]] applications: The application. See `application` below.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         :param pulumi.Input[str] client_version: The version of the E-HPC client. By default, the parameter is set to the latest version number.
@@ -2546,7 +2546,7 @@ class Cluster(pulumi.CustomResource):
                - image: By default, the plug-in is stored in a pre-defined local path. The local path is specified by the pluginLocalPath parameter.
                - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
                - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPostInstallScriptArgs']]]] post_install_scripts: The post install script. See `post_install_script` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]] post_install_scripts: The post install script. See `post_install_script` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ram_node_types: The node of the RAM role.
         :param pulumi.Input[str] ram_role_name: The name of the Resource Access Management (RAM) role.
         :param pulumi.Input[bool] release_instance: The release instance. Valid values: `true`.

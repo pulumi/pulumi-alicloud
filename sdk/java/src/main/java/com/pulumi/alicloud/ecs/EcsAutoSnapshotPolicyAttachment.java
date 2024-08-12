@@ -71,7 +71,7 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsAutoSnapshotPolicyAttachment(String name) {
+    public EcsAutoSnapshotPolicyAttachment(java.lang.String name) {
         this(name, EcsAutoSnapshotPolicyAttachmentArgs.Empty);
     }
     /**
@@ -79,7 +79,7 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsAutoSnapshotPolicyAttachment(String name, EcsAutoSnapshotPolicyAttachmentArgs args) {
+    public EcsAutoSnapshotPolicyAttachment(java.lang.String name, EcsAutoSnapshotPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -88,15 +88,22 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsAutoSnapshotPolicyAttachment(String name, EcsAutoSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment", name, args == null ? EcsAutoSnapshotPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsAutoSnapshotPolicyAttachment(java.lang.String name, EcsAutoSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsAutoSnapshotPolicyAttachment(String name, Output<String> id, @Nullable EcsAutoSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private EcsAutoSnapshotPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable EcsAutoSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsAutoSnapshotPolicyAttachmentArgs makeArgs(EcsAutoSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsAutoSnapshotPolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -112,7 +119,7 @@ public class EcsAutoSnapshotPolicyAttachment extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsAutoSnapshotPolicyAttachment get(String name, Output<String> id, @Nullable EcsAutoSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsAutoSnapshotPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsAutoSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsAutoSnapshotPolicyAttachment(name, id, state, options);
     }
 }

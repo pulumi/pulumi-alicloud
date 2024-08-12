@@ -59,7 +59,7 @@ import (
 //			defaultVswitch, err := vpc.NewSwitch(ctx, "defaultVswitch", &vpc.SwitchArgs{
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("192.168.0.0/21"),
-//				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				VswitchName: pulumi.Sprintf("%v1", name),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				Description: pulumi.String("tf-testacc-vswitch"),
 //			})
@@ -68,14 +68,14 @@ import (
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testacc-rg819"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v2", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v2", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testacc-changerg670"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v3", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v3", name),
 //			})
 //			if err != nil {
 //				return err

@@ -1081,7 +1081,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
@@ -1092,13 +1092,13 @@ class ManagedKubernetes(pulumi.CustomResource):
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -1229,7 +1229,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
@@ -1240,13 +1240,13 @@ class ManagedKubernetes(pulumi.CustomResource):
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -1331,26 +1331,26 @@ class ManagedKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesAddonArgs']]]]] = None,
+            addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            certificate_authority: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesCertificateAuthorityArgs']]] = None,
+            certificate_authority: Optional[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
             cluster_domain: Optional[pulumi.Input[str]] = None,
             cluster_spec: Optional[pulumi.Input[str]] = None,
-            connections: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']]] = None,
+            connections: Optional[pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']]] = None,
             control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             control_plane_log_project: Optional[pulumi.Input[str]] = None,
             control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
             custom_san: Optional[pulumi.Input[str]] = None,
-            delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
+            delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_rrsa: Optional[pulumi.Input[bool]] = None,
             encryption_provider_key: Optional[pulumi.Input[str]] = None,
             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
             load_balancer_spec: Optional[pulumi.Input[str]] = None,
-            maintenance_window: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesMaintenanceWindowArgs']]] = None,
+            maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             nat_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -1361,7 +1361,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']]] = None,
+            rrsa_metadata: Optional[pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_account_issuer: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
@@ -1383,15 +1383,15 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesCertificateAuthorityArgs']] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         :param pulumi.Input[str] client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         :param pulumi.Input[str] cluster_domain: cluster local domain
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[str] encryption_provider_key: disk encryption key, only in ack-pro
         :param pulumi.Input[str] name: Node name.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
-        :param pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']] rrsa_metadata: (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.

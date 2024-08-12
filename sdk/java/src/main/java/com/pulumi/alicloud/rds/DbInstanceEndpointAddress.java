@@ -258,7 +258,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DbInstanceEndpointAddress(String name) {
+    public DbInstanceEndpointAddress(java.lang.String name) {
         this(name, DbInstanceEndpointAddressArgs.Empty);
     }
     /**
@@ -266,7 +266,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DbInstanceEndpointAddress(String name, DbInstanceEndpointAddressArgs args) {
+    public DbInstanceEndpointAddress(java.lang.String name, DbInstanceEndpointAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -275,15 +275,22 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DbInstanceEndpointAddress(String name, DbInstanceEndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress", name, args == null ? DbInstanceEndpointAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DbInstanceEndpointAddress(java.lang.String name, DbInstanceEndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DbInstanceEndpointAddress(String name, Output<String> id, @Nullable DbInstanceEndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress", name, state, makeResourceOptions(options, id));
+    private DbInstanceEndpointAddress(java.lang.String name, Output<java.lang.String> id, @Nullable DbInstanceEndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DbInstanceEndpointAddressArgs makeArgs(DbInstanceEndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DbInstanceEndpointAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +306,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DbInstanceEndpointAddress get(String name, Output<String> id, @Nullable DbInstanceEndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DbInstanceEndpointAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable DbInstanceEndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DbInstanceEndpointAddress(name, id, state, options);
     }
 }

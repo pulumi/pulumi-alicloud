@@ -183,7 +183,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EditingProject(String name) {
+    public EditingProject(java.lang.String name) {
         this(name, EditingProjectArgs.Empty);
     }
     /**
@@ -191,7 +191,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EditingProject(String name, EditingProjectArgs args) {
+    public EditingProject(java.lang.String name, EditingProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,15 +200,22 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EditingProject(String name, EditingProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vod/editingProject:EditingProject", name, args == null ? EditingProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EditingProject(java.lang.String name, EditingProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vod/editingProject:EditingProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EditingProject(String name, Output<String> id, @Nullable EditingProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vod/editingProject:EditingProject", name, state, makeResourceOptions(options, id));
+    private EditingProject(java.lang.String name, Output<java.lang.String> id, @Nullable EditingProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vod/editingProject:EditingProject", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EditingProjectArgs makeArgs(EditingProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EditingProjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -224,7 +231,7 @@ public class EditingProject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EditingProject get(String name, Output<String> id, @Nullable EditingProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EditingProject get(java.lang.String name, Output<java.lang.String> id, @Nullable EditingProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EditingProject(name, id, state, options);
     }
 }

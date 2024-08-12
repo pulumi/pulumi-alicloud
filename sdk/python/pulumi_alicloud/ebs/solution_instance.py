@@ -226,7 +226,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SolutionInstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  solution_id: Optional[pulumi.Input[str]] = None,
                  solution_instance_name: Optional[pulumi.Input[str]] = None,
@@ -263,66 +263,66 @@ class SolutionInstance(pulumi.CustomResource):
             description="description",
             solution_id="mysql",
             parameters=[
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="zoneId",
-                    parameter_value=zone_id,
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsType",
-                    parameter_value="ecs.c6.large",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsImageId",
-                    parameter_value="CentOS_7",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="internetMaxBandwidthOut",
-                    parameter_value="100",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="internetChargeType",
-                    parameter_value="PayByTraffic",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsPassword",
-                    parameter_value="Ebs12345",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskType",
-                    parameter_value="cloud_essd",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskPerformance",
-                    parameter_value="PL0",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskSize",
-                    parameter_value="40",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskType",
-                    parameter_value="cloud_essd",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskPerformance",
-                    parameter_value="PL0",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskSize",
-                    parameter_value="40",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlVersion",
-                    parameter_value="MySQL80",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlUser",
-                    parameter_value="root",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlPassword",
-                    parameter_value="Ebs12345",
-                ),
+                {
+                    "parameter_key": "zoneId",
+                    "parameter_value": zone_id,
+                },
+                {
+                    "parameter_key": "ecsType",
+                    "parameter_value": "ecs.c6.large",
+                },
+                {
+                    "parameter_key": "ecsImageId",
+                    "parameter_value": "CentOS_7",
+                },
+                {
+                    "parameter_key": "internetMaxBandwidthOut",
+                    "parameter_value": "100",
+                },
+                {
+                    "parameter_key": "internetChargeType",
+                    "parameter_value": "PayByTraffic",
+                },
+                {
+                    "parameter_key": "ecsPassword",
+                    "parameter_value": "Ebs12345",
+                },
+                {
+                    "parameter_key": "sysDiskType",
+                    "parameter_value": "cloud_essd",
+                },
+                {
+                    "parameter_key": "sysDiskPerformance",
+                    "parameter_value": "PL0",
+                },
+                {
+                    "parameter_key": "sysDiskSize",
+                    "parameter_value": "40",
+                },
+                {
+                    "parameter_key": "dataDiskType",
+                    "parameter_value": "cloud_essd",
+                },
+                {
+                    "parameter_key": "dataDiskPerformance",
+                    "parameter_value": "PL0",
+                },
+                {
+                    "parameter_key": "dataDiskSize",
+                    "parameter_value": "40",
+                },
+                {
+                    "parameter_key": "mysqlVersion",
+                    "parameter_value": "MySQL80",
+                },
+                {
+                    "parameter_key": "mysqlUser",
+                    "parameter_value": "root",
+                },
+                {
+                    "parameter_key": "mysqlPassword",
+                    "parameter_value": "Ebs12345",
+                },
             ])
         ```
 
@@ -337,7 +337,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Solution Instance Description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SolutionInstanceParameterArgs']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] solution_id: Solution ID.
         :param pulumi.Input[str] solution_instance_name: Solution Instance Name.
@@ -380,66 +380,66 @@ class SolutionInstance(pulumi.CustomResource):
             description="description",
             solution_id="mysql",
             parameters=[
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="zoneId",
-                    parameter_value=zone_id,
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsType",
-                    parameter_value="ecs.c6.large",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsImageId",
-                    parameter_value="CentOS_7",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="internetMaxBandwidthOut",
-                    parameter_value="100",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="internetChargeType",
-                    parameter_value="PayByTraffic",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="ecsPassword",
-                    parameter_value="Ebs12345",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskType",
-                    parameter_value="cloud_essd",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskPerformance",
-                    parameter_value="PL0",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="sysDiskSize",
-                    parameter_value="40",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskType",
-                    parameter_value="cloud_essd",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskPerformance",
-                    parameter_value="PL0",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="dataDiskSize",
-                    parameter_value="40",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlVersion",
-                    parameter_value="MySQL80",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlUser",
-                    parameter_value="root",
-                ),
-                alicloud.ebs.SolutionInstanceParameterArgs(
-                    parameter_key="mysqlPassword",
-                    parameter_value="Ebs12345",
-                ),
+                {
+                    "parameter_key": "zoneId",
+                    "parameter_value": zone_id,
+                },
+                {
+                    "parameter_key": "ecsType",
+                    "parameter_value": "ecs.c6.large",
+                },
+                {
+                    "parameter_key": "ecsImageId",
+                    "parameter_value": "CentOS_7",
+                },
+                {
+                    "parameter_key": "internetMaxBandwidthOut",
+                    "parameter_value": "100",
+                },
+                {
+                    "parameter_key": "internetChargeType",
+                    "parameter_value": "PayByTraffic",
+                },
+                {
+                    "parameter_key": "ecsPassword",
+                    "parameter_value": "Ebs12345",
+                },
+                {
+                    "parameter_key": "sysDiskType",
+                    "parameter_value": "cloud_essd",
+                },
+                {
+                    "parameter_key": "sysDiskPerformance",
+                    "parameter_value": "PL0",
+                },
+                {
+                    "parameter_key": "sysDiskSize",
+                    "parameter_value": "40",
+                },
+                {
+                    "parameter_key": "dataDiskType",
+                    "parameter_value": "cloud_essd",
+                },
+                {
+                    "parameter_key": "dataDiskPerformance",
+                    "parameter_value": "PL0",
+                },
+                {
+                    "parameter_key": "dataDiskSize",
+                    "parameter_value": "40",
+                },
+                {
+                    "parameter_key": "mysqlVersion",
+                    "parameter_value": "MySQL80",
+                },
+                {
+                    "parameter_key": "mysqlUser",
+                    "parameter_value": "root",
+                },
+                {
+                    "parameter_key": "mysqlPassword",
+                    "parameter_value": "Ebs12345",
+                },
             ])
         ```
 
@@ -467,7 +467,7 @@ class SolutionInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SolutionInstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  solution_id: Optional[pulumi.Input[str]] = None,
                  solution_instance_name: Optional[pulumi.Input[str]] = None,
@@ -501,7 +501,7 @@ class SolutionInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SolutionInstanceParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             solution_id: Optional[pulumi.Input[str]] = None,
             solution_instance_name: Optional[pulumi.Input[str]] = None,
@@ -515,7 +515,7 @@ class SolutionInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Solution Instance Creation Time.
         :param pulumi.Input[str] description: Solution Instance Description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SolutionInstanceParameterArgs']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]] parameters: Solution Instance Creation Parameters. See `parameters` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] solution_id: Solution ID.
         :param pulumi.Input[str] solution_instance_name: Solution Instance Name.

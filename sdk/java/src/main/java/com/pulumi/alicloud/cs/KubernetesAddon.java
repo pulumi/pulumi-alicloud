@@ -150,7 +150,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KubernetesAddon(String name) {
+    public KubernetesAddon(java.lang.String name) {
         this(name, KubernetesAddonArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KubernetesAddon(String name, KubernetesAddonArgs args) {
+    public KubernetesAddon(java.lang.String name, KubernetesAddonArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KubernetesAddon(String name, KubernetesAddonArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/kubernetesAddon:KubernetesAddon", name, args == null ? KubernetesAddonArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KubernetesAddon(java.lang.String name, KubernetesAddonArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/kubernetesAddon:KubernetesAddon", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KubernetesAddon(String name, Output<String> id, @Nullable KubernetesAddonState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/kubernetesAddon:KubernetesAddon", name, state, makeResourceOptions(options, id));
+    private KubernetesAddon(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesAddonState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/kubernetesAddon:KubernetesAddon", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KubernetesAddonArgs makeArgs(KubernetesAddonArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubernetesAddonArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class KubernetesAddon extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KubernetesAddon get(String name, Output<String> id, @Nullable KubernetesAddonState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KubernetesAddon get(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesAddonState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KubernetesAddon(name, id, state, options);
     }
 }

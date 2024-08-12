@@ -170,7 +170,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Znode(String name) {
+    public Znode(java.lang.String name) {
         this(name, ZnodeArgs.Empty);
     }
     /**
@@ -178,7 +178,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Znode(String name, ZnodeArgs args) {
+    public Znode(java.lang.String name, ZnodeArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,15 +187,22 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Znode(String name, ZnodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mse/znode:Znode", name, args == null ? ZnodeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Znode(java.lang.String name, ZnodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mse/znode:Znode", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Znode(String name, Output<String> id, @Nullable ZnodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mse/znode:Znode", name, state, makeResourceOptions(options, id));
+    private Znode(java.lang.String name, Output<java.lang.String> id, @Nullable ZnodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mse/znode:Znode", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ZnodeArgs makeArgs(ZnodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZnodeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -211,7 +218,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Znode get(String name, Output<String> id, @Nullable ZnodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Znode get(java.lang.String name, Output<java.lang.String> id, @Nullable ZnodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Znode(name, id, state, options);
     }
 }

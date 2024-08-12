@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				ProjectName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
 //				ProjectName:        example.ProjectName,
-//				LogstoreName:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				LogstoreName:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),

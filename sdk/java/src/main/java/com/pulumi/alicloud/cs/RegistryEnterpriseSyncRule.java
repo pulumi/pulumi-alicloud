@@ -316,7 +316,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegistryEnterpriseSyncRule(String name) {
+    public RegistryEnterpriseSyncRule(java.lang.String name) {
         this(name, RegistryEnterpriseSyncRuleArgs.Empty);
     }
     /**
@@ -324,7 +324,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegistryEnterpriseSyncRule(String name, RegistryEnterpriseSyncRuleArgs args) {
+    public RegistryEnterpriseSyncRule(java.lang.String name, RegistryEnterpriseSyncRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -333,15 +333,22 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegistryEnterpriseSyncRule(String name, RegistryEnterpriseSyncRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, args == null ? RegistryEnterpriseSyncRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegistryEnterpriseSyncRule(java.lang.String name, RegistryEnterpriseSyncRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegistryEnterpriseSyncRule(String name, Output<String> id, @Nullable RegistryEnterpriseSyncRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, state, makeResourceOptions(options, id));
+    private RegistryEnterpriseSyncRule(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryEnterpriseSyncRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegistryEnterpriseSyncRuleArgs makeArgs(RegistryEnterpriseSyncRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegistryEnterpriseSyncRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -357,7 +364,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegistryEnterpriseSyncRule get(String name, Output<String> id, @Nullable RegistryEnterpriseSyncRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegistryEnterpriseSyncRule get(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryEnterpriseSyncRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegistryEnterpriseSyncRule(name, id, state, options);
     }
 }

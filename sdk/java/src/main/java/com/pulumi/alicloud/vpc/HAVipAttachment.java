@@ -236,7 +236,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HAVipAttachment(String name) {
+    public HAVipAttachment(java.lang.String name) {
         this(name, HAVipAttachmentArgs.Empty);
     }
     /**
@@ -244,7 +244,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HAVipAttachment(String name, HAVipAttachmentArgs args) {
+    public HAVipAttachment(java.lang.String name, HAVipAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,15 +253,22 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HAVipAttachment(String name, HAVipAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, args == null ? HAVipAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HAVipAttachment(java.lang.String name, HAVipAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HAVipAttachment(String name, Output<String> id, @Nullable HAVipAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, state, makeResourceOptions(options, id));
+    private HAVipAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable HAVipAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HAVipAttachmentArgs makeArgs(HAVipAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HAVipAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -277,7 +284,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HAVipAttachment get(String name, Output<String> id, @Nullable HAVipAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HAVipAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable HAVipAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HAVipAttachment(name, id, state, options);
     }
 }

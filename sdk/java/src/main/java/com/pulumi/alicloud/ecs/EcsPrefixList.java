@@ -155,7 +155,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsPrefixList(String name) {
+    public EcsPrefixList(java.lang.String name) {
         this(name, EcsPrefixListArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsPrefixList(String name, EcsPrefixListArgs args) {
+    public EcsPrefixList(java.lang.String name, EcsPrefixListArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,15 +172,22 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsPrefixList(String name, EcsPrefixListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsPrefixList:EcsPrefixList", name, args == null ? EcsPrefixListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsPrefixList(java.lang.String name, EcsPrefixListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsPrefixList:EcsPrefixList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsPrefixList(String name, Output<String> id, @Nullable EcsPrefixListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsPrefixList:EcsPrefixList", name, state, makeResourceOptions(options, id));
+    private EcsPrefixList(java.lang.String name, Output<java.lang.String> id, @Nullable EcsPrefixListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsPrefixList:EcsPrefixList", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsPrefixListArgs makeArgs(EcsPrefixListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsPrefixListArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -196,7 +203,7 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsPrefixList get(String name, Output<String> id, @Nullable EcsPrefixListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsPrefixList get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsPrefixListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsPrefixList(name, id, state, options);
     }
 }

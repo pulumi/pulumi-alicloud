@@ -259,7 +259,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StackInstance(String name) {
+    public StackInstance(java.lang.String name) {
         this(name, StackInstanceArgs.Empty);
     }
     /**
@@ -267,7 +267,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StackInstance(String name, StackInstanceArgs args) {
+    public StackInstance(java.lang.String name, StackInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -276,15 +276,22 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StackInstance(String name, StackInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/stackInstance:StackInstance", name, args == null ? StackInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StackInstance(java.lang.String name, StackInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/stackInstance:StackInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StackInstance(String name, Output<String> id, @Nullable StackInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/stackInstance:StackInstance", name, state, makeResourceOptions(options, id));
+    private StackInstance(java.lang.String name, Output<java.lang.String> id, @Nullable StackInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/stackInstance:StackInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StackInstanceArgs makeArgs(StackInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StackInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -303,7 +310,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StackInstance get(String name, Output<String> id, @Nullable StackInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StackInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable StackInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StackInstance(name, id, state, options);
     }
 }

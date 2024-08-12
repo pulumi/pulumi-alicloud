@@ -163,7 +163,7 @@ class AwaitableGetQuotasResult(GetQuotasResult):
             sort_order=self.sort_order)
 
 
-def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensionArgs']]] = None,
+def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]] = None,
                group_code: Optional[str] = None,
                key_word: Optional[str] = None,
                name_regex: Optional[str] = None,
@@ -193,7 +193,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
     ```
 
 
-    :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']] dimensions: The dimensions.
     :param str group_code: The group code.
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Quota name.
@@ -236,7 +236,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
 
 
 @_utilities.lift_output_func(get_quotas)
-def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotasDimensionArgs']]]]] = None,
+def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]]]] = None,
                       group_code: Optional[pulumi.Input[Optional[str]]] = None,
                       key_word: Optional[pulumi.Input[Optional[str]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -266,7 +266,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
     ```
 
 
-    :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.
+    :param Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']] dimensions: The dimensions.
     :param str group_code: The group code.
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Quota name.

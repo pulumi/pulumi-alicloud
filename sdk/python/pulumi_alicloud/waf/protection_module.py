@@ -242,10 +242,10 @@ class ProtectionModule(pulumi.CustomResource):
             http_to_user_ip="Off",
             https_redirect="Off",
             load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
+            log_headers=[{
+                "key": "foo",
+                "value": "http",
+            }])
         default_protection_module = alicloud.waf.ProtectionModule("default",
             instance_id=default.ids[0],
             domain=default_domain.domain_name,
@@ -309,10 +309,10 @@ class ProtectionModule(pulumi.CustomResource):
             http_to_user_ip="Off",
             https_redirect="Off",
             load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
+            log_headers=[{
+                "key": "foo",
+                "value": "http",
+            }])
         default_protection_module = alicloud.waf.ProtectionModule("default",
             instance_id=default.ids[0],
             domain=default_domain.domain_name,

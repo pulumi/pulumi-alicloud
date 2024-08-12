@@ -30,14 +30,14 @@ public final class InstanceBabelfishConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
+     * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! {@literal @} # $ % ^ &amp; * () _ + - =
      * 
      */
     @Import(name="masterUserPassword", required=true)
     private Output<String> masterUserPassword;
 
     /**
-     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
+     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! {@literal @} # $ % ^ &amp; * () _ + - =
      * 
      */
     public Output<String> masterUserPassword() {
@@ -123,7 +123,7 @@ public final class InstanceBabelfishConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param masterUserPassword The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
+         * @param masterUserPassword The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! {@literal @} # $ % ^ &amp; * () _ + - =
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class InstanceBabelfishConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param masterUserPassword The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
+         * @param masterUserPassword The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! {@literal @} # $ % ^ &amp; * () _ + - =
          * 
          * @return builder
          * 

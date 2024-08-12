@@ -279,7 +279,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BasicEndpoint(String name) {
+    public BasicEndpoint(java.lang.String name) {
         this(name, BasicEndpointArgs.Empty);
     }
     /**
@@ -287,7 +287,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BasicEndpoint(String name, BasicEndpointArgs args) {
+    public BasicEndpoint(java.lang.String name, BasicEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -296,15 +296,22 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BasicEndpoint(String name, BasicEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/basicEndpoint:BasicEndpoint", name, args == null ? BasicEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BasicEndpoint(java.lang.String name, BasicEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/basicEndpoint:BasicEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BasicEndpoint(String name, Output<String> id, @Nullable BasicEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/basicEndpoint:BasicEndpoint", name, state, makeResourceOptions(options, id));
+    private BasicEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable BasicEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/basicEndpoint:BasicEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BasicEndpointArgs makeArgs(BasicEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BasicEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -320,7 +327,7 @@ public class BasicEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BasicEndpoint get(String name, Output<String> id, @Nullable BasicEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BasicEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable BasicEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BasicEndpoint(name, id, state, options);
     }
 }

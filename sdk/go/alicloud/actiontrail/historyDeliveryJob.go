@@ -69,14 +69,14 @@ import (
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				ProjectName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description: pulumi.String("tf actiontrail example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTrail, err := actiontrail.NewTrail(ctx, "example", &actiontrail.TrailArgs{
-//				TrailName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				TrailName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", example.Regions[0].Id, exampleGetAccount.Id, name), nil
 //				}).(pulumi.StringOutput),

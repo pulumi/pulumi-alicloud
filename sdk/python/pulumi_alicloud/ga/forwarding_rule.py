@@ -258,8 +258,8 @@ class ForwardingRule(pulumi.CustomResource):
                  forwarding_rule_name: Optional[pulumi.Input[str]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Forwarding Rule resource.
@@ -312,21 +312,21 @@ class ForwardingRule(pulumi.CustomResource):
             name=name,
             protocol="HTTP",
             proxy_protocol=True,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=60,
-            )])
+            port_ranges=[{
+                "from_port": 60,
+                "to_port": 60,
+            }])
         example_eip_address = alicloud.ecs.EipAddress("example",
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
         virtual = alicloud.ga.EndpointGroup("virtual",
             accelerator_id=example.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-                enable_clientip_preservation=True,
-            )],
+            endpoint_configurations=[{
+                "endpoint": example_eip_address.ip_address,
+                "type": "PublicIp",
+                "weight": 20,
+                "enable_clientip_preservation": True,
+            }],
             endpoint_group_region=default.regions[0].id,
             listener_id=example_listener.id,
             description=name,
@@ -337,36 +337,36 @@ class ForwardingRule(pulumi.CustomResource):
             name=name,
             threshold_count=4,
             traffic_percentage=20,
-            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-                endpoint_port=80,
-                listener_port=60,
-            ))
+            port_overrides={
+                "endpoint_port": 80,
+                "listener_port": 60,
+            })
         example_forwarding_rule = alicloud.ga.ForwardingRule("example",
             accelerator_id=example.id,
             listener_id=example_listener.id,
             rule_conditions=[
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Path",
-                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                        values=["/testpathconfig"],
-                    ),
-                ),
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Host",
-                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
-                        values=["www.test.com"],
-                    )],
-                ),
+                {
+                    "rule_condition_type": "Path",
+                    "path_config": {
+                        "values": ["/testpathconfig"],
+                    },
+                },
+                {
+                    "rule_condition_type": "Host",
+                    "host_configs": [{
+                        "values": ["www.test.com"],
+                    }],
+                },
             ],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=40,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=virtual.id,
-                    )],
-                ),
-            )],
+            rule_actions=[{
+                "order": 40,
+                "rule_action_type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "endpoint_group_id": virtual.id,
+                    }],
+                },
+            }],
             priority=2,
             forwarding_rule_name=name)
         ```
@@ -385,8 +385,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         ...
     @overload
@@ -445,21 +445,21 @@ class ForwardingRule(pulumi.CustomResource):
             name=name,
             protocol="HTTP",
             proxy_protocol=True,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=60,
-                to_port=60,
-            )])
+            port_ranges=[{
+                "from_port": 60,
+                "to_port": 60,
+            }])
         example_eip_address = alicloud.ecs.EipAddress("example",
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
         virtual = alicloud.ga.EndpointGroup("virtual",
             accelerator_id=example.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-                enable_clientip_preservation=True,
-            )],
+            endpoint_configurations=[{
+                "endpoint": example_eip_address.ip_address,
+                "type": "PublicIp",
+                "weight": 20,
+                "enable_clientip_preservation": True,
+            }],
             endpoint_group_region=default.regions[0].id,
             listener_id=example_listener.id,
             description=name,
@@ -470,36 +470,36 @@ class ForwardingRule(pulumi.CustomResource):
             name=name,
             threshold_count=4,
             traffic_percentage=20,
-            port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-                endpoint_port=80,
-                listener_port=60,
-            ))
+            port_overrides={
+                "endpoint_port": 80,
+                "listener_port": 60,
+            })
         example_forwarding_rule = alicloud.ga.ForwardingRule("example",
             accelerator_id=example.id,
             listener_id=example_listener.id,
             rule_conditions=[
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Path",
-                    path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                        values=["/testpathconfig"],
-                    ),
-                ),
-                alicloud.ga.ForwardingRuleRuleConditionArgs(
-                    rule_condition_type="Host",
-                    host_configs=[alicloud.ga.ForwardingRuleRuleConditionHostConfigArgs(
-                        values=["www.test.com"],
-                    )],
-                ),
+                {
+                    "rule_condition_type": "Path",
+                    "path_config": {
+                        "values": ["/testpathconfig"],
+                    },
+                },
+                {
+                    "rule_condition_type": "Host",
+                    "host_configs": [{
+                        "values": ["www.test.com"],
+                    }],
+                },
             ],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=40,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=virtual.id,
-                    )],
-                ),
-            )],
+            rule_actions=[{
+                "order": 40,
+                "rule_action_type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "endpoint_group_id": virtual.id,
+                    }],
+                },
+            }],
             priority=2,
             forwarding_rule_name=name)
         ```
@@ -531,8 +531,8 @@ class ForwardingRule(pulumi.CustomResource):
                  forwarding_rule_name: Optional[pulumi.Input[str]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -574,8 +574,8 @@ class ForwardingRule(pulumi.CustomResource):
             forwarding_rule_status: Optional[pulumi.Input[str]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
-            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]]] = None,
-            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]]] = None) -> 'ForwardingRule':
+            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None) -> 'ForwardingRule':
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -589,8 +589,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] forwarding_rule_status: The status of the Forwarding Rule.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

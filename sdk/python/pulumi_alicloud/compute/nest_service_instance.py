@@ -464,10 +464,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']]] = None,
+                 commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
                  enable_instance_ops: Optional[pulumi.Input[bool]] = None,
                  enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
-                 operation_metadata: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']]] = None,
+                 operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -529,10 +529,10 @@ class NestServiceInstance(pulumi.CustomResource):
             service_instance_name=name,
             resource_group_id=default.groups[0].id,
             payment_type="Permanent",
-            operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
-                operation_start_time="1681281179000",
-                operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
+            operation_metadata={
+                "operation_start_time": "1681281179000",
+                "operation_end_time": "1681367579000",
+                "resources": default_instance.id.apply(lambda id: f\"\"\"    {{
               "Type": "ResourceIds",
               "RegionId": "cn-hangzhou",
               "ResourceIds": {{
@@ -542,7 +542,7 @@ class NestServiceInstance(pulumi.CustomResource):
               }} 
             }}
         \"\"\"),
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "ServiceInstance",
@@ -559,10 +559,10 @@ class NestServiceInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See `commodity` below.
+        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
+        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -630,10 +630,10 @@ class NestServiceInstance(pulumi.CustomResource):
             service_instance_name=name,
             resource_group_id=default.groups[0].id,
             payment_type="Permanent",
-            operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
-                operation_start_time="1681281179000",
-                operation_end_time="1681367579000",
-                resources=default_instance.id.apply(lambda id: f\"\"\"    {{
+            operation_metadata={
+                "operation_start_time": "1681281179000",
+                "operation_end_time": "1681367579000",
+                "resources": default_instance.id.apply(lambda id: f\"\"\"    {{
               "Type": "ResourceIds",
               "RegionId": "cn-hangzhou",
               "ResourceIds": {{
@@ -643,7 +643,7 @@ class NestServiceInstance(pulumi.CustomResource):
               }} 
             }}
         \"\"\"),
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "ServiceInstance",
@@ -673,10 +673,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']]] = None,
+                 commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
                  enable_instance_ops: Optional[pulumi.Input[bool]] = None,
                  enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
-                 operation_metadata: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']]] = None,
+                 operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -723,10 +723,10 @@ class NestServiceInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commodity: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']]] = None,
+            commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
             enable_instance_ops: Optional[pulumi.Input[bool]] = None,
             enable_user_prometheus: Optional[pulumi.Input[bool]] = None,
-            operation_metadata: Optional[pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']]] = None,
+            operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
             parameters: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -744,10 +744,10 @@ class NestServiceInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceCommodityArgs']] commodity: The order information of cloud market. See `commodity` below.
+        :param pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']] commodity: The order information of cloud market. See `commodity` below.
         :param pulumi.Input[bool] enable_instance_ops: Whether the service instance has the O&M function. Default value: `false`. Valid values:
         :param pulumi.Input[bool] enable_user_prometheus: Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
-        :param pulumi.Input[pulumi.InputType['NestServiceInstanceOperationMetadataArgs']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
+        :param pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']] operation_metadata: The configuration of O&M. See `operation_metadata` below.
         :param pulumi.Input[str] parameters: The parameters entered by the deployment service instance.
         :param pulumi.Input[str] payment_type: The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.

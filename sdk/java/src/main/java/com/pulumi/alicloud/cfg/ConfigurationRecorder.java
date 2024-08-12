@@ -151,7 +151,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigurationRecorder(String name) {
+    public ConfigurationRecorder(java.lang.String name) {
         this(name, ConfigurationRecorderArgs.Empty);
     }
     /**
@@ -159,7 +159,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigurationRecorder(String name, @Nullable ConfigurationRecorderArgs args) {
+    public ConfigurationRecorder(java.lang.String name, @Nullable ConfigurationRecorderArgs args) {
         this(name, args, null);
     }
     /**
@@ -168,15 +168,22 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigurationRecorder(String name, @Nullable ConfigurationRecorderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/configurationRecorder:ConfigurationRecorder", name, args == null ? ConfigurationRecorderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConfigurationRecorder(java.lang.String name, @Nullable ConfigurationRecorderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/configurationRecorder:ConfigurationRecorder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigurationRecorder(String name, Output<String> id, @Nullable ConfigurationRecorderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cfg/configurationRecorder:ConfigurationRecorder", name, state, makeResourceOptions(options, id));
+    private ConfigurationRecorder(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigurationRecorderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cfg/configurationRecorder:ConfigurationRecorder", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConfigurationRecorderArgs makeArgs(@Nullable ConfigurationRecorderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigurationRecorderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -192,7 +199,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigurationRecorder get(String name, Output<String> id, @Nullable ConfigurationRecorderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigurationRecorder get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigurationRecorderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigurationRecorder(name, id, state, options);
     }
 }

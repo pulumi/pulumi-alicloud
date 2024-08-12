@@ -262,7 +262,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DhcpOptionsSet(String name) {
+    public DhcpOptionsSet(java.lang.String name) {
         this(name, DhcpOptionsSetArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DhcpOptionsSet(String name, @Nullable DhcpOptionsSetArgs args) {
+    public DhcpOptionsSet(java.lang.String name, @Nullable DhcpOptionsSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,15 +279,22 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DhcpOptionsSet(String name, @Nullable DhcpOptionsSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet", name, args == null ? DhcpOptionsSetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DhcpOptionsSet(java.lang.String name, @Nullable DhcpOptionsSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DhcpOptionsSet(String name, Output<String> id, @Nullable DhcpOptionsSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet", name, state, makeResourceOptions(options, id));
+    private DhcpOptionsSet(java.lang.String name, Output<java.lang.String> id, @Nullable DhcpOptionsSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DhcpOptionsSetArgs makeArgs(@Nullable DhcpOptionsSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DhcpOptionsSetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -303,7 +310,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DhcpOptionsSet get(String name, Output<String> id, @Nullable DhcpOptionsSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DhcpOptionsSet get(java.lang.String name, Output<java.lang.String> id, @Nullable DhcpOptionsSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DhcpOptionsSet(name, id, state, options);
     }
 }

@@ -195,7 +195,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Fileset(String name) {
+    public Fileset(java.lang.String name) {
         this(name, FilesetArgs.Empty);
     }
     /**
@@ -203,7 +203,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Fileset(String name, FilesetArgs args) {
+    public Fileset(java.lang.String name, FilesetArgs args) {
         this(name, args, null);
     }
     /**
@@ -212,15 +212,22 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Fileset(String name, FilesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/fileset:Fileset", name, args == null ? FilesetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Fileset(java.lang.String name, FilesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/fileset:Fileset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Fileset(String name, Output<String> id, @Nullable FilesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/fileset:Fileset", name, state, makeResourceOptions(options, id));
+    private Fileset(java.lang.String name, Output<java.lang.String> id, @Nullable FilesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/fileset:Fileset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FilesetArgs makeArgs(FilesetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FilesetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +243,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Fileset get(String name, Output<String> id, @Nullable FilesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Fileset get(java.lang.String name, Output<java.lang.String> id, @Nullable FilesetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Fileset(name, id, state, options);
     }
 }
