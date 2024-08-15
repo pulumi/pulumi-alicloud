@@ -118,7 +118,7 @@ export interface GetExecutionsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The name of execution template.
      */
@@ -155,7 +155,7 @@ export interface GetExecutionsResult {
     readonly startDateAfter?: string;
     readonly startDateBefore?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly templateName?: string;
 }
 /**
@@ -249,7 +249,7 @@ export interface GetExecutionsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of execution template.
      */

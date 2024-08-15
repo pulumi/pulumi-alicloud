@@ -8,7 +8,6 @@ import com.pulumi.alicloud.actiontrail.outputs.GetInstancesInstanceUpgradeServic
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -136,7 +135,7 @@ public final class GetInstancesInstance {
      * @return A mapping of tags to assign to the instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The max num of topic can be create of the instance.
      * 
@@ -329,7 +328,7 @@ public final class GetInstancesInstance {
      * @return A mapping of tags to assign to the instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -400,7 +399,7 @@ public final class GetInstancesInstance {
         private String specType;
         private String sslDomainEndpoint;
         private String sslEndPoint;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer topicQuota;
         private List<GetInstancesInstanceUpgradeServiceDetailInfo> upgradeServiceDetailInfos;
         private String vpcId;
@@ -628,7 +627,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

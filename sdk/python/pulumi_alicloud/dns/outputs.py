@@ -1161,7 +1161,7 @@ class GetAlidnsDomainsDomainResult(dict):
                  remark: str,
                  resource_group_id: str,
                  slave_dns: bool,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  version_code: str,
                  version_name: str):
         """
@@ -1184,7 +1184,7 @@ class GetAlidnsDomainsDomainResult(dict):
         :param str remark: The Id of resource group which the dns belongs.
         :param str resource_group_id: The Id of resource group which the dns belongs.
         :param bool slave_dns: Whether to allow auxiliary dns.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
         pulumi.set(__self__, "ali_domain", ali_domain)
@@ -1370,7 +1370,7 @@ class GetAlidnsDomainsDomainResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -1894,7 +1894,7 @@ class GetDomainsDomainResult(dict):
                  remark: str,
                  resource_group_id: str,
                  slave_dns: bool,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  version_code: str,
                  version_name: str):
         """
@@ -1915,7 +1915,7 @@ class GetDomainsDomainResult(dict):
         :param str remark: The Id of resource group which the dns belongs.
         :param str resource_group_id: The Id of resource group which the dns belongs.
         :param bool slave_dns: Whether to allow auxiliary dns.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
         pulumi.set(__self__, "ali_domain", ali_domain)
@@ -2095,7 +2095,7 @@ class GetDomainsDomainResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

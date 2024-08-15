@@ -5,7 +5,6 @@ package com.pulumi.alicloud.ros.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public final class GetTemplatesTemplate {
      * @return Tags.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
      * 
@@ -115,7 +114,7 @@ public final class GetTemplatesTemplate {
      * @return Tags.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -162,7 +161,7 @@ public final class GetTemplatesTemplate {
         private String shareType;
         private String stackGroupName;
         private String stackId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String templateBody;
         private String templateId;
         private String templateName;
@@ -232,7 +231,7 @@ public final class GetTemplatesTemplate {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetTemplatesTemplate", "tags");
             }

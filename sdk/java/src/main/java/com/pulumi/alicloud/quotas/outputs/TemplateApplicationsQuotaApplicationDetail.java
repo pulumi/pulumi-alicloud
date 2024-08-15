@@ -7,7 +7,6 @@ import com.pulumi.alicloud.quotas.outputs.TemplateApplicationsQuotaApplicationDe
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -40,7 +39,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
      * @return Quota dimension. See `dimensions` below.
      * 
      */
-    private @Nullable Map<String,Object> dimensions;
+    private @Nullable Map<String,String> dimensions;
     /**
      * @return The language of the quota application result notification. Value:
      * - zh (default): Chinese.
@@ -129,7 +128,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
      * @return Quota dimension. See `dimensions` below.
      * 
      */
-    public Map<String,Object> dimensions() {
+    public Map<String,String> dimensions() {
         return this.dimensions == null ? Map.of() : this.dimensions;
     }
     /**
@@ -218,7 +217,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
         private @Nullable String applicationId;
         private @Nullable Double approveValue;
         private @Nullable String auditReason;
-        private @Nullable Map<String,Object> dimensions;
+        private @Nullable Map<String,String> dimensions;
         private @Nullable String envLanguage;
         private @Nullable Integer noticeType;
         private @Nullable TemplateApplicationsQuotaApplicationDetailPeriod period;
@@ -272,7 +271,7 @@ public final class TemplateApplicationsQuotaApplicationDetail {
             return this;
         }
         @CustomType.Setter
-        public Builder dimensions(@Nullable Map<String,Object> dimensions) {
+        public Builder dimensions(@Nullable Map<String,String> dimensions) {
 
             this.dimensions = dimensions;
             return this;

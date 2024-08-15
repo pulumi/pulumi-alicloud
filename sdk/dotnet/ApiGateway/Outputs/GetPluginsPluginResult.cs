@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetPluginsPluginResult(
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
 
             string pluginType,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             CreateTime = createTime;
             Description = description;

@@ -307,7 +307,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
@@ -643,7 +643,7 @@ export interface EdgeKubernetesState {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
@@ -832,7 +832,7 @@ export interface EdgeKubernetesArgs {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */

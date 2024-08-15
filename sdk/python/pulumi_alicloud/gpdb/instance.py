@@ -46,7 +46,7 @@ class InstanceArgs:
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class InstanceArgs:
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -562,14 +562,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -656,7 +656,7 @@ class _InstanceState:
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -708,7 +708,7 @@ class _InstanceState:
         :param pulumi.Input[str] status: The status of the instance.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -1210,14 +1210,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1315,7 +1315,7 @@ class Instance(pulumi.CustomResource):
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1417,7 +1417,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -1526,7 +1526,7 @@ class Instance(pulumi.CustomResource):
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vector_configuration_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1629,7 +1629,7 @@ class Instance(pulumi.CustomResource):
             ssl_enabled: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             used_time: Optional[pulumi.Input[str]] = None,
             vector_configuration_status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1686,7 +1686,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the instance.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
         :param pulumi.Input[str] vector_configuration_status: Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -2012,7 +2012,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

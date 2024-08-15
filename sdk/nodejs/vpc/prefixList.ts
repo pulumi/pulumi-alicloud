@@ -127,7 +127,7 @@ export class PrefixList extends pulumi.CustomResource {
     /**
      * The tags of PrefixList.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a PrefixList resource with the given unique name, arguments, and options.
@@ -225,7 +225,7 @@ export interface PrefixListState {
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -259,5 +259,5 @@ export interface PrefixListArgs {
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

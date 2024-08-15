@@ -3051,7 +3051,7 @@ class GetGatewaysGatewayResult(dict):
                  ssl_connections: int,
                  ssl_vpn_internet_ip: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vpn_type: str,
                  vswitch_id: str):
@@ -3075,7 +3075,7 @@ class GetGatewaysGatewayResult(dict):
         :param int ssl_connections: Total count of ssl vpn connections.
         :param str ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
-        :param Mapping[str, Any] tags: The Tag of.
+        :param Mapping[str, str] tags: The Tag of.
         :param str vpc_id: Use the VPC ID as the search key.
         :param str vpn_type: - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
         :param str vswitch_id: - The ID of the vSwitch to which the VPN gateway is attached.
@@ -3258,7 +3258,7 @@ class GetGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The Tag of.
         """

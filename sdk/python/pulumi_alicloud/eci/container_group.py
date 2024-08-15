@@ -40,7 +40,7 @@ class ContainerGroupArgs:
                  security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -71,7 +71,7 @@ class ContainerGroupArgs:
         :param pulumi.Input['ContainerGroupSecurityContextArgs'] security_context: The security context of the container group. See `security_context` below.
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
@@ -422,7 +422,7 @@ class ContainerGroupArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -431,7 +431,7 @@ class ContainerGroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -500,7 +500,7 @@ class _ContainerGroupState:
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -533,7 +533,7 @@ class _ContainerGroupState:
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[str] status: The status of container group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
@@ -919,7 +919,7 @@ class _ContainerGroupState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -928,7 +928,7 @@ class _ContainerGroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1009,7 +1009,7 @@ class ContainerGroup(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1154,7 +1154,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
@@ -1321,7 +1321,7 @@ class ContainerGroup(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1410,7 +1410,7 @@ class ContainerGroup(pulumi.CustomResource):
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1448,7 +1448,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[float] spot_price_limit: The maximum hourly price of the ECI spot instance.
         :param pulumi.Input[str] spot_strategy: Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         :param pulumi.Input[str] status: The status of container group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The buffer time during which the program handles operations before the program stops. Unit: seconds.
@@ -1704,7 +1704,7 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

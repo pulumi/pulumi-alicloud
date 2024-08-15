@@ -69,7 +69,7 @@ type CommonBandwithPackage struct {
 	// The status of the Internet Shared Bandwidth instance. Default value: `Available`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -156,7 +156,7 @@ type commonBandwithPackageState struct {
 	// The status of the Internet Shared Bandwidth instance. Default value: `Available`.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -211,7 +211,7 @@ type CommonBandwithPackageState struct {
 	// The status of the Internet Shared Bandwidth instance. Default value: `Available`.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -264,7 +264,7 @@ type commonBandwithPackageArgs struct {
 	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -314,7 +314,7 @@ type CommonBandwithPackageArgs struct {
 	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -497,8 +497,8 @@ func (o CommonBandwithPackageOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource
-func (o CommonBandwithPackageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o CommonBandwithPackageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.

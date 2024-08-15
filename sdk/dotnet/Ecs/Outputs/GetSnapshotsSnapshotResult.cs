@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A map of tags assigned to the snapshot.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Type;
         /// <summary>
         /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

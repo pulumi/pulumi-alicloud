@@ -13,14 +13,14 @@ namespace Pulumi.AliCloud.Sls.Inputs
     public sealed class AlertConfigurationTemplateConfigurationArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<object>? _annotations;
+        private InputMap<string>? _annotations;
 
         /// <summary>
         /// Template Annotations.
         /// </summary>
-        public InputMap<object> Annotations
+        public InputMap<string> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<object>());
+            get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
 
@@ -37,14 +37,14 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<string>? TemplateId { get; set; }
 
         [Input("tokens")]
-        private InputMap<object>? _tokens;
+        private InputMap<string>? _tokens;
 
         /// <summary>
         /// Template Variables.
         /// </summary>
-        public InputMap<object> Tokens
+        public InputMap<string> Tokens
         {
-            get => _tokens ?? (_tokens = new InputMap<object>());
+            get => _tokens ?? (_tokens = new InputMap<string>());
             set => _tokens = value;
         }
 

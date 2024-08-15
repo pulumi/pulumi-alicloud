@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Datahub
         /// - TIMESTAMP
         /// </summary>
         [Output("recordSchema")]
-        public Output<ImmutableDictionary<string, object>?> RecordSchema { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> RecordSchema { get; private set; } = null!;
 
         /// <summary>
         /// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Datahub
         public Input<string> ProjectName { get; set; } = null!;
 
         [Input("recordSchema")]
-        private InputMap<object>? _recordSchema;
+        private InputMap<string>? _recordSchema;
 
         /// <summary>
         /// Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -220,9 +220,9 @@ namespace Pulumi.AliCloud.Datahub
         /// - DOUBLE
         /// - TIMESTAMP
         /// </summary>
-        public InputMap<object> RecordSchema
+        public InputMap<string> RecordSchema
         {
-            get => _recordSchema ?? (_recordSchema = new InputMap<object>());
+            get => _recordSchema ?? (_recordSchema = new InputMap<string>());
             set => _recordSchema = value;
         }
 
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Datahub
         public Input<string>? ProjectName { get; set; }
 
         [Input("recordSchema")]
-        private InputMap<object>? _recordSchema;
+        private InputMap<string>? _recordSchema;
 
         /// <summary>
         /// Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -295,9 +295,9 @@ namespace Pulumi.AliCloud.Datahub
         /// - DOUBLE
         /// - TIMESTAMP
         /// </summary>
-        public InputMap<object> RecordSchema
+        public InputMap<string> RecordSchema
         {
-            get => _recordSchema ?? (_recordSchema = new InputMap<object>());
+            get => _recordSchema ?? (_recordSchema = new InputMap<string>());
             set => _recordSchema = value;
         }
 

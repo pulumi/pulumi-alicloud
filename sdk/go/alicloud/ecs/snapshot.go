@@ -36,8 +36,8 @@ import (
 //				DiskId:      pulumi.Any(instance_attachment.DiskId),
 //				Name:        pulumi.String("test-snapshot"),
 //				Description: pulumi.String("this snapshot is created for testing"),
-//				Tags: pulumi.Map{
-//					"version": pulumi.Any("1.2"),
+//				Tags: pulumi.StringMap{
+//					"version": pulumi.String("1.2"),
 //				},
 //			})
 //			if err != nil {
@@ -78,7 +78,7 @@ type Snapshot struct {
 	SnapshotName    pulumi.StringOutput    `pulumi:"snapshotName"`
 	Status          pulumi.StringOutput    `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -133,7 +133,7 @@ type snapshotState struct {
 	SnapshotName    *string `pulumi:"snapshotName"`
 	Status          *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type SnapshotState struct {
@@ -156,7 +156,7 @@ type SnapshotState struct {
 	SnapshotName    pulumi.StringPtrInput
 	Status          pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (SnapshotState) ElementType() reflect.Type {
@@ -182,7 +182,7 @@ type snapshotArgs struct {
 	RetentionDays   *int    `pulumi:"retentionDays"`
 	SnapshotName    *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
@@ -205,7 +205,7 @@ type SnapshotArgs struct {
 	RetentionDays   pulumi.IntPtrInput
 	SnapshotName    pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (SnapshotArgs) ElementType() reflect.Type {
@@ -347,8 +347,8 @@ func (o SnapshotOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o SnapshotOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SnapshotOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type SnapshotArrayOutput struct{ *pulumi.OutputState }

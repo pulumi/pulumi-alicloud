@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -237,14 +236,14 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A map that defines environment variables for the function.
      * 
      */
-    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> environmentVariables;
+    @Export(name="environmentVariables", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> environmentVariables;
 
     /**
      * @return A map that defines environment variables for the function.
      * 
      */
-    public Output<Optional<Map<String,Object>>> environmentVariables() {
+    public Output<Optional<Map<String,String>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
     /**

@@ -91,22 +91,22 @@ type GetEcsSnapshotGroupsArgs struct {
 	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsSnapshotGroups.
 type GetEcsSnapshotGroupsResult struct {
 	Groups []GetEcsSnapshotGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                 `pulumi:"id"`
-	Ids               []string               `pulumi:"ids"`
-	InstanceId        *string                `pulumi:"instanceId"`
-	NameRegex         *string                `pulumi:"nameRegex"`
-	Names             []string               `pulumi:"names"`
-	OutputFile        *string                `pulumi:"outputFile"`
-	SnapshotGroupName *string                `pulumi:"snapshotGroupName"`
-	Status            *string                `pulumi:"status"`
-	Tags              map[string]interface{} `pulumi:"tags"`
+	Id                string            `pulumi:"id"`
+	Ids               []string          `pulumi:"ids"`
+	InstanceId        *string           `pulumi:"instanceId"`
+	NameRegex         *string           `pulumi:"nameRegex"`
+	Names             []string          `pulumi:"names"`
+	OutputFile        *string           `pulumi:"outputFile"`
+	SnapshotGroupName *string           `pulumi:"snapshotGroupName"`
+	Status            *string           `pulumi:"status"`
+	Tags              map[string]string `pulumi:"tags"`
 }
 
 func GetEcsSnapshotGroupsOutput(ctx *pulumi.Context, args GetEcsSnapshotGroupsOutputArgs, opts ...pulumi.InvokeOption) GetEcsSnapshotGroupsResultOutput {
@@ -137,7 +137,7 @@ type GetEcsSnapshotGroupsOutputArgs struct {
 	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsSnapshotGroupsOutputArgs) ElementType() reflect.Type {
@@ -196,8 +196,8 @@ func (o GetEcsSnapshotGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsSnapshotGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsSnapshotGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

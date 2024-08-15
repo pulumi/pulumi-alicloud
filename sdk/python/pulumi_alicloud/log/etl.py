@@ -30,8 +30,8 @@ class EtlArgs:
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
@@ -55,8 +55,8 @@ class EtlArgs:
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
         :param pulumi.Input[str] role_arn: Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
@@ -276,26 +276,26 @@ class EtlArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeyIdContext")
-    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_id_context")
 
     @kms_encryption_access_key_id_context.setter
-    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_access_key_id_context", value)
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeySecretContext")
-    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_secret_context")
 
     @kms_encryption_access_key_secret_context.setter
-    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
 
     @property
@@ -397,8 +397,8 @@ class _EtlState:
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -422,8 +422,8 @@ class _EtlState:
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
@@ -616,26 +616,26 @@ class _EtlState:
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeyIdContext")
-    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_id_context")
 
     @kms_encryption_access_key_id_context.setter
-    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_access_key_id_context", value)
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeySecretContext")
-    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_secret_context")
 
     @kms_encryption_access_key_secret_context.setter
-    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
 
     @property
@@ -775,8 +775,8 @@ class Etl(pulumi.CustomResource):
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -884,8 +884,8 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
@@ -1012,8 +1012,8 @@ class Etl(pulumi.CustomResource):
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  logstore: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1091,8 +1091,8 @@ class Etl(pulumi.CustomResource):
             from_time: Optional[pulumi.Input[int]] = None,
             kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
             kms_encrypted_access_key_secret: Optional[pulumi.Input[str]] = None,
-            kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             logstore: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1121,8 +1121,8 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Advanced parameter configuration of processing operations.
@@ -1253,7 +1253,7 @@ class Etl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeyIdContext")
-    def kms_encryption_access_key_id_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_access_key_id_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -1261,7 +1261,7 @@ class Etl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionAccessKeySecretContext")
-    def kms_encryption_access_key_secret_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_access_key_secret_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """

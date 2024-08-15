@@ -116,8 +116,8 @@ import (
 //				Cpu:                 pulumi.Float64(0.5),
 //				InstanceConcurrency: pulumi.Int(2),
 //				FunctionName:        pulumi.Sprintf("%v-%v", name, _default.Result),
-//				EnvironmentVariables: pulumi.Map{
-//					"EnvKey": pulumi.Any("EnvVal"),
+//				EnvironmentVariables: pulumi.StringMap{
+//					"EnvKey": pulumi.String("EnvVal"),
 //				},
 //				InternetAccess: pulumi.Bool(true),
 //			})
@@ -157,7 +157,7 @@ type V3Function struct {
 	// The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// The environment variable set for the function, you can get the value of the environment variable in the function.
-	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
 	// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// Function GPU configuration. See `gpuConfig` below.
@@ -250,7 +250,7 @@ type v3functionState struct {
 	// The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
 	DiskSize *int `pulumi:"diskSize"`
 	// The environment variable set for the function, you can get the value of the environment variable in the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
 	FunctionName *string `pulumi:"functionName"`
 	// Function GPU configuration. See `gpuConfig` below.
@@ -301,7 +301,7 @@ type V3FunctionState struct {
 	// The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
 	DiskSize pulumi.IntPtrInput
 	// The environment variable set for the function, you can get the value of the environment variable in the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
 	FunctionName pulumi.StringPtrInput
 	// Function GPU configuration. See `gpuConfig` below.
@@ -354,7 +354,7 @@ type v3functionArgs struct {
 	// The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
 	DiskSize *int `pulumi:"diskSize"`
 	// The environment variable set for the function, you can get the value of the environment variable in the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
 	FunctionName *string `pulumi:"functionName"`
 	// Function GPU configuration. See `gpuConfig` below.
@@ -404,7 +404,7 @@ type V3FunctionArgs struct {
 	// The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
 	DiskSize pulumi.IntPtrInput
 	// The environment variable set for the function, you can get the value of the environment variable in the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
 	FunctionName pulumi.StringPtrInput
 	// Function GPU configuration. See `gpuConfig` below.
@@ -565,8 +565,8 @@ func (o V3FunctionOutput) DiskSize() pulumi.IntOutput {
 }
 
 // The environment variable set for the function, you can get the value of the environment variable in the function.
-func (o V3FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *V3Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o V3FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.

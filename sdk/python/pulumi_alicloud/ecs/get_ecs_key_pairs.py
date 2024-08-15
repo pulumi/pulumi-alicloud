@@ -105,7 +105,7 @@ class GetEcsKeyPairsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +132,7 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
                       name_regex: Optional[str] = None,
                       output_file: Optional[str] = None,
                       resource_group_id: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsKeyPairsResult:
     """
     This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
@@ -188,7 +188,7 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]]
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsKeyPairsResult]:
     """
     This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.

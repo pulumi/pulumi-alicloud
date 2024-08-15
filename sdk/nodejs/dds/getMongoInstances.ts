@@ -31,7 +31,7 @@ export interface GetMongoInstancesArgs {
     instanceType?: string;
     nameRegex?: string;
     outputFile?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -50,7 +50,7 @@ export interface GetMongoInstancesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoInstancesResult> {
     return pulumi.output(args).apply((a: any) => getMongoInstances(a, opts))
@@ -66,5 +66,5 @@ export interface GetMongoInstancesOutputArgs {
     instanceType?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

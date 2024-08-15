@@ -24,7 +24,7 @@ class FlowLogArgs:
                  flow_log_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FlowLog resource.
@@ -38,7 +38,7 @@ class FlowLogArgs:
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the current instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         """
         pulumi.set(__self__, "log_store_name", log_store_name)
@@ -183,14 +183,14 @@ class FlowLogArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the current instance resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -221,7 +221,7 @@ class _FlowLogState:
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_type: Optional[pulumi.Input[str]] = None):
         """
@@ -238,7 +238,7 @@ class _FlowLogState:
         :param pulumi.Input[str] resource_id: The ID of the resource.
         :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
         :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the current instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
         """
@@ -419,14 +419,14 @@ class _FlowLogState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the current instance resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -468,7 +468,7 @@ class FlowLog(pulumi.CustomResource):
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -498,7 +498,7 @@ class FlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] resource_id: The ID of the resource.
         :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
         :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the current instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
         """
@@ -547,7 +547,7 @@ class FlowLog(pulumi.CustomResource):
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -606,7 +606,7 @@ class FlowLog(pulumi.CustomResource):
             resource_id: Optional[pulumi.Input[str]] = None,
             resource_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             traffic_type: Optional[pulumi.Input[str]] = None) -> 'FlowLog':
         """
@@ -628,7 +628,7 @@ class FlowLog(pulumi.CustomResource):
         :param pulumi.Input[str] resource_id: The ID of the resource.
         :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
         :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the current instance resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
         :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
         """
@@ -751,7 +751,7 @@ class FlowLog(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the current instance resource.
         """

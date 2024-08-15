@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -157,8 +156,8 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * `QueueName` - The queue name of MNS.
      * 
      */
-    @Export(name="externalSourceConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> externalSourceConfig;
+    @Export(name="externalSourceConfig", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> externalSourceConfig;
 
     /**
      * @return The config of external source.
@@ -177,7 +176,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * `QueueName` - The queue name of MNS.
      * 
      */
-    public Output<Optional<Map<String,Object>>> externalSourceConfig() {
+    public Output<Optional<Map<String,String>>> externalSourceConfig() {
         return Codegen.optional(this.externalSourceConfig);
     }
     /**

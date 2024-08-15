@@ -98,7 +98,7 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * The tag of the current instance resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
      */
@@ -229,7 +229,7 @@ export interface FlowLogState {
     /**
      * The tag of the current instance resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
      */
@@ -283,7 +283,7 @@ export interface FlowLogArgs {
     /**
      * The tag of the current instance resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
      */

@@ -140,10 +140,10 @@ namespace Pulumi.AliCloud.Nlb
         public string? Status { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
-        public Dictionary<string, object> Tags
+        private Dictionary<string, string>? _tags;
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -210,10 +210,10 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Nlb
         public readonly ImmutableArray<string> ServerGroupNames;
         public readonly string? ServerGroupType;
         public readonly string? Status;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetServerGroupsResult(
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Nlb
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             Groups = groups;
             Id = id;

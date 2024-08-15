@@ -86,7 +86,7 @@ type AnycastEipAddress struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of resource-bound tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAnycastEipAddress registers a new resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ type anycastEipAddressState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// List of resource-bound tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type AnycastEipAddressState struct {
@@ -164,7 +164,7 @@ type AnycastEipAddressState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// List of resource-bound tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AnycastEipAddressState) ElementType() reflect.Type {
@@ -187,7 +187,7 @@ type anycastEipAddressArgs struct {
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation string `pulumi:"serviceLocation"`
 	// List of resource-bound tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AnycastEipAddress resource.
@@ -207,7 +207,7 @@ type AnycastEipAddressArgs struct {
 	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringInput
 	// List of resource-bound tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AnycastEipAddressArgs) ElementType() reflect.Type {
@@ -343,8 +343,8 @@ func (o AnycastEipAddressOutput) Status() pulumi.StringOutput {
 }
 
 // List of resource-bound tags.
-func (o AnycastEipAddressOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *AnycastEipAddress) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AnycastEipAddressOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type AnycastEipAddressArrayOutput struct{ *pulumi.OutputState }

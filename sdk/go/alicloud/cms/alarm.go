@@ -161,7 +161,7 @@ type Alarm struct {
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
@@ -198,7 +198,7 @@ type Alarm struct {
 	// The status of the Alarm.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets AlarmTargetArrayOutput `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -251,7 +251,7 @@ type alarmState struct {
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
@@ -288,7 +288,7 @@ type alarmState struct {
 	// The status of the Alarm.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -303,7 +303,7 @@ type AlarmState struct {
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-	Dimensions pulumi.MapInput
+	Dimensions pulumi.StringMapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default value: `true`.
@@ -340,7 +340,7 @@ type AlarmState struct {
 	// The status of the Alarm.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -359,7 +359,7 @@ type alarmArgs struct {
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default value: `true`.
@@ -394,7 +394,7 @@ type alarmArgs struct {
 	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime *int `pulumi:"startTime"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets []AlarmTarget `pulumi:"targets"`
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -410,7 +410,7 @@ type AlarmArgs struct {
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
 	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-	Dimensions pulumi.MapInput
+	Dimensions pulumi.StringMapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default value: `true`.
@@ -445,7 +445,7 @@ type AlarmArgs struct {
 	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The information about the resource for which alerts are triggered. See `targets` below.
 	Targets AlarmTargetArrayInput
 	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -552,8 +552,8 @@ func (o AlarmOutput) ContactGroups() pulumi.StringArrayOutput {
 // Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 //
 // Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
-func (o AlarmOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
+func (o AlarmOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringMapOutput { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 // The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
@@ -637,8 +637,8 @@ func (o AlarmOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o AlarmOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AlarmOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The information about the resource for which alerts are triggered. See `targets` below.

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.eventbridge.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +26,7 @@ public final class GetEventSourcesSource {
      * @return The config of external data source.
      * 
      */
-    private Map<String,Object> externalSourceConfig;
+    private Map<String,String> externalSourceConfig;
     /**
      * @return The type of external data source.
      * 
@@ -64,7 +63,7 @@ public final class GetEventSourcesSource {
      * @return The config of external data source.
      * 
      */
-    public Map<String,Object> externalSourceConfig() {
+    public Map<String,String> externalSourceConfig() {
         return this.externalSourceConfig;
     }
     /**
@@ -103,7 +102,7 @@ public final class GetEventSourcesSource {
     public static final class Builder {
         private String description;
         private String eventSourceName;
-        private Map<String,Object> externalSourceConfig;
+        private Map<String,String> externalSourceConfig;
         private String externalSourceType;
         private String id;
         private Boolean linkedExternalSource;
@@ -137,7 +136,7 @@ public final class GetEventSourcesSource {
             return this;
         }
         @CustomType.Setter
-        public Builder externalSourceConfig(Map<String,Object> externalSourceConfig) {
+        public Builder externalSourceConfig(Map<String,String> externalSourceConfig) {
             if (externalSourceConfig == null) {
               throw new MissingRequiredPropertyException("GetEventSourcesSource", "externalSourceConfig");
             }

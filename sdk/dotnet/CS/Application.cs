@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("environment")]
-        public Output<ImmutableDictionary<string, object>?> Environment { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Environment { get; private set; } = null!;
 
         [Output("latestImage")]
         public Output<bool?> LatestImage { get; private set; } = null!;
@@ -104,10 +104,10 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Description { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
@@ -147,10 +147,10 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Description { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 

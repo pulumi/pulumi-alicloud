@@ -115,7 +115,7 @@ type TransitRouterVbrAttachment struct {
 	// The associating status of the network.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
 	// The id of the transit router vbr attachment.
@@ -183,7 +183,7 @@ type transitRouterVbrAttachmentState struct {
 	// The associating status of the network.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// The id of the transit router vbr attachment.
@@ -216,7 +216,7 @@ type TransitRouterVbrAttachmentState struct {
 	// The associating status of the network.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// The id of the transit router vbr attachment.
@@ -251,7 +251,7 @@ type transitRouterVbrAttachmentArgs struct {
 	// Whether to enabled route table propagation. The system default value is `true`.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// The name of the transit router vbr attachment.
@@ -281,7 +281,7 @@ type TransitRouterVbrAttachmentArgs struct {
 	// Whether to enabled route table propagation. The system default value is `true`.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// The name of the transit router vbr attachment.
@@ -419,8 +419,8 @@ func (o TransitRouterVbrAttachmentOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TransitRouterVbrAttachmentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TransitRouterVbrAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The description of the transit router vbr attachment.

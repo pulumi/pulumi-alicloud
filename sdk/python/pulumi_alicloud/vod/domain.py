@@ -20,7 +20,7 @@ class DomainArgs:
                  sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
                  check_url: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
@@ -28,7 +28,7 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[str] check_url: The URL that is used for health checks.
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
@@ -94,7 +94,7 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -103,7 +103,7 @@ class DomainArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -134,7 +134,7 @@ class _DomainState:
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[str]] = None):
         """
@@ -151,7 +151,7 @@ class _DomainState:
         :param pulumi.Input[str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
@@ -334,7 +334,7 @@ class _DomainState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -343,7 +343,7 @@ class _DomainState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -380,7 +380,7 @@ class Domain(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -430,7 +430,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
@@ -501,7 +501,7 @@ class Domain(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -553,7 +553,7 @@ class Domain(pulumi.CustomResource):
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             top_level_domain: Optional[pulumi.Input[str]] = None,
             weight: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
@@ -575,7 +575,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
@@ -700,7 +700,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         * `Key`: It can be up to 64 characters in length. It cannot be a null string.

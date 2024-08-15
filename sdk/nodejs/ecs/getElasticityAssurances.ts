@@ -64,7 +64,7 @@ export interface GetElasticityAssurancesArgs {
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -96,7 +96,7 @@ export interface GetElasticityAssurancesResult {
     /**
      * A mapping of tags to assign to the Capacity Reservation.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides Ecs Elasticity Assurance available to the user.
@@ -146,5 +146,5 @@ export interface GetElasticityAssurancesOutputArgs {
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

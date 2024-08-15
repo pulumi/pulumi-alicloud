@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.Ess
         /// a null string.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The program's buffering time before closing.
@@ -660,7 +660,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SpotStrategy { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
@@ -669,9 +669,9 @@ namespace Pulumi.AliCloud.Ess
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
         /// a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -958,7 +958,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SpotStrategy { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
@@ -967,9 +967,9 @@ namespace Pulumi.AliCloud.Ess
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
         /// a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

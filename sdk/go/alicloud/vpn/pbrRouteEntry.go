@@ -72,9 +72,9 @@ import (
 //					pulumi.String("10.0.0.0/24"),
 //					pulumi.String("10.0.1.0/24"),
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				EnableTunnelsBgp: pulumi.Bool(true),
 //				TunnelOptionsSpecifications: vpn.ConnectionTunnelOptionsSpecificationArray{

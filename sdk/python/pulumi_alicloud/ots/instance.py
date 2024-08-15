@@ -21,7 +21,7 @@ class InstanceArgs:
                  network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
@@ -45,7 +45,7 @@ class InstanceArgs:
                Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the instance.
         """
         if accessed_by is not None:
             pulumi.set(__self__, "accessed_by", accessed_by)
@@ -164,14 +164,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -185,7 +185,7 @@ class _InstanceState:
                  network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
@@ -209,7 +209,7 @@ class _InstanceState:
                Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the instance.
         """
         if accessed_by is not None:
             pulumi.set(__self__, "accessed_by", accessed_by)
@@ -328,14 +328,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -351,7 +351,7 @@ class Instance(pulumi.CustomResource):
                  network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
@@ -414,7 +414,7 @@ class Instance(pulumi.CustomResource):
                Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the instance.
         """
         ...
     @overload
@@ -482,7 +482,7 @@ class Instance(pulumi.CustomResource):
                  network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -517,7 +517,7 @@ class Instance(pulumi.CustomResource):
             network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Instance':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -546,7 +546,7 @@ class Instance(pulumi.CustomResource):
                Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -634,7 +634,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the instance.
         """

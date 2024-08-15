@@ -9,7 +9,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -112,7 +111,7 @@ public final class GetApplicationLoadBalancersResult {
      * @return The tags of the SLB.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private Integer totalCount;
     /**
      * @return ID of the VPC the SLB belongs to.
@@ -265,7 +264,7 @@ public final class GetApplicationLoadBalancersResult {
      * @return The tags of the SLB.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Integer totalCount() {
@@ -318,7 +317,7 @@ public final class GetApplicationLoadBalancersResult {
         private @Nullable String slaveZoneId;
         private List<GetApplicationLoadBalancersSlb> slbs;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
@@ -515,7 +514,7 @@ public final class GetApplicationLoadBalancersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

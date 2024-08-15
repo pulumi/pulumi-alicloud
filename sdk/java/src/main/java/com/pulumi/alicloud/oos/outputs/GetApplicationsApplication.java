@@ -5,7 +5,6 @@ package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,7 +40,7 @@ public final class GetApplicationsApplication {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The Updated time of the application.
      * 
@@ -88,7 +87,7 @@ public final class GetApplicationsApplication {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -113,7 +112,7 @@ public final class GetApplicationsApplication {
         private String description;
         private String id;
         private String resourceGroupId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String updateTime;
         public Builder() {}
         public Builder(GetApplicationsApplication defaults) {
@@ -168,7 +167,7 @@ public final class GetApplicationsApplication {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetApplicationsApplication", "tags");
             }

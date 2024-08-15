@@ -75,24 +75,24 @@ type GetStacksArgs struct {
 	// The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
 	Status *string `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getStacks.
 type GetStacksResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	NameRegex       *string                `pulumi:"nameRegex"`
-	Names           []string               `pulumi:"names"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	ParentStackId   *string                `pulumi:"parentStackId"`
-	ShowNestedStack *bool                  `pulumi:"showNestedStack"`
-	StackName       *string                `pulumi:"stackName"`
-	Stacks          []GetStacksStack       `pulumi:"stacks"`
-	Status          *string                `pulumi:"status"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	Id              string            `pulumi:"id"`
+	Ids             []string          `pulumi:"ids"`
+	NameRegex       *string           `pulumi:"nameRegex"`
+	Names           []string          `pulumi:"names"`
+	OutputFile      *string           `pulumi:"outputFile"`
+	ParentStackId   *string           `pulumi:"parentStackId"`
+	ShowNestedStack *bool             `pulumi:"showNestedStack"`
+	StackName       *string           `pulumi:"stackName"`
+	Stacks          []GetStacksStack  `pulumi:"stacks"`
+	Status          *string           `pulumi:"status"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 func GetStacksOutput(ctx *pulumi.Context, args GetStacksOutputArgs, opts ...pulumi.InvokeOption) GetStacksResultOutput {
@@ -127,7 +127,7 @@ type GetStacksOutputArgs struct {
 	// The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetStacksOutputArgs) ElementType() reflect.Type {
@@ -194,8 +194,8 @@ func (o GetStacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetStacksResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetStacksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetStacksResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStacksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

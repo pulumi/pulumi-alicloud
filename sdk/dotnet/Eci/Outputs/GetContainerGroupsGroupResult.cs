@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// <summary>
         /// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The information about the mounted volume. You can mount up to 20 volumes.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
 
             string succeededTime,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             ImmutableArray<Outputs.GetContainerGroupsGroupVolumeResult> volumes,
 

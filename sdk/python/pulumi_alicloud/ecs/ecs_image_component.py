@@ -20,7 +20,7 @@ class EcsImageComponentArgs:
                  image_component_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  system_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a EcsImageComponent resource.
         :param pulumi.Input[str] content: Component content.
@@ -29,7 +29,7 @@ class EcsImageComponentArgs:
         :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of label key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         pulumi.set(__self__, "content", content)
         if component_type is not None:
@@ -119,14 +119,14 @@ class EcsImageComponentArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         List of label key-value pairs.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -140,7 +140,7 @@ class _EcsImageComponentState:
                  image_component_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  system_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EcsImageComponent resources.
         :param pulumi.Input[str] component_type: The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
@@ -150,7 +150,7 @@ class _EcsImageComponentState:
         :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of label key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         if component_type is not None:
             pulumi.set(__self__, "component_type", component_type)
@@ -255,14 +255,14 @@ class _EcsImageComponentState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         List of label key-value pairs.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -277,7 +277,7 @@ class EcsImageComponent(pulumi.CustomResource):
                  image_component_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  system_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Ecs Image Component resource.
@@ -323,7 +323,7 @@ class EcsImageComponent(pulumi.CustomResource):
         :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of label key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         ...
     @overload
@@ -388,7 +388,7 @@ class EcsImageComponent(pulumi.CustomResource):
                  image_component_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  system_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,7 +425,7 @@ class EcsImageComponent(pulumi.CustomResource):
             image_component_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             system_type: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EcsImageComponent':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EcsImageComponent':
         """
         Get an existing EcsImageComponent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -440,7 +440,7 @@ class EcsImageComponent(pulumi.CustomResource):
         :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of label key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -514,7 +514,7 @@ class EcsImageComponent(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         List of label key-value pairs.
         """

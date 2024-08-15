@@ -139,7 +139,7 @@ type NetworkInterface struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	Status         pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -217,7 +217,7 @@ type networkInterfaceState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	Status         *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -263,7 +263,7 @@ type NetworkInterfaceState struct {
 	SecurityGroups pulumi.StringArrayInput
 	Status         pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VSwitch to create the ENI in.
 	VswitchId pulumi.StringPtrInput
 }
@@ -310,7 +310,7 @@ type networkInterfaceArgs struct {
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VSwitch to create the ENI in.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -354,7 +354,7 @@ type NetworkInterfaceArgs struct {
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VSwitch to create the ENI in.
 	VswitchId pulumi.StringInput
 }
@@ -549,8 +549,8 @@ func (o NetworkInterfaceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o NetworkInterfaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *NetworkInterface) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o NetworkInterfaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VSwitch to create the ENI in.

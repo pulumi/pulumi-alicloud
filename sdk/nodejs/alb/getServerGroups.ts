@@ -84,7 +84,7 @@ export interface GetServerGroupsArgs {
     /**
      * A map of tags assigned to the group.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the VPC that you want to access.
      */
@@ -124,7 +124,7 @@ export interface GetServerGroupsResult {
     /**
      * The tags of the resource.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * The ID of the VPC that you want to access.
      */
@@ -194,7 +194,7 @@ export interface GetServerGroupsOutputArgs {
     /**
      * A map of tags assigned to the group.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC that you want to access.
      */

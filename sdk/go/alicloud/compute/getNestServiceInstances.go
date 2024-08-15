@@ -75,7 +75,7 @@ type GetNestServiceInstancesArgs struct {
 	// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getNestServiceInstances.
@@ -93,7 +93,7 @@ type GetNestServiceInstancesResult struct {
 	// The status of the Service Instance.
 	Status *string `pulumi:"status"`
 	// The tag of the Service Instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetNestServiceInstancesOutput(ctx *pulumi.Context, args GetNestServiceInstancesOutputArgs, opts ...pulumi.InvokeOption) GetNestServiceInstancesResultOutput {
@@ -122,7 +122,7 @@ type GetNestServiceInstancesOutputArgs struct {
 	// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetNestServiceInstancesOutputArgs) ElementType() reflect.Type {
@@ -183,8 +183,8 @@ func (o GetNestServiceInstancesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The tag of the Service Instance.
-func (o GetNestServiceInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNestServiceInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNestServiceInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNestServiceInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

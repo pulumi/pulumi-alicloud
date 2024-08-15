@@ -101,7 +101,7 @@ type BandwidthPackage struct {
 	// The status of the Bandwidth Package.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -181,7 +181,7 @@ type bandwidthPackageState struct {
 	// The status of the Bandwidth Package.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type *string `pulumi:"type"`
 }
@@ -226,7 +226,7 @@ type BandwidthPackageState struct {
 	// The status of the Bandwidth Package.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringPtrInput
 }
@@ -273,7 +273,7 @@ type bandwidthPackageArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type string `pulumi:"type"`
 }
@@ -317,7 +317,7 @@ type BandwidthPackageArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringInput
 }
@@ -499,8 +499,8 @@ func (o BandwidthPackageOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o BandwidthPackageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *BandwidthPackage) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o BandwidthPackageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.

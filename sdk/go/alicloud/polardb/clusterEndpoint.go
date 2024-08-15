@@ -102,7 +102,7 @@ type ClusterEndpoint struct {
 	// The ID of the cluster endpoint.
 	DbEndpointId pulumi.StringOutput `pulumi:"dbEndpointId"`
 	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-	EndpointConfig pulumi.MapOutput `pulumi:"endpointConfig"`
+	EndpointConfig pulumi.StringMapOutput `pulumi:"endpointConfig"`
 	// Type of endpoint.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// The network type of the endpoint address.
@@ -171,7 +171,7 @@ type clusterEndpointState struct {
 	// The ID of the cluster endpoint.
 	DbEndpointId *string `pulumi:"dbEndpointId"`
 	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
+	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Type of endpoint.
 	EndpointType *string `pulumi:"endpointType"`
 	// The network type of the endpoint address.
@@ -208,7 +208,7 @@ type ClusterEndpointState struct {
 	// The ID of the cluster endpoint.
 	DbEndpointId pulumi.StringPtrInput
 	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-	EndpointConfig pulumi.MapInput
+	EndpointConfig pulumi.StringMapInput
 	// Type of endpoint.
 	EndpointType pulumi.StringPtrInput
 	// The network type of the endpoint address.
@@ -247,7 +247,7 @@ type clusterEndpointArgs struct {
 	// The name of the endpoint.
 	DbEndpointDescription *string `pulumi:"dbEndpointDescription"`
 	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
+	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// The network type of the endpoint address.
 	NetType *string `pulumi:"netType"`
 	// Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
@@ -275,7 +275,7 @@ type ClusterEndpointArgs struct {
 	// The name of the endpoint.
 	DbEndpointDescription pulumi.StringPtrInput
 	// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-	EndpointConfig pulumi.MapInput
+	EndpointConfig pulumi.StringMapInput
 	// The network type of the endpoint address.
 	NetType pulumi.StringPtrInput
 	// Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
@@ -405,8 +405,8 @@ func (o ClusterEndpointOutput) DbEndpointId() pulumi.StringOutput {
 }
 
 // The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
-func (o ClusterEndpointOutput) EndpointConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterEndpoint) pulumi.MapOutput { return v.EndpointConfig }).(pulumi.MapOutput)
+func (o ClusterEndpointOutput) EndpointConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterEndpoint) pulumi.StringMapOutput { return v.EndpointConfig }).(pulumi.StringMapOutput)
 }
 
 // Type of endpoint.

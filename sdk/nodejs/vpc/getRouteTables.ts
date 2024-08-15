@@ -95,7 +95,7 @@ export interface GetRouteTablesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Vpc id of the route table.
      */
@@ -146,7 +146,7 @@ export interface GetRouteTablesResult {
      * A list of Route Tables. Each element contains the following attributes:
      */
     readonly tables: outputs.vpc.GetRouteTablesTable[];
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * The VPC ID.
@@ -226,7 +226,7 @@ export interface GetRouteTablesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Vpc id of the route table.
      */

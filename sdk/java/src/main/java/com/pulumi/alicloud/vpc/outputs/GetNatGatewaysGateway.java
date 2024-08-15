@@ -6,7 +6,6 @@ package com.pulumi.alicloud.vpc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -118,7 +117,7 @@ public final class GetNatGatewaysGateway {
      * @return The tags of NAT gateway.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the VPC.
      * 
@@ -275,7 +274,7 @@ public final class GetNatGatewaysGateway {
      * @return The tags of NAT gateway.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -322,7 +321,7 @@ public final class GetNatGatewaysGateway {
         private String spec;
         private String specification;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -523,7 +522,7 @@ public final class GetNatGatewaysGateway {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetNatGatewaysGateway", "tags");
             }

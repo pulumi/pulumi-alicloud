@@ -123,7 +123,7 @@ export class Account extends pulumi.CustomResource {
      *
      * > **NOTE:** The member name must be unique within the resource directory.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Member type. The value of `ResourceAccount` indicates the resource account.
      */
@@ -228,7 +228,7 @@ export interface AccountState {
      *
      * > **NOTE:** The member name must be unique within the resource directory.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Member type. The value of `ResourceAccount` indicates the resource account.
      */
@@ -266,5 +266,5 @@ export interface AccountArgs {
      *
      * > **NOTE:** The member name must be unique within the resource directory.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

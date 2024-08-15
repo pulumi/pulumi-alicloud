@@ -5,7 +5,6 @@ package com.pulumi.alicloud.cddc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -146,7 +145,7 @@ public final class GetDedicatedHostsHost {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the virtual private cloud (VPC) to which the host is connected.
      * 
@@ -350,7 +349,7 @@ public final class GetDedicatedHostsHost {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -410,7 +409,7 @@ public final class GetDedicatedHostsHost {
         private String openPermission;
         private String status;
         private String storageUsed;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         private String zoneId;
@@ -658,7 +657,7 @@ public final class GetDedicatedHostsHost {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "tags");
             }

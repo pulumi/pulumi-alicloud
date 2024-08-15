@@ -31,14 +31,14 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public Input<Inputs.SyntheticTaskMonitorConfApiHttpRequestBodyArgs>? RequestBody { get; set; }
 
         [Input("requestHeaders")]
-        private InputMap<object>? _requestHeaders;
+        private InputMap<string>? _requestHeaders;
 
         /// <summary>
         /// HTTP request header.
         /// </summary>
-        public InputMap<object> RequestHeaders
+        public InputMap<string> RequestHeaders
         {
-            get => _requestHeaders ?? (_requestHeaders = new InputMap<object>());
+            get => _requestHeaders ?? (_requestHeaders = new InputMap<string>());
             set => _requestHeaders = value;
         }
 

@@ -119,7 +119,7 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
     /**
      * Tags of the current resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DhcpOptionsSet resource with the given unique name, arguments, and options.
@@ -221,7 +221,7 @@ export interface DhcpOptionsSetState {
     /**
      * Tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -271,5 +271,5 @@ export interface DhcpOptionsSetArgs {
     /**
      * Tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

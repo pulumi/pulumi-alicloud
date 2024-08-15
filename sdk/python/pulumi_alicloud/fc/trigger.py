@@ -463,9 +463,13 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=default_project.name.apply(lambda name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{name}"),
             type="log",
-            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
+            config=pulumi.Output.all(
+                sourceStoreName=source_store.name,
+                defaultProjectName=default_project.name,
+                defaultStoreName=default_store.name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "sourceConfig": {{
-                    "logstore": "{source_store_name}",
+                    "logstore": "{resolved_outputs['sourceStoreName']}",
                     "startTime": null
                 }},
                 "jobConfig": {{
@@ -477,14 +481,15 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{default_project_name}",
-                    "logstore": "{default_store_name}"
+                     "project": "{resolved_outputs['defaultProjectName']}",
+                    "logstore": "{resolved_outputs['defaultStoreName']}"
                 }},
                 "targetConfig": null,
                 "enable": true
             }}
           
-        \"\"\"))
+        \"\"\")
+        )
         ```
 
         MNS topic trigger:
@@ -608,7 +613,10 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"fcservicepolicy-{default_integer['result']}",
-            policy_document=pulumi.Output.all(default_service.name, default_service.name).apply(lambda defaultServiceName, defaultServiceName1: f\"\"\"    {{
+            policy_document=pulumi.Output.all(
+                defaultServiceName=default_service.name,
+                defaultServiceName1=default_service.name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "Version": "1",
                 "Statement": [
                 {{
@@ -616,14 +624,15 @@ class Trigger(pulumi.CustomResource):
                     "fc:InvokeFunction"
                     ],
                 "Resource": [
-                    "acs:fc:*:*:services/{default_service_name}/functions/*",
-                    "acs:fc:*:*:services/{default_service_name1}.*/functions/*"
+                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*",
+                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*"
                 ],
                 "Effect": "Allow"
                 }}
                 ]
             }}
-        \"\"\"),
+        \"\"\")
+        ,
             description="this is a example",
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
@@ -761,7 +770,11 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example-rocketmq",
             type="eventbridge",
-            config=pulumi.Output.all(default_instance.id, default_group.group_name, default_topic.topic_name).apply(lambda id, group_name, topic_name: f\"\"\"    {{
+            config=pulumi.Output.all(
+                id=default_instance.id,
+                group_name=default_group.group_name,
+                topic_name=default_topic.topic_name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "triggerEnable": false,
                 "asyncInvocationType": false,
                 "eventRuleFilterPattern": "{{}}",
@@ -770,9 +783,9 @@ class Trigger(pulumi.CustomResource):
                     "eventSourceParameters": {{
                         "sourceRocketMQParameters": {{
                             "RegionId": "{default_get_regions.regions[0].id}",
-                            "InstanceId": "{id}",
-                            "GroupID": "{group_name}",
-                            "Topic": "{topic_name}",
+                            "InstanceId": "{resolved_outputs['id']}",
+                            "GroupID": "{resolved_outputs['group_name']}",
+                            "Topic": "{resolved_outputs['topic_name']}",
                             "Timestamp": 1686296162,
                             "Tag": "example-tag",
                             "Offset": "CONSUME_FROM_LAST_OFFSET"
@@ -780,7 +793,8 @@ class Trigger(pulumi.CustomResource):
                     }}
                 }}
             }}
-        \"\"\"))
+        \"\"\")
+        )
         default_instance2 = alicloud.amqp.Instance("default",
             instance_name=f"terraform-example-{default_integer['result']}",
             instance_type="professional",
@@ -802,7 +816,11 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example-rabbitmq",
             type="eventbridge",
-            config=pulumi.Output.all(default_instance2.id, default_virtual_host.virtual_host_name, default_queue.queue_name).apply(lambda id, virtual_host_name, queue_name: f\"\"\"    {{
+            config=pulumi.Output.all(
+                id=default_instance2.id,
+                virtual_host_name=default_virtual_host.virtual_host_name,
+                queue_name=default_queue.queue_name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "triggerEnable": false,
                 "asyncInvocationType": false,
                 "eventRuleFilterPattern": "{{}}",
@@ -811,14 +829,15 @@ class Trigger(pulumi.CustomResource):
                     "eventSourceParameters": {{
                         "sourceRabbitMQParameters": {{
                             "RegionId": "{default_get_regions.regions[0].id}",
-                            "InstanceId": "{id}",
-                            "VirtualHostName": "{virtual_host_name}",
-                            "QueueName": "{queue_name}"
+                            "InstanceId": "{resolved_outputs['id']}",
+                            "VirtualHostName": "{resolved_outputs['virtual_host_name']}",
+                            "QueueName": "{resolved_outputs['queue_name']}"
                         }}
                     }}
                 }}
             }}
-        \"\"\"))
+        \"\"\")
+        )
         ```
 
         ## Module Support
@@ -944,9 +963,13 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=default_project.name.apply(lambda name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{name}"),
             type="log",
-            config=pulumi.Output.all(source_store.name, default_project.name, default_store.name).apply(lambda sourceStoreName, defaultProjectName, defaultStoreName: f\"\"\"    {{
+            config=pulumi.Output.all(
+                sourceStoreName=source_store.name,
+                defaultProjectName=default_project.name,
+                defaultStoreName=default_store.name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "sourceConfig": {{
-                    "logstore": "{source_store_name}",
+                    "logstore": "{resolved_outputs['sourceStoreName']}",
                     "startTime": null
                 }},
                 "jobConfig": {{
@@ -958,14 +981,15 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{default_project_name}",
-                    "logstore": "{default_store_name}"
+                     "project": "{resolved_outputs['defaultProjectName']}",
+                    "logstore": "{resolved_outputs['defaultStoreName']}"
                 }},
                 "targetConfig": null,
                 "enable": true
             }}
           
-        \"\"\"))
+        \"\"\")
+        )
         ```
 
         MNS topic trigger:
@@ -1089,7 +1113,10 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"fcservicepolicy-{default_integer['result']}",
-            policy_document=pulumi.Output.all(default_service.name, default_service.name).apply(lambda defaultServiceName, defaultServiceName1: f\"\"\"    {{
+            policy_document=pulumi.Output.all(
+                defaultServiceName=default_service.name,
+                defaultServiceName1=default_service.name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "Version": "1",
                 "Statement": [
                 {{
@@ -1097,14 +1124,15 @@ class Trigger(pulumi.CustomResource):
                     "fc:InvokeFunction"
                     ],
                 "Resource": [
-                    "acs:fc:*:*:services/{default_service_name}/functions/*",
-                    "acs:fc:*:*:services/{default_service_name1}.*/functions/*"
+                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*",
+                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*"
                 ],
                 "Effect": "Allow"
                 }}
                 ]
             }}
-        \"\"\"),
+        \"\"\")
+        ,
             description="this is a example",
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
@@ -1242,7 +1270,11 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example-rocketmq",
             type="eventbridge",
-            config=pulumi.Output.all(default_instance.id, default_group.group_name, default_topic.topic_name).apply(lambda id, group_name, topic_name: f\"\"\"    {{
+            config=pulumi.Output.all(
+                id=default_instance.id,
+                group_name=default_group.group_name,
+                topic_name=default_topic.topic_name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "triggerEnable": false,
                 "asyncInvocationType": false,
                 "eventRuleFilterPattern": "{{}}",
@@ -1251,9 +1283,9 @@ class Trigger(pulumi.CustomResource):
                     "eventSourceParameters": {{
                         "sourceRocketMQParameters": {{
                             "RegionId": "{default_get_regions.regions[0].id}",
-                            "InstanceId": "{id}",
-                            "GroupID": "{group_name}",
-                            "Topic": "{topic_name}",
+                            "InstanceId": "{resolved_outputs['id']}",
+                            "GroupID": "{resolved_outputs['group_name']}",
+                            "Topic": "{resolved_outputs['topic_name']}",
                             "Timestamp": 1686296162,
                             "Tag": "example-tag",
                             "Offset": "CONSUME_FROM_LAST_OFFSET"
@@ -1261,7 +1293,8 @@ class Trigger(pulumi.CustomResource):
                     }}
                 }}
             }}
-        \"\"\"))
+        \"\"\")
+        )
         default_instance2 = alicloud.amqp.Instance("default",
             instance_name=f"terraform-example-{default_integer['result']}",
             instance_type="professional",
@@ -1283,7 +1316,11 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example-rabbitmq",
             type="eventbridge",
-            config=pulumi.Output.all(default_instance2.id, default_virtual_host.virtual_host_name, default_queue.queue_name).apply(lambda id, virtual_host_name, queue_name: f\"\"\"    {{
+            config=pulumi.Output.all(
+                id=default_instance2.id,
+                virtual_host_name=default_virtual_host.virtual_host_name,
+                queue_name=default_queue.queue_name
+        ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "triggerEnable": false,
                 "asyncInvocationType": false,
                 "eventRuleFilterPattern": "{{}}",
@@ -1292,14 +1329,15 @@ class Trigger(pulumi.CustomResource):
                     "eventSourceParameters": {{
                         "sourceRabbitMQParameters": {{
                             "RegionId": "{default_get_regions.regions[0].id}",
-                            "InstanceId": "{id}",
-                            "VirtualHostName": "{virtual_host_name}",
-                            "QueueName": "{queue_name}"
+                            "InstanceId": "{resolved_outputs['id']}",
+                            "VirtualHostName": "{resolved_outputs['virtual_host_name']}",
+                            "QueueName": "{resolved_outputs['queue_name']}"
                         }}
                     }}
                 }}
             }}
-        \"\"\"))
+        \"\"\")
+        )
         ```
 
         ## Module Support

@@ -93,7 +93,7 @@ type GetEipAddressesArgs struct {
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEipAddresses.
@@ -112,17 +112,17 @@ type GetEipAddressesResult struct {
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
 	IpAddress              *string  `pulumi:"ipAddress"`
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
-	IpAddresses       []string               `pulumi:"ipAddresses"`
-	Isp               *string                `pulumi:"isp"`
-	LockReason        *string                `pulumi:"lockReason"`
-	NameRegex         *string                `pulumi:"nameRegex"`
-	Names             []string               `pulumi:"names"`
-	OutputFile        *string                `pulumi:"outputFile"`
-	PaymentType       *string                `pulumi:"paymentType"`
-	ResourceGroupId   *string                `pulumi:"resourceGroupId"`
-	SegmentInstanceId *string                `pulumi:"segmentInstanceId"`
-	Status            *string                `pulumi:"status"`
-	Tags              map[string]interface{} `pulumi:"tags"`
+	IpAddresses       []string          `pulumi:"ipAddresses"`
+	Isp               *string           `pulumi:"isp"`
+	LockReason        *string           `pulumi:"lockReason"`
+	NameRegex         *string           `pulumi:"nameRegex"`
+	Names             []string          `pulumi:"names"`
+	OutputFile        *string           `pulumi:"outputFile"`
+	PaymentType       *string           `pulumi:"paymentType"`
+	ResourceGroupId   *string           `pulumi:"resourceGroupId"`
+	SegmentInstanceId *string           `pulumi:"segmentInstanceId"`
+	Status            *string           `pulumi:"status"`
+	Tags              map[string]string `pulumi:"tags"`
 }
 
 func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetEipAddressesResultOutput {
@@ -175,7 +175,7 @@ type GetEipAddressesOutputArgs struct {
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEipAddressesOutputArgs) ElementType() reflect.Type {
@@ -284,8 +284,8 @@ func (o GetEipAddressesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEipAddressesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEipAddressesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEipAddressesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

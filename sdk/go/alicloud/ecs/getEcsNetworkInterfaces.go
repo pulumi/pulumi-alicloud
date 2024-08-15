@@ -84,7 +84,7 @@ type GetEcsNetworkInterfacesArgs struct {
 	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to ENIs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type *string `pulumi:"type"`
 	// The vpc id.
@@ -126,7 +126,7 @@ type GetEcsNetworkInterfacesResult struct {
 	// The status of the ENI.
 	Status *string `pulumi:"status"`
 	// The tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the ENI.
 	Type *string `pulumi:"type"`
 	// The Vpc Id.
@@ -179,7 +179,7 @@ type GetEcsNetworkInterfacesOutputArgs struct {
 	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to ENIs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The vpc id.
@@ -283,8 +283,8 @@ func (o GetEcsNetworkInterfacesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The tags.
-func (o GetEcsNetworkInterfacesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsNetworkInterfacesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the ENI.

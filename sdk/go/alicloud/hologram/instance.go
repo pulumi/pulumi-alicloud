@@ -79,7 +79,7 @@ type Instance struct {
 	// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
 	StorageSize pulumi.IntPtrOutput `pulumi:"storageSize"`
 	// Instance tag.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The zone Id. Refer to "Instructions for Use".
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -183,7 +183,7 @@ type instanceState struct {
 	// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
 	StorageSize *int `pulumi:"storageSize"`
 	// Instance tag.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone Id. Refer to "Instructions for Use".
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -246,7 +246,7 @@ type InstanceState struct {
 	// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
 	StorageSize pulumi.IntPtrInput
 	// Instance tag.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone Id. Refer to "Instructions for Use".
 	ZoneId pulumi.StringPtrInput
 }
@@ -311,7 +311,7 @@ type instanceArgs struct {
 	// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
 	StorageSize *int `pulumi:"storageSize"`
 	// Instance tag.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone Id. Refer to "Instructions for Use".
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -373,7 +373,7 @@ type InstanceArgs struct {
 	// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
 	StorageSize pulumi.IntPtrInput
 	// Instance tag.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone Id. Refer to "Instructions for Use".
 	ZoneId pulumi.StringInput
 }
@@ -573,8 +573,8 @@ func (o InstanceOutput) StorageSize() pulumi.IntPtrOutput {
 }
 
 // Instance tag.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone Id. Refer to "Instructions for Use".

@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Intranet secret free access mode.
         /// </summary>
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             string storageEngine,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcAuthMode,
 

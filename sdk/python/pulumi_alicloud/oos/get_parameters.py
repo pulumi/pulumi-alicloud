@@ -123,7 +123,7 @@ class GetParametersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -161,7 +161,7 @@ def get_parameters(enable_details: Optional[bool] = None,
                    resource_group_id: Optional[str] = None,
                    sort_field: Optional[str] = None,
                    sort_order: Optional[str] = None,
-                   tags: Optional[Mapping[str, Any]] = None,
+                   tags: Optional[Mapping[str, str]] = None,
                    type: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetParametersResult:
     """
@@ -199,7 +199,7 @@ def get_parameters(enable_details: Optional[bool] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param str resource_group_id: The ID of the Resource Group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str type: The data type of the common parameter. Valid values: `String` and `StringList`.
     """
     __args__ = dict()
@@ -241,7 +241,7 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
                           resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                           sort_field: Optional[pulumi.Input[Optional[str]]] = None,
                           sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           type: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetParametersResult]:
     """
@@ -279,7 +279,7 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param str resource_group_id: The ID of the Resource Group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str type: The data type of the common parameter. Valid values: `String` and `StringList`.
     """
     ...

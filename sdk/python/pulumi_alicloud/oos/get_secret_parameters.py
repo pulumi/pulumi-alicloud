@@ -120,7 +120,7 @@ class GetSecretParametersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -152,7 +152,7 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
                           secret_parameter_name: Optional[str] = None,
                           sort_field: Optional[str] = None,
                           sort_order: Optional[str] = None,
-                          tags: Optional[Mapping[str, Any]] = None,
+                          tags: Optional[Mapping[str, str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretParametersResult:
     """
     This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -166,7 +166,7 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
     :param str secret_parameter_name: The name of the secret parameter.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -205,7 +205,7 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
                                  secret_parameter_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  sort_field: Optional[pulumi.Input[Optional[str]]] = None,
                                  sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                                 tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretParametersResult]:
     """
     This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -219,6 +219,6 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
     :param str secret_parameter_name: The name of the secret parameter.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

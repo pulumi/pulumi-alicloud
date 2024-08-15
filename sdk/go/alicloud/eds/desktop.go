@@ -150,7 +150,7 @@ type Desktop struct {
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
 	UserAssignMode pulumi.StringOutput `pulumi:"userAssignMode"`
 	// The user disk size gib of the Desktop.
@@ -229,7 +229,7 @@ type desktopState struct {
 	// The stopped mode of the Desktop.
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
 	UserAssignMode *string `pulumi:"userAssignMode"`
 	// The user disk size gib of the Desktop.
@@ -270,7 +270,7 @@ type DesktopState struct {
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
 	UserAssignMode pulumi.StringPtrInput
 	// The user disk size gib of the Desktop.
@@ -315,7 +315,7 @@ type desktopArgs struct {
 	// The stopped mode of the Desktop.
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
 	UserAssignMode *string `pulumi:"userAssignMode"`
 	// The user disk size gib of the Desktop.
@@ -357,7 +357,7 @@ type DesktopArgs struct {
 	// The stopped mode of the Desktop.
 	StoppedMode pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
 	UserAssignMode pulumi.StringPtrInput
 	// The user disk size gib of the Desktop.
@@ -532,8 +532,8 @@ func (o DesktopOutput) StoppedMode() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o DesktopOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Desktop) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DesktopOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Desktop) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.

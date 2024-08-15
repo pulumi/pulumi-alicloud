@@ -58,7 +58,7 @@ type GetCaCertificatesArgs struct {
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getCaCertificates.
@@ -76,7 +76,7 @@ type GetCaCertificatesResult struct {
 	// The resource group Id of CA certificate.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetCaCertificatesOutput(ctx *pulumi.Context, args GetCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetCaCertificatesResultOutput {
@@ -103,7 +103,7 @@ type GetCaCertificatesOutputArgs struct {
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetCaCertificatesOutputArgs) ElementType() reflect.Type {
@@ -159,8 +159,8 @@ func (o GetCaCertificatesResultOutput) ResourceGroupId() pulumi.StringPtrOutput 
 }
 
 // (Available in v1.66.0+) A mapping of tags to assign to the resource.
-func (o GetCaCertificatesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCaCertificatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetCaCertificatesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

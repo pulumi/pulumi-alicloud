@@ -82,9 +82,9 @@ import (
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
 //				VpcId:            defaultNetwork.ID(),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
@@ -165,7 +165,7 @@ type LoadBalancer struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of labels.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the network-based SLB instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
@@ -260,7 +260,7 @@ type loadBalancerState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// List of labels.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the network-based SLB instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
@@ -317,7 +317,7 @@ type LoadBalancerState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// List of labels.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the network-based SLB instance.
 	VpcId pulumi.StringPtrInput
 	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
@@ -370,7 +370,7 @@ type loadBalancerArgs struct {
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// List of labels.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the network-based SLB instance.
 	VpcId string `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
@@ -420,7 +420,7 @@ type LoadBalancerArgs struct {
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayInput
 	// List of labels.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the network-based SLB instance.
 	VpcId pulumi.StringInput
 	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
@@ -622,8 +622,8 @@ func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // List of labels.
-func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o LoadBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the network-based SLB instance.

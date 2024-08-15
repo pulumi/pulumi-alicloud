@@ -88,7 +88,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
@@ -224,7 +224,7 @@ export interface DedicatedHostState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
@@ -285,7 +285,7 @@ export interface DedicatedHostArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.

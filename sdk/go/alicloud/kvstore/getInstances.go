@@ -85,7 +85,7 @@ type GetInstancesArgs struct {
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status *string `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
@@ -125,8 +125,8 @@ type GetInstancesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	SearchKey       *string `pulumi:"searchKey"`
 	// Status of the instance.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// VPC ID the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// VSwitch ID the instance belongs to.
@@ -183,7 +183,7 @@ type GetInstancesOutputArgs struct {
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
@@ -298,8 +298,8 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // VPC ID the instance belongs to.

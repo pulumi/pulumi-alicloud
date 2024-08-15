@@ -96,7 +96,7 @@ export interface GetServerlessInstancesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the VPC network.
      */
@@ -128,7 +128,7 @@ export interface GetServerlessInstancesResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly vpcId?: string;
     readonly vswitchId?: string;
     readonly zoneId?: string;
@@ -207,7 +207,7 @@ export interface GetServerlessInstancesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC network.
      */

@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// <summary>
         /// The settings of the input parameters for the rule.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> InputParameters;
+        public readonly ImmutableDictionary<string, string> InputParameters;
         /// <summary>
         /// The frequency of the compliance evaluations.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string id,
 
-            ImmutableDictionary<string, object> inputParameters,
+            ImmutableDictionary<string, string> inputParameters,
 
             string maximumExecutionFrequency,
 

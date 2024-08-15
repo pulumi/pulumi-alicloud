@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
         public readonly string PublicDomain;
         public readonly bool PublicNetworkAccess;
         public readonly ImmutableArray<string> SecurityGroupIds;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly string UserVswitchId;
 
         [OutputConstructor]
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Yundun.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string userVswitchId)
         {

@@ -117,7 +117,7 @@ type SecurityGroup struct {
 	// The type of the security group. Valid values:
 	SecurityGroupType pulumi.StringOutput `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
@@ -169,7 +169,7 @@ type securityGroupState struct {
 	// The type of the security group. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -192,7 +192,7 @@ type SecurityGroupState struct {
 	// The type of the security group. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 }
@@ -219,7 +219,7 @@ type securityGroupArgs struct {
 	// The type of the security group. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -243,7 +243,7 @@ type SecurityGroupArgs struct {
 	// The type of the security group. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 }
@@ -370,8 +370,8 @@ func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o SecurityGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SecurityGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC.

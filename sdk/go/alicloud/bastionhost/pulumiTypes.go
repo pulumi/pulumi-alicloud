@@ -1181,7 +1181,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId string `pulumi:"userVswitchId"`
 }
@@ -1236,7 +1236,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId pulumi.StringInput `pulumi:"userVswitchId"`
 }
@@ -1357,8 +1357,8 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 //	}
 //
 // ```
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The instance's vSwitch ID.

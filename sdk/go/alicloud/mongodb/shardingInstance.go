@@ -134,7 +134,7 @@ type ShardingInstance struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayOutput `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -165,7 +165,7 @@ type ShardingInstance struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -240,7 +240,7 @@ type shardingInstanceState struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -271,7 +271,7 @@ type shardingInstanceState struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -301,7 +301,7 @@ type ShardingInstanceState struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -332,7 +332,7 @@ type ShardingInstanceState struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -366,7 +366,7 @@ type shardingInstanceArgs struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -395,7 +395,7 @@ type shardingInstanceArgs struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -426,7 +426,7 @@ type ShardingInstanceArgs struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -455,7 +455,7 @@ type ShardingInstanceArgs struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -595,8 +595,8 @@ func (o ShardingInstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o ShardingInstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *ShardingInstance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o ShardingInstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
@@ -668,8 +668,8 @@ func (o ShardingInstanceOutput) StorageType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ShardingInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ShardingInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ShardingInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.

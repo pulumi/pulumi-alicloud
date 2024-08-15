@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -88,7 +87,7 @@ public final class GetSecurityGroupsGroup {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Used to retrieve security groups that belong to the specified VPC ID.
      * 
@@ -184,7 +183,7 @@ public final class GetSecurityGroupsGroup {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -211,7 +210,7 @@ public final class GetSecurityGroupsGroup {
         private String name;
         private String resourceGroupId;
         private String securityGroupType;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String vpcId;
         public Builder() {}
         public Builder(GetSecurityGroupsGroup defaults) {
@@ -284,7 +283,7 @@ public final class GetSecurityGroupsGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

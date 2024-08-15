@@ -131,7 +131,7 @@ export interface GetApplicationLoadBalancersArgs {
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * ID of the VPC linked to the SLBs.
      */
@@ -220,7 +220,7 @@ export interface GetApplicationLoadBalancersResult {
     /**
      * The tags of the SLB.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * ID of the VPC the SLB belongs to.
@@ -330,7 +330,7 @@ export interface GetApplicationLoadBalancersOutputArgs {
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the VPC linked to the SLBs.
      */

@@ -39,7 +39,7 @@ class TairInstanceArgs:
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TairInstance resource.
@@ -68,7 +68,7 @@ class TairInstanceArgs:
         :param pulumi.Input[str] ssl_enabled: Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
         :param pulumi.Input[str] storage_performance_level: The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         """
         pulumi.set(__self__, "instance_class", instance_class)
@@ -423,14 +423,14 @@ class TairInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -473,7 +473,7 @@ class _TairInstanceState:
                  status: Optional[pulumi.Input[str]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -504,7 +504,7 @@ class _TairInstanceState:
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] storage_performance_level: The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
@@ -859,14 +859,14 @@ class _TairInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -945,7 +945,7 @@ class TairInstance(pulumi.CustomResource):
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -984,7 +984,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_enabled: Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
         :param pulumi.Input[str] storage_performance_level: The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
@@ -1042,7 +1042,7 @@ class TairInstance(pulumi.CustomResource):
                  ssl_enabled: Optional[pulumi.Input[str]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tair_instance_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1131,7 +1131,7 @@ class TairInstance(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             storage_performance_level: Optional[pulumi.Input[str]] = None,
             storage_size_gb: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tair_instance_name: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1167,7 +1167,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] storage_performance_level: The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC).
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
@@ -1402,7 +1402,7 @@ class TairInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource
         """

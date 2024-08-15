@@ -104,7 +104,7 @@ type ManagedKubernetes struct {
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput    `pulumi:"slbIntranet"`
-	Tags        pulumi.MapOutput       `pulumi:"tags"`
+	Tags        pulumi.StringMapOutput `pulumi:"tags"`
 	Timezone    pulumi.StringPtrOutput `pulumi:"timezone"`
 	UserCa      pulumi.StringPtrOutput `pulumi:"userCa"`
 	Version     pulumi.StringOutput    `pulumi:"version"`
@@ -197,11 +197,11 @@ type managedKubernetesState struct {
 	SlbInternet        *string `pulumi:"slbInternet"`
 	SlbInternetEnabled *bool   `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
-	SlbIntranet *string                `pulumi:"slbIntranet"`
-	Tags        map[string]interface{} `pulumi:"tags"`
-	Timezone    *string                `pulumi:"timezone"`
-	UserCa      *string                `pulumi:"userCa"`
-	Version     *string                `pulumi:"version"`
+	SlbIntranet *string           `pulumi:"slbIntranet"`
+	Tags        map[string]string `pulumi:"tags"`
+	Timezone    *string           `pulumi:"timezone"`
+	UserCa      *string           `pulumi:"userCa"`
+	Version     *string           `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
 	// The RamRole Name attached to worker node.
@@ -260,7 +260,7 @@ type ManagedKubernetesState struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
-	Tags        pulumi.MapInput
+	Tags        pulumi.StringMapInput
 	Timezone    pulumi.StringPtrInput
 	UserCa      pulumi.StringPtrInput
 	Version     pulumi.StringPtrInput
@@ -299,24 +299,24 @@ type managedKubernetesArgs struct {
 	LoadBalancerSpec          *string                             `pulumi:"loadBalancerSpec"`
 	MaintenanceWindow         *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Node name.
-	Name                 *string                `pulumi:"name"`
-	NamePrefix           *string                `pulumi:"namePrefix"`
-	NewNatGateway        *bool                  `pulumi:"newNatGateway"`
-	NodeCidrMask         *int                   `pulumi:"nodeCidrMask"`
-	PodCidr              *string                `pulumi:"podCidr"`
-	PodVswitchIds        []string               `pulumi:"podVswitchIds"`
-	ProxyMode            *string                `pulumi:"proxyMode"`
-	ResourceGroupId      *string                `pulumi:"resourceGroupId"`
-	RetainResources      []string               `pulumi:"retainResources"`
-	SecurityGroupId      *string                `pulumi:"securityGroupId"`
-	ServiceAccountIssuer *string                `pulumi:"serviceAccountIssuer"`
-	ServiceCidr          *string                `pulumi:"serviceCidr"`
-	SlbInternetEnabled   *bool                  `pulumi:"slbInternetEnabled"`
-	Tags                 map[string]interface{} `pulumi:"tags"`
-	Timezone             *string                `pulumi:"timezone"`
-	UserCa               *string                `pulumi:"userCa"`
-	Version              *string                `pulumi:"version"`
-	WorkerVswitchIds     []string               `pulumi:"workerVswitchIds"`
+	Name                 *string           `pulumi:"name"`
+	NamePrefix           *string           `pulumi:"namePrefix"`
+	NewNatGateway        *bool             `pulumi:"newNatGateway"`
+	NodeCidrMask         *int              `pulumi:"nodeCidrMask"`
+	PodCidr              *string           `pulumi:"podCidr"`
+	PodVswitchIds        []string          `pulumi:"podVswitchIds"`
+	ProxyMode            *string           `pulumi:"proxyMode"`
+	ResourceGroupId      *string           `pulumi:"resourceGroupId"`
+	RetainResources      []string          `pulumi:"retainResources"`
+	SecurityGroupId      *string           `pulumi:"securityGroupId"`
+	ServiceAccountIssuer *string           `pulumi:"serviceAccountIssuer"`
+	ServiceCidr          *string           `pulumi:"serviceCidr"`
+	SlbInternetEnabled   *bool             `pulumi:"slbInternetEnabled"`
+	Tags                 map[string]string `pulumi:"tags"`
+	Timezone             *string           `pulumi:"timezone"`
+	UserCa               *string           `pulumi:"userCa"`
+	Version              *string           `pulumi:"version"`
+	WorkerVswitchIds     []string          `pulumi:"workerVswitchIds"`
 }
 
 // The set of arguments for constructing a ManagedKubernetes resource.
@@ -357,7 +357,7 @@ type ManagedKubernetesArgs struct {
 	ServiceAccountIssuer pulumi.StringPtrInput
 	ServiceCidr          pulumi.StringPtrInput
 	SlbInternetEnabled   pulumi.BoolPtrInput
-	Tags                 pulumi.MapInput
+	Tags                 pulumi.StringMapInput
 	Timezone             pulumi.StringPtrInput
 	UserCa               pulumi.StringPtrInput
 	Version              pulumi.StringPtrInput
@@ -615,8 +615,8 @@ func (o ManagedKubernetesOutput) SlbIntranet() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.SlbIntranet }).(pulumi.StringOutput)
 }
 
-func (o ManagedKubernetesOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ManagedKubernetes) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ManagedKubernetesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o ManagedKubernetesOutput) Timezone() pulumi.StringPtrOutput {

@@ -151,7 +151,7 @@ class GetTemplatesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -209,7 +209,7 @@ def get_templates(category: Optional[str] = None,
                   share_type: Optional[str] = None,
                   sort_field: Optional[str] = None,
                   sort_order: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   template_format: Optional[str] = None,
                   template_type: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTemplatesResult:
@@ -247,7 +247,7 @@ def get_templates(category: Optional[str] = None,
     :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
     :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
     :param str sort_order: Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str template_format: The format of the template. Valid values: `JSON`, `YAML`.
     :param str template_type: The type of OOS Template.
     """
@@ -301,7 +301,7 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          share_type: Optional[pulumi.Input[Optional[str]]] = None,
                          sort_field: Optional[pulumi.Input[Optional[str]]] = None,
                          sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          template_format: Optional[pulumi.Input[Optional[str]]] = None,
                          template_type: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplatesResult]:
@@ -339,7 +339,7 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
     :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
     :param str sort_order: Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str template_format: The format of the template. Valid values: `JSON`, `YAML`.
     :param str template_type: The type of OOS Template.
     """

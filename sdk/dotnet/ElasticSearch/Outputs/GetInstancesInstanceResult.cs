@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
         public readonly string Id;
         public readonly string InstanceChargeType;
         public readonly string Status;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string UpdatedAt;
         public readonly string Version;
         public readonly string VswitchId;
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.ElasticSearch.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string updatedAt,
 

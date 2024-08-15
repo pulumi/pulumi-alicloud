@@ -6,7 +6,6 @@ package com.pulumi.alicloud.arms.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,7 +23,7 @@ public final class SyntheticTaskMonitorConfFileDownload {
      * @return Custom header, in JSON Map format.
      * 
      */
-    private @Nullable Map<String,Object> customHeaderContent;
+    private @Nullable Map<String,String> customHeaderContent;
     /**
      * @return Download the kernel.
      * - 1:curl
@@ -128,7 +127,7 @@ public final class SyntheticTaskMonitorConfFileDownload {
      * @return Custom header, in JSON Map format.
      * 
      */
-    public Map<String,Object> customHeaderContent() {
+    public Map<String,String> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
     /**
@@ -264,7 +263,7 @@ public final class SyntheticTaskMonitorConfFileDownload {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer connectionTimeout;
-        private @Nullable Map<String,Object> customHeaderContent;
+        private @Nullable Map<String,String> customHeaderContent;
         private @Nullable Integer downloadKernel;
         private @Nullable Integer ignoreCertificateAuthError;
         private @Nullable Integer ignoreCertificateCanceledError;
@@ -311,7 +310,7 @@ public final class SyntheticTaskMonitorConfFileDownload {
             return this;
         }
         @CustomType.Setter
-        public Builder customHeaderContent(@Nullable Map<String,Object> customHeaderContent) {
+        public Builder customHeaderContent(@Nullable Map<String,String> customHeaderContent) {
 
             this.customHeaderContent = customHeaderContent;
             return this;

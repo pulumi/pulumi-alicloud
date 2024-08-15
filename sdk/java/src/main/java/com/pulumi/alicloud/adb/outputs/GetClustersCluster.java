@@ -6,7 +6,6 @@ package com.pulumi.alicloud.adb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,7 +109,7 @@ public final class GetClustersCluster {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     private String vpcCloudInstanceId;
     /**
      * @return ID of the VPC the cluster belongs to.
@@ -297,7 +296,7 @@ public final class GetClustersCluster {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     public String vpcCloudInstanceId() {
@@ -368,7 +367,7 @@ public final class GetClustersCluster {
         private List<String> securityIps;
         private String status;
         private String storageResource;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcCloudInstanceId;
         private String vpcId;
         private String vswitchId;
@@ -729,7 +728,7 @@ public final class GetClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetClustersCluster", "tags");
             }

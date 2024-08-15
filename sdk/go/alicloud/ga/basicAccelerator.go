@@ -92,7 +92,7 @@ type BasicAccelerator struct {
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewBasicAccelerator registers a new resource with the given unique name, arguments, and options.
@@ -156,7 +156,7 @@ type basicAcceleratorState struct {
 	// The status of the Basic Accelerator instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type BasicAcceleratorState struct {
@@ -191,7 +191,7 @@ type BasicAcceleratorState struct {
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (BasicAcceleratorState) ElementType() reflect.Type {
@@ -228,7 +228,7 @@ type basicAcceleratorArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a BasicAccelerator resource.
@@ -262,7 +262,7 @@ type BasicAcceleratorArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (BasicAcceleratorArgs) ElementType() reflect.Type {
@@ -425,8 +425,8 @@ func (o BasicAcceleratorOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o BasicAcceleratorOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *BasicAccelerator) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o BasicAcceleratorOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type BasicAcceleratorArrayOutput struct{ *pulumi.OutputState }

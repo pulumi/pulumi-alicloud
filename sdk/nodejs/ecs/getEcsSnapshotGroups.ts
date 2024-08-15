@@ -83,7 +83,7 @@ export interface GetEcsSnapshotGroupsArgs {
     /**
      * A mapping of tags to assign to the snapshot group.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -102,7 +102,7 @@ export interface GetEcsSnapshotGroupsResult {
     readonly outputFile?: string;
     readonly snapshotGroupName?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
@@ -170,5 +170,5 @@ export interface GetEcsSnapshotGroupsOutputArgs {
     /**
      * A mapping of tags to assign to the snapshot group.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -93,7 +93,7 @@ export interface GetParametersArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      */
@@ -118,7 +118,7 @@ export interface GetParametersResult {
     readonly resourceGroupId?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
 }
 /**
@@ -194,7 +194,7 @@ export interface GetParametersOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      */

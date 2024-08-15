@@ -109,7 +109,7 @@ export interface GetEcsSnapshotsArgs {
     /**
      * A mapping of tags to assign to the snapshot.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     type?: string;
     /**
      * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
@@ -140,7 +140,7 @@ export interface GetEcsSnapshotsResult {
     readonly snapshots: outputs.ecs.GetEcsSnapshotsSnapshot[];
     readonly sourceDiskType?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
     readonly usage?: string;
 }
@@ -227,7 +227,7 @@ export interface GetEcsSnapshotsOutputArgs {
     /**
      * A mapping of tags to assign to the snapshot.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
     /**
      * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.

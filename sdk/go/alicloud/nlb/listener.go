@@ -90,9 +90,9 @@ import (
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
 //				VpcId:            defaultNetwork.ID(),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
@@ -133,9 +133,9 @@ import (
 //						pulumi.String("http_4xx"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -226,7 +226,7 @@ type Listener struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewListener registers a new resource with the given unique name, arguments, and options.
@@ -326,7 +326,7 @@ type listenerState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ListenerState struct {
@@ -385,7 +385,7 @@ type ListenerState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ListenerState) ElementType() reflect.Type {
@@ -448,7 +448,7 @@ type listenerArgs struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Listener resource.
@@ -508,7 +508,7 @@ type ListenerArgs struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ListenerArgs) ElementType() reflect.Type {
@@ -710,8 +710,8 @@ func (o ListenerOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o ListenerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Listener) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ListenerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ListenerArrayOutput struct{ *pulumi.OutputState }

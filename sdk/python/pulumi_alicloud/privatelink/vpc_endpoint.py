@@ -24,7 +24,7 @@ class VpcEndpointArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  zone_private_ip_address_count: Optional[pulumi.Input[int]] = None):
         """
@@ -43,7 +43,7 @@ class VpcEndpointArgs:
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
@@ -198,14 +198,14 @@ class VpcEndpointArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -251,7 +251,7 @@ class _VpcEndpointState:
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_private_ip_address_count: Optional[pulumi.Input[int]] = None):
@@ -276,7 +276,7 @@ class _VpcEndpointState:
         :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] status: The state of the endpoint.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
         :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
@@ -506,14 +506,14 @@ class _VpcEndpointState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -567,7 +567,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_private_ip_address_count: Optional[pulumi.Input[int]] = None,
@@ -649,7 +649,7 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
         :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
@@ -746,7 +746,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_private_ip_address_count: Optional[pulumi.Input[int]] = None,
@@ -807,7 +807,7 @@ class VpcEndpoint(pulumi.CustomResource):
             service_id: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             zone_private_ip_address_count: Optional[pulumi.Input[int]] = None) -> 'VpcEndpoint':
@@ -837,7 +837,7 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[str] status: The state of the endpoint.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
         :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
@@ -993,7 +993,7 @@ class VpcEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of tags.
         """

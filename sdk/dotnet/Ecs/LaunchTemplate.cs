@@ -318,13 +318,13 @@ namespace Pulumi.AliCloud.Ecs
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         [Output("templateResourceGroupId")]
         public Output<string?> TemplateResourceGroupId { get; private set; } = null!;
 
         [Output("templateTags")]
-        public Output<ImmutableDictionary<string, object>?> TemplateTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
         [Output("userData")]
         public Output<string> UserData { get; private set; } = null!;
@@ -619,16 +619,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -636,10 +636,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private InputMap<object>? _templateTags;
-        public InputMap<object> TemplateTags
+        private InputMap<string>? _templateTags;
+        public InputMap<string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 
@@ -898,16 +898,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -915,10 +915,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private InputMap<object>? _templateTags;
-        public InputMap<object> TemplateTags
+        private InputMap<string>? _templateTags;
+        public InputMap<string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 

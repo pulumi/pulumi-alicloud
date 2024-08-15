@@ -59,8 +59,8 @@ import (
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				ApplicationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Description:     pulumi.String(name),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
 //				},
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ type Application struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -132,7 +132,7 @@ type applicationState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ApplicationState struct {
@@ -143,7 +143,7 @@ type ApplicationState struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -158,7 +158,7 @@ type applicationArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Application resource.
@@ -170,7 +170,7 @@ type ApplicationArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {
@@ -276,8 +276,8 @@ func (o ApplicationOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o ApplicationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Application) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ApplicationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ApplicationArrayOutput struct{ *pulumi.OutputState }

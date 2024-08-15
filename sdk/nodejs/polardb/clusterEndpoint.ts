@@ -103,7 +103,7 @@ export class ClusterEndpoint extends pulumi.CustomResource {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    public readonly endpointConfig!: pulumi.Output<{[key: string]: any}>;
+    public readonly endpointConfig!: pulumi.Output<{[key: string]: string}>;
     /**
      * Type of endpoint.
      */
@@ -230,7 +230,7 @@ export interface ClusterEndpointState {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Type of endpoint.
      */
@@ -298,7 +298,7 @@ export interface ClusterEndpointArgs {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The network type of the endpoint address.
      */

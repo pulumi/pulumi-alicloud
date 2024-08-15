@@ -33,7 +33,7 @@ class InstanceArgs:
                  scale_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_name: The name of the resource.
@@ -75,7 +75,7 @@ class InstanceArgs:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] storage_size: The standard storage space of the instance. Unit: GB.
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
-        :param pulumi.Input[Mapping[str, Any]] tags: Instance tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Instance tag.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -338,14 +338,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Instance tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -369,7 +369,7 @@ class _InstanceState:
                  scale_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -412,7 +412,7 @@ class _InstanceState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] storage_size: The standard storage space of the instance. Unit: GB.
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
-        :param pulumi.Input[Mapping[str, Any]] tags: Instance tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Instance tag.
         :param pulumi.Input[str] zone_id: The zone Id. Refer to "Instructions for Use".
         """
         if auto_pay is not None:
@@ -682,14 +682,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Instance tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -726,7 +726,7 @@ class Instance(pulumi.CustomResource):
                  scale_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -778,7 +778,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] storage_size: The standard storage space of the instance. Unit: GB.
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
-        :param pulumi.Input[Mapping[str, Any]] tags: Instance tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Instance tag.
         :param pulumi.Input[str] zone_id: The zone Id. Refer to "Instructions for Use".
         """
         ...
@@ -827,7 +827,7 @@ class Instance(pulumi.CustomResource):
                  scale_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -892,7 +892,7 @@ class Instance(pulumi.CustomResource):
             scale_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -940,7 +940,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[int] storage_size: The standard storage space of the instance. Unit: GB.
                > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
-        :param pulumi.Input[Mapping[str, Any]] tags: Instance tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Instance tag.
         :param pulumi.Input[str] zone_id: The zone Id. Refer to "Instructions for Use".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1128,7 +1128,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Instance tag.
         """

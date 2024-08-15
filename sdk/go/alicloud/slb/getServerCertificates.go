@@ -58,7 +58,7 @@ type GetServerCertificatesArgs struct {
 	// The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getServerCertificates.
@@ -76,7 +76,7 @@ type GetServerCertificatesResult struct {
 	// The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetServerCertificatesOutput(ctx *pulumi.Context, args GetServerCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServerCertificatesResultOutput {
@@ -103,7 +103,7 @@ type GetServerCertificatesOutputArgs struct {
 	// The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetServerCertificatesOutputArgs) ElementType() reflect.Type {
@@ -159,8 +159,8 @@ func (o GetServerCertificatesResultOutput) ResourceGroupId() pulumi.StringPtrOut
 }
 
 // (Available in v1.66.0+) A mapping of tags to assign to the resource.
-func (o GetServerCertificatesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerCertificatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerCertificatesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -488,7 +488,11 @@ class Delivery(pulumi.CustomResource):
             configuration_item_change_notification=True,
             non_compliant_notification=True,
             delivery_channel_name=name,
-            delivery_channel_target_arn=pulumi.Output.all(default.project_name, default_store.logstore_name).apply(lambda project_name, logstore_name: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{project_name}/logstore/{logstore_name}"),
+            delivery_channel_target_arn=pulumi.Output.all(
+                project_name=default.project_name,
+                logstore_name=default_store.logstore_name
+        ).apply(lambda resolved_outputs: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{resolved_outputs['project_name']}/logstore/{resolved_outputs['logstore_name']}")
+        ,
             delivery_channel_type="SLS",
             description=name)
         ```
@@ -575,7 +579,11 @@ class Delivery(pulumi.CustomResource):
             configuration_item_change_notification=True,
             non_compliant_notification=True,
             delivery_channel_name=name,
-            delivery_channel_target_arn=pulumi.Output.all(default.project_name, default_store.logstore_name).apply(lambda project_name, logstore_name: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{project_name}/logstore/{logstore_name}"),
+            delivery_channel_target_arn=pulumi.Output.all(
+                project_name=default.project_name,
+                logstore_name=default_store.logstore_name
+        ).apply(lambda resolved_outputs: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{resolved_outputs['project_name']}/logstore/{resolved_outputs['logstore_name']}")
+        ,
             delivery_channel_type="SLS",
             description=name)
         ```

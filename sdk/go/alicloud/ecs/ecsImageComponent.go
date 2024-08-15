@@ -48,8 +48,8 @@ import (
 //				ImageComponentName: pulumi.String("example_value"),
 //				ResourceGroupId:    pulumi.String(_default.Groups[0].Id),
 //				SystemType:         pulumi.String("Linux"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
 //				},
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ type EcsImageComponent struct {
 	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringOutput `pulumi:"systemType"`
 	// List of label key-value pairs.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewEcsImageComponent registers a new resource with the given unique name, arguments, and options.
@@ -137,7 +137,7 @@ type ecsImageComponentState struct {
 	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType *string `pulumi:"systemType"`
 	// List of label key-value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type EcsImageComponentState struct {
@@ -156,7 +156,7 @@ type EcsImageComponentState struct {
 	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringPtrInput
 	// List of label key-value pairs.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsImageComponentState) ElementType() reflect.Type {
@@ -177,7 +177,7 @@ type ecsImageComponentArgs struct {
 	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType *string `pulumi:"systemType"`
 	// List of label key-value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsImageComponent resource.
@@ -195,7 +195,7 @@ type EcsImageComponentArgs struct {
 	// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
 	SystemType pulumi.StringPtrInput
 	// List of label key-value pairs.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsImageComponentArgs) ElementType() reflect.Type {
@@ -321,8 +321,8 @@ func (o EcsImageComponentOutput) SystemType() pulumi.StringOutput {
 }
 
 // List of label key-value pairs.
-func (o EcsImageComponentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsImageComponent) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsImageComponentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsImageComponent) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type EcsImageComponentArrayOutput struct{ *pulumi.OutputState }

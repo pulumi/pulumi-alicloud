@@ -788,7 +788,7 @@ type GetSecretsSecret struct {
 	// (Available in 1.124.0+)  The type of the secret.
 	SecretType string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// (Available in 1.124.0+)  The version number of the initial version.
 	VersionId string `pulumi:"versionId"`
 	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
@@ -826,7 +826,7 @@ type GetSecretsSecretArgs struct {
 	// (Available in 1.124.0+)  The type of the secret.
 	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// (Available in 1.124.0+)  The version number of the initial version.
 	VersionId pulumi.StringInput `pulumi:"versionId"`
 	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
@@ -930,8 +930,8 @@ func (o GetSecretsSecretOutput) SecretType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetSecretsSecretOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretsSecret) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecretsSecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // (Available in 1.124.0+)  The version number of the initial version.

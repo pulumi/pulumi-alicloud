@@ -5,7 +5,6 @@ package com.pulumi.alicloud.vpc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +66,7 @@ public final class GetRouteTablesTable {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return Vpc id of the route table.
      * 
@@ -154,7 +153,7 @@ public final class GetRouteTablesTable {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -191,7 +190,7 @@ public final class GetRouteTablesTable {
         private String routerId;
         private String routerType;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private List<String> vswitchIds;
         public Builder() {}
@@ -293,7 +292,7 @@ public final class GetRouteTablesTable {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetRouteTablesTable", "tags");
             }

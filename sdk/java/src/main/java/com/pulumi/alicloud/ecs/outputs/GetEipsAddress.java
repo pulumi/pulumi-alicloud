@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +83,7 @@ public final class GetEipsAddress {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetEipsAddress() {}
     public String addressName() {
@@ -217,7 +216,7 @@ public final class GetEipsAddress {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -260,7 +259,7 @@ public final class GetEipsAddress {
         private Boolean secondLimited;
         private String segmentInstanceId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetEipsAddress defaults) {
     	      Objects.requireNonNull(defaults);
@@ -544,7 +543,7 @@ public final class GetEipsAddress {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEipsAddress", "tags");
             }

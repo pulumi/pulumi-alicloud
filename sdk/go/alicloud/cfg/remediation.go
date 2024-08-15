@@ -61,8 +61,8 @@ import (
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Acl:    pulumi.String("public-read"),
-//				Tags: pulumi.Map{
-//					"For": pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"For": pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

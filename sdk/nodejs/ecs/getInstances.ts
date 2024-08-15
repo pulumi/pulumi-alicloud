@@ -106,7 +106,7 @@ export interface GetInstancesArgs {
      * });
      * ```
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * ID of the VPC linked to the instances.
      */
@@ -166,7 +166,7 @@ export interface GetInstancesResult {
     /**
      * A map of tags assigned to the ECS instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * ID of the VPC the instance belongs to.
@@ -258,7 +258,7 @@ export interface GetInstancesOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the VPC linked to the instances.
      */

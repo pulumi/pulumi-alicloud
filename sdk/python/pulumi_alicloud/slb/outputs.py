@@ -350,14 +350,14 @@ class GetAclsAclResult(dict):
                  name: str,
                  related_listeners: Sequence['outputs.GetAclsAclRelatedListenerResult'],
                  resource_group_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param Sequence['GetAclsAclEntryListArgs'] entry_lists: A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
         :param str id: Acl ID.
         :param str name: Acl name.
         :param Sequence['GetAclsAclRelatedListenerArgs'] related_listeners: A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
         :param str resource_group_id: The Id of resource group which acl belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "entry_lists", entry_lists)
         pulumi.set(__self__, "id", id)
@@ -415,7 +415,7 @@ class GetAclsAclResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -506,7 +506,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
                  resource_group_id: str,
                  slave_zone_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -539,7 +539,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param str resource_group_id: The Id of resource group which SLB belongs.
         :param str slave_zone_id: The slave zone id of the SLB.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
@@ -810,7 +810,7 @@ class GetApplicationLoadBalancersBalancerResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         """
@@ -988,7 +988,7 @@ class GetApplicationLoadBalancersSlbResult(dict):
                  region_id: str,
                  slave_availability_zone: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -996,7 +996,7 @@ class GetApplicationLoadBalancersSlbResult(dict):
         :param str id: ID of the SLB.
         :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the vSwitch linked to the SLBs.
         """
@@ -1078,7 +1078,7 @@ class GetApplicationLoadBalancersSlbResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         """
@@ -1183,7 +1183,7 @@ class GetCaCertificatesCertificateResult(dict):
                  id: str,
                  name: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str ca_certificate_id: (Available in v1.123.1+) CA certificate ID.
         :param str ca_certificate_name: (Available in v1.123.1+) CA certificate name.
@@ -1195,7 +1195,7 @@ class GetCaCertificatesCertificateResult(dict):
         :param str id: CA certificate ID.
         :param str name: (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
         :param str resource_group_id: The Id of resource group which ca certificates belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
         pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
@@ -1291,7 +1291,7 @@ class GetCaCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -1813,7 +1813,7 @@ class GetLoadBalancersBalancerResult(dict):
                  resource_group_id: str,
                  slave_zone_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -1822,7 +1822,7 @@ class GetLoadBalancersBalancerResult(dict):
         :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
         :param str resource_group_id: The Id of resource group which SLB belongs.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2030,7 +2030,7 @@ class GetLoadBalancersBalancerResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         ```python
@@ -2167,7 +2167,7 @@ class GetLoadBalancersSlbResult(dict):
                  region_id: str,
                  slave_availability_zone: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -2181,7 +2181,7 @@ class GetLoadBalancersSlbResult(dict):
         :param str region_id: Region ID the SLB belongs to.
         :param str slave_availability_zone: Slave availability zone of the SLBs.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2290,7 +2290,7 @@ class GetLoadBalancersSlbResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         ```python
@@ -2502,7 +2502,7 @@ class GetServerCertificatesCertificateResult(dict):
                  name: str,
                  subject_alternative_names: Sequence[str],
                  resource_group_id: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str alicloud_certificate_id: Id of server certificate issued by alibaba cloud.
         :param str alicloud_certificate_name: Name of server certificate issued by alibaba cloud.
@@ -2517,7 +2517,7 @@ class GetServerCertificatesCertificateResult(dict):
         :param str name: Server certificate name.
         :param Sequence[str] subject_alternative_names: Server certificate subject alternative name list.
         :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "alicloud_certificate_id", alicloud_certificate_id)
         pulumi.set(__self__, "alicloud_certificate_name", alicloud_certificate_name)
@@ -2642,7 +2642,7 @@ class GetServerCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

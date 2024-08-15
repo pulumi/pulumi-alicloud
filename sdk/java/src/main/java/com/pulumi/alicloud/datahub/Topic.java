@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -197,8 +196,8 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * - TIMESTAMP
      * 
      */
-    @Export(name="recordSchema", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> recordSchema;
+    @Export(name="recordSchema", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> recordSchema;
 
     /**
      * @return Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -209,7 +208,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * - TIMESTAMP
      * 
      */
-    public Output<Optional<Map<String,Object>>> recordSchema() {
+    public Output<Optional<Map<String,String>>> recordSchema() {
         return Codegen.optional(this.recordSchema);
     }
     /**

@@ -136,7 +136,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Instance tag.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */
@@ -310,7 +310,7 @@ export interface InstanceState {
     /**
      * Instance tag.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */
@@ -410,7 +410,7 @@ export interface InstanceArgs {
     /**
      * Instance tag.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */

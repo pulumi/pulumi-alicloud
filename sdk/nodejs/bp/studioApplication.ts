@@ -93,7 +93,7 @@ export class StudioApplication extends pulumi.CustomResource {
     /**
      * The configuration of the application.
      */
-    public readonly configuration!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
@@ -113,7 +113,7 @@ export class StudioApplication extends pulumi.CustomResource {
     /**
      * The variables of the application.
      */
-    public readonly variables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly variables!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a StudioApplication resource with the given unique name, arguments, and options.
@@ -173,7 +173,7 @@ export interface StudioApplicationState {
     /**
      * The configuration of the application.
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
@@ -193,7 +193,7 @@ export interface StudioApplicationState {
     /**
      * The variables of the application.
      */
-    variables?: pulumi.Input<{[key: string]: any}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -211,7 +211,7 @@ export interface StudioApplicationArgs {
     /**
      * The configuration of the application.
      */
-    configuration?: pulumi.Input<{[key: string]: any}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
@@ -227,5 +227,5 @@ export interface StudioApplicationArgs {
     /**
      * The variables of the application.
      */
-    variables?: pulumi.Input<{[key: string]: any}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

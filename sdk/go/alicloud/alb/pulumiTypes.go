@@ -9226,7 +9226,7 @@ type GetLoadBalancersBalancer struct {
 	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
 	// The zones and vSwitches. You must specify at least two zones.
@@ -9287,7 +9287,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The zones and vSwitches. You must specify at least two zones.
@@ -9449,8 +9449,8 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -12898,7 +12898,7 @@ type GetServerGroupsGroup struct {
 	// The configuration of the sticky session.
 	StickySessionConfigs []GetServerGroupsGroupStickySessionConfig `pulumi:"stickySessionConfigs"`
 	// A map of tags assigned to the group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -12934,7 +12934,7 @@ type GetServerGroupsGroupArgs struct {
 	// The configuration of the sticky session.
 	StickySessionConfigs GetServerGroupsGroupStickySessionConfigArrayInput `pulumi:"stickySessionConfigs"`
 	// A map of tags assigned to the group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
@@ -13036,8 +13036,8 @@ func (o GetServerGroupsGroupOutput) StickySessionConfigs() GetServerGroupsGroupS
 }
 
 // A map of tags assigned to the group.
-func (o GetServerGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC that you want to access.

@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The template resource group id.
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A mapping of tags to assign to the launch template.
         /// </summary>
         [Output("templateTags")]
-        public Output<ImmutableDictionary<string, object>?> TemplateTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> TemplateTags { get; private set; } = null!;
 
         /// <summary>
         /// The User Data.
@@ -743,16 +743,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to instance, block storage, and elastic network.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -763,14 +763,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private InputMap<object>? _templateTags;
+        private InputMap<string>? _templateTags;
 
         /// <summary>
         /// A mapping of tags to assign to the launch template.
         /// </summary>
-        public InputMap<object> TemplateTags
+        public InputMap<string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 
@@ -1069,16 +1069,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to instance, block storage, and elastic network.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1089,14 +1089,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private InputMap<object>? _templateTags;
+        private InputMap<string>? _templateTags;
 
         /// <summary>
         /// A mapping of tags to assign to the launch template.
         /// </summary>
-        public InputMap<object> TemplateTags
+        public InputMap<string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 

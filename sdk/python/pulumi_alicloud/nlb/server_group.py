@@ -29,7 +29,7 @@ class ServerGroupArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -54,7 +54,7 @@ class ServerGroupArgs:
         :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         """
         pulumi.set(__self__, "server_group_name", server_group_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -254,14 +254,14 @@ class ServerGroupArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -281,7 +281,7 @@ class _ServerGroupState:
                  server_group_name: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
@@ -305,7 +305,7 @@ class _ServerGroupState:
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -510,14 +510,14 @@ class _ServerGroupState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -552,7 +552,7 @@ class ServerGroup(pulumi.CustomResource):
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -638,7 +638,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -738,7 +738,7 @@ class ServerGroup(pulumi.CustomResource):
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -791,7 +791,7 @@ class ServerGroup(pulumi.CustomResource):
             server_group_name: Optional[pulumi.Input[str]] = None,
             server_group_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
@@ -820,7 +820,7 @@ class ServerGroup(pulumi.CustomResource):
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -960,7 +960,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Label.
         """

@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetInstancesInstanceDiskDeviceMapping;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -160,7 +159,7 @@ public final class GetInstancesInstance {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return ID of the VPC linked to the instances.
      * 
@@ -359,7 +358,7 @@ public final class GetInstancesInstance {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -407,7 +406,7 @@ public final class GetInstancesInstance {
         private List<String> securityGroups;
         private String spotStrategy;
         private String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -614,7 +613,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

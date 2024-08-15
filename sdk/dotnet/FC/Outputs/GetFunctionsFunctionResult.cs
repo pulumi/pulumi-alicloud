@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// <summary>
         /// A map that defines environment variables for the function.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> EnvironmentVariables;
+        public readonly ImmutableDictionary<string, string> EnvironmentVariables;
         /// <summary>
         /// Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.FC.Outputs
 
             string description,
 
-            ImmutableDictionary<string, object> environmentVariables,
+            ImmutableDictionary<string, string> environmentVariables,
 
             string handler,
 

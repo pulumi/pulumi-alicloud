@@ -54,7 +54,7 @@ export interface GetStateConfigurationsArgs {
     /**
      * The tag of the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -69,7 +69,7 @@ export interface GetStateConfigurationsResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -111,5 +111,5 @@ export interface GetStateConfigurationsOutputArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

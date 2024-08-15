@@ -80,7 +80,7 @@ type GetDomainsArgs struct {
 	// Whether to query the domain name star.
 	Starmark *bool `pulumi:"starmark"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode *string `pulumi:"versionCode"`
 }
@@ -108,10 +108,10 @@ type GetDomainsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	SearchMode      *string                `pulumi:"searchMode"`
-	Starmark        *bool                  `pulumi:"starmark"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	SearchMode      *string           `pulumi:"searchMode"`
+	Starmark        *bool             `pulumi:"starmark"`
+	Tags            map[string]string `pulumi:"tags"`
 	// Cloud resolution version ID.
 	VersionCode *string `pulumi:"versionCode"`
 }
@@ -157,7 +157,7 @@ type GetDomainsOutputArgs struct {
 	// Whether to query the domain name star.
 	Starmark pulumi.BoolPtrInput `pulumi:"starmark"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode pulumi.StringPtrInput `pulumi:"versionCode"`
 }
@@ -253,8 +253,8 @@ func (o GetDomainsResultOutput) Starmark() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *bool { return v.Starmark }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetDomainsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDomainsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDomainsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDomainsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Cloud resolution version ID.

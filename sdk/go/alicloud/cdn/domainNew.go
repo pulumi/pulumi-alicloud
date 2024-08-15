@@ -100,7 +100,7 @@ type DomainNew struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDomainNew registers a new resource with the given unique name, arguments, and options.
@@ -165,7 +165,7 @@ type domainNewState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DomainNewState struct {
@@ -192,7 +192,7 @@ type DomainNewState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DomainNewState) ElementType() reflect.Type {
@@ -219,7 +219,7 @@ type domainNewArgs struct {
 	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources []DomainNewSource `pulumi:"sources"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DomainNew resource.
@@ -243,7 +243,7 @@ type DomainNewArgs struct {
 	// The source address list of the accelerated domain. Defaults to null. See `sources` below.
 	Sources DomainNewSourceArrayInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DomainNewArgs) ElementType() reflect.Type {
@@ -383,8 +383,8 @@ func (o DomainNewOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o DomainNewOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DomainNew) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DomainNewOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DomainNew) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DomainNewArrayOutput struct{ *pulumi.OutputState }

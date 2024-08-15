@@ -85,7 +85,7 @@ export interface GetDomainsArgs {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -103,7 +103,7 @@ export interface GetDomainsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Vod Domains of the current Alibaba Cloud user.
@@ -174,5 +174,5 @@ export interface GetDomainsOutputArgs {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -1881,7 +1881,7 @@ type GetInstancesInstance struct {
 	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
 	StorageType string `pulumi:"storageType"`
 	// The tags of the instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC。.
 	VpcId string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -1953,7 +1953,7 @@ type GetInstancesInstanceArgs struct {
 	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// The tags of the instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC。.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The vswitch id.
@@ -2142,8 +2142,8 @@ func (o GetInstancesInstanceOutput) StorageType() pulumi.StringOutput {
 }
 
 // The tags of the instance.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC。.

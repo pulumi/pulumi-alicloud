@@ -683,7 +683,7 @@ class GetClustersClusterResult(dict):
                  start_time: str,
                  status: str,
                  stop_time: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  user_defined_emr_ecs_role: str,
                  user_id: str,
@@ -726,7 +726,7 @@ class GetClustersClusterResult(dict):
         :param str start_time: Cluster startup time.
         :param str status: The cluster status.
         :param str stop_time: Cluster stop time.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str type: Disk type.
         :param str user_defined_emr_ecs_role: The EMR permission name used.
         :param str user_id: The user ID.
@@ -1071,7 +1071,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

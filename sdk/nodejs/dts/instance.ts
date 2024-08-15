@@ -222,7 +222,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.
@@ -463,7 +463,7 @@ export interface InstanceState {
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.
@@ -620,7 +620,7 @@ export interface InstanceArgs {
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.

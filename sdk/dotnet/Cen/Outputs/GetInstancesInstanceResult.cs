@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             CenBandwidthPackageIds = cenBandwidthPackageIds;
             CenId = cenId;

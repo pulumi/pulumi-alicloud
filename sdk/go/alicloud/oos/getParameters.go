@@ -102,7 +102,7 @@ type GetParametersArgs struct {
 	SortField       *string `pulumi:"sortField"`
 	SortOrder       *string `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type *string `pulumi:"type"`
 }
@@ -121,7 +121,7 @@ type GetParametersResult struct {
 	ResourceGroupId *string                  `pulumi:"resourceGroupId"`
 	SortField       *string                  `pulumi:"sortField"`
 	SortOrder       *string                  `pulumi:"sortOrder"`
-	Tags            map[string]interface{}   `pulumi:"tags"`
+	Tags            map[string]string        `pulumi:"tags"`
 	Type            *string                  `pulumi:"type"`
 }
 
@@ -155,7 +155,7 @@ type GetParametersOutputArgs struct {
 	SortField       pulumi.StringPtrInput `pulumi:"sortField"`
 	SortOrder       pulumi.StringPtrInput `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -224,8 +224,8 @@ func (o GetParametersResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetParametersResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
-func (o GetParametersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetParametersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetParametersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetParametersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetParametersResultOutput) Type() pulumi.StringPtrOutput {

@@ -13,14 +13,14 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class ServiceTracingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("params", required: true)]
-        private InputMap<object>? _params;
+        private InputMap<string>? _params;
 
         /// <summary>
         /// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         /// </summary>
-        public InputMap<object> Params
+        public InputMap<string> Params
         {
-            get => _params ?? (_params = new InputMap<object>());
+            get => _params ?? (_params = new InputMap<string>());
             set => _params = value;
         }
 

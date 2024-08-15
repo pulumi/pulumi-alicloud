@@ -69,9 +69,9 @@ import (
 //				VswitchId:                   pulumi.String("sw-ljkngaksdjfj0nnasdf"),
 //				VpcId:                       pulumi.String("vpc-asdfnbg0as8dfk1nb2"),
 //				ZoneId:                      pulumi.String("beijing-a"),
-//				Tags: pulumi.Map{
-//					"tag1": pulumi.Any("hello"),
-//					"tag2": pulumi.Any("world"),
+//				Tags: pulumi.StringMap{
+//					"tag1": pulumi.String("hello"),
+//					"tag2": pulumi.String("world"),
 //				},
 //				NetworkInterfaces: &ecs.LaunchTemplateNetworkInterfacesArgs{
 //					Name:            pulumi.String("eth0"),
@@ -203,9 +203,9 @@ type LaunchTemplate struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.MapOutput       `pulumi:"tags"`
+	Tags                    pulumi.StringMapOutput `pulumi:"tags"`
 	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
-	TemplateTags            pulumi.MapOutput       `pulumi:"templateTags"`
+	TemplateTags            pulumi.StringMapOutput `pulumi:"templateTags"`
 	UserData                pulumi.StringOutput    `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
@@ -342,10 +342,10 @@ type launchTemplateState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    map[string]interface{} `pulumi:"tags"`
-	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
-	UserData                *string                `pulumi:"userData"`
+	Tags                    map[string]string `pulumi:"tags"`
+	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]string `pulumi:"templateTags"`
+	UserData                *string           `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -452,9 +452,9 @@ type LaunchTemplateState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.MapInput
+	Tags                    pulumi.StringMapInput
 	TemplateResourceGroupId pulumi.StringPtrInput
-	TemplateTags            pulumi.MapInput
+	TemplateTags            pulumi.StringMapInput
 	UserData                pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
@@ -566,10 +566,10 @@ type launchTemplateArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    map[string]interface{} `pulumi:"tags"`
-	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
-	UserData                *string                `pulumi:"userData"`
+	Tags                    map[string]string `pulumi:"tags"`
+	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]string `pulumi:"templateTags"`
+	UserData                *string           `pulumi:"userData"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
@@ -677,9 +677,9 @@ type LaunchTemplateArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                    pulumi.MapInput
+	Tags                    pulumi.StringMapInput
 	TemplateResourceGroupId pulumi.StringPtrInput
-	TemplateTags            pulumi.MapInput
+	TemplateTags            pulumi.StringMapInput
 	UserData                pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	//
@@ -990,16 +990,16 @@ func (o LaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o LaunchTemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *LaunchTemplate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o LaunchTemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o LaunchTemplateOutput) TemplateTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *LaunchTemplate) pulumi.MapOutput { return v.TemplateTags }).(pulumi.MapOutput)
+func (o LaunchTemplateOutput) TemplateTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringMapOutput { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
 func (o LaunchTemplateOutput) UserData() pulumi.StringOutput {

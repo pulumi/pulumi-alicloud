@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Log
         /// Log audit detailed configuration.
         /// </summary>
         [Output("variableMap")]
-        public Output<ImmutableDictionary<string, object>?> VariableMap { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> VariableMap { get; private set; } = null!;
 
 
         /// <summary>
@@ -332,14 +332,14 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? ResourceDirectoryType { get; set; }
 
         [Input("variableMap")]
-        private InputMap<object>? _variableMap;
+        private InputMap<string>? _variableMap;
 
         /// <summary>
         /// Log audit detailed configuration.
         /// </summary>
-        public InputMap<object> VariableMap
+        public InputMap<string> VariableMap
         {
-            get => _variableMap ?? (_variableMap = new InputMap<object>());
+            get => _variableMap ?? (_variableMap = new InputMap<string>());
             set => _variableMap = value;
         }
 
@@ -382,14 +382,14 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? ResourceDirectoryType { get; set; }
 
         [Input("variableMap")]
-        private InputMap<object>? _variableMap;
+        private InputMap<string>? _variableMap;
 
         /// <summary>
         /// Log audit detailed configuration.
         /// </summary>
-        public InputMap<object> VariableMap
+        public InputMap<string> VariableMap
         {
-            get => _variableMap ?? (_variableMap = new InputMap<object>());
+            get => _variableMap ?? (_variableMap = new InputMap<string>());
             set => _variableMap = value;
         }
 

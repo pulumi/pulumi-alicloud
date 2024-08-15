@@ -5554,7 +5554,7 @@ type GetGatewaysGateway struct {
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
 	Status string `pulumi:"status"`
 	// The Tag of.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Use the VPC ID as the search key.
 	VpcId string `pulumi:"vpcId"`
 	// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
@@ -5614,7 +5614,7 @@ type GetGatewaysGatewayArgs struct {
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Tag of.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Use the VPC ID as the search key.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
@@ -5770,8 +5770,8 @@ func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The Tag of.
-func (o GetGatewaysGatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGatewaysGateway) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetGatewaysGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Use the VPC ID as the search key.

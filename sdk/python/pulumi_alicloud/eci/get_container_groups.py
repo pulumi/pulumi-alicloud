@@ -129,7 +129,7 @@ class GetContainerGroupsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -179,7 +179,7 @@ def get_container_groups(container_group_name: Optional[str] = None,
                          output_file: Optional[str] = None,
                          resource_group_id: Optional[str] = None,
                          status: Optional[str] = None,
-                         tags: Optional[Mapping[str, Any]] = None,
+                         tags: Optional[Mapping[str, str]] = None,
                          vswitch_id: Optional[str] = None,
                          with_event: Optional[bool] = None,
                          zone_id: Optional[str] = None,
@@ -256,7 +256,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
-                                tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 with_event: Optional[pulumi.Input[Optional[bool]]] = None,
                                 zone_id: Optional[pulumi.Input[Optional[str]]] = None,

@@ -7,7 +7,6 @@ import com.pulumi.alicloud.compute.outputs.GetNestServiceInstancesFilter;
 import com.pulumi.alicloud.compute.outputs.GetNestServiceInstancesServiceInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +44,7 @@ public final class GetNestServiceInstancesResult {
      * @return The tag of the Service Instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetNestServiceInstancesResult() {}
     public List<GetNestServiceInstancesFilter> filters() {
@@ -92,7 +91,7 @@ public final class GetNestServiceInstancesResult {
      * @return The tag of the Service Instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -113,7 +112,7 @@ public final class GetNestServiceInstancesResult {
         private @Nullable String outputFile;
         private List<GetNestServiceInstancesServiceInstance> serviceInstances;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetNestServiceInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -197,7 +196,7 @@ public final class GetNestServiceInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

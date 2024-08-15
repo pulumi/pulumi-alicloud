@@ -106,7 +106,7 @@ export class AnycastEipAddress extends pulumi.CustomResource {
     /**
      * List of resource-bound tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a AnycastEipAddress resource with the given unique name, arguments, and options.
@@ -195,7 +195,7 @@ export interface AnycastEipAddressState {
     /**
      * List of resource-bound tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -233,5 +233,5 @@ export interface AnycastEipAddressArgs {
     /**
      * List of resource-bound tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

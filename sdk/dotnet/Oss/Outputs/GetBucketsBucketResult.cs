@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// <summary>
         /// A mapping of tags.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// If present , the versioning state has been set on the bucket. It contains the following attribute.
         /// </summary>
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string storageClass,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             Outputs.GetBucketsBucketVersioningResult versioning,
 

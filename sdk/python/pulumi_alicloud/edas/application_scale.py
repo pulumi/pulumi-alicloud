@@ -242,7 +242,11 @@ class ApplicationScale(pulumi.CustomResource):
         default_application_scale = alicloud.edas.ApplicationScale("default",
             app_id=default_application.id,
             deploy_group=default_get_deploy_groups.groups[0].group_id,
-            ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
+            ecu_infos=[pulumi.Output.all(
+                ecu_map=default_instance_cluster_attachment.ecu_map,
+                id=default_instance.id
+        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][resolved_outputs['id']])
+        ])
         ```
 
         :param str resource_name: The name of the resource.
@@ -322,7 +326,11 @@ class ApplicationScale(pulumi.CustomResource):
         default_application_scale = alicloud.edas.ApplicationScale("default",
             app_id=default_application.id,
             deploy_group=default_get_deploy_groups.groups[0].group_id,
-            ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
+            ecu_infos=[pulumi.Output.all(
+                ecu_map=default_instance_cluster_attachment.ecu_map,
+                id=default_instance.id
+        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][resolved_outputs['id']])
+        ])
         ```
 
         :param str resource_name: The name of the resource.

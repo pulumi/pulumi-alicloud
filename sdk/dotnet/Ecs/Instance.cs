@@ -329,7 +329,7 @@ namespace Pulumi.AliCloud.Ecs
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("volumeTags")]
-        public Output<ImmutableDictionary<string, object>> VolumeTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> VolumeTags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC.
@@ -928,14 +928,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1242,16 +1242,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         [Input("volumeTags")]
-        private InputMap<object>? _volumeTags;
+        private InputMap<string>? _volumeTags;
 
         /// <summary>
         /// A mapping of tags to assign to the devices created by the instance at launch time.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> VolumeTags
+        public InputMap<string> VolumeTags
         {
-            get => _volumeTags ?? (_volumeTags = new InputMap<object>());
+            get => _volumeTags ?? (_volumeTags = new InputMap<string>());
             set => _volumeTags = value;
         }
 
@@ -1498,14 +1498,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1854,16 +1854,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         [Input("volumeTags")]
-        private InputMap<object>? _volumeTags;
+        private InputMap<string>? _volumeTags;
 
         /// <summary>
         /// A mapping of tags to assign to the devices created by the instance at launch time.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> VolumeTags
+        public InputMap<string> VolumeTags
         {
-            get => _volumeTags ?? (_volumeTags = new InputMap<object>());
+            get => _volumeTags ?? (_volumeTags = new InputMap<string>());
             set => _volumeTags = value;
         }
 

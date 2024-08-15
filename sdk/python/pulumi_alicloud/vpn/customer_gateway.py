@@ -19,7 +19,7 @@ class CustomerGatewayArgs:
                  customer_gateway_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CustomerGateway resource.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
@@ -27,7 +27,7 @@ class CustomerGatewayArgs:
         :param pulumi.Input[str] customer_gateway_name: The name of the customer gateway.
         :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -109,7 +109,7 @@ class CustomerGatewayArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         tag.
 
@@ -118,7 +118,7 @@ class CustomerGatewayArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -131,7 +131,7 @@ class _CustomerGatewayState:
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CustomerGateway resources.
         :param pulumi.Input[str] asn: Asn.
@@ -140,7 +140,7 @@ class _CustomerGatewayState:
         :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -237,7 +237,7 @@ class _CustomerGatewayState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         tag.
 
@@ -246,7 +246,7 @@ class _CustomerGatewayState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -260,7 +260,7 @@ class CustomerGateway(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -297,7 +297,7 @@ class CustomerGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -355,7 +355,7 @@ class CustomerGateway(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +390,7 @@ class CustomerGateway(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'CustomerGateway':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'CustomerGateway':
         """
         Get an existing CustomerGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -404,7 +404,7 @@ class CustomerGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the customer gateway.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -472,7 +472,7 @@ class CustomerGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         tag.
 

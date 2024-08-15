@@ -284,7 +284,11 @@ class HanaBackupClient(pulumi.CustomResource):
             vault_id=example_vault.id)
         default = alicloud.hbr.HanaBackupClient("default",
             vault_id=example_vault.id,
-            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
+            client_info=pulumi.Output.all(
+                id=example_instance.id,
+                hana_instance_id=example_hana_instance.hana_instance_id
+        ).apply(lambda resolved_outputs: f"[ {{ \\"instanceId\\": \\"{resolved_outputs['id']}\\", \\"clusterId\\": \\"{resolved_outputs['hana_instance_id']}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]")
+        ,
             alert_setting="INHERITED",
             use_https=True)
         ```
@@ -366,7 +370,11 @@ class HanaBackupClient(pulumi.CustomResource):
             vault_id=example_vault.id)
         default = alicloud.hbr.HanaBackupClient("default",
             vault_id=example_vault.id,
-            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
+            client_info=pulumi.Output.all(
+                id=example_instance.id,
+                hana_instance_id=example_hana_instance.hana_instance_id
+        ).apply(lambda resolved_outputs: f"[ {{ \\"instanceId\\": \\"{resolved_outputs['id']}\\", \\"clusterId\\": \\"{resolved_outputs['hana_instance_id']}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]")
+        ,
             alert_setting="INHERITED",
             use_https=True)
         ```

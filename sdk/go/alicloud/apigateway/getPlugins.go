@@ -73,23 +73,23 @@ type GetPluginsArgs struct {
 	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
 	PluginType *string `pulumi:"pluginType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getPlugins.
 type GetPluginsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	PageNumber *int                   `pulumi:"pageNumber"`
-	PageSize   *int                   `pulumi:"pageSize"`
-	PluginName *string                `pulumi:"pluginName"`
-	PluginType *string                `pulumi:"pluginType"`
-	Plugins    []GetPluginsPlugin     `pulumi:"plugins"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Id         string             `pulumi:"id"`
+	Ids        []string           `pulumi:"ids"`
+	NameRegex  *string            `pulumi:"nameRegex"`
+	Names      []string           `pulumi:"names"`
+	OutputFile *string            `pulumi:"outputFile"`
+	PageNumber *int               `pulumi:"pageNumber"`
+	PageSize   *int               `pulumi:"pageSize"`
+	PluginName *string            `pulumi:"pluginName"`
+	PluginType *string            `pulumi:"pluginType"`
+	Plugins    []GetPluginsPlugin `pulumi:"plugins"`
+	Tags       map[string]string  `pulumi:"tags"`
 }
 
 func GetPluginsOutput(ctx *pulumi.Context, args GetPluginsOutputArgs, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
@@ -120,7 +120,7 @@ type GetPluginsOutputArgs struct {
 	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
 	PluginType pulumi.StringPtrInput `pulumi:"pluginType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetPluginsOutputArgs) ElementType() reflect.Type {
@@ -183,8 +183,8 @@ func (o GetPluginsResultOutput) Plugins() GetPluginsPluginArrayOutput {
 	return o.ApplyT(func(v GetPluginsResult) []GetPluginsPlugin { return v.Plugins }).(GetPluginsPluginArrayOutput)
 }
 
-func (o GetPluginsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPluginsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetPluginsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPluginsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

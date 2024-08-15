@@ -98,7 +98,7 @@ type GetEcsDedicatedHostClustersArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the dedicated host cluster.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -109,13 +109,13 @@ type GetEcsDedicatedHostClustersResult struct {
 	DedicatedHostClusterIds  []string                             `pulumi:"dedicatedHostClusterIds"`
 	DedicatedHostClusterName *string                              `pulumi:"dedicatedHostClusterName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	ZoneId     *string                `pulumi:"zoneId"`
+	Id         string            `pulumi:"id"`
+	Ids        []string          `pulumi:"ids"`
+	NameRegex  *string           `pulumi:"nameRegex"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Tags       map[string]string `pulumi:"tags"`
+	ZoneId     *string           `pulumi:"zoneId"`
 }
 
 func GetEcsDedicatedHostClustersOutput(ctx *pulumi.Context, args GetEcsDedicatedHostClustersOutputArgs, opts ...pulumi.InvokeOption) GetEcsDedicatedHostClustersResultOutput {
@@ -144,7 +144,7 @@ type GetEcsDedicatedHostClustersOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The zone ID of the dedicated host cluster.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -201,8 +201,8 @@ func (o GetEcsDedicatedHostClustersResultOutput) OutputFile() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsDedicatedHostClustersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsDedicatedHostClustersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetEcsDedicatedHostClustersResultOutput) ZoneId() pulumi.StringPtrOutput {

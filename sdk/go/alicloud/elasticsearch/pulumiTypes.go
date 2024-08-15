@@ -14,19 +14,19 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetInstancesInstance struct {
-	CreatedAt          string                 `pulumi:"createdAt"`
-	DataNodeAmount     int                    `pulumi:"dataNodeAmount"`
-	DataNodeDiskSize   int                    `pulumi:"dataNodeDiskSize"`
-	DataNodeDiskType   string                 `pulumi:"dataNodeDiskType"`
-	DataNodeSpec       string                 `pulumi:"dataNodeSpec"`
-	Description        string                 `pulumi:"description"`
-	Id                 string                 `pulumi:"id"`
-	InstanceChargeType string                 `pulumi:"instanceChargeType"`
-	Status             string                 `pulumi:"status"`
-	Tags               map[string]interface{} `pulumi:"tags"`
-	UpdatedAt          string                 `pulumi:"updatedAt"`
-	Version            string                 `pulumi:"version"`
-	VswitchId          string                 `pulumi:"vswitchId"`
+	CreatedAt          string            `pulumi:"createdAt"`
+	DataNodeAmount     int               `pulumi:"dataNodeAmount"`
+	DataNodeDiskSize   int               `pulumi:"dataNodeDiskSize"`
+	DataNodeDiskType   string            `pulumi:"dataNodeDiskType"`
+	DataNodeSpec       string            `pulumi:"dataNodeSpec"`
+	Description        string            `pulumi:"description"`
+	Id                 string            `pulumi:"id"`
+	InstanceChargeType string            `pulumi:"instanceChargeType"`
+	Status             string            `pulumi:"status"`
+	Tags               map[string]string `pulumi:"tags"`
+	UpdatedAt          string            `pulumi:"updatedAt"`
+	Version            string            `pulumi:"version"`
+	VswitchId          string            `pulumi:"vswitchId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -41,19 +41,19 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	CreatedAt          pulumi.StringInput `pulumi:"createdAt"`
-	DataNodeAmount     pulumi.IntInput    `pulumi:"dataNodeAmount"`
-	DataNodeDiskSize   pulumi.IntInput    `pulumi:"dataNodeDiskSize"`
-	DataNodeDiskType   pulumi.StringInput `pulumi:"dataNodeDiskType"`
-	DataNodeSpec       pulumi.StringInput `pulumi:"dataNodeSpec"`
-	Description        pulumi.StringInput `pulumi:"description"`
-	Id                 pulumi.StringInput `pulumi:"id"`
-	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
-	Status             pulumi.StringInput `pulumi:"status"`
-	Tags               pulumi.MapInput    `pulumi:"tags"`
-	UpdatedAt          pulumi.StringInput `pulumi:"updatedAt"`
-	Version            pulumi.StringInput `pulumi:"version"`
-	VswitchId          pulumi.StringInput `pulumi:"vswitchId"`
+	CreatedAt          pulumi.StringInput    `pulumi:"createdAt"`
+	DataNodeAmount     pulumi.IntInput       `pulumi:"dataNodeAmount"`
+	DataNodeDiskSize   pulumi.IntInput       `pulumi:"dataNodeDiskSize"`
+	DataNodeDiskType   pulumi.StringInput    `pulumi:"dataNodeDiskType"`
+	DataNodeSpec       pulumi.StringInput    `pulumi:"dataNodeSpec"`
+	Description        pulumi.StringInput    `pulumi:"description"`
+	Id                 pulumi.StringInput    `pulumi:"id"`
+	InstanceChargeType pulumi.StringInput    `pulumi:"instanceChargeType"`
+	Status             pulumi.StringInput    `pulumi:"status"`
+	Tags               pulumi.StringMapInput `pulumi:"tags"`
+	UpdatedAt          pulumi.StringInput    `pulumi:"updatedAt"`
+	Version            pulumi.StringInput    `pulumi:"version"`
+	VswitchId          pulumi.StringInput    `pulumi:"vswitchId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -143,8 +143,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancesInstanceOutput) UpdatedAt() pulumi.StringOutput {

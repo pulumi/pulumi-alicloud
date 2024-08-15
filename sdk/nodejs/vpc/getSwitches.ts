@@ -98,7 +98,7 @@ export interface GetSwitchesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * ID of the VPC that owns the vSwitch.
      */
@@ -159,7 +159,7 @@ export interface GetSwitchesResult {
     /**
      * The Tags of the vSwitch.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * ID of the VPC that owns the vSwitch.
      */
@@ -252,7 +252,7 @@ export interface GetSwitchesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the VPC that owns the vSwitch.
      */

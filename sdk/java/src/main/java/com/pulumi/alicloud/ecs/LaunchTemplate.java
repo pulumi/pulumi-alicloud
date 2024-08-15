@@ -16,7 +16,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -625,8 +624,8 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
@@ -634,7 +633,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
+    public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     @Export(name="templateResourceGroupId", refs={String.class}, tree="[0]")
@@ -643,10 +642,10 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> templateResourceGroupId() {
         return Codegen.optional(this.templateResourceGroupId);
     }
-    @Export(name="templateTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> templateTags;
+    @Export(name="templateTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> templateTags;
 
-    public Output<Optional<Map<String,Object>>> templateTags() {
+    public Output<Optional<Map<String,String>>> templateTags() {
         return Codegen.optional(this.templateTags);
     }
     @Export(name="userData", refs={String.class}, tree="[0]")

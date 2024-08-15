@@ -83,7 +83,7 @@ type Instance struct {
 	// The status of the instance.
 	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// (Available since v1.214.1) The number of available topics.
 	TopicLeft pulumi.IntOutput `pulumi:"topicLeft"`
 	// (Available since v1.214.1) The number of purchased topics.
@@ -208,7 +208,7 @@ type instanceState struct {
 	// The status of the instance.
 	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// (Available since v1.214.1) The number of available topics.
 	TopicLeft *int `pulumi:"topicLeft"`
 	// (Available since v1.214.1) The number of purchased topics.
@@ -292,7 +292,7 @@ type InstanceState struct {
 	// The status of the instance.
 	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// (Available since v1.214.1) The number of available topics.
 	TopicLeft pulumi.IntPtrInput
 	// (Available since v1.214.1) The number of purchased topics.
@@ -366,7 +366,7 @@ type instanceArgs struct {
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
@@ -431,7 +431,7 @@ type InstanceArgs struct {
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
@@ -664,8 +664,8 @@ func (o InstanceOutput) Status() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // (Available since v1.214.1) The number of available topics.

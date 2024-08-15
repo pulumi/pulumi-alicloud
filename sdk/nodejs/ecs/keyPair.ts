@@ -84,7 +84,7 @@ export class KeyPair extends pulumi.CustomResource {
      * The Id of resource group which the key pair belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a KeyPair resource with the given unique name, arguments, and options.
@@ -148,7 +148,7 @@ export interface KeyPairState {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -175,5 +175,5 @@ export interface KeyPairArgs {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

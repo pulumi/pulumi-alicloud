@@ -1106,7 +1106,7 @@ type Cluster struct {
 	// If this is set true, we can ssh into cluster. Default value is false.
 	SshEnable pulumi.BoolPtrOutput `pulumi:"sshEnable"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Use local metadb. Default is false.
 	UseLocalMetadb pulumi.BoolPtrOutput `pulumi:"useLocalMetadb"`
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -1201,7 +1201,7 @@ type clusterState struct {
 	// If this is set true, we can ssh into cluster. Default value is false.
 	SshEnable *bool `pulumi:"sshEnable"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Use local metadb. Default is false.
 	UseLocalMetadb *bool `pulumi:"useLocalMetadb"`
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -1258,7 +1258,7 @@ type ClusterState struct {
 	// If this is set true, we can ssh into cluster. Default value is false.
 	SshEnable pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Use local metadb. Default is false.
 	UseLocalMetadb pulumi.BoolPtrInput
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -1319,7 +1319,7 @@ type clusterArgs struct {
 	// If this is set true, we can ssh into cluster. Default value is false.
 	SshEnable *bool `pulumi:"sshEnable"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Use local metadb. Default is false.
 	UseLocalMetadb *bool `pulumi:"useLocalMetadb"`
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -1377,7 +1377,7 @@ type ClusterArgs struct {
 	// If this is set true, we can ssh into cluster. Default value is false.
 	SshEnable pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Use local metadb. Default is false.
 	UseLocalMetadb pulumi.BoolPtrInput
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -1586,8 +1586,8 @@ func (o ClusterOutput) SshEnable() pulumi.BoolPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Use local metadb. Default is false.

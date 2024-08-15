@@ -82,7 +82,7 @@ export interface GetSecurityGroupsArgs {
      * });
      * ```
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Used to retrieve security groups that belong to the specified VPC ID.
      */
@@ -121,7 +121,7 @@ export interface GetSecurityGroupsResult {
     /**
      * A map of tags assigned to the ECS instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * The ID of the VPC that owns the security group.
@@ -191,7 +191,7 @@ export interface GetSecurityGroupsOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Used to retrieve security groups that belong to the specified VPC ID.
      */

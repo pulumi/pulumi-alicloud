@@ -1534,7 +1534,7 @@ class GetPluginsPluginResult(dict):
                  plugin_id: str,
                  plugin_name: str,
                  plugin_type: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str create_time: The CreateTime of the resource.
         :param str description: The description of the plug-in, which cannot exceed 200 characters.
@@ -1544,7 +1544,7 @@ class GetPluginsPluginResult(dict):
         :param str plugin_id: The first ID of the resource.
         :param str plugin_name: The name of the plug-in that you want to create.
         :param str plugin_type: The type of the plug-in.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1622,7 +1622,7 @@ class GetPluginsPluginResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """

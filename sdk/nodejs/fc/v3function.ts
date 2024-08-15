@@ -161,7 +161,7 @@ export class V3Function extends pulumi.CustomResource {
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
@@ -339,7 +339,7 @@ export interface V3FunctionState {
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
@@ -437,7 +437,7 @@ export interface V3FunctionArgs {
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */

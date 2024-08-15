@@ -116,7 +116,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
@@ -193,7 +193,7 @@ export interface TopicState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
@@ -227,7 +227,7 @@ export interface TopicArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */

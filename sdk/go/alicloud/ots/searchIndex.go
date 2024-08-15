@@ -52,9 +52,9 @@ import (
 //				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

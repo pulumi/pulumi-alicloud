@@ -244,7 +244,7 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the SLB instance.
         """
@@ -326,7 +326,7 @@ def get_load_balancers(address: Optional[str] = None,
                        server_intranet_address: Optional[str] = None,
                        slave_zone_id: Optional[str] = None,
                        status: Optional[str] = None,
-                       tags: Optional[Mapping[str, Any]] = None,
+                       tags: Optional[Mapping[str, str]] = None,
                        vpc_id: Optional[str] = None,
                        vswitch_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
@@ -354,7 +354,7 @@ def get_load_balancers(address: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -443,7 +443,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
                               server_intranet_address: Optional[pulumi.Input[Optional[str]]] = None,
                               slave_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                               vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
@@ -471,7 +471,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

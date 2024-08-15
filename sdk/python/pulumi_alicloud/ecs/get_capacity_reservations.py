@@ -152,7 +152,7 @@ class GetCapacityReservationsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the Capacity Reservation.
         """
@@ -189,7 +189,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
                               platform: Optional[str] = None,
                               resource_group_id: Optional[str] = None,
                               status: Optional[str] = None,
-                              tags: Optional[Mapping[str, Any]] = None,
+                              tags: Optional[Mapping[str, str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCapacityReservationsResult:
     """
     This data source provides Ecs Capacity Reservation available to the user.
@@ -218,7 +218,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
     :param str platform: platform of the capacity reservation , value range `windows`, `linux`, `all`.
     :param str resource_group_id: The resource group id.
     :param str status: The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, str] tags: The tag of the resource.
     """
     __args__ = dict()
     __args__['capacityReservationIds'] = capacity_reservation_ids
@@ -260,7 +260,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
                                      platform: Optional[pulumi.Input[Optional[str]]] = None,
                                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                                     tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapacityReservationsResult]:
     """
     This data source provides Ecs Capacity Reservation available to the user.
@@ -289,6 +289,6 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     :param str platform: platform of the capacity reservation , value range `windows`, `linux`, `all`.
     :param str resource_group_id: The resource group id.
     :param str status: The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, str] tags: The tag of the resource.
     """
     ...

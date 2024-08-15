@@ -2326,7 +2326,7 @@ type GetEventSourcesSource struct {
 	// The code name of event source.
 	EventSourceName string `pulumi:"eventSourceName"`
 	// The config of external data source.
-	ExternalSourceConfig map[string]interface{} `pulumi:"externalSourceConfig"`
+	ExternalSourceConfig map[string]string `pulumi:"externalSourceConfig"`
 	// The type of external data source.
 	ExternalSourceType string `pulumi:"externalSourceType"`
 	// The ID of the Event Source.
@@ -2353,7 +2353,7 @@ type GetEventSourcesSourceArgs struct {
 	// The code name of event source.
 	EventSourceName pulumi.StringInput `pulumi:"eventSourceName"`
 	// The config of external data source.
-	ExternalSourceConfig pulumi.MapInput `pulumi:"externalSourceConfig"`
+	ExternalSourceConfig pulumi.StringMapInput `pulumi:"externalSourceConfig"`
 	// The type of external data source.
 	ExternalSourceType pulumi.StringInput `pulumi:"externalSourceType"`
 	// The ID of the Event Source.
@@ -2425,8 +2425,8 @@ func (o GetEventSourcesSourceOutput) EventSourceName() pulumi.StringOutput {
 }
 
 // The config of external data source.
-func (o GetEventSourcesSourceOutput) ExternalSourceConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEventSourcesSource) map[string]interface{} { return v.ExternalSourceConfig }).(pulumi.MapOutput)
+func (o GetEventSourcesSourceOutput) ExternalSourceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEventSourcesSource) map[string]string { return v.ExternalSourceConfig }).(pulumi.StringMapOutput)
 }
 
 // The type of external data source.

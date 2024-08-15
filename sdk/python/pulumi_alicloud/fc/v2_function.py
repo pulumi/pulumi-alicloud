@@ -30,7 +30,7 @@ class V2FunctionArgs:
                  custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  initialization_timeout: Optional[pulumi.Input[int]] = None,
                  initializer: Optional[pulumi.Input[str]] = None,
@@ -216,11 +216,11 @@ class V2FunctionArgs:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -319,7 +319,7 @@ class _V2FunctionState:
                  custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -488,11 +488,11 @@ class _V2FunctionState:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -628,7 +628,7 @@ class V2Function(pulumi.CustomResource):
                  custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -681,7 +681,7 @@ class V2Function(pulumi.CustomResource):
                  custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_memory_size: Optional[pulumi.Input[int]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -758,7 +758,7 @@ class V2Function(pulumi.CustomResource):
             custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             gpu_memory_size: Optional[pulumi.Input[int]] = None,
             handler: Optional[pulumi.Input[str]] = None,
@@ -868,7 +868,7 @@ class V2Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "environment_variables")
 
     @property

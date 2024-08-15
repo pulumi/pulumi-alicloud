@@ -20,7 +20,7 @@ class Ipv4GatewayArgs:
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Ipv4Gateway resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
@@ -29,7 +29,7 @@ class Ipv4GatewayArgs:
         :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the current resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if dry_run is not None:
@@ -119,14 +119,14 @@ class Ipv4GatewayArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -142,7 +142,7 @@ class _Ipv4GatewayState:
                  ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ipv4Gateway resources.
@@ -155,7 +155,7 @@ class _Ipv4GatewayState:
         :param pulumi.Input[str] ipv4_gateway_route_table_id: ID of the route table associated with IPv4 Gateway.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
         if create_time is not None:
@@ -291,14 +291,14 @@ class _Ipv4GatewayState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -324,7 +324,7 @@ class Ipv4Gateway(pulumi.CustomResource):
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -377,7 +377,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
         ...
@@ -449,7 +449,7 @@ class Ipv4Gateway(pulumi.CustomResource):
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -492,7 +492,7 @@ class Ipv4Gateway(pulumi.CustomResource):
             ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'Ipv4Gateway':
         """
         Get an existing Ipv4Gateway resource's state with the given name, id, and optional extra
@@ -510,7 +510,7 @@ class Ipv4Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] ipv4_gateway_route_table_id: ID of the route table associated with IPv4 Gateway.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -604,7 +604,7 @@ class Ipv4Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of the current resource.
         """

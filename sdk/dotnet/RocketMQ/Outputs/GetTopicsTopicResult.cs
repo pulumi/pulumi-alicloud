@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The name of the topic.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
 
             string remark,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string topic,
 

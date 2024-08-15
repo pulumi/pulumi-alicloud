@@ -7,7 +7,6 @@ import com.pulumi.alicloud.eci.outputs.GetVirtualNodesNodeEvent;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +78,7 @@ public final class GetVirtualNodesNode {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return Of the virtual node number.
      * 
@@ -191,7 +190,7 @@ public final class GetVirtualNodesNode {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -247,7 +246,7 @@ public final class GetVirtualNodesNode {
         private String resourceGroupId;
         private String securityGroupId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String virtualNodeId;
         private String virtualNodeName;
         private String vpcId;
@@ -376,7 +375,7 @@ public final class GetVirtualNodesNode {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVirtualNodesNode", "tags");
             }

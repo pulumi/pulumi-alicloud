@@ -112,7 +112,7 @@ class GetServerGroupsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -142,7 +142,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
                       server_group_names: Optional[Sequence[str]] = None,
                       server_group_type: Optional[str] = None,
                       status: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerGroupsResult:
     """
     This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
@@ -206,7 +206,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              server_group_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              server_group_type: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupsResult]:
     """
     This data source provides the Nlb Server Groups of the current Alibaba Cloud user.

@@ -57,7 +57,7 @@ type Order struct {
 	pulumi.CustomResourceState
 
 	// Service providers customize additional components.
-	Components pulumi.MapOutput `pulumi:"components"`
+	Components pulumi.StringMapOutput `pulumi:"components"`
 	// The coupon id of the market product.
 	CouponId pulumi.StringPtrOutput `pulumi:"couponId"`
 	// The number of purchase cycles.
@@ -114,7 +114,7 @@ func GetOrder(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Order resources.
 type orderState struct {
 	// Service providers customize additional components.
-	Components map[string]interface{} `pulumi:"components"`
+	Components map[string]string `pulumi:"components"`
 	// The coupon id of the market product.
 	CouponId *string `pulumi:"couponId"`
 	// The number of purchase cycles.
@@ -133,7 +133,7 @@ type orderState struct {
 
 type OrderState struct {
 	// Service providers customize additional components.
-	Components pulumi.MapInput
+	Components pulumi.StringMapInput
 	// The coupon id of the market product.
 	CouponId pulumi.StringPtrInput
 	// The number of purchase cycles.
@@ -156,7 +156,7 @@ func (OrderState) ElementType() reflect.Type {
 
 type orderArgs struct {
 	// Service providers customize additional components.
-	Components map[string]interface{} `pulumi:"components"`
+	Components map[string]string `pulumi:"components"`
 	// The coupon id of the market product.
 	CouponId *string `pulumi:"couponId"`
 	// The number of purchase cycles.
@@ -176,7 +176,7 @@ type orderArgs struct {
 // The set of arguments for constructing a Order resource.
 type OrderArgs struct {
 	// Service providers customize additional components.
-	Components pulumi.MapInput
+	Components pulumi.StringMapInput
 	// The coupon id of the market product.
 	CouponId pulumi.StringPtrInput
 	// The number of purchase cycles.
@@ -281,8 +281,8 @@ func (o OrderOutput) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 }
 
 // Service providers customize additional components.
-func (o OrderOutput) Components() pulumi.MapOutput {
-	return o.ApplyT(func(v *Order) pulumi.MapOutput { return v.Components }).(pulumi.MapOutput)
+func (o OrderOutput) Components() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringMapOutput { return v.Components }).(pulumi.StringMapOutput)
 }
 
 // The coupon id of the market product.

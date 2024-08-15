@@ -284,10 +284,10 @@ class TemplateScratchSourceResourceGroupArgs:
 @pulumi.input_type
 class TemplateScratchSourceTagArgs:
     def __init__(__self__, *,
-                 resource_tags: pulumi.Input[Mapping[str, Any]],
+                 resource_tags: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
         """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
@@ -295,14 +295,14 @@ class TemplateScratchSourceTagArgs:
 
     @property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> pulumi.Input[Mapping[str, Any]]:
+    def resource_tags(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Source label. **NOTE:** A maximum of 10 source labels can be configured.
         """
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
-    def resource_tags(self, value: pulumi.Input[Mapping[str, Any]]):
+    def resource_tags(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "resource_tags", value)
 
     @property

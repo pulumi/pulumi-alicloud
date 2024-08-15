@@ -135,7 +135,7 @@ class GetServerGroupsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tags of the resource.
         """
@@ -179,7 +179,7 @@ def get_server_groups(enable_details: Optional[bool] = None,
                       server_group_ids: Optional[Sequence[str]] = None,
                       server_group_name: Optional[str] = None,
                       status: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       vpc_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerGroupsResult:
     """
@@ -210,7 +210,7 @@ def get_server_groups(enable_details: Optional[bool] = None,
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.
     :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: A map of tags assigned to the group.
+    :param Mapping[str, str] tags: A map of tags assigned to the group.
     :param str vpc_id: The ID of the VPC that you want to access.
     """
     __args__ = dict()
@@ -252,7 +252,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
                              server_group_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              server_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupsResult]:
     """
@@ -283,7 +283,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.
     :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: A map of tags assigned to the group.
+    :param Mapping[str, str] tags: A map of tags assigned to the group.
     :param str vpc_id: The ID of the VPC that you want to access.
     """
     ...

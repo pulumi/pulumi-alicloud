@@ -803,8 +803,8 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceTypeFilters() pulum
 
 type TemplateScratchSourceTag struct {
 	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-	ResourceTags        map[string]interface{} `pulumi:"resourceTags"`
-	ResourceTypeFilters []string               `pulumi:"resourceTypeFilters"`
+	ResourceTags        map[string]string `pulumi:"resourceTags"`
+	ResourceTypeFilters []string          `pulumi:"resourceTypeFilters"`
 }
 
 // TemplateScratchSourceTagInput is an input type that accepts TemplateScratchSourceTagArgs and TemplateScratchSourceTagOutput values.
@@ -820,7 +820,7 @@ type TemplateScratchSourceTagInput interface {
 
 type TemplateScratchSourceTagArgs struct {
 	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-	ResourceTags        pulumi.MapInput         `pulumi:"resourceTags"`
+	ResourceTags        pulumi.StringMapInput   `pulumi:"resourceTags"`
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
 
@@ -902,8 +902,8 @@ func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagPtrOutputWithC
 }
 
 // Source label. **NOTE:** A maximum of 10 source labels can be configured.
-func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
-	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 func (o TemplateScratchSourceTagOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
@@ -935,13 +935,13 @@ func (o TemplateScratchSourceTagPtrOutput) Elem() TemplateScratchSourceTagOutput
 }
 
 // Source label. **NOTE:** A maximum of 10 source labels can be configured.
-func (o TemplateScratchSourceTagPtrOutput) ResourceTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TemplateScratchSourceTag) map[string]interface{} {
+func (o TemplateScratchSourceTagPtrOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceTag) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.ResourceTags
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o TemplateScratchSourceTagPtrOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
@@ -1978,7 +1978,7 @@ type GetStacksStack struct {
 	// Status Reason.
 	StatusReason string `pulumi:"statusReason"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Template Description.
 	TemplateDescription string `pulumi:"templateDescription"`
 	// Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
@@ -2028,7 +2028,7 @@ type GetStacksStackArgs struct {
 	// Status Reason.
 	StatusReason pulumi.StringInput `pulumi:"statusReason"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Template Description.
 	TemplateDescription pulumi.StringInput `pulumi:"templateDescription"`
 	// Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
@@ -2162,8 +2162,8 @@ func (o GetStacksStackOutput) StatusReason() pulumi.StringOutput {
 }
 
 // Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-func (o GetStacksStackOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetStacksStack) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetStacksStackOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStacksStack) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Template Description.
@@ -2824,7 +2824,7 @@ func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) Index(i pulum
 
 type GetTemplateScratchesScratchSourceTag struct {
 	// Source label.
-	ResourceTags map[string]interface{} `pulumi:"resourceTags"`
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// Source resource type filter list.
 	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
@@ -2842,7 +2842,7 @@ type GetTemplateScratchesScratchSourceTagInput interface {
 
 type GetTemplateScratchesScratchSourceTagArgs struct {
 	// Source label.
-	ResourceTags pulumi.MapInput `pulumi:"resourceTags"`
+	ResourceTags pulumi.StringMapInput `pulumi:"resourceTags"`
 	// Source resource type filter list.
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
@@ -2899,8 +2899,8 @@ func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratc
 }
 
 // Source label.
-func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 // Source resource type filter list.
@@ -3039,7 +3039,7 @@ type GetTemplatesTemplate struct {
 	// The ID of the stack.
 	StackId string `pulumi:"stackId"`
 	// Tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody string `pulumi:"templateBody"`
 	// The ID of the template.
@@ -3075,7 +3075,7 @@ type GetTemplatesTemplateArgs struct {
 	// The ID of the stack.
 	StackId pulumi.StringInput `pulumi:"stackId"`
 	// Tags.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringInput `pulumi:"templateBody"`
 	// The ID of the template.
@@ -3168,8 +3168,8 @@ func (o GetTemplatesTemplateOutput) StackId() pulumi.StringOutput {
 }
 
 // Tags.
-func (o GetTemplatesTemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTemplatesTemplate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTemplatesTemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.

@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -76,14 +75,14 @@ public class Order extends com.pulumi.resources.CustomResource {
      * Service providers customize additional components.
      * 
      */
-    @Export(name="components", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> components;
+    @Export(name="components", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> components;
 
     /**
      * @return Service providers customize additional components.
      * 
      */
-    public Output<Optional<Map<String,Object>>> components() {
+    public Output<Optional<Map<String,String>>> components() {
         return Codegen.optional(this.components);
     }
     /**

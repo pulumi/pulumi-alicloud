@@ -147,14 +147,14 @@ namespace Pulumi.AliCloud.RocketMQ
         public string? OutputFile { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -200,14 +200,14 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? OutputFile { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.RocketMQ
 
             string? outputFile,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             ImmutableArray<Outputs.GetTopicsTopicResult> topics)
         {

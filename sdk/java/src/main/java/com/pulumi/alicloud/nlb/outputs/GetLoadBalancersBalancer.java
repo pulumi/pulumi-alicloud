@@ -8,7 +8,6 @@ import com.pulumi.alicloud.nlb.outputs.GetLoadBalancersBalancerZoneMapping;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +100,7 @@ public final class GetLoadBalancersBalancer {
      * @return The tag of the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The ID of the VPC where the NLB instance is deployed.
      * 
@@ -230,7 +229,7 @@ public final class GetLoadBalancersBalancer {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -273,7 +272,7 @@ public final class GetLoadBalancersBalancer {
         private String resourceGroupId;
         private List<String> securityGroupIds;
         private String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String vpcId;
         private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
         public Builder() {}
@@ -435,7 +434,7 @@ public final class GetLoadBalancersBalancer {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

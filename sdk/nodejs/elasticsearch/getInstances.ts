@@ -26,7 +26,7 @@ export interface GetInstancesArgs {
     descriptionRegex?: string;
     ids?: string[];
     outputFile?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     version?: string;
 }
 
@@ -43,7 +43,7 @@ export interface GetInstancesResult {
     readonly ids: string[];
     readonly instances: outputs.elasticsearch.GetInstancesInstance[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly version?: string;
 }
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
@@ -57,6 +57,6 @@ export interface GetInstancesOutputArgs {
     descriptionRegex?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     version?: pulumi.Input<string>;
 }

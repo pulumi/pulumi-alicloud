@@ -80,7 +80,7 @@ type ClientUser struct {
 	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// The context of the KMS Encryption.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The ID of the SAG instance created for the SAG APP.
@@ -137,7 +137,7 @@ type clientUserState struct {
 	// The password of the KMS Encryption.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// The context of the KMS Encryption.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
 	// The ID of the SAG instance created for the SAG APP.
@@ -156,7 +156,7 @@ type ClientUserState struct {
 	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// The context of the KMS Encryption.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringPtrInput
 	// The ID of the SAG instance created for the SAG APP.
@@ -179,7 +179,7 @@ type clientUserArgs struct {
 	// The password of the KMS Encryption.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// The context of the KMS Encryption.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
 	// The ID of the SAG instance created for the SAG APP.
@@ -199,7 +199,7 @@ type ClientUserArgs struct {
 	// The password of the KMS Encryption.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// The context of the KMS Encryption.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringPtrInput
 	// The ID of the SAG instance created for the SAG APP.
@@ -313,8 +313,8 @@ func (o ClientUserOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // The context of the KMS Encryption.
-func (o ClientUserOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClientUser) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o ClientUserOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientUser) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.

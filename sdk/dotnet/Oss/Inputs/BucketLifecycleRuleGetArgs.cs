@@ -87,14 +87,14 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

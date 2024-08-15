@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The Updated time of the application.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
 
             string resourceGroupId,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string updateTime)
         {

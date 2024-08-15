@@ -7,7 +7,6 @@ import com.pulumi.alicloud.cfg.outputs.GetAggregateConfigRulesRuleCompliance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +78,7 @@ public final class GetAggregateConfigRulesRule {
      * @return The settings of the input parameters for the rule.
      * 
      */
-    private Map<String,Object> inputParameters;
+    private Map<String,String> inputParameters;
     /**
      * @return The frequency of the compliance evaluations.
      * 
@@ -221,7 +220,7 @@ public final class GetAggregateConfigRulesRule {
      * @return The settings of the input parameters for the rule.
      * 
      */
-    public Map<String,Object> inputParameters() {
+    public Map<String,String> inputParameters() {
         return this.inputParameters;
     }
     /**
@@ -319,7 +318,7 @@ public final class GetAggregateConfigRulesRule {
         private String eventSource;
         private String excludeResourceIdsScope;
         private String id;
-        private Map<String,Object> inputParameters;
+        private Map<String,String> inputParameters;
         private String maximumExecutionFrequency;
         private String modifiedTimestamp;
         private String regionIdsScope;
@@ -460,7 +459,7 @@ public final class GetAggregateConfigRulesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder inputParameters(Map<String,Object> inputParameters) {
+        public Builder inputParameters(Map<String,String> inputParameters) {
             if (inputParameters == null) {
               throw new MissingRequiredPropertyException("GetAggregateConfigRulesRule", "inputParameters");
             }

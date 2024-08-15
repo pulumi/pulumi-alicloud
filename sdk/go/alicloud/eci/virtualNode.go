@@ -95,8 +95,8 @@ import (
 //				EipInstanceId:       defaultEipAddress.ID(),
 //				ResourceGroupId:     pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				KubeConfig:          pulumi.String("kube_config"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
 //				},
 //				Taints: eci.VirtualNodeTaintArray{
 //					&eci.VirtualNodeTaintArgs{
@@ -138,7 +138,7 @@ type VirtualNode struct {
 	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayOutput `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
@@ -201,7 +201,7 @@ type virtualNodeState struct {
 	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The taint. See `taints` below.
 	Taints []VirtualNodeTaint `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
@@ -226,7 +226,7 @@ type VirtualNodeState struct {
 	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayInput
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
@@ -253,7 +253,7 @@ type virtualNodeArgs struct {
 	// The security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The taint. See `taints` below.
 	Taints []VirtualNodeTaint `pulumi:"taints"`
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
@@ -277,7 +277,7 @@ type VirtualNodeArgs struct {
 	// The security group ID.
 	SecurityGroupId pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The taint. See `taints` below.
 	Taints VirtualNodeTaintArrayInput
 	// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
@@ -406,8 +406,8 @@ func (o VirtualNodeOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o VirtualNodeOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *VirtualNode) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o VirtualNodeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualNode) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The taint. See `taints` below.

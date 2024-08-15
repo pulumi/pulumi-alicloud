@@ -422,7 +422,7 @@ class GetInstancesInstanceResult(dict):
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str backup_status: The Backup Status of the instance.
         :param int core_disk_size: Core node disk size, unit:GB.
@@ -445,7 +445,7 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: VPC ID the instance belongs to.
         :param str vswitch_id: VSwitch ID the instance belongs to.
         :param str zone_id: Zone ID the instance belongs to.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "backup_status", backup_status)
         pulumi.set(__self__, "core_disk_size", core_disk_size)
@@ -641,7 +641,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

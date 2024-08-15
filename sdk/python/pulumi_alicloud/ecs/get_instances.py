@@ -185,7 +185,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the ECS instance.
         """
@@ -252,7 +252,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   ram_role_name: Optional[str] = None,
                   resource_group_id: Optional[str] = None,
                   status: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   vpc_id: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -282,7 +282,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str ram_role_name: The RAM role name which the instance attaches.
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
-    :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -349,7 +349,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          ram_role_name: Optional[pulumi.Input[Optional[str]]] = None,
                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
@@ -379,7 +379,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str ram_role_name: The RAM role name which the instance attaches.
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
-    :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

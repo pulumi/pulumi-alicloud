@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// <summary>
         /// The input parameters of the Config Rule.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> InputParameters;
+        public readonly ImmutableDictionary<string, string> InputParameters;
         /// <summary>
         /// (Available in 1.124.1+) The frequency of maximum execution.
         /// </summary>
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
 
             string id,
 
-            ImmutableDictionary<string, object> inputParameters,
+            ImmutableDictionary<string, string> inputParameters,
 
             string maximumExecutionFrequency,
 

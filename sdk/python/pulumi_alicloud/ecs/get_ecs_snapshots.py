@@ -166,7 +166,7 @@ class GetEcsSnapshotsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -220,7 +220,7 @@ def get_ecs_snapshots(category: Optional[str] = None,
                       snapshot_type: Optional[str] = None,
                       source_disk_type: Optional[str] = None,
                       status: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       type: Optional[str] = None,
                       usage: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsSnapshotsResult:
@@ -256,7 +256,7 @@ def get_ecs_snapshots(category: Optional[str] = None,
     :param str snapshot_type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
     :param str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
     :param str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the snapshot.
     :param str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
@@ -315,7 +315,7 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
                              snapshot_type: Optional[pulumi.Input[Optional[str]]] = None,
                              source_disk_type: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              type: Optional[pulumi.Input[Optional[str]]] = None,
                              usage: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsSnapshotsResult]:
@@ -351,7 +351,7 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
     :param str snapshot_type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
     :param str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
     :param str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the snapshot.
     :param str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     ...

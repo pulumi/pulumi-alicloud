@@ -252,7 +252,11 @@ class ConsumerChannel(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            db_list=pulumi.Output.all(
+                exampleDatabaseName=example_database.name,
+                exampleDatabaseName1=example_database.name
+        ).apply(lambda resolved_outputs: f"{{\\"{resolved_outputs['exampleDatabaseName']}\\":{{\\"name\\":\\"{resolved_outputs['exampleDatabaseName1']}\\",\\"all\\":true}}}}")
+        ,
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,
@@ -360,7 +364,11 @@ class ConsumerChannel(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
+            db_list=pulumi.Output.all(
+                exampleDatabaseName=example_database.name,
+                exampleDatabaseName1=example_database.name
+        ).apply(lambda resolved_outputs: f"{{\\"{resolved_outputs['exampleDatabaseName']}\\":{{\\"name\\":\\"{resolved_outputs['exampleDatabaseName1']}\\",\\"all\\":true}}}}")
+        ,
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,

@@ -70,7 +70,7 @@ class GetSystemSecurityPoliciesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -89,7 +89,7 @@ class AwaitableGetSystemSecurityPoliciesResult(GetSystemSecurityPoliciesResult):
 
 def get_system_security_policies(ids: Optional[Sequence[str]] = None,
                                  output_file: Optional[str] = None,
-                                 tags: Optional[Mapping[str, Any]] = None,
+                                 tags: Optional[Mapping[str, str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSystemSecurityPoliciesResult:
     """
     This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
@@ -130,7 +130,7 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
 @_utilities.lift_output_func(get_system_security_policies)
 def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSystemSecurityPoliciesResult]:
     """
     This data source provides the ALB System Security Policies of the current Alibaba Cloud user.

@@ -118,7 +118,7 @@ export class Topic extends pulumi.CustomResource {
      * - DOUBLE
      * - TIMESTAMP
      */
-    public readonly recordSchema!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly recordSchema!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */
@@ -208,7 +208,7 @@ export interface TopicState {
      * - DOUBLE
      * - TIMESTAMP
      */
-    recordSchema?: pulumi.Input<{[key: string]: any}>;
+    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */
@@ -249,7 +249,7 @@ export interface TopicArgs {
      * - DOUBLE
      * - TIMESTAMP
      */
-    recordSchema?: pulumi.Input<{[key: string]: any}>;
+    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */

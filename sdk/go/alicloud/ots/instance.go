@@ -50,9 +50,9 @@ import (
 //				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Vpc"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Building table"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Building table"),
 //				},
 //			})
 //			if err != nil {
@@ -103,7 +103,7 @@ type Instance struct {
 	// Default to Alibaba Cloud default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -165,7 +165,7 @@ type instanceState struct {
 	// Default to Alibaba Cloud default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type InstanceState struct {
@@ -198,7 +198,7 @@ type InstanceState struct {
 	// Default to Alibaba Cloud default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the instance.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -235,7 +235,7 @@ type instanceArgs struct {
 	// Default to Alibaba Cloud default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -269,7 +269,7 @@ type InstanceArgs struct {
 	// Default to Alibaba Cloud default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the instance.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -409,8 +409,8 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the instance.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

@@ -181,7 +181,7 @@ type Instance struct {
 	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrOutput `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The instance type. Valid values:
 	// - **migration**: MIGRATION.
 	// - **sync**: synchronization.
@@ -332,7 +332,7 @@ type instanceState struct {
 	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The instance type. Valid values:
 	// - **migration**: MIGRATION.
 	// - **sync**: synchronization.
@@ -454,7 +454,7 @@ type InstanceState struct {
 	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrInput
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The instance type. Valid values:
 	// - **migration**: MIGRATION.
 	// - **sync**: synchronization.
@@ -572,7 +572,7 @@ type instanceArgs struct {
 	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The instance type. Valid values:
 	// - **migration**: MIGRATION.
 	// - **sync**: synchronization.
@@ -687,7 +687,7 @@ type InstanceArgs struct {
 	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrInput
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The instance type. Valid values:
 	// - **migration**: MIGRATION.
 	// - **sync**: synchronization.
@@ -958,8 +958,8 @@ func (o InstanceOutput) SynchronizationDirection() pulumi.StringPtrOutput {
 }
 
 // The tag value corresponding to the tag key.See the following `Block Tags`.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The instance type. Valid values:

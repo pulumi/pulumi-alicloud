@@ -33,7 +33,7 @@ class ServerlessInstanceArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServerlessInstance resource.
         :param pulumi.Input[str] account_password: The password of the database logon account.
@@ -55,7 +55,7 @@ class ServerlessInstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "account_password", account_password)
         pulumi.set(__self__, "capacity_unit", capacity_unit)
@@ -295,14 +295,14 @@ class ServerlessInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -324,7 +324,7 @@ class _ServerlessInstanceState:
                  security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -347,7 +347,7 @@ class _ServerlessInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] status: The instance status. For more information, see the instance Status Table.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network.
         :param pulumi.Input[str] vswitch_id: The of the vswitch.
         :param pulumi.Input[str] zone_id: The ID of the zone. Use this parameter to specify the zone created by the instance.
@@ -575,14 +575,14 @@ class _ServerlessInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -641,7 +641,7 @@ class ServerlessInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -719,7 +719,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network.
         :param pulumi.Input[str] vswitch_id: The of the vswitch.
         :param pulumi.Input[str] zone_id: The ID of the zone. Use this parameter to specify the zone created by the instance.
@@ -814,7 +814,7 @@ class ServerlessInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -887,7 +887,7 @@ class ServerlessInstance(pulumi.CustomResource):
             security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ServerlessInstance':
@@ -915,7 +915,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]] security_ip_groups: An array that consists of the information of IP whitelists.
         :param pulumi.Input[str] status: The instance status. For more information, see the instance Status Table.
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network.
         :param pulumi.Input[str] vswitch_id: The of the vswitch.
         :param pulumi.Input[str] zone_id: The ID of the zone. Use this parameter to specify the zone created by the instance.
@@ -1069,7 +1069,7 @@ class ServerlessInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

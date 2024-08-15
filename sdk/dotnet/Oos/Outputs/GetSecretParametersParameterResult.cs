@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The data type of the encryption parameter.
         /// </summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
 
             string shareType,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.oos.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -52,7 +51,7 @@ public final class GetTemplatesTemplate {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The format of the template. Valid values: `JSON`, `YAML`.
      * 
@@ -143,7 +142,7 @@ public final class GetTemplatesTemplate {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -212,7 +211,7 @@ public final class GetTemplatesTemplate {
         private Boolean hasTrigger;
         private String id;
         private String shareType;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String templateFormat;
         private String templateId;
         private String templateName;
@@ -297,7 +296,7 @@ public final class GetTemplatesTemplate {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetTemplatesTemplate", "tags");
             }

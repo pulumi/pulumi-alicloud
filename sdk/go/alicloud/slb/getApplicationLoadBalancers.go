@@ -93,7 +93,7 @@ type GetApplicationLoadBalancersArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -142,8 +142,8 @@ type GetApplicationLoadBalancersResult struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
 	// The tags of the SLB.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// ID of the VPC the SLB belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch the SLB belongs to.
@@ -201,7 +201,7 @@ type GetApplicationLoadBalancersOutputArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -336,8 +336,8 @@ func (o GetApplicationLoadBalancersResultOutput) Status() pulumi.StringPtrOutput
 }
 
 // The tags of the SLB.
-func (o GetApplicationLoadBalancersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetApplicationLoadBalancersResultOutput) TotalCount() pulumi.IntOutput {

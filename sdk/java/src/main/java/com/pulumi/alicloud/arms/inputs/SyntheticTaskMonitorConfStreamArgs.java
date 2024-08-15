@@ -6,7 +6,6 @@ package com.pulumi.alicloud.arms.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class SyntheticTaskMonitorConfStreamArgs extends com.pulumi.resourc
      * 
      */
     @Import(name="customHeaderContent")
-    private @Nullable Output<Map<String,Object>> customHeaderContent;
+    private @Nullable Output<Map<String,String>> customHeaderContent;
 
     /**
      * @return Custom header, in JSON Map format.
      * 
      */
-    public Optional<Output<Map<String,Object>>> customHeaderContent() {
+    public Optional<Output<Map<String,String>>> customHeaderContent() {
         return Optional.ofNullable(this.customHeaderContent);
     }
 
@@ -167,7 +166,7 @@ public final class SyntheticTaskMonitorConfStreamArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder customHeaderContent(@Nullable Output<Map<String,Object>> customHeaderContent) {
+        public Builder customHeaderContent(@Nullable Output<Map<String,String>> customHeaderContent) {
             $.customHeaderContent = customHeaderContent;
             return this;
         }
@@ -178,7 +177,7 @@ public final class SyntheticTaskMonitorConfStreamArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder customHeaderContent(Map<String,Object> customHeaderContent) {
+        public Builder customHeaderContent(Map<String,String> customHeaderContent) {
             return customHeaderContent(Output.of(customHeaderContent));
         }
 

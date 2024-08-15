@@ -133,7 +133,7 @@ type Network struct {
 	// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrOutput `pulumi:"systemRouteTableName"`
 	// The tags of Vpc.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
 	// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -231,7 +231,7 @@ type networkState struct {
 	// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
 	// The tags of Vpc.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -300,7 +300,7 @@ type NetworkState struct {
 	// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrInput
 	// The tags of Vpc.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -359,7 +359,7 @@ type networkArgs struct {
 	// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName *string `pulumi:"systemRouteTableName"`
 	// The tags of Vpc.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -415,7 +415,7 @@ type NetworkArgs struct {
 	// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	SystemRouteTableName pulumi.StringPtrInput
 	// The tags of Vpc.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -630,8 +630,8 @@ func (o NetworkOutput) SystemRouteTableName() pulumi.StringPtrOutput {
 }
 
 // The tags of Vpc.
-func (o NetworkOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Network) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o NetworkOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of user CIDRs.

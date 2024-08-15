@@ -144,8 +144,8 @@ import (
 //						Weight:      pulumi.Int(10),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
 //				},
 //			})
 //			if err != nil {
@@ -191,7 +191,7 @@ type ServerGroup struct {
 	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigOutput `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
@@ -256,7 +256,7 @@ type serverGroupState struct {
 	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -286,7 +286,7 @@ type ServerGroupState struct {
 	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrInput
 }
@@ -318,7 +318,7 @@ type serverGroupArgs struct {
 	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -347,7 +347,7 @@ type ServerGroupArgs struct {
 	// The configuration of session persistence. See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.
 	VpcId pulumi.StringPtrInput
 }
@@ -493,8 +493,8 @@ func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigO
 }
 
 // A mapping of tags to assign to the resource.
-func (o ServerGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `serverGroupType` parameter is set to `Instance` or `Ip`.

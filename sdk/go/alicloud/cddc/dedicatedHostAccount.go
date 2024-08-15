@@ -94,9 +94,9 @@ import (
 //				ZoneId:               pulumi.String(_default.Ids[0]),
 //				VswitchId:            defaultSwitch.ID(),
 //				PaymentType:          pulumi.String("Subscription"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("CDDC_DEDICATED"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("CDDC_DEDICATED"),
 //				},
 //			})
 //			if err != nil {

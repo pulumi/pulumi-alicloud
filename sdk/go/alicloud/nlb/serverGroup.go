@@ -78,9 +78,9 @@ import (
 //						pulumi.String("http_4xx"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -138,7 +138,7 @@ type ServerGroup struct {
 	// Server group status. Value:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Label.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC to which the server group belongs.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -217,7 +217,7 @@ type serverGroupState struct {
 	// Server group status. Value:
 	Status *string `pulumi:"status"`
 	// Label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the server group belongs.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -261,7 +261,7 @@ type ServerGroupState struct {
 	// Server group status. Value:
 	Status pulumi.StringPtrInput
 	// Label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC to which the server group belongs.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -307,7 +307,7 @@ type serverGroupArgs struct {
 	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// Label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the server group belongs.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -350,7 +350,7 @@ type ServerGroupArgs struct {
 	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType pulumi.StringPtrInput
 	// Label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC to which the server group belongs.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -519,8 +519,8 @@ func (o ServerGroupOutput) Status() pulumi.StringOutput {
 }
 
 // Label.
-func (o ServerGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC to which the server group belongs.

@@ -111,9 +111,9 @@ import (
 //					pulumi.String("10.0.0.0/24"),
 //					pulumi.String("10.0.1.0/24"),
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				EnableTunnelsBgp: pulumi.Bool(true),
 //				TunnelOptionsSpecifications: vpn.ConnectionTunnelOptionsSpecificationArray{
@@ -231,7 +231,7 @@ type Connection struct {
 	// The negotiation status of Tunnel.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
 	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayOutput `pulumi:"tunnelOptionsSpecifications"`
 	// The name of the IPsec-VPN connection.
@@ -322,7 +322,7 @@ type connectionState struct {
 	// The negotiation status of Tunnel.
 	Status *string `pulumi:"status"`
 	// Tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
 	TunnelOptionsSpecifications []ConnectionTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
 	// The name of the IPsec-VPN connection.
@@ -375,7 +375,7 @@ type ConnectionState struct {
 	// The negotiation status of Tunnel.
 	Status pulumi.StringPtrInput
 	// Tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
 	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayInput
 	// The name of the IPsec-VPN connection.
@@ -426,7 +426,7 @@ type connectionArgs struct {
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets []string `pulumi:"remoteSubnets"`
 	// Tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
 	TunnelOptionsSpecifications []ConnectionTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
 	// The name of the IPsec-VPN connection.
@@ -474,7 +474,7 @@ type ConnectionArgs struct {
 	// The CIDR block of the local data center. This parameter is used for phase-two negotiation.
 	RemoteSubnets pulumi.StringArrayInput
 	// Tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
 	TunnelOptionsSpecifications ConnectionTunnelOptionsSpecificationArrayInput
 	// The name of the IPsec-VPN connection.
@@ -664,8 +664,8 @@ func (o ConnectionOutput) Status() pulumi.StringOutput {
 }
 
 // Tags.
-func (o ConnectionOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ConnectionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The tunnel options of IPsec. See `tunnelOptionsSpecification` below.

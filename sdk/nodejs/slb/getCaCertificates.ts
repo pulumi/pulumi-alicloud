@@ -55,7 +55,7 @@ export interface GetCaCertificatesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetCaCertificatesResult {
     /**
      * (Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the CA certificate list.
@@ -129,5 +129,5 @@ export interface GetCaCertificatesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

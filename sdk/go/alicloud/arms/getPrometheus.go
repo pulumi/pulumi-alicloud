@@ -72,9 +72,9 @@ import (
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
 //				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Prometheus"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Prometheus"),
 //				},
 //			})
 //			if err != nil {
@@ -114,7 +114,7 @@ type LookupPrometheusArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getPrometheus.
@@ -132,7 +132,7 @@ type LookupPrometheusResult struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the Prometheus.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupPrometheusOutput(ctx *pulumi.Context, args LookupPrometheusOutputArgs, opts ...pulumi.InvokeOption) LookupPrometheusResultOutput {
@@ -161,7 +161,7 @@ type LookupPrometheusOutputArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (LookupPrometheusOutputArgs) ElementType() reflect.Type {
@@ -220,8 +220,8 @@ func (o LookupPrometheusResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The tag of the Prometheus.
-func (o LookupPrometheusResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPrometheusResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupPrometheusResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPrometheusResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -80,7 +80,7 @@ class GetApplicationsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -102,7 +102,7 @@ class AwaitableGetApplicationsResult(GetApplicationsResult):
 def get_applications(ids: Optional[Sequence[str]] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
-                     tags: Optional[Mapping[str, Any]] = None,
+                     tags: Optional[Mapping[str, str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationsResult:
     """
     This data source provides the Oos Applications of the current Alibaba Cloud user.
@@ -127,7 +127,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -151,7 +151,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationsResult]:
     """
     This data source provides the Oos Applications of the current Alibaba Cloud user.
@@ -176,6 +176,6 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

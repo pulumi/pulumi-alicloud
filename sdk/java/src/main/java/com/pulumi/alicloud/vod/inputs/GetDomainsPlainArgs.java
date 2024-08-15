@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.vod.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +98,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="tags")
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
@@ -107,7 +106,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
-    public Optional<Map<String,Object>> tags() {
+    public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -213,7 +212,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;
         }

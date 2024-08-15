@@ -795,7 +795,7 @@ type GetInstancesInstance struct {
 	// Status of the instance.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// VPC ID the instance belongs to.
 	VpcId string `pulumi:"vpcId"`
 	// VSwitch ID the instance belongs to.
@@ -853,7 +853,7 @@ type GetInstancesInstanceArgs struct {
 	// Status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// VPC ID the instance belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// VSwitch ID the instance belongs to.
@@ -1004,8 +1004,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // VPC ID the instance belongs to.

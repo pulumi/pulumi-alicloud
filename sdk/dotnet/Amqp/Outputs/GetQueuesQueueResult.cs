@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// <summary>
         /// The attributes for the Queue.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Attributes;
+        public readonly ImmutableDictionary<string, string> Attributes;
         /// <summary>
         /// Specifies whether the Auto Delete attribute is configured.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
 
         [OutputConstructor]
         private GetQueuesQueueResult(
-            ImmutableDictionary<string, object> attributes,
+            ImmutableDictionary<string, string> attributes,
 
             bool autoDeleteState,
 

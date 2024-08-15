@@ -84,8 +84,8 @@ type GetLoadBalancersArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
 	// The vpc ids.
@@ -104,18 +104,18 @@ type GetLoadBalancersResult struct {
 	Ids                        []string `pulumi:"ids"`
 	LoadBalancerBusinessStatus *string  `pulumi:"loadBalancerBusinessStatus"`
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
-	LoadBalancerBussinessStatus *string                `pulumi:"loadBalancerBussinessStatus"`
-	LoadBalancerIds             []string               `pulumi:"loadBalancerIds"`
-	LoadBalancerName            *string                `pulumi:"loadBalancerName"`
-	NameRegex                   *string                `pulumi:"nameRegex"`
-	Names                       []string               `pulumi:"names"`
-	OutputFile                  *string                `pulumi:"outputFile"`
-	ResourceGroupId             *string                `pulumi:"resourceGroupId"`
-	Status                      *string                `pulumi:"status"`
-	Tags                        map[string]interface{} `pulumi:"tags"`
-	VpcId                       *string                `pulumi:"vpcId"`
-	VpcIds                      []string               `pulumi:"vpcIds"`
-	ZoneId                      *string                `pulumi:"zoneId"`
+	LoadBalancerBussinessStatus *string           `pulumi:"loadBalancerBussinessStatus"`
+	LoadBalancerIds             []string          `pulumi:"loadBalancerIds"`
+	LoadBalancerName            *string           `pulumi:"loadBalancerName"`
+	NameRegex                   *string           `pulumi:"nameRegex"`
+	Names                       []string          `pulumi:"names"`
+	OutputFile                  *string           `pulumi:"outputFile"`
+	ResourceGroupId             *string           `pulumi:"resourceGroupId"`
+	Status                      *string           `pulumi:"status"`
+	Tags                        map[string]string `pulumi:"tags"`
+	VpcId                       *string           `pulumi:"vpcId"`
+	VpcIds                      []string          `pulumi:"vpcIds"`
+	ZoneId                      *string           `pulumi:"zoneId"`
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
@@ -158,7 +158,7 @@ type GetLoadBalancersOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The vpc ids.
@@ -244,8 +244,8 @@ func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetLoadBalancersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetLoadBalancersResultOutput) VpcId() pulumi.StringPtrOutput {

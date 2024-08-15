@@ -115,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -203,7 +203,7 @@ export interface InstanceState {
     /**
      * A mapping of tags to assign to the instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -255,5 +255,5 @@ export interface InstanceArgs {
     /**
      * A mapping of tags to assign to the instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

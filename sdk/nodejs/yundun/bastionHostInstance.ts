@@ -49,7 +49,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     public readonly storage!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly vswitchId!: pulumi.Output<string>;
 
     /**
@@ -147,7 +147,7 @@ export interface BastionHostInstanceState {
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     storage?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vswitchId?: pulumi.Input<string>;
 }
 
@@ -170,6 +170,6 @@ export interface BastionHostInstanceArgs {
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     storage: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vswitchId: pulumi.Input<string>;
 }

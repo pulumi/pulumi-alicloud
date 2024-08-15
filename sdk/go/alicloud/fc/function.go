@@ -133,8 +133,8 @@ import (
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
 //				Handler:     pulumi.String("hello.handler"),
-//				EnvironmentVariables: pulumi.Map{
-//					"prefix": pulumi.Any("terraform"),
+//				EnvironmentVariables: pulumi.StringMap{
+//					"prefix": pulumi.String("terraform"),
 //				},
 //			})
 //			if err != nil {
@@ -171,7 +171,7 @@ type Function struct {
 	// The Function Compute function description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A map that defines environment variables for the function.
-	EnvironmentVariables pulumi.MapOutput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrOutput `pulumi:"filename"`
 	// The Function Compute service ID.
@@ -257,7 +257,7 @@ type functionState struct {
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
 	// A map that defines environment variables for the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename *string `pulumi:"filename"`
 	// The Function Compute service ID.
@@ -305,7 +305,7 @@ type FunctionState struct {
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
 	// A map that defines environment variables for the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrInput
 	// The Function Compute service ID.
@@ -357,7 +357,7 @@ type functionArgs struct {
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
 	// A map that defines environment variables for the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename *string `pulumi:"filename"`
 	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
@@ -402,7 +402,7 @@ type FunctionArgs struct {
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
 	// A map that defines environment variables for the function.
-	EnvironmentVariables pulumi.MapInput
+	EnvironmentVariables pulumi.StringMapInput
 	// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
 	Filename pulumi.StringPtrInput
 	// The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
@@ -544,8 +544,8 @@ func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 }
 
 // A map that defines environment variables for the function.
-func (o FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.

@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// <summary>
         /// The config of external data source.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ExternalSourceConfig;
+        public readonly ImmutableDictionary<string, string> ExternalSourceConfig;
         /// <summary>
         /// The type of external data source.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
 
             string eventSourceName,
 
-            ImmutableDictionary<string, object> externalSourceConfig,
+            ImmutableDictionary<string, string> externalSourceConfig,
 
             string externalSourceType,
 

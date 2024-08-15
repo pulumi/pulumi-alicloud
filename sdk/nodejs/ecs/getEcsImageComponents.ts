@@ -77,7 +77,7 @@ export interface GetEcsImageComponentsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -96,7 +96,7 @@ export interface GetEcsImageComponentsResult {
     readonly outputFile?: string;
     readonly owner?: string;
     readonly resourceGroupId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Image Components of the current Alibaba Cloud user.
@@ -158,5 +158,5 @@ export interface GetEcsImageComponentsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -7,7 +7,6 @@ import com.pulumi.alicloud.vpc.outputs.GetRouteTablesTable;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ public final class GetRouteTablesResult {
      * 
      */
     private List<GetRouteTablesTable> tables;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private Integer totalCount;
     /**
      * @return The VPC ID.
@@ -150,7 +149,7 @@ public final class GetRouteTablesResult {
     public List<GetRouteTablesTable> tables() {
         return this.tables;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Integer totalCount() {
@@ -186,7 +185,7 @@ public final class GetRouteTablesResult {
         private @Nullable String routerType;
         private @Nullable String status;
         private List<GetRouteTablesTable> tables;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
         public Builder() {}
@@ -306,7 +305,7 @@ public final class GetRouteTablesResult {
             return tables(List.of(tables));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

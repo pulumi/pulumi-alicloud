@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -48,9 +47,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="environment")
-    private @Nullable Output<Map<String,Object>> environment;
+    private @Nullable Output<Map<String,String>> environment;
 
-    public Optional<Output<Map<String,Object>>> environment() {
+    public Optional<Output<Map<String,String>>> environment() {
         return Optional.ofNullable(this.environment);
     }
 
@@ -150,12 +149,12 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        public Builder environment(@Nullable Output<Map<String,Object>> environment) {
+        public Builder environment(@Nullable Output<Map<String,String>> environment) {
             $.environment = environment;
             return this;
         }
 
-        public Builder environment(Map<String,Object> environment) {
+        public Builder environment(Map<String,String> environment) {
             return environment(Output.of(environment));
         }
 

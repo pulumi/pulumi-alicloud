@@ -74,9 +74,9 @@ import (
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
 //				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Prometheus"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Prometheus"),
 //				},
 //			})
 //			if err != nil {
@@ -116,7 +116,7 @@ type GetPrometheisArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getPrometheis.
@@ -134,7 +134,7 @@ type GetPrometheisResult struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the Prometheus.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetPrometheisOutput(ctx *pulumi.Context, args GetPrometheisOutputArgs, opts ...pulumi.InvokeOption) GetPrometheisResultOutput {
@@ -163,7 +163,7 @@ type GetPrometheisOutputArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetPrometheisOutputArgs) ElementType() reflect.Type {
@@ -222,8 +222,8 @@ func (o GetPrometheisResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The tag of the Prometheus.
-func (o GetPrometheisResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPrometheisResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetPrometheisResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPrometheisResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

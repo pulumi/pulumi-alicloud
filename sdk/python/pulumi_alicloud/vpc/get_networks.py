@@ -174,7 +174,7 @@ class GetNetworksResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the VPC.
         """
@@ -252,7 +252,7 @@ def get_networks(cidr_block: Optional[str] = None,
                  page_size: Optional[int] = None,
                  resource_group_id: Optional[str] = None,
                  status: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  vpc_name: Optional[str] = None,
                  vpc_owner_id: Optional[int] = None,
                  vswitch_id: Optional[str] = None,
@@ -283,7 +283,7 @@ def get_networks(cidr_block: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VPC belongs.
     :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_name: The name of the VPC.
     :param int vpc_owner_id: The owner ID of VPC.
     :param str vswitch_id: Filter results by the specified vSwitch.
@@ -344,7 +344,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         vpc_name: Optional[pulumi.Input[Optional[str]]] = None,
                         vpc_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -375,7 +375,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VPC belongs.
     :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_name: The name of the VPC.
     :param int vpc_owner_id: The owner ID of VPC.
     :param str vswitch_id: Filter results by the specified vSwitch.

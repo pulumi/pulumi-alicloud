@@ -106,7 +106,7 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    public readonly endpointConfig!: pulumi.Output<{[key: string]: any}>;
+    public readonly endpointConfig!: pulumi.Output<{[key: string]: string}>;
     /**
      * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
@@ -233,7 +233,7 @@ export interface EndpointState {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
@@ -301,7 +301,7 @@ export interface EndpointArgs {
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */

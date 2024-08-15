@@ -79,7 +79,7 @@ type GetInstancesArgs struct {
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the DB instances.
 	// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
@@ -108,9 +108,9 @@ type GetInstancesResult struct {
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
 	// Status of the instance.
-	Status     *string                `pulumi:"status"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Status     *string           `pulumi:"status"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// ID of the VPC the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch the instance belongs to.
@@ -152,7 +152,7 @@ type GetInstancesOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the DB instances.
 	// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
@@ -238,8 +238,8 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancesResultOutput) TotalCount() pulumi.IntOutput {

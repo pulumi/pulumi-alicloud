@@ -6,7 +6,6 @@ package com.pulumi.alicloud.cfg.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -114,13 +113,13 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="inputParameters")
-    private @Nullable Output<Map<String,Object>> inputParameters;
+    private @Nullable Output<Map<String,String>> inputParameters;
 
     /**
      * @return The settings map of the input parameters for the rule.
      * 
      */
-    public Optional<Output<Map<String,Object>>> inputParameters() {
+    public Optional<Output<Map<String,String>>> inputParameters() {
         return Optional.ofNullable(this.inputParameters);
     }
 
@@ -446,7 +445,7 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder inputParameters(@Nullable Output<Map<String,Object>> inputParameters) {
+        public Builder inputParameters(@Nullable Output<Map<String,String>> inputParameters) {
             $.inputParameters = inputParameters;
             return this;
         }
@@ -457,7 +456,7 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder inputParameters(Map<String,Object> inputParameters) {
+        public Builder inputParameters(Map<String,String> inputParameters) {
             return inputParameters(Output.of(inputParameters));
         }
 

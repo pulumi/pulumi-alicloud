@@ -62,7 +62,7 @@ type NatGateway struct {
 	// (Available since v1.121.0) The status of NAT gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -142,7 +142,7 @@ type natGatewayState struct {
 	// (Available since v1.121.0) The status of NAT gateway.
 	Status *string `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -190,7 +190,7 @@ type NatGatewayState struct {
 	// (Available since v1.121.0) The status of NAT gateway.
 	Status pulumi.StringPtrInput
 	// The tags of NAT gateway.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -236,7 +236,7 @@ type natGatewayArgs struct {
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification *string `pulumi:"specification"`
 	// The tags of NAT gateway.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -279,7 +279,7 @@ type NatGatewayArgs struct {
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
 	Specification pulumi.StringPtrInput
 	// The tags of NAT gateway.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
 	// The id of VSwitch.
@@ -464,8 +464,8 @@ func (o NatGatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of NAT gateway.
-func (o NatGatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *NatGateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o NatGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VPC ID.

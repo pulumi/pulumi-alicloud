@@ -65,7 +65,7 @@ type Instance struct {
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	MasterNodeDiskType pulumi.StringPtrOutput `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -93,11 +93,11 @@ type Instance struct {
 	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-	SettingConfig pulumi.MapOutput `pulumi:"settingConfig"`
+	SettingConfig pulumi.StringMapOutput `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VSwitch.
@@ -204,7 +204,7 @@ type instanceState struct {
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -232,11 +232,11 @@ type instanceState struct {
 	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
+	SettingConfig map[string]string `pulumi:"settingConfig"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -289,7 +289,7 @@ type InstanceState struct {
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -317,11 +317,11 @@ type InstanceState struct {
 	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-	SettingConfig pulumi.MapInput
+	SettingConfig pulumi.StringMapInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringPtrInput
 	// The ID of VSwitch.
@@ -372,7 +372,7 @@ type instanceArgs struct {
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -394,9 +394,9 @@ type instanceArgs struct {
 	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-	SettingConfig map[string]interface{} `pulumi:"settingConfig"`
+	SettingConfig map[string]string `pulumi:"settingConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -444,7 +444,7 @@ type InstanceArgs struct {
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
 	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
@@ -466,9 +466,9 @@ type InstanceArgs struct {
 	// The ID of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-	SettingConfig pulumi.MapInput
+	SettingConfig pulumi.StringMapInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
 	Version pulumi.StringInput
 	// The ID of VSwitch.
@@ -670,8 +670,8 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o InstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
@@ -740,8 +740,8 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-func (o InstanceOutput) SettingConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.SettingConfig }).(pulumi.MapOutput)
+func (o InstanceOutput) SettingConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.SettingConfig }).(pulumi.StringMapOutput)
 }
 
 // The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -750,8 +750,8 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.

@@ -118,7 +118,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Project type
      */
@@ -222,7 +222,7 @@ export interface ProjectState {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Project type
      */
@@ -272,5 +272,5 @@ export interface ProjectArgs {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// <summary>
         /// The parameter configuration of the instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Config;
+        public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
         /// Instance connection domain (only Intranet access supported).
         /// </summary>
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// <summary>
         /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The username of the instance.
         /// </summary>
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
 
             string chargeType,
 
-            ImmutableDictionary<string, object> config,
+            ImmutableDictionary<string, string> config,
 
             string connectionDomain,
 
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string userName,
 

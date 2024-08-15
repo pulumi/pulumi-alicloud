@@ -331,7 +331,7 @@ class GetInstancesInstanceResult(dict):
                  bandwidth: int,
                  capacity: int,
                  charge_type: str,
-                 config: Mapping[str, Any],
+                 config: Mapping[str, str],
                  connection_domain: str,
                  connection_mode: str,
                  connections: int,
@@ -370,7 +370,7 @@ class GetInstancesInstanceResult(dict):
                  security_ips: Sequence[str],
                  ssl_enable: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  user_name: str,
                  vpc_auth_mode: str,
                  vpc_cloud_instance_id: str,
@@ -383,7 +383,7 @@ class GetInstancesInstanceResult(dict):
         :param int bandwidth: Instance bandwidth limit. Unit: Mbit/s.
         :param int capacity: Capacity of the applied ApsaraDB for the instance. Unit: MB.
         :param str charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param Mapping[str, Any] config: The parameter configuration of the instance.
+        :param Mapping[str, str] config: The parameter configuration of the instance.
         :param str connection_domain: Instance connection domain (only Intranet access supported).
         :param str connection_mode: The connection mode of the instance.
         :param int connections: IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
@@ -414,7 +414,7 @@ class GetInstancesInstanceResult(dict):
         :param str search_key: The name of the instance.
         :param str secondary_zone_id: (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
         :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
-        :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str user_name: The username of the instance.
         :param str vpc_cloud_instance_id: Connection port of the instance.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
@@ -527,7 +527,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def config(self) -> Mapping[str, Any]:
+    def config(self) -> Mapping[str, str]:
         """
         The parameter configuration of the instance.
         """
@@ -815,7 +815,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         """

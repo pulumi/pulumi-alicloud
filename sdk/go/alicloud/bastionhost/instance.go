@@ -60,7 +60,7 @@ type Instance struct {
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringOutput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -154,7 +154,7 @@ type instanceState struct {
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage *string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -198,7 +198,7 @@ type InstanceState struct {
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// VSwitch ID configured to Bastionhost.
 	VswitchId pulumi.StringPtrInput
 }
@@ -246,7 +246,7 @@ type instanceArgs struct {
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -291,7 +291,7 @@ type InstanceArgs struct {
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// VSwitch ID configured to Bastionhost.
 	VswitchId pulumi.StringInput
 }
@@ -466,8 +466,8 @@ func (o InstanceOutput) Storage() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // VSwitch ID configured to Bastionhost.

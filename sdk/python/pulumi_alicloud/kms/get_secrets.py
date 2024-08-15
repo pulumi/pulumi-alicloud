@@ -113,7 +113,7 @@ class GetSecretsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         (Optional) A mapping of tags to assign to the resource.
         """
@@ -144,7 +144,7 @@ def get_secrets(enable_details: Optional[bool] = None,
                 ids: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
-                tags: Optional[Mapping[str, Any]] = None,
+                tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretsResult:
     """
     This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
@@ -175,7 +175,7 @@ def get_secrets(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -208,7 +208,7 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretsResult]:
     """
     This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
@@ -239,6 +239,6 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

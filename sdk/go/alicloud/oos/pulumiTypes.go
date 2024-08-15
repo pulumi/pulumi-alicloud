@@ -203,7 +203,7 @@ type GetApplicationsApplication struct {
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The Updated time of the application.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -231,7 +231,7 @@ type GetApplicationsApplicationArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The Updated time of the application.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
@@ -313,8 +313,8 @@ func (o GetApplicationsApplicationOutput) ResourceGroupId() pulumi.StringOutput 
 }
 
 // The tag of the resource.
-func (o GetApplicationsApplicationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationsApplicationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Updated time of the application.
@@ -641,7 +641,7 @@ type GetParametersParameter struct {
 	// The share type of the common parameter.
 	ShareType string `pulumi:"shareType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter.
 	Type string `pulumi:"type"`
 	// The user who updated the common parameter.
@@ -685,7 +685,7 @@ type GetParametersParameterArgs struct {
 	// The share type of the common parameter.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The data type of the common parameter.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user who updated the common parameter.
@@ -798,8 +798,8 @@ func (o GetParametersParameterOutput) ShareType() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetParametersParameterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetParametersParameter) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetParametersParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The data type of the common parameter.
@@ -1062,7 +1062,7 @@ type GetSecretParametersParameter struct {
 	// The share type of the encryption parameter.
 	ShareType string `pulumi:"shareType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the encryption parameter.
 	Type string `pulumi:"type"`
 	// The user who updated the encryption parameter.
@@ -1106,7 +1106,7 @@ type GetSecretParametersParameterArgs struct {
 	// The share type of the encryption parameter.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The data type of the encryption parameter.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user who updated the encryption parameter.
@@ -1222,8 +1222,8 @@ func (o GetSecretParametersParameterOutput) ShareType() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetSecretParametersParameterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretParametersParameter) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecretParametersParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The data type of the encryption parameter.
@@ -1281,7 +1281,7 @@ type GetStateConfigurationsConfiguration struct {
 	// The ID of the final state configuration.
 	StateConfigurationId string `pulumi:"stateConfigurationId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The target resource.
 	Targets string `pulumi:"targets"`
 	// The ID of the template.
@@ -1325,7 +1325,7 @@ type GetStateConfigurationsConfigurationArgs struct {
 	// The ID of the final state configuration.
 	StateConfigurationId pulumi.StringInput `pulumi:"stateConfigurationId"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The target resource.
 	Targets pulumi.StringInput `pulumi:"targets"`
 	// The ID of the template.
@@ -1435,8 +1435,8 @@ func (o GetStateConfigurationsConfigurationOutput) StateConfigurationId() pulumi
 }
 
 // The tag of the resource.
-func (o GetStateConfigurationsConfigurationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetStateConfigurationsConfiguration) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetStateConfigurationsConfigurationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The target resource.
@@ -1500,7 +1500,7 @@ type GetTemplatesTemplate struct {
 	// The sharing type of the template. Valid values: `Private`, `Public`.
 	ShareType string `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The format of the template. Valid values: `JSON`, `YAML`.
 	TemplateFormat string `pulumi:"templateFormat"`
 	// ID of the OOS Template resource.
@@ -1544,7 +1544,7 @@ type GetTemplatesTemplateArgs struct {
 	// The sharing type of the template. Valid values: `Private`, `Public`.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The format of the template. Valid values: `JSON`, `YAML`.
 	TemplateFormat pulumi.StringInput `pulumi:"templateFormat"`
 	// ID of the OOS Template resource.
@@ -1648,8 +1648,8 @@ func (o GetTemplatesTemplateOutput) ShareType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetTemplatesTemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTemplatesTemplate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTemplatesTemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTemplatesTemplate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The format of the template. Valid values: `JSON`, `YAML`.

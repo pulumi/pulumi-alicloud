@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Compute.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The name of the template.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Compute.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string templateName)
         {

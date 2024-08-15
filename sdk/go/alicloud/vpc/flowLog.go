@@ -53,7 +53,7 @@ type FlowLog struct {
 	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the current instance resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayOutput `pulumi:"trafficPaths"`
 	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
@@ -130,7 +130,7 @@ type flowLogState struct {
 	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
 	Status *string `pulumi:"status"`
 	// The tag of the current instance resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
 	TrafficPaths []string `pulumi:"trafficPaths"`
 	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
@@ -163,7 +163,7 @@ type FlowLogState struct {
 	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
 	Status pulumi.StringPtrInput
 	// The tag of the current instance resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayInput
 	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
@@ -194,7 +194,7 @@ type flowLogArgs struct {
 	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
 	Status *string `pulumi:"status"`
 	// The tag of the current instance resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
 	TrafficPaths []string `pulumi:"trafficPaths"`
 	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
@@ -222,7 +222,7 @@ type FlowLogArgs struct {
 	// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
 	Status pulumi.StringPtrInput
 	// The tag of the current instance resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
 	TrafficPaths pulumi.StringArrayInput
 	// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
@@ -377,8 +377,8 @@ func (o FlowLogOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the current instance resource.
-func (o FlowLogOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *FlowLog) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o FlowLogOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlowLog) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.

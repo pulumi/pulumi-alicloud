@@ -45,7 +45,7 @@ export class V2Function extends pulumi.CustomResource {
     public readonly customRuntimeConfig!: pulumi.Output<outputs.fc.V2FunctionCustomRuntimeConfig | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly diskSize!: pulumi.Output<number | undefined>;
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly functionName!: pulumi.Output<string>;
     public readonly gpuMemorySize!: pulumi.Output<number | undefined>;
     public readonly handler!: pulumi.Output<string>;
@@ -155,7 +155,7 @@ export interface V2FunctionState {
     customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig>;
     description?: pulumi.Input<string>;
     diskSize?: pulumi.Input<number>;
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     functionName?: pulumi.Input<string>;
     gpuMemorySize?: pulumi.Input<number>;
     handler?: pulumi.Input<string>;
@@ -185,7 +185,7 @@ export interface V2FunctionArgs {
     customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig>;
     description?: pulumi.Input<string>;
     diskSize?: pulumi.Input<number>;
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     functionName: pulumi.Input<string>;
     gpuMemorySize?: pulumi.Input<number>;
     handler: pulumi.Input<string>;

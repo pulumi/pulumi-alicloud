@@ -220,7 +220,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time zone of the cluster.
      */
@@ -441,7 +441,7 @@ export interface ServerlessKubernetesState {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The time zone of the cluster.
      */
@@ -577,7 +577,7 @@ export interface ServerlessKubernetesArgs {
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The time zone of the cluster.
      */

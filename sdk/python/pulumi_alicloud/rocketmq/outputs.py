@@ -494,7 +494,7 @@ class GetGroupsGroupResult(dict):
                  instance_id: str,
                  owner: str,
                  remark: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str group_name: The name of the group.
         :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
@@ -503,7 +503,7 @@ class GetGroupsGroupResult(dict):
         :param str instance_id: ID of the ONS Instance that owns the groups.
         :param str owner: The ID of the group owner, which is the Alibaba Cloud UID.
         :param str remark: Remark of the group.
-        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+        :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "group_type", group_type)
@@ -572,7 +572,7 @@ class GetGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the Ons instance.
         """
@@ -594,7 +594,7 @@ class GetInstancesInstanceResult(dict):
                  release_time: str,
                  remark: str,
                  status: int,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  tcp_endpoint: str):
         """
         :param str http_internal_endpoint: The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
@@ -609,7 +609,7 @@ class GetInstancesInstanceResult(dict):
         :param str release_time: The automatic release time of an Enterprise Platinum Edition instance.
         :param str remark: This attribute is a concise description of instance.
         :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
-        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+        :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
         :param str tcp_endpoint: The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         """
         pulumi.set(__self__, "http_internal_endpoint", http_internal_endpoint)
@@ -725,7 +725,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the Ons instance.
         """
@@ -752,7 +752,7 @@ class GetTopicsTopicResult(dict):
                  relation: int,
                  relation_name: str,
                  remark: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  topic: str,
                  topic_name: str):
         """
@@ -765,7 +765,7 @@ class GetTopicsTopicResult(dict):
         :param int relation: The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
         :param str relation_name: The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
         :param str remark: Remark of the topic.
-        :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+        :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
         :param str topic: The name of the topic.
         :param str topic_name: The name of the topic.
         """
@@ -856,7 +856,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the Ons instance.
         """

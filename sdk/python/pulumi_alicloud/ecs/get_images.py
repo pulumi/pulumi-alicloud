@@ -218,7 +218,7 @@ class GetImagesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -276,7 +276,7 @@ def get_images(action_type: Optional[str] = None,
                resource_group_id: Optional[str] = None,
                snapshot_id: Optional[str] = None,
                status: Optional[str] = None,
-               tags: Optional[Mapping[str, Any]] = None,
+               tags: Optional[Mapping[str, str]] = None,
                usage: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
@@ -323,7 +323,7 @@ def get_images(action_type: Optional[str] = None,
            * `UnAvailable`: The image is unavailable.
            * `CreateFailed`: The image failed to be created.
            * `Deprecated`: The image is discontinued.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
     __args__ = dict()
@@ -395,7 +395,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
                       resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                       snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                       usage: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
     """
@@ -442,7 +442,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
            * `UnAvailable`: The image is unavailable.
            * `CreateFailed`: The image failed to be created.
            * `Deprecated`: The image is discontinued.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
     ...

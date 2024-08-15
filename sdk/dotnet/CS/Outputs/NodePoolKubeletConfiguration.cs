@@ -40,15 +40,15 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? EvictionHard;
+        public readonly ImmutableDictionary<string, string>? EvictionHard;
         /// <summary>
         /// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? EvictionSoft;
+        public readonly ImmutableDictionary<string, string>? EvictionSoft;
         /// <summary>
         /// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? EvictionSoftGracePeriod;
+        public readonly ImmutableDictionary<string, string>? EvictionSoftGracePeriod;
         /// <summary>
         /// Feature switch to enable configuration of experimental features.
         /// </summary>
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? KubeReserved;
+        public readonly ImmutableDictionary<string, string>? KubeReserved;
         /// <summary>
         /// The maximum number of running pods.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? SystemReserved;
+        public readonly ImmutableDictionary<string, string>? SystemReserved;
 
         [OutputConstructor]
         private NodePoolKubeletConfiguration(
@@ -104,11 +104,11 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? eventRecordQps,
 
-            ImmutableDictionary<string, object>? evictionHard,
+            ImmutableDictionary<string, string>? evictionHard,
 
-            ImmutableDictionary<string, object>? evictionSoft,
+            ImmutableDictionary<string, string>? evictionSoft,
 
-            ImmutableDictionary<string, object>? evictionSoftGracePeriod,
+            ImmutableDictionary<string, string>? evictionSoftGracePeriod,
 
             ImmutableDictionary<string, bool>? featureGates,
 
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? kubeApiQps,
 
-            ImmutableDictionary<string, object>? kubeReserved,
+            ImmutableDictionary<string, string>? kubeReserved,
 
             string? maxPods,
 
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? serializeImagePulls,
 
-            ImmutableDictionary<string, object>? systemReserved)
+            ImmutableDictionary<string, string>? systemReserved)
         {
             AllowedUnsafeSysctls = allowedUnsafeSysctls;
             ContainerLogMaxFiles = containerLogMaxFiles;

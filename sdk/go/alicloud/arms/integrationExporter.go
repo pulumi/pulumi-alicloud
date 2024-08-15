@@ -89,9 +89,9 @@ import (
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Prometheus"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Prometheus"),
 //				},
 //			})
 //			if err != nil {

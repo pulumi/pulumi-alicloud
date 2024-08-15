@@ -85,8 +85,8 @@ type GetEcsSnapshotsArgs struct {
 	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }
@@ -110,7 +110,7 @@ type GetEcsSnapshotsResult struct {
 	Snapshots       []GetEcsSnapshotsSnapshot `pulumi:"snapshots"`
 	SourceDiskType  *string                   `pulumi:"sourceDiskType"`
 	Status          *string                   `pulumi:"status"`
-	Tags            map[string]interface{}    `pulumi:"tags"`
+	Tags            map[string]string         `pulumi:"tags"`
 	Type            *string                   `pulumi:"type"`
 	Usage           *string                   `pulumi:"usage"`
 }
@@ -157,7 +157,7 @@ type GetEcsSnapshotsOutputArgs struct {
 	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
-	Tags pulumi.MapInput       `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
@@ -247,8 +247,8 @@ func (o GetEcsSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsSnapshotsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsSnapshotsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsSnapshotsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetEcsSnapshotsResultOutput) Type() pulumi.StringPtrOutput {

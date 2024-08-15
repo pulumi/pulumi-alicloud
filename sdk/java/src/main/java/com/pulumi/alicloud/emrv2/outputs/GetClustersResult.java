@@ -7,7 +7,6 @@ import com.pulumi.alicloud.emrv2.outputs.GetClustersCluster;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public final class GetClustersResult {
     private @Nullable String outputFile;
     private @Nullable List<String> paymentTypes;
     private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private Integer totalCount;
 
     private GetClustersResult() {}
@@ -81,7 +80,7 @@ public final class GetClustersResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Integer totalCount() {
@@ -110,7 +109,7 @@ public final class GetClustersResult {
         private @Nullable String outputFile;
         private @Nullable List<String> paymentTypes;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCount;
         public Builder() {}
         public Builder(GetClustersResult defaults) {
@@ -237,7 +236,7 @@ public final class GetClustersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

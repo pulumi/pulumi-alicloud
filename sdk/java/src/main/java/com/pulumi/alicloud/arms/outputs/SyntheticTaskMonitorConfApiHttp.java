@@ -7,7 +7,6 @@ import com.pulumi.alicloud.arms.outputs.SyntheticTaskMonitorConfApiHttpRequestBo
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -35,7 +34,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
      * @return HTTP request header.
      * 
      */
-    private @Nullable Map<String,Object> requestHeaders;
+    private @Nullable Map<String,String> requestHeaders;
     /**
      * @return The target URL.
      * 
@@ -73,7 +72,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
      * @return HTTP request header.
      * 
      */
-    public Map<String,Object> requestHeaders() {
+    public Map<String,String> requestHeaders() {
         return this.requestHeaders == null ? Map.of() : this.requestHeaders;
     }
     /**
@@ -103,7 +102,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
         private @Nullable Integer connectTimeout;
         private @Nullable String method;
         private @Nullable SyntheticTaskMonitorConfApiHttpRequestBody requestBody;
-        private @Nullable Map<String,Object> requestHeaders;
+        private @Nullable Map<String,String> requestHeaders;
         private String targetUrl;
         private @Nullable Integer timeout;
         public Builder() {}
@@ -136,7 +135,7 @@ public final class SyntheticTaskMonitorConfApiHttp {
             return this;
         }
         @CustomType.Setter
-        public Builder requestHeaders(@Nullable Map<String,Object> requestHeaders) {
+        public Builder requestHeaders(@Nullable Map<String,String> requestHeaders) {
 
             this.requestHeaders = requestHeaders;
             return this;

@@ -18,7 +18,7 @@ class TopicArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None):
         """
@@ -29,7 +29,7 @@ class TopicArgs:
                **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-        :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
                - BIGINT
                - STRING
                - BOOLEAN
@@ -104,7 +104,7 @@ class TopicArgs:
 
     @property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT
@@ -116,7 +116,7 @@ class TopicArgs:
         return pulumi.get(self, "record_schema")
 
     @record_schema.setter
-    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "record_schema", value)
 
     @property
@@ -153,7 +153,7 @@ class _TopicState:
                  life_cycle: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None):
         """
@@ -166,7 +166,7 @@ class _TopicState:
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
-        :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
                - BIGINT
                - STRING
                - BOOLEAN
@@ -270,7 +270,7 @@ class _TopicState:
 
     @property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT
@@ -282,7 +282,7 @@ class _TopicState:
         return pulumi.get(self, "record_schema")
 
     @record_schema.setter
-    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "record_schema", value)
 
     @property
@@ -319,7 +319,7 @@ class Topic(pulumi.CustomResource):
                  life_cycle: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -382,7 +382,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
-        :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
                - BIGINT
                - STRING
                - BOOLEAN
@@ -467,7 +467,7 @@ class Topic(pulumi.CustomResource):
                  life_cycle: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -506,7 +506,7 @@ class Topic(pulumi.CustomResource):
             life_cycle: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
-            record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             record_type: Optional[pulumi.Input[str]] = None,
             shard_count: Optional[pulumi.Input[int]] = None) -> 'Topic':
         """
@@ -524,7 +524,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
-        :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
                - BIGINT
                - STRING
                - BOOLEAN
@@ -600,7 +600,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def record_schema(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT

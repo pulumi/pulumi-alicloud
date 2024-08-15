@@ -150,7 +150,7 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -200,7 +200,7 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
                        output_file: Optional[str] = None,
                        resource_group_id: Optional[str] = None,
                        status: Optional[str] = None,
-                       tags: Optional[Mapping[str, Any]] = None,
+                       tags: Optional[Mapping[str, str]] = None,
                        vpc_ids: Optional[Sequence[str]] = None,
                        zone_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
@@ -288,7 +288,7 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:

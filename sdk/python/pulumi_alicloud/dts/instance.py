@@ -31,7 +31,7 @@ class InstanceArgs:
                  source_region: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None):
         """
@@ -115,7 +115,7 @@ class InstanceArgs:
                - `Forward`: Data is synchronized from the source database to the destination database.
                - `Reverse`: Data is synchronized from the destination database to the source database.
                - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
                - **sync**: synchronization.
@@ -437,14 +437,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag value corresponding to the tag key.See the following `Block Tags`.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -505,7 +505,7 @@ class _InstanceState:
                  status: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None):
         """
@@ -593,7 +593,7 @@ class _InstanceState:
                - `Forward`: Data is synchronized from the source database to the destination database.
                - `Reverse`: Data is synchronized from the destination database to the source database.
                - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
                - **sync**: synchronization.
@@ -971,14 +971,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag value corresponding to the tag key.See the following `Block Tags`.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1037,7 +1037,7 @@ class Instance(pulumi.CustomResource):
                  source_region: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1158,7 +1158,7 @@ class Instance(pulumi.CustomResource):
                - `Forward`: Data is synchronized from the source database to the destination database.
                - `Reverse`: Data is synchronized from the destination database to the source database.
                - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
                - **sync**: synchronization.
@@ -1245,7 +1245,7 @@ class Instance(pulumi.CustomResource):
                  source_region: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1312,7 +1312,7 @@ class Instance(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             sync_architecture: Optional[pulumi.Input[str]] = None,
             synchronization_direction: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             used_time: Optional[pulumi.Input[int]] = None) -> 'Instance':
         """
@@ -1405,7 +1405,7 @@ class Instance(pulumi.CustomResource):
                - `Forward`: Data is synchronized from the source database to the destination database.
                - `Reverse`: Data is synchronized from the destination database to the source database.
                - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
                - **sync**: synchronization.
@@ -1680,7 +1680,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag value corresponding to the tag key.See the following `Block Tags`.
         """

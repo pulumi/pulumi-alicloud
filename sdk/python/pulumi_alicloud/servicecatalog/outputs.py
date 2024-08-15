@@ -857,7 +857,7 @@ class GetProvisionedProductsProductResult(dict):
                  stack_region_id: str,
                  status: str,
                  status_message: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str create_time: The creation time of the product instance
         :param str last_provisioning_task_id: The ID of the last instance operation task
@@ -1073,7 +1073,7 @@ class GetProvisionedProductsProductResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -1147,7 +1147,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
                  stack_region_id: str,
                  status: str,
                  status_message: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str create_time: The creation time of the product instance
         :param str last_provisioning_task_id: The ID of the last instance operation task
@@ -1363,7 +1363,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 

@@ -130,7 +130,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * The Tag of.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC to which the VPN gateway belongs.
      */
@@ -318,7 +318,7 @@ export interface GatewayState {
     /**
      * The Tag of.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC to which the VPN gateway belongs.
      */
@@ -406,7 +406,7 @@ export interface GatewayArgs {
     /**
      * The Tag of.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC to which the VPN gateway belongs.
      */

@@ -111,8 +111,8 @@ type Eip struct {
 	// The EIP current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput    `pulumi:"tags"`
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Zone pulumi.StringOutput    `pulumi:"zone"`
 }
 
 // NewEip registers a new resource with the given unique name, arguments, and options.
@@ -191,8 +191,8 @@ type eipState struct {
 	// The EIP current status.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Zone *string                `pulumi:"zone"`
+	Tags map[string]string `pulumi:"tags"`
+	Zone *string           `pulumi:"zone"`
 }
 
 type EipState struct {
@@ -242,7 +242,7 @@ type EipState struct {
 	// The EIP current status.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	Zone pulumi.StringPtrInput
 }
 
@@ -294,8 +294,8 @@ type eipArgs struct {
 	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Zone *string                `pulumi:"zone"`
+	Tags map[string]string `pulumi:"tags"`
+	Zone *string           `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Eip resource.
@@ -343,7 +343,7 @@ type EipArgs struct {
 	ResourceGroupId         pulumi.StringPtrInput
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	Zone pulumi.StringPtrInput
 }
 
@@ -555,8 +555,8 @@ func (o EipOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EipOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Eip) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EipOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o EipOutput) Zone() pulumi.StringOutput {

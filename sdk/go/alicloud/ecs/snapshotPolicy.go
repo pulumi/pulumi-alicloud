@@ -82,7 +82,7 @@ type SnapshotPolicy struct {
 	// Default value: -1.
 	RetentionDays     pulumi.IntOutput         `pulumi:"retentionDays"`
 	Status            pulumi.StringOutput      `pulumi:"status"`
-	Tags              pulumi.MapOutput         `pulumi:"tags"`
+	Tags              pulumi.StringMapOutput   `pulumi:"tags"`
 	TargetCopyRegions pulumi.StringArrayOutput `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
@@ -142,10 +142,10 @@ type snapshotPolicyState struct {
 	// - [1, 65536]: The number of days retained.
 	//
 	// Default value: -1.
-	RetentionDays     *int                   `pulumi:"retentionDays"`
-	Status            *string                `pulumi:"status"`
-	Tags              map[string]interface{} `pulumi:"tags"`
-	TargetCopyRegions []string               `pulumi:"targetCopyRegions"`
+	RetentionDays     *int              `pulumi:"retentionDays"`
+	Status            *string           `pulumi:"status"`
+	Tags              map[string]string `pulumi:"tags"`
+	TargetCopyRegions []string          `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -168,7 +168,7 @@ type SnapshotPolicyState struct {
 	// Default value: -1.
 	RetentionDays     pulumi.IntPtrInput
 	Status            pulumi.StringPtrInput
-	Tags              pulumi.MapInput
+	Tags              pulumi.StringMapInput
 	TargetCopyRegions pulumi.StringArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
@@ -194,9 +194,9 @@ type snapshotPolicyArgs struct {
 	// - [1, 65536]: The number of days retained.
 	//
 	// Default value: -1.
-	RetentionDays     int                    `pulumi:"retentionDays"`
-	Tags              map[string]interface{} `pulumi:"tags"`
-	TargetCopyRegions []string               `pulumi:"targetCopyRegions"`
+	RetentionDays     int               `pulumi:"retentionDays"`
+	Tags              map[string]string `pulumi:"tags"`
+	TargetCopyRegions []string          `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
 	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -219,7 +219,7 @@ type SnapshotPolicyArgs struct {
 	//
 	// Default value: -1.
 	RetentionDays     pulumi.IntInput
-	Tags              pulumi.MapInput
+	Tags              pulumi.StringMapInput
 	TargetCopyRegions pulumi.StringArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
 	// - A maximum of 24 time points can be selected.
@@ -347,8 +347,8 @@ func (o SnapshotPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-func (o SnapshotPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *SnapshotPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o SnapshotPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {

@@ -2072,7 +2072,7 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
                  repeat_weekdays: Sequence[str],
                  retention_days: int,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  target_copy_regions: Sequence[str],
                  time_points: Sequence[str],
                  volume_nums: int):
@@ -2086,7 +2086,7 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         :param Sequence[str] repeat_weekdays: The automatic snapshot repetition dates.
         :param int retention_days: The snapshot retention time, and the unit of measurement is day.
         :param str status: The status of Auto Snapshot Policy.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param Sequence[str] target_copy_regions: The destination region to which the snapshot is copied.
         :param Sequence[str] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour.
         :param int volume_nums: The number of extended volumes on which this policy is enabled.
@@ -2179,7 +2179,7 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -2230,7 +2230,7 @@ class GetCapacityReservationsReservationResult(dict):
                  status: str,
                  time_slot: str,
                  zone_ids: Sequence[str],
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str capacity_reservation_id: Capacity Reservation id
         :param str capacity_reservation_name: Capacity reservation service name.
@@ -2249,7 +2249,7 @@ class GetCapacityReservationsReservationResult(dict):
         :param str status: The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
         :param str time_slot: This parameter is under test and is not yet open for use.
         :param Sequence[str] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         """
         pulumi.set(__self__, "capacity_reservation_id", capacity_reservation_id)
         pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
@@ -2409,7 +2409,7 @@ class GetCapacityReservationsReservationResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag of the resource.
         """
@@ -2561,7 +2561,7 @@ class GetDedicatedHostsHostResult(dict):
                  supported_custom_instance_type_families: Sequence[str],
                  supported_instance_type_families: Sequence[str],
                  supported_instance_types_lists: Sequence[str],
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  zone_id: str):
         """
         :param str action_on_maintenance: The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online.
@@ -2589,7 +2589,7 @@ class GetDedicatedHostsHostResult(dict):
         :param Sequence[str] supported_custom_instance_type_families: (Available in 1.123.1+) A custom instance type family supported by a dedicated host.
         :param Sequence[str] supported_instance_type_families: (Available in 1.123.1+) ECS instance type family supported by the dedicated host.
         :param Sequence[str] supported_instance_types_lists: The list of ECS instance
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the ECS Dedicated Host.
         """
         pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
@@ -2822,7 +2822,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -3049,7 +3049,7 @@ class GetDisksDiskResult(dict):
                  size: int,
                  snapshot_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  zone_id: str):
         """
@@ -3069,7 +3069,7 @@ class GetDisksDiskResult(dict):
         :param int size: Disk size in GiB.
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the disks. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -3357,7 +3357,7 @@ class GetDisksDiskResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the disks. It must be in the format:
         ```python
@@ -3457,7 +3457,7 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
                  description: str,
                  id: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  zone_id: str):
         """
         :param Sequence['GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs'] dedicated_host_cluster_capacities: The capacity of the dedicated host cluster.
@@ -3467,7 +3467,7 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
         :param str description: The description of the dedicated host cluster.
         :param str id: The ID of the Dedicated Host Cluster.
         :param str resource_group_id: The ID of the resource group to which the dedicated host cluster belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the dedicated host cluster.
         """
         pulumi.set(__self__, "dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
@@ -3538,7 +3538,7 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -3812,7 +3812,7 @@ class GetEcsDisksDiskResult(dict):
                  size: int,
                  snapshot_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  zone_id: str):
         """
@@ -3848,7 +3848,7 @@ class GetEcsDisksDiskResult(dict):
         :param int size: Disk size in GiB.
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status.
-        :param Mapping[str, Any] tags: A map of tags assigned to the disk.
+        :param Mapping[str, str] tags: A map of tags assigned to the disk.
         :param str type: Disk type.
         :param str zone_id: The zone id.
         """
@@ -4176,7 +4176,7 @@ class GetEcsDisksDiskResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the disk.
         """
@@ -4277,7 +4277,7 @@ class GetEcsImageComponentsComponentResult(dict):
                  owner: str,
                  resource_group_id: str,
                  system_type: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str component_type: The type of the image component.
         :param str content: The content of the image component.
@@ -4289,7 +4289,7 @@ class GetEcsImageComponentsComponentResult(dict):
         :param str owner: The type of the image component.
         :param str resource_group_id: The ID of the resource group.
         :param str system_type: The operating system type supported by the image component.
-        :param Mapping[str, Any] tags: List of label key-value pairs.
+        :param Mapping[str, str] tags: List of label key-value pairs.
         """
         pulumi.set(__self__, "component_type", component_type)
         pulumi.set(__self__, "content", content)
@@ -4385,7 +4385,7 @@ class GetEcsImageComponentsComponentResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         List of label key-value pairs.
         """
@@ -4412,7 +4412,7 @@ class GetEcsImagePipelinePipelineResult(dict):
                  system_disk_size: int,
                  to_region_ids: Sequence[str],
                  vswitch_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param Sequence[str] add_accounts: The IDs of Alibaba Cloud accounts to which the image was shared.
         :param str base_image: The source image.
@@ -4431,7 +4431,7 @@ class GetEcsImagePipelinePipelineResult(dict):
         :param int system_disk_size: The system disk size of the intermediate instance. Unit: `GiB`.
         :param Sequence[str] to_region_ids: The IDs of regions to which to distribute the created image.
         :param str vswitch_id: The vswitch id.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "add_accounts", add_accounts)
         pulumi.set(__self__, "base_image", base_image)
@@ -4591,7 +4591,7 @@ class GetEcsImagePipelinePipelineResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -4947,14 +4947,14 @@ class GetEcsKeyPairsKeyPairResult(dict):
                  key_name: str,
                  key_pair_name: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str finger_print: The finger print of the key pair.
         :param str id: The ID of the Key Pair.
         :param Sequence['GetEcsKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: The Key Pair Name.
         :param str resource_group_id: The resource group Id.
-        :param Mapping[str, Any] tags: The tags.
+        :param Mapping[str, str] tags: The tags.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -5011,7 +5011,7 @@ class GetEcsKeyPairsKeyPairResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags.
         """
@@ -5146,14 +5146,14 @@ class GetEcsKeyPairsPairResult(dict):
                  key_name: str,
                  key_pair_name: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str finger_print: The finger print of the key pair.
         :param str id: The ID of the Key Pair.
         :param Sequence['GetEcsKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: The Key Pair Name.
         :param str resource_group_id: The Resource Group Id.
-        :param Mapping[str, Any] tags: The tags.
+        :param Mapping[str, str] tags: The tags.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -5210,7 +5210,7 @@ class GetEcsKeyPairsPairResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags.
         """
@@ -5376,7 +5376,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
                  spot_price_limit: float,
                  spot_strategy: str,
                  system_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult'],
-                 template_tags: Mapping[str, Any],
+                 template_tags: Mapping[str, str],
                  user_data: str,
                  version_description: str,
                  vpc_id: str,
@@ -5420,7 +5420,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         :param float spot_price_limit: Sets the maximum hourly instance price.
         :param str spot_strategy: The spot strategy for a Pay-As-You-Go instance.
         :param Sequence['GetEcsLaunchTemplatesTemplateSystemDiskArgs'] system_disks: The System Disk.
-        :param Mapping[str, Any] template_tags: The template tags.
+        :param Mapping[str, str] template_tags: The template tags.
         :param str user_data: The User Data.
         :param str version_description: The Version Description.
         :param str vpc_id: VpcId.
@@ -5769,7 +5769,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Mapping[str, Any]:
+    def template_tags(self) -> Mapping[str, str]:
         """
         The template tags.
         """
@@ -6167,7 +6167,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
                  service_id: int,
                  service_managed: bool,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -6196,7 +6196,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param int service_id: The service id.
         :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
         :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
-        :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+        :param Mapping[str, str] tags: A map of tags assigned to ENIs.
         :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
         :param str vpc_id: The vpc id.
         :param str vswitch_id: The vswitch id.
@@ -6417,7 +6417,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to ENIs.
         """
@@ -6611,7 +6611,7 @@ class GetEcsSnapshotGroupsGroupResult(dict):
                  snapshot_group_id: str,
                  snapshot_group_name: str,
                  status: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str description: The description of the snapshot-consistent group.
         :param str id: The ID of the Snapshot Group.
@@ -6620,7 +6620,7 @@ class GetEcsSnapshotGroupsGroupResult(dict):
         :param str snapshot_group_id: The first ID of the resource.
         :param str snapshot_group_name: The name of the snapshot-consistent group.
         :param str status: The status of the resource.
-        :param Mapping[str, Any] tags: List of label key-value pairs.
+        :param Mapping[str, str] tags: List of label key-value pairs.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -6690,7 +6690,7 @@ class GetEcsSnapshotGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         List of label key-value pairs.
         """
@@ -6723,7 +6723,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
                  source_disk_type: str,
                  source_storage_type: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  usage: str):
         """
@@ -6747,7 +6747,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
         :param str source_disk_type: Source disk attributes.
         :param str source_storage_type: Original disk type.
         :param str status: The status of the snapshot.
-        :param Mapping[str, Any] tags: The tags.
+        :param Mapping[str, str] tags: The tags.
         :param str usage: A resource type that has a reference relationship.
         """
         pulumi.set(__self__, "category", category)
@@ -6954,7 +6954,7 @@ class GetEcsSnapshotsSnapshotResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags.
         """
@@ -7124,7 +7124,7 @@ class GetEipAddressesAddressResult(dict):
                  second_limited: bool,
                  segment_instance_id: str,
                  status: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str address_name: The name of the EIP.
         :param str allocation_id: The ID of the EIP.
@@ -7156,7 +7156,7 @@ class GetEipAddressesAddressResult(dict):
         :param bool second_limited: Indicates whether level-2 throttling is configured.
         :param str segment_instance_id: The IDs of the contiguous EIPs.
         :param str status: The status of the EIP.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "address_name", address_name)
         pulumi.set(__self__, "allocation_id", allocation_id)
@@ -7432,7 +7432,7 @@ class GetEipAddressesAddressResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -7574,7 +7574,7 @@ class GetEipsAddressResult(dict):
                  second_limited: bool,
                  segment_instance_id: str,
                  status: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str bandwidth: EIP internet max bandwidth in Mbps.
         :param bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
@@ -7585,7 +7585,7 @@ class GetEipsAddressResult(dict):
         :param str ip_address: Public IP Address of the the EIP.
         :param str resource_group_id: The Id of resource group which the eips belongs.
         :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "address_name", address_name)
         pulumi.set(__self__, "allocation_id", allocation_id)
@@ -7798,7 +7798,7 @@ class GetEipsAddressResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -7929,7 +7929,7 @@ class GetElasticityAssurancesAssuranceResult(dict):
                  status: str,
                  total_assurance_times: str,
                  used_assurance_times: int,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param Sequence['GetElasticityAssurancesAssuranceAllocatedResourceArgs'] allocated_resources: Details of resource allocation.
         :param str description: Description of flexible guarantee service.
@@ -7946,7 +7946,7 @@ class GetElasticityAssurancesAssuranceResult(dict):
         :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
         :param str total_assurance_times: The total number of flexible guarantee services.
         :param int used_assurance_times: This parameter is not yet available.
-        :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+        :param Mapping[str, str] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
         pulumi.set(__self__, "allocated_resources", allocated_resources)
         pulumi.set(__self__, "description", description)
@@ -8088,7 +8088,7 @@ class GetElasticityAssurancesAssuranceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """
@@ -8223,7 +8223,7 @@ class GetImagesImageResult(dict):
                  state: str,
                  status: str,
                  usage: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
         :param str creation_time: Time of creation.
@@ -8249,7 +8249,7 @@ class GetImagesImageResult(dict):
                * `CreateFailed`: The image failed to be created.
                * `Deprecated`: The image is discontinued.
         :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -8454,7 +8454,7 @@ class GetImagesImageResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -8777,7 +8777,7 @@ class GetInstancesInstanceResult(dict):
                  status: str,
                  vpc_id: str,
                  vswitch_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str availability_zone: Availability zone where instances are located.
         :param str creation_time: Instance creation time.
@@ -8802,7 +8802,7 @@ class GetInstancesInstanceResult(dict):
         :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
         :param str vpc_id: ID of the VPC linked to the instances.
         :param str vswitch_id: ID of the vSwitch linked to the instances.
-        :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the ECS instances. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -9025,7 +9025,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
         ```python
@@ -9123,14 +9123,14 @@ class GetKeyPairsKeyPairResult(dict):
                  key_name: str,
                  key_pair_name: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str finger_print: A finger print used to retrieve specified key pair.
         :param str id: ID of the key pair.
         :param Sequence['GetKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: Name of the key pair.
         :param str resource_group_id: The Id of resource group which the key pair belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -9187,7 +9187,7 @@ class GetKeyPairsKeyPairResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -9322,14 +9322,14 @@ class GetKeyPairsPairResult(dict):
                  key_name: str,
                  key_pair_name: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str finger_print: A finger print used to retrieve specified key pair.
         :param str id: ID of the key pair.
         :param Sequence['GetKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: Name of the key pair.
         :param str resource_group_id: The Id of resource group which the key pair belongs.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "finger_print", finger_print)
         pulumi.set(__self__, "id", id)
@@ -9386,7 +9386,7 @@ class GetKeyPairsPairResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -9538,7 +9538,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  service_id: int,
                  service_managed: bool,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -9555,7 +9555,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str resource_group_id: The Id of resource group.
         :param Sequence[str] security_groups: A list of security group that the ENI belongs to.
         :param str status: Current status of the ENI.
-        :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
+        :param Mapping[str, str] tags: A map of tags assigned to the ENI.
         :param str vpc_id: ID of the VPC that the ENI belongs to.
         :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
@@ -9739,7 +9739,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the ENI.
         """
@@ -9948,7 +9948,7 @@ class GetSecurityGroupsGroupResult(dict):
                  resource_group_id: str,
                  security_group_type: str,
                  vpc_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str creation_time: Creation time of the security group.
         :param str description: The description of the security group.
@@ -9958,7 +9958,7 @@ class GetSecurityGroupsGroupResult(dict):
         :param str resource_group_id: The Id of resource group which the security_group belongs.
         :param str security_group_type: The type of the security group.
         :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
-        :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the ECS instances. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -10046,7 +10046,7 @@ class GetSecurityGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
         ```python
@@ -10088,7 +10088,7 @@ class GetSnapshotsSnapshotResult(dict):
                  source_disk_type: str,
                  source_storage_type: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  usage: str):
         """
@@ -10105,7 +10105,7 @@ class GetSnapshotsSnapshotResult(dict):
         :param str source_disk_size: Size of the source disk, measured in GB.
         :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
         :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-        :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
+        :param Mapping[str, str] tags: A map of tags assigned to the snapshot.
         :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
         pulumi.set(__self__, "category", category)
@@ -10291,7 +10291,7 @@ class GetSnapshotsSnapshotResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the snapshot.
         """

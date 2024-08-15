@@ -91,7 +91,7 @@ type CaCertificate struct {
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCaCertificate registers a new resource with the given unique name, arguments, and options.
@@ -138,7 +138,7 @@ type caCertificateState struct {
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type CaCertificateState struct {
@@ -153,7 +153,7 @@ type CaCertificateState struct {
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (CaCertificateState) ElementType() reflect.Type {
@@ -172,7 +172,7 @@ type caCertificateArgs struct {
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CaCertificate resource.
@@ -188,7 +188,7 @@ type CaCertificateArgs struct {
 	// The Id of resource group which the slbCa certificate belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (CaCertificateArgs) ElementType() reflect.Type {
@@ -301,8 +301,8 @@ func (o CaCertificateOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o CaCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *CaCertificate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o CaCertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CaCertificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type CaCertificateArrayOutput struct{ *pulumi.OutputState }

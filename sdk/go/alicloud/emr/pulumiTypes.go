@@ -1039,7 +1039,7 @@ type GetClustersCluster struct {
 	// Cluster stop time.
 	StopTime string `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Disk type.
 	Type string `pulumi:"type"`
 	// The EMR permission name used.
@@ -1139,7 +1139,7 @@ type GetClustersClusterArgs struct {
 	// Cluster stop time.
 	StopTime pulumi.StringInput `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Disk type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The EMR permission name used.
@@ -1389,8 +1389,8 @@ func (o GetClustersClusterOutput) StopTime() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Disk type.

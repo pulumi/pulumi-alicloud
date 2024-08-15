@@ -6,7 +6,6 @@ package com.pulumi.alicloud.oos.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -72,7 +71,7 @@ public final class GetSecretParametersParameter {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The data type of the encryption parameter.
      * 
@@ -171,7 +170,7 @@ public final class GetSecretParametersParameter {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -216,7 +215,7 @@ public final class GetSecretParametersParameter {
         private String secretParameterId;
         private String secretParameterName;
         private String shareType;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String type;
         private String updatedBy;
         private String updatedDate;
@@ -329,7 +328,7 @@ public final class GetSecretParametersParameter {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSecretParametersParameter", "tags");
             }

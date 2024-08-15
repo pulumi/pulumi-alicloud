@@ -584,7 +584,7 @@ class GetInstancesInstanceResult(dict):
                  resource_group_id: str,
                  status: str,
                  table_quota: int,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  user_id: str):
         """
         :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
@@ -601,7 +601,7 @@ class GetInstancesInstanceResult(dict):
         :param str resource_group_id: (Available since v1.221.0) The resource group the instance belongs to.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param int table_quota: (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
-        :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the instance. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -744,7 +744,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the instance. It must be in the format:
         ```python

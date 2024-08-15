@@ -4184,7 +4184,7 @@ type GetContainerGroupsGroup struct {
 	// The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
 	SucceededTime string `pulumi:"succeededTime"`
 	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The information about the mounted volume. You can mount up to 20 volumes.
 	Volumes []GetContainerGroupsGroupVolume `pulumi:"volumes"`
 	// The if of vpc.
@@ -4257,7 +4257,7 @@ type GetContainerGroupsGroupArgs struct {
 	// The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
 	SucceededTime pulumi.StringInput `pulumi:"succeededTime"`
 	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The information about the mounted volume. You can mount up to 20 volumes.
 	Volumes GetContainerGroupsGroupVolumeArrayInput `pulumi:"volumes"`
 	// The if of vpc.
@@ -4446,8 +4446,8 @@ func (o GetContainerGroupsGroupOutput) SucceededTime() pulumi.StringOutput {
 }
 
 // The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-func (o GetContainerGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetContainerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetContainerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetContainerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The information about the mounted volume. You can mount up to 20 volumes.
@@ -6903,7 +6903,7 @@ type GetVirtualNodesNode struct {
 	// The Status of the virtual node.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Of the virtual node number.
 	VirtualNodeId string `pulumi:"virtualNodeId"`
 	// The name of the virtual node.
@@ -6952,7 +6952,7 @@ type GetVirtualNodesNodeArgs struct {
 	// The Status of the virtual node.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Of the virtual node number.
 	VirtualNodeId pulumi.StringInput `pulumi:"virtualNodeId"`
 	// The name of the virtual node.
@@ -7076,8 +7076,8 @@ func (o GetVirtualNodesNodeOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetVirtualNodesNodeOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetVirtualNodesNode) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetVirtualNodesNodeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Of the virtual node number.

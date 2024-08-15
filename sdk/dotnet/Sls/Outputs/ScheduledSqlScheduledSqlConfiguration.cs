@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// <summary>
         /// Parameter configuration.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Parameters;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
         /// Resource Pool.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
 
             int? maxRunTimeInSeconds,
 
-            ImmutableDictionary<string, object>? parameters,
+            ImmutableDictionary<string, string>? parameters,
 
             string? resourcePool,
 

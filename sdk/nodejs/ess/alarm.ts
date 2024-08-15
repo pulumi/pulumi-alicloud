@@ -167,7 +167,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
+    public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
@@ -304,7 +304,7 @@ export interface AlarmState {
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
@@ -381,7 +381,7 @@ export interface AlarmArgs {
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */

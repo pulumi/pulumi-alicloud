@@ -37,7 +37,7 @@ class GetMongoInstancesInstanceResult(dict):
                  shards: Sequence['outputs.GetMongoInstancesInstanceShardResult'],
                  status: str,
                  storage: int,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -150,7 +150,7 @@ class GetMongoInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         return pulumi.get(self, "tags")
 
 

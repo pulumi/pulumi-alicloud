@@ -51,7 +51,7 @@ type GetNatGatewaysArgs struct {
 	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status *string `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -85,8 +85,8 @@ type GetNatGatewaysResult struct {
 	// The status of the NAT gateway.
 	Status *string `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -131,7 +131,7 @@ type GetNatGatewaysOutputArgs struct {
 	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
@@ -230,8 +230,8 @@ func (o GetNatGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The tags of NAT gateway.
-func (o GetNatGatewaysResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNatGatewaysResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNatGatewaysResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetNatGatewaysResultOutput) TotalCount() pulumi.IntOutput {

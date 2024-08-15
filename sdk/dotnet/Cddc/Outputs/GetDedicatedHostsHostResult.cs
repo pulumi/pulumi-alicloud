@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the virtual private cloud (VPC) to which the host is connected.
         /// </summary>
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
 
             string storageUsed,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

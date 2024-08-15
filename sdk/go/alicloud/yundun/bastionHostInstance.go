@@ -30,7 +30,7 @@ type BastionHostInstance struct {
 	ResourceGroupId    pulumi.StringOutput                          `pulumi:"resourceGroupId"`
 	SecurityGroupIds   pulumi.StringArrayOutput                     `pulumi:"securityGroupIds"`
 	Storage            pulumi.StringOutput                          `pulumi:"storage"`
-	Tags               pulumi.MapOutput                             `pulumi:"tags"`
+	Tags               pulumi.StringMapOutput                       `pulumi:"tags"`
 	VswitchId          pulumi.StringOutput                          `pulumi:"vswitchId"`
 }
 
@@ -100,7 +100,7 @@ type bastionHostInstanceState struct {
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
 	Storage            *string                             `pulumi:"storage"`
-	Tags               map[string]interface{}              `pulumi:"tags"`
+	Tags               map[string]string                   `pulumi:"tags"`
 	VswitchId          *string                             `pulumi:"vswitchId"`
 }
 
@@ -120,7 +120,7 @@ type BastionHostInstanceState struct {
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
 	Storage            pulumi.StringPtrInput
-	Tags               pulumi.MapInput
+	Tags               pulumi.StringMapInput
 	VswitchId          pulumi.StringPtrInput
 }
 
@@ -144,7 +144,7 @@ type bastionHostInstanceArgs struct {
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
 	Storage            string                              `pulumi:"storage"`
-	Tags               map[string]interface{}              `pulumi:"tags"`
+	Tags               map[string]string                   `pulumi:"tags"`
 	VswitchId          string                              `pulumi:"vswitchId"`
 }
 
@@ -165,7 +165,7 @@ type BastionHostInstanceArgs struct {
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
 	Storage            pulumi.StringInput
-	Tags               pulumi.MapInput
+	Tags               pulumi.StringMapInput
 	VswitchId          pulumi.StringInput
 }
 
@@ -316,8 +316,8 @@ func (o BastionHostInstanceOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }
 
-func (o BastionHostInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *BastionHostInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o BastionHostInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o BastionHostInstanceOutput) VswitchId() pulumi.StringOutput {

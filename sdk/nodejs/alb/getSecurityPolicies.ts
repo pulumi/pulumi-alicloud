@@ -75,7 +75,7 @@ export interface GetSecurityPoliciesArgs {
      * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -95,7 +95,7 @@ export interface GetSecurityPoliciesResult {
     readonly securityPolicyIds?: string[];
     readonly securityPolicyName?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Alb Security Policies of the current Alibaba Cloud user.
@@ -154,5 +154,5 @@ export interface GetSecurityPoliciesOutputArgs {
      * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

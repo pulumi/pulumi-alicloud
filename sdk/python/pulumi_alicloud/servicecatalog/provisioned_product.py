@@ -23,7 +23,7 @@ class ProvisionedProductArgs:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
                  portfolio_id: Optional[pulumi.Input[str]] = None,
                  provisioned_product_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ProvisionedProduct resource.
         :param pulumi.Input[str] product_id: Product ID.
@@ -33,7 +33,7 @@ class ProvisionedProductArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
         :param pulumi.Input[str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[str] provisioned_product_id: The ID of the instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "product_id", product_id)
         pulumi.set(__self__, "product_version_id", product_version_id)
@@ -134,14 +134,14 @@ class ProvisionedProductArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -169,7 +169,7 @@ class _ProvisionedProductState:
                  stack_region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ProvisionedProduct resources.
         :param pulumi.Input[str] create_time: The creation time of the product instance
@@ -193,7 +193,7 @@ class _ProvisionedProductState:
         :param pulumi.Input[str] stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
         :param pulumi.Input[str] status: Instance status
         :param pulumi.Input[str] status_message: The status message of the product instance
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -494,14 +494,14 @@ class _ProvisionedProductState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -517,7 +517,7 @@ class ProvisionedProduct(pulumi.CustomResource):
                  provisioned_product_id: Optional[pulumi.Input[str]] = None,
                  provisioned_product_name: Optional[pulumi.Input[str]] = None,
                  stack_region_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Service Catalog Provisioned Product resource.
@@ -570,7 +570,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         :param pulumi.Input[str] provisioned_product_id: The ID of the instance.
         :param pulumi.Input[str] provisioned_product_name: The name of the instance.The length is 1~128 characters.
         :param pulumi.Input[str] stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -642,7 +642,7 @@ class ProvisionedProduct(pulumi.CustomResource):
                  provisioned_product_id: Optional[pulumi.Input[str]] = None,
                  provisioned_product_name: Optional[pulumi.Input[str]] = None,
                  stack_region_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -713,7 +713,7 @@ class ProvisionedProduct(pulumi.CustomResource):
             stack_region_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             status_message: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ProvisionedProduct':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ProvisionedProduct':
         """
         Get an existing ProvisionedProduct resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -742,7 +742,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         :param pulumi.Input[str] stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
         :param pulumi.Input[str] status: Instance status
         :param pulumi.Input[str] status_message: The status message of the product instance
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -942,7 +942,7 @@ class ProvisionedProduct(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

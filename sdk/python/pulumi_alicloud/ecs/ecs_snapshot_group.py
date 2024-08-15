@@ -22,7 +22,7 @@ class EcsSnapshotGroupArgs:
                  instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_group_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshotGroup resource.
         :param pulumi.Input[str] description: The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -33,7 +33,7 @@ class EcsSnapshotGroupArgs:
         :param pulumi.Input[int] instant_access_retention_days: Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
         :param pulumi.Input[str] snapshot_group_name: The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot group.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -152,14 +152,14 @@ class EcsSnapshotGroupArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the snapshot group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -175,7 +175,7 @@ class _EcsSnapshotGroupState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_group_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshotGroup resources.
         :param pulumi.Input[str] description: The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -187,7 +187,7 @@ class _EcsSnapshotGroupState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
         :param pulumi.Input[str] snapshot_group_name: The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot group.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -320,14 +320,14 @@ class _EcsSnapshotGroupState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the snapshot group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -344,7 +344,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
                  instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_group_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Snapshot Group resource.
@@ -427,7 +427,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         :param pulumi.Input[int] instant_access_retention_days: Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
         :param pulumi.Input[str] snapshot_group_name: The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot group.
         """
         ...
     @overload
@@ -529,7 +529,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
                  instant_access_retention_days: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_group_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -568,7 +568,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             snapshot_group_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EcsSnapshotGroup':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EcsSnapshotGroup':
         """
         Get an existing EcsSnapshotGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -585,7 +585,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
         :param pulumi.Input[str] snapshot_group_name: The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -677,7 +677,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the snapshot group.
         """

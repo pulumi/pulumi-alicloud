@@ -125,7 +125,7 @@ class GetClustersClusterResult(dict):
                  minor_version: str,
                  pay_type: str,
                  status: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str cluster_id: The ID of the Cassandra cluster.
         :param str cluster_name: The name of the Cassandra cluster.
@@ -137,7 +137,7 @@ class GetClustersClusterResult(dict):
         :param str minor_version: The minor version of the cluster.
         :param str pay_type: Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
         :param str status: Status of the cluster.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -240,7 +240,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

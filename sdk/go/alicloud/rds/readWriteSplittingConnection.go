@@ -154,7 +154,7 @@ type ReadWriteSplittingConnection struct {
 	// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-	Weight pulumi.MapOutput `pulumi:"weight"`
+	Weight pulumi.StringMapOutput `pulumi:"weight"`
 }
 
 // NewReadWriteSplittingConnection registers a new resource with the given unique name, arguments, and options.
@@ -206,7 +206,7 @@ type readWriteSplittingConnectionState struct {
 	// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
 	Port *int `pulumi:"port"`
 	// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-	Weight map[string]interface{} `pulumi:"weight"`
+	Weight map[string]string `pulumi:"weight"`
 }
 
 type ReadWriteSplittingConnectionState struct {
@@ -223,7 +223,7 @@ type ReadWriteSplittingConnectionState struct {
 	// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
 	Port pulumi.IntPtrInput
 	// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-	Weight pulumi.MapInput
+	Weight pulumi.StringMapInput
 }
 
 func (ReadWriteSplittingConnectionState) ElementType() reflect.Type {
@@ -242,7 +242,7 @@ type readWriteSplittingConnectionArgs struct {
 	// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
 	Port *int `pulumi:"port"`
 	// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-	Weight map[string]interface{} `pulumi:"weight"`
+	Weight map[string]string `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a ReadWriteSplittingConnection resource.
@@ -258,7 +258,7 @@ type ReadWriteSplittingConnectionArgs struct {
 	// Intranet connection port. Valid value: [3001-3999]. Default to 3306.
 	Port pulumi.IntPtrInput
 	// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-	Weight pulumi.MapInput
+	Weight pulumi.StringMapInput
 }
 
 func (ReadWriteSplittingConnectionArgs) ElementType() reflect.Type {
@@ -379,8 +379,8 @@ func (o ReadWriteSplittingConnectionOutput) Port() pulumi.IntOutput {
 }
 
 // Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
-func (o ReadWriteSplittingConnectionOutput) Weight() pulumi.MapOutput {
-	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.MapOutput { return v.Weight }).(pulumi.MapOutput)
+func (o ReadWriteSplittingConnectionOutput) Weight() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ReadWriteSplittingConnection) pulumi.StringMapOutput { return v.Weight }).(pulumi.StringMapOutput)
 }
 
 type ReadWriteSplittingConnectionArrayOutput struct{ *pulumi.OutputState }

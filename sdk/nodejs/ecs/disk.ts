@@ -143,7 +143,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -297,7 +297,7 @@ export interface DiskState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;
 }
@@ -377,7 +377,7 @@ export interface DiskArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;
 }

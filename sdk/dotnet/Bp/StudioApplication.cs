@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Bp
         /// The configuration of the application.
         /// </summary>
         [Output("configuration")]
-        public Output<ImmutableDictionary<string, object>?> Configuration { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Configuration { get; private set; } = null!;
 
         /// <summary>
         /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Bp
         /// The variables of the application.
         /// </summary>
         [Output("variables")]
-        public Output<ImmutableDictionary<string, object>?> Variables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Variables { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,14 +183,14 @@ namespace Pulumi.AliCloud.Bp
         public Input<string>? AreaId { get; set; }
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        private InputMap<string>? _configuration;
 
         /// <summary>
         /// The configuration of the application.
         /// </summary>
-        public InputMap<object> Configuration
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 
@@ -219,14 +219,14 @@ namespace Pulumi.AliCloud.Bp
         public Input<string> TemplateId { get; set; } = null!;
 
         [Input("variables")]
-        private InputMap<object>? _variables;
+        private InputMap<string>? _variables;
 
         /// <summary>
         /// The variables of the application.
         /// </summary>
-        public InputMap<object> Variables
+        public InputMap<string> Variables
         {
-            get => _variables ?? (_variables = new InputMap<object>());
+            get => _variables ?? (_variables = new InputMap<string>());
             set => _variables = value;
         }
 
@@ -251,14 +251,14 @@ namespace Pulumi.AliCloud.Bp
         public Input<string>? AreaId { get; set; }
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
+        private InputMap<string>? _configuration;
 
         /// <summary>
         /// The configuration of the application.
         /// </summary>
-        public InputMap<object> Configuration
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 
@@ -293,14 +293,14 @@ namespace Pulumi.AliCloud.Bp
         public Input<string>? TemplateId { get; set; }
 
         [Input("variables")]
-        private InputMap<object>? _variables;
+        private InputMap<string>? _variables;
 
         /// <summary>
         /// The variables of the application.
         /// </summary>
-        public InputMap<object> Variables
+        public InputMap<string> Variables
         {
-            get => _variables ?? (_variables = new InputMap<object>());
+            get => _variables ?? (_variables = new InputMap<string>());
             set => _variables = value;
         }
 

@@ -217,9 +217,9 @@ import (
 //				UserDefinedEmrEcsRole:  defaultRole.Name,
 //				SshEnable:              pulumi.Bool(true),
 //				MasterPwd:              pulumi.String("ABCtest1234!"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("acceptance test"),
 //				},
 //			})
 //			if err != nil {

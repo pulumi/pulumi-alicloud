@@ -39,7 +39,7 @@ export class Application extends pulumi.CustomResource {
     public readonly clusterName!: pulumi.Output<string>;
     public /*out*/ readonly defaultDomain!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly environment!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environment!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly latestImage!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly services!: pulumi.Output<outputs.cs.ApplicationService[]>;
@@ -104,7 +104,7 @@ export interface ApplicationState {
     clusterName?: pulumi.Input<string>;
     defaultDomain?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
-    environment?: pulumi.Input<{[key: string]: any}>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     latestImage?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     services?: pulumi.Input<pulumi.Input<inputs.cs.ApplicationService>[]>;
@@ -120,7 +120,7 @@ export interface ApplicationArgs {
     blueGreenConfirm?: pulumi.Input<boolean>;
     clusterName: pulumi.Input<string>;
     description?: pulumi.Input<string>;
-    environment?: pulumi.Input<{[key: string]: any}>;
+    environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     latestImage?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     template: pulumi.Input<string>;

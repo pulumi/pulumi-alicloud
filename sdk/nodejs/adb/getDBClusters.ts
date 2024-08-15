@@ -80,7 +80,7 @@ export interface GetDBClustersArgs {
     /**
      * A map of tags assigned to the cluster.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -120,7 +120,7 @@ export interface GetDBClustersResult {
     /**
      * The tags of the resource.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
 }
 /**
@@ -183,5 +183,5 @@ export interface GetDBClustersOutputArgs {
     /**
      * A map of tags assigned to the cluster.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -8,7 +8,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -85,13 +84,13 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
      * 
      */
     @Import(name="dimensions")
-    private @Nullable Output<Map<String,Object>> dimensions;
+    private @Nullable Output<Map<String,String>> dimensions;
 
     /**
      * @return Quota dimension. See `dimensions` below.
      * 
      */
-    public Optional<Output<Map<String,Object>>> dimensions() {
+    public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
@@ -375,7 +374,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder dimensions(@Nullable Output<Map<String,Object>> dimensions) {
+        public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
@@ -386,7 +385,7 @@ public final class TemplateApplicationsQuotaApplicationDetailArgs extends com.pu
          * @return builder
          * 
          */
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 

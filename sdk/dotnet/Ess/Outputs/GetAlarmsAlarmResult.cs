@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// <summary>
         /// The dimension map for the alarm's associated metric.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Dimensions;
+        public readonly ImmutableDictionary<string, string> Dimensions;
         /// <summary>
         /// Whether to enable specific ess alarm.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string description,
 
-            ImmutableDictionary<string, object> dimensions,
+            ImmutableDictionary<string, string> dimensions,
 
             bool enable,
 

@@ -26,7 +26,7 @@ class GetInstancesInstanceResult(dict):
                  id: str,
                  instance_charge_type: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  updated_at: str,
                  version: str,
                  vswitch_id: str):
@@ -91,7 +91,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         return pulumi.get(self, "tags")
 
     @property

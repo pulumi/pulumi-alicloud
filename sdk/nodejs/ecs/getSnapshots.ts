@@ -112,7 +112,7 @@ export interface GetSnapshotsArgs {
     /**
      * A map of tags assigned to the snapshot.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     type?: string;
     /**
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
@@ -164,7 +164,7 @@ export interface GetSnapshotsResult {
     /**
      * A map of tags assigned to the snapshot.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
     /**
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
@@ -257,7 +257,7 @@ export interface GetSnapshotsOutputArgs {
     /**
      * A map of tags assigned to the snapshot.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
     /**
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.

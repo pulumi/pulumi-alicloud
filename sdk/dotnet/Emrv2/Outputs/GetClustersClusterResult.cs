@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// <summary>
         /// The cluster state change reason.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> StateChangeReason;
+        public readonly ImmutableDictionary<string, string> StateChangeReason;
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             string resourceGroupId,
 
-            ImmutableDictionary<string, object> stateChangeReason,
+            ImmutableDictionary<string, string> stateChangeReason,
 
             ImmutableArray<Outputs.GetClustersClusterTagResult> tags)
         {

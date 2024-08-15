@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -82,7 +81,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="externalSourceConfig")
-    private @Nullable Output<Map<String,Object>> externalSourceConfig;
+    private @Nullable Output<Map<String,String>> externalSourceConfig;
 
     /**
      * @return The config of external source.
@@ -101,7 +100,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
      * `QueueName` - The queue name of MNS.
      * 
      */
-    public Optional<Output<Map<String,Object>>> externalSourceConfig() {
+    public Optional<Output<Map<String,String>>> externalSourceConfig() {
         return Optional.ofNullable(this.externalSourceConfig);
     }
 
@@ -246,7 +245,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder externalSourceConfig(@Nullable Output<Map<String,Object>> externalSourceConfig) {
+        public Builder externalSourceConfig(@Nullable Output<Map<String,String>> externalSourceConfig) {
             $.externalSourceConfig = externalSourceConfig;
             return this;
         }
@@ -270,7 +269,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder externalSourceConfig(Map<String,Object> externalSourceConfig) {
+        public Builder externalSourceConfig(Map<String,String> externalSourceConfig) {
             return externalSourceConfig(Output.of(externalSourceConfig));
         }
 

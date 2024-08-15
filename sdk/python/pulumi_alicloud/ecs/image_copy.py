@@ -23,7 +23,7 @@ class ImageCopyArgs:
                  image_name: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ImageCopy resource.
         :param pulumi.Input[str] source_image_id: The source image ID.
@@ -35,7 +35,7 @@ class ImageCopyArgs:
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         pulumi.set(__self__, "source_image_id", source_image_id)
         pulumi.set(__self__, "source_region_id", source_region_id)
@@ -166,14 +166,14 @@ class ImageCopyArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag value of an image. The value of N ranges from 1 to 20.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -189,7 +189,7 @@ class _ImageCopyState:
                  name: Optional[pulumi.Input[str]] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ImageCopy resources.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
@@ -201,7 +201,7 @@ class _ImageCopyState:
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
         :param pulumi.Input[str] source_image_id: The source image ID.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         if delete_auto_snapshot is not None:
             pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
@@ -334,14 +334,14 @@ class _ImageCopyState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag value of an image. The value of N ranges from 1 to 20.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -359,7 +359,7 @@ class ImageCopy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
@@ -440,7 +440,7 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
         :param pulumi.Input[str] source_image_id: The source image ID.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         ...
     @overload
@@ -540,7 +540,7 @@ class ImageCopy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,7 +583,7 @@ class ImageCopy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
             source_region_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ImageCopy':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ImageCopy':
         """
         Get an existing ImageCopy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -600,7 +600,7 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
         :param pulumi.Input[str] source_image_id: The source image ID.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -689,7 +689,7 @@ class ImageCopy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag value of an image. The value of N ranges from 1 to 20.
         """

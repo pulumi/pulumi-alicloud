@@ -99,7 +99,7 @@ export class RouteTable extends pulumi.CustomResource {
     /**
      * The tag.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of VPC.
      *
@@ -188,7 +188,7 @@ export interface RouteTableState {
     /**
      * The tag.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of VPC.
      *
@@ -224,7 +224,7 @@ export interface RouteTableArgs {
     /**
      * The tag.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of VPC.
      *

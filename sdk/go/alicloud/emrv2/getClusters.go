@@ -47,7 +47,7 @@ type GetClustersArgs struct {
 	// The Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getClusters.
@@ -57,17 +57,17 @@ type GetClustersResult struct {
 	ClusterTypes  []string             `pulumi:"clusterTypes"`
 	Clusters      []GetClustersCluster `pulumi:"clusters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	MaxResults      *int                   `pulumi:"maxResults"`
-	NameRegex       *string                `pulumi:"nameRegex"`
-	Names           []string               `pulumi:"names"`
-	NextToken       *string                `pulumi:"nextToken"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	PaymentTypes    []string               `pulumi:"paymentTypes"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	TotalCount      int                    `pulumi:"totalCount"`
+	Id              string            `pulumi:"id"`
+	Ids             []string          `pulumi:"ids"`
+	MaxResults      *int              `pulumi:"maxResults"`
+	NameRegex       *string           `pulumi:"nameRegex"`
+	Names           []string          `pulumi:"names"`
+	NextToken       *string           `pulumi:"nextToken"`
+	OutputFile      *string           `pulumi:"outputFile"`
+	PaymentTypes    []string          `pulumi:"paymentTypes"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
+	TotalCount      int               `pulumi:"totalCount"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -106,7 +106,7 @@ type GetClustersOutputArgs struct {
 	// The Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -181,8 +181,8 @@ func (o GetClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClustersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetClustersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetClustersResultOutput) TotalCount() pulumi.IntOutput {

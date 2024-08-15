@@ -160,7 +160,7 @@ type VpcEndpoint struct {
 	// The state of the endpoint.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The list of tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrOutput `pulumi:"vpcEndpointName"`
 	// The ID of the VPC to which the endpoint belongs.
@@ -240,7 +240,7 @@ type vpcEndpointState struct {
 	// The state of the endpoint.
 	Status *string `pulumi:"status"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The ID of the VPC to which the endpoint belongs.
@@ -285,7 +285,7 @@ type VpcEndpointState struct {
 	// The state of the endpoint.
 	Status pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrInput
 	// The ID of the VPC to which the endpoint belongs.
@@ -322,7 +322,7 @@ type vpcEndpointArgs struct {
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `pulumi:"serviceName"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
 	// The ID of the VPC to which the endpoint belongs.
@@ -356,7 +356,7 @@ type VpcEndpointArgs struct {
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the endpoint.
 	VpcEndpointName pulumi.StringPtrInput
 	// The ID of the VPC to which the endpoint belongs.
@@ -532,8 +532,8 @@ func (o VpcEndpointOutput) Status() pulumi.StringOutput {
 }
 
 // The list of tags.
-func (o VpcEndpointOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *VpcEndpoint) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o VpcEndpointOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the endpoint.

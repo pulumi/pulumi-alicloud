@@ -44,7 +44,7 @@ export class CopyImage extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly sourceImageId!: pulumi.Output<string>;
     public readonly sourceRegionId!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a CopyImage resource with the given unique name, arguments, and options.
@@ -109,7 +109,7 @@ export interface CopyImageState {
     name?: pulumi.Input<string>;
     sourceImageId?: pulumi.Input<string>;
     sourceRegionId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -128,5 +128,5 @@ export interface CopyImageArgs {
     name?: pulumi.Input<string>;
     sourceImageId: pulumi.Input<string>;
     sourceRegionId: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

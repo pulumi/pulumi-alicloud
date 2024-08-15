@@ -166,7 +166,7 @@ type EndpointGroup struct {
 	// The status of the endpoint group.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
 	ThresholdCount pulumi.IntOutput `pulumi:"thresholdCount"`
 	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -255,7 +255,7 @@ type endpointGroupState struct {
 	// The status of the endpoint group.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
 	ThresholdCount *int `pulumi:"thresholdCount"`
 	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -303,7 +303,7 @@ type EndpointGroupState struct {
 	// The status of the endpoint group.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
 	ThresholdCount pulumi.IntPtrInput
 	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -351,7 +351,7 @@ type endpointGroupArgs struct {
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
 	ThresholdCount *int `pulumi:"thresholdCount"`
 	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -396,7 +396,7 @@ type EndpointGroupArgs struct {
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
 	ThresholdCount pulumi.IntPtrInput
 	// The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -578,8 +578,8 @@ func (o EndpointGroupOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EndpointGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EndpointGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EndpointGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.

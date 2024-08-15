@@ -157,7 +157,7 @@ export class FileSystem extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
      */
@@ -268,7 +268,7 @@ export interface FileSystemState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
      */
@@ -331,7 +331,7 @@ export interface FileSystemArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
      */

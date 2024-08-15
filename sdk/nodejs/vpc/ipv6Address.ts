@@ -109,7 +109,7 @@ export class Ipv6Address extends pulumi.CustomResource {
     /**
      * The tags for the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VSwitchId of the IPv6 address.
      */
@@ -186,7 +186,7 @@ export interface Ipv6AddressState {
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VSwitchId of the IPv6 address.
      */
@@ -212,7 +212,7 @@ export interface Ipv6AddressArgs {
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VSwitchId of the IPv6 address.
      */

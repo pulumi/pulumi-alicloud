@@ -116,7 +116,7 @@ class GetBindingsBindingResult(dict):
 @pulumi.output_type
 class GetExchangesExchangeResult(dict):
     def __init__(__self__, *,
-                 attributes: Mapping[str, Any],
+                 attributes: Mapping[str, str],
                  auto_delete_state: bool,
                  create_time: str,
                  exchange_name: str,
@@ -125,7 +125,7 @@ class GetExchangesExchangeResult(dict):
                  instance_id: str,
                  virtual_host_name: str):
         """
-        :param Mapping[str, Any] attributes: The attributes.
+        :param Mapping[str, str] attributes: The attributes.
         :param bool auto_delete_state: Indicates whether the Auto Delete attribute is configured.
         :param str create_time: The creation time.
         :param str exchange_name: The name of the exchange.
@@ -145,7 +145,7 @@ class GetExchangesExchangeResult(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, Any]:
+    def attributes(self) -> Mapping[str, str]:
         """
         The attributes.
         """
@@ -372,7 +372,7 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetQueuesQueueResult(dict):
     def __init__(__self__, *,
-                 attributes: Mapping[str, Any],
+                 attributes: Mapping[str, str],
                  auto_delete_state: bool,
                  create_time: str,
                  exclusive_state: bool,
@@ -382,7 +382,7 @@ class GetQueuesQueueResult(dict):
                  queue_name: str,
                  virtual_host_name: str):
         """
-        :param Mapping[str, Any] attributes: The attributes for the Queue.
+        :param Mapping[str, str] attributes: The attributes for the Queue.
         :param bool auto_delete_state: Specifies whether the Auto Delete attribute is configured.
         :param str create_time: CreateTime.
         :param bool exclusive_state: Specifies whether the queue is an exclusive queue.
@@ -404,7 +404,7 @@ class GetQueuesQueueResult(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, Any]:
+    def attributes(self) -> Mapping[str, str]:
         """
         The attributes for the Queue.
         """

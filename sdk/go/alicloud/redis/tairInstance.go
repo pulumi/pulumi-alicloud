@@ -71,7 +71,7 @@ type TairInstance struct {
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StorageSizeGb pulumi.IntOutput `pulumi:"storageSizeGb"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrOutput `pulumi:"tairInstanceName"`
 	// The ID of the virtual private cloud (VPC).
@@ -183,7 +183,7 @@ type tairInstanceState struct {
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StorageSizeGb *int `pulumi:"storageSizeGb"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the resource.
 	TairInstanceName *string `pulumi:"tairInstanceName"`
 	// The ID of the virtual private cloud (VPC).
@@ -244,7 +244,7 @@ type TairInstanceState struct {
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StorageSizeGb pulumi.IntPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC).
@@ -305,7 +305,7 @@ type tairInstanceArgs struct {
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StorageSizeGb *int `pulumi:"storageSizeGb"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the resource.
 	TairInstanceName *string `pulumi:"tairInstanceName"`
 	// The ID of the virtual private cloud (VPC).
@@ -363,7 +363,7 @@ type TairInstanceArgs struct {
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StorageSizeGb pulumi.IntPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC).
@@ -582,8 +582,8 @@ func (o TairInstanceOutput) StorageSizeGb() pulumi.IntOutput {
 }
 
 // The tag of the resource
-func (o TairInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TairInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TairInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the resource.

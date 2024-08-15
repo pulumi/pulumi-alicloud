@@ -981,7 +981,7 @@ class GetInstancesInstanceResult(dict):
                  shards: Sequence['outputs.GetInstancesInstanceShardResult'],
                  status: str,
                  storage: int,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str availability_zone: Instance availability zone.
         :param str charge_type: Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
@@ -1001,7 +1001,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence['GetInstancesInstanceShardArgs'] shards: Array composed of shards.
         :param str status: Status of the instance.
         :param int storage: Shard disk.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -1169,7 +1169,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -1293,7 +1293,7 @@ class GetServerlessInstancesInstanceResult(dict):
                  security_ip_groups: Sequence['outputs.GetServerlessInstancesInstanceSecurityIpGroupResult'],
                  status: str,
                  storage_engine: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_auth_mode: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -1322,7 +1322,7 @@ class GetServerlessInstancesInstanceResult(dict):
         :param Sequence['GetServerlessInstancesInstanceSecurityIpGroupArgs'] security_ip_groups: The security ip list.
         :param str status: The status of the instance.
         :param str storage_engine: The storage engine used by the instance.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str vpc_auth_mode: Intranet secret free access mode.
         :param str vpc_id: The ID of the VPC network.
         :param str vswitch_id: The id of the vswitch.
@@ -1543,7 +1543,7 @@ class GetServerlessInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """

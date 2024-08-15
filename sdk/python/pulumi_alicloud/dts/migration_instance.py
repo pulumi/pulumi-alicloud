@@ -23,7 +23,7 @@ class MigrationInstanceArgs:
                  database_count: Optional[pulumi.Input[int]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a MigrationInstance resource.
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
@@ -35,7 +35,7 @@ class MigrationInstanceArgs:
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         :param pulumi.Input[str] instance_class: The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
@@ -163,14 +163,14 @@ class MigrationInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -188,7 +188,7 @@ class _MigrationInstanceState:
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering MigrationInstance resources.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -202,7 +202,7 @@ class _MigrationInstanceState:
         :param pulumi.Input[str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[str] status: The status.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if compute_unit is not None:
             pulumi.set(__self__, "compute_unit", compute_unit)
@@ -363,14 +363,14 @@ class _MigrationInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -388,7 +388,7 @@ class MigrationInstance(pulumi.CustomResource):
                  source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a DTS Migration Instance resource.
@@ -435,7 +435,7 @@ class MigrationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] source_endpoint_engine_name: The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         :param pulumi.Input[str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -501,7 +501,7 @@ class MigrationInstance(pulumi.CustomResource):
                  source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
                  source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -554,7 +554,7 @@ class MigrationInstance(pulumi.CustomResource):
             source_endpoint_region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sync_architecture: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'MigrationInstance':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'MigrationInstance':
         """
         Get an existing MigrationInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -573,7 +573,7 @@ class MigrationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[str] status: The status.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -683,7 +683,7 @@ class MigrationInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -729,7 +729,7 @@ class GetInstancesInstanceResult(dict):
                  name: str,
                  protection_level: str,
                  status: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param Sequence[str] cen_bandwidth_package_ids: List of CEN Bandwidth Package IDs in the specified CEN instance.
         :param str cen_id: ID of the CEN instance.
@@ -740,7 +740,7 @@ class GetInstancesInstanceResult(dict):
         :param str name: Name of the CEN instance.
         :param str protection_level: Indicates the allowed level of CIDR block overlapping.
         :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "cen_bandwidth_package_ids", cen_bandwidth_package_ids)
         pulumi.set(__self__, "cen_id", cen_id)
@@ -827,7 +827,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

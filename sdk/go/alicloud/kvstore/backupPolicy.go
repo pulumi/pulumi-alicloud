@@ -69,13 +69,13 @@ import (
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.23.12.24"),
 //				},
-//				Config: pulumi.Map{
-//					"appendonly":             pulumi.Any("yes"),
-//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				Config: pulumi.StringMap{
+//					"appendonly":             pulumi.String("yes"),
+//					"lazyfree-lazy-eviction": pulumi.String("yes"),
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

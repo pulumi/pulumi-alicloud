@@ -24,7 +24,7 @@ class EcsSnapshotArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshot resource.
         :param pulumi.Input[str] disk_id: The ID of the disk.
@@ -37,7 +37,7 @@ class EcsSnapshotArgs:
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
@@ -189,7 +189,7 @@ class EcsSnapshotArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the snapshot.
 
@@ -198,7 +198,7 @@ class EcsSnapshotArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -216,7 +216,7 @@ class _EcsSnapshotState:
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
         :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
@@ -230,7 +230,7 @@ class _EcsSnapshotState:
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] status: The status of snapshot.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
@@ -397,7 +397,7 @@ class _EcsSnapshotState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the snapshot.
 
@@ -406,7 +406,7 @@ class _EcsSnapshotState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -425,7 +425,7 @@ class EcsSnapshot(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Snapshot resource.
@@ -454,7 +454,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
@@ -504,7 +504,7 @@ class EcsSnapshot(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  snapshot_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -549,7 +549,7 @@ class EcsSnapshot(pulumi.CustomResource):
             retention_days: Optional[pulumi.Input[int]] = None,
             snapshot_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EcsSnapshot':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EcsSnapshot':
         """
         Get an existing EcsSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -568,7 +568,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] status: The status of snapshot.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
                
                > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         """
@@ -681,7 +681,7 @@ class EcsSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the snapshot.
 

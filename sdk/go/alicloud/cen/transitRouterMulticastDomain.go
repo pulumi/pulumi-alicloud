@@ -76,7 +76,7 @@ type TransitRouterMulticastDomain struct {
 	// The status of the Transit Router Multicast Domain.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -121,7 +121,7 @@ type transitRouterMulticastDomainState struct {
 	// The status of the Transit Router Multicast Domain.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -134,7 +134,7 @@ type TransitRouterMulticastDomainState struct {
 	// The status of the Transit Router Multicast Domain.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
 	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -149,7 +149,7 @@ func (TransitRouterMulticastDomainState) ElementType() reflect.Type {
 
 type transitRouterMulticastDomainArgs struct {
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
 	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -161,7 +161,7 @@ type transitRouterMulticastDomainArgs struct {
 // The set of arguments for constructing a TransitRouterMulticastDomain resource.
 type TransitRouterMulticastDomainArgs struct {
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput
 	// The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
@@ -263,8 +263,8 @@ func (o TransitRouterMulticastDomainOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TransitRouterMulticastDomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TransitRouterMulticastDomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouterMulticastDomain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the transit router.

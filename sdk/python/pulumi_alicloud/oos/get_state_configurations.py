@@ -72,7 +72,7 @@ class GetStateConfigurationsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -93,7 +93,7 @@ class AwaitableGetStateConfigurationsResult(GetStateConfigurationsResult):
 def get_state_configurations(ids: Optional[Sequence[str]] = None,
                              output_file: Optional[str] = None,
                              resource_group_id: Optional[str] = None,
-                             tags: Optional[Mapping[str, Any]] = None,
+                             tags: Optional[Mapping[str, str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStateConfigurationsResult:
     """
     This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -116,7 +116,7 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of State Configuration IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, str] tags: The tag of the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -139,7 +139,7 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
 def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStateConfigurationsResult]:
     """
     This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -162,6 +162,6 @@ def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence
     :param Sequence[str] ids: A list of State Configuration IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, str] tags: The tag of the resource.
     """
     ...

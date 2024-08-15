@@ -23,11 +23,11 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	DescriptionRegex *string                `pulumi:"descriptionRegex"`
-	Ids              []string               `pulumi:"ids"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	Tags             map[string]interface{} `pulumi:"tags"`
-	Version          *string                `pulumi:"version"`
+	DescriptionRegex *string           `pulumi:"descriptionRegex"`
+	Ids              []string          `pulumi:"ids"`
+	OutputFile       *string           `pulumi:"outputFile"`
+	Tags             map[string]string `pulumi:"tags"`
+	Version          *string           `pulumi:"version"`
 }
 
 // A collection of values returned by getInstances.
@@ -39,7 +39,7 @@ type GetInstancesResult struct {
 	Ids        []string               `pulumi:"ids"`
 	Instances  []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]string      `pulumi:"tags"`
 	Version    *string                `pulumi:"version"`
 }
 
@@ -61,7 +61,7 @@ type GetInstancesOutputArgs struct {
 	DescriptionRegex pulumi.StringPtrInput   `pulumi:"descriptionRegex"`
 	Ids              pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Tags             pulumi.MapInput         `pulumi:"tags"`
+	Tags             pulumi.StringMapInput   `pulumi:"tags"`
 	Version          pulumi.StringPtrInput   `pulumi:"version"`
 }
 
@@ -109,8 +109,8 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancesResultOutput) Version() pulumi.StringPtrOutput {

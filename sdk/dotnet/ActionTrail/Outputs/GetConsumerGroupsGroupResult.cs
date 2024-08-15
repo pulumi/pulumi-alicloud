@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// <summary>
         /// A mapping of tags to assign to the consumer group.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetConsumerGroupsGroupResult(
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string remark,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             ConsumerId = consumerId;
             Id = id;

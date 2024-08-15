@@ -157,9 +157,9 @@ type Etl struct {
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeySecret pulumi.StringPtrOutput `pulumi:"kmsEncryptedAccessKeySecret"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeyIdContext pulumi.MapOutput `pulumi:"kmsEncryptionAccessKeyIdContext"`
+	KmsEncryptionAccessKeyIdContext pulumi.StringMapOutput `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeySecretContext pulumi.MapOutput `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	KmsEncryptionAccessKeySecretContext pulumi.StringMapOutput `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -264,9 +264,9 @@ type etlState struct {
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeySecret *string `pulumi:"kmsEncryptedAccessKeySecret"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeyIdContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeyIdContext"`
+	KmsEncryptionAccessKeyIdContext map[string]string `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeySecretContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	KmsEncryptionAccessKeySecretContext map[string]string `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -313,9 +313,9 @@ type EtlState struct {
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeySecret pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeyIdContext pulumi.MapInput
+	KmsEncryptionAccessKeyIdContext pulumi.StringMapInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeySecretContext pulumi.MapInput
+	KmsEncryptionAccessKeySecretContext pulumi.StringMapInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
 	// The source logstore of the processing job.
@@ -366,9 +366,9 @@ type etlArgs struct {
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeySecret *string `pulumi:"kmsEncryptedAccessKeySecret"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeyIdContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeyIdContext"`
+	KmsEncryptionAccessKeyIdContext map[string]string `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeySecretContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	KmsEncryptionAccessKeySecretContext map[string]string `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -416,9 +416,9 @@ type EtlArgs struct {
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeySecret pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeyIdContext pulumi.MapInput
+	KmsEncryptionAccessKeyIdContext pulumi.StringMapInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-	KmsEncryptionAccessKeySecretContext pulumi.MapInput
+	KmsEncryptionAccessKeySecretContext pulumi.StringMapInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
 	// The source logstore of the processing job.
@@ -584,13 +584,13 @@ func (o EtlOutput) KmsEncryptedAccessKeySecret() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-func (o EtlOutput) KmsEncryptionAccessKeyIdContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Etl) pulumi.MapOutput { return v.KmsEncryptionAccessKeyIdContext }).(pulumi.MapOutput)
+func (o EtlOutput) KmsEncryptionAccessKeyIdContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringMapOutput { return v.KmsEncryptionAccessKeyIdContext }).(pulumi.StringMapOutput)
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
-func (o EtlOutput) KmsEncryptionAccessKeySecretContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Etl) pulumi.MapOutput { return v.KmsEncryptionAccessKeySecretContext }).(pulumi.MapOutput)
+func (o EtlOutput) KmsEncryptionAccessKeySecretContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringMapOutput { return v.KmsEncryptionAccessKeySecretContext }).(pulumi.StringMapOutput)
 }
 
 // ETL job last modified time.

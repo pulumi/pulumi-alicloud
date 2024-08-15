@@ -55,9 +55,9 @@ class LaunchTemplateArgs:
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class LaunchTemplateArgs:
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -678,7 +678,7 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -687,7 +687,7 @@ class LaunchTemplateArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -701,11 +701,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
-    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
 
     @property
@@ -815,9 +815,9 @@ class _LaunchTemplateState:
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -867,7 +867,7 @@ class _LaunchTemplateState:
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -1438,7 +1438,7 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1447,7 +1447,7 @@ class _LaunchTemplateState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1461,11 +1461,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
-    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
 
     @property
@@ -1577,9 +1577,9 @@ class LaunchTemplate(pulumi.CustomResource):
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1704,7 +1704,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -1845,9 +1845,9 @@ class LaunchTemplate(pulumi.CustomResource):
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1960,9 +1960,9 @@ class LaunchTemplate(pulumi.CustomResource):
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_resource_group_id: Optional[pulumi.Input[str]] = None,
-            template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             userdata: Optional[pulumi.Input[str]] = None,
             version_description: Optional[pulumi.Input[str]] = None,
@@ -2017,7 +2017,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_description: System disk description. It cannot begin with http:// or https://.
         :param pulumi.Input[str] system_disk_name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GB. Value range: [20, 500].
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -2371,7 +2371,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2386,7 +2386,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def template_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "template_tags")
 
     @property

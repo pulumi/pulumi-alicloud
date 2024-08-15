@@ -45,7 +45,7 @@ type DedicatedHost struct {
 	// The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The subscription duration of the host. Valid values:
 	// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
 	// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -132,7 +132,7 @@ type dedicatedHostState struct {
 	// The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The subscription duration of the host. Valid values:
 	// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
 	// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -168,7 +168,7 @@ type DedicatedHostState struct {
 	// The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The subscription duration of the host. Valid values:
 	// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
 	// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -204,7 +204,7 @@ type dedicatedHostArgs struct {
 	// The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
 	Period *string `pulumi:"period"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The subscription duration of the host. Valid values:
 	// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
 	// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -237,7 +237,7 @@ type DedicatedHostArgs struct {
 	// The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
 	Period pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The subscription duration of the host. Valid values:
 	// * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
 	// * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -392,8 +392,8 @@ func (o DedicatedHostOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o DedicatedHostOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DedicatedHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DedicatedHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The subscription duration of the host. Valid values:

@@ -99,7 +99,7 @@ class GetEcsLaunchTemplatesResult:
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Optional[Mapping[str, Any]]:
+    def template_tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "template_tags")
 
     @property
@@ -132,7 +132,7 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
                              name_regex: Optional[str] = None,
                              output_file: Optional[str] = None,
                              template_resource_group_id: Optional[str] = None,
-                             template_tags: Optional[Mapping[str, Any]] = None,
+                             template_tags: Optional[Mapping[str, str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsLaunchTemplatesResult:
     """
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
@@ -191,7 +191,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     template_resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    template_tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                    template_tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsLaunchTemplatesResult]:
     """
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.

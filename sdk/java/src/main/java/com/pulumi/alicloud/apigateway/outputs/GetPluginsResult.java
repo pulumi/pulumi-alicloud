@@ -7,7 +7,6 @@ import com.pulumi.alicloud.apigateway.outputs.GetPluginsPlugin;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,7 @@ public final class GetPluginsResult {
     private @Nullable String pluginName;
     private @Nullable String pluginType;
     private List<GetPluginsPlugin> plugins;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetPluginsResult() {}
     /**
@@ -68,7 +67,7 @@ public final class GetPluginsResult {
     public List<GetPluginsPlugin> plugins() {
         return this.plugins;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -91,7 +90,7 @@ public final class GetPluginsResult {
         private @Nullable String pluginName;
         private @Nullable String pluginType;
         private List<GetPluginsPlugin> plugins;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetPluginsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -186,7 +185,7 @@ public final class GetPluginsResult {
             return plugins(List.of(plugins));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

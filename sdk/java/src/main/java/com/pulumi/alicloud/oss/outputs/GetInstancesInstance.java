@@ -6,7 +6,6 @@ package com.pulumi.alicloud.oss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -123,7 +122,7 @@ public final class GetInstancesInstance {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The user id of the instance.
      * 
@@ -268,7 +267,7 @@ public final class GetInstancesInstance {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -302,7 +301,7 @@ public final class GetInstancesInstance {
         private String resourceGroupId;
         private String status;
         private Integer tableQuota;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String userId;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
@@ -444,7 +443,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
             }
