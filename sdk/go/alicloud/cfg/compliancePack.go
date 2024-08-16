@@ -59,8 +59,8 @@ import (
 //					pulumi.String("ACS::RAM::User"),
 //				},
 //				RuleName: pulumi.String("ciscompliancecheck_ram-user-ak-create-date-expired-check"),
-//				InputParameters: pulumi.Map{
-//					"days": pulumi.Any("90"),
+//				InputParameters: pulumi.StringMap{
+//					"days": pulumi.String("90"),
 //				},
 //			})
 //			if err != nil {
@@ -77,8 +77,8 @@ import (
 //					pulumi.String("ACS::ADB::DBCluster"),
 //				},
 //				RuleName: pulumi.String("governance-evaluation-adb-cluster-maintain-time-check"),
-//				InputParameters: pulumi.Map{
-//					"maintainTimes": pulumi.Any("02:00-04:00,06:00-08:00,12:00-13:00"),
+//				InputParameters: pulumi.StringMap{
+//					"maintainTimes": pulumi.String("02:00-04:00,06:00-08:00,12:00-13:00"),
 //				},
 //			})
 //			if err != nil {

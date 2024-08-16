@@ -85,8 +85,8 @@ type GetLoadBalancersArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
 	VpcIds []string `pulumi:"vpcIds"`
 	// The name of the zone.
@@ -100,19 +100,19 @@ type GetLoadBalancersResult struct {
 	Balancers        []GetLoadBalancersBalancer `pulumi:"balancers"`
 	DnsName          *string                    `pulumi:"dnsName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string                 `pulumi:"id"`
-	Ids                        []string               `pulumi:"ids"`
-	Ipv6AddressType            *string                `pulumi:"ipv6AddressType"`
-	LoadBalancerBusinessStatus *string                `pulumi:"loadBalancerBusinessStatus"`
-	LoadBalancerNames          []string               `pulumi:"loadBalancerNames"`
-	NameRegex                  *string                `pulumi:"nameRegex"`
-	Names                      []string               `pulumi:"names"`
-	OutputFile                 *string                `pulumi:"outputFile"`
-	ResourceGroupId            *string                `pulumi:"resourceGroupId"`
-	Status                     *string                `pulumi:"status"`
-	Tags                       map[string]interface{} `pulumi:"tags"`
-	VpcIds                     []string               `pulumi:"vpcIds"`
-	ZoneId                     *string                `pulumi:"zoneId"`
+	Id                         string            `pulumi:"id"`
+	Ids                        []string          `pulumi:"ids"`
+	Ipv6AddressType            *string           `pulumi:"ipv6AddressType"`
+	LoadBalancerBusinessStatus *string           `pulumi:"loadBalancerBusinessStatus"`
+	LoadBalancerNames          []string          `pulumi:"loadBalancerNames"`
+	NameRegex                  *string           `pulumi:"nameRegex"`
+	Names                      []string          `pulumi:"names"`
+	OutputFile                 *string           `pulumi:"outputFile"`
+	ResourceGroupId            *string           `pulumi:"resourceGroupId"`
+	Status                     *string           `pulumi:"status"`
+	Tags                       map[string]string `pulumi:"tags"`
+	VpcIds                     []string          `pulumi:"vpcIds"`
+	ZoneId                     *string           `pulumi:"zoneId"`
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
@@ -152,7 +152,7 @@ type GetLoadBalancersOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
 	VpcIds pulumi.StringArrayInput `pulumi:"vpcIds"`
 	// The name of the zone.
@@ -235,8 +235,8 @@ func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetLoadBalancersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetLoadBalancersResultOutput) VpcIds() pulumi.StringArrayOutput {

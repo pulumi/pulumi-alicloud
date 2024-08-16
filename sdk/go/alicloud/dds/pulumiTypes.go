@@ -32,7 +32,7 @@ type GetMongoInstancesInstance struct {
 	Shards           []GetMongoInstancesInstanceShard `pulumi:"shards"`
 	Status           string                           `pulumi:"status"`
 	Storage          int                              `pulumi:"storage"`
-	Tags             map[string]interface{}           `pulumi:"tags"`
+	Tags             map[string]string                `pulumi:"tags"`
 }
 
 // GetMongoInstancesInstanceInput is an input type that accepts GetMongoInstancesInstanceArgs and GetMongoInstancesInstanceOutput values.
@@ -65,7 +65,7 @@ type GetMongoInstancesInstanceArgs struct {
 	Shards           GetMongoInstancesInstanceShardArrayInput `pulumi:"shards"`
 	Status           pulumi.StringInput                       `pulumi:"status"`
 	Storage          pulumi.IntInput                          `pulumi:"storage"`
-	Tags             pulumi.MapInput                          `pulumi:"tags"`
+	Tags             pulumi.StringMapInput                    `pulumi:"tags"`
 }
 
 func (GetMongoInstancesInstanceArgs) ElementType() reflect.Type {
@@ -191,8 +191,8 @@ func (o GetMongoInstancesInstanceOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
 }
 
-func (o GetMongoInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetMongoInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetMongoInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMongoInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetMongoInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

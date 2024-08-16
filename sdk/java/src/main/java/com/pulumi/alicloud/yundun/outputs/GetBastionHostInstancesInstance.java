@@ -6,7 +6,6 @@ package com.pulumi.alicloud.yundun.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class GetBastionHostInstancesInstance {
     private String publicDomain;
     private Boolean publicNetworkAccess;
     private List<String> securityGroupIds;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private String userVswitchId;
 
     private GetBastionHostInstancesInstance() {}
@@ -51,7 +50,7 @@ public final class GetBastionHostInstancesInstance {
     public List<String> securityGroupIds() {
         return this.securityGroupIds;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public String userVswitchId() {
@@ -75,7 +74,7 @@ public final class GetBastionHostInstancesInstance {
         private String publicDomain;
         private Boolean publicNetworkAccess;
         private List<String> securityGroupIds;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String userVswitchId;
         public Builder() {}
         public Builder(GetBastionHostInstancesInstance defaults) {
@@ -160,7 +159,7 @@ public final class GetBastionHostInstancesInstance {
             return securityGroupIds(List.of(securityGroupIds));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

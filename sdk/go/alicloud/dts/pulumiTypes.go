@@ -189,7 +189,7 @@ type GetInstancesInstance struct {
 	// Instance status.
 	Status string `pulumi:"status"`
 	// The tag value corresponding to the tag key.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
 	Type string `pulumi:"type"`
 }
@@ -230,7 +230,7 @@ type GetInstancesInstanceArgs struct {
 	// Instance status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tag value corresponding to the tag key.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -346,8 +346,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // The tag value corresponding to the tag key.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
@@ -789,7 +789,7 @@ type GetSubscriptionJobsJob struct {
 	// The ID of subscription instance vswitch.
 	SubscriptionInstanceVswitchId string `pulumi:"subscriptionInstanceVswitchId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetSubscriptionJobsJobInput is an input type that accepts GetSubscriptionJobsJobArgs and GetSubscriptionJobsJobOutput values.
@@ -859,7 +859,7 @@ type GetSubscriptionJobsJobArgs struct {
 	// The ID of subscription instance vswitch.
 	SubscriptionInstanceVswitchId pulumi.StringInput `pulumi:"subscriptionInstanceVswitchId"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSubscriptionJobsJobArgs) ElementType() reflect.Type {
@@ -1049,8 +1049,8 @@ func (o GetSubscriptionJobsJobOutput) SubscriptionInstanceVswitchId() pulumi.Str
 }
 
 // The tag of the resource.
-func (o GetSubscriptionJobsJobOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSubscriptionJobsJob) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSubscriptionJobsJobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetSubscriptionJobsJobArrayOutput struct{ *pulumi.OutputState }

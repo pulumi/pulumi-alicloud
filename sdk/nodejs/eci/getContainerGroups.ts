@@ -81,7 +81,7 @@ export interface GetContainerGroupsArgs {
      * The status list. For more information, see the description of ContainerGroup arrays.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
@@ -111,7 +111,7 @@ export interface GetContainerGroupsResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly vswitchId?: string;
     readonly withEvent?: boolean;
     readonly zoneId?: string;
@@ -175,7 +175,7 @@ export interface GetContainerGroupsOutputArgs {
      * The status list. For more information, see the description of ContainerGroup arrays.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */

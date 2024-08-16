@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Disk type. Possible values: `system` and `data`.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

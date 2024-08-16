@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// ID of the VPC linked to the SLBs.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

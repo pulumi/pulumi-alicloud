@@ -99,7 +99,7 @@ type VpcEndpointService struct {
 	// The state of the endpoint service.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The list of tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the endpoint service.
 	VpcEndpointServiceName pulumi.StringOutput `pulumi:"vpcEndpointServiceName"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -174,7 +174,7 @@ type vpcEndpointServiceState struct {
 	// The state of the endpoint service.
 	Status *string `pulumi:"status"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the endpoint service.
 	VpcEndpointServiceName *string `pulumi:"vpcEndpointServiceName"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -220,7 +220,7 @@ type VpcEndpointServiceState struct {
 	// The state of the endpoint service.
 	Status pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the endpoint service.
 	VpcEndpointServiceName pulumi.StringPtrInput
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -262,7 +262,7 @@ type vpcEndpointServiceArgs struct {
 	// - **false (default)**.
 	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
 	// - **true**
 	// - **false (default)**.
@@ -299,7 +299,7 @@ type VpcEndpointServiceArgs struct {
 	// - **false (default)**.
 	ServiceSupportIpv6 pulumi.BoolPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
 	// - **true**
 	// - **false (default)**.
@@ -465,8 +465,8 @@ func (o VpcEndpointServiceOutput) Status() pulumi.StringOutput {
 }
 
 // The list of tags.
-func (o VpcEndpointServiceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *VpcEndpointService) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o VpcEndpointServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the endpoint service.

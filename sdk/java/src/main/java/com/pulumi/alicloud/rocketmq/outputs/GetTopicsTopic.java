@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -63,7 +62,7 @@ public final class GetTopicsTopic {
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The name of the topic.
      * 
@@ -143,7 +142,7 @@ public final class GetTopicsTopic {
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -179,7 +178,7 @@ public final class GetTopicsTopic {
         private Integer relation;
         private String relationName;
         private String remark;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String topic;
         private String topicName;
         public Builder() {}
@@ -272,7 +271,7 @@ public final class GetTopicsTopic {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetTopicsTopic", "tags");
             }

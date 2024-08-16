@@ -60,8 +60,8 @@ type GetSystemSecurityPoliciesArgs struct {
 	// A list of System Security Policy IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSystemSecurityPolicies.
@@ -73,7 +73,7 @@ type GetSystemSecurityPoliciesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of ALB Security Policies. Each element contains the following attributes:
 	Policies []GetSystemSecurityPoliciesPolicy `pulumi:"policies"`
-	Tags     map[string]interface{}            `pulumi:"tags"`
+	Tags     map[string]string                 `pulumi:"tags"`
 }
 
 func GetSystemSecurityPoliciesOutput(ctx *pulumi.Context, args GetSystemSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSystemSecurityPoliciesResultOutput {
@@ -95,7 +95,7 @@ type GetSystemSecurityPoliciesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Tags       pulumi.MapInput       `pulumi:"tags"`
+	Tags       pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSystemSecurityPoliciesOutputArgs) ElementType() reflect.Type {
@@ -136,8 +136,8 @@ func (o GetSystemSecurityPoliciesResultOutput) Policies() GetSystemSecurityPolic
 	return o.ApplyT(func(v GetSystemSecurityPoliciesResult) []GetSystemSecurityPoliciesPolicy { return v.Policies }).(GetSystemSecurityPoliciesPolicyArrayOutput)
 }
 
-func (o GetSystemSecurityPoliciesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSystemSecurityPoliciesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSystemSecurityPoliciesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSystemSecurityPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

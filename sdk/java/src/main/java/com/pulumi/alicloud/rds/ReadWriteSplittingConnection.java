@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -234,14 +233,14 @@ public class ReadWriteSplittingConnection extends com.pulumi.resources.CustomRes
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
      * 
      */
-    @Export(name="weight", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> weight;
+    @Export(name="weight", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> weight;
 
     /**
      * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
      * 
      */
-    public Output<Optional<Map<String,Object>>> weight() {
+    public Output<Optional<Map<String,String>>> weight() {
         return Codegen.optional(this.weight);
     }
 

@@ -76,7 +76,7 @@ type CustomerGateway struct {
 	// tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCustomerGateway registers a new resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ type customerGatewayState struct {
 	// tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type CustomerGatewayState struct {
@@ -150,7 +150,7 @@ type CustomerGatewayState struct {
 	// tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (CustomerGatewayState) ElementType() reflect.Type {
@@ -173,7 +173,7 @@ type customerGatewayArgs struct {
 	// tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CustomerGateway resource.
@@ -193,7 +193,7 @@ type CustomerGatewayArgs struct {
 	// tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (CustomerGatewayArgs) ElementType() reflect.Type {
@@ -318,8 +318,8 @@ func (o CustomerGatewayOutput) Name() pulumi.StringOutput {
 // tag.
 //
 // The following arguments will be discarded. Please use new fields as soon as possible:
-func (o CustomerGatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *CustomerGateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o CustomerGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomerGateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type CustomerGatewayArrayOutput struct{ *pulumi.OutputState }

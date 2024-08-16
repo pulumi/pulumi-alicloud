@@ -18,14 +18,14 @@ class CaCertificateArgs:
                  ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CaCertificate resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
         if ca_certificate_name is not None:
@@ -91,14 +91,14 @@ class CaCertificateArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -109,14 +109,14 @@ class _CaCertificateState:
                  ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CaCertificate resources.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
@@ -183,14 +183,14 @@ class _CaCertificateState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -203,7 +203,7 @@ class CaCertificate(pulumi.CustomResource):
                  ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         A Load Balancer CA Certificate is used by the listener of the protocol https.
@@ -260,7 +260,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -336,7 +336,7 @@ class CaCertificate(pulumi.CustomResource):
                  ca_certificate_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,7 +367,7 @@ class CaCertificate(pulumi.CustomResource):
             ca_certificate_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'CaCertificate':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'CaCertificate':
         """
         Get an existing CaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -379,7 +379,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -427,7 +427,7 @@ class CaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -56,9 +56,9 @@ import (
 //					pulumi.String("ACS::RDS::DBInstance"),
 //				},
 //				RuleName: pulumi.String("contains-tag"),
-//				InputParameters: pulumi.Map{
-//					"key":   pulumi.Any("example"),
-//					"value": pulumi.Any("example"),
+//				InputParameters: pulumi.StringMap{
+//					"key":   pulumi.String("example"),
+//					"value": pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -101,7 +101,7 @@ type Rule struct {
 	// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
 	ExcludeResourceIdsScope pulumi.StringPtrOutput `pulumi:"excludeResourceIdsScope"`
 	// The settings of the input parameters for the rule.
-	InputParameters pulumi.MapOutput `pulumi:"inputParameters"`
+	InputParameters pulumi.StringMapOutput `pulumi:"inputParameters"`
 	// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
 	MaximumExecutionFrequency pulumi.StringOutput `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
@@ -205,7 +205,7 @@ type ruleState struct {
 	// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
 	ExcludeResourceIdsScope *string `pulumi:"excludeResourceIdsScope"`
 	// The settings of the input parameters for the rule.
-	InputParameters map[string]interface{} `pulumi:"inputParameters"`
+	InputParameters map[string]string `pulumi:"inputParameters"`
 	// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
 	MaximumExecutionFrequency *string `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
@@ -268,7 +268,7 @@ type RuleState struct {
 	// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
 	ExcludeResourceIdsScope pulumi.StringPtrInput
 	// The settings of the input parameters for the rule.
-	InputParameters pulumi.MapInput
+	InputParameters pulumi.StringMapInput
 	// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
 	MaximumExecutionFrequency pulumi.StringPtrInput
 	// The timestamp when the rule was last modified.
@@ -321,7 +321,7 @@ type ruleArgs struct {
 	// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
 	ExcludeResourceIdsScope *string `pulumi:"excludeResourceIdsScope"`
 	// The settings of the input parameters for the rule.
-	InputParameters map[string]interface{} `pulumi:"inputParameters"`
+	InputParameters map[string]string `pulumi:"inputParameters"`
 	// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
 	MaximumExecutionFrequency *string `pulumi:"maximumExecutionFrequency"`
 	// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -369,7 +369,7 @@ type RuleArgs struct {
 	// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
 	ExcludeResourceIdsScope pulumi.StringPtrInput
 	// The settings of the input parameters for the rule.
-	InputParameters pulumi.MapInput
+	InputParameters pulumi.StringMapInput
 	// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
 	MaximumExecutionFrequency pulumi.StringPtrInput
 	// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -546,8 +546,8 @@ func (o RuleOutput) ExcludeResourceIdsScope() pulumi.StringPtrOutput {
 }
 
 // The settings of the input parameters for the rule.
-func (o RuleOutput) InputParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *Rule) pulumi.MapOutput { return v.InputParameters }).(pulumi.MapOutput)
+func (o RuleOutput) InputParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringMapOutput { return v.InputParameters }).(pulumi.StringMapOutput)
 }
 
 // The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.

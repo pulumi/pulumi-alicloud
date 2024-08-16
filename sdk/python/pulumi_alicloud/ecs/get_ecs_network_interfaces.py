@@ -193,7 +193,7 @@ class GetEcsNetworkInterfacesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tags.
         """
@@ -263,7 +263,7 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
                                security_group_id: Optional[str] = None,
                                service_managed: Optional[bool] = None,
                                status: Optional[str] = None,
-                               tags: Optional[Mapping[str, Any]] = None,
+                               tags: Optional[Mapping[str, str]] = None,
                                type: Optional[str] = None,
                                vpc_id: Optional[str] = None,
                                vswitch_id: Optional[str] = None,
@@ -298,7 +298,7 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
     :param str security_group_id: The security group id.
     :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
     :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
-    :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+    :param Mapping[str, str] tags: A map of tags assigned to ENIs.
     :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
     :param str vpc_id: The vpc id.
     :param str vswitch_id: The vswitch id.
@@ -358,7 +358,7 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       service_managed: Optional[pulumi.Input[Optional[bool]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                       type: Optional[pulumi.Input[Optional[str]]] = None,
                                       vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -393,7 +393,7 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
     :param str security_group_id: The security group id.
     :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
     :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
-    :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+    :param Mapping[str, str] tags: A map of tags assigned to ENIs.
     :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
     :param str vpc_id: The vpc id.
     :param str vswitch_id: The vswitch id.

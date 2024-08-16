@@ -108,7 +108,7 @@ export class TransitRouterEcrAttachment extends pulumi.CustomResource {
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
@@ -191,7 +191,7 @@ export interface TransitRouterEcrAttachmentState {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * TransitRouterAttachmentDescription
      */
@@ -225,7 +225,7 @@ export interface TransitRouterEcrAttachmentArgs {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * TransitRouterAttachmentDescription
      */

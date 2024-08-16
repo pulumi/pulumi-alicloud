@@ -1450,7 +1450,7 @@ type GetInstancesInstance struct {
 	// Shard disk.
 	Storage int `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -1502,7 +1502,7 @@ type GetInstancesInstanceArgs struct {
 	// Shard disk.
 	Storage pulumi.IntInput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -1647,8 +1647,8 @@ func (o GetInstancesInstanceOutput) Storage() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -1958,7 +1958,7 @@ type GetServerlessInstancesInstance struct {
 	// The storage engine used by the instance.
 	StorageEngine string `pulumi:"storageEngine"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Intranet secret free access mode.
 	VpcAuthMode string `pulumi:"vpcAuthMode"`
 	// The ID of the VPC network.
@@ -2028,7 +2028,7 @@ type GetServerlessInstancesInstanceArgs struct {
 	// The storage engine used by the instance.
 	StorageEngine pulumi.StringInput `pulumi:"storageEngine"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Intranet secret free access mode.
 	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
 	// The ID of the VPC network.
@@ -2208,8 +2208,8 @@ func (o GetServerlessInstancesInstanceOutput) StorageEngine() pulumi.StringOutpu
 }
 
 // The tag of the resource.
-func (o GetServerlessInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerlessInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerlessInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Intranet secret free access mode.

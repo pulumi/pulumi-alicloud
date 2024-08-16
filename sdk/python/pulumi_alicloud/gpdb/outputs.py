@@ -834,7 +834,7 @@ class GetInstancesInstanceResult(dict):
                  status: str,
                  storage_size: int,
                  storage_type: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str):
@@ -863,7 +863,7 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
         :param int storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
         :param str storage_type: The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
-        :param Mapping[str, Any] tags: The tags of the instance.
+        :param Mapping[str, str] tags: The tags of the instance.
         :param str vpc_id: The ID of the VPC。.
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
@@ -1103,7 +1103,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags of the instance.
         """

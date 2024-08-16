@@ -191,7 +191,7 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
                  services: Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceResult'],
                  source: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  template_name: str):
         """
         :param bool enable_instance_ops: Whether the service instance has the O&M function.
@@ -206,7 +206,7 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
         :param Sequence['GetNestServiceInstancesServiceInstanceServiceArgs'] services: Service details.
         :param str source: The source of the Service Instance.
         :param str status: The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str template_name: The name of the template.
         """
         pulumi.set(__self__, "enable_instance_ops", enable_instance_ops)
@@ -322,7 +322,7 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -108,7 +108,7 @@ export interface GetEcsNetworkInterfacesArgs {
     /**
      * A map of tags assigned to ENIs.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The type of ENI. Valid Values: `Primary`, `Secondary`.
      */
@@ -182,7 +182,7 @@ export interface GetEcsNetworkInterfacesResult {
     /**
      * The tags.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * The type of the ENI.
      */
@@ -278,7 +278,7 @@ export interface GetEcsNetworkInterfacesOutputArgs {
     /**
      * A map of tags assigned to ENIs.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of ENI. Valid Values: `Primary`, `Secondary`.
      */

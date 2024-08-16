@@ -136,7 +136,7 @@ export interface GetDisksArgs {
      * });
      * ```
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Disk type. Possible values: `system` and `data`.
      *
@@ -211,7 +211,7 @@ export interface GetDisksResult {
     /**
      * A map of tags assigned to the disk.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * Disk type. Possible values: `system` and `data`.
@@ -318,7 +318,7 @@ export interface GetDisksOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Disk type. Possible values: `system` and `data`.
      *

@@ -5,7 +5,6 @@ package com.pulumi.alicloud.oos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -61,7 +60,7 @@ public final class GetStateConfigurationsConfiguration {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The target resource.
      * 
@@ -156,7 +155,7 @@ public final class GetStateConfigurationsConfiguration {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -213,7 +212,7 @@ public final class GetStateConfigurationsConfiguration {
         private String scheduleExpression;
         private String scheduleType;
         private String stateConfigurationId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String targets;
         private String templateId;
         private String templateName;
@@ -312,7 +311,7 @@ public final class GetStateConfigurationsConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetStateConfigurationsConfiguration", "tags");
             }

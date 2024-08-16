@@ -191,13 +191,13 @@ namespace Pulumi.AliCloud.Log
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionAccessKeyIdContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionAccessKeyIdContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionAccessKeyIdContext { get; private set; } = null!;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("kmsEncryptionAccessKeySecretContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionAccessKeySecretContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionAccessKeySecretContext { get; private set; } = null!;
 
         /// <summary>
         /// ETL job last modified time.
@@ -403,26 +403,26 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? KmsEncryptedAccessKeySecret { get; set; }
 
         [Input("kmsEncryptionAccessKeyIdContext")]
-        private InputMap<object>? _kmsEncryptionAccessKeyIdContext;
+        private InputMap<string>? _kmsEncryptionAccessKeyIdContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionAccessKeyIdContext
+        public InputMap<string> KmsEncryptionAccessKeyIdContext
         {
-            get => _kmsEncryptionAccessKeyIdContext ?? (_kmsEncryptionAccessKeyIdContext = new InputMap<object>());
+            get => _kmsEncryptionAccessKeyIdContext ?? (_kmsEncryptionAccessKeyIdContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeyIdContext = value;
         }
 
         [Input("kmsEncryptionAccessKeySecretContext")]
-        private InputMap<object>? _kmsEncryptionAccessKeySecretContext;
+        private InputMap<string>? _kmsEncryptionAccessKeySecretContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionAccessKeySecretContext
+        public InputMap<string> KmsEncryptionAccessKeySecretContext
         {
-            get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<object>());
+            get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeySecretContext = value;
         }
 
@@ -593,26 +593,26 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? KmsEncryptedAccessKeySecret { get; set; }
 
         [Input("kmsEncryptionAccessKeyIdContext")]
-        private InputMap<object>? _kmsEncryptionAccessKeyIdContext;
+        private InputMap<string>? _kmsEncryptionAccessKeyIdContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionAccessKeyIdContext
+        public InputMap<string> KmsEncryptionAccessKeyIdContext
         {
-            get => _kmsEncryptionAccessKeyIdContext ?? (_kmsEncryptionAccessKeyIdContext = new InputMap<object>());
+            get => _kmsEncryptionAccessKeyIdContext ?? (_kmsEncryptionAccessKeyIdContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeyIdContext = value;
         }
 
         [Input("kmsEncryptionAccessKeySecretContext")]
-        private InputMap<object>? _kmsEncryptionAccessKeySecretContext;
+        private InputMap<string>? _kmsEncryptionAccessKeySecretContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
-        public InputMap<object> KmsEncryptionAccessKeySecretContext
+        public InputMap<string> KmsEncryptionAccessKeySecretContext
         {
-            get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<object>());
+            get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeySecretContext = value;
         }
 

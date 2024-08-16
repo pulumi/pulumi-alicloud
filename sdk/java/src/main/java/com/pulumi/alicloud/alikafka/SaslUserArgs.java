@@ -6,7 +6,6 @@ package com.pulumi.alicloud.alikafka;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -53,13 +52,13 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="kmsEncryptionContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
 
@@ -185,7 +184,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(@Nullable Output<Map<String,Object>> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(@Nullable Output<Map<String,String>> kmsEncryptionContext) {
             $.kmsEncryptionContext = kmsEncryptionContext;
             return this;
         }
@@ -196,7 +195,7 @@ public final class SaslUserArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
         }
 

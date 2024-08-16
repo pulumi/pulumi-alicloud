@@ -299,7 +299,7 @@ class GetDisksResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the disk.
         """
@@ -392,7 +392,7 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
               resource_group_id: Optional[str] = None,
               snapshot_id: Optional[str] = None,
               status: Optional[str] = None,
-              tags: Optional[Mapping[str, Any]] = None,
+              tags: Optional[Mapping[str, str]] = None,
               type: Optional[str] = None,
               zone_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisksResult:
@@ -422,7 +422,7 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the disks. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -530,7 +530,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                      snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                     tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                      type: Optional[pulumi.Input[Optional[str]]] = None,
                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDisksResult]:
@@ -560,7 +560,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the disks. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

@@ -79,22 +79,22 @@ type GetEcsImageComponentsArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsImageComponents.
 type GetEcsImageComponentsResult struct {
 	Components []GetEcsImageComponentsComponent `pulumi:"components"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                 `pulumi:"id"`
-	Ids                []string               `pulumi:"ids"`
-	ImageComponentName *string                `pulumi:"imageComponentName"`
-	NameRegex          *string                `pulumi:"nameRegex"`
-	Names              []string               `pulumi:"names"`
-	OutputFile         *string                `pulumi:"outputFile"`
-	Owner              *string                `pulumi:"owner"`
-	ResourceGroupId    *string                `pulumi:"resourceGroupId"`
-	Tags               map[string]interface{} `pulumi:"tags"`
+	Id                 string            `pulumi:"id"`
+	Ids                []string          `pulumi:"ids"`
+	ImageComponentName *string           `pulumi:"imageComponentName"`
+	NameRegex          *string           `pulumi:"nameRegex"`
+	Names              []string          `pulumi:"names"`
+	OutputFile         *string           `pulumi:"outputFile"`
+	Owner              *string           `pulumi:"owner"`
+	ResourceGroupId    *string           `pulumi:"resourceGroupId"`
+	Tags               map[string]string `pulumi:"tags"`
 }
 
 func GetEcsImageComponentsOutput(ctx *pulumi.Context, args GetEcsImageComponentsOutputArgs, opts ...pulumi.InvokeOption) GetEcsImageComponentsResultOutput {
@@ -127,7 +127,7 @@ type GetEcsImageComponentsOutputArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsImageComponentsOutputArgs) ElementType() reflect.Type {
@@ -186,8 +186,8 @@ func (o GetEcsImageComponentsResultOutput) ResourceGroupId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsImageComponentsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsImageComponentsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsImageComponentsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

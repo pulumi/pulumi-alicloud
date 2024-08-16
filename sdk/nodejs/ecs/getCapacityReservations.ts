@@ -84,7 +84,7 @@ export interface GetCapacityReservationsArgs {
     /**
      * The tag of the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -133,7 +133,7 @@ export interface GetCapacityReservationsResult {
     /**
      * A mapping of tags to assign to the Capacity Reservation.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides Ecs Capacity Reservation available to the user.
@@ -199,5 +199,5 @@ export interface GetCapacityReservationsOutputArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

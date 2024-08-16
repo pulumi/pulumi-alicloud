@@ -21,7 +21,7 @@ class SwitchArgs:
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -37,7 +37,7 @@ class SwitchArgs:
                - **false** (default): IPv6 is not enabled.
         :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vswitch_name: The name of the VSwitch.
         :param pulumi.Input[str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
@@ -158,14 +158,14 @@ class SwitchArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of VSwitch.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -205,7 +205,7 @@ class _SwitchState:
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -222,7 +222,7 @@ class _SwitchState:
         :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -376,14 +376,14 @@ class _SwitchState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of VSwitch.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -436,7 +436,7 @@ class Switch(pulumi.CustomResource):
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class Switch(pulumi.CustomResource):
                - **false** (default): IPv6 is not enabled.
         :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -643,7 +643,7 @@ class Switch(pulumi.CustomResource):
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -692,7 +692,7 @@ class Switch(pulumi.CustomResource):
             ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_name: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Switch':
@@ -714,7 +714,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -818,7 +818,7 @@ class Switch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of VSwitch.
         """

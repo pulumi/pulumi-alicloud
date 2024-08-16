@@ -69,7 +69,7 @@ type GetTemplatesArgs struct {
 	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType *string `pulumi:"shareType"`
 	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	TemplateName *string `pulumi:"templateName"`
 }
@@ -84,7 +84,7 @@ type GetTemplatesResult struct {
 	Names        []string               `pulumi:"names"`
 	OutputFile   *string                `pulumi:"outputFile"`
 	ShareType    *string                `pulumi:"shareType"`
-	Tags         map[string]interface{} `pulumi:"tags"`
+	Tags         map[string]string      `pulumi:"tags"`
 	TemplateName *string                `pulumi:"templateName"`
 	Templates    []GetTemplatesTemplate `pulumi:"templates"`
 }
@@ -115,7 +115,7 @@ type GetTemplatesOutputArgs struct {
 	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
 	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
 }
@@ -168,8 +168,8 @@ func (o GetTemplatesResultOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetTemplatesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTemplatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTemplatesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTemplatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetTemplatesResultOutput) TemplateName() pulumi.StringPtrOutput {

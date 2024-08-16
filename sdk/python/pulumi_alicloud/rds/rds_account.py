@@ -22,7 +22,7 @@ class RdsAccountArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[bool]] = None,
@@ -59,7 +59,7 @@ class RdsAccountArgs:
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
@@ -231,14 +231,14 @@ class RdsAccountArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -306,7 +306,7 @@ class _RdsAccountState:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[bool]] = None,
@@ -344,7 +344,7 @@ class _RdsAccountState:
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
@@ -519,14 +519,14 @@ class _RdsAccountState:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -608,7 +608,7 @@ class RdsAccount(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[bool]] = None,
@@ -699,7 +699,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
@@ -789,7 +789,7 @@ class RdsAccount(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[bool]] = None,
@@ -837,7 +837,7 @@ class RdsAccount(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             reset_permission_flag: Optional[pulumi.Input[bool]] = None,
@@ -880,7 +880,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
@@ -999,7 +999,7 @@ class RdsAccount(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """

@@ -4705,7 +4705,7 @@ type GetNatGatewaysGateway struct {
 	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status string `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch to which the NAT gateway belongs.
@@ -4765,7 +4765,7 @@ type GetNatGatewaysGatewayArgs struct {
 	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the vSwitch to which the NAT gateway belongs.
@@ -4924,8 +4924,8 @@ func (o GetNatGatewaysGatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of NAT gateway.
-func (o GetNatGatewaysGatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNatGatewaysGateway) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNatGatewaysGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC.
@@ -5890,7 +5890,7 @@ type GetNetworksVpc struct {
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// ID of the VPC.
@@ -5940,7 +5940,7 @@ type GetNetworksVpcArgs struct {
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput `pulumi:"userCidrs"`
 	// ID of the VPC.
@@ -6065,8 +6065,8 @@ func (o GetNetworksVpcOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetNetworksVpcOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNetworksVpc) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNetworksVpcOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworksVpc) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of user CIDRs.
@@ -7247,7 +7247,7 @@ type GetRouteTablesTable struct {
 	// The status of resource. Valid values: `Available` and `Pending`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Vpc id of the route table.
 	VpcId string `pulumi:"vpcId"`
 	// A list of vswitch id.
@@ -7287,7 +7287,7 @@ type GetRouteTablesTableArgs struct {
 	// The status of resource. Valid values: `Available` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Vpc id of the route table.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// A list of vswitch id.
@@ -7396,8 +7396,8 @@ func (o GetRouteTablesTableOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetRouteTablesTableOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetRouteTablesTable) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetRouteTablesTableOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouteTablesTable) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Vpc id of the route table.
@@ -8205,7 +8205,7 @@ type GetSwitchesVswitch struct {
 	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC that owns the vSwitch.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch.
@@ -8251,7 +8251,7 @@ type GetSwitchesVswitchArgs struct {
 	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC that owns the vSwitch.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch.
@@ -8369,8 +8369,8 @@ func (o GetSwitchesVswitchOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetSwitchesVswitchOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSwitchesVswitch) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSwitchesVswitchOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSwitchesVswitch) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC that owns the vSwitch.

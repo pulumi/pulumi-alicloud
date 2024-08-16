@@ -19,7 +19,7 @@ class ClientUserArgs:
                  user_mail: pulumi.Input[str],
                  client_ip: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None):
         """
@@ -29,7 +29,7 @@ class ClientUserArgs:
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] user_name: The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
@@ -109,14 +109,14 @@ class ClientUserArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The context of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -150,7 +150,7 @@ class _ClientUserState:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  client_ip: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  sag_id: Optional[pulumi.Input[str]] = None,
                  user_mail: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class _ClientUserState:
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -221,14 +221,14 @@ class _ClientUserState:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The context of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -288,7 +288,7 @@ class ClientUser(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  client_ip: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  sag_id: Optional[pulumi.Input[str]] = None,
                  user_mail: Optional[pulumi.Input[str]] = None,
@@ -340,7 +340,7 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -411,7 +411,7 @@ class ClientUser(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  client_ip: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  sag_id: Optional[pulumi.Input[str]] = None,
                  user_mail: Optional[pulumi.Input[str]] = None,
@@ -452,7 +452,7 @@ class ClientUser(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[int]] = None,
             client_ip: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             sag_id: Optional[pulumi.Input[str]] = None,
             user_mail: Optional[pulumi.Input[str]] = None,
@@ -467,7 +467,7 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         :param pulumi.Input[str] client_ip: The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         :param pulumi.Input[str] kms_encrypted_password: The password of the KMS Encryption.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: The context of the KMS Encryption.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: The context of the KMS Encryption.
         :param pulumi.Input[str] password: The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
@@ -513,7 +513,7 @@ class ClientUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The context of the KMS Encryption.
         """

@@ -7,7 +7,6 @@ import com.pulumi.alicloud.kms.outputs.GetSecretsSecret;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,7 @@ public final class GetSecretsResult {
      * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetSecretsResult() {}
     public Optional<Boolean> enableDetails() {
@@ -96,7 +95,7 @@ public final class GetSecretsResult {
      * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -118,7 +117,7 @@ public final class GetSecretsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetSecretsSecret> secrets;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetSecretsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -206,7 +205,7 @@ public final class GetSecretsResult {
             return secrets(List.of(secrets));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

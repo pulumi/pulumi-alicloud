@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +89,7 @@ public final class GetServerGroupsGroup {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the VPC to which the server group belongs.
      * 
@@ -200,7 +199,7 @@ public final class GetServerGroupsGroup {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -234,7 +233,7 @@ public final class GetServerGroupsGroup {
         private String serverGroupName;
         private String serverGroupType;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         public Builder() {}
         public Builder(GetServerGroupsGroup defaults) {
@@ -376,7 +375,7 @@ public final class GetServerGroupsGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetServerGroupsGroup", "tags");
             }

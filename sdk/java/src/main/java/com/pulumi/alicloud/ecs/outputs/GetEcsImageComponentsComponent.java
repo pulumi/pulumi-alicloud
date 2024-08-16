@@ -5,7 +5,6 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -66,7 +65,7 @@ public final class GetEcsImageComponentsComponent {
      * @return List of label key-value pairs.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetEcsImageComponentsComponent() {}
     /**
@@ -143,7 +142,7 @@ public final class GetEcsImageComponentsComponent {
      * @return List of label key-value pairs.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -166,7 +165,7 @@ public final class GetEcsImageComponentsComponent {
         private String owner;
         private String resourceGroupId;
         private String systemType;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetEcsImageComponentsComponent defaults) {
     	      Objects.requireNonNull(defaults);
@@ -264,7 +263,7 @@ public final class GetEcsImageComponentsComponent {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEcsImageComponentsComponent", "tags");
             }

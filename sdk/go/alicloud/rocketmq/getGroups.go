@@ -40,7 +40,7 @@ type GetGroupsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getGroups.
@@ -59,7 +59,7 @@ type GetGroupsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
@@ -89,7 +89,7 @@ type GetGroupsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetGroupsOutputArgs) ElementType() reflect.Type {
@@ -152,8 +152,8 @@ func (o GetGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the Ons group.
-func (o GetGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

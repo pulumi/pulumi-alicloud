@@ -89,9 +89,9 @@ import (
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Prometheus"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Prometheus"),
 //				},
 //			})
 //			if err != nil {
@@ -128,7 +128,7 @@ type Prometheus struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson pulumi.StringPtrOutput `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -186,7 +186,7 @@ type prometheusState struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson *string `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -209,7 +209,7 @@ type PrometheusState struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
 	VpcId pulumi.StringPtrInput
 	// The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -236,7 +236,7 @@ type prometheusArgs struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson *string `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -260,7 +260,7 @@ type PrometheusArgs struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
 	VpcId pulumi.StringPtrInput
 	// The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -390,8 +390,8 @@ func (o PrometheusOutput) SubClustersJson() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o PrometheusOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Prometheus) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PrometheusOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Prometheus) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).

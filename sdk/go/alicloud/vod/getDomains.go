@@ -41,9 +41,9 @@ import (
 //						SourcePort:    pulumi.String("80"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
+//				Tags: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
 //				},
 //			})
 //			if err != nil {
@@ -53,9 +53,9 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultDomain.ID(),
 //				},
-//				Tags: pulumi.Map{
-//					"key1": pulumi.Any("value1"),
-//					"key2": pulumi.Any("value2"),
+//				Tags: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
 //				},
 //			}, nil)
 //			ctx.Export("vodDomain", _default.ApplyT(func(_default vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
@@ -91,7 +91,7 @@ type GetDomainsArgs struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getDomains.
@@ -99,13 +99,13 @@ type GetDomainsResult struct {
 	DomainSearchType *string            `pulumi:"domainSearchType"`
 	Domains          []GetDomainsDomain `pulumi:"domains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Id         string            `pulumi:"id"`
+	Ids        []string          `pulumi:"ids"`
+	NameRegex  *string           `pulumi:"nameRegex"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Status     *string           `pulumi:"status"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
@@ -136,7 +136,7 @@ type GetDomainsOutputArgs struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetDomainsOutputArgs) ElementType() reflect.Type {
@@ -191,8 +191,8 @@ func (o GetDomainsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetDomainsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDomainsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDomainsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDomainsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

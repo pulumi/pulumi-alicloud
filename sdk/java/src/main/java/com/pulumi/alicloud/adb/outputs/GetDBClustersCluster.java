@@ -6,7 +6,6 @@ package com.pulumi.alicloud.adb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -208,7 +207,7 @@ public final class GetDBClustersCluster {
      * @return A map of tags assigned to the cluster.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The vpc cloud instance id.
      * 
@@ -501,7 +500,7 @@ public final class GetDBClustersCluster {
      * @return A map of tags assigned to the cluster.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -580,7 +579,7 @@ public final class GetDBClustersCluster {
         private List<String> securityIps;
         private String status;
         private String storageResource;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcCloudInstanceId;
         private String vpcId;
         private String vswitchId;
@@ -941,7 +940,7 @@ public final class GetDBClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetDBClustersCluster", "tags");
             }

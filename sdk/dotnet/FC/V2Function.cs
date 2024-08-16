@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.FC
         public Output<int?> DiskSize { get; private set; } = null!;
 
         [Output("environmentVariables")]
-        public Output<ImmutableDictionary<string, object>?> EnvironmentVariables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
@@ -164,10 +164,10 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
-        public InputMap<object> EnvironmentVariables
+        private InputMap<string>? _environmentVariables;
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -257,10 +257,10 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
-        public InputMap<object> EnvironmentVariables
+        private InputMap<string>? _environmentVariables;
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 

@@ -26,7 +26,7 @@ type V2Function struct {
 	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrOutput     `pulumi:"customRuntimeConfig"`
 	Description             pulumi.StringPtrOutput                     `pulumi:"description"`
 	DiskSize                pulumi.IntPtrOutput                        `pulumi:"diskSize"`
-	EnvironmentVariables    pulumi.MapOutput                           `pulumi:"environmentVariables"`
+	EnvironmentVariables    pulumi.StringMapOutput                     `pulumi:"environmentVariables"`
 	FunctionName            pulumi.StringOutput                        `pulumi:"functionName"`
 	GpuMemorySize           pulumi.IntPtrOutput                        `pulumi:"gpuMemorySize"`
 	Handler                 pulumi.StringOutput                        `pulumi:"handler"`
@@ -95,7 +95,7 @@ type v2functionState struct {
 	CustomRuntimeConfig     *V2FunctionCustomRuntimeConfig     `pulumi:"customRuntimeConfig"`
 	Description             *string                            `pulumi:"description"`
 	DiskSize                *int                               `pulumi:"diskSize"`
-	EnvironmentVariables    map[string]interface{}             `pulumi:"environmentVariables"`
+	EnvironmentVariables    map[string]string                  `pulumi:"environmentVariables"`
 	FunctionName            *string                            `pulumi:"functionName"`
 	GpuMemorySize           *int                               `pulumi:"gpuMemorySize"`
 	Handler                 *string                            `pulumi:"handler"`
@@ -123,7 +123,7 @@ type V2FunctionState struct {
 	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrInput
 	Description             pulumi.StringPtrInput
 	DiskSize                pulumi.IntPtrInput
-	EnvironmentVariables    pulumi.MapInput
+	EnvironmentVariables    pulumi.StringMapInput
 	FunctionName            pulumi.StringPtrInput
 	GpuMemorySize           pulumi.IntPtrInput
 	Handler                 pulumi.StringPtrInput
@@ -154,7 +154,7 @@ type v2functionArgs struct {
 	CustomRuntimeConfig     *V2FunctionCustomRuntimeConfig     `pulumi:"customRuntimeConfig"`
 	Description             *string                            `pulumi:"description"`
 	DiskSize                *int                               `pulumi:"diskSize"`
-	EnvironmentVariables    map[string]interface{}             `pulumi:"environmentVariables"`
+	EnvironmentVariables    map[string]string                  `pulumi:"environmentVariables"`
 	FunctionName            string                             `pulumi:"functionName"`
 	GpuMemorySize           *int                               `pulumi:"gpuMemorySize"`
 	Handler                 string                             `pulumi:"handler"`
@@ -182,7 +182,7 @@ type V2FunctionArgs struct {
 	CustomRuntimeConfig     V2FunctionCustomRuntimeConfigPtrInput
 	Description             pulumi.StringPtrInput
 	DiskSize                pulumi.IntPtrInput
-	EnvironmentVariables    pulumi.MapInput
+	EnvironmentVariables    pulumi.StringMapInput
 	FunctionName            pulumi.StringInput
 	GpuMemorySize           pulumi.IntPtrInput
 	Handler                 pulumi.StringInput
@@ -329,8 +329,8 @@ func (o V2FunctionOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2Function) pulumi.IntPtrOutput { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-func (o V2FunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v *V2Function) pulumi.MapOutput { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o V2FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *V2Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 func (o V2FunctionOutput) FunctionName() pulumi.StringOutput {

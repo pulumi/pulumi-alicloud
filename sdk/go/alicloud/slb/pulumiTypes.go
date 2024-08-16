@@ -680,7 +680,7 @@ type GetAclsAcl struct {
 	// The Id of resource group which acl belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
@@ -707,7 +707,7 @@ type GetAclsAclArgs struct {
 	// The Id of resource group which acl belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetAclsAclArgs) ElementType() reflect.Type {
@@ -791,8 +791,8 @@ func (o GetAclsAclOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetAclsAclOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAclsAcl) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAclsAclOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAclsAcl) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetAclsAclArrayOutput struct{ *pulumi.OutputState }
@@ -1087,7 +1087,7 @@ type GetApplicationLoadBalancersBalancer struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -1165,7 +1165,7 @@ type GetApplicationLoadBalancersBalancerArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -1375,8 +1375,8 @@ func (o GetApplicationLoadBalancersBalancerOutput) Status() pulumi.StringOutput 
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-func (o GetApplicationLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC linked to the SLBs.
@@ -1788,7 +1788,7 @@ type GetApplicationLoadBalancersSlb struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -1822,7 +1822,7 @@ type GetApplicationLoadBalancersSlbArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -1925,8 +1925,8 @@ func (o GetApplicationLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-func (o GetApplicationLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationLoadBalancersSlbOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersSlb) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC linked to the SLBs.
@@ -2202,7 +2202,7 @@ type GetCaCertificatesCertificate struct {
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetCaCertificatesCertificateInput is an input type that accepts GetCaCertificatesCertificateArgs and GetCaCertificatesCertificateOutput values.
@@ -2238,7 +2238,7 @@ type GetCaCertificatesCertificateArgs struct {
 	// The Id of resource group which ca certificates belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetCaCertificatesCertificateArgs) ElementType() reflect.Type {
@@ -2343,8 +2343,8 @@ func (o GetCaCertificatesCertificateOutput) ResourceGroupId() pulumi.StringOutpu
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetCaCertificatesCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCaCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetCaCertificatesCertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCaCertificatesCertificate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetCaCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
@@ -2986,7 +2986,7 @@ type GetLoadBalancersBalancer struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -3063,7 +3063,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -3273,8 +3273,8 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC linked to the SLBs.
@@ -3682,7 +3682,7 @@ type GetLoadBalancersSlb struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -3745,7 +3745,7 @@ type GetLoadBalancersSlbArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -3880,8 +3880,8 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-func (o GetLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersSlbOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC linked to the SLBs.
@@ -4323,7 +4323,7 @@ type GetServerCertificatesCertificate struct {
 	// Server certificate subject alternative name list.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetServerCertificatesCertificateInput is an input type that accepts GetServerCertificatesCertificateArgs and GetServerCertificatesCertificateOutput values.
@@ -4365,7 +4365,7 @@ type GetServerCertificatesCertificateArgs struct {
 	// Server certificate subject alternative name list.
 	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetServerCertificatesCertificateArgs) ElementType() reflect.Type {
@@ -4485,8 +4485,8 @@ func (o GetServerCertificatesCertificateOutput) SubjectAlternativeNames() pulumi
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetServerCertificatesCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerCertificatesCertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerCertificatesCertificate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetServerCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }

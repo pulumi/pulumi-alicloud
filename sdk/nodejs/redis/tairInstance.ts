@@ -140,7 +140,7 @@ export class TairInstance extends pulumi.CustomResource {
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the resource.
      */
@@ -357,7 +357,7 @@ export interface TairInstanceState {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the resource.
      */
@@ -471,7 +471,7 @@ export interface TairInstanceArgs {
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the resource.
      */

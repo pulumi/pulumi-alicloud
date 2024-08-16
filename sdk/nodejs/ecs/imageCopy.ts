@@ -150,7 +150,7 @@ export class ImageCopy extends pulumi.CustomResource {
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ImageCopy resource with the given unique name, arguments, and options.
@@ -241,7 +241,7 @@ export interface ImageCopyState {
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -286,5 +286,5 @@ export interface ImageCopyArgs {
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

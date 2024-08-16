@@ -20,7 +20,7 @@ class AutoSnapshotPolicyArgs:
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
@@ -40,7 +40,7 @@ class AutoSnapshotPolicyArgs:
                Default value: -1.
         :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
         """
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
@@ -141,14 +141,14 @@ class AutoSnapshotPolicyArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -173,7 +173,7 @@ class _AutoSnapshotPolicyState:
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -192,7 +192,7 @@ class _AutoSnapshotPolicyState:
                - [1, 65536]: The number of days retained.
                Default value: -1.
         :param pulumi.Input[str] status: The status of Auto Snapshot Policy.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
@@ -299,14 +299,14 @@ class _AutoSnapshotPolicyState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -346,7 +346,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -403,7 +403,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
                Default value: -1.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
@@ -473,7 +473,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -516,7 +516,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AutoSnapshotPolicy':
         """
@@ -540,7 +540,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - [1, 65536]: The number of days retained.
                Default value: -1.
         :param pulumi.Input[str] status: The status of Auto Snapshot Policy.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
@@ -619,7 +619,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

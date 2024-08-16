@@ -14,7 +14,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +146,7 @@ public final class GetContainerGroupsGroup {
      * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The information about the mounted volume. You can mount up to 20 volumes.
      * 
@@ -345,7 +344,7 @@ public final class GetContainerGroupsGroup {
      * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -411,7 +410,7 @@ public final class GetContainerGroupsGroup {
         private String securityGroupId;
         private String status;
         private String succeededTime;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private List<GetContainerGroupsGroupVolume> volumes;
         private String vpcId;
         private String vswitchId;
@@ -670,7 +669,7 @@ public final class GetContainerGroupsGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetContainerGroupsGroup", "tags");
             }

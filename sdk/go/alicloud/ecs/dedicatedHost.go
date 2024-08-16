@@ -61,7 +61,7 @@ type DedicatedHost struct {
 	// The status of the dedicated host.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -138,7 +138,7 @@ type dedicatedHostState struct {
 	// The status of the dedicated host.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -183,7 +183,7 @@ type DedicatedHostState struct {
 	// The status of the dedicated host.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
 	ZoneId pulumi.StringPtrInput
 }
@@ -230,7 +230,7 @@ type dedicatedHostArgs struct {
 	// The unit of the subscription period of the dedicated host.
 	SaleCycle *string `pulumi:"saleCycle"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -274,7 +274,7 @@ type DedicatedHostArgs struct {
 	// The unit of the subscription period of the dedicated host.
 	SaleCycle pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
 	ZoneId pulumi.StringPtrInput
 }
@@ -462,8 +462,8 @@ func (o DedicatedHostOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o DedicatedHostOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DedicatedHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DedicatedHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.

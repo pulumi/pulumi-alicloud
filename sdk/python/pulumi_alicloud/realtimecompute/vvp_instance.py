@@ -26,7 +26,7 @@ class VvpInstanceArgs:
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input['VvpInstanceResourceSpecArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a VvpInstance resource.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
@@ -39,7 +39,7 @@ class VvpInstanceArgs:
         :param pulumi.Input[str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "storage", storage)
@@ -180,14 +180,14 @@ class VvpInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -202,7 +202,7 @@ class _VvpInstanceState:
                  resource_spec: Optional[pulumi.Input['VvpInstanceResourceSpecArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['VvpInstanceStorageArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vvp_instance_name: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class _VvpInstanceState:
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input['VvpInstanceStorageArgs'] storage: Store information. See `storage` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[str] vvp_instance_name: The name of the workspace.
@@ -348,14 +348,14 @@ class _VvpInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -418,7 +418,7 @@ class VvpInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
                  storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vvp_instance_name: Optional[pulumi.Input[str]] = None,
@@ -441,7 +441,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[str] vvp_instance_name: The name of the workspace.
@@ -483,7 +483,7 @@ class VvpInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
                  storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vvp_instance_name: Optional[pulumi.Input[str]] = None,
@@ -540,7 +540,7 @@ class VvpInstance(pulumi.CustomResource):
             resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vvp_instance_name: Optional[pulumi.Input[str]] = None,
@@ -560,7 +560,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[str] vvp_instance_name: The name of the workspace.
@@ -651,7 +651,7 @@ class VvpInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of the resource.
         """

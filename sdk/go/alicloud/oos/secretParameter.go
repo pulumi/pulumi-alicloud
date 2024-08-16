@@ -54,9 +54,9 @@ import (
 //				Type:                pulumi.String("Secret"),
 //				KeyId:               exampleKey.ID(),
 //				Description:         pulumi.String("terraform-example"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("OosSecretParameter"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("OosSecretParameter"),
 //				},
 //				ResourceGroupId: pulumi.String(example.Groups[0].Id),
 //			})
@@ -94,7 +94,7 @@ type SecretParameter struct {
 	// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
 	SecretParameterName pulumi.StringOutput `pulumi:"secretParameterName"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The data type of the encryption parameter. Valid values: `Secret`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
@@ -159,7 +159,7 @@ type secretParameterState struct {
 	// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
 	SecretParameterName *string `pulumi:"secretParameterName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the encryption parameter. Valid values: `Secret`.
 	Type *string `pulumi:"type"`
 	// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
@@ -182,7 +182,7 @@ type SecretParameterState struct {
 	// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
 	SecretParameterName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The data type of the encryption parameter. Valid values: `Secret`.
 	Type pulumi.StringPtrInput
 	// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
@@ -209,7 +209,7 @@ type secretParameterArgs struct {
 	// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
 	SecretParameterName string `pulumi:"secretParameterName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the encryption parameter. Valid values: `Secret`.
 	Type *string `pulumi:"type"`
 	// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
@@ -233,7 +233,7 @@ type SecretParameterArgs struct {
 	// The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
 	SecretParameterName pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The data type of the encryption parameter. Valid values: `Secret`.
 	Type pulumi.StringPtrInput
 	// The value of the encryption parameter. The value must be `1` to `4096` characters in length.
@@ -357,8 +357,8 @@ func (o SecretParameterOutput) SecretParameterName() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o SecretParameterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecretParameter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SecretParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretParameter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The data type of the encryption parameter. Valid values: `Secret`.

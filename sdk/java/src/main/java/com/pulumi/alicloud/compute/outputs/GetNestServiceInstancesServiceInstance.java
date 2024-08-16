@@ -7,7 +7,6 @@ import com.pulumi.alicloud.compute.outputs.GetNestServiceInstancesServiceInstanc
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +78,7 @@ public final class GetNestServiceInstancesServiceInstance {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The name of the template.
      * 
@@ -175,7 +174,7 @@ public final class GetNestServiceInstancesServiceInstance {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -207,7 +206,7 @@ public final class GetNestServiceInstancesServiceInstance {
         private List<GetNestServiceInstancesServiceInstanceService> services;
         private String source;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String templateName;
         public Builder() {}
         public Builder(GetNestServiceInstancesServiceInstance defaults) {
@@ -328,7 +327,7 @@ public final class GetNestServiceInstancesServiceInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetNestServiceInstancesServiceInstance", "tags");
             }

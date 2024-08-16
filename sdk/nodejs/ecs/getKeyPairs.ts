@@ -65,7 +65,7 @@ export interface GetKeyPairsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -101,7 +101,7 @@ export interface GetKeyPairsResult {
     /**
      * (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
@@ -152,5 +152,5 @@ export interface GetKeyPairsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

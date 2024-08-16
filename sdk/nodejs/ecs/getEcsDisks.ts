@@ -167,7 +167,7 @@ export interface GetEcsDisksArgs {
     /**
      * A map of tags assigned to the disks.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *
@@ -219,7 +219,7 @@ export interface GetEcsDisksResult {
     readonly resourceGroupId?: string;
     readonly snapshotId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -355,7 +355,7 @@ export interface GetEcsDisksOutputArgs {
     /**
      * A map of tags assigned to the disks.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *

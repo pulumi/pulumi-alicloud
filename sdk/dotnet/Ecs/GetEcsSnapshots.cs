@@ -172,14 +172,14 @@ namespace Pulumi.AliCloud.Ecs
         public string? Status { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the snapshot.
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -285,14 +285,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the snapshot.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<Outputs.GetEcsSnapshotsSnapshotResult> Snapshots;
         public readonly string? SourceDiskType;
         public readonly string? Status;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly string? Type;
         public readonly string? Usage;
 
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Ecs
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string? type,
 

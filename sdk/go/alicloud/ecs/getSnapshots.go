@@ -110,8 +110,8 @@ type GetSnapshotsArgs struct {
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }
@@ -142,8 +142,8 @@ type GetSnapshotsResult struct {
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
 }
@@ -181,7 +181,7 @@ type GetSnapshotsOutputArgs struct {
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags pulumi.MapInput       `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
@@ -278,8 +278,8 @@ func (o GetSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the snapshot.
-func (o GetSnapshotsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSnapshotsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSnapshotsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetSnapshotsResultOutput) Type() pulumi.StringPtrOutput {

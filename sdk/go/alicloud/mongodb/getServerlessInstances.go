@@ -86,7 +86,7 @@ type GetServerlessInstancesArgs struct {
 	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of the vswitch.
@@ -108,7 +108,7 @@ type GetServerlessInstancesResult struct {
 	OutputFile      *string                          `pulumi:"outputFile"`
 	ResourceGroupId *string                          `pulumi:"resourceGroupId"`
 	Status          *string                          `pulumi:"status"`
-	Tags            map[string]interface{}           `pulumi:"tags"`
+	Tags            map[string]string                `pulumi:"tags"`
 	VpcId           *string                          `pulumi:"vpcId"`
 	VswitchId       *string                          `pulumi:"vswitchId"`
 	ZoneId          *string                          `pulumi:"zoneId"`
@@ -146,7 +146,7 @@ type GetServerlessInstancesOutputArgs struct {
 	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The id of the vswitch.
@@ -215,8 +215,8 @@ func (o GetServerlessInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerlessInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServerlessInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerlessInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerlessInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerlessInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetServerlessInstancesResultOutput) VpcId() pulumi.StringPtrOutput {

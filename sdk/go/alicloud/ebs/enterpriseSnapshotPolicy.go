@@ -105,7 +105,7 @@ type EnterpriseSnapshotPolicy struct {
 	// Snapshot storage policy. See `storageRule` below.
 	StorageRule EnterpriseSnapshotPolicyStorageRulePtrOutput `pulumi:"storageRule"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Represents the target type of resource binding.
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 }
@@ -173,7 +173,7 @@ type enterpriseSnapshotPolicyState struct {
 	// Snapshot storage policy. See `storageRule` below.
 	StorageRule *EnterpriseSnapshotPolicyStorageRule `pulumi:"storageRule"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Represents the target type of resource binding.
 	TargetType *string `pulumi:"targetType"`
 }
@@ -200,7 +200,7 @@ type EnterpriseSnapshotPolicyState struct {
 	// Snapshot storage policy. See `storageRule` below.
 	StorageRule EnterpriseSnapshotPolicyStorageRulePtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Represents the target type of resource binding.
 	TargetType pulumi.StringPtrInput
 }
@@ -229,7 +229,7 @@ type enterpriseSnapshotPolicyArgs struct {
 	// Snapshot storage policy. See `storageRule` below.
 	StorageRule *EnterpriseSnapshotPolicyStorageRule `pulumi:"storageRule"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Represents the target type of resource binding.
 	TargetType string `pulumi:"targetType"`
 }
@@ -255,7 +255,7 @@ type EnterpriseSnapshotPolicyArgs struct {
 	// Snapshot storage policy. See `storageRule` below.
 	StorageRule EnterpriseSnapshotPolicyStorageRulePtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Represents the target type of resource binding.
 	TargetType pulumi.StringInput
 }
@@ -402,8 +402,8 @@ func (o EnterpriseSnapshotPolicyOutput) StorageRule() EnterpriseSnapshotPolicySt
 }
 
 // The tag of the resource.
-func (o EnterpriseSnapshotPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EnterpriseSnapshotPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EnterpriseSnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnterpriseSnapshotPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Represents the target type of resource binding.

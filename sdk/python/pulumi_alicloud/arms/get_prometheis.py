@@ -105,7 +105,7 @@ class GetPrometheisResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag of the Prometheus.
         """
@@ -134,7 +134,7 @@ def get_prometheis(enable_details: Optional[bool] = None,
                    name_regex: Optional[str] = None,
                    output_file: Optional[str] = None,
                    resource_group_id: Optional[str] = None,
-                   tags: Optional[Mapping[str, Any]] = None,
+                   tags: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrometheisResult:
     """
     This data source provides the Arms Prometheis of the current Alibaba Cloud user.
@@ -181,7 +181,7 @@ def get_prometheis(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -211,7 +211,7 @@ def get_prometheis_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrometheisResult]:
     """
     This data source provides the Arms Prometheis of the current Alibaba Cloud user.
@@ -258,6 +258,6 @@ def get_prometheis_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

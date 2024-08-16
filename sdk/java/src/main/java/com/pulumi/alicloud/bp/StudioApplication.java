@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -128,14 +127,14 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The configuration of the application.
      * 
      */
-    @Export(name="configuration", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> configuration;
+    @Export(name="configuration", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> configuration;
 
     /**
      * @return The configuration of the application.
      * 
      */
-    public Output<Optional<Map<String,Object>>> configuration() {
+    public Output<Optional<Map<String,String>>> configuration() {
         return Codegen.optional(this.configuration);
     }
     /**
@@ -198,14 +197,14 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * The variables of the application.
      * 
      */
-    @Export(name="variables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> variables;
+    @Export(name="variables", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> variables;
 
     /**
      * @return The variables of the application.
      * 
      */
-    public Output<Optional<Map<String,Object>>> variables() {
+    public Output<Optional<Map<String,String>>> variables() {
         return Codegen.optional(this.variables);
     }
 

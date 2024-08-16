@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.CS
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.CS
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
@@ -583,14 +583,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -821,14 +821,14 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? SlbInternetEnabled { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -983,14 +983,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1257,14 +1257,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SlbIntranet { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

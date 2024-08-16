@@ -96,7 +96,7 @@ class GetSubscriptionJobsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +122,7 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
                           name_regex: Optional[str] = None,
                           output_file: Optional[str] = None,
                           status: Optional[str] = None,
-                          tags: Optional[Mapping[str, Any]] = None,
+                          tags: Optional[Mapping[str, str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubscriptionJobsResult:
     """
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
@@ -175,7 +175,7 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                 tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionJobsResult]:
     """
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.

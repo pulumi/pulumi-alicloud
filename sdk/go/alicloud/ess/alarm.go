@@ -195,7 +195,7 @@ type Alarm struct {
 	// The description for the alarm.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -270,7 +270,7 @@ type alarmState struct {
 	// The description for the alarm.
 	Description *string `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -310,7 +310,7 @@ type AlarmState struct {
 	// The description for the alarm.
 	Description pulumi.StringPtrInput
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-	Dimensions pulumi.MapInput
+	Dimensions pulumi.StringMapInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -354,7 +354,7 @@ type alarmArgs struct {
 	// The description for the alarm.
 	Description *string `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -390,7 +390,7 @@ type AlarmArgs struct {
 	// The description for the alarm.
 	Description pulumi.StringPtrInput
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-	Dimensions pulumi.MapInput
+	Dimensions pulumi.StringMapInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -523,8 +523,8 @@ func (o AlarmOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
-func (o AlarmOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
+func (o AlarmOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringMapOutput { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 // Whether to enable specific ess alarm. Default to true.

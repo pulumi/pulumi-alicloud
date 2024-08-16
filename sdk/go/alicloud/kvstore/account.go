@@ -79,13 +79,13 @@ import (
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.23.12.24"),
 //				},
-//				Config: pulumi.Map{
-//					"appendonly":             pulumi.Any("yes"),
-//					"lazyfree-lazy-eviction": pulumi.Any("yes"),
+//				Config: pulumi.StringMap{
+//					"appendonly":             pulumi.String("yes"),
+//					"lazyfree-lazy-eviction": pulumi.String("yes"),
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -137,7 +137,7 @@ type Account struct {
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The status of KVStore Account.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -207,7 +207,7 @@ type accountState struct {
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The status of KVStore Account.
 	Status *string `pulumi:"status"`
 }
@@ -235,7 +235,7 @@ type AccountState struct {
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The status of KVStore Account.
 	Status pulumi.StringPtrInput
 }
@@ -267,7 +267,7 @@ type accountArgs struct {
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 }
 
 // The set of arguments for constructing a Account resource.
@@ -294,7 +294,7 @@ type AccountArgs struct {
 	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {
@@ -427,8 +427,8 @@ func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o AccountOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o AccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The status of KVStore Account.

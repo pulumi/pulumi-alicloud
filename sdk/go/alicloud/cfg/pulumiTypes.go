@@ -1335,7 +1335,7 @@ type GetAggregateConfigRulesRule struct {
 	// The ID of the Aggregate Config Rule.
 	Id string `pulumi:"id"`
 	// The settings of the input parameters for the rule.
-	InputParameters map[string]interface{} `pulumi:"inputParameters"`
+	InputParameters map[string]string `pulumi:"inputParameters"`
 	// The frequency of the compliance evaluations.
 	MaximumExecutionFrequency string `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
@@ -1396,7 +1396,7 @@ type GetAggregateConfigRulesRuleArgs struct {
 	// The ID of the Aggregate Config Rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The settings of the input parameters for the rule.
-	InputParameters pulumi.MapInput `pulumi:"inputParameters"`
+	InputParameters pulumi.StringMapInput `pulumi:"inputParameters"`
 	// The frequency of the compliance evaluations.
 	MaximumExecutionFrequency pulumi.StringInput `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
@@ -1532,8 +1532,8 @@ func (o GetAggregateConfigRulesRuleOutput) Id() pulumi.StringOutput {
 }
 
 // The settings of the input parameters for the rule.
-func (o GetAggregateConfigRulesRuleOutput) InputParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAggregateConfigRulesRule) map[string]interface{} { return v.InputParameters }).(pulumi.MapOutput)
+func (o GetAggregateConfigRulesRuleOutput) InputParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesRule) map[string]string { return v.InputParameters }).(pulumi.StringMapOutput)
 }
 
 // The frequency of the compliance evaluations.
@@ -3165,7 +3165,7 @@ type GetRulesRule struct {
 	// The ID of the Config Rule.
 	Id string `pulumi:"id"`
 	// The input parameters of the Config Rule.
-	InputParameters map[string]interface{} `pulumi:"inputParameters"`
+	InputParameters map[string]string `pulumi:"inputParameters"`
 	// (Available in 1.124.1+) The frequency of maximum execution.
 	MaximumExecutionFrequency string `pulumi:"maximumExecutionFrequency"`
 	// the timestamp of the Config Rule modified.
@@ -3232,7 +3232,7 @@ type GetRulesRuleArgs struct {
 	// The ID of the Config Rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The input parameters of the Config Rule.
-	InputParameters pulumi.MapInput `pulumi:"inputParameters"`
+	InputParameters pulumi.StringMapInput `pulumi:"inputParameters"`
 	// (Available in 1.124.1+) The frequency of maximum execution.
 	MaximumExecutionFrequency pulumi.StringInput `pulumi:"maximumExecutionFrequency"`
 	// the timestamp of the Config Rule modified.
@@ -3371,8 +3371,8 @@ func (o GetRulesRuleOutput) Id() pulumi.StringOutput {
 }
 
 // The input parameters of the Config Rule.
-func (o GetRulesRuleOutput) InputParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v GetRulesRule) map[string]interface{} { return v.InputParameters }).(pulumi.MapOutput)
+func (o GetRulesRuleOutput) InputParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRulesRule) map[string]string { return v.InputParameters }).(pulumi.StringMapOutput)
 }
 
 // (Available in 1.124.1+) The frequency of maximum execution.

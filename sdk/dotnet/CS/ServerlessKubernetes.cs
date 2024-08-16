@@ -267,7 +267,7 @@ namespace Pulumi.AliCloud.CS
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The time zone of the cluster.
@@ -513,14 +513,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SlsProjectName { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -736,14 +736,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SlsProjectName { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

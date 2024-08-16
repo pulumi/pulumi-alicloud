@@ -17,7 +17,7 @@ class EventSourceArgs:
                  event_bus_name: pulumi.Input[str],
                  event_source_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  external_source_type: Optional[pulumi.Input[str]] = None,
                  linked_external_source: Optional[pulumi.Input[bool]] = None):
         """
@@ -25,7 +25,7 @@ class EventSourceArgs:
         :param pulumi.Input[str] event_bus_name: The name of event bus.
         :param pulumi.Input[str] event_source_name: The code name of event source.
         :param pulumi.Input[str] description: The detail describe of event source.
-        :param pulumi.Input[Mapping[str, Any]] external_source_config: The config of external source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] external_source_config: The config of external source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -91,7 +91,7 @@ class EventSourceArgs:
 
     @property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The config of external source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
@@ -111,7 +111,7 @@ class EventSourceArgs:
         return pulumi.get(self, "external_source_config")
 
     @external_source_config.setter
-    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "external_source_config", value)
 
     @property
@@ -145,7 +145,7 @@ class _EventSourceState:
                  description: Optional[pulumi.Input[str]] = None,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  event_source_name: Optional[pulumi.Input[str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  external_source_type: Optional[pulumi.Input[str]] = None,
                  linked_external_source: Optional[pulumi.Input[bool]] = None):
         """
@@ -153,7 +153,7 @@ class _EventSourceState:
         :param pulumi.Input[str] description: The detail describe of event source.
         :param pulumi.Input[str] event_bus_name: The name of event bus.
         :param pulumi.Input[str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, Any]] external_source_config: The config of external source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] external_source_config: The config of external source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -221,7 +221,7 @@ class _EventSourceState:
 
     @property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The config of external source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
@@ -241,7 +241,7 @@ class _EventSourceState:
         return pulumi.get(self, "external_source_config")
 
     @external_source_config.setter
-    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "external_source_config", value)
 
     @property
@@ -277,7 +277,7 @@ class EventSource(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  event_source_name: Optional[pulumi.Input[str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  external_source_type: Optional[pulumi.Input[str]] = None,
                  linked_external_source: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -330,7 +330,7 @@ class EventSource(pulumi.CustomResource):
         :param pulumi.Input[str] description: The detail describe of event source.
         :param pulumi.Input[str] event_bus_name: The name of event bus.
         :param pulumi.Input[str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, Any]] external_source_config: The config of external source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] external_source_config: The config of external source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -415,7 +415,7 @@ class EventSource(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  event_bus_name: Optional[pulumi.Input[str]] = None,
                  event_source_name: Optional[pulumi.Input[str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  external_source_type: Optional[pulumi.Input[str]] = None,
                  linked_external_source: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -450,7 +450,7 @@ class EventSource(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             event_bus_name: Optional[pulumi.Input[str]] = None,
             event_source_name: Optional[pulumi.Input[str]] = None,
-            external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             external_source_type: Optional[pulumi.Input[str]] = None,
             linked_external_source: Optional[pulumi.Input[bool]] = None) -> 'EventSource':
         """
@@ -463,7 +463,7 @@ class EventSource(pulumi.CustomResource):
         :param pulumi.Input[str] description: The detail describe of event source.
         :param pulumi.Input[str] event_bus_name: The name of event bus.
         :param pulumi.Input[str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, Any]] external_source_config: The config of external source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] external_source_config: The config of external source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -518,7 +518,7 @@ class EventSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def external_source_config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The config of external source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:

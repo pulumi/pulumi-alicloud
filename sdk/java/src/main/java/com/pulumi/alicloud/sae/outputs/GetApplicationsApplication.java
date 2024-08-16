@@ -8,7 +8,6 @@ import com.pulumi.alicloud.sae.outputs.GetApplicationsApplicationOssMountDetail;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -234,7 +233,7 @@ public final class GetApplicationsApplication {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
      * 
@@ -261,7 +260,7 @@ public final class GetApplicationsApplication {
      */
     private String vswitchId;
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
      * 
      */
     private String warStartOptions;
@@ -582,7 +581,7 @@ public final class GetApplicationsApplication {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -621,7 +620,7 @@ public final class GetApplicationsApplication {
         return this.vswitchId;
     }
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
      * 
      */
     public String warStartOptions() {
@@ -690,7 +689,7 @@ public final class GetApplicationsApplication {
         private String securityGroupId;
         private String slsConfigs;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private Integer terminationGracePeriodSeconds;
         private String timezone;
         private String tomcatConfig;
@@ -1132,7 +1131,7 @@ public final class GetApplicationsApplication {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetApplicationsApplication", "tags");
             }

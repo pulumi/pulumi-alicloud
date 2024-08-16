@@ -125,7 +125,7 @@ export class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Represents the target type of resource binding.
      */
@@ -235,7 +235,7 @@ export interface EnterpriseSnapshotPolicyState {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Represents the target type of resource binding.
      */
@@ -285,7 +285,7 @@ export interface EnterpriseSnapshotPolicyArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Represents the target type of resource binding.
      */

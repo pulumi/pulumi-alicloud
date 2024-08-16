@@ -89,7 +89,7 @@ type GetExecutionsArgs struct {
 	// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of execution template.
 	TemplateName *string `pulumi:"templateName"`
 }
@@ -105,19 +105,19 @@ type GetExecutionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of OOS Execution ids.
-	Ids                   []string               `pulumi:"ids"`
-	IncludeChildExecution *bool                  `pulumi:"includeChildExecution"`
-	Mode                  *string                `pulumi:"mode"`
-	OutputFile            *string                `pulumi:"outputFile"`
-	ParentExecutionId     *string                `pulumi:"parentExecutionId"`
-	RamRole               *string                `pulumi:"ramRole"`
-	SortField             *string                `pulumi:"sortField"`
-	SortOrder             *string                `pulumi:"sortOrder"`
-	StartDateAfter        *string                `pulumi:"startDateAfter"`
-	StartDateBefore       *string                `pulumi:"startDateBefore"`
-	Status                *string                `pulumi:"status"`
-	Tags                  map[string]interface{} `pulumi:"tags"`
-	TemplateName          *string                `pulumi:"templateName"`
+	Ids                   []string          `pulumi:"ids"`
+	IncludeChildExecution *bool             `pulumi:"includeChildExecution"`
+	Mode                  *string           `pulumi:"mode"`
+	OutputFile            *string           `pulumi:"outputFile"`
+	ParentExecutionId     *string           `pulumi:"parentExecutionId"`
+	RamRole               *string           `pulumi:"ramRole"`
+	SortField             *string           `pulumi:"sortField"`
+	SortOrder             *string           `pulumi:"sortOrder"`
+	StartDateAfter        *string           `pulumi:"startDateAfter"`
+	StartDateBefore       *string           `pulumi:"startDateBefore"`
+	Status                *string           `pulumi:"status"`
+	Tags                  map[string]string `pulumi:"tags"`
+	TemplateName          *string           `pulumi:"templateName"`
 }
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
@@ -166,7 +166,7 @@ type GetExecutionsOutputArgs struct {
 	// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of execution template.
 	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
 }
@@ -261,8 +261,8 @@ func (o GetExecutionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetExecutionsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetExecutionsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetExecutionsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExecutionsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetExecutionsResultOutput) TemplateName() pulumi.StringPtrOutput {

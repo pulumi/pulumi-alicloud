@@ -55,7 +55,7 @@ type EcsSnapshot struct {
 	// A mapping of tags to assign to the snapshot.
 	//
 	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewEcsSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ type ecsSnapshotState struct {
 	// A mapping of tags to assign to the snapshot.
 	//
 	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type EcsSnapshotState struct {
@@ -149,7 +149,7 @@ type EcsSnapshotState struct {
 	// A mapping of tags to assign to the snapshot.
 	//
 	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsSnapshotState) ElementType() reflect.Type {
@@ -182,7 +182,7 @@ type ecsSnapshotArgs struct {
 	// A mapping of tags to assign to the snapshot.
 	//
 	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsSnapshot resource.
@@ -212,7 +212,7 @@ type EcsSnapshotArgs struct {
 	// A mapping of tags to assign to the snapshot.
 	//
 	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsSnapshotArgs) ElementType() reflect.Type {
@@ -362,8 +362,8 @@ func (o EcsSnapshotOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the snapshot.
 //
 // > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
-func (o EcsSnapshotOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsSnapshot) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsSnapshotOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type EcsSnapshotArrayOutput struct{ *pulumi.OutputState }

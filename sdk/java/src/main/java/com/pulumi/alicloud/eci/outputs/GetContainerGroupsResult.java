@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +32,7 @@ public final class GetContainerGroupsResult {
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
     private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String vswitchId;
     private @Nullable Boolean withEvent;
     private @Nullable String zoneId;
@@ -76,7 +75,7 @@ public final class GetContainerGroupsResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> vswitchId() {
@@ -109,7 +108,7 @@ public final class GetContainerGroupsResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String vswitchId;
         private @Nullable Boolean withEvent;
         private @Nullable String zoneId;
@@ -217,7 +216,7 @@ public final class GetContainerGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

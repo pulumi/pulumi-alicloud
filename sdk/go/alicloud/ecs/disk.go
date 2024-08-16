@@ -40,8 +40,8 @@ import (
 //				Size:             pulumi.Int(30),
 //				Encrypted:        pulumi.Bool(true),
 //				KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
-//				Tags: pulumi.Map{
-//					"Name": pulumi.Any("TerraformTest"),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("TerraformTest"),
 //				},
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ type Disk struct {
 	StorageSetId              pulumi.StringPtrOutput `pulumi:"storageSetId"`
 	StorageSetPartitionNumber pulumi.IntPtrOutput    `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.MapOutput       `pulumi:"tags"`
+	Tags   pulumi.StringMapOutput `pulumi:"tags"`
 	Type   pulumi.StringPtrOutput `pulumi:"type"`
 	ZoneId pulumi.StringOutput    `pulumi:"zoneId"`
 }
@@ -188,9 +188,9 @@ type diskState struct {
 	StorageSetId              *string `pulumi:"storageSetId"`
 	StorageSetPartitionNumber *int    `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   map[string]interface{} `pulumi:"tags"`
-	Type   *string                `pulumi:"type"`
-	ZoneId *string                `pulumi:"zoneId"`
+	Tags   map[string]string `pulumi:"tags"`
+	Type   *string           `pulumi:"type"`
+	ZoneId *string           `pulumi:"zoneId"`
 }
 
 type DiskState struct {
@@ -239,7 +239,7 @@ type DiskState struct {
 	StorageSetId              pulumi.StringPtrInput
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.MapInput
+	Tags   pulumi.StringMapInput
 	Type   pulumi.StringPtrInput
 	ZoneId pulumi.StringPtrInput
 }
@@ -292,9 +292,9 @@ type diskArgs struct {
 	StorageSetId              *string `pulumi:"storageSetId"`
 	StorageSetPartitionNumber *int    `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags   map[string]interface{} `pulumi:"tags"`
-	Type   *string                `pulumi:"type"`
-	ZoneId *string                `pulumi:"zoneId"`
+	Tags   map[string]string `pulumi:"tags"`
+	Type   *string           `pulumi:"type"`
+	ZoneId *string           `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Disk resource.
@@ -342,7 +342,7 @@ type DiskArgs struct {
 	StorageSetId              pulumi.StringPtrInput
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags   pulumi.MapInput
+	Tags   pulumi.StringMapInput
 	Type   pulumi.StringPtrInput
 	ZoneId pulumi.StringPtrInput
 }
@@ -545,8 +545,8 @@ func (o DiskOutput) StorageSetPartitionNumber() pulumi.IntPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o DiskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Disk) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DiskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o DiskOutput) Type() pulumi.StringPtrOutput {

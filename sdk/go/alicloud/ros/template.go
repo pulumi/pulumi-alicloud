@@ -60,7 +60,7 @@ type Template struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringPtrOutput `pulumi:"templateBody"`
 	// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -105,7 +105,7 @@ type templateState struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description *string `pulumi:"description"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody *string `pulumi:"templateBody"`
 	// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -118,7 +118,7 @@ type TemplateState struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringPtrInput
 	// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -135,7 +135,7 @@ type templateArgs struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description *string `pulumi:"description"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody *string `pulumi:"templateBody"`
 	// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -149,7 +149,7 @@ type TemplateArgs struct {
 	// The description of the template. The description can be up to 256 characters in length.
 	Description pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringPtrInput
 	// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -251,8 +251,8 @@ func (o TemplateOutput) Description() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Template) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.

@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -51,10 +50,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="environment", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> environment;
+    @Export(name="environment", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> environment;
 
-    public Output<Optional<Map<String,Object>>> environment() {
+    public Output<Optional<Map<String,String>>> environment() {
         return Codegen.optional(this.environment);
     }
     @Export(name="latestImage", refs={Boolean.class}, tree="[0]")

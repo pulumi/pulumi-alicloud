@@ -70,7 +70,7 @@ export interface GetInstancesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -107,7 +107,7 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
@@ -162,5 +162,5 @@ export interface GetInstancesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// <summary>
         /// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         /// </summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string? prefix,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             ImmutableArray<Outputs.BucketLifecycleRuleTransition> transitions)
         {

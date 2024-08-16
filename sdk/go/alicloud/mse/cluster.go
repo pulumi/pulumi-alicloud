@@ -65,7 +65,7 @@ type Cluster struct {
 	// The status of MSE Cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -163,7 +163,7 @@ type clusterState struct {
 	// The status of MSE Cluster.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -214,7 +214,7 @@ type ClusterState struct {
 	// The status of MSE Cluster.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -263,7 +263,7 @@ type clusterArgs struct {
 	// The resource group of the resource.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -309,7 +309,7 @@ type ClusterArgs struct {
 	// The resource group of the resource.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -503,8 +503,8 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o ClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The id of the VPC.

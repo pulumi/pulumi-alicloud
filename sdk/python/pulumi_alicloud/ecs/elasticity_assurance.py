@@ -25,7 +25,7 @@ class ElasticityAssuranceArgs:
                  private_pool_options_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ElasticityAssurance resource.
         :param pulumi.Input[int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
@@ -41,7 +41,7 @@ class ElasticityAssuranceArgs:
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
         pulumi.set(__self__, "instance_amount", instance_amount)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -201,14 +201,14 @@ class ElasticityAssuranceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -230,7 +230,7 @@ class _ElasticityAssuranceState:
                  start_time: Optional[pulumi.Input[str]] = None,
                  start_time_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_assurance_times: Optional[pulumi.Input[int]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -252,7 +252,7 @@ class _ElasticityAssuranceState:
         :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
         :param pulumi.Input[str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag key-value pair information bound by the elastic guarantee service.
         :param pulumi.Input[int] used_assurance_times: This parameter is not yet available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
@@ -477,14 +477,14 @@ class _ElasticityAssuranceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -527,7 +527,7 @@ class ElasticityAssurance(pulumi.CustomResource):
                  private_pool_options_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -583,7 +583,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag key-value pair information bound by the elastic guarantee service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         ...
@@ -656,7 +656,7 @@ class ElasticityAssurance(pulumi.CustomResource):
                  private_pool_options_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -716,7 +716,7 @@ class ElasticityAssurance(pulumi.CustomResource):
             start_time: Optional[pulumi.Input[str]] = None,
             start_time_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             used_assurance_times: Optional[pulumi.Input[int]] = None,
             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ElasticityAssurance':
         """
@@ -743,7 +743,7 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
         :param pulumi.Input[str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag key-value pair information bound by the elastic guarantee service.
         :param pulumi.Input[int] used_assurance_times: This parameter is not yet available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
@@ -895,7 +895,7 @@ class ElasticityAssurance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """

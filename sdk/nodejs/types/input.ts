@@ -1861,7 +1861,7 @@ export namespace arms {
         /**
          * HTTP request header.
          */
-        requestHeaders?: pulumi.Input<{[key: string]: any}>;
+        requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The target URL.
          */
@@ -1888,7 +1888,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        customHeaderContent?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Download the kernel.
          * - 1:curl
@@ -2067,7 +2067,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        customHeaderContent?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Player, do not pass the default 12.
          * - 12:VLC
@@ -2115,7 +2115,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: pulumi.Input<{[key: string]: any}>;
+        customHeaderContent?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Whether to disable caching.
          * - 0: not disabled
@@ -3084,7 +3084,7 @@ export namespace cms {
         /**
          * The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
          */
-        annotations?: pulumi.Input<{[key: string]: any}>;
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
          */
@@ -4380,15 +4380,15 @@ export namespace cs {
         /**
          * Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
          */
-        evictionHard?: pulumi.Input<{[key: string]: any}>;
+        evictionHard?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
          */
-        evictionSoft?: pulumi.Input<{[key: string]: any}>;
+        evictionSoft?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
          */
-        evictionSoftGracePeriod?: pulumi.Input<{[key: string]: any}>;
+        evictionSoftGracePeriod?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Feature switch to enable configuration of experimental features.
          */
@@ -4404,7 +4404,7 @@ export namespace cs {
         /**
          * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
-        kubeReserved?: pulumi.Input<{[key: string]: any}>;
+        kubeReserved?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The maximum number of running pods.
          */
@@ -4428,7 +4428,7 @@ export namespace cs {
         /**
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
-        systemReserved?: pulumi.Input<{[key: string]: any}>;
+        systemReserved?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface NodePoolLabel {
@@ -8951,7 +8951,7 @@ export namespace fc {
         /**
          * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
          */
-        params: pulumi.Input<{[key: string]: any}>;
+        params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Tracing protocol type. Currently, only Jaeger is supported.
          */
@@ -11256,7 +11256,7 @@ export namespace oss {
         /**
          * Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          */
@@ -11869,7 +11869,7 @@ export namespace quotas {
         /**
          * Quota dimension. See `dimensions` below.
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The language of the quota application result notification. Value:
          * - zh (default): Chinese.
@@ -12727,7 +12727,7 @@ export namespace ros {
         /**
          * Source label. **NOTE:** A maximum of 10 source labels can be configured.
          */
-        resourceTags: pulumi.Input<{[key: string]: any}>;
+        resourceTags: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
@@ -14062,7 +14062,7 @@ export namespace sls {
         /**
          * Template Annotations.
          */
-        annotations?: pulumi.Input<{[key: string]: any}>;
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Template Language.
          */
@@ -14074,7 +14074,7 @@ export namespace sls {
         /**
          * Template Variables.
          */
-        tokens?: pulumi.Input<{[key: string]: any}>;
+        tokens?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         type?: pulumi.Input<string>;
         /**
          * Template Version.
@@ -14176,7 +14176,7 @@ export namespace sls {
         /**
          * Parameter configuration.
          */
-        parameters?: pulumi.Input<{[key: string]: any}>;
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Resource Pool.
          */

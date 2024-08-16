@@ -74,7 +74,7 @@ type SecurityPolicy struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayOutput `pulumi:"tlsVersions"`
 }
@@ -129,7 +129,7 @@ type securityPolicyState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
@@ -146,7 +146,7 @@ type SecurityPolicyState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayInput
 }
@@ -165,7 +165,7 @@ type securityPolicyArgs struct {
 	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	SecurityPolicyName string `pulumi:"securityPolicyName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
@@ -181,7 +181,7 @@ type SecurityPolicyArgs struct {
 	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	SecurityPolicyName pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayInput
 }
@@ -299,8 +299,8 @@ func (o SecurityPolicyOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o SecurityPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecurityPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SecurityPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.

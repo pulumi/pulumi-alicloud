@@ -190,7 +190,7 @@ type Instance struct {
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrOutput `pulumi:"usedTime"`
 	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
@@ -332,7 +332,7 @@ type instanceState struct {
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize *int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime *string `pulumi:"usedTime"`
 	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
@@ -433,7 +433,7 @@ type InstanceState struct {
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrInput
 	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
@@ -532,7 +532,7 @@ type instanceArgs struct {
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize *int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime *string `pulumi:"usedTime"`
 	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
@@ -628,7 +628,7 @@ type InstanceArgs struct {
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	StorageSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.
 	UsedTime pulumi.StringPtrInput
 	// Specifies whether to enable vector engine optimization. Default value: `disabled`. Valid values: `enabled` and `disabled`.
@@ -911,8 +911,8 @@ func (o InstanceOutput) StorageSize() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The used time. When the parameter `period` is `Year`, the `usedTime` value is `1` to `3`. When the parameter `period` is `Month`, the `usedTime` value is `1` to `9`.

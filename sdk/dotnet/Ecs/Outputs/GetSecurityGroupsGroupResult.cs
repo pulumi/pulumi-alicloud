@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// Used to retrieve security groups that belong to the specified VPC ID.
         /// </summary>
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string securityGroupType,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string vpcId)
         {

@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// Service providers customize additional components.
         /// </summary>
         [Output("components")]
-        public Output<ImmutableDictionary<string, object>?> Components { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Components { get; private set; } = null!;
 
         /// <summary>
         /// The coupon id of the market product.
@@ -142,14 +142,14 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class OrderArgs : global::Pulumi.ResourceArgs
     {
         [Input("components")]
-        private InputMap<object>? _components;
+        private InputMap<string>? _components;
 
         /// <summary>
         /// Service providers customize additional components.
         /// </summary>
-        public InputMap<object> Components
+        public InputMap<string> Components
         {
-            get => _components ?? (_components = new InputMap<object>());
+            get => _components ?? (_components = new InputMap<string>());
             set => _components = value;
         }
 
@@ -204,14 +204,14 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class OrderState : global::Pulumi.ResourceArgs
     {
         [Input("components")]
-        private InputMap<object>? _components;
+        private InputMap<string>? _components;
 
         /// <summary>
         /// Service providers customize additional components.
         /// </summary>
-        public InputMap<object> Components
+        public InputMap<string> Components
         {
-            get => _components ?? (_components = new InputMap<object>());
+            get => _components ?? (_components = new InputMap<string>());
             set => _components = value;
         }
 

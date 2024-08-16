@@ -779,7 +779,7 @@ class GetInstancesInstanceResult(dict):
                  public_network_access: bool,
                  security_group_ids: Sequence[str],
                  user_vswitch_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str description: The instance's remark.
         :param str id: The instance's id.
@@ -789,7 +789,7 @@ class GetInstancesInstanceResult(dict):
         :param bool public_network_access: The instance's public network access configuration.
         :param Sequence[str] security_group_ids: The instance's security group configuration.
         :param str user_vswitch_id: The instance's vSwitch ID.
-        :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -882,7 +882,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the bastionhost instance. It must be in the format:
         ```python

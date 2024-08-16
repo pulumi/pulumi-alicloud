@@ -81,7 +81,7 @@ type KeyPair struct {
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	Tags            pulumi.MapOutput       `pulumi:"tags"`
+	Tags            pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewKeyPair registers a new resource with the given unique name, arguments, and options.
@@ -126,8 +126,8 @@ type keyPairState struct {
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 type KeyPairState struct {
@@ -144,7 +144,7 @@ type KeyPairState struct {
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (KeyPairState) ElementType() reflect.Type {
@@ -163,8 +163,8 @@ type keyPairArgs struct {
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a KeyPair resource.
@@ -181,7 +181,7 @@ type KeyPairArgs struct {
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	Tags            pulumi.StringMapInput
 }
 
 func (KeyPairArgs) ElementType() reflect.Type {
@@ -305,8 +305,8 @@ func (o KeyPairOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o KeyPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *KeyPair) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o KeyPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KeyPair) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type KeyPairArrayOutput struct{ *pulumi.OutputState }

@@ -18,7 +18,7 @@ class SecurityPolicyArgs:
                  tls_versions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_policy_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
@@ -28,7 +28,7 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "ciphers", ciphers)
         pulumi.set(__self__, "tls_versions", tls_versions)
@@ -92,14 +92,14 @@ class SecurityPolicyArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -110,7 +110,7 @@ class _SecurityPolicyState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_policy_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicy resources.
@@ -121,7 +121,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
         """
         if ciphers is not None:
@@ -190,14 +190,14 @@ class _SecurityPolicyState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -221,7 +221,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_policy_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -278,7 +278,7 @@ class SecurityPolicy(pulumi.CustomResource):
                - TLS 1.3 supports the following cipher suites: `TLS_AES_128_GCM_SHA256`, `TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`, `TLS_AES_128_CCM_SHA256`, `TLS_AES_128_CCM_8_SHA256`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
         """
         ...
@@ -351,7 +351,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_policy_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -386,7 +386,7 @@ class SecurityPolicy(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_policy_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SecurityPolicy':
         """
         Get an existing SecurityPolicy resource's state with the given name, id, and optional extra
@@ -402,7 +402,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -454,7 +454,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

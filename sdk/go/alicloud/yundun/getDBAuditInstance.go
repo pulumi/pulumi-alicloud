@@ -23,10 +23,10 @@ func LookupDBAuditInstance(ctx *pulumi.Context, args *LookupDBAuditInstanceArgs,
 
 // A collection of arguments for invoking getDBAuditInstance.
 type LookupDBAuditInstanceArgs struct {
-	DescriptionRegex *string                `pulumi:"descriptionRegex"`
-	Ids              []string               `pulumi:"ids"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	DescriptionRegex *string           `pulumi:"descriptionRegex"`
+	Ids              []string          `pulumi:"ids"`
+	OutputFile       *string           `pulumi:"outputFile"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getDBAuditInstance.
@@ -38,7 +38,7 @@ type LookupDBAuditInstanceResult struct {
 	Ids        []string                     `pulumi:"ids"`
 	Instances  []GetDBAuditInstanceInstance `pulumi:"instances"`
 	OutputFile *string                      `pulumi:"outputFile"`
-	Tags       map[string]interface{}       `pulumi:"tags"`
+	Tags       map[string]string            `pulumi:"tags"`
 }
 
 func LookupDBAuditInstanceOutput(ctx *pulumi.Context, args LookupDBAuditInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDBAuditInstanceResultOutput {
@@ -59,7 +59,7 @@ type LookupDBAuditInstanceOutputArgs struct {
 	DescriptionRegex pulumi.StringPtrInput   `pulumi:"descriptionRegex"`
 	Ids              pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Tags             pulumi.MapInput         `pulumi:"tags"`
+	Tags             pulumi.StringMapInput   `pulumi:"tags"`
 }
 
 func (LookupDBAuditInstanceOutputArgs) ElementType() reflect.Type {
@@ -106,8 +106,8 @@ func (o LookupDBAuditInstanceResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDBAuditInstanceResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupDBAuditInstanceResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupDBAuditInstanceResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupDBAuditInstanceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

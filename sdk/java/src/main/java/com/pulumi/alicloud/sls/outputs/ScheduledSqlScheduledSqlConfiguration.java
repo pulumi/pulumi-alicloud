@@ -5,7 +5,6 @@ package com.pulumi.alicloud.sls.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -63,7 +62,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
      * @return Parameter configuration.
      * 
      */
-    private @Nullable Map<String,Object> parameters;
+    private @Nullable Map<String,String> parameters;
     /**
      * @return Resource Pool.
      * 
@@ -168,7 +167,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
      * @return Parameter configuration.
      * 
      */
-    public Map<String,Object> parameters() {
+    public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
@@ -239,7 +238,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
         private @Nullable String fromTimeExpr;
         private @Nullable Integer maxRetries;
         private @Nullable Integer maxRunTimeInSeconds;
-        private @Nullable Map<String,Object> parameters;
+        private @Nullable Map<String,String> parameters;
         private @Nullable String resourcePool;
         private @Nullable String roleArn;
         private @Nullable String script;
@@ -324,7 +323,7 @@ public final class ScheduledSqlScheduledSqlConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(@Nullable Map<String,Object> parameters) {
+        public Builder parameters(@Nullable Map<String,String> parameters) {
 
             this.parameters = parameters;
             return this;

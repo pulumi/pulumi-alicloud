@@ -149,7 +149,7 @@ type RdsAccount struct {
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -254,7 +254,7 @@ type rdsAccountState struct {
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -319,7 +319,7 @@ type RdsAccountState struct {
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -388,7 +388,7 @@ type rdsAccountArgs struct {
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -452,7 +452,7 @@ type RdsAccountArgs struct {
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -625,8 +625,8 @@ func (o RdsAccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o RdsAccountOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *RdsAccount) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o RdsAccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The attribute has been deprecated from 1.120.0 and using `accountName` instead.

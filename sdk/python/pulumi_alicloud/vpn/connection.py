@@ -31,7 +31,7 @@ class ConnectionArgs:
                  ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None):
         """
@@ -57,7 +57,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Value:
                - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
                - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         """
@@ -287,14 +287,14 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -342,7 +342,7 @@ class _ConnectionState:
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None):
@@ -369,7 +369,7 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The negotiation status of Tunnel.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
@@ -633,14 +633,14 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -701,7 +701,7 @@ class Connection(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -849,7 +849,7 @@ class Connection(pulumi.CustomResource):
                - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
                - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
@@ -1014,7 +1014,7 @@ class Connection(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -1081,7 +1081,7 @@ class Connection(pulumi.CustomResource):
             remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
             vpn_connection_name: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None) -> 'Connection':
@@ -1113,7 +1113,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The negotiation status of Tunnel.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
@@ -1290,7 +1290,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Tags.
         """

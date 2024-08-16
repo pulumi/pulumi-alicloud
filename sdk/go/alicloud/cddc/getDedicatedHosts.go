@@ -125,7 +125,7 @@ type GetDedicatedHostsArgs struct {
 	// * `0:` The host is being created.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -138,13 +138,13 @@ type GetDedicatedHostsResult struct {
 	HostType             *string                 `pulumi:"hostType"`
 	Hosts                []GetDedicatedHostsHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	OrderId    *string                `pulumi:"orderId"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	ZoneId     *string                `pulumi:"zoneId"`
+	Id         string            `pulumi:"id"`
+	Ids        []string          `pulumi:"ids"`
+	OrderId    *string           `pulumi:"orderId"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Status     *string           `pulumi:"status"`
+	Tags       map[string]string `pulumi:"tags"`
+	ZoneId     *string           `pulumi:"zoneId"`
 }
 
 func GetDedicatedHostsOutput(ctx *pulumi.Context, args GetDedicatedHostsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostsResultOutput {
@@ -180,7 +180,7 @@ type GetDedicatedHostsOutputArgs struct {
 	// * `0:` The host is being created.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the zone.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -245,8 +245,8 @@ func (o GetDedicatedHostsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetDedicatedHostsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDedicatedHostsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDedicatedHostsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDedicatedHostsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetDedicatedHostsResultOutput) ZoneId() pulumi.StringPtrOutput {

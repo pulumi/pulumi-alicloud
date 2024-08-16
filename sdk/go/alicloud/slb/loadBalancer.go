@@ -70,17 +70,17 @@ import (
 //				LoadBalancerName: pulumi.String(name),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				VswitchId:        defaultSwitch.ID(),
-//				Tags: pulumi.Map{
-//					"tag_a": pulumi.Any(1),
-//					"tag_b": pulumi.Any(2),
-//					"tag_c": pulumi.Any(3),
-//					"tag_d": pulumi.Any(4),
-//					"tag_e": pulumi.Any(5),
-//					"tag_f": pulumi.Any(6),
-//					"tag_g": pulumi.Any(7),
-//					"tag_h": pulumi.Any(8),
-//					"tag_i": pulumi.Any(9),
-//					"tag_j": pulumi.Any(10),
+//				Tags: pulumi.StringMap{
+//					"tag_a": pulumi.String("1"),
+//					"tag_b": pulumi.String("2"),
+//					"tag_c": pulumi.String("3"),
+//					"tag_d": pulumi.String("4"),
+//					"tag_e": pulumi.String("5"),
+//					"tag_f": pulumi.String("6"),
+//					"tag_g": pulumi.String("7"),
+//					"tag_h": pulumi.String("8"),
+//					"tag_i": pulumi.String("9"),
+//					"tag_j": pulumi.String("10"),
 //				},
 //			})
 //			if err != nil {
@@ -160,7 +160,7 @@ type LoadBalancer struct {
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
@@ -251,7 +251,7 @@ type loadBalancerState struct {
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -313,7 +313,7 @@ type LoadBalancerState struct {
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
@@ -379,7 +379,7 @@ type loadBalancerArgs struct {
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -442,7 +442,7 @@ type LoadBalancerArgs struct {
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
@@ -647,8 +647,8 @@ func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o LoadBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.

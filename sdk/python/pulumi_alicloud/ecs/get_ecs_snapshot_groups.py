@@ -104,7 +104,7 @@ class GetEcsSnapshotGroupsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +132,7 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
                             output_file: Optional[str] = None,
                             snapshot_group_name: Optional[str] = None,
                             status: Optional[str] = None,
-                            tags: Optional[Mapping[str, Any]] = None,
+                            tags: Optional[Mapping[str, str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsSnapshotGroupsResult:
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
@@ -164,7 +164,7 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
     :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the snapshot group.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -197,7 +197,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    snapshot_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                                    status: Optional[pulumi.Input[Optional[str]]] = None,
-                                   tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                   tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsSnapshotGroupsResult]:
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
@@ -229,6 +229,6 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
     :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the snapshot group.
     """
     ...

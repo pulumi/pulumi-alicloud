@@ -5,7 +5,6 @@ package com.pulumi.alicloud.sls.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -22,13 +21,13 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
      * 
      */
     @Import(name="annotations")
-    private @Nullable Output<Map<String,Object>> annotations;
+    private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Template Annotations.
      * 
      */
-    public Optional<Output<Map<String,Object>>> annotations() {
+    public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
@@ -67,13 +66,13 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
      * 
      */
     @Import(name="tokens")
-    private @Nullable Output<Map<String,Object>> tokens;
+    private @Nullable Output<Map<String,String>> tokens;
 
     /**
      * @return Template Variables.
      * 
      */
-    public Optional<Output<Map<String,Object>>> tokens() {
+    public Optional<Output<Map<String,String>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
 
@@ -134,7 +133,7 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
@@ -145,7 +144,7 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder annotations(Map<String,Object> annotations) {
+        public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
@@ -197,7 +196,7 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder tokens(@Nullable Output<Map<String,Object>> tokens) {
+        public Builder tokens(@Nullable Output<Map<String,String>> tokens) {
             $.tokens = tokens;
             return this;
         }
@@ -208,7 +207,7 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder tokens(Map<String,Object> tokens) {
+        public Builder tokens(Map<String,String> tokens) {
             return tokens(Output.of(tokens));
         }
 

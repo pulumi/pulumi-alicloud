@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// <summary>
         /// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Params;
+        public readonly ImmutableDictionary<string, string> Params;
         /// <summary>
         /// Tracing protocol type. Currently, only Jaeger is supported.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.FC.Outputs
 
         [OutputConstructor]
         private ServiceTracingConfig(
-            ImmutableDictionary<string, object> @params,
+            ImmutableDictionary<string, string> @params,
 
             string type)
         {

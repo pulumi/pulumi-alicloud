@@ -74,7 +74,7 @@ type EcsDisk struct {
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrOutput `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -164,7 +164,7 @@ type ecsDiskState struct {
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type *string `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -225,7 +225,7 @@ type EcsDiskState struct {
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrInput
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -288,7 +288,7 @@ type ecsDiskArgs struct {
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type *string `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -348,7 +348,7 @@ type EcsDiskArgs struct {
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	Type pulumi.StringPtrInput
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -561,8 +561,8 @@ func (o EcsDiskOutput) StorageSetPartitionNumber() pulumi.IntPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EcsDiskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsDiskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.

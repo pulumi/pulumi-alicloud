@@ -166,7 +166,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -226,7 +226,7 @@ def get_instances(connection_mode: Optional[str] = None,
                   page_number: Optional[int] = None,
                   page_size: Optional[int] = None,
                   status: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   vpc_id: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -260,7 +260,7 @@ def get_instances(connection_mode: Optional[str] = None,
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the instance.
-    :param Mapping[str, Any] tags: A map of tags assigned to the DB instances. 
+    :param Mapping[str, str] tags: A map of tags assigned to the DB instances. 
            Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\\"key1\\":\\"value1\\"}"`
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
@@ -313,7 +313,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
                          page_number: Optional[pulumi.Input[Optional[int]]] = None,
                          page_size: Optional[pulumi.Input[Optional[int]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
@@ -347,7 +347,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the instance.
-    :param Mapping[str, Any] tags: A map of tags assigned to the DB instances. 
+    :param Mapping[str, str] tags: A map of tags assigned to the DB instances. 
            Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\\"key1\\":\\"value1\\"}"`
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.

@@ -110,7 +110,7 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */
@@ -235,7 +235,7 @@ export interface ServiceMeshState {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */
@@ -299,7 +299,7 @@ export interface ServiceMeshArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */

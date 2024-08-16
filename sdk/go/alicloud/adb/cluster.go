@@ -148,8 +148,8 @@ type Cluster struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags  pulumi.MapOutput    `pulumi:"tags"`
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	Tags  pulumi.StringMapOutput `pulumi:"tags"`
+	VpcId pulumi.StringOutput    `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -241,8 +241,8 @@ type clusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags  map[string]interface{} `pulumi:"tags"`
-	VpcId *string                `pulumi:"vpcId"`
+	Tags  map[string]string `pulumi:"tags"`
+	VpcId *string           `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -299,7 +299,7 @@ type ClusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags  pulumi.MapInput
+	Tags  pulumi.StringMapInput
 	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
@@ -356,8 +356,8 @@ type clusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags  map[string]interface{} `pulumi:"tags"`
-	VpcId *string                `pulumi:"vpcId"`
+	Tags  map[string]string `pulumi:"tags"`
+	VpcId *string           `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -410,7 +410,7 @@ type ClusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags  pulumi.MapInput
+	Tags  pulumi.StringMapInput
 	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
@@ -632,8 +632,8 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 //
 // > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-func (o ClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterOutput) VpcId() pulumi.StringOutput {

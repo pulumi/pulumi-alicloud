@@ -25,7 +25,7 @@ class InstanceArgs:
                  backup_time: Optional[pulumi.Input[str]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
@@ -47,7 +47,7 @@ class InstanceArgs:
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,7 @@ class InstanceArgs:
                  slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  srcdb_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enable: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_auth_mode: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -89,7 +89,7 @@ class InstanceArgs:
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
-        :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -115,7 +115,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
@@ -144,7 +144,7 @@ class InstanceArgs:
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
                **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
                your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
@@ -409,14 +409,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -681,14 +681,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -998,14 +998,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1072,7 +1072,7 @@ class _InstanceState:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_domain: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
@@ -1097,7 +1097,7 @@ class _InstanceState:
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -1125,7 +1125,7 @@ class _InstanceState:
                  srcdb_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enable: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_auth_mode: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1142,7 +1142,7 @@ class _InstanceState:
         :param pulumi.Input[int] bandwidth: The bandwidth.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
-        :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -1171,7 +1171,7 @@ class _InstanceState:
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
@@ -1202,7 +1202,7 @@ class _InstanceState:
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
                **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
                your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
@@ -1494,14 +1494,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -1803,14 +1803,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -2144,14 +2144,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -2219,7 +2219,7 @@ class Instance(pulumi.CustomResource):
                  backup_time: Optional[pulumi.Input[str]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
@@ -2241,7 +2241,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -2267,7 +2267,7 @@ class Instance(pulumi.CustomResource):
                  slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  srcdb_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enable: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_auth_mode: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2293,7 +2293,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
-        :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -2319,7 +2319,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
@@ -2348,7 +2348,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
                **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
                your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
@@ -2395,7 +2395,7 @@ class Instance(pulumi.CustomResource):
                  backup_time: Optional[pulumi.Input[str]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  coupon_no: Optional[pulumi.Input[str]] = None,
                  db_instance_name: Optional[pulumi.Input[str]] = None,
@@ -2417,7 +2417,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -2443,7 +2443,7 @@ class Instance(pulumi.CustomResource):
                  slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  srcdb_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enable: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_auth_mode: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2547,7 +2547,7 @@ class Instance(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[int]] = None,
             business_info: Optional[pulumi.Input[str]] = None,
             capacity: Optional[pulumi.Input[int]] = None,
-            config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             connection_domain: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             connection_string_prefix: Optional[pulumi.Input[str]] = None,
@@ -2572,7 +2572,7 @@ class Instance(pulumi.CustomResource):
             instance_type: Optional[pulumi.Input[str]] = None,
             is_auto_upgrade_open: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
@@ -2600,7 +2600,7 @@ class Instance(pulumi.CustomResource):
             srcdb_instance_id: Optional[pulumi.Input[str]] = None,
             ssl_enable: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vpc_auth_mode: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2622,7 +2622,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The bandwidth.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
-        :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -2651,7 +2651,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
         :param pulumi.Input[str] is_auto_upgrade_open: Specifies whether to enable automatic minor version update. Valid values:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] node_type: "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
@@ -2682,7 +2682,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
                **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
                your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
@@ -2847,7 +2847,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Mapping[str, Any]]:
+    def config(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         """
@@ -3056,7 +3056,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -3285,7 +3285,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

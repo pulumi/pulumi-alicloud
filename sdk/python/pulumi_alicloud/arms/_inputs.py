@@ -893,14 +893,14 @@ class SyntheticTaskMonitorConfApiHttpArgs:
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  request_body: Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']] = None,
-                 request_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] target_url: The target URL.
         :param pulumi.Input[int] connect_timeout: Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
         :param pulumi.Input[str] method: HTTP method, GET or POST.
         :param pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgs'] request_body: HTTP request body. See `request_body` below.
-        :param pulumi.Input[Mapping[str, Any]] request_headers: HTTP request header.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: HTTP request header.
         :param pulumi.Input[int] timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         pulumi.set(__self__, "target_url", target_url)
@@ -965,14 +965,14 @@ class SyntheticTaskMonitorConfApiHttpArgs:
 
     @property
     @pulumi.getter(name="requestHeaders")
-    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         HTTP request header.
         """
         return pulumi.get(self, "request_headers")
 
     @request_headers.setter
-    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "request_headers", value)
 
     @property
@@ -1028,7 +1028,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[str],
                  connection_timeout: Optional[pulumi.Input[int]] = None,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  download_kernel: Optional[pulumi.Input[int]] = None,
                  ignore_certificate_auth_error: Optional[pulumi.Input[int]] = None,
                  ignore_certificate_canceled_error: Optional[pulumi.Input[int]] = None,
@@ -1047,7 +1047,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         """
         :param pulumi.Input[str] target_url: The target URL.
         :param pulumi.Input[int] connection_timeout: Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-        :param pulumi.Input[Mapping[str, Any]] custom_header_content: Custom header, in JSON Map format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_header_content: Custom header, in JSON Map format.
         :param pulumi.Input[int] download_kernel: Download the kernel.
                - 1:curl
                - 0:WinInet
@@ -1136,14 +1136,14 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @property
@@ -1704,7 +1704,7 @@ class SyntheticTaskMonitorConfNetTcpArgs:
 @pulumi.input_type
 class SyntheticTaskMonitorConfStreamArgs:
     def __init__(__self__, *,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  player_type: Optional[pulumi.Input[int]] = None,
                  stream_address_type: Optional[pulumi.Input[int]] = None,
                  stream_monitor_timeout: Optional[pulumi.Input[int]] = None,
@@ -1712,7 +1712,7 @@ class SyntheticTaskMonitorConfStreamArgs:
                  target_url: Optional[pulumi.Input[str]] = None,
                  white_list: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] custom_header_content: Custom header, in JSON Map format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_header_content: Custom header, in JSON Map format.
         :param pulumi.Input[int] player_type: Player, do not pass the default 12.
                - 12:VLC
                - 2:FlashPlayer.
@@ -1741,14 +1741,14 @@ class SyntheticTaskMonitorConfStreamArgs:
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @property
@@ -1834,7 +1834,7 @@ class SyntheticTaskMonitorConfWebsiteArgs:
                  target_url: pulumi.Input[str],
                  automatic_scrolling: Optional[pulumi.Input[int]] = None,
                  custom_header: Optional[pulumi.Input[int]] = None,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  disable_cache: Optional[pulumi.Input[int]] = None,
                  disable_compression: Optional[pulumi.Input[int]] = None,
                  dns_hijack_whitelist: Optional[pulumi.Input[str]] = None,
@@ -1859,7 +1859,7 @@ class SyntheticTaskMonitorConfWebsiteArgs:
                - 0 (default): Off
                - 1: Modify the first package
                - 2: Modify all packages.
-        :param pulumi.Input[Mapping[str, Any]] custom_header_content: Custom header, in JSON Map format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_header_content: Custom header, in JSON Map format.
         :param pulumi.Input[int] disable_cache: Whether to disable caching.
                - 0: not disabled
                - 1 (default): Disabled.
@@ -1959,14 +1959,14 @@ class SyntheticTaskMonitorConfWebsiteArgs:
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @property

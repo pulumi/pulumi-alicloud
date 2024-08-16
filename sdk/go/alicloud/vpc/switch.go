@@ -103,11 +103,11 @@ import (
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(foo.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
-//				Tags: pulumi.Map{
-//					"BuiltBy":     pulumi.Any("example_value"),
-//					"cnm_version": pulumi.Any("example_value"),
-//					"Environment": pulumi.Any("example_value"),
-//					"ManagedBy":   pulumi.Any("example_value"),
+//				Tags: pulumi.StringMap{
+//					"BuiltBy":     pulumi.String("example_value"),
+//					"cnm_version": pulumi.String("example_value"),
+//					"Environment": pulumi.String("example_value"),
+//					"ManagedBy":   pulumi.String("example_value"),
 //				},
 //			})
 //			if err != nil {
@@ -203,7 +203,7 @@ type Switch struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of VSwitch.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -275,7 +275,7 @@ type switchState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of VSwitch.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -312,7 +312,7 @@ type SwitchState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tags of VSwitch.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -347,7 +347,7 @@ type switchArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
 	// The tags of VSwitch.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -379,7 +379,7 @@ type SwitchArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
 	// The tags of VSwitch.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -529,8 +529,8 @@ func (o SwitchOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of VSwitch.
-func (o SwitchOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Switch) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SwitchOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VPC ID.

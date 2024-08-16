@@ -60,8 +60,8 @@ import (
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				ApplicationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Description:     pulumi.String(name),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
 //				},
 //			})
 //			if err != nil {

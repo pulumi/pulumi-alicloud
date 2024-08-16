@@ -92,7 +92,7 @@ type GetRouteTablesArgs struct {
 	// The status of resource. Valid values: `Available` and `Pending`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Vpc id of the route table.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -120,9 +120,9 @@ type GetRouteTablesResult struct {
 	// The status of route table.
 	Status *string `pulumi:"status"`
 	// A list of Route Tables. Each element contains the following attributes:
-	Tables     []GetRouteTablesTable  `pulumi:"tables"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tables     []GetRouteTablesTable `pulumi:"tables"`
+	Tags       map[string]string     `pulumi:"tags"`
+	TotalCount int                   `pulumi:"totalCount"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -161,7 +161,7 @@ type GetRouteTablesOutputArgs struct {
 	// The status of resource. Valid values: `Available` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Vpc id of the route table.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
@@ -246,8 +246,8 @@ func (o GetRouteTablesResultOutput) Tables() GetRouteTablesTableArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) []GetRouteTablesTable { return v.Tables }).(GetRouteTablesTableArrayOutput)
 }
 
-func (o GetRouteTablesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetRouteTablesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetRouteTablesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetRouteTablesResultOutput) TotalCount() pulumi.IntOutput {

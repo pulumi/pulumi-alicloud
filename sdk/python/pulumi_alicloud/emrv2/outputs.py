@@ -1842,7 +1842,7 @@ class GetClustersClusterResult(dict):
                  ready_time: str,
                  release_version: str,
                  resource_group_id: str,
-                 state_change_reason: Mapping[str, Any],
+                 state_change_reason: Mapping[str, str],
                  tags: Sequence['outputs.GetClustersClusterTagResult']):
         """
         :param str cluster_id: The first ID of the resource.
@@ -1857,7 +1857,7 @@ class GetClustersClusterResult(dict):
         :param str ready_time: The ready time of the resource.
         :param str release_version: The release version of the resource.
         :param str resource_group_id: The resource group id of the resource.
-        :param Mapping[str, Any] state_change_reason: The cluster state change reason.
+        :param Mapping[str, str] state_change_reason: The cluster state change reason.
         :param Sequence['GetClustersClusterTagArgs'] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -1973,7 +1973,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter(name="stateChangeReason")
-    def state_change_reason(self) -> Mapping[str, Any]:
+    def state_change_reason(self) -> Mapping[str, str]:
         """
         The cluster state change reason.
         """

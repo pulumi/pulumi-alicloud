@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetEcsKeyPairsKeyPair;
 import com.pulumi.alicloud.ecs.outputs.GetEcsKeyPairsPair;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public final class GetEcsKeyPairsResult {
     private @Nullable String outputFile;
     private List<GetEcsKeyPairsPair> pairs;
     private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetEcsKeyPairsResult() {}
     public Optional<String> fingerPrint() {
@@ -76,7 +75,7 @@ public final class GetEcsKeyPairsResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -98,7 +97,7 @@ public final class GetEcsKeyPairsResult {
         private @Nullable String outputFile;
         private List<GetEcsKeyPairsPair> pairs;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetEcsKeyPairsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -191,7 +190,7 @@ public final class GetEcsKeyPairsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

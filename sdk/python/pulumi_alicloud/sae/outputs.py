@@ -2952,7 +2952,7 @@ class GetApplicationsApplicationResult(dict):
                  security_group_id: str,
                  sls_configs: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  termination_grace_period_seconds: int,
                  timezone: str,
                  tomcat_config: str,
@@ -3003,7 +3003,7 @@ class GetApplicationsApplicationResult(dict):
         :param str security_group_id: Security group ID.
         :param str sls_configs: SLS  configuration.
         :param str status: The status of the resource.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param int termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
         :param str timezone: Time zone, the default value is Asia/Shanghai.
         :param str tomcat_config: Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
@@ -3425,7 +3425,7 @@ class GetApplicationsApplicationResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

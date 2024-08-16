@@ -70,7 +70,7 @@ export interface GetEcsImagePipelineArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -88,7 +88,7 @@ export interface GetEcsImagePipelineResult {
     readonly outputFile?: string;
     readonly pipelines: outputs.ecs.GetEcsImagePipelinePipeline[];
     readonly resourceGroupId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
@@ -144,5 +144,5 @@ export interface GetEcsImagePipelineOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

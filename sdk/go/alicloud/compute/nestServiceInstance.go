@@ -134,9 +134,9 @@ import (
 // `, id), nil
 // }).(pulumi.StringOutput),
 // },
-// Tags: pulumi.Map{
-// "Created": pulumi.Any("TF"),
-// "For": pulumi.Any("ServiceInstance"),
+// Tags: pulumi.StringMap{
+// "Created": pulumi.String("TF"),
+// "For": pulumi.String("ServiceInstance"),
 // },
 // })
 // if err != nil {
@@ -182,7 +182,7 @@ type NestServiceInstance struct {
 	// The status of the Service Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the template.
 	TemplateName pulumi.StringOutput `pulumi:"templateName"`
 }
@@ -248,7 +248,7 @@ type nestServiceInstanceState struct {
 	// The status of the Service Instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the template.
 	TemplateName *string `pulumi:"templateName"`
 }
@@ -279,7 +279,7 @@ type NestServiceInstanceState struct {
 	// The status of the Service Instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the template.
 	TemplateName pulumi.StringPtrInput
 }
@@ -312,7 +312,7 @@ type nestServiceInstanceArgs struct {
 	// The name of the specification.
 	SpecificationName *string `pulumi:"specificationName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the template.
 	TemplateName *string `pulumi:"templateName"`
 }
@@ -342,7 +342,7 @@ type NestServiceInstanceArgs struct {
 	// The name of the specification.
 	SpecificationName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the template.
 	TemplateName pulumi.StringPtrInput
 }
@@ -495,8 +495,8 @@ func (o NestServiceInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o NestServiceInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *NestServiceInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o NestServiceInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NestServiceInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the template.

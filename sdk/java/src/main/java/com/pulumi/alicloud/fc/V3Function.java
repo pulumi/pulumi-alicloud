@@ -23,7 +23,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -277,14 +276,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      * 
      */
-    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> environmentVariables;
+    @Export(name="environmentVariables", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> environmentVariables;
 
     /**
      * @return The environment variable set for the function, you can get the value of the environment variable in the function.
      * 
      */
-    public Output<Optional<Map<String,Object>>> environmentVariables() {
+    public Output<Optional<Map<String,String>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
     /**

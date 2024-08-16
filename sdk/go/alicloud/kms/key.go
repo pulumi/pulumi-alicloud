@@ -118,7 +118,7 @@ type Key struct {
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewKey registers a new resource with the given unique name, arguments, and options.
@@ -212,7 +212,7 @@ type keyState struct {
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type KeyState struct {
@@ -277,7 +277,7 @@ type KeyState struct {
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (KeyState) ElementType() reflect.Type {
@@ -330,7 +330,7 @@ type keyArgs struct {
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Key resource.
@@ -380,7 +380,7 @@ type KeyArgs struct {
 	// The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (KeyArgs) ElementType() reflect.Type {
@@ -597,8 +597,8 @@ func (o KeyOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o KeyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Key) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o KeyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type KeyArrayOutput struct{ *pulumi.OutputState }

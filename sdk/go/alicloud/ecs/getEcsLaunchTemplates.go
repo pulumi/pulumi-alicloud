@@ -69,8 +69,8 @@ type GetEcsLaunchTemplatesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The template resource group id.
-	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
+	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]string `pulumi:"templateTags"`
 }
 
 // A collection of values returned by getEcsLaunchTemplates.
@@ -84,7 +84,7 @@ type GetEcsLaunchTemplatesResult struct {
 	Names                   []string                        `pulumi:"names"`
 	OutputFile              *string                         `pulumi:"outputFile"`
 	TemplateResourceGroupId *string                         `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]interface{}          `pulumi:"templateTags"`
+	TemplateTags            map[string]string               `pulumi:"templateTags"`
 	Templates               []GetEcsLaunchTemplatesTemplate `pulumi:"templates"`
 }
 
@@ -115,7 +115,7 @@ type GetEcsLaunchTemplatesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput `pulumi:"templateResourceGroupId"`
-	TemplateTags            pulumi.MapInput       `pulumi:"templateTags"`
+	TemplateTags            pulumi.StringMapInput `pulumi:"templateTags"`
 }
 
 func (GetEcsLaunchTemplatesOutputArgs) ElementType() reflect.Type {
@@ -170,8 +170,8 @@ func (o GetEcsLaunchTemplatesResultOutput) TemplateResourceGroupId() pulumi.Stri
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsLaunchTemplatesResultOutput) TemplateTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) map[string]interface{} { return v.TemplateTags }).(pulumi.MapOutput)
+func (o GetEcsLaunchTemplatesResultOutput) TemplateTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
 func (o GetEcsLaunchTemplatesResultOutput) Templates() GetEcsLaunchTemplatesTemplateArrayOutput {

@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +63,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The destination region to which the snapshot is copied.
      * 
@@ -149,7 +148,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -192,7 +191,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
         private List<String> repeatWeekdays;
         private Integer retentionDays;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private List<String> targetCopyRegions;
         private List<String> timePoints;
         private Integer volumeNums;
@@ -290,7 +289,7 @@ public final class GetAutoSnapshotPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetAutoSnapshotPoliciesPolicy", "tags");
             }

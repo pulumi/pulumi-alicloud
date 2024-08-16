@@ -3120,7 +3120,7 @@ type GetClustersCluster struct {
 	// The resource group id of the resource.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The cluster state change reason.
-	StateChangeReason map[string]interface{} `pulumi:"stateChangeReason"`
+	StateChangeReason map[string]string `pulumi:"stateChangeReason"`
 	// A mapping of tags to assign to the resource.
 	Tags []GetClustersClusterTag `pulumi:"tags"`
 }
@@ -3162,7 +3162,7 @@ type GetClustersClusterArgs struct {
 	// The resource group id of the resource.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The cluster state change reason.
-	StateChangeReason pulumi.MapInput `pulumi:"stateChangeReason"`
+	StateChangeReason pulumi.StringMapInput `pulumi:"stateChangeReason"`
 	// A mapping of tags to assign to the resource.
 	Tags GetClustersClusterTagArrayInput `pulumi:"tags"`
 }
@@ -3279,8 +3279,8 @@ func (o GetClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The cluster state change reason.
-func (o GetClustersClusterOutput) StateChangeReason() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.StateChangeReason }).(pulumi.MapOutput)
+func (o GetClustersClusterOutput) StateChangeReason() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]string { return v.StateChangeReason }).(pulumi.StringMapOutput)
 }
 
 // A mapping of tags to assign to the resource.

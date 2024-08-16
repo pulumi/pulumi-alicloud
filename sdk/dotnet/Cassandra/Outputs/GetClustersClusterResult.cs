@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Cassandra.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetClustersClusterResult(
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Cassandra.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             ClusterId = clusterId;
             ClusterName = clusterName;

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.slb.outputs;
 import com.pulumi.alicloud.slb.outputs.GetServerCertificatesCertificate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +46,7 @@ public final class GetServerCertificatesResult {
      * @return (Available in v1.66.0+) A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetServerCertificatesResult() {}
     /**
@@ -95,7 +94,7 @@ public final class GetServerCertificatesResult {
      * @return (Available in v1.66.0+) A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -115,7 +114,7 @@ public final class GetServerCertificatesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetServerCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -189,7 +188,7 @@ public final class GetServerCertificatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// <summary>
         /// Quota dimension. See `dimensions` below.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Dimensions;
+        public readonly ImmutableDictionary<string, string>? Dimensions;
         /// <summary>
         /// The language of the quota application result notification. Value:
         /// - zh (default): Chinese.
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
 
             string? auditReason,
 
-            ImmutableDictionary<string, object>? dimensions,
+            ImmutableDictionary<string, string>? dimensions,
 
             string? envLanguage,
 

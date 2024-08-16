@@ -77,7 +77,7 @@ type GetServerGroupsArgs struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -101,7 +101,7 @@ type GetServerGroupsResult struct {
 	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
 	Status *string `pulumi:"status"`
 	// The tags of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -138,7 +138,7 @@ type GetServerGroupsOutputArgs struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
@@ -212,8 +212,8 @@ func (o GetServerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The tags of the resource.
-func (o GetServerGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC that you want to access.

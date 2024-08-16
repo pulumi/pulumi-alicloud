@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? ResourceGroupId { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
@@ -155,9 +155,9 @@ namespace Pulumi.AliCloud.Ecs
         /// });
         /// ```
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
@@ -239,9 +239,9 @@ namespace Pulumi.AliCloud.Ecs
         /// });
         /// ```
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A map of tags assigned to the ECS instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
         /// The ID of the VPC that owns the security group.
@@ -318,7 +318,7 @@ namespace Pulumi.AliCloud.Ecs
 
             string? resourceGroupId,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             int totalCount,
 

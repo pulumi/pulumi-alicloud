@@ -109,7 +109,7 @@ type HAVip struct {
 	// (Available in v1.120.0+) The status of the HaVip instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The list of tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC to which the HAVIP belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitchId of the HaVip, the field can't be changed.
@@ -178,7 +178,7 @@ type havipState struct {
 	// (Available in v1.120.0+) The status of the HaVip instance.
 	Status *string `pulumi:"status"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the HAVIP belongs.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitchId of the HaVip, the field can't be changed.
@@ -215,7 +215,7 @@ type HAVipState struct {
 	// (Available in v1.120.0+) The status of the HaVip instance.
 	Status pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC to which the HAVIP belongs.
 	VpcId pulumi.StringPtrInput
 	// The vswitchId of the HaVip, the field can't be changed.
@@ -240,7 +240,7 @@ type havipArgs struct {
 	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -260,7 +260,7 @@ type HAVipArgs struct {
 	// The ID of the resource group to which the HAVIP belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vswitchId of the HaVip, the field can't be changed.
 	VswitchId pulumi.StringInput
 }
@@ -417,8 +417,8 @@ func (o HAVipOutput) Status() pulumi.StringOutput {
 }
 
 // The list of tags.
-func (o HAVipOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *HAVip) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o HAVipOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HAVip) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC to which the HAVIP belongs.

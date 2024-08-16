@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEcsImagePipelinePipeline;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public final class GetEcsImagePipelineResult {
     private @Nullable String outputFile;
     private List<GetEcsImagePipelinePipeline> pipelines;
     private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetEcsImagePipelineResult() {}
     /**
@@ -59,7 +58,7 @@ public final class GetEcsImagePipelineResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -80,7 +79,7 @@ public final class GetEcsImagePipelineResult {
         private @Nullable String outputFile;
         private List<GetEcsImagePipelinePipeline> pipelines;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetEcsImagePipelineResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -161,7 +160,7 @@ public final class GetEcsImagePipelineResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

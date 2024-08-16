@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
         /// </summary>
@@ -312,7 +312,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             int terminationGracePeriodSeconds,
 

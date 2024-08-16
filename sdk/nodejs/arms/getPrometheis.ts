@@ -91,7 +91,7 @@ export interface GetPrometheisArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -121,7 +121,7 @@ export interface GetPrometheisResult {
     /**
      * The tag of the Prometheus.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
@@ -198,5 +198,5 @@ export interface GetPrometheisOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

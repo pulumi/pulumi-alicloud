@@ -77,7 +77,7 @@ export interface GetClustersArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -100,7 +100,7 @@ export interface GetClustersResult {
     readonly outputFile?: string;
     readonly paymentTypes?: string[];
     readonly resourceGroupId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
 }
 /**
@@ -159,5 +159,5 @@ export interface GetClustersOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

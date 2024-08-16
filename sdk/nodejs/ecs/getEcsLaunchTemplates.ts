@@ -69,7 +69,7 @@ export interface GetEcsLaunchTemplatesArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: string;
-    templateTags?: {[key: string]: any};
+    templateTags?: {[key: string]: string};
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetEcsLaunchTemplatesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly templateResourceGroupId?: string;
-    readonly templateTags?: {[key: string]: any};
+    readonly templateTags?: {[key: string]: string};
     readonly templates: outputs.ecs.GetEcsLaunchTemplatesTemplate[];
 }
 /**
@@ -142,5 +142,5 @@ export interface GetEcsLaunchTemplatesOutputArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: pulumi.Input<string>;
-    templateTags?: pulumi.Input<{[key: string]: any}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

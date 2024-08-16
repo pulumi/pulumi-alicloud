@@ -103,7 +103,7 @@ export interface GetDomainsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Cloud analysis version code.
      */
@@ -154,7 +154,7 @@ export interface GetDomainsResult {
     readonly resourceGroupId?: string;
     readonly searchMode?: string;
     readonly starmark?: boolean;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * Cloud resolution version ID.
      */
@@ -238,7 +238,7 @@ export interface GetDomainsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Cloud analysis version code.
      */

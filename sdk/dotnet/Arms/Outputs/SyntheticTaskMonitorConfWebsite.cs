@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// Custom header, in JSON Map format.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? CustomHeaderContent;
+        public readonly ImmutableDictionary<string, string>? CustomHeaderContent;
         /// <summary>
         /// Whether to disable caching.
         /// - 0: not disabled
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             int? customHeader,
 
-            ImmutableDictionary<string, object>? customHeaderContent,
+            ImmutableDictionary<string, string>? customHeaderContent,
 
             int? disableCache,
 

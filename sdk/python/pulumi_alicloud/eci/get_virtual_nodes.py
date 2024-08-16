@@ -110,7 +110,7 @@ class GetVirtualNodesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -150,7 +150,7 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
                       resource_group_id: Optional[str] = None,
                       security_group_id: Optional[str] = None,
                       status: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       virtual_node_name: Optional[str] = None,
                       vswitch_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualNodesResult:
@@ -183,7 +183,7 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
     :param str resource_group_id: The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
     :param str security_group_id: VNode itself and by VNode created (ECI) the security group used by.
     :param str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str virtual_node_name: The name of the virtual node.
     """
     __args__ = dict()
@@ -221,7 +221,7 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                              security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              virtual_node_name: Optional[pulumi.Input[Optional[str]]] = None,
                              vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualNodesResult]:
@@ -254,7 +254,7 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str resource_group_id: The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
     :param str security_group_id: VNode itself and by VNode created (ECI) the security group used by.
     :param str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str virtual_node_name: The name of the virtual node.
     """
     ...

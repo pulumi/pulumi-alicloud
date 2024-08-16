@@ -115,9 +115,9 @@ import (
 //				EnableAutoSnapshot: pulumi.Bool(true),
 //				Encrypted:          pulumi.Bool(true),
 //				Size:               pulumi.Int(500),
-//				Tags: pulumi.Map{
-//					"Created":     pulumi.Any("TF"),
-//					"Environment": pulumi.Any("Acceptance-test"),
+//				Tags: pulumi.StringMap{
+//					"Created":     pulumi.String("TF"),
+//					"Environment": pulumi.String("Acceptance-test"),
 //				},
 //			})
 //			if err != nil {

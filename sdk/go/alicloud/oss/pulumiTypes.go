@@ -436,7 +436,7 @@ type BucketLifecycleRule struct {
 	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix *string `pulumi:"prefix"`
 	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
 }
@@ -472,7 +472,7 @@ type BucketLifecycleRuleArgs struct {
 	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
 	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
 }
@@ -575,8 +575,8 @@ func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
 }
 
 // Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
-func (o BucketLifecycleRuleOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v BucketLifecycleRule) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o BucketLifecycleRuleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
@@ -3729,7 +3729,7 @@ type GetBucketsBucket struct {
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass string `pulumi:"storageClass"`
 	// A mapping of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// If present , the versioning state has been set on the bucket. It contains the following attribute.
 	Versioning GetBucketsBucketVersioning `pulumi:"versioning"`
 	// A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
@@ -3778,7 +3778,7 @@ type GetBucketsBucketArgs struct {
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 	// A mapping of tags.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// If present , the versioning state has been set on the bucket. It contains the following attribute.
 	Versioning GetBucketsBucketVersioningInput `pulumi:"versioning"`
 	// A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
@@ -3911,8 +3911,8 @@ func (o GetBucketsBucketOutput) StorageClass() pulumi.StringOutput {
 }
 
 // A mapping of tags.
-func (o GetBucketsBucketOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetBucketsBucket) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetBucketsBucketOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetBucketsBucket) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // If present , the versioning state has been set on the bucket. It contains the following attribute.
@@ -4763,7 +4763,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
 }
@@ -4832,7 +4832,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
@@ -4985,8 +4985,8 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //	}
 //
 // ```
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The user id of the instance.

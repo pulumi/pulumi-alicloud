@@ -222,7 +222,7 @@ class GetEipsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -273,7 +273,7 @@ def get_eips(address_name: Optional[str] = None,
              resource_group_id: Optional[str] = None,
              segment_instance_id: Optional[str] = None,
              status: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
+             tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEipsResult:
     """
     > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
@@ -297,7 +297,7 @@ def get_eips(address_name: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the eips belongs.
     :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     pulumi.log.warn("""get_eips is deprecated: This function has been deprecated in favour of the getEipAddresses function""")
     __args__ = dict()
@@ -365,7 +365,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                     segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipsResult]:
     """
     > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
@@ -389,7 +389,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the eips belongs.
     :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     pulumi.log.warn("""get_eips is deprecated: This function has been deprecated in favour of the getEipAddresses function""")
     ...

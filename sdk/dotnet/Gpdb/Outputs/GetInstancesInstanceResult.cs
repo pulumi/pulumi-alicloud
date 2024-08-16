@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// <summary>
         /// The tags of the instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the VPC。.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
 
             string storageType,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

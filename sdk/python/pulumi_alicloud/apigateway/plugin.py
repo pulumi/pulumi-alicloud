@@ -18,7 +18,7 @@ class PluginArgs:
                  plugin_name: pulumi.Input[str],
                  plugin_type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Plugin resource.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
@@ -39,7 +39,7 @@ class PluginArgs:
                - "logMask"
                - "transformer".
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "plugin_data", plugin_data)
         pulumi.set(__self__, "plugin_name", plugin_name)
@@ -113,14 +113,14 @@ class PluginArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -132,7 +132,7 @@ class _PluginState:
                  plugin_data: Optional[pulumi.Input[str]] = None,
                  plugin_name: Optional[pulumi.Input[str]] = None,
                  plugin_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Plugin resources.
         :param pulumi.Input[str] create_time: Create time.
@@ -154,7 +154,7 @@ class _PluginState:
                - "remoteAuth"
                - "logMask"
                - "transformer".
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -245,14 +245,14 @@ class _PluginState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -265,7 +265,7 @@ class Plugin(pulumi.CustomResource):
                  plugin_data: Optional[pulumi.Input[str]] = None,
                  plugin_name: Optional[pulumi.Input[str]] = None,
                  plugin_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Plugin resource.
@@ -355,7 +355,7 @@ class Plugin(pulumi.CustomResource):
                - "remoteAuth"
                - "logMask"
                - "transformer".
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -450,7 +450,7 @@ class Plugin(pulumi.CustomResource):
                  plugin_data: Optional[pulumi.Input[str]] = None,
                  plugin_name: Optional[pulumi.Input[str]] = None,
                  plugin_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -487,7 +487,7 @@ class Plugin(pulumi.CustomResource):
             plugin_data: Optional[pulumi.Input[str]] = None,
             plugin_name: Optional[pulumi.Input[str]] = None,
             plugin_type: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Plugin':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Plugin':
         """
         Get an existing Plugin resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -514,7 +514,7 @@ class Plugin(pulumi.CustomResource):
                - "remoteAuth"
                - "logMask"
                - "transformer".
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -584,7 +584,7 @@ class Plugin(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

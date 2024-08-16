@@ -64,8 +64,8 @@ import (
 //				InstanceAmount:          pulumi.Int(1),
 //				InstanceType:            pulumi.String(_default.Ids[0]),
 //				MatchCriteria:           pulumi.String("Open"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("terraform-example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("terraform-example"),
 //				},
 //				ZoneIds: pulumi.StringArray{
 //					pulumi.String(defaultGetZones.Zones[0].Id),
@@ -119,7 +119,7 @@ type CapacityReservation struct {
 	// The status of the capacity reservation.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot pulumi.StringOutput `pulumi:"timeSlot"`
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -194,7 +194,7 @@ type capacityReservationState struct {
 	// The status of the capacity reservation.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot *string `pulumi:"timeSlot"`
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -231,7 +231,7 @@ type CapacityReservationState struct {
 	// The status of the capacity reservation.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// This parameter is under test and is not yet open for use.
 	TimeSlot pulumi.StringPtrInput
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -264,7 +264,7 @@ type capacityReservationArgs struct {
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
@@ -292,7 +292,7 @@ type CapacityReservationArgs struct {
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds pulumi.StringArrayInput
 }
@@ -455,8 +455,8 @@ func (o CapacityReservationOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o CapacityReservationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *CapacityReservation) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o CapacityReservationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CapacityReservation) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // This parameter is under test and is not yet open for use.

@@ -5,7 +5,6 @@ package com.pulumi.alicloud.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -83,13 +82,13 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="variableMap")
-    private @Nullable Output<Map<String,Object>> variableMap;
+    private @Nullable Output<Map<String,String>> variableMap;
 
     /**
      * @return Log audit detailed configuration.
      * 
      */
-    public Optional<Output<Map<String,Object>>> variableMap() {
+    public Optional<Output<Map<String,String>>> variableMap() {
         return Optional.ofNullable(this.variableMap);
     }
 
@@ -221,7 +220,7 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder variableMap(@Nullable Output<Map<String,Object>> variableMap) {
+        public Builder variableMap(@Nullable Output<Map<String,String>> variableMap) {
             $.variableMap = variableMap;
             return this;
         }
@@ -232,7 +231,7 @@ public final class AuditState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder variableMap(Map<String,Object> variableMap) {
+        public Builder variableMap(Map<String,String> variableMap) {
             return variableMap(Output.of(variableMap));
         }
 

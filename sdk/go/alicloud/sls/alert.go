@@ -105,11 +105,11 @@ import (
 //					AutoAnnotation: pulumi.Bool(true),
 //					TemplateConfiguration: &sls.AlertConfigurationTemplateConfigurationArgs{
 //						Lang: pulumi.String("cn"),
-//						Tokens: pulumi.Map{
-//							"a": pulumi.Any("b"),
+//						Tokens: pulumi.StringMap{
+//							"a": pulumi.String("b"),
 //						},
-//						Annotations: pulumi.Map{
-//							"x": pulumi.Any("y"),
+//						Annotations: pulumi.StringMap{
+//							"x": pulumi.String("y"),
 //						},
 //						TemplateId: pulumi.String("sls.app.ack.autoscaler.cluster_unhealthy"),
 //						Type:       pulumi.String("sys"),

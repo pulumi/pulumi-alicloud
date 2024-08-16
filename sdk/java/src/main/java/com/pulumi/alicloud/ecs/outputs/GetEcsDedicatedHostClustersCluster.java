@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +52,7 @@ public final class GetEcsDedicatedHostClustersCluster {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The zone ID of the dedicated host cluster.
      * 
@@ -114,7 +113,7 @@ public final class GetEcsDedicatedHostClustersCluster {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -141,7 +140,7 @@ public final class GetEcsDedicatedHostClustersCluster {
         private String description;
         private String id;
         private String resourceGroupId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String zoneId;
         public Builder() {}
         public Builder(GetEcsDedicatedHostClustersCluster defaults) {
@@ -220,7 +219,7 @@ public final class GetEcsDedicatedHostClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEcsDedicatedHostClustersCluster", "tags");
             }

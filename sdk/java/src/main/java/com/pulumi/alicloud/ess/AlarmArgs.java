@@ -9,7 +9,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,13 +86,13 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="dimensions")
-    private @Nullable Output<Map<String,Object>> dimensions;
+    private @Nullable Output<Map<String,String>> dimensions;
 
     /**
      * @return The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
-    public Optional<Output<Map<String,Object>>> dimensions() {
+    public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
@@ -401,7 +400,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dimensions(@Nullable Output<Map<String,Object>> dimensions) {
+        public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
@@ -412,7 +411,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 

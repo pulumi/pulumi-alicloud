@@ -102,14 +102,14 @@ namespace Pulumi.AliCloud.Hbase
         public string? OutputFile { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -152,14 +152,14 @@ namespace Pulumi.AliCloud.Hbase
         public Input<string>? OutputFile { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Hbase
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Hbase
 
             string? outputFile,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             AvailabilityZone = availabilityZone;
             Id = id;

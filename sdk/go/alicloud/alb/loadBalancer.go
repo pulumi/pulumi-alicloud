@@ -61,7 +61,7 @@ type LoadBalancer struct {
 	// The status of the Load Balancer.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must specify at least two zones. See `zoneMappings` below.
@@ -146,7 +146,7 @@ type loadBalancerState struct {
 	// The status of the Load Balancer.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must specify at least two zones. See `zoneMappings` below.
@@ -187,7 +187,7 @@ type LoadBalancerState struct {
 	// The status of the Load Balancer.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The list of zones and vSwitch mappings. You must specify at least two zones. See `zoneMappings` below.
@@ -226,7 +226,7 @@ type loadBalancerArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The list of zones and vSwitch mappings. You must specify at least two zones. See `zoneMappings` below.
@@ -262,7 +262,7 @@ type LoadBalancerArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC.
 	VpcId pulumi.StringInput
 	// The list of zones and vSwitch mappings. You must specify at least two zones. See `zoneMappings` below.
@@ -439,8 +439,8 @@ func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o LoadBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC.

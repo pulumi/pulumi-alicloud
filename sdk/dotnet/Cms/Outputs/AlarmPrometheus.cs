@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// <summary>
         /// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Annotations;
+        public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
 
         [OutputConstructor]
         private AlarmPrometheus(
-            ImmutableDictionary<string, object>? annotations,
+            ImmutableDictionary<string, string>? annotations,
 
             string? level,
 

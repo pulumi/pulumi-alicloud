@@ -13,7 +13,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -104,9 +103,9 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="environmentVariables")
-    private @Nullable Output<Map<String,Object>> environmentVariables;
+    private @Nullable Output<Map<String,String>> environmentVariables;
 
-    public Optional<Output<Map<String,Object>>> environmentVariables() {
+    public Optional<Output<Map<String,String>>> environmentVariables() {
         return Optional.ofNullable(this.environmentVariables);
     }
 
@@ -348,12 +347,12 @@ public final class V2FunctionState extends com.pulumi.resources.ResourceArgs {
             return diskSize(Output.of(diskSize));
         }
 
-        public Builder environmentVariables(@Nullable Output<Map<String,Object>> environmentVariables) {
+        public Builder environmentVariables(@Nullable Output<Map<String,String>> environmentVariables) {
             $.environmentVariables = environmentVariables;
             return this;
         }
 
-        public Builder environmentVariables(Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
             return environmentVariables(Output.of(environmentVariables));
         }
 

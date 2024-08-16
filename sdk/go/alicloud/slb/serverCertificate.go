@@ -111,7 +111,7 @@ type ServerCertificate struct {
 	// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
 	ServerCertificate pulumi.StringPtrOutput `pulumi:"serverCertificate"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewServerCertificate registers a new resource with the given unique name, arguments, and options.
@@ -163,7 +163,7 @@ type serverCertificateState struct {
 	// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
 	ServerCertificate *string `pulumi:"serverCertificate"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ServerCertificateState struct {
@@ -186,7 +186,7 @@ type ServerCertificateState struct {
 	// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
 	ServerCertificate pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ServerCertificateState) ElementType() reflect.Type {
@@ -213,7 +213,7 @@ type serverCertificateArgs struct {
 	// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
 	ServerCertificate *string `pulumi:"serverCertificate"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ServerCertificate resource.
@@ -237,7 +237,7 @@ type ServerCertificateArgs struct {
 	// the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
 	ServerCertificate pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ServerCertificateArgs) ElementType() reflect.Type {
@@ -373,8 +373,8 @@ func (o ServerCertificateOutput) ServerCertificate() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ServerCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerCertificate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerCertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ServerCertificateArrayOutput struct{ *pulumi.OutputState }

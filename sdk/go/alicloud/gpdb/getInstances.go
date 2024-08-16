@@ -74,8 +74,8 @@ type GetInstancesArgs struct {
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -97,7 +97,7 @@ type GetInstancesResult struct {
 	OutputFile          *string                `pulumi:"outputFile"`
 	ResourceGroupId     *string                `pulumi:"resourceGroupId"`
 	Status              *string                `pulumi:"status"`
-	Tags                map[string]interface{} `pulumi:"tags"`
+	Tags                map[string]string      `pulumi:"tags"`
 	VswitchId           *string                `pulumi:"vswitchId"`
 }
 
@@ -138,7 +138,7 @@ type GetInstancesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
@@ -219,8 +219,8 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancesResultOutput) VswitchId() pulumi.StringPtrOutput {

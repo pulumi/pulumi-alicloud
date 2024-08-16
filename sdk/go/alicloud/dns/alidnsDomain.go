@@ -41,9 +41,9 @@ import (
 //			_, err = dns.NewAlidnsDomain(ctx, "default", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
 //				GroupId:    _default.ID(),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ type AlidnsDomain struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAlidnsDomain registers a new resource with the given unique name, arguments, and options.
@@ -143,7 +143,7 @@ type alidnsDomainState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type AlidnsDomainState struct {
@@ -168,7 +168,7 @@ type AlidnsDomainState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AlidnsDomainState) ElementType() reflect.Type {
@@ -189,7 +189,7 @@ type alidnsDomainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AlidnsDomain resource.
@@ -207,7 +207,7 @@ type AlidnsDomainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AlidnsDomainArgs) ElementType() reflect.Type {
@@ -345,8 +345,8 @@ func (o AlidnsDomainOutput) ResourceGroupId() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o AlidnsDomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *AlidnsDomain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AlidnsDomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AlidnsDomain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type AlidnsDomainArrayOutput struct{ *pulumi.OutputState }

@@ -47,7 +47,7 @@ class InstanceArgs:
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
@@ -87,7 +87,7 @@ class InstanceArgs:
                  system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -137,7 +137,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
@@ -217,7 +217,7 @@ class InstanceArgs:
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -766,14 +766,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -1286,7 +1286,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="volumeTags")
-    def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1295,7 +1295,7 @@ class InstanceArgs:
         return pulumi.get(self, "volume_tags")
 
     @volume_tags.setter
-    def volume_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def volume_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "volume_tags", value)
 
     @property
@@ -1359,7 +1359,7 @@ class _InstanceState:
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
@@ -1406,7 +1406,7 @@ class _InstanceState:
                  system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -1458,7 +1458,7 @@ class _InstanceState:
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
@@ -1545,7 +1545,7 @@ class _InstanceState:
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -2136,14 +2136,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -2740,7 +2740,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="volumeTags")
-    def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def volume_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2749,7 +2749,7 @@ class _InstanceState:
         return pulumi.get(self, "volume_tags")
 
     @volume_tags.setter
-    def volume_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def volume_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "volume_tags", value)
 
     @property
@@ -2813,7 +2813,7 @@ class Instance(pulumi.CustomResource):
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
@@ -2853,7 +2853,7 @@ class Instance(pulumi.CustomResource):
                  system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -2982,7 +2982,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
@@ -3062,7 +3062,7 @@ class Instance(pulumi.CustomResource):
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -3198,7 +3198,7 @@ class Instance(pulumi.CustomResource):
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
@@ -3238,7 +3238,7 @@ class Instance(pulumi.CustomResource):
                  system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -3378,7 +3378,7 @@ class Instance(pulumi.CustomResource):
             is_outdated: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             launch_template_id: Optional[pulumi.Input[str]] = None,
             launch_template_name: Optional[pulumi.Input[str]] = None,
             launch_template_version: Optional[pulumi.Input[str]] = None,
@@ -3425,7 +3425,7 @@ class Instance(pulumi.CustomResource):
             system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
-            volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            volume_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -3482,7 +3482,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] launch_template_id: The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-describelaunchtemplates).To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[str] launch_template_name: The name of the launch template.
         :param pulumi.Input[str] launch_template_version: The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
@@ -3569,7 +3569,7 @@ class Instance(pulumi.CustomResource):
                It supports to setting a base64-encoded value, and it is the recommended usage.
                From version 1.60.0, it can be updated in-place. If updated, the instance will reboot to make the change take effect.
                Note: Not all changes will take effect, and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
-        :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -3944,7 +3944,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
@@ -4360,7 +4360,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeTags")
-    def volume_tags(self) -> pulumi.Output[Mapping[str, Any]]:
+    def volume_tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A mapping of tags to assign to the devices created by the instance at launch time.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

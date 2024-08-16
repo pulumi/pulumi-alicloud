@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// The status message of the product instance
         /// </summary>
         public readonly string StatusMessage;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetProvisionedProductsProductResult(
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
 
             string statusMessage,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             CreateTime = createTime;
             Id = id;

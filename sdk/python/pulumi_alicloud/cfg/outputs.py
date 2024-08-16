@@ -617,7 +617,7 @@ class GetAggregateConfigRulesRuleResult(dict):
                  event_source: str,
                  exclude_resource_ids_scope: str,
                  id: str,
-                 input_parameters: Mapping[str, Any],
+                 input_parameters: Mapping[str, str],
                  maximum_execution_frequency: str,
                  modified_timestamp: str,
                  region_ids_scope: str,
@@ -642,7 +642,7 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str event_source: Event source of the Config Rule.
         :param str exclude_resource_ids_scope: The id of the resources to be evaluated against the rule.
         :param str id: The ID of the Aggregate Config Rule.
-        :param Mapping[str, Any] input_parameters: The settings of the input parameters for the rule.
+        :param Mapping[str, str] input_parameters: The settings of the input parameters for the rule.
         :param str maximum_execution_frequency: The frequency of the compliance evaluations.
         :param str modified_timestamp: The timestamp when the rule was last modified.
         :param str region_ids_scope: The scope of resource region ids.
@@ -777,7 +777,7 @@ class GetAggregateConfigRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Mapping[str, Any]:
+    def input_parameters(self) -> Mapping[str, str]:
         """
         The settings of the input parameters for the rule.
         """
@@ -1745,7 +1745,7 @@ class GetRulesRuleResult(dict):
                  event_source: str,
                  exclude_resource_ids_scope: str,
                  id: str,
-                 input_parameters: Mapping[str, Any],
+                 input_parameters: Mapping[str, str],
                  maximum_execution_frequency: str,
                  modified_timestamp: str,
                  region_ids_scope: str,
@@ -1772,7 +1772,7 @@ class GetRulesRuleResult(dict):
         :param str event_source: Event source of the Config Rule.
         :param str exclude_resource_ids_scope: (Available in 1.124.1+) The scope of exclude of resource ids.
         :param str id: The ID of the Config Rule.
-        :param Mapping[str, Any] input_parameters: The input parameters of the Config Rule.
+        :param Mapping[str, str] input_parameters: The input parameters of the Config Rule.
         :param str maximum_execution_frequency: (Available in 1.124.1+) The frequency of maximum execution.
         :param str modified_timestamp: the timestamp of the Config Rule modified.
         :param str region_ids_scope: (Available in 1.124.1+) The scope of region ids.
@@ -1904,7 +1904,7 @@ class GetRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Mapping[str, Any]:
+    def input_parameters(self) -> Mapping[str, str]:
         """
         The input parameters of the Config Rule.
         """

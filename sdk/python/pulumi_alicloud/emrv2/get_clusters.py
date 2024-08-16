@@ -139,7 +139,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -181,7 +181,7 @@ def get_clusters(cluster_name: Optional[str] = None,
                  output_file: Optional[str] = None,
                  payment_types: Optional[Sequence[str]] = None,
                  resource_group_id: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
@@ -199,7 +199,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
     :param str resource_group_id: The Resource Group ID.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['clusterName'] = cluster_name
@@ -245,7 +245,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         payment_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
@@ -263,6 +263,6 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
     :param str resource_group_id: The Resource Group ID.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

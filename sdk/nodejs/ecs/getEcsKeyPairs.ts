@@ -64,7 +64,7 @@ export interface GetEcsKeyPairsArgs {
      * The resource group Id.
      */
     resourceGroupId?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -86,7 +86,7 @@ export interface GetEcsKeyPairsResult {
     readonly outputFile?: string;
     readonly pairs: outputs.ecs.GetEcsKeyPairsPair[];
     readonly resourceGroupId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
@@ -136,5 +136,5 @@ export interface GetEcsKeyPairsOutputArgs {
      * The resource group Id.
      */
     resourceGroupId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

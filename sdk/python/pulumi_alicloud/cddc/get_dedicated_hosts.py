@@ -115,7 +115,7 @@ class GetDedicatedHostsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -152,7 +152,7 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
                         order_id: Optional[str] = None,
                         output_file: Optional[str] = None,
                         status: Optional[str] = None,
-                        tags: Optional[Mapping[str, Any]] = None,
+                        tags: Optional[Mapping[str, str]] = None,
                         zone_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedHostsResult:
     """
@@ -214,7 +214,7 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the host. Valid values: 
            * `0:` The host is being created.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The ID of the zone.
     """
     __args__ = dict()
@@ -255,7 +255,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
                                order_id: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostsResult]:
     """
@@ -317,7 +317,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the host. Valid values: 
            * `0:` The host is being created.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The ID of the zone.
     """
     ...

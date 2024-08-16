@@ -23,7 +23,7 @@ class DomainNewArgs:
                  check_url: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DomainNew resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -37,7 +37,7 @@ class DomainNewArgs:
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "cdn_type", cdn_type)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -143,14 +143,14 @@ class DomainNewArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -166,7 +166,7 @@ class _DomainNewState:
                  scope: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DomainNew resources.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -182,7 +182,7 @@ class _DomainNewState:
                The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if cdn_type is not None:
             pulumi.set(__self__, "cdn_type", cdn_type)
@@ -319,14 +319,14 @@ class _DomainNewState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -342,7 +342,7 @@ class DomainNew(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a CDN Domain resource. CDN domain name.
@@ -397,7 +397,7 @@ class DomainNew(pulumi.CustomResource):
                - **global**: global.
                The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -467,7 +467,7 @@ class DomainNew(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -512,7 +512,7 @@ class DomainNew(pulumi.CustomResource):
             scope: Optional[pulumi.Input[str]] = None,
             sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DomainNew':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DomainNew':
         """
         Get an existing DomainNew resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -533,7 +533,7 @@ class DomainNew(pulumi.CustomResource):
                The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -629,7 +629,7 @@ class DomainNew(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

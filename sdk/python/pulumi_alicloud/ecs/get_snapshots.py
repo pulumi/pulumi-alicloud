@@ -184,7 +184,7 @@ class GetSnapshotsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the snapshot.
         """
@@ -244,7 +244,7 @@ def get_snapshots(category: Optional[str] = None,
                   snapshot_type: Optional[str] = None,
                   source_disk_type: Optional[str] = None,
                   status: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   type: Optional[str] = None,
                   usage: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
@@ -301,7 +301,7 @@ def get_snapshots(category: Optional[str] = None,
     :param Sequence[str] ids: A list of snapshot IDs.
     :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
     :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
+    :param Mapping[str, str] tags: A map of tags assigned to the snapshot.
     :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
@@ -360,7 +360,7 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          snapshot_type: Optional[pulumi.Input[Optional[str]]] = None,
                          source_disk_type: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          type: Optional[pulumi.Input[Optional[str]]] = None,
                          usage: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
@@ -417,7 +417,7 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] ids: A list of snapshot IDs.
     :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
     :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-    :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
+    :param Mapping[str, str] tags: A map of tags assigned to the snapshot.
     :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
     """
     ...

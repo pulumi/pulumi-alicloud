@@ -23,7 +23,7 @@ type GetConsumerGroupsGroup struct {
 	// The remark of the consumer group.
 	Remark string `pulumi:"remark"`
 	// A mapping of tags to assign to the consumer group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetConsumerGroupsGroupInput is an input type that accepts GetConsumerGroupsGroupArgs and GetConsumerGroupsGroupOutput values.
@@ -47,7 +47,7 @@ type GetConsumerGroupsGroupArgs struct {
 	// The remark of the consumer group.
 	Remark pulumi.StringInput `pulumi:"remark"`
 	// A mapping of tags to assign to the consumer group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetConsumerGroupsGroupArgs) ElementType() reflect.Type {
@@ -122,8 +122,8 @@ func (o GetConsumerGroupsGroupOutput) Remark() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the consumer group.
-func (o GetConsumerGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetConsumerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetConsumerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetConsumerGroupsGroupArrayOutput struct{ *pulumi.OutputState }
@@ -475,7 +475,7 @@ type GetInstancesInstance struct {
 	// The SSL end point of the instance.
 	SslEndPoint string `pulumi:"sslEndPoint"`
 	// A mapping of tags to assign to the instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The max num of topic can be create of the instance.
 	TopicQuota int `pulumi:"topicQuota"`
 	// The UpgradeServiceDetailInfo List.
@@ -547,7 +547,7 @@ type GetInstancesInstanceArgs struct {
 	// The SSL end point of the instance.
 	SslEndPoint pulumi.StringInput `pulumi:"sslEndPoint"`
 	// A mapping of tags to assign to the instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The max num of topic can be create of the instance.
 	TopicQuota pulumi.IntInput `pulumi:"topicQuota"`
 	// The UpgradeServiceDetailInfo List.
@@ -727,8 +727,8 @@ func (o GetInstancesInstanceOutput) SslEndPoint() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the instance.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The max num of topic can be create of the instance.
@@ -1472,7 +1472,7 @@ type GetTopicsTopic struct {
 	// The statusName of the topic.
 	StatusName string `pulumi:"statusName"`
 	// A mapping of tags to assign to the topic.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A topic to filter results by the topic name.
 	Topic string `pulumi:"topic"`
 }
@@ -1508,7 +1508,7 @@ type GetTopicsTopicArgs struct {
 	// The statusName of the topic.
 	StatusName pulumi.StringInput `pulumi:"statusName"`
 	// A mapping of tags to assign to the topic.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// A topic to filter results by the topic name.
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
@@ -1610,8 +1610,8 @@ func (o GetTopicsTopicOutput) StatusName() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the topic.
-func (o GetTopicsTopicOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTopicsTopic) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTopicsTopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTopicsTopic) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A topic to filter results by the topic name.

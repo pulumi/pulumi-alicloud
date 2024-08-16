@@ -83,7 +83,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the bastionhost instance.
         """
@@ -108,7 +108,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 def get_instances(description_regex: Optional[str] = None,
                   ids: Optional[Sequence[str]] = None,
                   output_file: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost_get_instances`.
@@ -131,7 +131,7 @@ def get_instances(description_regex: Optional[str] = None,
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
-    :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -163,7 +163,7 @@ def get_instances(description_regex: Optional[str] = None,
 def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
     > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost_get_instances`.
@@ -186,7 +186,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     :param str description_regex: A regex string to filter results by the instance description.
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
-    :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+    :param Mapping[str, str] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

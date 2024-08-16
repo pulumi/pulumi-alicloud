@@ -145,7 +145,7 @@ class GetApplicationsApplicationResult(dict):
                  description: str,
                  id: str,
                  resource_group_id: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  update_time: str):
         """
         :param str application_name: The name of the application.
@@ -153,7 +153,7 @@ class GetApplicationsApplicationResult(dict):
         :param str description: Application group description information.
         :param str id: The ID of the Application. The value is formate as <application_name>.
         :param str resource_group_id: The ID of the resource group.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str update_time: The Updated time of the application.
         """
         pulumi.set(__self__, "application_name", application_name)
@@ -206,7 +206,7 @@ class GetApplicationsApplicationResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """
@@ -472,7 +472,7 @@ class GetParametersParameterResult(dict):
                  parameter_version: int,
                  resource_group_id: str,
                  share_type: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  updated_by: str,
                  updated_date: str,
@@ -488,7 +488,7 @@ class GetParametersParameterResult(dict):
         :param int parameter_version: The version number of the common parameter.
         :param str resource_group_id: The ID of the Resource Group.
         :param str share_type: The share type of the common parameter.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str type: The data type of the common parameter.
         :param str updated_by: The user who updated the common parameter.
         :param str updated_date: The time when the common parameter was updated.
@@ -592,7 +592,7 @@ class GetParametersParameterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """
@@ -784,7 +784,7 @@ class GetSecretParametersParameterResult(dict):
                  secret_parameter_id: str,
                  secret_parameter_name: str,
                  share_type: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  type: str,
                  updated_by: str,
                  updated_date: str):
@@ -800,7 +800,7 @@ class GetSecretParametersParameterResult(dict):
         :param str secret_parameter_id: The ID of the encryption parameter.
         :param str secret_parameter_name: The name of the encryption parameter.
         :param str share_type: The share type of the encryption parameter.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str type: The data type of the encryption parameter.
         :param str updated_by: The user who updated the encryption parameter.
         :param str updated_date: The time when the encryption parameter was updated.
@@ -911,7 +911,7 @@ class GetSecretParametersParameterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """
@@ -954,7 +954,7 @@ class GetStateConfigurationsConfigurationResult(dict):
                  schedule_expression: str,
                  schedule_type: str,
                  state_configuration_id: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  targets: str,
                  template_id: str,
                  template_name: str,
@@ -970,7 +970,7 @@ class GetStateConfigurationsConfigurationResult(dict):
         :param str schedule_expression: The schedule expression.
         :param str schedule_type: The schedule type.
         :param str state_configuration_id: The ID of the final state configuration.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str targets: The target resource.
         :param str template_id: The ID of the template.
         :param str template_name: The name of the template.
@@ -1067,7 +1067,7 @@ class GetStateConfigurationsConfigurationResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """
@@ -1124,7 +1124,7 @@ class GetTemplatesTemplateResult(dict):
                  has_trigger: bool,
                  id: str,
                  share_type: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  template_format: str,
                  template_id: str,
                  template_name: str,
@@ -1140,7 +1140,7 @@ class GetTemplatesTemplateResult(dict):
         :param bool has_trigger: Is it triggered successfully.
         :param str id: ID of the OOS Template. The value is same as template_name.
         :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str template_format: The format of the template. Valid values: `JSON`, `YAML`.
         :param str template_id: ID of the OOS Template resource.
         :param str template_name: Name of the OOS Template.
@@ -1223,7 +1223,7 @@ class GetTemplatesTemplateResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

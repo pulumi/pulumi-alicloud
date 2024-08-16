@@ -1123,7 +1123,7 @@ type GetInstancesInstance struct {
 	// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -1157,7 +1157,7 @@ type GetInstancesInstanceArgs struct {
 	// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -1257,8 +1257,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

@@ -54,9 +54,9 @@ import (
 //						SourcePort:    pulumi.String("443"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("terraform"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("terraform"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -105,7 +105,7 @@ type Domain struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
 	// The weight of the origin server.
@@ -175,7 +175,7 @@ type domainState struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 	// The weight of the origin server.
@@ -210,7 +210,7 @@ type DomainState struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
 	// The weight of the origin server.
@@ -233,7 +233,7 @@ type domainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
@@ -251,7 +251,7 @@ type DomainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 	// * `Value`: It can be up to 128 characters in length. It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
 }
@@ -406,8 +406,8 @@ func (o DomainOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // * `Key`: It can be up to 64 characters in length. It cannot be a null string.
 // * `Value`: It can be up to 128 characters in length. It can be a null string.
-func (o DomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The top-level domain name.

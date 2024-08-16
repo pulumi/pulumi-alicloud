@@ -83,7 +83,7 @@ export interface GetEcsDedicatedHostClustersArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The zone ID of the dedicated host cluster.
      */
@@ -105,7 +105,7 @@ export interface GetEcsDedicatedHostClustersResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly zoneId?: string;
 }
 /**
@@ -174,7 +174,7 @@ export interface GetEcsDedicatedHostClustersOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone ID of the dedicated host cluster.
      */

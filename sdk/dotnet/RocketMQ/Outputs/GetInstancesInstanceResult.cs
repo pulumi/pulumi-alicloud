@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
 
             int status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string tcpEndpoint)
         {

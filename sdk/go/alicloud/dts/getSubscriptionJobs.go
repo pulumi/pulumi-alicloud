@@ -61,8 +61,8 @@ type GetSubscriptionJobsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSubscriptionJobs.
@@ -76,7 +76,7 @@ type GetSubscriptionJobsResult struct {
 	Names      []string                 `pulumi:"names"`
 	OutputFile *string                  `pulumi:"outputFile"`
 	Status     *string                  `pulumi:"status"`
-	Tags       map[string]interface{}   `pulumi:"tags"`
+	Tags       map[string]string        `pulumi:"tags"`
 }
 
 func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionJobsResultOutput {
@@ -103,7 +103,7 @@ type GetSubscriptionJobsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSubscriptionJobsOutputArgs) ElementType() reflect.Type {
@@ -158,8 +158,8 @@ func (o GetSubscriptionJobsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSubscriptionJobsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSubscriptionJobsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSubscriptionJobsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

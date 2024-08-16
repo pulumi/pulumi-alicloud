@@ -110,9 +110,9 @@ import (
 //				VswitchId: defaultSwitch.ID(),
 //				VpcId:     defaultNetwork.ID(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				TemplateTags: pulumi.Map{
-//					"Create": pulumi.Any("Terraform"),
-//					"For":    pulumi.Any("example"),
+//				TemplateTags: pulumi.StringMap{
+//					"Create": pulumi.String("Terraform"),
+//					"For":    pulumi.String("example"),
 //				},
 //				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
 //					Name:            pulumi.String("eth0"),
@@ -256,11 +256,11 @@ type EcsLaunchTemplate struct {
 	// A mapping of tags to assign to instance, block storage, and elastic network.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
-	TemplateTags pulumi.MapOutput `pulumi:"templateTags"`
+	TemplateTags pulumi.StringMapOutput `pulumi:"templateTags"`
 	// The User Data.
 	UserData pulumi.StringOutput `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -402,11 +402,11 @@ type ecsLaunchTemplateState struct {
 	// A mapping of tags to assign to instance, block storage, and elastic network.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The template resource group id.
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
-	TemplateTags map[string]interface{} `pulumi:"templateTags"`
+	TemplateTags map[string]string `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -519,11 +519,11 @@ type EcsLaunchTemplateState struct {
 	// A mapping of tags to assign to instance, block storage, and elastic network.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the launch template.
-	TemplateTags pulumi.MapInput
+	TemplateTags pulumi.StringMapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -640,11 +640,11 @@ type ecsLaunchTemplateArgs struct {
 	// A mapping of tags to assign to instance, block storage, and elastic network.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The template resource group id.
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
 	// A mapping of tags to assign to the launch template.
-	TemplateTags map[string]interface{} `pulumi:"templateTags"`
+	TemplateTags map[string]string `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -758,11 +758,11 @@ type EcsLaunchTemplateArgs struct {
 	// A mapping of tags to assign to instance, block storage, and elastic network.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the launch template.
-	TemplateTags pulumi.MapInput
+	TemplateTags pulumi.StringMapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
 	// It has been deprecated from version 1.120.0, and use field `userData` instead.
@@ -1078,8 +1078,8 @@ func (o EcsLaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
 // A mapping of tags to assign to instance, block storage, and elastic network.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o EcsLaunchTemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsLaunchTemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The template resource group id.
@@ -1088,8 +1088,8 @@ func (o EcsLaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutpu
 }
 
 // A mapping of tags to assign to the launch template.
-func (o EcsLaunchTemplateOutput) TemplateTags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.MapOutput { return v.TemplateTags }).(pulumi.MapOutput)
+func (o EcsLaunchTemplateOutput) TemplateTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringMapOutput { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
 // The User Data.

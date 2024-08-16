@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// <summary>
         /// A mapping of tags to assign to the instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The max num of topic can be create of the instance.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string sslEndPoint,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             int topicQuota,
 

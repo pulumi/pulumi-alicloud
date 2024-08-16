@@ -77,9 +77,9 @@ import (
 //				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				VswitchId:          defaultSwitch.ID(),
 //				AutoCreateEip:      pulumi.Bool(true),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				Containers: eci.ContainerGroupContainerArray{
 //					&eci.ContainerGroupContainerArgs{
@@ -243,7 +243,7 @@ type ContainerGroup struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
 	TerminationGracePeriodSeconds pulumi.IntPtrOutput `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
@@ -352,7 +352,7 @@ type containerGroupState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
 	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
@@ -420,7 +420,7 @@ type ContainerGroupState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
 	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below.
@@ -486,7 +486,7 @@ type containerGroupArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
 	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below.
@@ -549,7 +549,7 @@ type ContainerGroupArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The buffer time during which the program handles operations before the program stops. Unit: seconds.
 	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below.
@@ -783,8 +783,8 @@ func (o ContainerGroupOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o ContainerGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ContainerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The buffer time during which the program handles operations before the program stops. Unit: seconds.

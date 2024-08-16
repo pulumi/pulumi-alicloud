@@ -6,7 +6,6 @@ package com.pulumi.alicloud.slb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -67,7 +66,7 @@ public final class GetCaCertificatesCertificate {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetCaCertificatesCertificate() {}
     /**
@@ -144,7 +143,7 @@ public final class GetCaCertificatesCertificate {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -167,7 +166,7 @@ public final class GetCaCertificatesCertificate {
         private String id;
         private String name;
         private String resourceGroupId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetCaCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -265,7 +264,7 @@ public final class GetCaCertificatesCertificate {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetCaCertificatesCertificate", "tags");
             }

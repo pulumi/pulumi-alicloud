@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.sls.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class AlertConfigurationTemplateConfiguration {
      * @return Template Annotations.
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return Template Language.
      * 
@@ -32,7 +31,7 @@ public final class AlertConfigurationTemplateConfiguration {
      * @return Template Variables.
      * 
      */
-    private @Nullable Map<String,Object> tokens;
+    private @Nullable Map<String,String> tokens;
     private @Nullable String type;
     /**
      * @return Template Version.
@@ -45,7 +44,7 @@ public final class AlertConfigurationTemplateConfiguration {
      * @return Template Annotations.
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
@@ -66,7 +65,7 @@ public final class AlertConfigurationTemplateConfiguration {
      * @return Template Variables.
      * 
      */
-    public Map<String,Object> tokens() {
+    public Map<String,String> tokens() {
         return this.tokens == null ? Map.of() : this.tokens;
     }
     public Optional<String> type() {
@@ -89,10 +88,10 @@ public final class AlertConfigurationTemplateConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
+        private @Nullable Map<String,String> annotations;
         private @Nullable String lang;
         private @Nullable String templateId;
-        private @Nullable Map<String,Object> tokens;
+        private @Nullable Map<String,String> tokens;
         private @Nullable String type;
         private @Nullable String version;
         public Builder() {}
@@ -107,7 +106,7 @@ public final class AlertConfigurationTemplateConfiguration {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;
@@ -125,7 +124,7 @@ public final class AlertConfigurationTemplateConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder tokens(@Nullable Map<String,Object> tokens) {
+        public Builder tokens(@Nullable Map<String,String> tokens) {
 
             this.tokens = tokens;
             return this;

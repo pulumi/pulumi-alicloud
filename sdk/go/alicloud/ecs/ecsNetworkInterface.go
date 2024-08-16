@@ -88,9 +88,9 @@ import (
 //				},
 //				Description:      pulumi.String("Basic test"),
 //				PrimaryIpAddress: pulumi.String("192.168.0.2"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Test"),
 //				},
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //			})
@@ -166,7 +166,7 @@ type EcsNetworkInterface struct {
 	// The status of the ENI.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -257,7 +257,7 @@ type ecsNetworkInterfaceState struct {
 	// The status of the ENI.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -316,7 +316,7 @@ type EcsNetworkInterfaceState struct {
 	// The status of the ENI.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
 	VswitchId pulumi.StringPtrInput
 }
@@ -375,7 +375,7 @@ type ecsNetworkInterfaceArgs struct {
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -431,7 +431,7 @@ type EcsNetworkInterfaceArgs struct {
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
 	VswitchId pulumi.StringInput
 }
@@ -639,8 +639,8 @@ func (o EcsNetworkInterfaceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EcsNetworkInterfaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsNetworkInterfaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.

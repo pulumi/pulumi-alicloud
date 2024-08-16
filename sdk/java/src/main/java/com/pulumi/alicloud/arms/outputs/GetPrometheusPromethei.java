@@ -5,7 +5,6 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -101,7 +100,7 @@ public final class GetPrometheusPromethei {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the VPC.
      * 
@@ -237,7 +236,7 @@ public final class GetPrometheusPromethei {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -281,7 +280,7 @@ public final class GetPrometheusPromethei {
         private String resourceGroupId;
         private String securityGroupId;
         private String subClustersJson;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -446,7 +445,7 @@ public final class GetPrometheusPromethei {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetPrometheusPromethei", "tags");
             }

@@ -80,7 +80,7 @@ type GetInstancesArgs struct {
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status *int `pulumi:"status"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
@@ -99,7 +99,7 @@ type GetInstancesResult struct {
 	// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
 	Status *int `pulumi:"status"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -128,7 +128,7 @@ type GetInstancesOutputArgs struct {
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -188,8 +188,8 @@ func (o GetInstancesResultOutput) Status() pulumi.IntPtrOutput {
 }
 
 // A map of tags assigned to the Ons instance.
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

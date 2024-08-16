@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// List of label key-value pairs.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetEcsImageComponentsComponentResult(
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string systemType,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             ComponentType = componentType;
             Content = content;

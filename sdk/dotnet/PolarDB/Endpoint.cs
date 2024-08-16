@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
         [Output("endpointConfig")]
-        public Output<ImmutableDictionary<string, object>> EndpointConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EndpointConfig { get; private set; } = null!;
 
         /// <summary>
         /// Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
@@ -247,14 +247,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbEndpointDescription { get; set; }
 
         [Input("endpointConfig")]
-        private InputMap<object>? _endpointConfig;
+        private InputMap<string>? _endpointConfig;
 
         /// <summary>
         /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
-        public InputMap<object> EndpointConfig
+        public InputMap<string> EndpointConfig
         {
-            get => _endpointConfig ?? (_endpointConfig = new InputMap<object>());
+            get => _endpointConfig ?? (_endpointConfig = new InputMap<string>());
             set => _endpointConfig = value;
         }
 
@@ -345,14 +345,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbEndpointId { get; set; }
 
         [Input("endpointConfig")]
-        private InputMap<object>? _endpointConfig;
+        private InputMap<string>? _endpointConfig;
 
         /// <summary>
         /// The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         /// </summary>
-        public InputMap<object> EndpointConfig
+        public InputMap<string> EndpointConfig
         {
-            get => _endpointConfig ?? (_endpointConfig = new InputMap<object>());
+            get => _endpointConfig ?? (_endpointConfig = new InputMap<string>());
             set => _endpointConfig = value;
         }
 

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.cassandra.outputs;
 import com.pulumi.alicloud.cassandra.outputs.GetClustersCluster;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public final class GetClustersResult {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetClustersResult() {}
     /**
@@ -83,7 +82,7 @@ public final class GetClustersResult {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -102,7 +101,7 @@ public final class GetClustersResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -169,7 +168,7 @@ public final class GetClustersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

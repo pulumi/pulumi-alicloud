@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetServerCertificatesCertificateResult(
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             ImmutableArray<string> subjectAlternativeNames,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             AlicloudCertificateId = alicloudCertificateId;
             AlicloudCertificateName = alicloudCertificateName;

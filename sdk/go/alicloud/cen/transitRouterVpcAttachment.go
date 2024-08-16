@@ -141,7 +141,7 @@ type TransitRouterVpcAttachment struct {
 	// The associating status of the network.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
 	// The ID of the Transit Router Attachment.
@@ -219,7 +219,7 @@ type transitRouterVpcAttachmentState struct {
 	// The associating status of the network.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// The ID of the Transit Router Attachment.
@@ -259,7 +259,7 @@ type TransitRouterVpcAttachmentState struct {
 	// The associating status of the network.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// The ID of the Transit Router Attachment.
@@ -301,7 +301,7 @@ type transitRouterVpcAttachmentArgs struct {
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// The name of the transit router vbr attachment.
@@ -338,7 +338,7 @@ type TransitRouterVpcAttachmentArgs struct {
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// The name of the transit router vbr attachment.
@@ -486,8 +486,8 @@ func (o TransitRouterVpcAttachmentOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TransitRouterVpcAttachmentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TransitRouterVpcAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The description of the transit router vbr attachment.

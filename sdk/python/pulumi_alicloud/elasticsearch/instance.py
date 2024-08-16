@@ -34,7 +34,7 @@ class InstanceArgs:
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -45,8 +45,8 @@ class InstanceArgs:
                  renew_status: Optional[pulumi.Input[str]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -70,7 +70,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -81,8 +81,8 @@ class InstanceArgs:
         :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         pulumi.set(__self__, "data_node_amount", data_node_amount)
@@ -390,14 +390,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -522,26 +522,26 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="settingConfig")
-    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         """
         return pulumi.get(self, "setting_config")
 
     @setting_config.setter
-    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "setting_config", value)
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -581,7 +581,7 @@ class _InstanceState:
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -595,9 +595,9 @@ class _InstanceState:
                  renew_status: Optional[pulumi.Input[str]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None):
@@ -624,7 +624,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -638,9 +638,9 @@ class _InstanceState:
         :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -982,14 +982,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
@@ -1150,14 +1150,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="settingConfig")
-    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         """
         return pulumi.get(self, "setting_config")
 
     @setting_config.setter
-    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "setting_config", value)
 
     @property
@@ -1174,14 +1174,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1244,7 +1244,7 @@ class Instance(pulumi.CustomResource):
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -1255,8 +1255,8 @@ class Instance(pulumi.CustomResource):
                  renew_status: Optional[pulumi.Input[str]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None,
@@ -1290,7 +1290,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -1301,8 +1301,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -1355,7 +1355,7 @@ class Instance(pulumi.CustomResource):
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_node_disk_type: Optional[pulumi.Input[str]] = None,
                  master_node_spec: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -1366,8 +1366,8 @@ class Instance(pulumi.CustomResource):
                  renew_status: Optional[pulumi.Input[str]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None,
@@ -1466,7 +1466,7 @@ class Instance(pulumi.CustomResource):
             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             master_node_disk_type: Optional[pulumi.Input[str]] = None,
             master_node_spec: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
@@ -1480,9 +1480,9 @@ class Instance(pulumi.CustomResource):
             renew_status: Optional[pulumi.Input[str]] = None,
             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_count: Optional[pulumi.Input[int]] = None) -> 'Instance':
@@ -1514,7 +1514,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
@@ -1528,9 +1528,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -1752,7 +1752,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
@@ -1864,7 +1864,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="settingConfig")
-    def setting_config(self) -> pulumi.Output[Mapping[str, Any]]:
+    def setting_config(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         """
@@ -1880,7 +1880,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

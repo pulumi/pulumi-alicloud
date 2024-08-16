@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -359,14 +358,14 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Log audit detailed configuration.
      * 
      */
-    @Export(name="variableMap", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> variableMap;
+    @Export(name="variableMap", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> variableMap;
 
     /**
      * @return Log audit detailed configuration.
      * 
      */
-    public Output<Optional<Map<String,Object>>> variableMap() {
+    public Output<Optional<Map<String,String>>> variableMap() {
         return Codegen.optional(this.variableMap);
     }
 

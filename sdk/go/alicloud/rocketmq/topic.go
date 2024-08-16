@@ -101,7 +101,7 @@ type Topic struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** At least one of `topicName` and `topic` should be set.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
 	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
@@ -161,7 +161,7 @@ type topicState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** At least one of `topicName` and `topic` should be set.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
 	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
@@ -186,7 +186,7 @@ type TopicState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** At least one of `topicName` and `topic` should be set.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Replaced by `topicName` after version 1.97.0.
 	//
 	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
@@ -215,7 +215,7 @@ type topicArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** At least one of `topicName` and `topic` should be set.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
 	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
@@ -241,7 +241,7 @@ type TopicArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** At least one of `topicName` and `topic` should be set.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Replaced by `topicName` after version 1.97.0.
 	//
 	// Deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
@@ -364,8 +364,8 @@ func (o TopicOutput) Remark() pulumi.StringPtrOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 //
 // > **NOTE:** At least one of `topicName` and `topic` should be set.
-func (o TopicOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Replaced by `topicName` after version 1.97.0.

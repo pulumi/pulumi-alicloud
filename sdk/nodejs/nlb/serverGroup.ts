@@ -160,7 +160,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC to which the server group belongs.
      *
@@ -293,7 +293,7 @@ export interface ServerGroupState {
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC to which the server group belongs.
      *
@@ -366,7 +366,7 @@ export interface ServerGroupArgs {
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC to which the server group belongs.
      *

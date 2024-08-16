@@ -111,7 +111,7 @@ type PrefixList struct {
 	// Resource attribute fields that represent the status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of PrefixList.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewPrefixList registers a new resource with the given unique name, arguments, and options.
@@ -167,7 +167,7 @@ type prefixListState struct {
 	// Resource attribute fields that represent the status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of PrefixList.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type PrefixListState struct {
@@ -194,7 +194,7 @@ type PrefixListState struct {
 	// Resource attribute fields that represent the status of the resource.
 	Status pulumi.StringPtrInput
 	// The tags of PrefixList.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PrefixListState) ElementType() reflect.Type {
@@ -215,7 +215,7 @@ type prefixListArgs struct {
 	// The ID of the resource group to which the PrefixList belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tags of PrefixList.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PrefixList resource.
@@ -233,7 +233,7 @@ type PrefixListArgs struct {
 	// The ID of the resource group to which the PrefixList belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tags of PrefixList.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PrefixListArgs) ElementType() reflect.Type {
@@ -379,8 +379,8 @@ func (o PrefixListOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of PrefixList.
-func (o PrefixListOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *PrefixList) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PrefixListOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type PrefixListArrayOutput struct{ *pulumi.OutputState }

@@ -196,7 +196,7 @@ type GetClustersCluster struct {
 	// Status of the cluster.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
@@ -233,7 +233,7 @@ type GetClustersClusterArgs struct {
 	// Status of the cluster.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetClustersClusterArgs) ElementType() reflect.Type {
@@ -342,8 +342,8 @@ func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }

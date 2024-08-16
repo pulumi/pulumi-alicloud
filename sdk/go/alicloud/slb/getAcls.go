@@ -74,7 +74,7 @@ type GetAclsArgs struct {
 	// The Id of resource group which acl belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getAcls.
@@ -92,7 +92,7 @@ type GetAclsResult struct {
 	// Resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetAclsOutput(ctx *pulumi.Context, args GetAclsOutputArgs, opts ...pulumi.InvokeOption) GetAclsResultOutput {
@@ -119,7 +119,7 @@ type GetAclsOutputArgs struct {
 	// The Id of resource group which acl belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetAclsOutputArgs) ElementType() reflect.Type {
@@ -175,8 +175,8 @@ func (o GetAclsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetAclsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAclsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAclsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAclsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -150,15 +150,15 @@ namespace Pulumi.AliCloud.Rds
         public string? Status { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the DB instances. 
         /// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -243,15 +243,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the DB instances. 
         /// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Rds
         /// Status of the instance.
         /// </summary>
         public readonly string? Status;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
         /// ID of the VPC the instance belongs to.
@@ -353,7 +353,7 @@ namespace Pulumi.AliCloud.Rds
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             int totalCount,
 

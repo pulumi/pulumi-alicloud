@@ -25,7 +25,7 @@ class DhcpOptionsSetArgs:
                  ipv6_lease_time: Optional[pulumi.Input[str]] = None,
                  lease_time: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSet resource.
         :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
@@ -39,7 +39,7 @@ class DhcpOptionsSetArgs:
         :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
         :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the current resource.
         """
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
@@ -178,14 +178,14 @@ class DhcpOptionsSetArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -203,7 +203,7 @@ class _DhcpOptionsSetState:
                  owner_id: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSet resources.
         :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
@@ -219,7 +219,7 @@ class _DhcpOptionsSetState:
         :param pulumi.Input[int] owner_id: The ID of the account to which the DHCP options set belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the current resource.
         """
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
@@ -386,14 +386,14 @@ class _DhcpOptionsSetState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -411,7 +411,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
                  ipv6_lease_time: Optional[pulumi.Input[str]] = None,
                  lease_time: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a VPC Dhcp Options Set resource. DHCP option set.
@@ -463,7 +463,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
         :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the current resource.
         """
         ...
     @overload
@@ -532,7 +532,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
                  ipv6_lease_time: Optional[pulumi.Input[str]] = None,
                  lease_time: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,7 +575,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
             owner_id: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DhcpOptionsSet':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DhcpOptionsSet':
         """
         Get an existing DhcpOptionsSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -596,7 +596,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         :param pulumi.Input[int] owner_id: The ID of the account to which the DHCP options set belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags of the current resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -709,7 +709,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Tags of the current resource.
         """

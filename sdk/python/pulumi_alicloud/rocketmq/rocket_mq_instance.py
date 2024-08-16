@@ -31,7 +31,7 @@ class RocketMQInstanceArgs:
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  software: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RocketMQInstance resource.
         :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information. See `network_info` below.
@@ -64,7 +64,7 @@ class RocketMQInstanceArgs:
         :param pulumi.Input[str] remark: Custom description.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input['RocketMQInstanceSoftwareArgs'] software: Instance software information. See `software` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The resource label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
         pulumi.set(__self__, "network_info", network_info)
         pulumi.set(__self__, "payment_type", payment_type)
@@ -291,14 +291,14 @@ class RocketMQInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The resource label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -322,7 +322,7 @@ class _RocketMQInstanceState:
                  software: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  sub_series_code: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering RocketMQInstance resources.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
@@ -357,7 +357,7 @@ class _RocketMQInstanceState:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
-        :param pulumi.Input[Mapping[str, Any]] tags: The resource label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -617,14 +617,14 @@ class _RocketMQInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The resource label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -648,7 +648,7 @@ class RocketMQInstance(pulumi.CustomResource):
                  service_code: Optional[pulumi.Input[str]] = None,
                  software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
                  sub_series_code: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Import
@@ -691,7 +691,7 @@ class RocketMQInstance(pulumi.CustomResource):
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
-        :param pulumi.Input[Mapping[str, Any]] tags: The resource label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
         ...
     @overload
@@ -738,7 +738,7 @@ class RocketMQInstance(pulumi.CustomResource):
                  service_code: Optional[pulumi.Input[str]] = None,
                  software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
                  sub_series_code: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -803,7 +803,7 @@ class RocketMQInstance(pulumi.CustomResource):
             software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             sub_series_code: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'RocketMQInstance':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'RocketMQInstance':
         """
         Get an existing RocketMQInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -843,7 +843,7 @@ class RocketMQInstance(pulumi.CustomResource):
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
-        :param pulumi.Input[Mapping[str, Any]] tags: The resource label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1022,7 +1022,7 @@ class RocketMQInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The resource label.
         """

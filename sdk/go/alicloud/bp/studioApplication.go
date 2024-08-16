@@ -64,11 +64,11 @@ import (
 //						NodeType: pulumi.String("ecs"),
 //					},
 //				},
-//				Configuration: pulumi.Map{
-//					"enableMonitor": pulumi.Any("1"),
+//				Configuration: pulumi.StringMap{
+//					"enableMonitor": pulumi.String("1"),
 //				},
-//				Variables: pulumi.Map{
-//					"test": pulumi.Any("1"),
+//				Variables: pulumi.StringMap{
+//					"test": pulumi.String("1"),
 //				},
 //			})
 //			if err != nil {
@@ -95,7 +95,7 @@ type StudioApplication struct {
 	// The id of the area.
 	AreaId pulumi.StringPtrOutput `pulumi:"areaId"`
 	// The configuration of the application.
-	Configuration pulumi.MapOutput `pulumi:"configuration"`
+	Configuration pulumi.StringMapOutput `pulumi:"configuration"`
 	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
 	Instances StudioApplicationInstanceArrayOutput `pulumi:"instances"`
 	// The id of the resource group.
@@ -105,7 +105,7 @@ type StudioApplication struct {
 	// The id of the template.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The variables of the application.
-	Variables pulumi.MapOutput `pulumi:"variables"`
+	Variables pulumi.StringMapOutput `pulumi:"variables"`
 }
 
 // NewStudioApplication registers a new resource with the given unique name, arguments, and options.
@@ -149,7 +149,7 @@ type studioApplicationState struct {
 	// The id of the area.
 	AreaId *string `pulumi:"areaId"`
 	// The configuration of the application.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
 	Instances []StudioApplicationInstance `pulumi:"instances"`
 	// The id of the resource group.
@@ -159,7 +159,7 @@ type studioApplicationState struct {
 	// The id of the template.
 	TemplateId *string `pulumi:"templateId"`
 	// The variables of the application.
-	Variables map[string]interface{} `pulumi:"variables"`
+	Variables map[string]string `pulumi:"variables"`
 }
 
 type StudioApplicationState struct {
@@ -168,7 +168,7 @@ type StudioApplicationState struct {
 	// The id of the area.
 	AreaId pulumi.StringPtrInput
 	// The configuration of the application.
-	Configuration pulumi.MapInput
+	Configuration pulumi.StringMapInput
 	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
 	Instances StudioApplicationInstanceArrayInput
 	// The id of the resource group.
@@ -178,7 +178,7 @@ type StudioApplicationState struct {
 	// The id of the template.
 	TemplateId pulumi.StringPtrInput
 	// The variables of the application.
-	Variables pulumi.MapInput
+	Variables pulumi.StringMapInput
 }
 
 func (StudioApplicationState) ElementType() reflect.Type {
@@ -191,7 +191,7 @@ type studioApplicationArgs struct {
 	// The id of the area.
 	AreaId *string `pulumi:"areaId"`
 	// The configuration of the application.
-	Configuration map[string]interface{} `pulumi:"configuration"`
+	Configuration map[string]string `pulumi:"configuration"`
 	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
 	Instances []StudioApplicationInstance `pulumi:"instances"`
 	// The id of the resource group.
@@ -199,7 +199,7 @@ type studioApplicationArgs struct {
 	// The id of the template.
 	TemplateId string `pulumi:"templateId"`
 	// The variables of the application.
-	Variables map[string]interface{} `pulumi:"variables"`
+	Variables map[string]string `pulumi:"variables"`
 }
 
 // The set of arguments for constructing a StudioApplication resource.
@@ -209,7 +209,7 @@ type StudioApplicationArgs struct {
 	// The id of the area.
 	AreaId pulumi.StringPtrInput
 	// The configuration of the application.
-	Configuration pulumi.MapInput
+	Configuration pulumi.StringMapInput
 	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
 	Instances StudioApplicationInstanceArrayInput
 	// The id of the resource group.
@@ -217,7 +217,7 @@ type StudioApplicationArgs struct {
 	// The id of the template.
 	TemplateId pulumi.StringInput
 	// The variables of the application.
-	Variables pulumi.MapInput
+	Variables pulumi.StringMapInput
 }
 
 func (StudioApplicationArgs) ElementType() reflect.Type {
@@ -318,8 +318,8 @@ func (o StudioApplicationOutput) AreaId() pulumi.StringPtrOutput {
 }
 
 // The configuration of the application.
-func (o StudioApplicationOutput) Configuration() pulumi.MapOutput {
-	return o.ApplyT(func(v *StudioApplication) pulumi.MapOutput { return v.Configuration }).(pulumi.MapOutput)
+func (o StudioApplicationOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StudioApplication) pulumi.StringMapOutput { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
 // The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
@@ -343,8 +343,8 @@ func (o StudioApplicationOutput) TemplateId() pulumi.StringOutput {
 }
 
 // The variables of the application.
-func (o StudioApplicationOutput) Variables() pulumi.MapOutput {
-	return o.ApplyT(func(v *StudioApplication) pulumi.MapOutput { return v.Variables }).(pulumi.MapOutput)
+func (o StudioApplicationOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StudioApplication) pulumi.StringMapOutput { return v.Variables }).(pulumi.StringMapOutput)
 }
 
 type StudioApplicationArrayOutput struct{ *pulumi.OutputState }

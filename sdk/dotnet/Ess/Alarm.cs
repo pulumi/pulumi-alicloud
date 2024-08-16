@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Ess
         /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
         [Output("dimensions")]
-        public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable specific ess alarm. Default to true.
@@ -343,14 +343,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Description { get; set; }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -465,14 +465,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Description { get; set; }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 

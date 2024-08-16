@@ -25,7 +25,7 @@ class DedicatedHostArgs:
                  image_category: Optional[pulumi.Input[str]] = None,
                  os_password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a DedicatedHost resource.
@@ -40,7 +40,7 @@ class DedicatedHostArgs:
         :param pulumi.Input[str] image_category: Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
         :param pulumi.Input[str] os_password: Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -202,14 +202,14 @@ class DedicatedHostArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -242,7 +242,7 @@ class _DedicatedHostState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -259,7 +259,7 @@ class _DedicatedHostState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[str] status: The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -432,14 +432,14 @@ class _DedicatedHostState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -496,7 +496,7 @@ class DedicatedHost(pulumi.CustomResource):
                  os_password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -521,7 +521,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] os_password: Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -568,7 +568,7 @@ class DedicatedHost(pulumi.CustomResource):
                  os_password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -629,7 +629,7 @@ class DedicatedHost(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             used_time: Optional[pulumi.Input[int]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'DedicatedHost':
@@ -651,7 +651,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[str] status: The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
@@ -770,7 +770,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

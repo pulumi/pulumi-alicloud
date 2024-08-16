@@ -1059,17 +1059,17 @@ class AlertConfigurationSinkEventStoreArgs:
 @pulumi.input_type
 class AlertConfigurationTemplateConfigurationArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
-                 tokens: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] annotations: Template Annotations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Template Annotations.
         :param pulumi.Input[str] lang: Template Language.
         :param pulumi.Input[str] template_id: Template ID.
-        :param pulumi.Input[Mapping[str, Any]] tokens: Template Variables.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tokens: Template Variables.
         :param pulumi.Input[str] version: Template Version.
         """
         if annotations is not None:
@@ -1087,14 +1087,14 @@ class AlertConfigurationTemplateConfigurationArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Template Annotations.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -1123,14 +1123,14 @@ class AlertConfigurationTemplateConfigurationArgs:
 
     @property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tokens(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Template Variables.
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tokens(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tokens", value)
 
     @property
@@ -1373,7 +1373,7 @@ class ScheduledSqlScheduledSqlConfigurationArgs:
                  from_time_expr: Optional[pulumi.Input[str]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
                  max_run_time_in_seconds: Optional[pulumi.Input[int]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_pool: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
@@ -1391,7 +1391,7 @@ class ScheduledSqlScheduledSqlConfigurationArgs:
         :param pulumi.Input[str] from_time_expr: SQL time window-start.
         :param pulumi.Input[int] max_retries: Maximum retries.
         :param pulumi.Input[int] max_run_time_in_seconds: SQL timeout.
-        :param pulumi.Input[Mapping[str, Any]] parameters: Parameter configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Parameter configuration.
         :param pulumi.Input[str] resource_pool: Resource Pool.
         :param pulumi.Input[str] role_arn: Read role ARN.
         :param pulumi.Input[str] script: SQL statement.
@@ -1545,14 +1545,14 @@ class ScheduledSqlScheduledSqlConfigurationArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Parameter configuration.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property

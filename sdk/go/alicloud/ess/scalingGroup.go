@@ -236,7 +236,7 @@ type ScalingGroup struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -355,7 +355,7 @@ type scalingGroupState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -439,7 +439,7 @@ type ScalingGroupState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -527,7 +527,7 @@ type scalingGroupArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -612,7 +612,7 @@ type ScalingGroupArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -869,8 +869,8 @@ func (o ScalingGroupOutput) SpotInstanceRemedy() pulumi.BoolOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o ScalingGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ScalingGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ScalingGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.

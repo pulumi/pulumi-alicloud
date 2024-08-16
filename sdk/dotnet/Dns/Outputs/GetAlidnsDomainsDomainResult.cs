@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Cloud analysis version code.
         /// </summary>
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
 
             bool slaveDns,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string versionCode,
 

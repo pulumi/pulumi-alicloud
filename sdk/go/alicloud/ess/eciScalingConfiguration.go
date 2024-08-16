@@ -219,7 +219,7 @@ type EciScalingConfiguration struct {
 	//   be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The program's buffering time before closing.
 	TerminationGracePeriodSeconds pulumi.IntPtrOutput `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
@@ -344,7 +344,7 @@ type eciScalingConfigurationState struct {
 	//   be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The program's buffering time before closing.
 	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
@@ -437,7 +437,7 @@ type EciScalingConfigurationState struct {
 	//   be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The program's buffering time before closing.
 	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below for details.
@@ -534,7 +534,7 @@ type eciScalingConfigurationArgs struct {
 	//   be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The program's buffering time before closing.
 	TerminationGracePeriodSeconds *int `pulumi:"terminationGracePeriodSeconds"`
 	// The list of volumes. See `volumes` below for details.
@@ -628,7 +628,7 @@ type EciScalingConfigurationArgs struct {
 	//   be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The program's buffering time before closing.
 	TerminationGracePeriodSeconds pulumi.IntPtrInput
 	// The list of volumes. See `volumes` below for details.
@@ -918,8 +918,8 @@ func (o EciScalingConfigurationOutput) SpotStrategy() pulumi.StringPtrOutput {
 //     be a null string.
 //   - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 //     a null string.
-func (o EciScalingConfigurationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EciScalingConfigurationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The program's buffering time before closing.

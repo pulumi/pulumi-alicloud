@@ -80,7 +80,7 @@ type Acl struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAcl registers a new resource with the given unique name, arguments, and options.
@@ -131,7 +131,7 @@ type aclState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type AclState struct {
@@ -150,7 +150,7 @@ type AclState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AclState) ElementType() reflect.Type {
@@ -171,7 +171,7 @@ type aclArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Acl resource.
@@ -189,7 +189,7 @@ type AclArgs struct {
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
@@ -312,8 +312,8 @@ func (o AclOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o AclOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Acl) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AclOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type AclArrayOutput struct{ *pulumi.OutputState }

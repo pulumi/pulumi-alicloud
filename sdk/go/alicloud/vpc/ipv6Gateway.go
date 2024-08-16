@@ -112,7 +112,7 @@ type Ipv6Gateway struct {
 	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags for the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -173,7 +173,7 @@ type ipv6GatewayState struct {
 	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status *string `pulumi:"status"`
 	// The tags for the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -202,7 +202,7 @@ type Ipv6GatewayState struct {
 	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status pulumi.StringPtrInput
 	// The tags for the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringPtrInput
 }
@@ -223,7 +223,7 @@ type ipv6GatewayArgs struct {
 	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec *string `pulumi:"spec"`
 	// The tags for the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -241,7 +241,7 @@ type Ipv6GatewayArgs struct {
 	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec pulumi.StringPtrInput
 	// The tags for the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringInput
 }
@@ -386,8 +386,8 @@ func (o Ipv6GatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The tags for the resource.
-func (o Ipv6GatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Ipv6Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o Ipv6GatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.

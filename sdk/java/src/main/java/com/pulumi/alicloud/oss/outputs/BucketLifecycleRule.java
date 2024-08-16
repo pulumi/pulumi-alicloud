@@ -12,7 +12,6 @@ import com.pulumi.alicloud.oss.outputs.BucketLifecycleRuleTransition;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +67,7 @@ public final class BucketLifecycleRule {
      * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
      * 
@@ -138,7 +137,7 @@ public final class BucketLifecycleRule {
      * @return Key-value map of resource tags. All of these tags must exist in the object&#39;s tag set in order for the rule to apply.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -166,7 +165,7 @@ public final class BucketLifecycleRule {
         private @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
         private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
         private @Nullable String prefix;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable List<BucketLifecycleRuleTransition> transitions;
         public Builder() {}
         public Builder(BucketLifecycleRule defaults) {
@@ -246,7 +245,7 @@ public final class BucketLifecycleRule {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

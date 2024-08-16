@@ -23,7 +23,7 @@ class TrafficMirrorSessionArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  packet_length: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
                  virtual_network_id: Optional[pulumi.Input[int]] = None):
@@ -40,7 +40,7 @@ class TrafficMirrorSessionArgs:
         :param pulumi.Input[bool] enabled: Specifies whether to enable traffic mirror sessions. default to `false`.
         :param pulumi.Input[int] packet_length: Maximum Transmission Unit (MTU).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_session_description: The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[int] virtual_network_id: The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
@@ -179,14 +179,14 @@ class TrafficMirrorSessionArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -235,7 +235,7 @@ class _TrafficMirrorSessionState:
                  priority: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
@@ -253,7 +253,7 @@ class _TrafficMirrorSessionState:
         :param pulumi.Input[int] priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_id: The ID of the filter.
         :param pulumi.Input[str] traffic_mirror_session_description: The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -367,14 +367,14 @@ class _TrafficMirrorSessionState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -472,7 +472,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
                  packet_length: Optional[pulumi.Input[int]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
@@ -571,7 +571,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         :param pulumi.Input[int] packet_length: Maximum Transmission Unit (MTU).
         :param pulumi.Input[int] priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_id: The ID of the filter.
         :param pulumi.Input[str] traffic_mirror_session_description: The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -687,7 +687,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
                  packet_length: Optional[pulumi.Input[int]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
@@ -744,7 +744,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
             priority: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
             traffic_mirror_session_description: Optional[pulumi.Input[str]] = None,
             traffic_mirror_session_name: Optional[pulumi.Input[str]] = None,
@@ -767,7 +767,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_id: The ID of the filter.
         :param pulumi.Input[str] traffic_mirror_session_description: The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -848,7 +848,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of this resource.
         """

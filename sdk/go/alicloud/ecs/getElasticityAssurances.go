@@ -64,7 +64,7 @@ type GetElasticityAssurancesArgs struct {
 	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status *string `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getElasticityAssurances.
@@ -82,7 +82,7 @@ type GetElasticityAssurancesResult struct {
 	// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the Capacity Reservation.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetElasticityAssurancesOutput(ctx *pulumi.Context, args GetElasticityAssurancesOutputArgs, opts ...pulumi.InvokeOption) GetElasticityAssurancesResultOutput {
@@ -111,7 +111,7 @@ type GetElasticityAssurancesOutputArgs struct {
 	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetElasticityAssurancesOutputArgs) ElementType() reflect.Type {
@@ -167,8 +167,8 @@ func (o GetElasticityAssurancesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the Capacity Reservation.
-func (o GetElasticityAssurancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetElasticityAssurancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetElasticityAssurancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

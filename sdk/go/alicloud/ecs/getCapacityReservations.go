@@ -74,7 +74,7 @@ type GetCapacityReservationsArgs struct {
 	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getCapacityReservations.
@@ -101,7 +101,7 @@ type GetCapacityReservationsResult struct {
 	// The status of the capacity reservation.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the Capacity Reservation.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetCapacityReservationsOutput(ctx *pulumi.Context, args GetCapacityReservationsOutputArgs, opts ...pulumi.InvokeOption) GetCapacityReservationsResultOutput {
@@ -137,7 +137,7 @@ type GetCapacityReservationsOutputArgs struct {
 	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetCapacityReservationsOutputArgs) ElementType() reflect.Type {
@@ -217,8 +217,8 @@ func (o GetCapacityReservationsResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the Capacity Reservation.
-func (o GetCapacityReservationsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCapacityReservationsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetCapacityReservationsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCapacityReservationsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

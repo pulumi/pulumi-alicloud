@@ -8,7 +8,6 @@ import com.pulumi.alicloud.mongodb.outputs.GetInstancesInstanceShard;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,7 +109,7 @@ public final class GetInstancesInstance {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetInstancesInstance() {}
     /**
@@ -243,7 +242,7 @@ public final class GetInstancesInstance {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -274,7 +273,7 @@ public final class GetInstancesInstance {
         private List<GetInstancesInstanceShard> shards;
         private String status;
         private Integer storage;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -450,7 +449,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
             }

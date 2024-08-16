@@ -162,7 +162,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the endpoint.
      */
@@ -312,7 +312,7 @@ export interface VpcEndpointState {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the endpoint.
      */
@@ -374,7 +374,7 @@ export interface VpcEndpointArgs {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the endpoint.
      */

@@ -170,7 +170,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * The tags of VSwitch.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID.
      *
@@ -288,7 +288,7 @@ export interface SwitchState {
     /**
      * The tags of VSwitch.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID.
      *
@@ -342,7 +342,7 @@ export interface SwitchArgs {
     /**
      * The tags of VSwitch.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID.
      *

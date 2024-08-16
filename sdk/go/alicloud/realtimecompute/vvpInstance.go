@@ -39,7 +39,7 @@ type VvpInstance struct {
 	// Store information. See `storage` below.
 	Storage VvpInstanceStorageOutput `pulumi:"storage"`
 	// The tags of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID of the user.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// Virtual Switch ID.
@@ -115,7 +115,7 @@ type vvpInstanceState struct {
 	// Store information. See `storage` below.
 	Storage *VvpInstanceStorage `pulumi:"storage"`
 	// The tags of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID of the user.
 	VpcId *string `pulumi:"vpcId"`
 	// Virtual Switch ID.
@@ -144,7 +144,7 @@ type VvpInstanceState struct {
 	// Store information. See `storage` below.
 	Storage VvpInstanceStoragePtrInput
 	// The tags of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID of the user.
 	VpcId pulumi.StringPtrInput
 	// Virtual Switch ID.
@@ -173,7 +173,7 @@ type vvpInstanceArgs struct {
 	// Store information. See `storage` below.
 	Storage VvpInstanceStorage `pulumi:"storage"`
 	// The tags of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID of the user.
 	VpcId string `pulumi:"vpcId"`
 	// Virtual Switch ID.
@@ -199,7 +199,7 @@ type VvpInstanceArgs struct {
 	// Store information. See `storage` below.
 	Storage VvpInstanceStorageInput
 	// The tags of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VPC ID of the user.
 	VpcId pulumi.StringInput
 	// Virtual Switch ID.
@@ -338,8 +338,8 @@ func (o VvpInstanceOutput) Storage() VvpInstanceStorageOutput {
 }
 
 // The tags of the resource.
-func (o VvpInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *VvpInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o VvpInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VvpInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VPC ID of the user.

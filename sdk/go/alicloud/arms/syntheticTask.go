@@ -76,9 +76,9 @@ import (
 //						Expect:   pulumi.String("10000"),
 //					},
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				Status: pulumi.String("RUNNING"),
 //				MonitorConf: &arms.SyntheticTaskMonitorConfArgs{
@@ -101,8 +101,8 @@ import (
 //						Timeout:   pulumi.Int(10050),
 //						TargetUrl: pulumi.String("https://www.aliyun.com"),
 //						Method:    pulumi.String("POST"),
-//						RequestHeaders: pulumi.Map{
-//							"key1": pulumi.Any("value1"),
+//						RequestHeaders: pulumi.StringMap{
+//							"key1": pulumi.String("value1"),
 //						},
 //						RequestBody: &arms.SyntheticTaskMonitorConfApiHttpRequestBodyArgs{
 //							Content: pulumi.String("example2"),
@@ -128,8 +128,8 @@ import (
 //						AutomaticScrolling:     pulumi.Int(1),
 //						WaitCompletionTime:     pulumi.Int(5005),
 //						FlowHijackLogo:         pulumi.String("senyuan1"),
-//						CustomHeaderContent: pulumi.Map{
-//							"key1": pulumi.Any("value1"),
+//						CustomHeaderContent: pulumi.StringMap{
+//							"key1": pulumi.String("value1"),
 //						},
 //						FilterInvalidIp: pulumi.Int(0),
 //					},
@@ -145,8 +145,8 @@ import (
 //						ConnectionTimeout:                   pulumi.Int(6090),
 //						IgnoreInvalidHostError:              pulumi.Int(0),
 //						VerifyWay:                           pulumi.Int(0),
-//						CustomHeaderContent: pulumi.Map{
-//							"key1": pulumi.Any("value1"),
+//						CustomHeaderContent: pulumi.StringMap{
+//							"key1": pulumi.String("value1"),
 //						},
 //						TargetUrl:                    pulumi.String("https://www.aliyun.com"),
 //						DownloadKernel:               pulumi.Int(0),
@@ -159,8 +159,8 @@ import (
 //						StreamMonitorTimeout: pulumi.Int(10),
 //						StreamAddressType:    pulumi.Int(0),
 //						PlayerType:           pulumi.Int(2),
-//						CustomHeaderContent: pulumi.Map{
-//							"key1": pulumi.Any("value1"),
+//						CustomHeaderContent: pulumi.StringMap{
+//							"key1": pulumi.String("value1"),
 //						},
 //						WhiteList:  pulumi.String("www.aliyun.com:203.0.3.55"),
 //						TargetUrl:  pulumi.String("https://acd-assets.alicdn.com:443/2021productweek/week1_s.mp4"),
@@ -259,7 +259,7 @@ type SyntheticTask struct {
 	// The name of synthetic task.
 	SyntheticTaskName pulumi.StringOutput `pulumi:"syntheticTaskName"`
 	// The list of tags.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of synthetic task.
 	TaskType pulumi.IntOutput `pulumi:"taskType"`
 }
@@ -333,7 +333,7 @@ type syntheticTaskState struct {
 	// The name of synthetic task.
 	SyntheticTaskName *string `pulumi:"syntheticTaskName"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of synthetic task.
 	TaskType *int `pulumi:"taskType"`
 }
@@ -360,7 +360,7 @@ type SyntheticTaskState struct {
 	// The name of synthetic task.
 	SyntheticTaskName pulumi.StringPtrInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type of synthetic task.
 	TaskType pulumi.IntPtrInput
 }
@@ -391,7 +391,7 @@ type syntheticTaskArgs struct {
 	// The name of synthetic task.
 	SyntheticTaskName string `pulumi:"syntheticTaskName"`
 	// The list of tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of synthetic task.
 	TaskType int `pulumi:"taskType"`
 }
@@ -419,7 +419,7 @@ type SyntheticTaskArgs struct {
 	// The name of synthetic task.
 	SyntheticTaskName pulumi.StringInput
 	// The list of tags.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The type of synthetic task.
 	TaskType pulumi.IntInput
 }
@@ -562,8 +562,8 @@ func (o SyntheticTaskOutput) SyntheticTaskName() pulumi.StringOutput {
 }
 
 // The list of tags.
-func (o SyntheticTaskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *SyntheticTask) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SyntheticTaskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SyntheticTask) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of synthetic task.

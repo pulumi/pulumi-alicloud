@@ -39,7 +39,7 @@ class DedicatedPropreHostArgs:
                  period: Optional[pulumi.Input[str]] = None,
                  period_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  user_data_encoded: Optional[pulumi.Input[bool]] = None):
         """
@@ -84,7 +84,7 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Host tag information.
         :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
         :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         """
@@ -429,14 +429,14 @@ class DedicatedPropreHostArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Host tag information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -489,7 +489,7 @@ class _DedicatedPropreHostState:
                  period_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -535,7 +535,7 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Host tag information.
         :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
         :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
@@ -879,14 +879,14 @@ class _DedicatedPropreHostState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Host tag information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -964,7 +964,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  period_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1019,7 +1019,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Host tag information.
         :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
         :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
@@ -1076,7 +1076,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  period_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  user_data_encoded: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1163,7 +1163,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
             period_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             user_data_encoded: Optional[pulumi.Input[bool]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1214,7 +1214,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Host tag information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Host tag information.
         :param pulumi.Input[str] user_data: User-defined script data. The maximum size of the original data is 16kB.
         :param pulumi.Input[bool] user_data_encoded: Whether custom data is encoded in Base64 format.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
@@ -1448,7 +1448,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Host tag information.
         """

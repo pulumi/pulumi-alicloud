@@ -32,7 +32,7 @@ type DBAuditInstance struct {
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// vSwtich ID configured to audit
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -89,7 +89,7 @@ type dbauditInstanceState struct {
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// vSwtich ID configured to audit
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -105,7 +105,7 @@ type DBAuditInstanceState struct {
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// vSwtich ID configured to audit
 	VswitchId pulumi.StringPtrInput
 }
@@ -125,7 +125,7 @@ type dbauditInstanceArgs struct {
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// vSwtich ID configured to audit
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -142,7 +142,7 @@ type DBAuditInstanceArgs struct {
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// vSwtich ID configured to audit
 	VswitchId pulumi.StringInput
 }
@@ -256,8 +256,8 @@ func (o DBAuditInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o DBAuditInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DBAuditInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DBAuditInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DBAuditInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // vSwtich ID configured to audit

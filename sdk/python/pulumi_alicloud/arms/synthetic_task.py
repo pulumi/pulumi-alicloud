@@ -27,7 +27,7 @@ class SyntheticTaskArgs:
                  custom_period: Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SyntheticTask resource.
         :param pulumi.Input[str] frequency: Frequency.
@@ -41,7 +41,7 @@ class SyntheticTaskArgs:
         :param pulumi.Input['SyntheticTaskCustomPeriodArgs'] custom_period: Custom Cycle. See `custom_period` below.
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         """
         pulumi.set(__self__, "frequency", frequency)
         pulumi.set(__self__, "monitor_category", monitor_category)
@@ -196,14 +196,14 @@ class SyntheticTaskArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -220,7 +220,7 @@ class _SyntheticTaskState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synthetic_task_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  task_type: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering SyntheticTask resources.
@@ -234,7 +234,7 @@ class _SyntheticTaskState:
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
         :param pulumi.Input[str] synthetic_task_name: The name of synthetic task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[int] task_type: The type of synthetic task.
         """
         if available_assertions is not None:
@@ -384,14 +384,14 @@ class _SyntheticTaskState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -422,7 +422,7 @@ class SyntheticTask(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synthetic_task_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  task_type: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -636,7 +636,7 @@ class SyntheticTask(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
         :param pulumi.Input[str] synthetic_task_name: The name of synthetic task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[int] task_type: The type of synthetic task.
         """
         ...
@@ -869,7 +869,7 @@ class SyntheticTask(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synthetic_task_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  task_type: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -924,7 +924,7 @@ class SyntheticTask(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             synthetic_task_name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             task_type: Optional[pulumi.Input[int]] = None) -> 'SyntheticTask':
         """
         Get an existing SyntheticTask resource's state with the given name, id, and optional extra
@@ -943,7 +943,7 @@ class SyntheticTask(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
         :param pulumi.Input[str] synthetic_task_name: The name of synthetic task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[int] task_type: The type of synthetic task.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1046,7 +1046,7 @@ class SyntheticTask(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of tags.
         """

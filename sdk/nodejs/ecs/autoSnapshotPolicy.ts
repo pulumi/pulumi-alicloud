@@ -106,7 +106,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The destination region to which the snapshot is copied. You can set a destination region.
      */
@@ -205,7 +205,7 @@ export interface AutoSnapshotPolicyState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The destination region to which the snapshot is copied. You can set a destination region.
      */
@@ -253,7 +253,7 @@ export interface AutoSnapshotPolicyArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The destination region to which the snapshot is copied. You can set a destination region.
      */

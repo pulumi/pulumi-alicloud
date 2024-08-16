@@ -9,7 +9,6 @@ import com.pulumi.alicloud.slb.outputs.GetLoadBalancersBalancerListenerPortsAndP
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +104,7 @@ public final class GetLoadBalancersBalancer {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return ID of the VPC linked to the SLBs.
      * 
@@ -264,7 +263,7 @@ public final class GetLoadBalancersBalancer {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -320,7 +319,7 @@ public final class GetLoadBalancersBalancer {
         private String resourceGroupId;
         private String slaveZoneId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -602,7 +601,7 @@ public final class GetLoadBalancersBalancer {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "tags");
             }

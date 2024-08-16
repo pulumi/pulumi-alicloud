@@ -23,7 +23,7 @@ class FunctionArgs:
                  code_checksum: Optional[pulumi.Input[str]] = None,
                  custom_container_config: Optional[pulumi.Input['FunctionCustomContainerConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  initialization_timeout: Optional[pulumi.Input[int]] = None,
                  initializer: Optional[pulumi.Input[str]] = None,
@@ -46,7 +46,7 @@ class FunctionArgs:
                > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
         :param pulumi.Input['FunctionCustomContainerConfigArgs'] custom_container_config: The configuration for custom container runtime.See `custom_container_config` below.
         :param pulumi.Input[str] description: The Function Compute function description.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         :param pulumi.Input[int] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
@@ -185,14 +185,14 @@ class FunctionArgs:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map that defines environment variables for the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -347,7 +347,7 @@ class _FunctionState:
                  code_checksum: Optional[pulumi.Input[str]] = None,
                  custom_container_config: Optional[pulumi.Input['FunctionCustomContainerConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -372,7 +372,7 @@ class _FunctionState:
                > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
         :param pulumi.Input['FunctionCustomContainerConfigArgs'] custom_container_config: The configuration for custom container runtime.See `custom_container_config` below.
         :param pulumi.Input[str] description: The Function Compute function description.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         :param pulumi.Input[str] function_id: The Function Compute service ID.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
@@ -487,14 +487,14 @@ class _FunctionState:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map that defines environment variables for the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -711,7 +711,7 @@ class Function(pulumi.CustomResource):
                  code_checksum: Optional[pulumi.Input[str]] = None,
                  custom_container_config: Optional[pulumi.Input[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
                  initialization_timeout: Optional[pulumi.Input[int]] = None,
@@ -829,7 +829,7 @@ class Function(pulumi.CustomResource):
                > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
         :param pulumi.Input[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration for custom container runtime.See `custom_container_config` below.
         :param pulumi.Input[str] description: The Function Compute function description.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
         :param pulumi.Input[int] initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
@@ -965,7 +965,7 @@ class Function(pulumi.CustomResource):
                  code_checksum: Optional[pulumi.Input[str]] = None,
                  custom_container_config: Optional[pulumi.Input[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
                  initialization_timeout: Optional[pulumi.Input[int]] = None,
@@ -1032,7 +1032,7 @@ class Function(pulumi.CustomResource):
             code_checksum: Optional[pulumi.Input[str]] = None,
             custom_container_config: Optional[pulumi.Input[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             filename: Optional[pulumi.Input[str]] = None,
             function_id: Optional[pulumi.Input[str]] = None,
             handler: Optional[pulumi.Input[str]] = None,
@@ -1062,7 +1062,7 @@ class Function(pulumi.CustomResource):
                > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
         :param pulumi.Input[Union['FunctionCustomContainerConfigArgs', 'FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration for custom container runtime.See `custom_container_config` below.
         :param pulumi.Input[str] description: The Function Compute function description.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: A map that defines environment variables for the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
         :param pulumi.Input[str] function_id: The Function Compute service ID.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
@@ -1144,7 +1144,7 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map that defines environment variables for the function.
         """

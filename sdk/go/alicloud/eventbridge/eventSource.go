@@ -69,7 +69,7 @@ import (
 //				Description:          pulumi.String(name),
 //				LinkedExternalSource: pulumi.Bool(true),
 //				ExternalSourceType:   pulumi.String("MNS"),
-//				ExternalSourceConfig: pulumi.Map{
+//				ExternalSourceConfig: pulumi.StringMap{
 //					"QueueName": exampleQueue.Name,
 //				},
 //			})
@@ -112,7 +112,7 @@ type EventSource struct {
 	// `GroupID` - The group ID of consumer.
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
-	ExternalSourceConfig pulumi.MapOutput `pulumi:"externalSourceConfig"`
+	ExternalSourceConfig pulumi.StringMapOutput `pulumi:"externalSourceConfig"`
 	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
 	ExternalSourceType pulumi.StringPtrOutput `pulumi:"externalSourceType"`
 	// Whether to connect to an external data source. Default value: `false`
@@ -175,7 +175,7 @@ type eventSourceState struct {
 	// `GroupID` - The group ID of consumer.
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
-	ExternalSourceConfig map[string]interface{} `pulumi:"externalSourceConfig"`
+	ExternalSourceConfig map[string]string `pulumi:"externalSourceConfig"`
 	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
 	ExternalSourceType *string `pulumi:"externalSourceType"`
 	// Whether to connect to an external data source. Default value: `false`
@@ -203,7 +203,7 @@ type EventSourceState struct {
 	// `GroupID` - The group ID of consumer.
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
-	ExternalSourceConfig pulumi.MapInput
+	ExternalSourceConfig pulumi.StringMapInput
 	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
 	ExternalSourceType pulumi.StringPtrInput
 	// Whether to connect to an external data source. Default value: `false`
@@ -235,7 +235,7 @@ type eventSourceArgs struct {
 	// `GroupID` - The group ID of consumer.
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
-	ExternalSourceConfig map[string]interface{} `pulumi:"externalSourceConfig"`
+	ExternalSourceConfig map[string]string `pulumi:"externalSourceConfig"`
 	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
 	ExternalSourceType *string `pulumi:"externalSourceType"`
 	// Whether to connect to an external data source. Default value: `false`
@@ -264,7 +264,7 @@ type EventSourceArgs struct {
 	// `GroupID` - The group ID of consumer.
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
-	ExternalSourceConfig pulumi.MapInput
+	ExternalSourceConfig pulumi.StringMapInput
 	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
 	ExternalSourceType pulumi.StringPtrInput
 	// Whether to connect to an external data source. Default value: `false`
@@ -387,8 +387,8 @@ func (o EventSourceOutput) EventSourceName() pulumi.StringOutput {
 // `GroupID` - The group ID of consumer.
 // When `externalSourceType` is `MNS`, The following attributes are supported:
 // `QueueName` - The queue name of MNS.
-func (o EventSourceOutput) ExternalSourceConfig() pulumi.MapOutput {
-	return o.ApplyT(func(v *EventSource) pulumi.MapOutput { return v.ExternalSourceConfig }).(pulumi.MapOutput)
+func (o EventSourceOutput) ExternalSourceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.StringMapOutput { return v.ExternalSourceConfig }).(pulumi.StringMapOutput)
 }
 
 // The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.

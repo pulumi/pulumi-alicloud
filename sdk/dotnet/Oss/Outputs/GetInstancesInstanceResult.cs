@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The user id of the instance.
         /// </summary>
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             int tableQuota,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string userId)
         {

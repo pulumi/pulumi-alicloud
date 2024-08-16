@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// The tag key-value pair information bound by the elastic guarantee service.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The total number of flexible guarantee services.
         /// </summary>
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string totalAssuranceTimes,
 

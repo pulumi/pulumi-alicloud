@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetElasticityAssurancesAssuranceAllocated
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +84,7 @@ public final class GetElasticityAssurancesAssurance {
      * @return The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The total number of flexible guarantee services.
      * 
@@ -193,7 +192,7 @@ public final class GetElasticityAssurancesAssurance {
      * @return The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -233,7 +232,7 @@ public final class GetElasticityAssurancesAssurance {
         private String startTime;
         private String startTimeType;
         private String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String totalAssuranceTimes;
         private Integer usedAssuranceTimes;
         public Builder() {}
@@ -365,7 +364,7 @@ public final class GetElasticityAssurancesAssurance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

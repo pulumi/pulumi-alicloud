@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The zone ID of the ECS Dedicated Host.
         /// </summary>
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             ImmutableArray<string> supportedInstanceTypesLists,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string zoneId)
         {

@@ -41,7 +41,7 @@ type GetSecretParametersArgs struct {
 	SortField           *string `pulumi:"sortField"`
 	SortOrder           *string `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecretParameters.
@@ -58,7 +58,7 @@ type GetSecretParametersResult struct {
 	SecretParameterName *string                        `pulumi:"secretParameterName"`
 	SortField           *string                        `pulumi:"sortField"`
 	SortOrder           *string                        `pulumi:"sortOrder"`
-	Tags                map[string]interface{}         `pulumi:"tags"`
+	Tags                map[string]string              `pulumi:"tags"`
 }
 
 func GetSecretParametersOutput(ctx *pulumi.Context, args GetSecretParametersOutputArgs, opts ...pulumi.InvokeOption) GetSecretParametersResultOutput {
@@ -91,7 +91,7 @@ type GetSecretParametersOutputArgs struct {
 	SortField           pulumi.StringPtrInput `pulumi:"sortField"`
 	SortOrder           pulumi.StringPtrInput `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSecretParametersOutputArgs) ElementType() reflect.Type {
@@ -158,8 +158,8 @@ func (o GetSecretParametersResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSecretParametersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretParametersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecretParametersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretParametersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

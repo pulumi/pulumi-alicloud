@@ -78,9 +78,9 @@ import (
 //					pulumi.String("100.69.7.112"),
 //				},
 //				Name: pulumi.String(name),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -145,7 +145,7 @@ type Instance struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -199,7 +199,7 @@ type Instance struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
 	TdeStatus pulumi.StringOutput `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -296,7 +296,7 @@ type instanceState struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -350,7 +350,7 @@ type instanceState struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -402,7 +402,7 @@ type InstanceState struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -456,7 +456,7 @@ type InstanceState struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -512,7 +512,7 @@ type instanceArgs struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -558,7 +558,7 @@ type instanceArgs struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -611,7 +611,7 @@ type InstanceArgs struct {
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -657,7 +657,7 @@ type InstanceArgs struct {
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
@@ -846,8 +846,8 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o InstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o InstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -969,8 +969,8 @@ func (o InstanceOutput) StorageType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The TDE(Transparent Data Encryption) status. Valid values: `enabled`.

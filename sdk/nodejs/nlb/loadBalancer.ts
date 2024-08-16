@@ -190,7 +190,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * List of labels.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the network-based SLB instance.
      */
@@ -367,7 +367,7 @@ export interface LoadBalancerState {
     /**
      * List of labels.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the network-based SLB instance.
      */
@@ -455,7 +455,7 @@ export interface LoadBalancerArgs {
     /**
      * List of labels.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the network-based SLB instance.
      */

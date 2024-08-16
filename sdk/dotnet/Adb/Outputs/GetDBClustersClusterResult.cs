@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// <summary>
         /// A map of tags assigned to the cluster.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The vpc cloud instance id.
         /// </summary>
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string storageResource,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcCloudInstanceId,
 

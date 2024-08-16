@@ -50,9 +50,9 @@ import (
 //				ResourceGroupId:         pulumi.String(_default.Ids[0]),
 //				GrafanaWorkspaceEdition: pulumi.String("standard"),
 //				GrafanaWorkspaceName:    pulumi.String(name),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("tf"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("tf"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ type GrafanaWorkspace struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewGrafanaWorkspace registers a new resource with the given unique name, arguments, and options.
@@ -137,7 +137,7 @@ type grafanaWorkspaceState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type GrafanaWorkspaceState struct {
@@ -156,7 +156,7 @@ type GrafanaWorkspaceState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (GrafanaWorkspaceState) ElementType() reflect.Type {
@@ -175,7 +175,7 @@ type grafanaWorkspaceArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GrafanaWorkspace resource.
@@ -191,7 +191,7 @@ type GrafanaWorkspaceArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (GrafanaWorkspaceArgs) ElementType() reflect.Type {
@@ -317,8 +317,8 @@ func (o GrafanaWorkspaceOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GrafanaWorkspaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o GrafanaWorkspaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GrafanaWorkspaceArrayOutput struct{ *pulumi.OutputState }

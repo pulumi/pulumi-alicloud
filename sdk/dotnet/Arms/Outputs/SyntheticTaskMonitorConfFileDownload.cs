@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// Custom header, in JSON Map format.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? CustomHeaderContent;
+        public readonly ImmutableDictionary<string, string>? CustomHeaderContent;
         /// <summary>
         /// Download the kernel.
         /// - 1:curl
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         private SyntheticTaskMonitorConfFileDownload(
             int? connectionTimeout,
 
-            ImmutableDictionary<string, object>? customHeaderContent,
+            ImmutableDictionary<string, string>? customHeaderContent,
 
             int? downloadKernel,
 

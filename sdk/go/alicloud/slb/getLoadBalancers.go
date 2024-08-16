@@ -109,7 +109,7 @@ type GetLoadBalancersArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -151,8 +151,8 @@ type GetLoadBalancersResult struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instance.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// ID of the VPC the SLB belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch the SLB belongs to.
@@ -224,7 +224,7 @@ type GetLoadBalancersOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the SLBs.
@@ -352,8 +352,8 @@ func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the SLB instance.
-func (o GetLoadBalancersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetLoadBalancersResultOutput) TotalCount() pulumi.IntOutput {

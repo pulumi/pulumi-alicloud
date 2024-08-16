@@ -7,7 +7,6 @@ import com.pulumi.alicloud.log.inputs.EtlEtlSinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -190,13 +189,13 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="kmsEncryptionAccessKeyIdContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionAccessKeyIdContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionAccessKeyIdContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionAccessKeyIdContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionAccessKeyIdContext() {
         return Optional.ofNullable(this.kmsEncryptionAccessKeyIdContext);
     }
 
@@ -205,13 +204,13 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="kmsEncryptionAccessKeySecretContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionAccessKeySecretContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionAccessKeySecretContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionAccessKeySecretContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionAccessKeySecretContext() {
         return Optional.ofNullable(this.kmsEncryptionAccessKeySecretContext);
     }
 
@@ -658,7 +657,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionAccessKeyIdContext(@Nullable Output<Map<String,Object>> kmsEncryptionAccessKeyIdContext) {
+        public Builder kmsEncryptionAccessKeyIdContext(@Nullable Output<Map<String,String>> kmsEncryptionAccessKeyIdContext) {
             $.kmsEncryptionAccessKeyIdContext = kmsEncryptionAccessKeyIdContext;
             return this;
         }
@@ -669,7 +668,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionAccessKeyIdContext(Map<String,Object> kmsEncryptionAccessKeyIdContext) {
+        public Builder kmsEncryptionAccessKeyIdContext(Map<String,String> kmsEncryptionAccessKeyIdContext) {
             return kmsEncryptionAccessKeyIdContext(Output.of(kmsEncryptionAccessKeyIdContext));
         }
 
@@ -679,7 +678,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionAccessKeySecretContext(@Nullable Output<Map<String,Object>> kmsEncryptionAccessKeySecretContext) {
+        public Builder kmsEncryptionAccessKeySecretContext(@Nullable Output<Map<String,String>> kmsEncryptionAccessKeySecretContext) {
             $.kmsEncryptionAccessKeySecretContext = kmsEncryptionAccessKeySecretContext;
             return this;
         }
@@ -690,7 +689,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionAccessKeySecretContext(Map<String,Object> kmsEncryptionAccessKeySecretContext) {
+        public Builder kmsEncryptionAccessKeySecretContext(Map<String,String> kmsEncryptionAccessKeySecretContext) {
             return kmsEncryptionAccessKeySecretContext(Output.of(kmsEncryptionAccessKeySecretContext));
         }
 

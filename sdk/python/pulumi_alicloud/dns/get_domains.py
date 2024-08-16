@@ -184,7 +184,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -235,7 +235,7 @@ def get_domains(ali_domain: Optional[bool] = None,
                 resource_group_id: Optional[str] = None,
                 search_mode: Optional[str] = None,
                 starmark: Optional[bool] = None,
-                tags: Optional[Mapping[str, Any]] = None,
+                tags: Optional[Mapping[str, str]] = None,
                 version_code: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
@@ -267,7 +267,7 @@ def get_domains(ali_domain: Optional[bool] = None,
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str version_code: Cloud analysis version code.
     """
     __args__ = dict()
@@ -324,7 +324,7 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
                        resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                        search_mode: Optional[pulumi.Input[Optional[str]]] = None,
                        starmark: Optional[pulumi.Input[Optional[bool]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        version_code: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
@@ -356,7 +356,7 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str version_code: Cloud analysis version code.
     """
     ...

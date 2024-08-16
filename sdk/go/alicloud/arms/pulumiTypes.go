@@ -2115,7 +2115,7 @@ type SyntheticTaskMonitorConfApiHttp struct {
 	// HTTP request body. See `requestBody` below.
 	RequestBody *SyntheticTaskMonitorConfApiHttpRequestBody `pulumi:"requestBody"`
 	// HTTP request header.
-	RequestHeaders map[string]interface{} `pulumi:"requestHeaders"`
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
 	// The target URL.
 	TargetUrl string `pulumi:"targetUrl"`
 	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
@@ -2141,7 +2141,7 @@ type SyntheticTaskMonitorConfApiHttpArgs struct {
 	// HTTP request body. See `requestBody` below.
 	RequestBody SyntheticTaskMonitorConfApiHttpRequestBodyPtrInput `pulumi:"requestBody"`
 	// HTTP request header.
-	RequestHeaders pulumi.MapInput `pulumi:"requestHeaders"`
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
 	// The target URL.
 	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
 	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
@@ -2243,8 +2243,8 @@ func (o SyntheticTaskMonitorConfApiHttpOutput) RequestBody() SyntheticTaskMonito
 }
 
 // HTTP request header.
-func (o SyntheticTaskMonitorConfApiHttpOutput) RequestHeaders() pulumi.MapOutput {
-	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) map[string]interface{} { return v.RequestHeaders }).(pulumi.MapOutput)
+func (o SyntheticTaskMonitorConfApiHttpOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
 }
 
 // The target URL.
@@ -2312,13 +2312,13 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestBody() SyntheticTaskMon
 }
 
 // HTTP request header.
-func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestHeaders() pulumi.MapOutput {
-	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) map[string]interface{} {
+func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.RequestHeaders
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The target URL.
@@ -2497,7 +2497,7 @@ type SyntheticTaskMonitorConfFileDownload struct {
 	// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
 	ConnectionTimeout *int `pulumi:"connectionTimeout"`
 	// Custom header, in JSON Map format.
-	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	CustomHeaderContent map[string]string `pulumi:"customHeaderContent"`
 	// Download the kernel.
 	// - 1:curl
 	// - 0:WinInet
@@ -2557,7 +2557,7 @@ type SyntheticTaskMonitorConfFileDownloadArgs struct {
 	// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
 	ConnectionTimeout pulumi.IntPtrInput `pulumi:"connectionTimeout"`
 	// Custom header, in JSON Map format.
-	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	CustomHeaderContent pulumi.StringMapInput `pulumi:"customHeaderContent"`
 	// Download the kernel.
 	// - 1:curl
 	// - 0:WinInet
@@ -2685,8 +2685,8 @@ func (o SyntheticTaskMonitorConfFileDownloadOutput) ConnectionTimeout() pulumi.I
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfFileDownloadOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
+func (o SyntheticTaskMonitorConfFileDownloadOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) map[string]string { return v.CustomHeaderContent }).(pulumi.StringMapOutput)
 }
 
 // Download the kernel.
@@ -2814,13 +2814,13 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) ConnectionTimeout() pulum
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) map[string]interface{} {
+func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaderContent
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Download the kernel.
@@ -3768,7 +3768,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertTimeout() pulumi.IntPtrO
 
 type SyntheticTaskMonitorConfStream struct {
 	// Custom header, in JSON Map format.
-	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	CustomHeaderContent map[string]string `pulumi:"customHeaderContent"`
 	// Player, do not pass the default 12.
 	// - 12:VLC
 	// - 2:FlashPlayer.
@@ -3800,7 +3800,7 @@ type SyntheticTaskMonitorConfStreamInput interface {
 
 type SyntheticTaskMonitorConfStreamArgs struct {
 	// Custom header, in JSON Map format.
-	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	CustomHeaderContent pulumi.StringMapInput `pulumi:"customHeaderContent"`
 	// Player, do not pass the default 12.
 	// - 12:VLC
 	// - 2:FlashPlayer.
@@ -3897,8 +3897,8 @@ func (o SyntheticTaskMonitorConfStreamOutput) ToSyntheticTaskMonitorConfStreamPt
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfStreamOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
+func (o SyntheticTaskMonitorConfStreamOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) map[string]string { return v.CustomHeaderContent }).(pulumi.StringMapOutput)
 }
 
 // Player, do not pass the default 12.
@@ -3960,13 +3960,13 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) Elem() SyntheticTaskMonitorConf
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfStreamPtrOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) map[string]interface{} {
+func (o SyntheticTaskMonitorConfStreamPtrOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaderContent
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Player, do not pass the default 12.
@@ -4044,7 +4044,7 @@ type SyntheticTaskMonitorConfWebsite struct {
 	// - 2: Modify all packages.
 	CustomHeader *int `pulumi:"customHeader"`
 	// Custom header, in JSON Map format.
-	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	CustomHeaderContent map[string]string `pulumi:"customHeaderContent"`
 	// Whether to disable caching.
 	// - 0: not disabled
 	// - 1 (default): Disabled.
@@ -4103,7 +4103,7 @@ type SyntheticTaskMonitorConfWebsiteArgs struct {
 	// - 2: Modify all packages.
 	CustomHeader pulumi.IntPtrInput `pulumi:"customHeader"`
 	// Custom header, in JSON Map format.
-	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	CustomHeaderContent pulumi.StringMapInput `pulumi:"customHeaderContent"`
 	// Whether to disable caching.
 	// - 0: not disabled
 	// - 1 (default): Disabled.
@@ -4233,8 +4233,8 @@ func (o SyntheticTaskMonitorConfWebsiteOutput) CustomHeader() pulumi.IntPtrOutpu
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfWebsiteOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
+func (o SyntheticTaskMonitorConfWebsiteOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) map[string]string { return v.CustomHeaderContent }).(pulumi.StringMapOutput)
 }
 
 // Whether to disable caching.
@@ -4369,13 +4369,13 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeader() pulumi.IntPtrOu
 }
 
 // Custom header, in JSON Map format.
-func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeaderContent() pulumi.MapOutput {
-	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) map[string]interface{} {
+func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeaderContent() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaderContent
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Whether to disable caching.
@@ -5878,7 +5878,7 @@ type GetPrometheisPromethei struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson string `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch.
@@ -5932,7 +5932,7 @@ type GetPrometheisPrometheiArgs struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson pulumi.StringInput `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the vSwitch.
@@ -6076,8 +6076,8 @@ func (o GetPrometheisPrometheiOutput) SubClustersJson() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetPrometheisPrometheiOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPrometheisPromethei) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetPrometheisPrometheiOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC.
@@ -6705,7 +6705,7 @@ type GetPrometheusPromethei struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson string `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the VSwitch.
@@ -6759,7 +6759,7 @@ type GetPrometheusPrometheiArgs struct {
 	// The child instance json string of the globalView instance.
 	SubClustersJson pulumi.StringInput `pulumi:"subClustersJson"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the VSwitch.
@@ -6903,8 +6903,8 @@ func (o GetPrometheusPrometheiOutput) SubClustersJson() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetPrometheusPrometheiOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPrometheusPromethei) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetPrometheusPrometheiOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPrometheusPromethei) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC.

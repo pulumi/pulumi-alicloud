@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string VpcCloudInstanceId;
         /// <summary>
         /// ID of the VPC the cluster belongs to.
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string storageResource,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcCloudInstanceId,
 

@@ -495,7 +495,7 @@ type GetNestServiceInstancesServiceInstance struct {
 	// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the template.
 	TemplateName string `pulumi:"templateName"`
 }
@@ -537,7 +537,7 @@ type GetNestServiceInstancesServiceInstanceArgs struct {
 	// The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the template.
 	TemplateName pulumi.StringInput `pulumi:"templateName"`
 }
@@ -656,8 +656,8 @@ func (o GetNestServiceInstancesServiceInstanceOutput) Status() pulumi.StringOutp
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetNestServiceInstancesServiceInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNestServiceInstancesServiceInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNestServiceInstancesServiceInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNestServiceInstancesServiceInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the template.

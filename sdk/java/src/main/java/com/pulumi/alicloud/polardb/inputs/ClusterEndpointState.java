@@ -5,7 +5,6 @@ package com.pulumi.alicloud.polardb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -98,13 +97,13 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="endpointConfig")
-    private @Nullable Output<Map<String,Object>> endpointConfig;
+    private @Nullable Output<Map<String,String>> endpointConfig;
 
     /**
      * @return The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      * 
      */
-    public Optional<Output<Map<String,Object>>> endpointConfig() {
+    public Optional<Output<Map<String,String>>> endpointConfig() {
         return Optional.ofNullable(this.endpointConfig);
     }
 
@@ -412,7 +411,7 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder endpointConfig(@Nullable Output<Map<String,Object>> endpointConfig) {
+        public Builder endpointConfig(@Nullable Output<Map<String,String>> endpointConfig) {
             $.endpointConfig = endpointConfig;
             return this;
         }
@@ -423,7 +422,7 @@ public final class ClusterEndpointState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder endpointConfig(Map<String,Object> endpointConfig) {
+        public Builder endpointConfig(Map<String,String> endpointConfig) {
             return endpointConfig(Output.of(endpointConfig));
         }
 

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.cs.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -114,13 +113,13 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      * 
      */
     @Import(name="evictionHard")
-    private @Nullable Output<Map<String,Object>> evictionHard;
+    private @Nullable Output<Map<String,String>> evictionHard;
 
     /**
      * @return Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> evictionHard() {
+    public Optional<Output<Map<String,String>>> evictionHard() {
         return Optional.ofNullable(this.evictionHard);
     }
 
@@ -129,13 +128,13 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      * 
      */
     @Import(name="evictionSoft")
-    private @Nullable Output<Map<String,Object>> evictionSoft;
+    private @Nullable Output<Map<String,String>> evictionSoft;
 
     /**
      * @return Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> evictionSoft() {
+    public Optional<Output<Map<String,String>>> evictionSoft() {
         return Optional.ofNullable(this.evictionSoft);
     }
 
@@ -144,13 +143,13 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      * 
      */
     @Import(name="evictionSoftGracePeriod")
-    private @Nullable Output<Map<String,Object>> evictionSoftGracePeriod;
+    private @Nullable Output<Map<String,String>> evictionSoftGracePeriod;
 
     /**
      * @return Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{&#34;memory.available&#34; = &#34;30s&#34;}`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> evictionSoftGracePeriod() {
+    public Optional<Output<Map<String,String>>> evictionSoftGracePeriod() {
         return Optional.ofNullable(this.evictionSoftGracePeriod);
     }
 
@@ -204,13 +203,13 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      * 
      */
     @Import(name="kubeReserved")
-    private @Nullable Output<Map<String,Object>> kubeReserved;
+    private @Nullable Output<Map<String,String>> kubeReserved;
 
     /**
      * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kubeReserved() {
+    public Optional<Output<Map<String,String>>> kubeReserved() {
         return Optional.ofNullable(this.kubeReserved);
     }
 
@@ -294,13 +293,13 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      * 
      */
     @Import(name="systemReserved")
-    private @Nullable Output<Map<String,Object>> systemReserved;
+    private @Nullable Output<Map<String,String>> systemReserved;
 
     /**
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    public Optional<Output<Map<String,Object>>> systemReserved() {
+    public Optional<Output<Map<String,String>>> systemReserved() {
         return Optional.ofNullable(this.systemReserved);
     }
 
@@ -488,7 +487,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionHard(@Nullable Output<Map<String,Object>> evictionHard) {
+        public Builder evictionHard(@Nullable Output<Map<String,String>> evictionHard) {
             $.evictionHard = evictionHard;
             return this;
         }
@@ -499,7 +498,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionHard(Map<String,Object> evictionHard) {
+        public Builder evictionHard(Map<String,String> evictionHard) {
             return evictionHard(Output.of(evictionHard));
         }
 
@@ -509,7 +508,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionSoft(@Nullable Output<Map<String,Object>> evictionSoft) {
+        public Builder evictionSoft(@Nullable Output<Map<String,String>> evictionSoft) {
             $.evictionSoft = evictionSoft;
             return this;
         }
@@ -520,7 +519,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionSoft(Map<String,Object> evictionSoft) {
+        public Builder evictionSoft(Map<String,String> evictionSoft) {
             return evictionSoft(Output.of(evictionSoft));
         }
 
@@ -530,7 +529,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionSoftGracePeriod(@Nullable Output<Map<String,Object>> evictionSoftGracePeriod) {
+        public Builder evictionSoftGracePeriod(@Nullable Output<Map<String,String>> evictionSoftGracePeriod) {
             $.evictionSoftGracePeriod = evictionSoftGracePeriod;
             return this;
         }
@@ -541,7 +540,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder evictionSoftGracePeriod(Map<String,Object> evictionSoftGracePeriod) {
+        public Builder evictionSoftGracePeriod(Map<String,String> evictionSoftGracePeriod) {
             return evictionSoftGracePeriod(Output.of(evictionSoftGracePeriod));
         }
 
@@ -614,7 +613,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder kubeReserved(@Nullable Output<Map<String,Object>> kubeReserved) {
+        public Builder kubeReserved(@Nullable Output<Map<String,String>> kubeReserved) {
             $.kubeReserved = kubeReserved;
             return this;
         }
@@ -625,7 +624,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder kubeReserved(Map<String,Object> kubeReserved) {
+        public Builder kubeReserved(Map<String,String> kubeReserved) {
             return kubeReserved(Output.of(kubeReserved));
         }
 
@@ -740,7 +739,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder systemReserved(@Nullable Output<Map<String,Object>> systemReserved) {
+        public Builder systemReserved(@Nullable Output<Map<String,String>> systemReserved) {
             $.systemReserved = systemReserved;
             return this;
         }
@@ -751,7 +750,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder systemReserved(Map<String,Object> systemReserved) {
+        public Builder systemReserved(Map<String,String> systemReserved) {
             return systemReserved(Output.of(systemReserved));
         }
 

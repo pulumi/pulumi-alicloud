@@ -30,7 +30,7 @@ class NetworkArgs:
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  system_route_table_description: Optional[pulumi.Input[str]] = None,
                  system_route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_name: Optional[pulumi.Input[str]] = None):
         """
@@ -61,7 +61,7 @@ class NetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] system_route_table_description: The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
         :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
                
@@ -292,14 +292,14 @@ class NetworkArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of Vpc.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -352,7 +352,7 @@ class _NetworkState:
                  status: Optional[pulumi.Input[str]] = None,
                  system_route_table_description: Optional[pulumi.Input[str]] = None,
                  system_route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_name: Optional[pulumi.Input[str]] = None):
         """
@@ -389,7 +389,7 @@ class _NetworkState:
         :param pulumi.Input[str] status: The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         :param pulumi.Input[str] system_route_table_description: The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
         :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
                
@@ -708,14 +708,14 @@ class _NetworkState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of Vpc.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -764,7 +764,7 @@ class Network(pulumi.CustomResource):
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  system_route_table_description: Optional[pulumi.Input[str]] = None,
                  system_route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -840,7 +840,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] system_route_table_description: The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
         :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
                
@@ -925,7 +925,7 @@ class Network(pulumi.CustomResource):
                  secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  system_route_table_description: Optional[pulumi.Input[str]] = None,
                  system_route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -990,7 +990,7 @@ class Network(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             system_route_table_description: Optional[pulumi.Input[str]] = None,
             system_route_table_name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vpc_name: Optional[pulumi.Input[str]] = None) -> 'Network':
         """
@@ -1032,7 +1032,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         :param pulumi.Input[str] system_route_table_description: The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
         :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
                
@@ -1244,7 +1244,7 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of Vpc.
         """

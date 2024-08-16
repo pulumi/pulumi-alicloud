@@ -76,7 +76,7 @@ type GetNetworksArgs struct {
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the VPC.
 	VpcName *string `pulumi:"vpcName"`
 	// The owner ID of VPC.
@@ -108,8 +108,8 @@ type GetNetworksResult struct {
 	// Status of the VPC.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the VPC.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// Name of the VPC.
 	VpcName    *string `pulumi:"vpcName"`
 	VpcOwnerId *int    `pulumi:"vpcOwnerId"`
@@ -156,7 +156,7 @@ type GetNetworksOutputArgs struct {
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the VPC.
 	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
 	// The owner ID of VPC.
@@ -247,8 +247,8 @@ func (o GetNetworksResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the VPC.
-func (o GetNetworksResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNetworksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNetworksResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetNetworksResultOutput) TotalCount() pulumi.IntOutput {

@@ -53,7 +53,7 @@ type Environment struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -117,7 +117,7 @@ type environmentState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type EnvironmentState struct {
@@ -146,7 +146,7 @@ type EnvironmentState struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -177,7 +177,7 @@ type environmentArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -205,7 +205,7 @@ type EnvironmentArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -347,8 +347,8 @@ func (o EnvironmentOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o EnvironmentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Environment) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EnvironmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }

@@ -62,7 +62,7 @@ type GetClustersArgs struct {
 	// The name of file that can save the collection of clusters after running `pulumi preview`.
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getClusters.
@@ -78,7 +78,7 @@ type GetClustersResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -103,7 +103,7 @@ type GetClustersOutputArgs struct {
 	// The name of file that can save the collection of clusters after running `pulumi preview`.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -154,8 +154,8 @@ func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetClustersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetClustersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

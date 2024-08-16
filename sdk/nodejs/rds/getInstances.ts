@@ -92,7 +92,7 @@ export interface GetInstancesArgs {
      * A map of tags assigned to the DB instances. 
      * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Used to retrieve instances belong to specified VPC.
      */
@@ -144,7 +144,7 @@ export interface GetInstancesResult {
      * Status of the instance.
      */
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * ID of the VPC the instance belongs to.
@@ -224,7 +224,7 @@ export interface GetInstancesOutputArgs {
      * A map of tags assigned to the DB instances. 
      * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Used to retrieve instances belong to specified VPC.
      */

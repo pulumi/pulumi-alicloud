@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Oss
         /// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
@@ -445,14 +445,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? StorageClass { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -612,14 +612,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? StorageClass { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// <summary>
         /// A map of tags assigned to the Cms Monitor Group.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The alert templates applied to the application group.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
 
             string serviceId,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             ImmutableArray<string> templateIds,
 

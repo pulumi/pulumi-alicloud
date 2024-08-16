@@ -1146,7 +1146,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
 }
@@ -1215,7 +1215,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
@@ -1368,8 +1368,8 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //	}
 //
 // ```
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The user id of the instance.

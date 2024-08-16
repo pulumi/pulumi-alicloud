@@ -130,7 +130,7 @@ export class Domain extends pulumi.CustomResource {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The top-level domain name.
      */
@@ -254,7 +254,7 @@ export interface DomainState {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The top-level domain name.
      */
@@ -290,7 +290,7 @@ export interface DomainArgs {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The top-level domain name.
      */

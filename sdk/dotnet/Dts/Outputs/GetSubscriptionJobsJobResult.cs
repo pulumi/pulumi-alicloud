@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetSubscriptionJobsJobResult(
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
 
             string subscriptionInstanceVswitchId,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             Checkpoint = checkpoint;
             CreateTime = createTime;

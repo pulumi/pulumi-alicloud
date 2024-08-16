@@ -945,7 +945,7 @@ class GetEventSourcesSourceResult(dict):
     def __init__(__self__, *,
                  description: str,
                  event_source_name: str,
-                 external_source_config: Mapping[str, Any],
+                 external_source_config: Mapping[str, str],
                  external_source_type: str,
                  id: str,
                  linked_external_source: bool,
@@ -953,7 +953,7 @@ class GetEventSourcesSourceResult(dict):
         """
         :param str description: The detail describe of event source.
         :param str event_source_name: The code name of event source.
-        :param Mapping[str, Any] external_source_config: The config of external data source.
+        :param Mapping[str, str] external_source_config: The config of external data source.
         :param str external_source_type: The type of external data source.
         :param str id: The ID of the Event Source.
         :param bool linked_external_source: Whether to connect to an external data source.
@@ -984,7 +984,7 @@ class GetEventSourcesSourceResult(dict):
 
     @property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> Mapping[str, Any]:
+    def external_source_config(self) -> Mapping[str, str]:
         """
         The config of external data source.
         """

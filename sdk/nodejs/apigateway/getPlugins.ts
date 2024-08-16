@@ -72,7 +72,7 @@ export interface GetPluginsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -92,7 +92,7 @@ export interface GetPluginsResult {
     readonly pluginName?: string;
     readonly pluginType?: string;
     readonly plugins: outputs.apigateway.GetPluginsPlugin[];
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
@@ -148,5 +148,5 @@ export interface GetPluginsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

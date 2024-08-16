@@ -58,9 +58,9 @@ import (
 //				Name:        pulumi.Sprintf("Example-%v", defaultInteger.Result),
 //				Description: pulumi.String("terraform-example"),
 //				AccessedBy:  pulumi.String("Any"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

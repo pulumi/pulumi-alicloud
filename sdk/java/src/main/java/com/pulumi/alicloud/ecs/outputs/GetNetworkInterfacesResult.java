@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetNetworkInterfacesInterface;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +71,7 @@ public final class GetNetworkInterfacesResult {
      * @return A map of tags assigned to the ENI.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String type;
     /**
      * @return ID of the VPC that the ENI belongs to.
@@ -171,7 +170,7 @@ public final class GetNetworkInterfacesResult {
      * @return A map of tags assigned to the ENI.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> type() {
@@ -216,7 +215,7 @@ public final class GetNetworkInterfacesResult {
         private @Nullable String securityGroupId;
         private @Nullable Boolean serviceManaged;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String type;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
@@ -352,7 +351,7 @@ public final class GetNetworkInterfacesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

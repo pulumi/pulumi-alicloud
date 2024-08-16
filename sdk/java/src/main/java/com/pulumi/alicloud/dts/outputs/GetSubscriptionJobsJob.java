@@ -7,7 +7,6 @@ import com.pulumi.alicloud.dts.outputs.GetSubscriptionJobsJobSubscriptionHost;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -154,7 +153,7 @@ public final class GetSubscriptionJobsJob {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetSubscriptionJobsJob() {}
     /**
@@ -350,7 +349,7 @@ public final class GetSubscriptionJobsJob {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -390,7 +389,7 @@ public final class GetSubscriptionJobsJob {
         private String subscriptionInstanceNetworkType;
         private String subscriptionInstanceVpcId;
         private String subscriptionInstanceVswitchId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetSubscriptionJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
@@ -644,7 +643,7 @@ public final class GetSubscriptionJobsJob {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSubscriptionJobsJob", "tags");
             }

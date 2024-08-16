@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,13 +23,13 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="components")
-    private @Nullable Output<Map<String,Object>> components;
+    private @Nullable Output<Map<String,String>> components;
 
     /**
      * @return Service providers customize additional components.
      * 
      */
-    public Optional<Output<Map<String,Object>>> components() {
+    public Optional<Output<Map<String,String>>> components() {
         return Optional.ofNullable(this.components);
     }
 
@@ -176,7 +175,7 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder components(@Nullable Output<Map<String,Object>> components) {
+        public Builder components(@Nullable Output<Map<String,String>> components) {
             $.components = components;
             return this;
         }
@@ -187,7 +186,7 @@ public final class OrderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder components(Map<String,Object> components) {
+        public Builder components(Map<String,String> components) {
             return components(Output.of(components));
         }
 

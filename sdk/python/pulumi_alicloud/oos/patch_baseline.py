@@ -24,7 +24,7 @@ class PatchBaselineArgs:
                  rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a PatchBaseline resource.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
@@ -37,7 +37,7 @@ class PatchBaselineArgs:
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         """
         pulumi.set(__self__, "approval_rules", approval_rules)
         pulumi.set(__self__, "operation_system", operation_system)
@@ -181,14 +181,14 @@ class PatchBaselineArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -206,7 +206,7 @@ class _PatchBaselineState:
                  rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering PatchBaseline resources.
         :param pulumi.Input[str] approval_rules: Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
@@ -220,7 +220,7 @@ class _PatchBaselineState:
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
@@ -381,14 +381,14 @@ class _PatchBaselineState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -407,7 +407,7 @@ class PatchBaseline(pulumi.CustomResource):
                  rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a OOS Patch Baseline resource.
@@ -454,7 +454,7 @@ class PatchBaseline(pulumi.CustomResource):
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         """
         ...
     @overload
@@ -520,7 +520,7 @@ class PatchBaseline(pulumi.CustomResource):
                  rejected_patches_action: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -569,7 +569,7 @@ class PatchBaseline(pulumi.CustomResource):
             rejected_patches_action: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'PatchBaseline':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'PatchBaseline':
         """
         Get an existing PatchBaseline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -588,7 +588,7 @@ class PatchBaseline(pulumi.CustomResource):
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Source.
-        :param pulumi.Input[Mapping[str, Any]] tags: Label.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -698,7 +698,7 @@ class PatchBaseline(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Label.
         """

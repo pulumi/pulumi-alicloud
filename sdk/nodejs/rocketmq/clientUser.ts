@@ -85,7 +85,7 @@ export class ClientUser extends pulumi.CustomResource {
     /**
      * The context of the KMS Encryption.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
@@ -168,7 +168,7 @@ export interface ClientUserState {
     /**
      * The context of the KMS Encryption.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
@@ -206,7 +206,7 @@ export interface ClientUserArgs {
     /**
      * The context of the KMS Encryption.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */

@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetEcsNetworkInterfacesInterface;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +87,7 @@ public final class GetEcsNetworkInterfacesResult {
      * @return The tags.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The type of the ENI.
      * 
@@ -207,7 +206,7 @@ public final class GetEcsNetworkInterfacesResult {
      * @return The tags.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -256,7 +255,7 @@ public final class GetEcsNetworkInterfacesResult {
         private @Nullable String securityGroupId;
         private @Nullable Boolean serviceManaged;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String type;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
@@ -392,7 +391,7 @@ public final class GetEcsNetworkInterfacesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

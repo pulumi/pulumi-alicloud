@@ -75,7 +75,7 @@ export interface GetTopicsArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -98,7 +98,7 @@ export interface GetTopicsResult {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * A list of topics. Each element contains the following attributes:
      */
@@ -164,5 +164,5 @@ export interface GetTopicsOutputArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

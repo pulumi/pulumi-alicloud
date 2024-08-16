@@ -7,7 +7,6 @@ import com.pulumi.alicloud.bp.inputs.StudioApplicationInstanceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -55,13 +54,13 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="configuration")
-    private @Nullable Output<Map<String,Object>> configuration;
+    private @Nullable Output<Map<String,String>> configuration;
 
     /**
      * @return The configuration of the application.
      * 
      */
-    public Optional<Output<Map<String,Object>>> configuration() {
+    public Optional<Output<Map<String,String>>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
@@ -115,13 +114,13 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="variables")
-    private @Nullable Output<Map<String,Object>> variables;
+    private @Nullable Output<Map<String,String>> variables;
 
     /**
      * @return The variables of the application.
      * 
      */
-    public Optional<Output<Map<String,Object>>> variables() {
+    public Optional<Output<Map<String,String>>> variables() {
         return Optional.ofNullable(this.variables);
     }
 
@@ -203,7 +202,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(@Nullable Output<Map<String,Object>> configuration) {
+        public Builder configuration(@Nullable Output<Map<String,String>> configuration) {
             $.configuration = configuration;
             return this;
         }
@@ -214,7 +213,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(Map<String,Object> configuration) {
+        public Builder configuration(Map<String,String> configuration) {
             return configuration(Output.of(configuration));
         }
 
@@ -297,7 +296,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder variables(@Nullable Output<Map<String,Object>> variables) {
+        public Builder variables(@Nullable Output<Map<String,String>> variables) {
             $.variables = variables;
             return this;
         }
@@ -308,7 +307,7 @@ public final class StudioApplicationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder variables(Map<String,Object> variables) {
+        public Builder variables(Map<String,String> variables) {
             return variables(Output.of(variables));
         }
 

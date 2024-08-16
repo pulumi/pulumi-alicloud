@@ -227,7 +227,7 @@ export class Audit extends pulumi.CustomResource {
     /**
      * Log audit detailed configuration.
      */
-    public readonly variableMap!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly variableMap!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Audit resource with the given unique name, arguments, and options.
@@ -289,7 +289,7 @@ export interface AuditState {
     /**
      * Log audit detailed configuration.
      */
-    variableMap?: pulumi.Input<{[key: string]: any}>;
+    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -315,5 +315,5 @@ export interface AuditArgs {
     /**
      * Log audit detailed configuration.
      */
-    variableMap?: pulumi.Input<{[key: string]: any}>;
+    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

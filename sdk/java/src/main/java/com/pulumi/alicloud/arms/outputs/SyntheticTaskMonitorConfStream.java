@@ -5,7 +5,6 @@ package com.pulumi.alicloud.arms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public final class SyntheticTaskMonitorConfStream {
      * @return Custom header, in JSON Map format.
      * 
      */
-    private @Nullable Map<String,Object> customHeaderContent;
+    private @Nullable Map<String,String> customHeaderContent;
     /**
      * @return Player, do not pass the default 12.
      * - 12:VLC
@@ -59,7 +58,7 @@ public final class SyntheticTaskMonitorConfStream {
      * @return Custom header, in JSON Map format.
      * 
      */
-    public Map<String,Object> customHeaderContent() {
+    public Map<String,String> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
     /**
@@ -118,7 +117,7 @@ public final class SyntheticTaskMonitorConfStream {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> customHeaderContent;
+        private @Nullable Map<String,String> customHeaderContent;
         private @Nullable Integer playerType;
         private @Nullable Integer streamAddressType;
         private @Nullable Integer streamMonitorTimeout;
@@ -138,7 +137,7 @@ public final class SyntheticTaskMonitorConfStream {
         }
 
         @CustomType.Setter
-        public Builder customHeaderContent(@Nullable Map<String,Object> customHeaderContent) {
+        public Builder customHeaderContent(@Nullable Map<String,String> customHeaderContent) {
 
             this.customHeaderContent = customHeaderContent;
             return this;

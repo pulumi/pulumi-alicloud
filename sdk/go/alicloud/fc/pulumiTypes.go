@@ -1544,7 +1544,7 @@ func (o ServiceNasConfigMountPointArrayOutput) Index(i pulumi.IntInput) ServiceN
 
 type ServiceTracingConfig struct {
 	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
-	Params map[string]interface{} `pulumi:"params"`
+	Params map[string]string `pulumi:"params"`
 	// Tracing protocol type. Currently, only Jaeger is supported.
 	Type string `pulumi:"type"`
 }
@@ -1562,7 +1562,7 @@ type ServiceTracingConfigInput interface {
 
 type ServiceTracingConfigArgs struct {
 	// Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
-	Params pulumi.MapInput `pulumi:"params"`
+	Params pulumi.StringMapInput `pulumi:"params"`
 	// Tracing protocol type. Currently, only Jaeger is supported.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -1645,8 +1645,8 @@ func (o ServiceTracingConfigOutput) ToServiceTracingConfigPtrOutputWithContext(c
 }
 
 // Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
-func (o ServiceTracingConfigOutput) Params() pulumi.MapOutput {
-	return o.ApplyT(func(v ServiceTracingConfig) map[string]interface{} { return v.Params }).(pulumi.MapOutput)
+func (o ServiceTracingConfigOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceTracingConfig) map[string]string { return v.Params }).(pulumi.StringMapOutput)
 }
 
 // Tracing protocol type. Currently, only Jaeger is supported.
@@ -1679,13 +1679,13 @@ func (o ServiceTracingConfigPtrOutput) Elem() ServiceTracingConfigOutput {
 }
 
 // Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
-func (o ServiceTracingConfigPtrOutput) Params() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServiceTracingConfig) map[string]interface{} {
+func (o ServiceTracingConfigPtrOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceTracingConfig) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Params
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Tracing protocol type. Currently, only Jaeger is supported.
@@ -8754,7 +8754,7 @@ type GetFunctionsFunction struct {
 	// Function description.
 	Description string `pulumi:"description"`
 	// A map that defines environment variables for the function.
-	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
 	Handler string `pulumi:"handler"`
 	// Function ID.
@@ -8804,7 +8804,7 @@ type GetFunctionsFunctionArgs struct {
 	// Function description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// A map that defines environment variables for the function.
-	EnvironmentVariables pulumi.MapInput `pulumi:"environmentVariables"`
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
 	Handler pulumi.StringInput `pulumi:"handler"`
 	// Function ID.
@@ -8913,8 +8913,8 @@ func (o GetFunctionsFunctionOutput) Description() pulumi.StringOutput {
 }
 
 // A map that defines environment variables for the function.
-func (o GetFunctionsFunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func(v GetFunctionsFunction) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+func (o GetFunctionsFunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
 // Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.

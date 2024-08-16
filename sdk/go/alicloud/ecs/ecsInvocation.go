@@ -160,7 +160,7 @@ type EcsInvocation struct {
 	// The list of instances to execute the command. You can specify up to 50 instance IDs.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-	Parameters pulumi.MapOutput `pulumi:"parameters"`
+	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
 	RepeatMode pulumi.StringOutput `pulumi:"repeatMode"`
 	// The status of the resource.
@@ -222,7 +222,7 @@ type ecsInvocationState struct {
 	// The list of instances to execute the command. You can specify up to 50 instance IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
 	RepeatMode *string `pulumi:"repeatMode"`
 	// The status of the resource.
@@ -249,7 +249,7 @@ type EcsInvocationState struct {
 	// The list of instances to execute the command. You can specify up to 50 instance IDs.
 	InstanceIds pulumi.StringArrayInput
 	// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
 	RepeatMode pulumi.StringPtrInput
 	// The status of the resource.
@@ -280,7 +280,7 @@ type ecsInvocationArgs struct {
 	// The list of instances to execute the command. You can specify up to 50 instance IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
 	RepeatMode *string `pulumi:"repeatMode"`
 	// Specifies whether to periodically run the command. Default value: `false`.
@@ -306,7 +306,7 @@ type EcsInvocationArgs struct {
 	// The list of instances to execute the command. You can specify up to 50 instance IDs.
 	InstanceIds pulumi.StringArrayInput
 	// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
 	RepeatMode pulumi.StringPtrInput
 	// Specifies whether to periodically run the command. Default value: `false`.
@@ -426,8 +426,8 @@ func (o EcsInvocationOutput) InstanceIds() pulumi.StringArrayOutput {
 }
 
 // The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
-func (o EcsInvocationOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsInvocation) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+func (o EcsInvocationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsInvocation) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.

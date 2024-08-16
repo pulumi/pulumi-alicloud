@@ -20,7 +20,7 @@ class GroupArgs:
                  group_type: Optional[pulumi.Input[str]] = None,
                  read_enable: Optional[pulumi.Input[bool]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
@@ -29,7 +29,7 @@ class GroupArgs:
         :param pulumi.Input[str] group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
@@ -125,7 +125,7 @@ class GroupArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -134,7 +134,7 @@ class GroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -147,7 +147,7 @@ class _GroupState:
                  instance_id: Optional[pulumi.Input[str]] = None,
                  read_enable: Optional[pulumi.Input[bool]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] group_id: Replaced by `group_name` after version 1.98.0.
@@ -156,7 +156,7 @@ class _GroupState:
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
@@ -253,7 +253,7 @@ class _GroupState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -262,7 +262,7 @@ class _GroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -277,7 +277,7 @@ class Group(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  read_enable: Optional[pulumi.Input[bool]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides an ONS group resource.
@@ -328,7 +328,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
@@ -400,7 +400,7 @@ class Group(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  read_enable: Optional[pulumi.Input[bool]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,7 +435,7 @@ class Group(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             read_enable: Optional[pulumi.Input[bool]] = None,
             remark: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Group':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -449,7 +449,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
@@ -517,7 +517,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

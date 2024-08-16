@@ -83,7 +83,7 @@ type GetTemplatesArgs struct {
 	// Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
 	SortOrder *string `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The format of the template. Valid values: `JSON`, `YAML`.
 	TemplateFormat *string `pulumi:"templateFormat"`
 	// The type of OOS Template.
@@ -103,14 +103,14 @@ type GetTemplatesResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// (Available in v1.114.0+) A list of OOS Template names.
-	Names          []string               `pulumi:"names"`
-	OutputFile     *string                `pulumi:"outputFile"`
-	ShareType      *string                `pulumi:"shareType"`
-	SortField      *string                `pulumi:"sortField"`
-	SortOrder      *string                `pulumi:"sortOrder"`
-	Tags           map[string]interface{} `pulumi:"tags"`
-	TemplateFormat *string                `pulumi:"templateFormat"`
-	TemplateType   *string                `pulumi:"templateType"`
+	Names          []string          `pulumi:"names"`
+	OutputFile     *string           `pulumi:"outputFile"`
+	ShareType      *string           `pulumi:"shareType"`
+	SortField      *string           `pulumi:"sortField"`
+	SortOrder      *string           `pulumi:"sortOrder"`
+	Tags           map[string]string `pulumi:"tags"`
+	TemplateFormat *string           `pulumi:"templateFormat"`
+	TemplateType   *string           `pulumi:"templateType"`
 	// A list of OOS Templates. Each element contains the following attributes:
 	Templates []GetTemplatesTemplate `pulumi:"templates"`
 }
@@ -153,7 +153,7 @@ type GetTemplatesOutputArgs struct {
 	// Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
 	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The format of the template. Valid values: `JSON`, `YAML`.
 	TemplateFormat pulumi.StringPtrInput `pulumi:"templateFormat"`
 	// The type of OOS Template.
@@ -234,8 +234,8 @@ func (o GetTemplatesResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
-func (o GetTemplatesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTemplatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTemplatesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTemplatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetTemplatesResultOutput) TemplateFormat() pulumi.StringPtrOutput {

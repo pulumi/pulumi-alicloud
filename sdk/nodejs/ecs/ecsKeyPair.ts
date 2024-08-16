@@ -92,7 +92,7 @@ export class EcsKeyPair extends pulumi.CustomResource {
      * The Id of resource group which the key pair belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsKeyPair resource with the given unique name, arguments, and options.
@@ -162,7 +162,7 @@ export interface EcsKeyPairState {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -192,5 +192,5 @@ export interface EcsKeyPairArgs {
      * The Id of resource group which the key pair belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

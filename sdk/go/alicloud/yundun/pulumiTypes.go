@@ -334,16 +334,16 @@ func (o BastionHostInstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) B
 }
 
 type GetBastionHostInstancesInstance struct {
-	Description         string                 `pulumi:"description"`
-	Id                  string                 `pulumi:"id"`
-	InstanceStatus      string                 `pulumi:"instanceStatus"`
-	LicenseCode         string                 `pulumi:"licenseCode"`
-	PrivateDomain       string                 `pulumi:"privateDomain"`
-	PublicDomain        string                 `pulumi:"publicDomain"`
-	PublicNetworkAccess bool                   `pulumi:"publicNetworkAccess"`
-	SecurityGroupIds    []string               `pulumi:"securityGroupIds"`
-	Tags                map[string]interface{} `pulumi:"tags"`
-	UserVswitchId       string                 `pulumi:"userVswitchId"`
+	Description         string            `pulumi:"description"`
+	Id                  string            `pulumi:"id"`
+	InstanceStatus      string            `pulumi:"instanceStatus"`
+	LicenseCode         string            `pulumi:"licenseCode"`
+	PrivateDomain       string            `pulumi:"privateDomain"`
+	PublicDomain        string            `pulumi:"publicDomain"`
+	PublicNetworkAccess bool              `pulumi:"publicNetworkAccess"`
+	SecurityGroupIds    []string          `pulumi:"securityGroupIds"`
+	Tags                map[string]string `pulumi:"tags"`
+	UserVswitchId       string            `pulumi:"userVswitchId"`
 }
 
 // GetBastionHostInstancesInstanceInput is an input type that accepts GetBastionHostInstancesInstanceArgs and GetBastionHostInstancesInstanceOutput values.
@@ -366,7 +366,7 @@ type GetBastionHostInstancesInstanceArgs struct {
 	PublicDomain        pulumi.StringInput      `pulumi:"publicDomain"`
 	PublicNetworkAccess pulumi.BoolInput        `pulumi:"publicNetworkAccess"`
 	SecurityGroupIds    pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	Tags                pulumi.MapInput         `pulumi:"tags"`
+	Tags                pulumi.StringMapInput   `pulumi:"tags"`
 	UserVswitchId       pulumi.StringInput      `pulumi:"userVswitchId"`
 }
 
@@ -453,8 +453,8 @@ func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringA
 	return o.ApplyT(func(v GetBastionHostInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetBastionHostInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetBastionHostInstancesInstanceOutput) UserVswitchId() pulumi.StringOutput {
@@ -482,15 +482,15 @@ func (o GetBastionHostInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDBAuditInstanceInstance struct {
-	Description         string                 `pulumi:"description"`
-	Id                  string                 `pulumi:"id"`
-	InstanceStatus      string                 `pulumi:"instanceStatus"`
-	LicenseCode         string                 `pulumi:"licenseCode"`
-	PrivateDomain       string                 `pulumi:"privateDomain"`
-	PublicDomain        string                 `pulumi:"publicDomain"`
-	PublicNetworkAccess bool                   `pulumi:"publicNetworkAccess"`
-	Tags                map[string]interface{} `pulumi:"tags"`
-	UserVswitchId       string                 `pulumi:"userVswitchId"`
+	Description         string            `pulumi:"description"`
+	Id                  string            `pulumi:"id"`
+	InstanceStatus      string            `pulumi:"instanceStatus"`
+	LicenseCode         string            `pulumi:"licenseCode"`
+	PrivateDomain       string            `pulumi:"privateDomain"`
+	PublicDomain        string            `pulumi:"publicDomain"`
+	PublicNetworkAccess bool              `pulumi:"publicNetworkAccess"`
+	Tags                map[string]string `pulumi:"tags"`
+	UserVswitchId       string            `pulumi:"userVswitchId"`
 }
 
 // GetDBAuditInstanceInstanceInput is an input type that accepts GetDBAuditInstanceInstanceArgs and GetDBAuditInstanceInstanceOutput values.
@@ -505,15 +505,15 @@ type GetDBAuditInstanceInstanceInput interface {
 }
 
 type GetDBAuditInstanceInstanceArgs struct {
-	Description         pulumi.StringInput `pulumi:"description"`
-	Id                  pulumi.StringInput `pulumi:"id"`
-	InstanceStatus      pulumi.StringInput `pulumi:"instanceStatus"`
-	LicenseCode         pulumi.StringInput `pulumi:"licenseCode"`
-	PrivateDomain       pulumi.StringInput `pulumi:"privateDomain"`
-	PublicDomain        pulumi.StringInput `pulumi:"publicDomain"`
-	PublicNetworkAccess pulumi.BoolInput   `pulumi:"publicNetworkAccess"`
-	Tags                pulumi.MapInput    `pulumi:"tags"`
-	UserVswitchId       pulumi.StringInput `pulumi:"userVswitchId"`
+	Description         pulumi.StringInput    `pulumi:"description"`
+	Id                  pulumi.StringInput    `pulumi:"id"`
+	InstanceStatus      pulumi.StringInput    `pulumi:"instanceStatus"`
+	LicenseCode         pulumi.StringInput    `pulumi:"licenseCode"`
+	PrivateDomain       pulumi.StringInput    `pulumi:"privateDomain"`
+	PublicDomain        pulumi.StringInput    `pulumi:"publicDomain"`
+	PublicNetworkAccess pulumi.BoolInput      `pulumi:"publicNetworkAccess"`
+	Tags                pulumi.StringMapInput `pulumi:"tags"`
+	UserVswitchId       pulumi.StringInput    `pulumi:"userVswitchId"`
 }
 
 func (GetDBAuditInstanceInstanceArgs) ElementType() reflect.Type {
@@ -595,8 +595,8 @@ func (o GetDBAuditInstanceInstanceOutput) PublicNetworkAccess() pulumi.BoolOutpu
 	return o.ApplyT(func(v GetDBAuditInstanceInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
 }
 
-func (o GetDBAuditInstanceInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDBAuditInstanceInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDBAuditInstanceInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) UserVswitchId() pulumi.StringOutput {

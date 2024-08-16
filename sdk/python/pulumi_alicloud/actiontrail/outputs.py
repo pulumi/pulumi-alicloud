@@ -35,13 +35,13 @@ class GetConsumerGroupsGroupResult(dict):
                  id: str,
                  instance_id: str,
                  remark: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str consumer_id: The name of the consumer group.
         :param str id: The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
         :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
         :param str remark: The remark of the consumer group.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the consumer group.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the consumer group.
         """
         pulumi.set(__self__, "consumer_id", consumer_id)
         pulumi.set(__self__, "id", id)
@@ -84,7 +84,7 @@ class GetConsumerGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the consumer group.
         """
@@ -264,7 +264,7 @@ class GetInstancesInstanceResult(dict):
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param Sequence['GetInstancesInstanceAllowedListArgs'] allowed_lists: The allowed list of the instance.
         :param str config: The config the instance.
@@ -294,7 +294,7 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vswitch_id: The ID of attaching vswitch to instance.
         :param str zone_id: The ID of attaching zone to instance.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the instance.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the instance.
         """
         pulumi.set(__self__, "allowed_lists", allowed_lists)
         pulumi.set(__self__, "config", config)
@@ -553,7 +553,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the instance.
         """
@@ -791,7 +791,7 @@ class GetTopicsTopicResult(dict):
                  status: int,
                  status_name: str,
                  topic: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param bool compact_topic: whether the current topic is kafka compact topic or not.
         :param str create_time: Time of creation.
@@ -803,7 +803,7 @@ class GetTopicsTopicResult(dict):
         :param int status: The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
         :param str status_name: The status_name of the topic.
         :param str topic: A topic to filter results by the topic name.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the topic.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the topic.
         """
         pulumi.set(__self__, "compact_topic", compact_topic)
         pulumi.set(__self__, "create_time", create_time)
@@ -900,7 +900,7 @@ class GetTopicsTopicResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the topic.
         """

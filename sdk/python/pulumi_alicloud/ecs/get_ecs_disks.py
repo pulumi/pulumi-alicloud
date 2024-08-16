@@ -275,7 +275,7 @@ class GetEcsDisksResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -362,7 +362,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
                   resource_group_id: Optional[str] = None,
                   snapshot_id: Optional[str] = None,
                   status: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   type: Optional[str] = None,
                   zone_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsDisksResult:
@@ -408,7 +408,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: The source snapshot id.
     :param str status: The status of disk.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disks.
+    :param Mapping[str, str] tags: A map of tags assigned to the disks.
     :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
     :param str zone_id: ID of the free zone to which the disk belongs.
     """
@@ -508,7 +508,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                          snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          type: Optional[pulumi.Input[Optional[str]]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDisksResult]:
@@ -554,7 +554,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: The source snapshot id.
     :param str status: The status of disk.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disks.
+    :param Mapping[str, str] tags: A map of tags assigned to the disks.
     :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
     :param str zone_id: ID of the free zone to which the disk belongs.
     """

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.alb.outputs;
 import com.pulumi.alicloud.alb.outputs.GetSystemSecurityPoliciesPolicy;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,7 @@ public final class GetSystemSecurityPoliciesResult {
      * 
      */
     private List<GetSystemSecurityPoliciesPolicy> policies;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetSystemSecurityPoliciesResult() {}
     /**
@@ -59,7 +58,7 @@ public final class GetSystemSecurityPoliciesResult {
     public List<GetSystemSecurityPoliciesPolicy> policies() {
         return this.policies;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -76,7 +75,7 @@ public final class GetSystemSecurityPoliciesResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetSystemSecurityPoliciesPolicy> policies;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetSystemSecurityPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,7 +123,7 @@ public final class GetSystemSecurityPoliciesResult {
             return policies(List.of(policies));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

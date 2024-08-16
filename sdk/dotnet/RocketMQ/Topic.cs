@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Replaced by `topic_name` after version 1.97.0.
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? Remark { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -192,9 +192,9 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string>? Remark { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -252,9 +252,9 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

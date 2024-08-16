@@ -80,7 +80,7 @@ export interface GetMonitorGroupsArgs {
      * The select contact groups.
      */
     selectContactGroups?: boolean;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      */
@@ -105,7 +105,7 @@ export interface GetMonitorGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly selectContactGroups?: boolean;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
 }
 /**
@@ -168,7 +168,7 @@ export interface GetMonitorGroupsOutputArgs {
      * The select contact groups.
      */
     selectContactGroups?: pulumi.Input<boolean>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      */

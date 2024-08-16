@@ -360,8 +360,8 @@ type GetClustersCluster struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags               map[string]interface{} `pulumi:"tags"`
-	VpcCloudInstanceId string                 `pulumi:"vpcCloudInstanceId"`
+	Tags               map[string]string `pulumi:"tags"`
+	VpcCloudInstanceId string            `pulumi:"vpcCloudInstanceId"`
 	// ID of the VPC the cluster belongs to.
 	VpcId     string `pulumi:"vpcId"`
 	VswitchId string `pulumi:"vswitchId"`
@@ -435,8 +435,8 @@ type GetClustersClusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags               pulumi.MapInput    `pulumi:"tags"`
-	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
+	Tags               pulumi.StringMapInput `pulumi:"tags"`
+	VpcCloudInstanceId pulumi.StringInput    `pulumi:"vpcCloudInstanceId"`
 	// ID of the VPC the cluster belongs to.
 	VpcId     pulumi.StringInput `pulumi:"vpcId"`
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -663,8 +663,8 @@ func (o GetClustersClusterOutput) StorageResource() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetClustersClusterOutput) VpcCloudInstanceId() pulumi.StringOutput {
@@ -1060,7 +1060,7 @@ type GetDBClustersCluster struct {
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
 	StorageResource string `pulumi:"storageResource"`
 	// A map of tags assigned to the cluster.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vpc cloud instance id.
 	VpcCloudInstanceId string `pulumi:"vpcCloudInstanceId"`
 	// The vpc id.
@@ -1160,7 +1160,7 @@ type GetDBClustersClusterArgs struct {
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
 	StorageResource pulumi.StringInput `pulumi:"storageResource"`
 	// A map of tags assigned to the cluster.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The vpc cloud instance id.
 	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
 	// The vpc id.
@@ -1413,8 +1413,8 @@ func (o GetDBClustersClusterOutput) StorageResource() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the cluster.
-func (o GetDBClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDBClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDBClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The vpc cloud instance id.

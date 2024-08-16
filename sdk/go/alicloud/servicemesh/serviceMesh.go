@@ -61,7 +61,7 @@ type ServiceMesh struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
@@ -132,7 +132,7 @@ type serviceMeshState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
@@ -171,7 +171,7 @@ type ServiceMeshState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
@@ -210,7 +210,7 @@ type serviceMeshArgs struct {
 	// ServiceMeshName.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
@@ -246,7 +246,7 @@ type ServiceMeshArgs struct {
 	// ServiceMeshName.
 	ServiceMeshName pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
@@ -410,8 +410,8 @@ func (o ServiceMeshOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o ServiceMeshOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServiceMeshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.

@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Slb
         public string? Status { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
@@ -194,9 +194,9 @@ namespace Pulumi.AliCloud.Slb
         /// });
         /// ```
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
@@ -329,9 +329,9 @@ namespace Pulumi.AliCloud.Slb
         /// });
         /// ```
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -404,7 +404,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A map of tags assigned to the SLB instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
         /// ID of the VPC the SLB belongs to.
@@ -463,7 +463,7 @@ namespace Pulumi.AliCloud.Slb
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             int totalCount,
 

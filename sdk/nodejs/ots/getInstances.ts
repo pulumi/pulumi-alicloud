@@ -65,7 +65,7 @@ export interface GetInstancesArgs {
      * });
      * ```
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -93,7 +93,7 @@ export interface GetInstancesResult {
     /**
      * The tags of the instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
@@ -146,5 +146,5 @@ export interface GetInstancesOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

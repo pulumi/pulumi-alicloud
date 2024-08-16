@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// A list of user CIDRs.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             ImmutableArray<string> userCidrs,
 

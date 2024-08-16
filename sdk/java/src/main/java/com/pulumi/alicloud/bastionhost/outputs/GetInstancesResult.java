@@ -6,7 +6,6 @@ package com.pulumi.alicloud.bastionhost.outputs;
 import com.pulumi.alicloud.bastionhost.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public final class GetInstancesResult {
      * @return A map of tags assigned to the bastionhost instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetInstancesResult() {}
     public Optional<String> descriptionRegex() {
@@ -67,7 +66,7 @@ public final class GetInstancesResult {
      * @return A map of tags assigned to the bastionhost instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -86,7 +85,7 @@ public final class GetInstancesResult {
         private List<String> ids;
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -153,7 +152,7 @@ public final class GetInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

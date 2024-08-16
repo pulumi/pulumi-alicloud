@@ -32,7 +32,7 @@ class DomainArgs:
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
@@ -52,7 +52,7 @@ class DomainArgs:
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         :param pulumi.Input[str] status: The status of the domain name. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -285,14 +285,14 @@ class DomainArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -329,7 +329,7 @@ class _DomainState:
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
@@ -351,7 +351,7 @@ class _DomainState:
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         :param pulumi.Input[str] status: The status of the domain name. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         if cert_id is not None:
@@ -613,14 +613,14 @@ class _DomainState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -657,7 +657,7 @@ class Domain(pulumi.CustomResource):
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -725,7 +725,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         :param pulumi.Input[str] status: The status of the domain name. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         ...
@@ -812,7 +812,7 @@ class Domain(pulumi.CustomResource):
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -875,7 +875,7 @@ class Domain(pulumi.CustomResource):
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             top_level_domain: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -902,7 +902,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
         :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         :param pulumi.Input[str] status: The status of the domain name. Valid values:
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1077,7 +1077,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource
         """

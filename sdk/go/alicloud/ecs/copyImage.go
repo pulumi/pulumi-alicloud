@@ -22,10 +22,10 @@ type CopyImage struct {
 	ImageName          pulumi.StringOutput    `pulumi:"imageName"`
 	KmsKeyId           pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           pulumi.StringOutput `pulumi:"name"`
-	SourceImageId  pulumi.StringOutput `pulumi:"sourceImageId"`
-	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
-	Tags           pulumi.MapOutput    `pulumi:"tags"`
+	Name           pulumi.StringOutput    `pulumi:"name"`
+	SourceImageId  pulumi.StringOutput    `pulumi:"sourceImageId"`
+	SourceRegionId pulumi.StringOutput    `pulumi:"sourceRegionId"`
+	Tags           pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCopyImage registers a new resource with the given unique name, arguments, and options.
@@ -71,10 +71,10 @@ type copyImageState struct {
 	ImageName          *string `pulumi:"imageName"`
 	KmsKeyId           *string `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           *string                `pulumi:"name"`
-	SourceImageId  *string                `pulumi:"sourceImageId"`
-	SourceRegionId *string                `pulumi:"sourceRegionId"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	Name           *string           `pulumi:"name"`
+	SourceImageId  *string           `pulumi:"sourceImageId"`
+	SourceRegionId *string           `pulumi:"sourceRegionId"`
+	Tags           map[string]string `pulumi:"tags"`
 }
 
 type CopyImageState struct {
@@ -88,7 +88,7 @@ type CopyImageState struct {
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringPtrInput
 	SourceRegionId pulumi.StringPtrInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 }
 
 func (CopyImageState) ElementType() reflect.Type {
@@ -103,10 +103,10 @@ type copyImageArgs struct {
 	ImageName          *string `pulumi:"imageName"`
 	KmsKeyId           *string `pulumi:"kmsKeyId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           *string                `pulumi:"name"`
-	SourceImageId  string                 `pulumi:"sourceImageId"`
-	SourceRegionId string                 `pulumi:"sourceRegionId"`
-	Tags           map[string]interface{} `pulumi:"tags"`
+	Name           *string           `pulumi:"name"`
+	SourceImageId  string            `pulumi:"sourceImageId"`
+	SourceRegionId string            `pulumi:"sourceRegionId"`
+	Tags           map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CopyImage resource.
@@ -121,7 +121,7 @@ type CopyImageArgs struct {
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringInput
 	SourceRegionId pulumi.StringInput
-	Tags           pulumi.MapInput
+	Tags           pulumi.StringMapInput
 }
 
 func (CopyImageArgs) ElementType() reflect.Type {
@@ -248,8 +248,8 @@ func (o CopyImageOutput) SourceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.SourceRegionId }).(pulumi.StringOutput)
 }
 
-func (o CopyImageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *CopyImage) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o CopyImageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CopyImage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type CopyImageArrayOutput struct{ *pulumi.OutputState }

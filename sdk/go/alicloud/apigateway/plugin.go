@@ -132,7 +132,7 @@ type Plugin struct {
 	// - "transformer".
 	PluginType pulumi.StringOutput `pulumi:"pluginType"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewPlugin registers a new resource with the given unique name, arguments, and options.
@@ -199,7 +199,7 @@ type pluginState struct {
 	// - "transformer".
 	PluginType *string `pulumi:"pluginType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type PluginState struct {
@@ -228,7 +228,7 @@ type PluginState struct {
 	// - "transformer".
 	PluginType pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PluginState) ElementType() reflect.Type {
@@ -259,7 +259,7 @@ type pluginArgs struct {
 	// - "transformer".
 	PluginType string `pulumi:"pluginType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Plugin resource.
@@ -287,7 +287,7 @@ type PluginArgs struct {
 	// - "transformer".
 	PluginType pulumi.StringInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PluginArgs) ElementType() reflect.Type {
@@ -417,8 +417,8 @@ func (o PluginOutput) PluginType() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o PluginOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Plugin) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PluginOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Plugin) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type PluginArrayOutput struct{ *pulumi.OutputState }

@@ -88,7 +88,7 @@ type RouteTable struct {
 	// Routing table state.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -147,7 +147,7 @@ type routeTableState struct {
 	// Routing table state.
 	Status *string `pulumi:"status"`
 	// The tag.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -174,7 +174,7 @@ type RouteTableState struct {
 	// Routing table state.
 	Status pulumi.StringPtrInput
 	// The tag.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -199,7 +199,7 @@ type routeTableArgs struct {
 	// The name of the routing table.
 	RouteTableName *string `pulumi:"routeTableName"`
 	// The tag.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -221,7 +221,7 @@ type RouteTableArgs struct {
 	// The name of the routing table.
 	RouteTableName pulumi.StringPtrInput
 	// The tag.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -355,8 +355,8 @@ func (o RouteTableOutput) Status() pulumi.StringOutput {
 }
 
 // The tag.
-func (o RouteTableOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *RouteTable) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o RouteTableOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of VPC.

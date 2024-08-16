@@ -118,7 +118,7 @@ type TransitRouterEcrAttachment struct {
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// TransitRouterAttachmentDescription
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
 	// TransitRouterAttachmentName
@@ -171,7 +171,7 @@ type transitRouterEcrAttachmentState struct {
 	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// TransitRouterAttachmentDescription
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// TransitRouterAttachmentName
@@ -192,7 +192,7 @@ type TransitRouterEcrAttachmentState struct {
 	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// TransitRouterAttachmentDescription
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// TransitRouterAttachmentName
@@ -213,7 +213,7 @@ type transitRouterEcrAttachmentArgs struct {
 	// EcrOwnerId
 	EcrOwnerId *int `pulumi:"ecrOwnerId"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// TransitRouterAttachmentDescription
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
 	// TransitRouterAttachmentName
@@ -231,7 +231,7 @@ type TransitRouterEcrAttachmentArgs struct {
 	// EcrOwnerId
 	EcrOwnerId pulumi.IntPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// TransitRouterAttachmentDescription
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
 	// TransitRouterAttachmentName
@@ -353,8 +353,8 @@ func (o TransitRouterEcrAttachmentOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource
-func (o TransitRouterEcrAttachmentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TransitRouterEcrAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouterEcrAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // TransitRouterAttachmentDescription

@@ -111,7 +111,7 @@ export class PatchBaseline extends pulumi.CustomResource {
     /**
      * Label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a PatchBaseline resource with the given unique name, arguments, and options.
@@ -218,7 +218,7 @@ export interface PatchBaselineState {
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -268,5 +268,5 @@ export interface PatchBaselineArgs {
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

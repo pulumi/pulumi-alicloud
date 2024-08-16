@@ -95,7 +95,7 @@ type DhcpOptionsSet struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Tags of the current resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDhcpOptionsSet registers a new resource with the given unique name, arguments, and options.
@@ -155,7 +155,7 @@ type dhcpOptionsSetState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// Tags of the current resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DhcpOptionsSetState struct {
@@ -186,7 +186,7 @@ type DhcpOptionsSetState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// Tags of the current resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DhcpOptionsSetState) ElementType() reflect.Type {
@@ -217,7 +217,7 @@ type dhcpOptionsSetArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Tags of the current resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DhcpOptionsSet resource.
@@ -245,7 +245,7 @@ type DhcpOptionsSetArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// Tags of the current resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DhcpOptionsSetArgs) ElementType() reflect.Type {
@@ -395,8 +395,8 @@ func (o DhcpOptionsSetOutput) Status() pulumi.StringOutput {
 }
 
 // Tags of the current resource.
-func (o DhcpOptionsSetOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DhcpOptionsSetOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DhcpOptionsSet) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DhcpOptionsSetArrayOutput struct{ *pulumi.OutputState }

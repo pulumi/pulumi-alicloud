@@ -17,7 +17,7 @@ class TransitRouterEcrAttachmentArgs:
                  ecr_id: pulumi.Input[str],
                  cen_id: Optional[pulumi.Input[str]] = None,
                  ecr_owner_id: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_ecr_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None):
@@ -26,7 +26,7 @@ class TransitRouterEcrAttachmentArgs:
         :param pulumi.Input[str] ecr_id: EcrId
         :param pulumi.Input[str] cen_id: CenId
         :param pulumi.Input[int] ecr_owner_id: EcrOwnerId
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
         :param pulumi.Input[str] transit_router_id: TransitRouterId
@@ -83,14 +83,14 @@ class TransitRouterEcrAttachmentArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -138,7 +138,7 @@ class _TransitRouterEcrAttachmentState:
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  ecr_owner_id: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_ecr_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None):
@@ -149,7 +149,7 @@ class _TransitRouterEcrAttachmentState:
         :param pulumi.Input[str] ecr_id: EcrId
         :param pulumi.Input[int] ecr_owner_id: EcrOwnerId
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
         :param pulumi.Input[str] transit_router_id: TransitRouterId
@@ -235,14 +235,14 @@ class _TransitRouterEcrAttachmentState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -290,7 +290,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
                  cen_id: Optional[pulumi.Input[str]] = None,
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  ecr_owner_id: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_ecr_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -353,7 +353,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: CenId
         :param pulumi.Input[str] ecr_id: EcrId
         :param pulumi.Input[int] ecr_owner_id: EcrOwnerId
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
         :param pulumi.Input[str] transit_router_id: TransitRouterId
@@ -435,7 +435,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
                  cen_id: Optional[pulumi.Input[str]] = None,
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  ecr_owner_id: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_ecr_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
@@ -474,7 +474,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_id: Optional[pulumi.Input[str]] = None,
             ecr_owner_id: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
             transit_router_ecr_attachment_name: Optional[pulumi.Input[str]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None) -> 'TransitRouterEcrAttachment':
@@ -490,7 +490,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] ecr_id: EcrId
         :param pulumi.Input[int] ecr_owner_id: EcrOwnerId
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] transit_router_attachment_description: TransitRouterAttachmentDescription
         :param pulumi.Input[str] transit_router_ecr_attachment_name: TransitRouterAttachmentName
         :param pulumi.Input[str] transit_router_id: TransitRouterId
@@ -552,7 +552,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource
         """

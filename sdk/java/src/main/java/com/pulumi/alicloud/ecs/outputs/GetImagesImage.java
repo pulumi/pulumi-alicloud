@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +116,7 @@ public final class GetImagesImage {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Specifies whether to check the validity of the request without actually making the request. Valid values:
      * 
@@ -269,7 +268,7 @@ public final class GetImagesImage {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -311,7 +310,7 @@ public final class GetImagesImage {
         private Integer size;
         private String state;
         private String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String usage;
         public Builder() {}
         public Builder(GetImagesImage defaults) {
@@ -522,7 +521,7 @@ public final class GetImagesImage {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

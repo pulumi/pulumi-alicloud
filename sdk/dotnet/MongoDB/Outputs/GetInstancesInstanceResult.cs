@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             int storage,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             AvailabilityZone = availabilityZone;
             ChargeType = chargeType;

@@ -89,7 +89,7 @@ class GetAppsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -111,7 +111,7 @@ class AwaitableGetAppsResult(GetAppsResult):
 def get_apps(ids: Optional[Sequence[str]] = None,
              name_regex: Optional[str] = None,
              output_file: Optional[str] = None,
-             tags: Optional[Mapping[str, Any]] = None,
+             tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsResult:
     """
     This data source provides the apps of the current Alibaba Cloud user.
@@ -130,7 +130,7 @@ def get_apps(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -154,7 +154,7 @@ def get_apps(ids: Optional[Sequence[str]] = None,
 def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
     """
     This data source provides the apps of the current Alibaba Cloud user.
@@ -173,6 +173,6 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

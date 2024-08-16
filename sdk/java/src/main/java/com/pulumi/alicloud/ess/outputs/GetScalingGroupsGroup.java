@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -125,7 +124,7 @@ public final class GetScalingGroupsGroup {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return Number of instances in scaling group.
      * 
@@ -304,7 +303,7 @@ public final class GetScalingGroupsGroup {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -373,7 +372,7 @@ public final class GetScalingGroupsGroup {
         private List<String> removalPolicies;
         private Integer removingCapacity;
         private List<String> suspendedProcesses;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCapacity;
         private Integer totalInstanceCount;
         private String vpcId;
@@ -592,7 +591,7 @@ public final class GetScalingGroupsGroup {
             return suspendedProcesses(List.of(suspendedProcesses));
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

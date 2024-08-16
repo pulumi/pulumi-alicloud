@@ -162,7 +162,7 @@ export class ElasticInstance extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
@@ -339,7 +339,7 @@ export interface ElasticInstanceState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
@@ -421,7 +421,7 @@ export interface ElasticInstanceArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */

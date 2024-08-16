@@ -140,7 +140,7 @@ export interface GetImagesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * Specifies whether to check the validity of the request without actually making the request. Valid values:
      */
@@ -190,7 +190,7 @@ export interface GetImagesResult {
      * Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
      */
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly usage?: string;
 }
 /**
@@ -303,7 +303,7 @@ export interface GetImagesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether to check the validity of the request without actually making the request. Valid values:
      */

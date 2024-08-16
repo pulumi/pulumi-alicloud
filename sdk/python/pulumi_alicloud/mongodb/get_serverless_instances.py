@@ -121,7 +121,7 @@ class GetServerlessInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -170,7 +170,7 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
                              output_file: Optional[str] = None,
                              resource_group_id: Optional[str] = None,
                              status: Optional[str] = None,
-                             tags: Optional[Mapping[str, Any]] = None,
+                             tags: Optional[Mapping[str, str]] = None,
                              vpc_id: Optional[str] = None,
                              vswitch_id: Optional[str] = None,
                              zone_id: Optional[str] = None,
@@ -213,7 +213,7 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: The ID of the VPC network.
     :param str vswitch_id: The id of the vswitch.
     :param str zone_id: The ID of the zone.
@@ -260,7 +260,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                     vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -303,7 +303,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: The ID of the VPC network.
     :param str vswitch_id: The id of the vswitch.
     :param str zone_id: The ID of the zone.

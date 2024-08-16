@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Disk type.
         /// </summary>
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
 
             string stopTime,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

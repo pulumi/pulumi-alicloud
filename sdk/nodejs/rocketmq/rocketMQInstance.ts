@@ -129,7 +129,7 @@ export class RocketMQInstance extends pulumi.CustomResource {
     /**
      * The resource label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a RocketMQInstance resource with the given unique name, arguments, and options.
@@ -293,7 +293,7 @@ export interface RocketMQInstanceState {
     /**
      * The resource label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -378,5 +378,5 @@ export interface RocketMQInstanceArgs {
     /**
      * The resource label.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

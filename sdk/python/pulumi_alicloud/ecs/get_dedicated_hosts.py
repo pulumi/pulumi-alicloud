@@ -159,7 +159,7 @@ class GetDedicatedHostsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -199,7 +199,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
                         output_file: Optional[str] = None,
                         resource_group_id: Optional[str] = None,
                         status: Optional[str] = None,
-                        tags: Optional[Mapping[str, Any]] = None,
+                        tags: Optional[Mapping[str, str]] = None,
                         zone_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedHostsResult:
     """
@@ -230,7 +230,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the ECS Dedicated Host.
     """
     __args__ = dict()
@@ -275,7 +275,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostsResult]:
     """
@@ -306,7 +306,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the ECS Dedicated Host.
     """
     ...

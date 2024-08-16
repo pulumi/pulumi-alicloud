@@ -128,7 +128,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      */
@@ -184,7 +184,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    public readonly settingConfig!: pulumi.Output<{[key: string]: any}>;
+    public readonly settingConfig!: pulumi.Output<{[key: string]: string}>;
     /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
@@ -192,7 +192,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      */
@@ -420,7 +420,7 @@ export interface InstanceState {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      */
@@ -476,7 +476,7 @@ export interface InstanceState {
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    settingConfig?: pulumi.Input<{[key: string]: any}>;
+    settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
@@ -484,7 +484,7 @@ export interface InstanceState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      */
@@ -578,7 +578,7 @@ export interface InstanceArgs {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      */
@@ -622,11 +622,11 @@ export interface InstanceArgs {
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    settingConfig?: pulumi.Input<{[key: string]: any}>;
+    settingConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      */

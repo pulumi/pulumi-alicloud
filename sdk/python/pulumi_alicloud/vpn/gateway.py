@@ -29,7 +29,7 @@ class GatewayArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpn_gateway_name: Optional[pulumi.Input[str]] = None,
                  vpn_type: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
@@ -52,7 +52,7 @@ class GatewayArgs:
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
-        :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The Tag of.
         :param pulumi.Input[str] vpn_gateway_name: The name of the VPN gateway.
         :param pulumi.Input[str] vpn_type: The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch to which the VPN gateway is attached.
@@ -286,14 +286,14 @@ class GatewayArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Tag of.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -356,7 +356,7 @@ class _GatewayState:
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  ssl_vpn_internet_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_name: Optional[pulumi.Input[str]] = None,
                  vpn_type: Optional[pulumi.Input[str]] = None,
@@ -385,7 +385,7 @@ class _GatewayState:
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
         :param pulumi.Input[str] ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The Tag of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
         :param pulumi.Input[str] vpn_gateway_name: The name of the VPN gateway.
         :param pulumi.Input[str] vpn_type: The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
@@ -694,14 +694,14 @@ class _GatewayState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Tag of.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -772,7 +772,7 @@ class Gateway(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_name: Optional[pulumi.Input[str]] = None,
                  vpn_type: Optional[pulumi.Input[str]] = None,
@@ -805,7 +805,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
-        :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The Tag of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
         :param pulumi.Input[str] vpn_gateway_name: The name of the VPN gateway.
         :param pulumi.Input[str] vpn_type: The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
@@ -855,7 +855,7 @@ class Gateway(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_name: Optional[pulumi.Input[str]] = None,
                  vpn_type: Optional[pulumi.Input[str]] = None,
@@ -928,7 +928,7 @@ class Gateway(pulumi.CustomResource):
             ssl_connections: Optional[pulumi.Input[int]] = None,
             ssl_vpn_internet_ip: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vpn_gateway_name: Optional[pulumi.Input[str]] = None,
             vpn_type: Optional[pulumi.Input[str]] = None,
@@ -962,7 +962,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[int] ssl_connections: Maximum number of clients.
         :param pulumi.Input[str] ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The Tag of.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The Tag of.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the VPN gateway belongs.
         :param pulumi.Input[str] vpn_gateway_name: The name of the VPN gateway.
         :param pulumi.Input[str] vpn_type: The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
@@ -1165,7 +1165,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The Tag of.
         """

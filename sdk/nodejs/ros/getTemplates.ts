@@ -68,7 +68,7 @@ export interface GetTemplatesArgs {
     /**
      * Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
@@ -89,7 +89,7 @@ export interface GetTemplatesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly shareType?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly templateName?: string;
     readonly templates: outputs.ros.GetTemplatesTemplate[];
 }
@@ -144,7 +144,7 @@ export interface GetTemplatesOutputArgs {
     /**
      * Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */

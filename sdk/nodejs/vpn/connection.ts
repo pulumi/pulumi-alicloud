@@ -242,7 +242,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      */
@@ -411,7 +411,7 @@ export interface ConnectionState {
     /**
      * Tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      */
@@ -497,7 +497,7 @@ export interface ConnectionArgs {
     /**
      * Tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      */

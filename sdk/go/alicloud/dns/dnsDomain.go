@@ -38,9 +38,9 @@ import (
 //			_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
 //				GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
-//				Tags: pulumi.Map{
-//					"Created":     pulumi.Any("Terraform"),
-//					"Environment": pulumi.Any("test"),
+//				Tags: pulumi.StringMap{
+//					"Created":     pulumi.String("Terraform"),
+//					"Environment": pulumi.String("test"),
 //				},
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ type DnsDomain struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDnsDomain registers a new resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ type dnsDomainState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DnsDomainState struct {
@@ -156,7 +156,7 @@ type DnsDomainState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DnsDomainState) ElementType() reflect.Type {
@@ -177,7 +177,7 @@ type dnsDomainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DnsDomain resource.
@@ -195,7 +195,7 @@ type DnsDomainArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (DnsDomainArgs) ElementType() reflect.Type {
@@ -330,8 +330,8 @@ func (o DnsDomainOutput) ResourceGroupId() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-func (o DnsDomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DnsDomain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DnsDomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DnsDomain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DnsDomainArrayOutput struct{ *pulumi.OutputState }

@@ -21,7 +21,7 @@ class RouterExpressConnectRouterArgs:
                  ecr_name: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterRegionArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RouterExpressConnectRouter resource.
         :param pulumi.Input[int] alibaba_side_asn: ASN representing resources.
@@ -30,7 +30,7 @@ class RouterExpressConnectRouterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterRegionArgs']]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "alibaba_side_asn", alibaba_side_asn)
         if description is not None:
@@ -107,14 +107,14 @@ class RouterExpressConnectRouterArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -128,7 +128,7 @@ class _RouterExpressConnectRouterState:
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterRegionArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering RouterExpressConnectRouter resources.
         :param pulumi.Input[int] alibaba_side_asn: ASN representing resources.
@@ -139,7 +139,7 @@ class _RouterExpressConnectRouterState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if alibaba_side_asn is not None:
             pulumi.set(__self__, "alibaba_side_asn", alibaba_side_asn)
@@ -245,14 +245,14 @@ class _RouterExpressConnectRouterState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -266,7 +266,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  ecr_name: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Import
@@ -285,7 +285,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -322,7 +322,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  ecr_name: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,7 +359,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'RouterExpressConnectRouter':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'RouterExpressConnectRouter':
         """
         Get an existing RouterExpressConnectRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -375,7 +375,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -450,7 +450,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

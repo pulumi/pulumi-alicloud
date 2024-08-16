@@ -18,7 +18,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -198,14 +197,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
-    @Export(name="dimensions", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> dimensions;
+    @Export(name="dimensions", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> dimensions;
 
     /**
      * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
      * 
      */
-    public Output<Map<String,Object>> dimensions() {
+    public Output<Map<String,String>> dimensions() {
         return this.dimensions;
     }
     /**
@@ -432,14 +431,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Output<Optional<Map<String,Object>>> tags() {
+    public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**

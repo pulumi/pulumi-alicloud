@@ -72,7 +72,7 @@ type RocketMQInstance struct {
 	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringOutput `pulumi:"subSeriesCode"`
 	// The resource label.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewRocketMQInstance registers a new resource with the given unique name, arguments, and options.
@@ -170,7 +170,7 @@ type rocketMQInstanceState struct {
 	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode *string `pulumi:"subSeriesCode"`
 	// The resource label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type RocketMQInstanceState struct {
@@ -224,7 +224,7 @@ type RocketMQInstanceState struct {
 	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringPtrInput
 	// The resource label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (RocketMQInstanceState) ElementType() reflect.Type {
@@ -278,7 +278,7 @@ type rocketMQInstanceArgs struct {
 	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode string `pulumi:"subSeriesCode"`
 	// The resource label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RocketMQInstance resource.
@@ -329,7 +329,7 @@ type RocketMQInstanceArgs struct {
 	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringInput
 	// The resource label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (RocketMQInstanceArgs) ElementType() reflect.Type {
@@ -520,8 +520,8 @@ func (o RocketMQInstanceOutput) SubSeriesCode() pulumi.StringOutput {
 }
 
 // The resource label.
-func (o RocketMQInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *RocketMQInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o RocketMQInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type RocketMQInstanceArrayOutput struct{ *pulumi.OutputState }

@@ -59,16 +59,16 @@ namespace Pulumi.AliCloud.Slb
     ///         VswitchId = defaultSwitch.Id,
     ///         Tags = 
     ///         {
-    ///             { "tag_a", 1 },
-    ///             { "tag_b", 2 },
-    ///             { "tag_c", 3 },
-    ///             { "tag_d", 4 },
-    ///             { "tag_e", 5 },
-    ///             { "tag_f", 6 },
-    ///             { "tag_g", 7 },
-    ///             { "tag_h", 8 },
-    ///             { "tag_i", 9 },
-    ///             { "tag_j", 10 },
+    ///             { "tag_a", "1" },
+    ///             { "tag_b", "2" },
+    ///             { "tag_c", "3" },
+    ///             { "tag_d", "4" },
+    ///             { "tag_e", "5" },
+    ///             { "tag_f", "6" },
+    ///             { "tag_g", "7" },
+    ///             { "tag_h", "8" },
+    ///             { "tag_i", "9" },
+    ///             { "tag_j", "10" },
     ///         },
     ///     });
     /// 
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Slb
         /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
@@ -396,14 +396,14 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -547,14 +547,14 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

@@ -20,7 +20,7 @@ type Application struct {
 	ClusterName      pulumi.StringOutput           `pulumi:"clusterName"`
 	DefaultDomain    pulumi.StringOutput           `pulumi:"defaultDomain"`
 	Description      pulumi.StringPtrOutput        `pulumi:"description"`
-	Environment      pulumi.MapOutput              `pulumi:"environment"`
+	Environment      pulumi.StringMapOutput        `pulumi:"environment"`
 	LatestImage      pulumi.BoolPtrOutput          `pulumi:"latestImage"`
 	Name             pulumi.StringOutput           `pulumi:"name"`
 	Services         ApplicationServiceArrayOutput `pulumi:"services"`
@@ -64,17 +64,17 @@ func GetApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
-	BlueGreen        *bool                  `pulumi:"blueGreen"`
-	BlueGreenConfirm *bool                  `pulumi:"blueGreenConfirm"`
-	ClusterName      *string                `pulumi:"clusterName"`
-	DefaultDomain    *string                `pulumi:"defaultDomain"`
-	Description      *string                `pulumi:"description"`
-	Environment      map[string]interface{} `pulumi:"environment"`
-	LatestImage      *bool                  `pulumi:"latestImage"`
-	Name             *string                `pulumi:"name"`
-	Services         []ApplicationService   `pulumi:"services"`
-	Template         *string                `pulumi:"template"`
-	Version          *string                `pulumi:"version"`
+	BlueGreen        *bool                `pulumi:"blueGreen"`
+	BlueGreenConfirm *bool                `pulumi:"blueGreenConfirm"`
+	ClusterName      *string              `pulumi:"clusterName"`
+	DefaultDomain    *string              `pulumi:"defaultDomain"`
+	Description      *string              `pulumi:"description"`
+	Environment      map[string]string    `pulumi:"environment"`
+	LatestImage      *bool                `pulumi:"latestImage"`
+	Name             *string              `pulumi:"name"`
+	Services         []ApplicationService `pulumi:"services"`
+	Template         *string              `pulumi:"template"`
+	Version          *string              `pulumi:"version"`
 }
 
 type ApplicationState struct {
@@ -83,7 +83,7 @@ type ApplicationState struct {
 	ClusterName      pulumi.StringPtrInput
 	DefaultDomain    pulumi.StringPtrInput
 	Description      pulumi.StringPtrInput
-	Environment      pulumi.MapInput
+	Environment      pulumi.StringMapInput
 	LatestImage      pulumi.BoolPtrInput
 	Name             pulumi.StringPtrInput
 	Services         ApplicationServiceArrayInput
@@ -96,15 +96,15 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
-	BlueGreen        *bool                  `pulumi:"blueGreen"`
-	BlueGreenConfirm *bool                  `pulumi:"blueGreenConfirm"`
-	ClusterName      string                 `pulumi:"clusterName"`
-	Description      *string                `pulumi:"description"`
-	Environment      map[string]interface{} `pulumi:"environment"`
-	LatestImage      *bool                  `pulumi:"latestImage"`
-	Name             *string                `pulumi:"name"`
-	Template         string                 `pulumi:"template"`
-	Version          *string                `pulumi:"version"`
+	BlueGreen        *bool             `pulumi:"blueGreen"`
+	BlueGreenConfirm *bool             `pulumi:"blueGreenConfirm"`
+	ClusterName      string            `pulumi:"clusterName"`
+	Description      *string           `pulumi:"description"`
+	Environment      map[string]string `pulumi:"environment"`
+	LatestImage      *bool             `pulumi:"latestImage"`
+	Name             *string           `pulumi:"name"`
+	Template         string            `pulumi:"template"`
+	Version          *string           `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Application resource.
@@ -113,7 +113,7 @@ type ApplicationArgs struct {
 	BlueGreenConfirm pulumi.BoolPtrInput
 	ClusterName      pulumi.StringInput
 	Description      pulumi.StringPtrInput
-	Environment      pulumi.MapInput
+	Environment      pulumi.StringMapInput
 	LatestImage      pulumi.BoolPtrInput
 	Name             pulumi.StringPtrInput
 	Template         pulumi.StringInput
@@ -227,8 +227,8 @@ func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationOutput) Environment() pulumi.MapOutput {
-	return o.ApplyT(func(v *Application) pulumi.MapOutput { return v.Environment }).(pulumi.MapOutput)
+func (o ApplicationOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringMapOutput { return v.Environment }).(pulumi.StringMapOutput)
 }
 
 func (o ApplicationOutput) LatestImage() pulumi.BoolPtrOutput {

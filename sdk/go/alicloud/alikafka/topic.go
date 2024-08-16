@@ -131,7 +131,7 @@ type Topic struct {
 	// This attribute is a concise description of topic. The length cannot exceed 64.
 	Remark pulumi.StringOutput `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
@@ -186,7 +186,7 @@ type topicState struct {
 	// This attribute is a concise description of topic. The length cannot exceed 64.
 	Remark *string `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic *string `pulumi:"topic"`
 }
@@ -203,7 +203,7 @@ type TopicState struct {
 	// This attribute is a concise description of topic. The length cannot exceed 64.
 	Remark pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringPtrInput
 }
@@ -224,7 +224,7 @@ type topicArgs struct {
 	// This attribute is a concise description of topic. The length cannot exceed 64.
 	Remark string `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic string `pulumi:"topic"`
 }
@@ -242,7 +242,7 @@ type TopicArgs struct {
 	// This attribute is a concise description of topic. The length cannot exceed 64.
 	Remark pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
 	Topic pulumi.StringInput
 }
@@ -360,8 +360,8 @@ func (o TopicOutput) Remark() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TopicOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.

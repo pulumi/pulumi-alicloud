@@ -46,9 +46,9 @@ import (
 //			_, err = log.NewProject(ctx, "example", &log.ProjectArgs{
 //				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -157,7 +157,7 @@ type Project struct {
 	// Tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -213,7 +213,7 @@ type projectState struct {
 	// Tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ProjectState struct {
@@ -240,7 +240,7 @@ type ProjectState struct {
 	// Tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -267,7 +267,7 @@ type projectArgs struct {
 	// Tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -291,7 +291,7 @@ type ProjectArgs struct {
 	// Tag.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -425,8 +425,8 @@ func (o ProjectOutput) Status() pulumi.StringOutput {
 // Tag.
 //
 // The following arguments will be discarded. Please use new fields as soon as possible:
-func (o ProjectOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ProjectOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

@@ -80,7 +80,7 @@ class GetBastionHostInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -102,7 +102,7 @@ class AwaitableGetBastionHostInstancesResult(GetBastionHostInstancesResult):
 def get_bastion_host_instances(description_regex: Optional[str] = None,
                                ids: Optional[Sequence[str]] = None,
                                output_file: Optional[str] = None,
-                               tags: Optional[Mapping[str, Any]] = None,
+                               tags: Optional[Mapping[str, str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBastionHostInstancesResult:
     """
     Use this data source to access information about an existing resource.
@@ -129,7 +129,7 @@ def get_bastion_host_instances(description_regex: Optional[str] = None,
 def get_bastion_host_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBastionHostInstancesResult]:
     """
     Use this data source to access information about an existing resource.

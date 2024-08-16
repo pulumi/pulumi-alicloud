@@ -90,7 +90,7 @@ type GetTopicsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getTopics.
@@ -105,7 +105,7 @@ type GetTopicsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A list of topics. Each element contains the following attributes:
 	Topics []GetTopicsTopic `pulumi:"topics"`
 }
@@ -135,7 +135,7 @@ type GetTopicsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetTopicsOutputArgs) ElementType() reflect.Type {
@@ -188,8 +188,8 @@ func (o GetTopicsResultOutput) OutputFile() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the Ons instance.
-func (o GetTopicsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTopicsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTopicsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTopicsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A list of topics. Each element contains the following attributes:

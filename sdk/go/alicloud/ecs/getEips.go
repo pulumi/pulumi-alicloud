@@ -79,7 +79,7 @@ type GetEipsArgs struct {
 	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEips.
@@ -114,8 +114,8 @@ type GetEipsResult struct {
 	ResourceGroupId   *string `pulumi:"resourceGroupId"`
 	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
 	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 func GetEipsOutput(ctx *pulumi.Context, args GetEipsOutputArgs, opts ...pulumi.InvokeOption) GetEipsResultOutput {
@@ -159,7 +159,7 @@ type GetEipsOutputArgs struct {
 	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEipsOutputArgs) ElementType() reflect.Type {
@@ -275,8 +275,8 @@ func (o GetEipsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEipsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEipsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEipsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEipsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

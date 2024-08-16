@@ -140,7 +140,7 @@ export class CapacityReservation extends pulumi.CustomResource {
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * This parameter is under test and is not yet open for use.
      */
@@ -277,7 +277,7 @@ export interface CapacityReservationState {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This parameter is under test and is not yet open for use.
      */
@@ -335,7 +335,7 @@ export interface CapacityReservationArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */

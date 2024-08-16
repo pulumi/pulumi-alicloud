@@ -73,7 +73,7 @@ type GetSecretsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecrets.
@@ -92,7 +92,7 @@ type GetSecretsResult struct {
 	// A list of KMS Secrets. Each element contains the following attributes:
 	Secrets []GetSecretsSecret `pulumi:"secrets"`
 	// (Optional) A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetSecretsOutput(ctx *pulumi.Context, args GetSecretsOutputArgs, opts ...pulumi.InvokeOption) GetSecretsResultOutput {
@@ -124,7 +124,7 @@ type GetSecretsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSecretsOutputArgs) ElementType() reflect.Type {
@@ -187,8 +187,8 @@ func (o GetSecretsResultOutput) Secrets() GetSecretsSecretArrayOutput {
 }
 
 // (Optional) A mapping of tags to assign to the resource.
-func (o GetSecretsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecretsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

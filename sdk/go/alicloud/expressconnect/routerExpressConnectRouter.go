@@ -38,7 +38,7 @@ type RouterExpressConnectRouter struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewRouterExpressConnectRouter registers a new resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ type routerExpressConnectRouterState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type RouterExpressConnectRouterState struct {
@@ -110,7 +110,7 @@ type RouterExpressConnectRouterState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (RouterExpressConnectRouterState) ElementType() reflect.Type {
@@ -130,7 +130,7 @@ type routerExpressConnectRouterArgs struct {
 	// - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RouterExpressConnectRouter resource.
@@ -147,7 +147,7 @@ type RouterExpressConnectRouterArgs struct {
 	// - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (RouterExpressConnectRouterArgs) ElementType() reflect.Type {
@@ -274,8 +274,8 @@ func (o RouterExpressConnectRouterOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o RouterExpressConnectRouterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *RouterExpressConnectRouter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o RouterExpressConnectRouterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RouterExpressConnectRouter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type RouterExpressConnectRouterArrayOutput struct{ *pulumi.OutputState }

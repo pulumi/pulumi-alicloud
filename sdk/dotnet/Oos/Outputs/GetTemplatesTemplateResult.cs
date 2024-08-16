@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The format of the template. Valid values: `JSON`, `YAML`.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
 
             string shareType,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string templateFormat,
 

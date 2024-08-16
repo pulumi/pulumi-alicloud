@@ -3621,7 +3621,7 @@ type GetAutoSnapshotPoliciesPolicy struct {
 	// The status of Auto Snapshot Policy.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which the snapshot is copied.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour.
@@ -3661,7 +3661,7 @@ type GetAutoSnapshotPoliciesPolicyArgs struct {
 	// The status of Auto Snapshot Policy.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The destination region to which the snapshot is copied.
 	TargetCopyRegions pulumi.StringArrayInput `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour.
@@ -3767,8 +3767,8 @@ func (o GetAutoSnapshotPoliciesPolicyOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetAutoSnapshotPoliciesPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAutoSnapshotPoliciesPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The destination region to which the snapshot is copied.
@@ -3838,7 +3838,7 @@ type GetCapacityReservationsReservation struct {
 	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot string `pulumi:"timeSlot"`
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -3888,7 +3888,7 @@ type GetCapacityReservationsReservationArgs struct {
 	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot pulumi.StringInput `pulumi:"timeSlot"`
 	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
@@ -4022,8 +4022,8 @@ func (o GetCapacityReservationsReservationOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetCapacityReservationsReservationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetCapacityReservationsReservation) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetCapacityReservationsReservationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // This parameter is under test and is not yet open for use.
@@ -4286,7 +4286,7 @@ type GetDedicatedHostsHost struct {
 	// The list of ECS instance
 	SupportedInstanceTypesLists []string `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the ECS Dedicated Host.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -4354,7 +4354,7 @@ type GetDedicatedHostsHostArgs struct {
 	// The list of ECS instance
 	SupportedInstanceTypesLists pulumi.StringArrayInput `pulumi:"supportedInstanceTypesLists"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The zone ID of the ECS Dedicated Host.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -4536,8 +4536,8 @@ func (o GetDedicatedHostsHostOutput) SupportedInstanceTypesLists() pulumi.String
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetDedicatedHostsHostOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDedicatedHostsHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone ID of the ECS Dedicated Host.
@@ -5112,7 +5112,7 @@ type GetDisksDisk struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   string `pulumi:"type"`
 	ZoneId string `pulumi:"zoneId"`
@@ -5207,7 +5207,7 @@ type GetDisksDiskArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   pulumi.StringInput `pulumi:"type"`
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -5455,8 +5455,8 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-func (o GetDisksDiskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDisksDiskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDisksDisk) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Disk type. Possible values: `system` and `data`.
@@ -5804,7 +5804,7 @@ type GetEcsDedicatedHostClustersCluster struct {
 	// The ID of the resource group to which the dedicated host cluster belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the dedicated host cluster.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -5836,7 +5836,7 @@ type GetEcsDedicatedHostClustersClusterArgs struct {
 	// The ID of the resource group to which the dedicated host cluster belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The zone ID of the dedicated host cluster.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -5930,8 +5930,8 @@ func (o GetEcsDedicatedHostClustersClusterOutput) ResourceGroupId() pulumi.Strin
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetEcsDedicatedHostClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsDedicatedHostClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone ID of the dedicated host cluster.
@@ -6464,7 +6464,7 @@ type GetEcsDisksDisk struct {
 	// Current status.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the disk.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Disk type.
 	Type string `pulumi:"type"`
 	// The zone id.
@@ -6553,7 +6553,7 @@ type GetEcsDisksDiskArgs struct {
 	// Current status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the disk.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Disk type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The zone id.
@@ -6792,8 +6792,8 @@ func (o GetEcsDisksDiskOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the disk.
-func (o GetEcsDisksDiskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsDisksDiskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsDisksDisk) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Disk type.
@@ -7151,7 +7151,7 @@ type GetEcsImageComponentsComponent struct {
 	// The operating system type supported by the image component.
 	SystemType string `pulumi:"systemType"`
 	// List of label key-value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEcsImageComponentsComponentInput is an input type that accepts GetEcsImageComponentsComponentArgs and GetEcsImageComponentsComponentOutput values.
@@ -7187,7 +7187,7 @@ type GetEcsImageComponentsComponentArgs struct {
 	// The operating system type supported by the image component.
 	SystemType pulumi.StringInput `pulumi:"systemType"`
 	// List of label key-value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsImageComponentsComponentArgs) ElementType() reflect.Type {
@@ -7292,8 +7292,8 @@ func (o GetEcsImageComponentsComponentOutput) SystemType() pulumi.StringOutput {
 }
 
 // List of label key-value pairs.
-func (o GetEcsImageComponentsComponentOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsImageComponentsComponent) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsImageComponentsComponentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEcsImageComponentsComponentArrayOutput struct{ *pulumi.OutputState }
@@ -7348,7 +7348,7 @@ type GetEcsImagePipelinePipeline struct {
 	// The system disk size of the intermediate instance. Unit: `GiB`.
 	SystemDiskSize int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The IDs of regions to which to distribute the created image.
 	ToRegionIds []string `pulumi:"toRegionIds"`
 	// The vswitch id.
@@ -7398,7 +7398,7 @@ type GetEcsImagePipelinePipelineArgs struct {
 	// The system disk size of the intermediate instance. Unit: `GiB`.
 	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The IDs of regions to which to distribute the created image.
 	ToRegionIds pulumi.StringArrayInput `pulumi:"toRegionIds"`
 	// The vswitch id.
@@ -7532,8 +7532,8 @@ func (o GetEcsImagePipelinePipelineOutput) SystemDiskSize() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetEcsImagePipelinePipelineOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsImagePipelinePipeline) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsImagePipelinePipelineOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The IDs of regions to which to distribute the created image.
@@ -8027,7 +8027,7 @@ type GetEcsKeyPairsKeyPair struct {
 	// The resource group Id.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEcsKeyPairsKeyPairInput is an input type that accepts GetEcsKeyPairsKeyPairArgs and GetEcsKeyPairsKeyPairOutput values.
@@ -8054,7 +8054,7 @@ type GetEcsKeyPairsKeyPairArgs struct {
 	// The resource group Id.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The tags.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsKeyPairsKeyPairArgs) ElementType() reflect.Type {
@@ -8138,8 +8138,8 @@ func (o GetEcsKeyPairsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The tags.
-func (o GetEcsKeyPairsKeyPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsKeyPairsKeyPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsKeyPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEcsKeyPairsKeyPairArrayOutput struct{ *pulumi.OutputState }
@@ -8356,7 +8356,7 @@ type GetEcsKeyPairsPair struct {
 	// The Resource Group Id.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEcsKeyPairsPairInput is an input type that accepts GetEcsKeyPairsPairArgs and GetEcsKeyPairsPairOutput values.
@@ -8383,7 +8383,7 @@ type GetEcsKeyPairsPairArgs struct {
 	// The Resource Group Id.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The tags.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsKeyPairsPairArgs) ElementType() reflect.Type {
@@ -8467,8 +8467,8 @@ func (o GetEcsKeyPairsPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The tags.
-func (o GetEcsKeyPairsPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsKeyPairsPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsKeyPairsPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEcsKeyPairsPairArrayOutput struct{ *pulumi.OutputState }
@@ -8748,7 +8748,7 @@ type GetEcsLaunchTemplatesTemplate struct {
 	// The System Disk.
 	SystemDisks []GetEcsLaunchTemplatesTemplateSystemDisk `pulumi:"systemDisks"`
 	// The template tags.
-	TemplateTags map[string]interface{} `pulumi:"templateTags"`
+	TemplateTags map[string]string `pulumi:"templateTags"`
 	// The User Data.
 	UserData string `pulumi:"userData"`
 	// The Version Description.
@@ -8848,7 +8848,7 @@ type GetEcsLaunchTemplatesTemplateArgs struct {
 	// The System Disk.
 	SystemDisks GetEcsLaunchTemplatesTemplateSystemDiskArrayInput `pulumi:"systemDisks"`
 	// The template tags.
-	TemplateTags pulumi.MapInput `pulumi:"templateTags"`
+	TemplateTags pulumi.StringMapInput `pulumi:"templateTags"`
 	// The User Data.
 	UserData pulumi.StringInput `pulumi:"userData"`
 	// The Version Description.
@@ -9100,8 +9100,8 @@ func (o GetEcsLaunchTemplatesTemplateOutput) SystemDisks() GetEcsLaunchTemplates
 }
 
 // The template tags.
-func (o GetEcsLaunchTemplatesTemplateOutput) TemplateTags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) map[string]interface{} { return v.TemplateTags }).(pulumi.MapOutput)
+func (o GetEcsLaunchTemplatesTemplateOutput) TemplateTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
 // The User Data.
@@ -9792,7 +9792,7 @@ type GetEcsNetworkInterfacesInterface struct {
 	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to ENIs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type string `pulumi:"type"`
 	// The vpc id.
@@ -9862,7 +9862,7 @@ type GetEcsNetworkInterfacesInterfaceArgs struct {
 	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to ENIs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The vpc id.
@@ -10042,8 +10042,8 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to ENIs.
-func (o GetEcsNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsNetworkInterfacesInterfaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of ENI. Valid Values: `Primary`, `Secondary`.
@@ -10468,7 +10468,7 @@ type GetEcsSnapshotGroupsGroup struct {
 	// The status of the resource.
 	Status string `pulumi:"status"`
 	// List of label key-value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEcsSnapshotGroupsGroupInput is an input type that accepts GetEcsSnapshotGroupsGroupArgs and GetEcsSnapshotGroupsGroupOutput values.
@@ -10498,7 +10498,7 @@ type GetEcsSnapshotGroupsGroupArgs struct {
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// List of label key-value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsSnapshotGroupsGroupArgs) ElementType() reflect.Type {
@@ -10588,8 +10588,8 @@ func (o GetEcsSnapshotGroupsGroupOutput) Status() pulumi.StringOutput {
 }
 
 // List of label key-value pairs.
-func (o GetEcsSnapshotGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsSnapshotGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEcsSnapshotGroupsGroupArrayOutput struct{ *pulumi.OutputState }
@@ -10657,8 +10657,8 @@ type GetEcsSnapshotsSnapshot struct {
 	// The status of the snapshot.
 	Status string `pulumi:"status"`
 	// The tags.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type string                 `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type string            `pulumi:"type"`
 	// A resource type that has a reference relationship.
 	Usage string `pulumi:"usage"`
 }
@@ -10719,8 +10719,8 @@ type GetEcsSnapshotsSnapshotArgs struct {
 	// The status of the snapshot.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tags.
-	Tags pulumi.MapInput    `pulumi:"tags"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Type pulumi.StringInput    `pulumi:"type"`
 	// A resource type that has a reference relationship.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
@@ -10889,8 +10889,8 @@ func (o GetEcsSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 }
 
 // The tags.
-func (o GetEcsSnapshotsSnapshotOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsSnapshotsSnapshotOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotsSnapshot) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetEcsSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
@@ -11162,7 +11162,7 @@ type GetEipAddressesAddress struct {
 	// The status of the EIP.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEipAddressesAddressInput is an input type that accepts GetEipAddressesAddressArgs and GetEipAddressesAddressOutput values.
@@ -11238,7 +11238,7 @@ type GetEipAddressesAddressArgs struct {
 	// The status of the EIP.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEipAddressesAddressArgs) ElementType() reflect.Type {
@@ -11443,8 +11443,8 @@ func (o GetEipAddressesAddressOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetEipAddressesAddressOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEipAddressesAddress) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEipAddressesAddressOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEipAddressesAddress) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEipAddressesAddressArrayOutput struct{ *pulumi.OutputState }
@@ -11674,7 +11674,7 @@ type GetEipsAddress struct {
 	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetEipsAddressInput is an input type that accepts GetEipsAddressArgs and GetEipsAddressOutput values.
@@ -11729,7 +11729,7 @@ type GetEipsAddressArgs struct {
 	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEipsAddressArgs) ElementType() reflect.Type {
@@ -11913,8 +11913,8 @@ func (o GetEipsAddressOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetEipsAddressOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEipsAddress) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEipsAddressOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEipsAddress) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetEipsAddressArrayOutput struct{ *pulumi.OutputState }
@@ -12134,7 +12134,7 @@ type GetElasticityAssurancesAssurance struct {
 	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status string `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The total number of flexible guarantee services.
 	TotalAssuranceTimes string `pulumi:"totalAssuranceTimes"`
 	// This parameter is not yet available.
@@ -12180,7 +12180,7 @@ type GetElasticityAssurancesAssuranceArgs struct {
 	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The total number of flexible guarantee services.
 	TotalAssuranceTimes pulumi.StringInput `pulumi:"totalAssuranceTimes"`
 	// This parameter is not yet available.
@@ -12306,8 +12306,8 @@ func (o GetElasticityAssurancesAssuranceOutput) Status() pulumi.StringOutput {
 }
 
 // The tag key-value pair information bound by the elastic guarantee service.
-func (o GetElasticityAssurancesAssuranceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetElasticityAssurancesAssurance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetElasticityAssurancesAssuranceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The total number of flexible guarantee services.
@@ -12635,7 +12635,7 @@ type GetImagesImage struct {
 	// * `Deprecated`: The image is discontinued.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
 	Usage string `pulumi:"usage"`
 }
@@ -12698,7 +12698,7 @@ type GetImagesImageArgs struct {
 	// * `Deprecated`: The image is discontinued.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
@@ -12866,8 +12866,8 @@ func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetImagesImageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetImagesImage) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetImagesImageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesImage) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Specifies whether to check the validity of the request without actually making the request. Valid values:
@@ -13579,7 +13579,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the instances.
@@ -13664,7 +13664,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the instances.
@@ -13854,8 +13854,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC linked to the instances.
@@ -14043,7 +14043,7 @@ type GetKeyPairsKeyPair struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetKeyPairsKeyPairInput is an input type that accepts GetKeyPairsKeyPairArgs and GetKeyPairsKeyPairOutput values.
@@ -14070,7 +14070,7 @@ type GetKeyPairsKeyPairArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetKeyPairsKeyPairArgs) ElementType() reflect.Type {
@@ -14154,8 +14154,8 @@ func (o GetKeyPairsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetKeyPairsKeyPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetKeyPairsKeyPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetKeyPairsKeyPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKeyPairsKeyPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetKeyPairsKeyPairArrayOutput struct{ *pulumi.OutputState }
@@ -14372,7 +14372,7 @@ type GetKeyPairsPair struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetKeyPairsPairInput is an input type that accepts GetKeyPairsPairArgs and GetKeyPairsPairOutput values.
@@ -14399,7 +14399,7 @@ type GetKeyPairsPairArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetKeyPairsPairArgs) ElementType() reflect.Type {
@@ -14483,8 +14483,8 @@ func (o GetKeyPairsPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetKeyPairsPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetKeyPairsPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetKeyPairsPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKeyPairsPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetKeyPairsPairArrayOutput struct{ *pulumi.OutputState }
@@ -14724,8 +14724,8 @@ type GetNetworkInterfacesInterface struct {
 	// Current status of the ENI.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type string                 `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type string            `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId string `pulumi:"vpcId"`
 	// ID of the vSwitch that the ENI is linked to.
@@ -14781,8 +14781,8 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	// Current status of the ENI.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags pulumi.MapInput    `pulumi:"tags"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Type pulumi.StringInput    `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// ID of the vSwitch that the ENI is linked to.
@@ -14948,8 +14948,8 @@ func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ENI.
-func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
@@ -15329,7 +15329,7 @@ type GetSecurityGroupsGroup struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -15384,7 +15384,7 @@ type GetSecurityGroupsGroupArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
@@ -15502,8 +15502,8 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 //	}
 //
 // ```
-func (o GetSecurityGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecurityGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecurityGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Used to retrieve security groups that belong to the specified VPC ID.
@@ -15569,8 +15569,8 @@ type GetSnapshotsSnapshot struct {
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type string                 `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type string            `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage string `pulumi:"usage"`
 }
@@ -15624,8 +15624,8 @@ type GetSnapshotsSnapshotArgs struct {
 	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the snapshot.
-	Tags pulumi.MapInput    `pulumi:"tags"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Type pulumi.StringInput    `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
@@ -15787,8 +15787,8 @@ func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the snapshot.
-func (o GetSnapshotsSnapshotOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSnapshotsSnapshotOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetSnapshotsSnapshotOutput) Type() pulumi.StringOutput {

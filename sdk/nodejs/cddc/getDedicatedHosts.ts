@@ -122,7 +122,7 @@ export interface GetDedicatedHostsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the zone.
      */
@@ -146,7 +146,7 @@ export interface GetDedicatedHostsResult {
     readonly orderId?: string;
     readonly outputFile?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly zoneId?: string;
 }
 /**
@@ -252,7 +252,7 @@ export interface GetDedicatedHostsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone.
      */

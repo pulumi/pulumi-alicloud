@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.bastionhost.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +98,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="tags")
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     /**
      * @return A map of tags assigned to the bastionhost instance. It must be in the format:
@@ -137,7 +136,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Optional<Map<String,Object>> tags() {
+    public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -249,7 +248,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;
         }

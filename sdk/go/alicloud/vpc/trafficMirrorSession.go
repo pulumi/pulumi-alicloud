@@ -190,7 +190,7 @@ type TrafficMirrorSession struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of this resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the filter.
 	TrafficMirrorFilterId pulumi.StringOutput `pulumi:"trafficMirrorFilterId"`
 	// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -267,7 +267,7 @@ type trafficMirrorSessionState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the filter.
 	TrafficMirrorFilterId *string `pulumi:"trafficMirrorFilterId"`
 	// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -300,7 +300,7 @@ type TrafficMirrorSessionState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the filter.
 	TrafficMirrorFilterId pulumi.StringPtrInput
 	// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -335,7 +335,7 @@ type trafficMirrorSessionArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the filter.
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 	// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -367,7 +367,7 @@ type TrafficMirrorSessionArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the filter.
 	TrafficMirrorFilterId pulumi.StringInput
 	// The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
@@ -504,8 +504,8 @@ func (o TrafficMirrorSessionOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of this resource.
-func (o TrafficMirrorSessionOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TrafficMirrorSessionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrafficMirrorSession) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the filter.

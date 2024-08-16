@@ -1998,7 +1998,7 @@ type GetAlidnsDomainsDomain struct {
 	// Whether to allow auxiliary dns.
 	SlaveDns bool `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode string `pulumi:"versionCode"`
 	VersionName string `pulumi:"versionName"`
@@ -2056,7 +2056,7 @@ type GetAlidnsDomainsDomainArgs struct {
 	// Whether to allow auxiliary dns.
 	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
 	VersionName pulumi.StringInput `pulumi:"versionName"`
@@ -2213,8 +2213,8 @@ func (o GetAlidnsDomainsDomainOutput) SlaveDns() pulumi.BoolOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetAlidnsDomainsDomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAlidnsDomainsDomain) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAlidnsDomainsDomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlidnsDomainsDomain) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Cloud analysis version code.
@@ -3261,7 +3261,7 @@ type GetDomainsDomain struct {
 	// Whether to allow auxiliary dns.
 	SlaveDns bool `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode string `pulumi:"versionCode"`
 	VersionName string `pulumi:"versionName"`
@@ -3317,7 +3317,7 @@ type GetDomainsDomainArgs struct {
 	// Whether to allow auxiliary dns.
 	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
 	VersionName pulumi.StringInput `pulumi:"versionName"`
@@ -3472,8 +3472,8 @@ func (o GetDomainsDomainOutput) SlaveDns() pulumi.BoolOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetDomainsDomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDomainsDomain) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDomainsDomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDomainsDomain) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Cloud analysis version code.

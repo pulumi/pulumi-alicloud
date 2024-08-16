@@ -17,7 +17,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -1041,14 +1040,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Output<Map<String,Object>> tags() {
+    public Output<Map<String,String>> tags() {
         return this.tags;
     }
     /**

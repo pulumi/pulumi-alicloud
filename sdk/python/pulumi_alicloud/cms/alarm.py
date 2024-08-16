@@ -20,7 +20,7 @@ class AlarmArgs:
                  metric: pulumi.Input[str],
                  project: pulumi.Input[str],
                  composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
@@ -33,7 +33,7 @@ class AlarmArgs:
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
@@ -43,7 +43,7 @@ class AlarmArgs:
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
         :param pulumi.Input['AlarmCompositeExpressionArgs'] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
@@ -56,7 +56,7 @@ class AlarmArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
@@ -159,14 +159,14 @@ class AlarmArgs:
     @property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -317,14 +317,14 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -357,7 +357,7 @@ class _AlarmState:
     def __init__(__self__, *,
                  composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
@@ -373,14 +373,14 @@ class _AlarmState:
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
         :param pulumi.Input['AlarmCompositeExpressionArgs'] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
@@ -397,7 +397,7 @@ class _AlarmState:
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[str] status: The status of the Alarm.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
@@ -480,14 +480,14 @@ class _AlarmState:
     @property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -675,14 +675,14 @@ class _AlarmState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -717,7 +717,7 @@ class Alarm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
@@ -732,7 +732,7 @@ class Alarm(pulumi.CustomResource):
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -814,7 +814,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
@@ -830,7 +830,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
@@ -931,7 +931,7 @@ class Alarm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
                  contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
@@ -946,7 +946,7 @@ class Alarm(pulumi.CustomResource):
                  prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -997,7 +997,7 @@ class Alarm(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_interval: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
@@ -1013,7 +1013,7 @@ class Alarm(pulumi.CustomResource):
             silence_time: Optional[pulumi.Input[int]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
             webhook: Optional[pulumi.Input[str]] = None) -> 'Alarm':
         """
@@ -1025,7 +1025,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']] composite_expression: The trigger conditions for multiple metrics. See `composite_expression` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
@@ -1042,7 +1042,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[str] status: The status of the Alarm.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
@@ -1092,7 +1092,7 @@ class Alarm(pulumi.CustomResource):
     @property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-    def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
+    def dimensions(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
@@ -1223,7 +1223,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

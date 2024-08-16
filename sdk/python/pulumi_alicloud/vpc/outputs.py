@@ -3080,7 +3080,7 @@ class GetNatGatewaysGatewayResult(dict):
                  spec: str,
                  specification: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -3104,7 +3104,7 @@ class GetNatGatewaysGatewayResult(dict):
         :param str spec: The specification of the NAT gateway.
         :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
         :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
-        :param Mapping[str, Any] tags: The tags of NAT gateway.
+        :param Mapping[str, str] tags: The tags of NAT gateway.
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the vSwitch to which the NAT gateway belongs.
         """
@@ -3294,7 +3294,7 @@ class GetNatGatewaysGatewayResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags of NAT gateway.
         """
@@ -3836,7 +3836,7 @@ class GetNetworksVpcResult(dict):
                  router_id: str,
                  secondary_cidr_blocks: Sequence[str],
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  user_cidrs: Sequence[str],
                  vpc_id: str,
                  vpc_name: str,
@@ -3855,7 +3855,7 @@ class GetNetworksVpcResult(dict):
         :param str router_id: The ID of the VRouter.
         :param Sequence[str] secondary_cidr_blocks: A list of secondary IPv4 CIDR blocks of the VPC.
         :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param Sequence[str] user_cidrs: A list of user CIDRs.
         :param str vpc_id: ID of the VPC.
         :param str vpc_name: The name of the VPC.
@@ -3979,7 +3979,7 @@ class GetNetworksVpcResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -4693,7 +4693,7 @@ class GetRouteTablesTableResult(dict):
                  router_id: str,
                  router_type: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_ids: Sequence[str]):
         """
@@ -4707,7 +4707,7 @@ class GetRouteTablesTableResult(dict):
         :param str router_id: The router ID.
         :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
         :param str status: The status of resource. Valid values: `Available` and `Pending`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: Vpc id of the route table.
         :param Sequence[str] vswitch_ids: A list of vswitch id.
         """
@@ -4807,7 +4807,7 @@ class GetRouteTablesTableResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -5358,7 +5358,7 @@ class GetSwitchesVswitchResult(dict):
                  resource_group_id: str,
                  route_table_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str,
                  vswitch_name: str,
@@ -5375,7 +5375,7 @@ class GetSwitchesVswitchResult(dict):
         :param str resource_group_id: The Id of resource group which VSWitch belongs.
         :param str route_table_id: The route table ID of the vSwitch.
         :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: ID of the VPC that owns the vSwitch.
         :param str vswitch_id: ID of the vSwitch.
         :param str vswitch_name: The name of the vSwitch.
@@ -5488,7 +5488,7 @@ class GetSwitchesVswitchResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

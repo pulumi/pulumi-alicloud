@@ -521,10 +521,10 @@ class ServiceNasConfigMountPointArgs:
 @pulumi.input_type
 class ServiceTracingConfigArgs:
     def __init__(__self__, *,
-                 params: pulumi.Input[Mapping[str, Any]],
+                 params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  type: pulumi.Input[str]):
         """
-        :param pulumi.Input[Mapping[str, Any]] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         :param pulumi.Input[str] type: Tracing protocol type. Currently, only Jaeger is supported.
         """
         pulumi.set(__self__, "params", params)
@@ -532,14 +532,14 @@ class ServiceTracingConfigArgs:
 
     @property
     @pulumi.getter
-    def params(self) -> pulumi.Input[Mapping[str, Any]]:
+    def params(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: pulumi.Input[Mapping[str, Any]]):
+    def params(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "params", value)
 
     @property

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEcsSnapshotGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,7 @@ public final class GetEcsSnapshotGroupsResult {
     private @Nullable String outputFile;
     private @Nullable String snapshotGroupName;
     private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetEcsSnapshotGroupsResult() {}
     public List<GetEcsSnapshotGroupsGroup> groups() {
@@ -63,7 +62,7 @@ public final class GetEcsSnapshotGroupsResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -85,7 +84,7 @@ public final class GetEcsSnapshotGroupsResult {
         private @Nullable String outputFile;
         private @Nullable String snapshotGroupName;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetEcsSnapshotGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -173,7 +172,7 @@ public final class GetEcsSnapshotGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

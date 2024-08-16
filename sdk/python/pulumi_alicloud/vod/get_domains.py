@@ -96,7 +96,7 @@ class GetDomainsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +122,7 @@ def get_domains(domain_search_type: Optional[str] = None,
                 name_regex: Optional[str] = None,
                 output_file: Optional[str] = None,
                 status: Optional[str] = None,
-                tags: Optional[Mapping[str, Any]] = None,
+                tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     This data source provides the Vod Domains of the current Alibaba Cloud user.
@@ -163,7 +163,7 @@ def get_domains(domain_search_type: Optional[str] = None,
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
            * `Key`: It can be up to 64 characters in length. It cannot be a null string.
            * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
@@ -195,7 +195,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
     This data source provides the Vod Domains of the current Alibaba Cloud user.
@@ -236,7 +236,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
            * `Key`: It can be up to 64 characters in length. It cannot be a null string.
            * `Value`: It can be up to 128 characters in length. It can be a null string.
     """

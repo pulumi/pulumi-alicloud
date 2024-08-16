@@ -190,7 +190,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
                  application_id: Optional[str] = None,
                  approve_value: Optional[float] = None,
                  audit_reason: Optional[str] = None,
-                 dimensions: Optional[Mapping[str, Any]] = None,
+                 dimensions: Optional[Mapping[str, str]] = None,
                  env_language: Optional[str] = None,
                  notice_type: Optional[int] = None,
                  period: Optional['outputs.TemplateApplicationsQuotaApplicationDetailPeriod'] = None,
@@ -205,7 +205,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
         :param str application_id: The ID of the quota promotion request.
         :param float approve_value: The approved quota value of the quota increase request.
         :param str audit_reason: Approval comments on quota increase applications.
-        :param Mapping[str, Any] dimensions: Quota dimension. See `dimensions` below.
+        :param Mapping[str, str] dimensions: Quota dimension. See `dimensions` below.
         :param str env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
@@ -288,7 +288,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[Mapping[str, Any]]:
+    def dimensions(self) -> Optional[Mapping[str, str]]:
         """
         Quota dimension. See `dimensions` below.
         """

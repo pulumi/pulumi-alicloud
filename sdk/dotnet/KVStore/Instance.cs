@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.KVStore
         /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
         /// Intranet connection address of the KVStore instance.
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.KVStore
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
@@ -410,7 +410,7 @@ namespace Pulumi.AliCloud.KVStore
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable TDE. Valid values: `Enabled`.
@@ -549,14 +549,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Capacity { get; set; }
 
         [Input("config")]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 
@@ -691,14 +691,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -879,14 +879,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? SslEnable { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -991,14 +991,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Capacity { get; set; }
 
         [Input("config")]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 
@@ -1151,14 +1151,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1351,14 +1351,14 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

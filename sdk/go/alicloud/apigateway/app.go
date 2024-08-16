@@ -55,7 +55,7 @@ type App struct {
 	// The name of the app.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -93,7 +93,7 @@ type appState struct {
 	// The name of the app.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type AppState struct {
@@ -102,7 +102,7 @@ type AppState struct {
 	// The name of the app.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -115,7 +115,7 @@ type appArgs struct {
 	// The name of the app.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -125,7 +125,7 @@ type AppArgs struct {
 	// The name of the app.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AppArgs) ElementType() reflect.Type {
@@ -226,8 +226,8 @@ func (o AppOutput) Name() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o AppOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AppOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

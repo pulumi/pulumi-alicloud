@@ -95,9 +95,9 @@ import (
 //					pulumi.String("PrivateZone"),
 //				},
 //				LoggingType: pulumi.String("SLS"),
-//				Tags: pulumi.Map{
-//					"k-aa": pulumi.Any("v-aa"),
-//					"k-bb": pulumi.Any("v-aa"),
+//				Tags: pulumi.StringMap{
+//					"k-aa": pulumi.String("v-aa"),
+//					"k-bb": pulumi.String("v-aa"),
 //				},
 //				Addons: cs.ServerlessKubernetesAddonArray{
 //					&cs.ServerlessKubernetesAddonArgs{
@@ -187,7 +187,7 @@ type ServerlessKubernetes struct {
 	// If you use an existing SLS project, you must specify `slsProjectName`.
 	SlsProjectName pulumi.StringOutput `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -294,7 +294,7 @@ type serverlessKubernetesState struct {
 	// If you use an existing SLS project, you must specify `slsProjectName`.
 	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -369,7 +369,7 @@ type ServerlessKubernetesState struct {
 	// If you use an existing SLS project, you must specify `slsProjectName`.
 	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The time zone of the cluster.
 	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -448,7 +448,7 @@ type serverlessKubernetesArgs struct {
 	// If you use an existing SLS project, you must specify `slsProjectName`.
 	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -524,7 +524,7 @@ type ServerlessKubernetesArgs struct {
 	// If you use an existing SLS project, you must specify `slsProjectName`.
 	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The time zone of the cluster.
 	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
@@ -757,8 +757,8 @@ func (o ServerlessKubernetesOutput) SlsProjectName() pulumi.StringOutput {
 }
 
 // Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-func (o ServerlessKubernetesOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerlessKubernetesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The time zone of the cluster.

@@ -22,7 +22,7 @@ class VpcEndpointServiceArgs:
                  service_description: Optional[pulumi.Input[str]] = None,
                  service_resource_type: Optional[pulumi.Input[str]] = None,
                  service_support_ipv6: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointService resource.
@@ -45,7 +45,7 @@ class VpcEndpointServiceArgs:
         :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
                - **true**
                - **false (default)**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
                - **true**
                - **false (default)**.
@@ -180,14 +180,14 @@ class VpcEndpointServiceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -220,7 +220,7 @@ class _VpcEndpointServiceState:
                  service_resource_type: Optional[pulumi.Input[str]] = None,
                  service_support_ipv6: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_endpoint_service_name: Optional[pulumi.Input[str]] = None,
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -248,7 +248,7 @@ class _VpcEndpointServiceState:
                - **true**
                - **false (default)**.
         :param pulumi.Input[str] status: The state of the endpoint service.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_service_name: The name of the endpoint service.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
                - **true**
@@ -442,14 +442,14 @@ class _VpcEndpointServiceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -492,7 +492,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  service_description: Optional[pulumi.Input[str]] = None,
                  service_resource_type: Optional[pulumi.Input[str]] = None,
                  service_support_ipv6: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -549,7 +549,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
                - **true**
                - **false (default)**.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
                - **true**
                - **false (default)**.
@@ -616,7 +616,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  service_description: Optional[pulumi.Input[str]] = None,
                  service_resource_type: Optional[pulumi.Input[str]] = None,
                  service_support_ipv6: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_affinity_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -664,7 +664,7 @@ class VpcEndpointService(pulumi.CustomResource):
             service_resource_type: Optional[pulumi.Input[str]] = None,
             service_support_ipv6: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_endpoint_service_name: Optional[pulumi.Input[str]] = None,
             zone_affinity_enabled: Optional[pulumi.Input[bool]] = None) -> 'VpcEndpointService':
         """
@@ -697,7 +697,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - **true**
                - **false (default)**.
         :param pulumi.Input[str] status: The state of the endpoint service.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_endpoint_service_name: The name of the endpoint service.
         :param pulumi.Input[bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
                - **true**
@@ -833,7 +833,7 @@ class VpcEndpointService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of tags.
         """

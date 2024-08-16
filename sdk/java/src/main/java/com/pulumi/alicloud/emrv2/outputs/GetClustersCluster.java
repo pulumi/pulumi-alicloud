@@ -6,7 +6,6 @@ package com.pulumi.alicloud.emrv2.outputs;
 import com.pulumi.alicloud.emrv2.outputs.GetClustersClusterTag;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +77,7 @@ public final class GetClustersCluster {
      * @return The cluster state change reason.
      * 
      */
-    private Map<String,Object> stateChangeReason;
+    private Map<String,String> stateChangeReason;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
@@ -174,7 +173,7 @@ public final class GetClustersCluster {
      * @return The cluster state change reason.
      * 
      */
-    public Map<String,Object> stateChangeReason() {
+    public Map<String,String> stateChangeReason() {
         return this.stateChangeReason;
     }
     /**
@@ -206,7 +205,7 @@ public final class GetClustersCluster {
         private String readyTime;
         private String releaseVersion;
         private String resourceGroupId;
-        private Map<String,Object> stateChangeReason;
+        private Map<String,String> stateChangeReason;
         private List<GetClustersClusterTag> tags;
         public Builder() {}
         public Builder(GetClustersCluster defaults) {
@@ -324,7 +323,7 @@ public final class GetClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder stateChangeReason(Map<String,Object> stateChangeReason) {
+        public Builder stateChangeReason(Map<String,String> stateChangeReason) {
             if (stateChangeReason == null) {
               throw new MissingRequiredPropertyException("GetClustersCluster", "stateChangeReason");
             }

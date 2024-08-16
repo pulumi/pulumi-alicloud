@@ -5,7 +5,6 @@ package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public final class AlarmPrometheus {
      * @return The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
      * 
@@ -40,7 +39,7 @@ public final class AlarmPrometheus {
      * @return The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
      * 
      */
-    public Map<String,Object> annotations() {
+    public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
@@ -74,7 +73,7 @@ public final class AlarmPrometheus {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> annotations;
+        private @Nullable Map<String,String> annotations;
         private @Nullable String level;
         private @Nullable String promQl;
         private @Nullable Integer times;
@@ -88,7 +87,7 @@ public final class AlarmPrometheus {
         }
 
         @CustomType.Setter
-        public Builder annotations(@Nullable Map<String,Object> annotations) {
+        public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
             return this;

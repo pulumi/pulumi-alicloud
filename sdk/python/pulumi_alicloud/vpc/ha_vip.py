@@ -20,7 +20,7 @@ class HAVipArgs:
                  havip_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a HAVip resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
@@ -29,7 +29,7 @@ class HAVipArgs:
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
@@ -123,14 +123,14 @@ class HAVipArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -149,7 +149,7 @@ class _HAVipState:
                  master_instance_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -168,7 +168,7 @@ class _HAVipState:
         :param pulumi.Input[str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the HaVip instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
@@ -355,14 +355,14 @@ class _HAVipState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -400,7 +400,7 @@ class HAVip(pulumi.CustomResource):
                  havip_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -445,7 +445,7 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.Input[str] havip_name: The name of the HaVip instance.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
         ...
@@ -509,7 +509,7 @@ class HAVip(pulumi.CustomResource):
                  havip_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -559,7 +559,7 @@ class HAVip(pulumi.CustomResource):
             master_instance_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'HAVip':
         """
@@ -583,7 +583,7 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.Input[str] master_instance_id: The ID of the active instance that is associated with the HAVIP.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[str] status: (Available in v1.120.0+) The status of the HaVip instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the HAVIP belongs.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of the HaVip, the field can't be changed.
         """
@@ -709,7 +709,7 @@ class HAVip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of tags.
         """

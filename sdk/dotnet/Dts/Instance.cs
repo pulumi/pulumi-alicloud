@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Dts
         /// The tag value corresponding to the tag key.See the following `Block Tags`.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The instance type. Valid values:
@@ -490,14 +490,14 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SynchronizationDirection { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The tag value corresponding to the tag key.See the following `Block Tags`.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -719,14 +719,14 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SynchronizationDirection { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The tag value corresponding to the tag key.See the following `Block Tags`.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

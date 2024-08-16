@@ -51,7 +51,7 @@ class EciScalingConfigurationArgs:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
@@ -101,7 +101,7 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
                , `SpotWithPriceLimit`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
@@ -617,7 +617,7 @@ class EciScalingConfigurationArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
@@ -628,7 +628,7 @@ class EciScalingConfigurationArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -694,7 +694,7 @@ class _EciScalingConfigurationState:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
@@ -744,7 +744,7 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
                , `SpotWithPriceLimit`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
@@ -1261,7 +1261,7 @@ class _EciScalingConfigurationState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
@@ -1272,7 +1272,7 @@ class _EciScalingConfigurationState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1340,7 +1340,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None,
                  __props__=None):
@@ -1460,7 +1460,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
                , `SpotWithPriceLimit`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
@@ -1593,7 +1593,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None,
                  __props__=None):
@@ -1690,7 +1690,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             security_group_id: Optional[pulumi.Input[str]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None) -> 'EciScalingConfiguration':
         """
@@ -1745,7 +1745,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
                , `SpotWithPriceLimit`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
@@ -2089,7 +2089,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot

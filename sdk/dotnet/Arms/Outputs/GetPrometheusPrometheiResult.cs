@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the VPC.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             string subClustersJson,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

@@ -695,7 +695,7 @@ type GetInstancesInstance struct {
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType string `pulumi:"chargeType"`
 	// The parameter configuration of the instance.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain string `pulumi:"connectionDomain"`
 	// The connection mode of the instance.
@@ -765,7 +765,7 @@ type GetInstancesInstance struct {
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status string `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The username of the instance.
 	UserName    string `pulumi:"userName"`
 	VpcAuthMode string `pulumi:"vpcAuthMode"`
@@ -804,7 +804,7 @@ type GetInstancesInstanceArgs struct {
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// The parameter configuration of the instance.
-	Config pulumi.MapInput `pulumi:"config"`
+	Config pulumi.StringMapInput `pulumi:"config"`
 	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain pulumi.StringInput `pulumi:"connectionDomain"`
 	// The connection mode of the instance.
@@ -874,7 +874,7 @@ type GetInstancesInstanceArgs struct {
 	// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The username of the instance.
 	UserName    pulumi.StringInput `pulumi:"userName"`
 	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
@@ -973,8 +973,8 @@ func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 }
 
 // The parameter configuration of the instance.
-func (o GetInstancesInstanceOutput) Config() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Config }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Config }).(pulumi.StringMapOutput)
 }
 
 // Instance connection domain (only Intranet access supported).
@@ -1160,8 +1160,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The username of the instance.

@@ -973,14 +973,14 @@ class SyntheticTaskMonitorConfApiHttp(dict):
                  connect_timeout: Optional[int] = None,
                  method: Optional[str] = None,
                  request_body: Optional['outputs.SyntheticTaskMonitorConfApiHttpRequestBody'] = None,
-                 request_headers: Optional[Mapping[str, Any]] = None,
+                 request_headers: Optional[Mapping[str, str]] = None,
                  timeout: Optional[int] = None):
         """
         :param str target_url: The target URL.
         :param int connect_timeout: Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
         :param str method: HTTP method, GET or POST.
         :param 'SyntheticTaskMonitorConfApiHttpRequestBodyArgs' request_body: HTTP request body. See `request_body` below.
-        :param Mapping[str, Any] request_headers: HTTP request header.
+        :param Mapping[str, str] request_headers: HTTP request header.
         :param int timeout: TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         pulumi.set(__self__, "target_url", target_url)
@@ -1029,7 +1029,7 @@ class SyntheticTaskMonitorConfApiHttp(dict):
 
     @property
     @pulumi.getter(name="requestHeaders")
-    def request_headers(self) -> Optional[Mapping[str, Any]]:
+    def request_headers(self) -> Optional[Mapping[str, str]]:
         """
         HTTP request header.
         """
@@ -1125,7 +1125,7 @@ class SyntheticTaskMonitorConfFileDownload(dict):
     def __init__(__self__, *,
                  target_url: str,
                  connection_timeout: Optional[int] = None,
-                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 custom_header_content: Optional[Mapping[str, str]] = None,
                  download_kernel: Optional[int] = None,
                  ignore_certificate_auth_error: Optional[int] = None,
                  ignore_certificate_canceled_error: Optional[int] = None,
@@ -1144,7 +1144,7 @@ class SyntheticTaskMonitorConfFileDownload(dict):
         """
         :param str target_url: The target URL.
         :param int connection_timeout: Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param Mapping[str, str] custom_header_content: Custom header, in JSON Map format.
         :param int download_kernel: Download the kernel.
                - 1:curl
                - 0:WinInet
@@ -1225,7 +1225,7 @@ class SyntheticTaskMonitorConfFileDownload(dict):
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+    def custom_header_content(self) -> Optional[Mapping[str, str]]:
         """
         Custom header, in JSON Map format.
         """
@@ -1751,7 +1751,7 @@ class SyntheticTaskMonitorConfStream(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 custom_header_content: Optional[Mapping[str, str]] = None,
                  player_type: Optional[int] = None,
                  stream_address_type: Optional[int] = None,
                  stream_monitor_timeout: Optional[int] = None,
@@ -1759,7 +1759,7 @@ class SyntheticTaskMonitorConfStream(dict):
                  target_url: Optional[str] = None,
                  white_list: Optional[str] = None):
         """
-        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param Mapping[str, str] custom_header_content: Custom header, in JSON Map format.
         :param int player_type: Player, do not pass the default 12.
                - 12:VLC
                - 2:FlashPlayer.
@@ -1788,7 +1788,7 @@ class SyntheticTaskMonitorConfStream(dict):
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+    def custom_header_content(self) -> Optional[Mapping[str, str]]:
         """
         Custom header, in JSON Map format.
         """
@@ -1904,7 +1904,7 @@ class SyntheticTaskMonitorConfWebsite(dict):
                  target_url: str,
                  automatic_scrolling: Optional[int] = None,
                  custom_header: Optional[int] = None,
-                 custom_header_content: Optional[Mapping[str, Any]] = None,
+                 custom_header_content: Optional[Mapping[str, str]] = None,
                  disable_cache: Optional[int] = None,
                  disable_compression: Optional[int] = None,
                  dns_hijack_whitelist: Optional[str] = None,
@@ -1929,7 +1929,7 @@ class SyntheticTaskMonitorConfWebsite(dict):
                - 0 (default): Off
                - 1: Modify the first package
                - 2: Modify all packages.
-        :param Mapping[str, Any] custom_header_content: Custom header, in JSON Map format.
+        :param Mapping[str, str] custom_header_content: Custom header, in JSON Map format.
         :param int disable_cache: Whether to disable caching.
                - 0: not disabled
                - 1 (default): Disabled.
@@ -2017,7 +2017,7 @@ class SyntheticTaskMonitorConfWebsite(dict):
 
     @property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[Mapping[str, Any]]:
+    def custom_header_content(self) -> Optional[Mapping[str, str]]:
         """
         Custom header, in JSON Map format.
         """
@@ -2734,7 +2734,7 @@ class GetPrometheisPrometheiResult(dict):
                  resource_group_id: str,
                  security_group_id: str,
                  sub_clusters_json: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -2755,7 +2755,7 @@ class GetPrometheisPrometheiResult(dict):
         :param str resource_group_id: The ID of the resource group.
         :param str security_group_id: The ID of the security group.
         :param str sub_clusters_json: The child instance json string of the globalView instance.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the vSwitch.
         """
@@ -2918,7 +2918,7 @@ class GetPrometheisPrometheiResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -3242,7 +3242,7 @@ class GetPrometheusPrometheiResult(dict):
                  resource_group_id: str,
                  security_group_id: str,
                  sub_clusters_json: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str):
         """
@@ -3263,7 +3263,7 @@ class GetPrometheusPrometheiResult(dict):
         :param str resource_group_id: The ID of the resource group.
         :param str security_group_id: The ID of the security group.
         :param str sub_clusters_json: The child instance json string of the globalView instance.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the VSwitch.
         """
@@ -3426,7 +3426,7 @@ class GetPrometheusPrometheiResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

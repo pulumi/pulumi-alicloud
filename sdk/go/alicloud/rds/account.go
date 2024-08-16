@@ -114,7 +114,7 @@ type Account struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -192,7 +192,7 @@ type accountState struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -230,7 +230,7 @@ type AccountState struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -272,7 +272,7 @@ type accountArgs struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -310,7 +310,7 @@ type AccountArgs struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
@@ -457,8 +457,8 @@ func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o AccountOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o AccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.

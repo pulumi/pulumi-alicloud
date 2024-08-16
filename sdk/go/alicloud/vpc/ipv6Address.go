@@ -109,7 +109,7 @@ type Ipv6Address struct {
 	// The status of the resource.  Available, Pending and Deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags for the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VSwitchId of the IPv6 address.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
@@ -160,7 +160,7 @@ type ipv6AddressState struct {
 	// The status of the resource.  Available, Pending and Deleting.
 	Status *string `pulumi:"status"`
 	// The tags for the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VSwitchId of the IPv6 address.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -179,7 +179,7 @@ type Ipv6AddressState struct {
 	// The status of the resource.  Available, Pending and Deleting.
 	Status pulumi.StringPtrInput
 	// The tags for the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VSwitchId of the IPv6 address.
 	VswitchId pulumi.StringPtrInput
 }
@@ -196,7 +196,7 @@ type ipv6AddressArgs struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tags for the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The VSwitchId of the IPv6 address.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -210,7 +210,7 @@ type Ipv6AddressArgs struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tags for the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The VSwitchId of the IPv6 address.
 	VswitchId pulumi.StringInput
 }
@@ -333,8 +333,8 @@ func (o Ipv6AddressOutput) Status() pulumi.StringOutput {
 }
 
 // The tags for the resource.
-func (o Ipv6AddressOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Ipv6Address) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o Ipv6AddressOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Ipv6Address) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The VSwitchId of the IPv6 address.

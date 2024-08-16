@@ -95,7 +95,7 @@ type Kubernetes struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
@@ -175,7 +175,7 @@ type Kubernetes struct {
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -270,7 +270,7 @@ type kubernetesState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
@@ -350,7 +350,7 @@ type kubernetesState struct {
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -403,7 +403,7 @@ type KubernetesState struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
@@ -483,7 +483,7 @@ type KubernetesState struct {
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -536,7 +536,7 @@ type kubernetesArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable master payment auto-renew, defaults to false.
@@ -606,7 +606,7 @@ type kubernetesArgs struct {
 	// *Master params*
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -652,7 +652,7 @@ type KubernetesArgs struct {
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable master payment auto-renew, defaults to false.
@@ -722,7 +722,7 @@ type KubernetesArgs struct {
 	// *Master params*
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -908,8 +908,8 @@ func (o KubernetesOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o KubernetesOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *Kubernetes) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o KubernetesOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Kubernetes) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
@@ -1099,8 +1099,8 @@ func (o KubernetesOutput) SlbIntranet() pulumi.StringOutput {
 }
 
 // Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
-func (o KubernetesOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Kubernetes) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o KubernetesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Kubernetes) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.

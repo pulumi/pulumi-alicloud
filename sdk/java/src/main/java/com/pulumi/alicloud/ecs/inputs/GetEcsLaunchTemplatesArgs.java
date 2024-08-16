@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,9 +109,9 @@ public final class GetEcsLaunchTemplatesArgs extends com.pulumi.resources.Invoke
     }
 
     @Import(name="templateTags")
-    private @Nullable Output<Map<String,Object>> templateTags;
+    private @Nullable Output<Map<String,String>> templateTags;
 
-    public Optional<Output<Map<String,Object>>> templateTags() {
+    public Optional<Output<Map<String,String>>> templateTags() {
         return Optional.ofNullable(this.templateTags);
     }
 
@@ -282,12 +281,12 @@ public final class GetEcsLaunchTemplatesArgs extends com.pulumi.resources.Invoke
             return templateResourceGroupId(Output.of(templateResourceGroupId));
         }
 
-        public Builder templateTags(@Nullable Output<Map<String,Object>> templateTags) {
+        public Builder templateTags(@Nullable Output<Map<String,String>> templateTags) {
             $.templateTags = templateTags;
             return this;
         }
 
-        public Builder templateTags(Map<String,Object> templateTags) {
+        public Builder templateTags(Map<String,String> templateTags) {
             return templateTags(Output.of(templateTags));
         }
 

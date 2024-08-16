@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// HTTP request header.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? RequestHeaders;
+        public readonly ImmutableDictionary<string, string>? RequestHeaders;
         /// <summary>
         /// The target URL.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             Outputs.SyntheticTaskMonitorConfApiHttpRequestBody? requestBody,
 
-            ImmutableDictionary<string, object>? requestHeaders,
+            ImmutableDictionary<string, string>? requestHeaders,
 
             string targetUrl,
 

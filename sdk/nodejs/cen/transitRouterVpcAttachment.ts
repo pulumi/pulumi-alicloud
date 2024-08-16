@@ -142,7 +142,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the transit router vbr attachment.
      */
@@ -278,7 +278,7 @@ export interface TransitRouterVpcAttachmentState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the transit router vbr attachment.
      */
@@ -349,7 +349,7 @@ export interface TransitRouterVpcAttachmentArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the transit router vbr attachment.
      */
