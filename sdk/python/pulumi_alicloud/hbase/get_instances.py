@@ -97,7 +97,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -124,7 +124,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     The `hbase_get_instances` data source provides a collection of HBase instances available in Alicloud account.
@@ -147,7 +147,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param Sequence[str] ids: The ids list of HBase instances
     :param str name_regex: A regex string to apply to the instance name.
     :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -174,7 +174,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
     The `hbase_get_instances` data source provides a collection of HBase instances available in Alicloud account.
@@ -197,6 +197,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] ids: The ids list of HBase instances
     :param str name_regex: A regex string to apply to the instance name.
     :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

@@ -23,10 +23,10 @@ func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesA
 
 // A collection of arguments for invoking getBastionHostInstances.
 type GetBastionHostInstancesArgs struct {
-	DescriptionRegex *string                `pulumi:"descriptionRegex"`
-	Ids              []string               `pulumi:"ids"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	DescriptionRegex *string           `pulumi:"descriptionRegex"`
+	Ids              []string          `pulumi:"ids"`
+	OutputFile       *string           `pulumi:"outputFile"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getBastionHostInstances.
@@ -38,7 +38,7 @@ type GetBastionHostInstancesResult struct {
 	Ids        []string                          `pulumi:"ids"`
 	Instances  []GetBastionHostInstancesInstance `pulumi:"instances"`
 	OutputFile *string                           `pulumi:"outputFile"`
-	Tags       map[string]interface{}            `pulumi:"tags"`
+	Tags       map[string]string                 `pulumi:"tags"`
 }
 
 func GetBastionHostInstancesOutput(ctx *pulumi.Context, args GetBastionHostInstancesOutputArgs, opts ...pulumi.InvokeOption) GetBastionHostInstancesResultOutput {
@@ -59,7 +59,7 @@ type GetBastionHostInstancesOutputArgs struct {
 	DescriptionRegex pulumi.StringPtrInput   `pulumi:"descriptionRegex"`
 	Ids              pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Tags             pulumi.MapInput         `pulumi:"tags"`
+	Tags             pulumi.StringMapInput   `pulumi:"tags"`
 }
 
 func (GetBastionHostInstancesOutputArgs) ElementType() reflect.Type {
@@ -106,8 +106,8 @@ func (o GetBastionHostInstancesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetBastionHostInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetBastionHostInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetBastionHostInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetBastionHostInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetBastionHostInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

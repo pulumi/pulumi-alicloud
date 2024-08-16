@@ -202,7 +202,7 @@ class GetEipAddressesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -253,7 +253,7 @@ def get_eip_addresses(address_name: Optional[str] = None,
                       resource_group_id: Optional[str] = None,
                       segment_instance_id: Optional[str] = None,
                       status: Optional[str] = None,
-                      tags: Optional[Mapping[str, Any]] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEipAddressesResult:
     """
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
@@ -290,7 +290,7 @@ def get_eip_addresses(address_name: Optional[str] = None,
     :param str resource_group_id: The ID of the resource group.
     :param str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
     :param str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['addressName'] = address_name
@@ -357,7 +357,7 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                              segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipAddressesResult]:
     """
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
@@ -394,6 +394,6 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     :param str resource_group_id: The ID of the resource group.
     :param str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
     :param str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

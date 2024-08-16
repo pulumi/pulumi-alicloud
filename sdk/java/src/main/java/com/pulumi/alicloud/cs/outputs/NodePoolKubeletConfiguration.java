@@ -5,7 +5,6 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -49,17 +48,17 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionHard;
+    private @Nullable Map<String,String> evictionHard;
     /**
      * @return Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionSoft;
+    private @Nullable Map<String,String> evictionSoft;
     /**
      * @return Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{&#34;memory.available&#34; = &#34;30s&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionSoftGracePeriod;
+    private @Nullable Map<String,String> evictionSoftGracePeriod;
     /**
      * @return Feature switch to enable configuration of experimental features.
      * 
@@ -79,7 +78,7 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    private @Nullable Map<String,Object> kubeReserved;
+    private @Nullable Map<String,String> kubeReserved;
     /**
      * @return The maximum number of running pods.
      * 
@@ -109,7 +108,7 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    private @Nullable Map<String,Object> systemReserved;
+    private @Nullable Map<String,String> systemReserved;
 
     private NodePoolKubeletConfiguration() {}
     /**
@@ -158,21 +157,21 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    public Map<String,Object> evictionHard() {
+    public Map<String,String> evictionHard() {
         return this.evictionHard == null ? Map.of() : this.evictionHard;
     }
     /**
      * @return Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    public Map<String,Object> evictionSoft() {
+    public Map<String,String> evictionSoft() {
         return this.evictionSoft == null ? Map.of() : this.evictionSoft;
     }
     /**
      * @return Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{&#34;memory.available&#34; = &#34;30s&#34;}`.
      * 
      */
-    public Map<String,Object> evictionSoftGracePeriod() {
+    public Map<String,String> evictionSoftGracePeriod() {
         return this.evictionSoftGracePeriod == null ? Map.of() : this.evictionSoftGracePeriod;
     }
     /**
@@ -200,7 +199,7 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    public Map<String,Object> kubeReserved() {
+    public Map<String,String> kubeReserved() {
         return this.kubeReserved == null ? Map.of() : this.kubeReserved;
     }
     /**
@@ -242,7 +241,7 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
-    public Map<String,Object> systemReserved() {
+    public Map<String,String> systemReserved() {
         return this.systemReserved == null ? Map.of() : this.systemReserved;
     }
 
@@ -261,19 +260,19 @@ public final class NodePoolKubeletConfiguration {
         private @Nullable String cpuManagerPolicy;
         private @Nullable String eventBurst;
         private @Nullable String eventRecordQps;
-        private @Nullable Map<String,Object> evictionHard;
-        private @Nullable Map<String,Object> evictionSoft;
-        private @Nullable Map<String,Object> evictionSoftGracePeriod;
+        private @Nullable Map<String,String> evictionHard;
+        private @Nullable Map<String,String> evictionSoft;
+        private @Nullable Map<String,String> evictionSoftGracePeriod;
         private @Nullable Map<String,Boolean> featureGates;
         private @Nullable String kubeApiBurst;
         private @Nullable String kubeApiQps;
-        private @Nullable Map<String,Object> kubeReserved;
+        private @Nullable Map<String,String> kubeReserved;
         private @Nullable String maxPods;
         private @Nullable String readOnlyPort;
         private @Nullable String registryBurst;
         private @Nullable String registryPullQps;
         private @Nullable String serializeImagePulls;
-        private @Nullable Map<String,Object> systemReserved;
+        private @Nullable Map<String,String> systemReserved;
         public Builder() {}
         public Builder(NodePoolKubeletConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -338,19 +337,19 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder evictionHard(@Nullable Map<String,Object> evictionHard) {
+        public Builder evictionHard(@Nullable Map<String,String> evictionHard) {
 
             this.evictionHard = evictionHard;
             return this;
         }
         @CustomType.Setter
-        public Builder evictionSoft(@Nullable Map<String,Object> evictionSoft) {
+        public Builder evictionSoft(@Nullable Map<String,String> evictionSoft) {
 
             this.evictionSoft = evictionSoft;
             return this;
         }
         @CustomType.Setter
-        public Builder evictionSoftGracePeriod(@Nullable Map<String,Object> evictionSoftGracePeriod) {
+        public Builder evictionSoftGracePeriod(@Nullable Map<String,String> evictionSoftGracePeriod) {
 
             this.evictionSoftGracePeriod = evictionSoftGracePeriod;
             return this;
@@ -374,7 +373,7 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder kubeReserved(@Nullable Map<String,Object> kubeReserved) {
+        public Builder kubeReserved(@Nullable Map<String,String> kubeReserved) {
 
             this.kubeReserved = kubeReserved;
             return this;
@@ -410,7 +409,7 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder systemReserved(@Nullable Map<String,Object> systemReserved) {
+        public Builder systemReserved(@Nullable Map<String,String> systemReserved) {
 
             this.systemReserved = systemReserved;
             return this;

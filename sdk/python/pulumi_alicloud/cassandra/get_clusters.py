@@ -89,7 +89,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -114,7 +114,7 @@ class AwaitableGetClustersResult(GetClustersResult):
 def get_clusters(ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
@@ -137,7 +137,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: The list of Cassandra cluster ids.
     :param str name_regex: A regex string to apply to the cluster name.
     :param str output_file: The name of file that can save the collection of clusters after running `pulumi preview`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -161,7 +161,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
 def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
     The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
@@ -184,6 +184,6 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     :param Sequence[str] ids: The list of Cassandra cluster ids.
     :param str name_regex: A regex string to apply to the cluster name.
     :param str output_file: The name of file that can save the collection of clusters after running `pulumi preview`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

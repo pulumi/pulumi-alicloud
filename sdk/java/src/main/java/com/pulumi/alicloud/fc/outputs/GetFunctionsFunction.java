@@ -7,7 +7,6 @@ import com.pulumi.alicloud.fc.outputs.GetFunctionsFunctionCustomContainerConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -50,7 +49,7 @@ public final class GetFunctionsFunction {
      * @return A map that defines environment variables for the function.
      * 
      */
-    private Map<String,Object> environmentVariables;
+    private Map<String,String> environmentVariables;
     /**
      * @return Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
      * 
@@ -154,7 +153,7 @@ public final class GetFunctionsFunction {
      * @return A map that defines environment variables for the function.
      * 
      */
-    public Map<String,Object> environmentVariables() {
+    public Map<String,String> environmentVariables() {
         return this.environmentVariables;
     }
     /**
@@ -250,7 +249,7 @@ public final class GetFunctionsFunction {
         private String creationTime;
         private @Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig;
         private String description;
-        private Map<String,Object> environmentVariables;
+        private Map<String,String> environmentVariables;
         private String handler;
         private String id;
         private Integer initializationTimeout;
@@ -332,7 +331,7 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder environmentVariables(Map<String,Object> environmentVariables) {
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
             if (environmentVariables == null) {
               throw new MissingRequiredPropertyException("GetFunctionsFunction", "environmentVariables");
             }

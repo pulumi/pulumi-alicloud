@@ -222,7 +222,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
@@ -393,7 +393,7 @@ export interface BucketState {
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */
@@ -476,7 +476,7 @@ export interface BucketArgs {
     /**
      * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A transfer acceleration status of a bucket. See `transferAcceleration` below.
      */

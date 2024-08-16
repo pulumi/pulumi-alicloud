@@ -6,7 +6,6 @@ package com.pulumi.alicloud.sls.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -158,13 +157,13 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
      * 
      */
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
     /**
      * @return Parameter configuration.
      * 
      */
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -508,7 +507,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
@@ -519,7 +518,7 @@ public final class ScheduledSqlScheduledSqlConfigurationArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 

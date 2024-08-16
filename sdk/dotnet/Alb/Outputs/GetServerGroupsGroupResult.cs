@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// <summary>
         /// A map of tags assigned to the group.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the VPC that you want to access.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> stickySessionConfigs,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId)
         {

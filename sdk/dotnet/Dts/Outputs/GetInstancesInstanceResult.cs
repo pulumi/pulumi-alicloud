@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// <summary>
         /// The tag value corresponding to the tag key.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string type)
         {

@@ -19,19 +19,19 @@ class StudioApplicationArgs:
                  application_name: pulumi.Input[str],
                  template_id: pulumi.Input[str],
                  area_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a StudioApplication resource.
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] template_id: The id of the template.
         :param pulumi.Input[str] area_id: The id of the area.
-        :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: The configuration of the application.
         :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: The variables of the application.
         """
         pulumi.set(__self__, "application_name", application_name)
         pulumi.set(__self__, "template_id", template_id)
@@ -84,14 +84,14 @@ class StudioApplicationArgs:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The configuration of the application.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -120,14 +120,14 @@ class StudioApplicationArgs:
 
     @property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The variables of the application.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -136,22 +136,22 @@ class _StudioApplicationState:
     def __init__(__self__, *,
                  application_name: Optional[pulumi.Input[str]] = None,
                  area_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering StudioApplication resources.
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] area_id: The id of the area.
-        :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: The configuration of the application.
         :param pulumi.Input[Sequence[pulumi.Input['StudioApplicationInstanceArgs']]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[str] status: The status of the Application.
         :param pulumi.Input[str] template_id: The id of the template.
-        :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: The variables of the application.
         """
         if application_name is not None:
             pulumi.set(__self__, "application_name", application_name)
@@ -196,14 +196,14 @@ class _StudioApplicationState:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The configuration of the application.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "configuration", value)
 
     @property
@@ -256,14 +256,14 @@ class _StudioApplicationState:
 
     @property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The variables of the application.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -274,11 +274,11 @@ class StudioApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_name: Optional[pulumi.Input[str]] = None,
                  area_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Architect Design Tools Application resource.
@@ -331,11 +331,11 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] area_id: The id of the area.
-        :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: The configuration of the application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[str] template_id: The id of the template.
-        :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: The variables of the application.
         """
         ...
     @overload
@@ -407,11 +407,11 @@ class StudioApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_name: Optional[pulumi.Input[str]] = None,
                  area_id: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,12 +445,12 @@ class StudioApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             application_name: Optional[pulumi.Input[str]] = None,
             area_id: Optional[pulumi.Input[str]] = None,
-            configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
-            variables: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'StudioApplication':
+            variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'StudioApplication':
         """
         Get an existing StudioApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -460,12 +460,12 @@ class StudioApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] area_id: The id of the area.
-        :param pulumi.Input[Mapping[str, Any]] configuration: The configuration of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configuration: The configuration of the application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StudioApplicationInstanceArgs', 'StudioApplicationInstanceArgsDict']]]] instances: The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
         :param pulumi.Input[str] resource_group_id: The id of the resource group.
         :param pulumi.Input[str] status: The status of the Application.
         :param pulumi.Input[str] template_id: The id of the template.
-        :param pulumi.Input[Mapping[str, Any]] variables: The variables of the application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: The variables of the application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,7 +499,7 @@ class StudioApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configuration(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def configuration(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The configuration of the application.
         """
@@ -539,7 +539,7 @@ class StudioApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The variables of the application.
         """

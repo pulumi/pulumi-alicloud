@@ -140,7 +140,7 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    public readonly weight!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly weight!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ReadWriteSplittingConnection resource with the given unique name, arguments, and options.
@@ -214,7 +214,7 @@ export interface ReadWriteSplittingConnectionState {
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    weight?: pulumi.Input<{[key: string]: any}>;
+    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -244,5 +244,5 @@ export interface ReadWriteSplittingConnectionArgs {
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    weight?: pulumi.Input<{[key: string]: any}>;
+    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

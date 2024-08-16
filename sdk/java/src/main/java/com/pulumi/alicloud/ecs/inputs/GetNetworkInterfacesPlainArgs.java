@@ -5,7 +5,6 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -163,13 +162,13 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
      * 
      */
     @Import(name="tags")
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     /**
      * @return A map of tags assigned to the ENI.
      * 
      */
-    public Optional<Map<String,Object>> tags() {
+    public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -357,7 +356,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;
         }

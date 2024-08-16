@@ -94,7 +94,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The tags of the Private Zone.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The IP address of the client.
      */
@@ -197,7 +197,7 @@ export interface ZoneState {
     /**
      * The tags of the Private Zone.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IP address of the client.
      */
@@ -248,7 +248,7 @@ export interface ZoneArgs {
     /**
      * The tags of the Private Zone.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IP address of the client.
      */

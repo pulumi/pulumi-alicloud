@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// <summary>
         /// Template Annotations.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Annotations;
+        public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// Template Language.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Sls.Outputs
         /// <summary>
         /// Template Variables.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tokens;
+        public readonly ImmutableDictionary<string, string>? Tokens;
         public readonly string? Type;
         /// <summary>
         /// Template Version.
@@ -37,13 +37,13 @@ namespace Pulumi.AliCloud.Sls.Outputs
 
         [OutputConstructor]
         private AlertConfigurationTemplateConfiguration(
-            ImmutableDictionary<string, object>? annotations,
+            ImmutableDictionary<string, string>? annotations,
 
             string? lang,
 
             string? templateId,
 
-            ImmutableDictionary<string, object>? tokens,
+            ImmutableDictionary<string, string>? tokens,
 
             string? type,
 

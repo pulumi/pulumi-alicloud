@@ -136,7 +136,7 @@ type NetworkAcl struct {
 	// The state of the network ACL.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of this resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the associated VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -197,7 +197,7 @@ type networkAclState struct {
 	// The state of the network ACL.
 	Status *string `pulumi:"status"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the associated VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -226,7 +226,7 @@ type NetworkAclState struct {
 	// The state of the network ACL.
 	Status pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the associated VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -255,7 +255,7 @@ type networkAclArgs struct {
 	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
 	SourceNetworkAclId *string `pulumi:"sourceNetworkAclId"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the associated VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -281,7 +281,7 @@ type NetworkAclArgs struct {
 	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
 	SourceNetworkAclId pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the associated VPC.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -423,8 +423,8 @@ func (o NetworkAclOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of this resource.
-func (o NetworkAclOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *NetworkAcl) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o NetworkAclOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the associated VPC.

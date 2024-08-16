@@ -72,8 +72,8 @@ type GetContainerGroupsArgs struct {
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status list. For more information, see the description of ContainerGroup arrays.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId *string `pulumi:"vswitchId"`
 	WithEvent *bool   `pulumi:"withEvent"`
@@ -87,18 +87,18 @@ type GetContainerGroupsResult struct {
 	EnableDetails      *bool                     `pulumi:"enableDetails"`
 	Groups             []GetContainerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	Limit           *int                   `pulumi:"limit"`
-	NameRegex       *string                `pulumi:"nameRegex"`
-	Names           []string               `pulumi:"names"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Status          *string                `pulumi:"status"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	VswitchId       *string                `pulumi:"vswitchId"`
-	WithEvent       *bool                  `pulumi:"withEvent"`
-	ZoneId          *string                `pulumi:"zoneId"`
+	Id              string            `pulumi:"id"`
+	Ids             []string          `pulumi:"ids"`
+	Limit           *int              `pulumi:"limit"`
+	NameRegex       *string           `pulumi:"nameRegex"`
+	Names           []string          `pulumi:"names"`
+	OutputFile      *string           `pulumi:"outputFile"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Status          *string           `pulumi:"status"`
+	Tags            map[string]string `pulumi:"tags"`
+	VswitchId       *string           `pulumi:"vswitchId"`
+	WithEvent       *bool             `pulumi:"withEvent"`
+	ZoneId          *string           `pulumi:"zoneId"`
 }
 
 func GetContainerGroupsOutput(ctx *pulumi.Context, args GetContainerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetContainerGroupsResultOutput {
@@ -132,7 +132,7 @@ type GetContainerGroupsOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 	WithEvent pulumi.BoolPtrInput   `pulumi:"withEvent"`
@@ -204,8 +204,8 @@ func (o GetContainerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetContainerGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetContainerGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetContainerGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetContainerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetContainerGroupsResultOutput) VswitchId() pulumi.StringPtrOutput {

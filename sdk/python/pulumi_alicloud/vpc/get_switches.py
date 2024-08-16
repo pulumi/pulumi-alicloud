@@ -156,7 +156,7 @@ class GetSwitchesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The Tags of the vSwitch.
         """
@@ -234,7 +234,7 @@ def get_switches(cidr_block: Optional[str] = None,
                  resource_group_id: Optional[str] = None,
                  route_table_id: Optional[str] = None,
                  status: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  vpc_id: Optional[str] = None,
                  vswitch_name: Optional[str] = None,
                  vswitch_owner_id: Optional[int] = None,
@@ -275,7 +275,7 @@ def get_switches(cidr_block: Optional[str] = None,
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
     :param str route_table_id: The route table ID of the vSwitch.
     :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: ID of the VPC that owns the vSwitch.
     :param str vswitch_name: The name of the vSwitch.
     :param int vswitch_owner_id: The vSwitch owner id.
@@ -329,7 +329,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         route_table_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                         vswitch_name: Optional[pulumi.Input[Optional[str]]] = None,
                         vswitch_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -370,7 +370,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
     :param str route_table_id: The route table ID of the vSwitch.
     :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: ID of the VPC that owns the vSwitch.
     :param str vswitch_name: The name of the vSwitch.
     :param int vswitch_owner_id: The vSwitch owner id.

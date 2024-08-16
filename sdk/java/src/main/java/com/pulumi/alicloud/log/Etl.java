@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -303,28 +302,28 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptionAccessKeyIdContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> kmsEncryptionAccessKeyIdContext;
+    @Export(name="kmsEncryptionAccessKeyIdContext", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> kmsEncryptionAccessKeyIdContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    public Output<Optional<Map<String,Object>>> kmsEncryptionAccessKeyIdContext() {
+    public Output<Optional<Map<String,String>>> kmsEncryptionAccessKeyIdContext() {
         return Codegen.optional(this.kmsEncryptionAccessKeyIdContext);
     }
     /**
      * An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    @Export(name="kmsEncryptionAccessKeySecretContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> kmsEncryptionAccessKeySecretContext;
+    @Export(name="kmsEncryptionAccessKeySecretContext", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> kmsEncryptionAccessKeySecretContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    public Output<Optional<Map<String,Object>>> kmsEncryptionAccessKeySecretContext() {
+    public Output<Optional<Map<String,String>>> kmsEncryptionAccessKeySecretContext() {
         return Codegen.optional(this.kmsEncryptionAccessKeySecretContext);
     }
     /**

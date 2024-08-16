@@ -2236,7 +2236,7 @@ class GetAlarmsAlarmResult(dict):
                  cloud_monitor_group_id: int,
                  comparison_operator: str,
                  description: str,
-                 dimensions: Mapping[str, Any],
+                 dimensions: Mapping[str, str],
                  enable: bool,
                  evaluation_count: int,
                  id: str,
@@ -2253,7 +2253,7 @@ class GetAlarmsAlarmResult(dict):
         :param int cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param str comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
         :param str description: The description for the alarm.
-        :param Mapping[str, Any] dimensions: The dimension map for the alarm's associated metric.
+        :param Mapping[str, str] dimensions: The dimension map for the alarm's associated metric.
         :param bool enable: Whether to enable specific ess alarm.
         :param int evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state.
         :param str id: The id of alarm.
@@ -2317,7 +2317,7 @@ class GetAlarmsAlarmResult(dict):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Mapping[str, Any]:
+    def dimensions(self) -> Mapping[str, str]:
         """
         The dimension map for the alarm's associated metric.
         """
@@ -2916,7 +2916,7 @@ class GetScalingGroupsGroupResult(dict):
                  vpc_id: str,
                  vswitch_id: str,
                  vswitch_ids: Sequence[str],
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param int active_capacity: Number of active instances in scaling group.
         :param str active_scaling_configuration: Active scaling configuration for scaling group.
@@ -2944,7 +2944,7 @@ class GetScalingGroupsGroupResult(dict):
         :param str vpc_id: The ID of the VPC to which the scaling group belongs.
         :param str vswitch_id: The ID of the vSwitch to which the scaling group belongs.
         :param Sequence[str] vswitch_ids: Vswitches id in which the ECS instance launched.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "active_capacity", active_capacity)
         pulumi.set(__self__, "active_scaling_configuration", active_scaling_configuration)
@@ -3185,7 +3185,7 @@ class GetScalingGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

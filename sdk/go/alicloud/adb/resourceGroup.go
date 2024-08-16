@@ -87,9 +87,9 @@ import (
 //				VpcId:     defaultNetwork.ID(),
 //				VswitchId: defaultSwitch.ID(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

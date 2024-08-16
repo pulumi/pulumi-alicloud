@@ -177,7 +177,7 @@ class GetExecutionsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -228,7 +228,7 @@ def get_executions(category: Optional[str] = None,
                    start_date_after: Optional[str] = None,
                    start_date_before: Optional[str] = None,
                    status: Optional[str] = None,
-                   tags: Optional[Mapping[str, Any]] = None,
+                   tags: Optional[Mapping[str, str]] = None,
                    template_name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExecutionsResult:
     """
@@ -265,7 +265,7 @@ def get_executions(category: Optional[str] = None,
     :param str start_date_after: The execution whose start time is greater than or equal to the specified time.
     :param str start_date_before: The execution with start time less than or equal to the specified time.
     :param str status: The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str template_name: The name of execution template.
     """
     __args__ = dict()
@@ -327,7 +327,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
                           start_date_after: Optional[pulumi.Input[Optional[str]]] = None,
                           start_date_before: Optional[pulumi.Input[Optional[str]]] = None,
                           status: Optional[pulumi.Input[Optional[str]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           template_name: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionsResult]:
     """
@@ -364,7 +364,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     :param str start_date_after: The execution whose start time is greater than or equal to the specified time.
     :param str start_date_before: The execution with start time less than or equal to the specified time.
     :param str status: The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str template_name: The name of execution template.
     """
     ...

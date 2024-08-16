@@ -166,7 +166,7 @@ class GetRouteTablesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -217,7 +217,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
                      router_id: Optional[str] = None,
                      router_type: Optional[str] = None,
                      status: Optional[str] = None,
-                     tags: Optional[Mapping[str, Any]] = None,
+                     tags: Optional[Mapping[str, str]] = None,
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
     """
@@ -255,7 +255,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     :param str router_id: The router ID.
     :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
     :param str status: The status of resource. Valid values: `Available` and `Pending`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: Vpc id of the route table.
     """
     __args__ = dict()
@@ -304,7 +304,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             router_id: Optional[pulumi.Input[Optional[str]]] = None,
                             router_type: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTablesResult]:
     """
@@ -342,7 +342,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str router_id: The router ID.
     :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
     :param str status: The status of resource. Valid values: `Available` and `Pending`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: Vpc id of the route table.
     """
     ...

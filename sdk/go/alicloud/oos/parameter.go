@@ -44,9 +44,9 @@ import (
 //				Type:          pulumi.String("String"),
 //				Value:         pulumi.String("example_value"),
 //				Description:   pulumi.String("example_value"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("OosParameter"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("OosParameter"),
 //				},
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //			})
@@ -82,7 +82,7 @@ type Parameter struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -141,7 +141,7 @@ type parameterState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type *string `pulumi:"type"`
 	// The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -162,7 +162,7 @@ type ParameterState struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringPtrInput
 	// The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -187,7 +187,7 @@ type parameterArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type string `pulumi:"type"`
 	// The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -209,7 +209,7 @@ type ParameterArgs struct {
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringInput
 	// The value of the common parameter. The value must be `1` to `4096` characters in length.
@@ -328,8 +328,8 @@ func (o ParameterOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ParameterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Parameter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The data type of the common parameter. Valid values: `String` and `StringList`.

@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// <summary>
         /// The Tag of.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Use the VPC ID as the search key.
         /// </summary>
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

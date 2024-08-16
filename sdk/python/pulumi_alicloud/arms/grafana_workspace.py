@@ -19,7 +19,7 @@ class GrafanaWorkspaceArgs:
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GrafanaWorkspace resource.
         :param pulumi.Input[str] description: Description.
@@ -27,7 +27,7 @@ class GrafanaWorkspaceArgs:
         :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
         :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -104,14 +104,14 @@ class GrafanaWorkspaceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -125,7 +125,7 @@ class _GrafanaWorkspaceState:
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GrafanaWorkspace resources.
         :param pulumi.Input[str] create_time: The creation time of the resource.
@@ -135,7 +135,7 @@ class _GrafanaWorkspaceState:
         :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -240,14 +240,14 @@ class _GrafanaWorkspaceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -261,7 +261,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a ARMS Grafana Workspace resource.
@@ -310,7 +310,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
         :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -378,7 +378,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,7 +413,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
             grafana_workspace_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'GrafanaWorkspace':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GrafanaWorkspace':
         """
         Get an existing GrafanaWorkspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -428,7 +428,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
         :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,7 +502,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

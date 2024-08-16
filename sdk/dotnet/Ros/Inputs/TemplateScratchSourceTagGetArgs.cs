@@ -13,14 +13,14 @@ namespace Pulumi.AliCloud.Ros.Inputs
     public sealed class TemplateScratchSourceTagGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceTags", required: true)]
-        private InputMap<object>? _resourceTags;
+        private InputMap<string>? _resourceTags;
 
         /// <summary>
         /// Source label. **NOTE:** A maximum of 10 source labels can be configured.
         /// </summary>
-        public InputMap<object> ResourceTags
+        public InputMap<string> ResourceTags
         {
-            get => _resourceTags ?? (_resourceTags = new InputMap<object>());
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
             set => _resourceTags = value;
         }
 

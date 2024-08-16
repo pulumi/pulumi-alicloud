@@ -120,7 +120,7 @@ type ElasticityAssurance struct {
 	// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// This parameter is not yet available.
 	UsedAssuranceTimes pulumi.IntOutput `pulumi:"usedAssuranceTimes"`
 	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
@@ -199,7 +199,7 @@ type elasticityAssuranceState struct {
 	// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
 	Status *string `pulumi:"status"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// This parameter is not yet available.
 	UsedAssuranceTimes *int `pulumi:"usedAssuranceTimes"`
 	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
@@ -240,7 +240,7 @@ type ElasticityAssuranceState struct {
 	// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
 	Status pulumi.StringPtrInput
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// This parameter is not yet available.
 	UsedAssuranceTimes pulumi.IntPtrInput
 	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
@@ -275,7 +275,7 @@ type elasticityAssuranceArgs struct {
 	// Flexible guarantee service effective time.
 	StartTime *string `pulumi:"startTime"`
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
@@ -305,7 +305,7 @@ type ElasticityAssuranceArgs struct {
 	// Flexible guarantee service effective time.
 	StartTime pulumi.StringPtrInput
 	// The tag key-value pair information bound by the elastic guarantee service.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds pulumi.StringArrayInput
 }
@@ -475,8 +475,8 @@ func (o ElasticityAssuranceOutput) Status() pulumi.StringOutput {
 }
 
 // The tag key-value pair information bound by the elastic guarantee service.
-func (o ElasticityAssuranceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ElasticityAssurance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ElasticityAssuranceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // This parameter is not yet available.

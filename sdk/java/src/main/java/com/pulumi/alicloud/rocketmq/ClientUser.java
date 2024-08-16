@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -128,14 +127,14 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The context of the KMS Encryption.
      * 
      */
-    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
      * @return The context of the KMS Encryption.
      * 
      */
-    public Output<Optional<Map<String,Object>>> kmsEncryptionContext() {
+    public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**

@@ -124,10 +124,10 @@ namespace Pulumi.AliCloud.Ecs
         public string? ResourceGroupId { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
-        public Dictionary<string, object> Tags
+        private Dictionary<string, string>? _tags;
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -176,10 +176,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? OutputFile;
         public readonly ImmutableArray<Outputs.GetEcsKeyPairsPairResult> Pairs;
         public readonly string? ResourceGroupId;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetEcsKeyPairsResult(
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Ecs
 
             string? resourceGroupId,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             FingerPrint = fingerPrint;
             Id = id;

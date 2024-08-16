@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.FC
         /// The environment variable set for the function, you can get the value of the environment variable in the function.
         /// </summary>
         [Output("environmentVariables")]
-        public Output<ImmutableDictionary<string, object>?> EnvironmentVariables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
         /// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
@@ -368,14 +368,14 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// The environment variable set for the function, you can get the value of the environment variable in the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -536,14 +536,14 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? DiskSize { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// The environment variable set for the function, you can get the value of the environment variable in the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 

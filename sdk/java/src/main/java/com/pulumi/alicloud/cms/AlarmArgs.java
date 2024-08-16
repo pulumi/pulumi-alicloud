@@ -14,7 +14,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      */
     @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
     @Import(name="dimensions")
-    private @Nullable Output<Map<String,Object>> dimensions;
+    private @Nullable Output<Map<String,String>> dimensions;
 
     /**
      * @return Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
@@ -76,7 +75,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
-    public Optional<Output<Map<String,Object>>> dimensions() {
+    public Optional<Output<Map<String,String>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
@@ -313,13 +312,13 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,Object>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Optional<Output<Map<String,Object>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -458,7 +457,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
-        public Builder dimensions(@Nullable Output<Map<String,Object>> dimensions) {
+        public Builder dimensions(@Nullable Output<Map<String,String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
@@ -473,7 +472,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead. */
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
@@ -805,7 +804,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
@@ -816,7 +815,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 

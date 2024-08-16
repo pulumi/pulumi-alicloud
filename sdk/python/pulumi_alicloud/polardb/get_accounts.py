@@ -129,8 +129,12 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         account_password="Test12345",
         account_description="tf_account_description",
         account_type="Normal")
-    default = pulumi.Output.all(polardb_clusters_ds, account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
-        name_regex=account_name))
+    default = pulumi.Output.all(
+        polardb_clusters_ds=polardb_clusters_ds,
+        account_name=account.account_name
+    ).apply(lambda resolved_outputs: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=resolved_outputs['account_name']))
+
     pulumi.export("account", default.accounts[0].account_name)
     ```
 
@@ -195,8 +199,12 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         account_password="Test12345",
         account_description="tf_account_description",
         account_type="Normal")
-    default = pulumi.Output.all(polardb_clusters_ds, account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
-        name_regex=account_name))
+    default = pulumi.Output.all(
+        polardb_clusters_ds=polardb_clusters_ds,
+        account_name=account.account_name
+    ).apply(lambda resolved_outputs: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=resolved_outputs['account_name']))
+
     pulumi.export("account", default.accounts[0].account_name)
     ```
 

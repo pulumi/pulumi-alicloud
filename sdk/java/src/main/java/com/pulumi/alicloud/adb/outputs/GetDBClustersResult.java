@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +57,7 @@ public final class GetDBClustersResult {
      * @return The tags of the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private Integer totalCount;
 
     private GetDBClustersResult() {}
@@ -126,7 +125,7 @@ public final class GetDBClustersResult {
      * @return The tags of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Integer totalCount() {
@@ -154,7 +153,7 @@ public final class GetDBClustersResult {
         private @Nullable Integer pageSize;
         private @Nullable String resourceGroupId;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCount;
         public Builder() {}
         public Builder(GetDBClustersResult defaults) {
@@ -265,7 +264,7 @@ public final class GetDBClustersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

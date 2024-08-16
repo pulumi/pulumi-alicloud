@@ -103,7 +103,7 @@ export interface GetTemplatesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The format of the template. Valid values: `JSON`, `YAML`.
      */
@@ -140,7 +140,7 @@ export interface GetTemplatesResult {
     readonly shareType?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly templateFormat?: string;
     readonly templateType?: string;
     /**
@@ -227,7 +227,7 @@ export interface GetTemplatesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The format of the template. Valid values: `JSON`, `YAML`.
      */

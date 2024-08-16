@@ -58,9 +58,9 @@ import (
 //
 //				TemplateName: pulumi.String("test-name"),
 //				VersionName:  pulumi.String("test"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance Test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("acceptance Test"),
 //				},
 //			})
 //			if err != nil {

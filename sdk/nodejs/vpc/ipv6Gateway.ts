@@ -122,7 +122,7 @@ export class Ipv6Gateway extends pulumi.CustomResource {
     /**
      * The tags for the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */
@@ -225,7 +225,7 @@ export interface Ipv6GatewayState {
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */
@@ -257,7 +257,7 @@ export interface Ipv6GatewayArgs {
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */

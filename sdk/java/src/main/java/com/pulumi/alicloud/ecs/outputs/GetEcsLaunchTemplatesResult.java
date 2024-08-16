@@ -7,7 +7,6 @@ import com.pulumi.alicloud.ecs.outputs.GetEcsLaunchTemplatesTemplate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,7 @@ public final class GetEcsLaunchTemplatesResult {
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String templateResourceGroupId;
-    private @Nullable Map<String,Object> templateTags;
+    private @Nullable Map<String,String> templateTags;
     private List<GetEcsLaunchTemplatesTemplate> templates;
 
     private GetEcsLaunchTemplatesResult() {}
@@ -61,7 +60,7 @@ public final class GetEcsLaunchTemplatesResult {
     public Optional<String> templateResourceGroupId() {
         return Optional.ofNullable(this.templateResourceGroupId);
     }
-    public Map<String,Object> templateTags() {
+    public Map<String,String> templateTags() {
         return this.templateTags == null ? Map.of() : this.templateTags;
     }
     public List<GetEcsLaunchTemplatesTemplate> templates() {
@@ -85,7 +84,7 @@ public final class GetEcsLaunchTemplatesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String templateResourceGroupId;
-        private @Nullable Map<String,Object> templateTags;
+        private @Nullable Map<String,String> templateTags;
         private List<GetEcsLaunchTemplatesTemplate> templates;
         public Builder() {}
         public Builder(GetEcsLaunchTemplatesResult defaults) {
@@ -163,7 +162,7 @@ public final class GetEcsLaunchTemplatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder templateTags(@Nullable Map<String,Object> templateTags) {
+        public Builder templateTags(@Nullable Map<String,String> templateTags) {
 
             this.templateTags = templateTags;
             return this;

@@ -55,7 +55,7 @@ export interface GetGroupsArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -86,7 +86,7 @@ export interface GetGroupsResult {
     /**
      * A map of tags assigned to the Ons group.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
@@ -127,5 +127,5 @@ export interface GetGroupsOutputArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

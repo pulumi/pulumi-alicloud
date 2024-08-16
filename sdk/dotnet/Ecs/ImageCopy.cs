@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The tag value of an image. The value of N ranges from 1 to 20.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -272,14 +272,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> SourceRegionId { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The tag value of an image. The value of N ranges from 1 to 20.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -342,14 +342,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SourceRegionId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The tag value of an image. The value of N ranges from 1 to 20.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

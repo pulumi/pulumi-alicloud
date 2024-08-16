@@ -94,7 +94,7 @@ class GetTopicsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the Ons instance.
         """
@@ -131,7 +131,7 @@ def get_topics(enable_details: Optional[bool] = None,
                instance_id: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
-               tags: Optional[Mapping[str, Any]] = None,
+               tags: Optional[Mapping[str, str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicsResult:
     """
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -170,7 +170,7 @@ def get_topics(enable_details: Optional[bool] = None,
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+    :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -200,7 +200,7 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
                       instance_id: Optional[pulumi.Input[str]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
     """
     This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -239,6 +239,6 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+    :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
     """
     ...

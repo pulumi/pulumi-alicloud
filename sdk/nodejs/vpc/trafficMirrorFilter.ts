@@ -117,7 +117,7 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
     /**
      * The tags of this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the TrafficMirrorFilter.
      */
@@ -193,7 +193,7 @@ export interface TrafficMirrorFilterState {
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the TrafficMirrorFilter.
      */
@@ -229,7 +229,7 @@ export interface TrafficMirrorFilterArgs {
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the TrafficMirrorFilter.
      */

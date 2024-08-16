@@ -6,7 +6,6 @@ package com.pulumi.alicloud.rocketmq.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -68,13 +67,13 @@ public final class ClientUserState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="kmsEncryptionContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
      * @return The context of the KMS Encryption.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
 
@@ -238,7 +237,7 @@ public final class ClientUserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(@Nullable Output<Map<String,Object>> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(@Nullable Output<Map<String,String>> kmsEncryptionContext) {
             $.kmsEncryptionContext = kmsEncryptionContext;
             return this;
         }
@@ -249,7 +248,7 @@ public final class ClientUserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
         }
 

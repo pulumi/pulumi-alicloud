@@ -22,7 +22,7 @@ class EnvironmentArgs:
                  environment_name: Optional[pulumi.Input[str]] = None,
                  managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
@@ -39,7 +39,7 @@ class EnvironmentArgs:
                - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
                - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "environment_sub_type", environment_sub_type)
         pulumi.set(__self__, "environment_type", environment_type)
@@ -162,14 +162,14 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -185,7 +185,7 @@ class _EnvironmentState:
                  environment_type: Optional[pulumi.Input[str]] = None,
                  managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] aliyun_lang: The locale. The default is Chinese zh | en.
@@ -203,7 +203,7 @@ class _EnvironmentState:
                - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
                - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         if aliyun_lang is not None:
             pulumi.set(__self__, "aliyun_lang", aliyun_lang)
@@ -342,14 +342,14 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -366,7 +366,7 @@ class Environment(pulumi.CustomResource):
                  environment_type: Optional[pulumi.Input[str]] = None,
                  managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a ARMS Environment resource. The arms environment.
@@ -399,7 +399,7 @@ class Environment(pulumi.CustomResource):
                - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
                - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -445,7 +445,7 @@ class Environment(pulumi.CustomResource):
                  environment_type: Optional[pulumi.Input[str]] = None,
                  managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,7 +488,7 @@ class Environment(pulumi.CustomResource):
             environment_type: Optional[pulumi.Input[str]] = None,
             managed_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Environment':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -511,7 +511,7 @@ class Environment(pulumi.CustomResource):
                - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
                - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -609,7 +609,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

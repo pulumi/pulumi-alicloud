@@ -22,7 +22,7 @@ class PrefixListArgs:
                  prefix_list_description: Optional[pulumi.Input[str]] = None,
                  prefix_list_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a PrefixList resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
@@ -31,7 +31,7 @@ class PrefixListArgs:
         :param pulumi.Input[str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the PrefixList belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         if entrys is not None:
             pulumi.set(__self__, "entrys", entrys)
@@ -122,14 +122,14 @@ class PrefixListArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -147,7 +147,7 @@ class _PrefixListState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  share_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering PrefixList resources.
         :param pulumi.Input[str] create_time: The time when the prefix list was created.
@@ -161,7 +161,7 @@ class _PrefixListState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the PrefixList belongs.
         :param pulumi.Input[str] share_type: The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
         :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -322,14 +322,14 @@ class _PrefixListState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -344,7 +344,7 @@ class PrefixList(pulumi.CustomResource):
                  prefix_list_description: Optional[pulumi.Input[str]] = None,
                  prefix_list_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
@@ -399,7 +399,7 @@ class PrefixList(pulumi.CustomResource):
         :param pulumi.Input[str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the PrefixList belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         ...
     @overload
@@ -473,7 +473,7 @@ class PrefixList(pulumi.CustomResource):
                  prefix_list_description: Optional[pulumi.Input[str]] = None,
                  prefix_list_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -516,7 +516,7 @@ class PrefixList(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             share_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'PrefixList':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'PrefixList':
         """
         Get an existing PrefixList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -535,7 +535,7 @@ class PrefixList(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the PrefixList belongs.
         :param pulumi.Input[str] share_type: The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
         :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -645,7 +645,7 @@ class PrefixList(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of PrefixList.
         """

@@ -78,7 +78,7 @@ type ResourceGroup struct {
 	// The status of the resource group.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewResourceGroup registers a new resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ type resourceGroupState struct {
 	// The status of the resource group.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ResourceGroupState struct {
@@ -148,7 +148,7 @@ type ResourceGroupState struct {
 	// The status of the resource group.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ResourceGroupState) ElementType() reflect.Type {
@@ -165,7 +165,7 @@ type resourceGroupArgs struct {
 	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ResourceGroup resource.
@@ -179,7 +179,7 @@ type ResourceGroupArgs struct {
 	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ResourceGroupArgs) ElementType() reflect.Type {
@@ -302,8 +302,8 @@ func (o ResourceGroupOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ResourceGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ResourceGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ResourceGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ResourceGroupArrayOutput struct{ *pulumi.OutputState }

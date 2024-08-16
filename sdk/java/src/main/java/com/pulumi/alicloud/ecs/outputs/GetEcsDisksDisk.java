@@ -9,7 +9,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -186,7 +185,7 @@ public final class GetEcsDisksDisk {
      * @return A map of tags assigned to the disk.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return Disk type.
      * 
@@ -442,7 +441,7 @@ public final class GetEcsDisksDisk {
      * @return A map of tags assigned to the disk.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -506,7 +505,7 @@ public final class GetEcsDisksDisk {
         private Integer size;
         private String snapshotId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String type;
         private String zoneId;
         public Builder() {}
@@ -857,7 +856,7 @@ public final class GetEcsDisksDisk {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEcsDisksDisk", "tags");
             }

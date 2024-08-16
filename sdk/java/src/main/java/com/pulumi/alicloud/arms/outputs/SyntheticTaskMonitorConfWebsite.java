@@ -6,7 +6,6 @@ package com.pulumi.alicloud.arms.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -34,7 +33,7 @@ public final class SyntheticTaskMonitorConfWebsite {
      * @return Custom header, in JSON Map format.
      * 
      */
-    private @Nullable Map<String,Object> customHeaderContent;
+    private @Nullable Map<String,String> customHeaderContent;
     /**
      * @return Whether to disable caching.
      * - 0: not disabled
@@ -142,7 +141,7 @@ public final class SyntheticTaskMonitorConfWebsite {
      * @return Custom header, in JSON Map format.
      * 
      */
-    public Map<String,Object> customHeaderContent() {
+    public Map<String,String> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
     /**
@@ -271,7 +270,7 @@ public final class SyntheticTaskMonitorConfWebsite {
     public static final class Builder {
         private @Nullable Integer automaticScrolling;
         private @Nullable Integer customHeader;
-        private @Nullable Map<String,Object> customHeaderContent;
+        private @Nullable Map<String,String> customHeaderContent;
         private @Nullable Integer disableCache;
         private @Nullable Integer disableCompression;
         private @Nullable String dnsHijackWhitelist;
@@ -325,7 +324,7 @@ public final class SyntheticTaskMonitorConfWebsite {
             return this;
         }
         @CustomType.Setter
-        public Builder customHeaderContent(@Nullable Map<String,Object> customHeaderContent) {
+        public Builder customHeaderContent(@Nullable Map<String,String> customHeaderContent) {
 
             this.customHeaderContent = customHeaderContent;
             return this;

@@ -33,7 +33,7 @@ class LoadBalancerArgs:
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
@@ -69,7 +69,7 @@ class LoadBalancerArgs:
                > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
@@ -364,14 +364,14 @@ class LoadBalancerArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -409,7 +409,7 @@ class _LoadBalancerState:
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
@@ -445,7 +445,7 @@ class _LoadBalancerState:
                > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
@@ -740,14 +740,14 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -792,7 +792,7 @@ class LoadBalancer(pulumi.CustomResource):
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -831,16 +831,16 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             vswitch_id=default_switch.id,
             tags={
-                "tag_a": 1,
-                "tag_b": 2,
-                "tag_c": 3,
-                "tag_d": 4,
-                "tag_e": 5,
-                "tag_f": 6,
-                "tag_g": 7,
-                "tag_h": 8,
-                "tag_i": 9,
-                "tag_j": 10,
+                "tag_a": "1",
+                "tag_b": "2",
+                "tag_c": "3",
+                "tag_d": "4",
+                "tag_e": "5",
+                "tag_f": "6",
+                "tag_g": "7",
+                "tag_h": "8",
+                "tag_i": "9",
+                "tag_j": "10",
             })
         ```
 
@@ -886,7 +886,7 @@ class LoadBalancer(pulumi.CustomResource):
                > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         ...
@@ -931,16 +931,16 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             vswitch_id=default_switch.id,
             tags={
-                "tag_a": 1,
-                "tag_b": 2,
-                "tag_c": 3,
-                "tag_d": 4,
-                "tag_e": 5,
-                "tag_f": 6,
-                "tag_g": 7,
-                "tag_h": 8,
-                "tag_i": 9,
-                "tag_j": 10,
+                "tag_a": "1",
+                "tag_b": "2",
+                "tag_c": "3",
+                "tag_d": "4",
+                "tag_e": "5",
+                "tag_f": "6",
+                "tag_g": "7",
+                "tag_h": "8",
+                "tag_i": "9",
+                "tag_j": "10",
             })
         ```
 
@@ -986,7 +986,7 @@ class LoadBalancer(pulumi.CustomResource):
                  slave_zone_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         pulumi.log.warn("""LoadBalancer is deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource""")
@@ -1048,7 +1048,7 @@ class LoadBalancer(pulumi.CustomResource):
             slave_zone_id: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
@@ -1089,7 +1089,7 @@ class LoadBalancer(pulumi.CustomResource):
                > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1286,7 +1286,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         """

@@ -67,7 +67,7 @@ type GetKeyPairsArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getKeyPairs.
@@ -89,7 +89,7 @@ type GetKeyPairsResult struct {
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetKeyPairsOutput(ctx *pulumi.Context, args GetKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetKeyPairsResultOutput {
@@ -118,7 +118,7 @@ type GetKeyPairsOutputArgs struct {
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetKeyPairsOutputArgs) ElementType() reflect.Type {
@@ -184,8 +184,8 @@ func (o GetKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
-func (o GetKeyPairsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetKeyPairsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetKeyPairsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKeyPairsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

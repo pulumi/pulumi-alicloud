@@ -183,7 +183,7 @@ type FileSystem struct {
 	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
@@ -256,7 +256,7 @@ type fileSystemState struct {
 	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
@@ -294,7 +294,7 @@ type FileSystemState struct {
 	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
 	VpcId pulumi.StringPtrInput
 	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
@@ -336,7 +336,7 @@ type fileSystemArgs struct {
 	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
@@ -375,7 +375,7 @@ type FileSystemArgs struct {
 	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
 	VpcId pulumi.StringPtrInput
 	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
@@ -520,8 +520,8 @@ func (o FileSystemOutput) StorageType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o FileSystemOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *FileSystem) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o FileSystemOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.

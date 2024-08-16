@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// The template tags.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> TemplateTags;
+        public readonly ImmutableDictionary<string, string> TemplateTags;
         /// <summary>
         /// The User Data.
         /// </summary>
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult> systemDisks,
 
-            ImmutableDictionary<string, object> templateTags,
+            ImmutableDictionary<string, string> templateTags,
 
             string userData,
 

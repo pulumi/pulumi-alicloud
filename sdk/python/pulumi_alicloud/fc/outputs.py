@@ -567,10 +567,10 @@ class ServiceNasConfigMountPoint(dict):
 @pulumi.output_type
 class ServiceTracingConfig(dict):
     def __init__(__self__, *,
-                 params: Mapping[str, Any],
+                 params: Mapping[str, str],
                  type: str):
         """
-        :param Mapping[str, Any] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        :param Mapping[str, str] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         :param str type: Tracing protocol type. Currently, only Jaeger is supported.
         """
         pulumi.set(__self__, "params", params)
@@ -578,7 +578,7 @@ class ServiceTracingConfig(dict):
 
     @property
     @pulumi.getter
-    def params(self) -> Mapping[str, Any]:
+    def params(self) -> Mapping[str, str]:
         """
         Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
         """
@@ -3042,7 +3042,7 @@ class GetFunctionsFunctionResult(dict):
                  code_size: int,
                  creation_time: str,
                  description: str,
-                 environment_variables: Mapping[str, Any],
+                 environment_variables: Mapping[str, str],
                  handler: str,
                  id: str,
                  initialization_timeout: int,
@@ -3061,7 +3061,7 @@ class GetFunctionsFunctionResult(dict):
         :param int code_size: Function code size in bytes.
         :param str creation_time: Function creation time.
         :param str description: Function description.
-        :param Mapping[str, Any] environment_variables: A map that defines environment variables for the function.
+        :param Mapping[str, str] environment_variables: A map that defines environment variables for the function.
         :param str handler: Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
         :param str id: Function ID.
         :param int initialization_timeout: The maximum length of time, in seconds, that the function's initialization should be run for.
@@ -3137,7 +3137,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Mapping[str, Any]:
+    def environment_variables(self) -> Mapping[str, str]:
         """
         A map that defines environment variables for the function.
         """

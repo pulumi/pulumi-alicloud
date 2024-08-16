@@ -43,9 +43,9 @@ import (
 //				DedicatedHostClusterName: pulumi.String("example_value"),
 //				Description:              pulumi.String("example_value"),
 //				ZoneId:                   pulumi.String(example.Zones[0].Id),
-//				Tags: pulumi.Map{
-//					"Create": pulumi.Any("TF"),
-//					"For":    pulumi.Any("DDH_Cluster_Test"),
+//				Tags: pulumi.StringMap{
+//					"Create": pulumi.String("TF"),
+//					"For":    pulumi.String("DDH_Cluster_Test"),
 //				},
 //			})
 //			if err != nil {
@@ -74,7 +74,7 @@ type EcsDedicatedHostCluster struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the zone in which to create the dedicated host cluster.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -119,7 +119,7 @@ type ecsDedicatedHostClusterState struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the zone in which to create the dedicated host cluster.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -132,7 +132,7 @@ type EcsDedicatedHostClusterState struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the zone in which to create the dedicated host cluster.
 	ZoneId pulumi.StringPtrInput
 }
@@ -149,7 +149,7 @@ type ecsDedicatedHostClusterArgs struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the zone in which to create the dedicated host cluster.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -163,7 +163,7 @@ type EcsDedicatedHostClusterArgs struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the zone in which to create the dedicated host cluster.
 	ZoneId pulumi.StringInput
 }
@@ -271,8 +271,8 @@ func (o EcsDedicatedHostClusterOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EcsDedicatedHostClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsDedicatedHostClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsDedicatedHostCluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the zone in which to create the dedicated host cluster.

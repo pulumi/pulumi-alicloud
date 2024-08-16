@@ -140,7 +140,7 @@ export class NetworkAcl extends pulumi.CustomResource {
     /**
      * The tags of this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the associated VPC.
      *
@@ -239,7 +239,7 @@ export interface NetworkAclState {
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the associated VPC.
      *
@@ -285,7 +285,7 @@ export interface NetworkAclArgs {
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the associated VPC.
      *

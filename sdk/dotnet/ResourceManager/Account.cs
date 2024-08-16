@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Member type. The value of `ResourceAccount` indicates the resource account.
@@ -227,16 +227,16 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PayerAccountId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// 
         /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -317,16 +317,16 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// 
         /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

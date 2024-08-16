@@ -100,7 +100,7 @@ export class Topic extends pulumi.CustomResource {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *
@@ -182,7 +182,7 @@ export interface TopicState {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *
@@ -224,7 +224,7 @@ export interface TopicArgs {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *

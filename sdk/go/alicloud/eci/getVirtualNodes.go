@@ -78,7 +78,7 @@ type GetVirtualNodesArgs struct {
 	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName *string `pulumi:"virtualNodeName"`
 	VswitchId       *string `pulumi:"vswitchId"`
@@ -87,18 +87,18 @@ type GetVirtualNodesArgs struct {
 // A collection of values returned by getVirtualNodes.
 type GetVirtualNodesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	NameRegex       *string                `pulumi:"nameRegex"`
-	Names           []string               `pulumi:"names"`
-	Nodes           []GetVirtualNodesNode  `pulumi:"nodes"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	SecurityGroupId *string                `pulumi:"securityGroupId"`
-	Status          *string                `pulumi:"status"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	VirtualNodeName *string                `pulumi:"virtualNodeName"`
-	VswitchId       *string                `pulumi:"vswitchId"`
+	Id              string                `pulumi:"id"`
+	Ids             []string              `pulumi:"ids"`
+	NameRegex       *string               `pulumi:"nameRegex"`
+	Names           []string              `pulumi:"names"`
+	Nodes           []GetVirtualNodesNode `pulumi:"nodes"`
+	OutputFile      *string               `pulumi:"outputFile"`
+	ResourceGroupId *string               `pulumi:"resourceGroupId"`
+	SecurityGroupId *string               `pulumi:"securityGroupId"`
+	Status          *string               `pulumi:"status"`
+	Tags            map[string]string     `pulumi:"tags"`
+	VirtualNodeName *string               `pulumi:"virtualNodeName"`
+	VswitchId       *string               `pulumi:"vswitchId"`
 }
 
 func GetVirtualNodesOutput(ctx *pulumi.Context, args GetVirtualNodesOutputArgs, opts ...pulumi.InvokeOption) GetVirtualNodesResultOutput {
@@ -129,7 +129,7 @@ type GetVirtualNodesOutputArgs struct {
 	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName pulumi.StringPtrInput `pulumi:"virtualNodeName"`
 	VswitchId       pulumi.StringPtrInput `pulumi:"vswitchId"`
@@ -191,8 +191,8 @@ func (o GetVirtualNodesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualNodesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetVirtualNodesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetVirtualNodesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetVirtualNodesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVirtualNodesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetVirtualNodesResultOutput) VirtualNodeName() pulumi.StringPtrOutput {

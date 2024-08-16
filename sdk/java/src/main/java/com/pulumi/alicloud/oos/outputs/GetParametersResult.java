@@ -7,7 +7,6 @@ import com.pulumi.alicloud.oos.outputs.GetParametersParameter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,7 @@ public final class GetParametersResult {
     private @Nullable String resourceGroupId;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String type;
 
     private GetParametersResult() {}
@@ -73,7 +72,7 @@ public final class GetParametersResult {
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> type() {
@@ -100,7 +99,7 @@ public final class GetParametersResult {
         private @Nullable String resourceGroupId;
         private @Nullable String sortField;
         private @Nullable String sortOrder;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetParametersResult defaults) {
@@ -204,7 +203,7 @@ public final class GetParametersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

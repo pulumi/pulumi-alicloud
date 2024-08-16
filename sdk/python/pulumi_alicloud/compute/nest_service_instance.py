@@ -27,7 +27,7 @@ class NestServiceInstanceArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_instance_name: Optional[pulumi.Input[str]] = None,
                  specification_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NestServiceInstance resource.
@@ -42,7 +42,7 @@ class NestServiceInstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] service_instance_name: The name of the Service Instance.
         :param pulumi.Input[str] specification_name: The name of the specification.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -204,14 +204,14 @@ class NestServiceInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -242,7 +242,7 @@ class _NestServiceInstanceState:
                  service_version: Optional[pulumi.Input[str]] = None,
                  specification_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NestServiceInstance resources.
@@ -258,7 +258,7 @@ class _NestServiceInstanceState:
         :param pulumi.Input[str] service_version: The version of the service.
         :param pulumi.Input[str] specification_name: The name of the specification.
         :param pulumi.Input[str] status: The status of the Service Instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
         if commodity is not None:
@@ -436,14 +436,14 @@ class _NestServiceInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -475,7 +475,7 @@ class NestServiceInstance(pulumi.CustomResource):
                  service_instance_name: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  specification_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -570,7 +570,7 @@ class NestServiceInstance(pulumi.CustomResource):
         :param pulumi.Input[str] service_instance_name: The name of the Service Instance.
         :param pulumi.Input[str] service_version: The version of the service.
         :param pulumi.Input[str] specification_name: The name of the specification.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
         ...
@@ -684,7 +684,7 @@ class NestServiceInstance(pulumi.CustomResource):
                  service_instance_name: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  specification_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -735,7 +735,7 @@ class NestServiceInstance(pulumi.CustomResource):
             service_version: Optional[pulumi.Input[str]] = None,
             specification_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_name: Optional[pulumi.Input[str]] = None) -> 'NestServiceInstance':
         """
         Get an existing NestServiceInstance resource's state with the given name, id, and optional extra
@@ -756,7 +756,7 @@ class NestServiceInstance(pulumi.CustomResource):
         :param pulumi.Input[str] service_version: The version of the service.
         :param pulumi.Input[str] specification_name: The name of the specification.
         :param pulumi.Input[str] status: The status of the Service Instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -877,7 +877,7 @@ class NestServiceInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

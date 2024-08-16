@@ -18,7 +18,7 @@ class TopicArgs:
                  message_type: pulumi.Input[int],
                  perm: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
@@ -27,7 +27,7 @@ class TopicArgs:
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
@@ -105,7 +105,7 @@ class TopicArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -116,7 +116,7 @@ class TopicArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -152,7 +152,7 @@ class _TopicState:
                  message_type: Optional[pulumi.Input[int]] = None,
                  perm: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
@@ -161,7 +161,7 @@ class _TopicState:
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
@@ -241,7 +241,7 @@ class _TopicState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -252,7 +252,7 @@ class _TopicState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -290,7 +290,7 @@ class Topic(pulumi.CustomResource):
                  message_type: Optional[pulumi.Input[int]] = None,
                  perm: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -344,7 +344,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
@@ -421,7 +421,7 @@ class Topic(pulumi.CustomResource):
                  message_type: Optional[pulumi.Input[int]] = None,
                  perm: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -458,7 +458,7 @@ class Topic(pulumi.CustomResource):
             message_type: Optional[pulumi.Input[int]] = None,
             perm: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topic: Optional[pulumi.Input[str]] = None,
             topic_name: Optional[pulumi.Input[str]] = None) -> 'Topic':
         """
@@ -472,7 +472,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
                
@@ -528,7 +528,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

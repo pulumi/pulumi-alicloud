@@ -58,9 +58,9 @@ import (
 //
 //				TemplateName: pulumi.String("test-name"),
 //				VersionName:  pulumi.String("test"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance Test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("acceptance Test"),
 //				},
 //			})
 //			if err != nil {
@@ -99,7 +99,7 @@ type Template struct {
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType pulumi.StringOutput `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
 	TemplateFormat pulumi.StringOutput `pulumi:"templateFormat"`
 	// The id of OOS Template.
@@ -171,7 +171,7 @@ type templateState struct {
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType *string `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
 	TemplateFormat *string `pulumi:"templateFormat"`
 	// The id of OOS Template.
@@ -208,7 +208,7 @@ type TemplateState struct {
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
 	TemplateFormat pulumi.StringPtrInput
 	// The id of OOS Template.
@@ -239,7 +239,7 @@ type templateArgs struct {
 	// The ID of resource group which the template belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
 	TemplateName string `pulumi:"templateName"`
 	// The name of template version.
@@ -255,7 +255,7 @@ type TemplateArgs struct {
 	// The ID of resource group which the template belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
 	TemplateName pulumi.StringInput
 	// The name of template version.
@@ -390,8 +390,8 @@ func (o TemplateOutput) ShareType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TemplateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Template) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TemplateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The format of the template. The format can be JSON or YAML. The system automatically identifies the format.

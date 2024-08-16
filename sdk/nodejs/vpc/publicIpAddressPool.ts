@@ -110,7 +110,7 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
     /**
      * The tags of PrefixList.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The total number of public IP address pools.
      */
@@ -213,7 +213,7 @@ export interface PublicIpAddressPoolState {
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The total number of public IP address pools.
      */
@@ -257,5 +257,5 @@ export interface PublicIpAddressPoolArgs {
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

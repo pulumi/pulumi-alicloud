@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -39,13 +38,13 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
      * 
      */
     @Import(name="customHeaderContent")
-    private @Nullable Output<Map<String,Object>> customHeaderContent;
+    private @Nullable Output<Map<String,String>> customHeaderContent;
 
     /**
      * @return Custom header, in JSON Map format.
      * 
      */
-    public Optional<Output<Map<String,Object>>> customHeaderContent() {
+    public Optional<Output<Map<String,String>>> customHeaderContent() {
         return Optional.ofNullable(this.customHeaderContent);
     }
 
@@ -377,7 +376,7 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder customHeaderContent(@Nullable Output<Map<String,Object>> customHeaderContent) {
+        public Builder customHeaderContent(@Nullable Output<Map<String,String>> customHeaderContent) {
             $.customHeaderContent = customHeaderContent;
             return this;
         }
@@ -388,7 +387,7 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder customHeaderContent(Map<String,Object> customHeaderContent) {
+        public Builder customHeaderContent(Map<String,String> customHeaderContent) {
             return customHeaderContent(Output.of(customHeaderContent));
         }
 

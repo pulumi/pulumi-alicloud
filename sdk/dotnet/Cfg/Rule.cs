@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Cfg
         /// The settings of the input parameters for the rule.
         /// </summary>
         [Output("inputParameters")]
-        public Output<ImmutableDictionary<string, object>?> InputParameters { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> InputParameters { get; private set; } = null!;
 
         /// <summary>
         /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
@@ -294,14 +294,14 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? ExcludeResourceIdsScope { get; set; }
 
         [Input("inputParameters")]
-        private InputMap<object>? _inputParameters;
+        private InputMap<string>? _inputParameters;
 
         /// <summary>
         /// The settings of the input parameters for the rule.
         /// </summary>
-        public InputMap<object> InputParameters
+        public InputMap<string> InputParameters
         {
-            get => _inputParameters ?? (_inputParameters = new InputMap<object>());
+            get => _inputParameters ?? (_inputParameters = new InputMap<string>());
             set => _inputParameters = value;
         }
 
@@ -466,14 +466,14 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? ExcludeResourceIdsScope { get; set; }
 
         [Input("inputParameters")]
-        private InputMap<object>? _inputParameters;
+        private InputMap<string>? _inputParameters;
 
         /// <summary>
         /// The settings of the input parameters for the rule.
         /// </summary>
-        public InputMap<object> InputParameters
+        public InputMap<string> InputParameters
         {
-            get => _inputParameters ?? (_inputParameters = new InputMap<object>());
+            get => _inputParameters ?? (_inputParameters = new InputMap<string>());
             set => _inputParameters = value;
         }
 

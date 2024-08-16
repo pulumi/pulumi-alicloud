@@ -6,7 +6,6 @@ package com.pulumi.alicloud.cms.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +62,7 @@ public final class GetMonitorGroupsGroup {
      * @return A map of tags assigned to the Cms Monitor Group.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The alert templates applied to the application group.
      * 
@@ -143,7 +142,7 @@ public final class GetMonitorGroupsGroup {
      * @return A map of tags assigned to the Cms Monitor Group.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -179,7 +178,7 @@ public final class GetMonitorGroupsGroup {
         private String id;
         private String monitorGroupName;
         private String serviceId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private List<String> templateIds;
         private String type;
         public Builder() {}
@@ -275,7 +274,7 @@ public final class GetMonitorGroupsGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetMonitorGroupsGroup", "tags");
             }

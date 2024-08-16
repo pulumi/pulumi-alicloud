@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Rds
         /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
         [Output("weight")]
-        public Output<ImmutableDictionary<string, object>?> Weight { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Weight { get; private set; } = null!;
 
 
         /// <summary>
@@ -236,14 +236,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? Port { get; set; }
 
         [Input("weight")]
-        private InputMap<object>? _weight;
+        private InputMap<string>? _weight;
 
         /// <summary>
         /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
-        public InputMap<object> Weight
+        public InputMap<string> Weight
         {
-            get => _weight ?? (_weight = new InputMap<object>());
+            get => _weight ?? (_weight = new InputMap<string>());
             set => _weight = value;
         }
 
@@ -292,14 +292,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? Port { get; set; }
 
         [Input("weight")]
-        private InputMap<object>? _weight;
+        private InputMap<string>? _weight;
 
         /// <summary>
         /// Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         /// </summary>
-        public InputMap<object> Weight
+        public InputMap<string> Weight
         {
-            get => _weight ?? (_weight = new InputMap<object>());
+            get => _weight ?? (_weight = new InputMap<string>());
             set => _weight = value;
         }
 

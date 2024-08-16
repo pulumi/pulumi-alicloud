@@ -11,7 +11,6 @@ import com.pulumi.alicloud.alb.outputs.GetLoadBalancersBalancerModificationProte
 import com.pulumi.alicloud.alb.outputs.GetLoadBalancersBalancerZoneMapping;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -120,7 +119,7 @@ public final class GetLoadBalancersBalancer {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      * 
@@ -270,7 +269,7 @@ public final class GetLoadBalancersBalancer {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -315,7 +314,7 @@ public final class GetLoadBalancersBalancer {
         private List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs;
         private String resourceGroupId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
         public Builder() {}
@@ -504,7 +503,7 @@ public final class GetLoadBalancersBalancer {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancersBalancer", "tags");
             }

@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// The tags of NAT gateway.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the VPC.
         /// </summary>
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

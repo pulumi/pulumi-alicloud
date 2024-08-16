@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// The tags.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Type;
         /// <summary>
         /// A resource type that has a reference relationship.
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

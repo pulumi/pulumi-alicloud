@@ -67,8 +67,8 @@ type GetEcsKeyPairsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The resource group Id.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsKeyPairs.
@@ -84,7 +84,7 @@ type GetEcsKeyPairsResult struct {
 	OutputFile      *string                 `pulumi:"outputFile"`
 	Pairs           []GetEcsKeyPairsPair    `pulumi:"pairs"`
 	ResourceGroupId *string                 `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{}  `pulumi:"tags"`
+	Tags            map[string]string       `pulumi:"tags"`
 }
 
 func GetEcsKeyPairsOutput(ctx *pulumi.Context, args GetEcsKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetEcsKeyPairsResultOutput {
@@ -112,7 +112,7 @@ type GetEcsKeyPairsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The resource group Id.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	Tags            pulumi.MapInput       `pulumi:"tags"`
+	Tags            pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetEcsKeyPairsOutputArgs) ElementType() reflect.Type {
@@ -172,8 +172,8 @@ func (o GetEcsKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsKeyPairsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsKeyPairsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsKeyPairsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsKeyPairsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

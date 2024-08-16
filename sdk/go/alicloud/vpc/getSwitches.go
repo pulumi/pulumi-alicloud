@@ -93,7 +93,7 @@ type GetSwitchesArgs struct {
 	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC that owns the vSwitch.
 	VpcId *string `pulumi:"vpcId"`
 	// The name of the vSwitch.
@@ -126,7 +126,7 @@ type GetSwitchesResult struct {
 	// The status of the vSwitch.
 	Status *string `pulumi:"status"`
 	// The Tags of the vSwitch.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC that owns the vSwitch.
 	VpcId *string `pulumi:"vpcId"`
 	// Name of the vSwitch.
@@ -172,7 +172,7 @@ type GetSwitchesOutputArgs struct {
 	// The status of the vSwitch. Valid values: `Available` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC that owns the vSwitch.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The name of the vSwitch.
@@ -255,8 +255,8 @@ func (o GetSwitchesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The Tags of the vSwitch.
-func (o GetSwitchesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSwitchesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSwitchesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSwitchesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the VPC that owns the vSwitch.

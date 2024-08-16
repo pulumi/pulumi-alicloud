@@ -6,7 +6,6 @@ package com.pulumi.alicloud.elasticsearch.outputs;
 import com.pulumi.alicloud.elasticsearch.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ public final class GetInstancesResult {
     private List<String> ids;
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String version;
 
     private GetInstancesResult() {}
@@ -52,7 +51,7 @@ public final class GetInstancesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> version() {
@@ -74,7 +73,7 @@ public final class GetInstancesResult {
         private List<String> ids;
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String version;
         public Builder() {}
         public Builder(GetInstancesResult defaults) {
@@ -143,7 +142,7 @@ public final class GetInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

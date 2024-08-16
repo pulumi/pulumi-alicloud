@@ -116,7 +116,7 @@ type Cluster struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	Status         pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The vswitchId of dataCenter-1, can not empty.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -214,7 +214,7 @@ type clusterState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	Status         *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vswitchId of dataCenter-1, can not empty.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -261,7 +261,7 @@ type ClusterState struct {
 	SecurityGroups pulumi.StringArrayInput
 	Status         pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vswitchId of dataCenter-1, can not empty.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -310,7 +310,7 @@ type clusterArgs struct {
 	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vswitchId of dataCenter-1, can not empty.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -356,7 +356,7 @@ type ClusterArgs struct {
 	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vswitchId of dataCenter-1, can not empty.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
@@ -549,8 +549,8 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The vswitchId of dataCenter-1, can not empty.

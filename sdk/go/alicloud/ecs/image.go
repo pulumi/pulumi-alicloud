@@ -118,8 +118,8 @@ import (
 //				Description:     pulumi.String("terraform-example"),
 //				Architecture:    pulumi.String("x86_64"),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
-//				Tags: pulumi.Map{
-//					"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
+//				Tags: pulumi.StringMap{
+//					"FinanceDept": pulumi.String("FinanceDeptJoshua"),
 //				},
 //			})
 //			if err != nil {
@@ -204,7 +204,7 @@ type Image struct {
 	// The tag
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -300,7 +300,7 @@ type imageState struct {
 	// The tag
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ImageState struct {
@@ -367,7 +367,7 @@ type ImageState struct {
 	// The tag
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -434,7 +434,7 @@ type imageArgs struct {
 	// The tag
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -498,7 +498,7 @@ type ImageArgs struct {
 	// The tag
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -708,8 +708,8 @@ func (o ImageOutput) Status() pulumi.StringOutput {
 // The tag
 //
 // The following arguments will be discarded. Please use new fields as soon as possible:
-func (o ImageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ImageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

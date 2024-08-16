@@ -110,14 +110,14 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// The tags of NAT gateway.
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -214,14 +214,14 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// The tags of NAT gateway.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The tags of NAT gateway.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
         /// The ID of the VPC.
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Vpc
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             int totalCount,
 

@@ -27,7 +27,7 @@ class ServiceMeshArgs:
                  mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
                  prometheus_url: Optional[pulumi.Input[str]] = None,
                  service_mesh_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceMesh resource.
@@ -48,7 +48,7 @@ class ServiceMeshArgs:
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information. See `mesh_config` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
         pulumi.set(__self__, "network", network)
@@ -217,14 +217,14 @@ class ServiceMeshArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -256,7 +256,7 @@ class _ServiceMeshState:
                  prometheus_url: Optional[pulumi.Input[str]] = None,
                  service_mesh_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceMesh resources.
@@ -279,7 +279,7 @@ class _ServiceMeshState:
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
         if cluster_ids is not None:
@@ -477,14 +477,14 @@ class _ServiceMeshState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -516,7 +516,7 @@ class ServiceMesh(pulumi.CustomResource):
                  network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
                  prometheus_url: Optional[pulumi.Input[str]] = None,
                  service_mesh_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -553,7 +553,7 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information. See `network` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
         ...
@@ -603,7 +603,7 @@ class ServiceMesh(pulumi.CustomResource):
                  network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
                  prometheus_url: Optional[pulumi.Input[str]] = None,
                  service_mesh_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -654,7 +654,7 @@ class ServiceMesh(pulumi.CustomResource):
             prometheus_url: Optional[pulumi.Input[str]] = None,
             service_mesh_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'ServiceMesh':
         """
         Get an existing ServiceMesh resource's state with the given name, id, and optional extra
@@ -682,7 +682,7 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
         :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -818,7 +818,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

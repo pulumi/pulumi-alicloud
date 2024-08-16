@@ -112,7 +112,7 @@ class GetPluginsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -142,7 +142,7 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
                 page_size: Optional[int] = None,
                 plugin_name: Optional[str] = None,
                 plugin_type: Optional[str] = None,
-                tags: Optional[Mapping[str, Any]] = None,
+                tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPluginsResult:
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
@@ -169,7 +169,7 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
     :param str plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -205,7 +205,7 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                        plugin_name: Optional[pulumi.Input[Optional[str]]] = None,
                        plugin_type: Optional[pulumi.Input[Optional[str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPluginsResult]:
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
@@ -232,6 +232,6 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
     :param str plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

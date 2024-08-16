@@ -284,7 +284,7 @@ class BucketLifecycleRule(dict):
                  noncurrent_version_expirations: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionExpiration']] = None,
                  noncurrent_version_transitions: Optional[Sequence['outputs.BucketLifecycleRuleNoncurrentVersionTransition']] = None,
                  prefix: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
         :param bool enabled: Specifies lifecycle rule status.
@@ -297,7 +297,7 @@ class BucketLifecycleRule(dict):
         :param Sequence['BucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expirations: Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
         :param Sequence['BucketLifecycleRuleNoncurrentVersionTransitionArgs'] noncurrent_version_transitions: Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
         :param str prefix: The prefix in the names of the objects to which the lifecycle rule does not apply.
-        :param Mapping[str, Any] tags: Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+        :param Mapping[str, str] tags: Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
         :param Sequence['BucketLifecycleRuleTransitionArgs'] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -388,7 +388,7 @@ class BucketLifecycleRule(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
         """
@@ -1470,7 +1470,7 @@ class GetBucketsBucketResult(dict):
                  referer_config: 'outputs.GetBucketsBucketRefererConfigResult',
                  server_side_encryption_rule: 'outputs.GetBucketsBucketServerSideEncryptionRuleResult',
                  storage_class: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  versioning: 'outputs.GetBucketsBucketVersioningResult',
                  website: 'outputs.GetBucketsBucketWebsiteResult',
                  policy: Optional[str] = None):
@@ -1489,7 +1489,7 @@ class GetBucketsBucketResult(dict):
         :param 'GetBucketsBucketRefererConfigArgs' referer_config: A list of one element containing referer configuration. It contains the following attributes:
         :param 'GetBucketsBucketServerSideEncryptionRuleArgs' server_side_encryption_rule: A configuration of default encryption for a bucket. It contains the following attributes:
         :param str storage_class: Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
-        :param Mapping[str, Any] tags: A mapping of tags.
+        :param Mapping[str, str] tags: A mapping of tags.
         :param 'GetBucketsBucketVersioningArgs' versioning: If present , the versioning state has been set on the bucket. It contains the following attribute.
         :param 'GetBucketsBucketWebsiteArgs' website: A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
         """
@@ -1627,7 +1627,7 @@ class GetBucketsBucketResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags.
         """
@@ -2034,7 +2034,7 @@ class GetInstancesInstanceResult(dict):
                  resource_group_id: str,
                  status: str,
                  table_quota: int,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  user_id: str):
         """
         :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
@@ -2051,7 +2051,7 @@ class GetInstancesInstanceResult(dict):
         :param str resource_group_id: (Available since v1.221.0) The resource group the instance belongs to.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param int table_quota: (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
-        :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+        :param Mapping[str, str] tags: A map of tags assigned to the instance. It must be in the format:
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2194,7 +2194,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the instance. It must be in the format:
         ```python

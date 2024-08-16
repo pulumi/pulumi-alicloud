@@ -3429,7 +3429,7 @@ type GetAlarmsAlarm struct {
 	// The description for the alarm.
 	Description string `pulumi:"description"`
 	// The dimension map for the alarm's associated metric.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm.
 	Enable bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state.
@@ -3475,7 +3475,7 @@ type GetAlarmsAlarmArgs struct {
 	// The description for the alarm.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The dimension map for the alarm's associated metric.
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapInput `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state.
@@ -3572,8 +3572,8 @@ func (o GetAlarmsAlarmOutput) Description() pulumi.StringOutput {
 }
 
 // The dimension map for the alarm's associated metric.
-func (o GetAlarmsAlarmOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAlarmsAlarm) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o GetAlarmsAlarmOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlarmsAlarm) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 // Whether to enable specific ess alarm.
@@ -4499,7 +4499,7 @@ type GetScalingGroupsGroup struct {
 	// The Process in suspension.
 	SuspendedProcesses []string `pulumi:"suspendedProcesses"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Number of instances in scaling group.
 	TotalCapacity int `pulumi:"totalCapacity"`
 	// The number of all ECS instances in the scaling group.
@@ -4567,7 +4567,7 @@ type GetScalingGroupsGroupArgs struct {
 	// The Process in suspension.
 	SuspendedProcesses pulumi.StringArrayInput `pulumi:"suspendedProcesses"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Number of instances in scaling group.
 	TotalCapacity pulumi.IntInput `pulumi:"totalCapacity"`
 	// The number of all ECS instances in the scaling group.
@@ -4737,8 +4737,8 @@ func (o GetScalingGroupsGroupOutput) SuspendedProcesses() pulumi.StringArrayOutp
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetScalingGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetScalingGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetScalingGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Number of instances in scaling group.

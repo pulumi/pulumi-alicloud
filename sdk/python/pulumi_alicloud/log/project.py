@@ -19,7 +19,7 @@ class ProjectArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] description: Description.
@@ -31,7 +31,7 @@ class ProjectArgs:
                - It must start and end with a lowercase letter or number.
                - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -118,7 +118,7 @@ class ProjectArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tag.
 
@@ -127,7 +127,7 @@ class ProjectArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -141,7 +141,7 @@ class _ProjectState:
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] create_time: CreateTime.
@@ -155,7 +155,7 @@ class _ProjectState:
                - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -270,7 +270,7 @@ class _ProjectState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Tag.
 
@@ -279,7 +279,7 @@ class _ProjectState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -293,7 +293,7 @@ class Project(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a SLS Project resource.
@@ -382,7 +382,7 @@ class Project(pulumi.CustomResource):
                - It must start and end with a lowercase letter or number.
                - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -488,7 +488,7 @@ class Project(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -523,7 +523,7 @@ class Project(pulumi.CustomResource):
             project_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Project':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -542,7 +542,7 @@ class Project(pulumi.CustomResource):
                - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: Tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tag.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -623,7 +623,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Tag.
 

@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -562,13 +561,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="kmsEncryptionContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
 
@@ -1349,7 +1348,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="volumeTags")
-    private @Nullable Output<Map<String,Object>> volumeTags;
+    private @Nullable Output<Map<String,String>> volumeTags;
 
     /**
      * @return A mapping of tags to assign to the devices created by the instance at launch time.
@@ -1357,7 +1356,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    public Optional<Output<Map<String,Object>>> volumeTags() {
+    public Optional<Output<Map<String,String>>> volumeTags() {
         return Optional.ofNullable(this.volumeTags);
     }
 
@@ -2250,7 +2249,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(@Nullable Output<Map<String,Object>> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(@Nullable Output<Map<String,String>> kmsEncryptionContext) {
             $.kmsEncryptionContext = kmsEncryptionContext;
             return this;
         }
@@ -2261,7 +2260,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
         }
 
@@ -3339,7 +3338,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder volumeTags(@Nullable Output<Map<String,Object>> volumeTags) {
+        public Builder volumeTags(@Nullable Output<Map<String,String>> volumeTags) {
             $.volumeTags = volumeTags;
             return this;
         }
@@ -3352,7 +3351,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder volumeTags(Map<String,Object> volumeTags) {
+        public Builder volumeTags(Map<String,String> volumeTags) {
             return volumeTags(Output.of(volumeTags));
         }
 

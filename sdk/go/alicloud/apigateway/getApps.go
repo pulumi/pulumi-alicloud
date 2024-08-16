@@ -58,7 +58,7 @@ type GetAppsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getApps.
@@ -71,9 +71,9 @@ type GetAppsResult struct {
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of app names.
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.InvokeOption) GetAppsResultOutput {
@@ -98,7 +98,7 @@ type GetAppsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetAppsOutputArgs) ElementType() reflect.Type {
@@ -148,8 +148,8 @@ func (o GetAppsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetAppsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAppsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAppsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAppsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

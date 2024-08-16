@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Cms
         /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
         [Output("dimensions")]
-        public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
 
         /// <summary>
         /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Cms
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The information about the resource for which alerts are triggered. See `targets` below.
@@ -319,15 +319,15 @@ namespace Pulumi.AliCloud.Cms
         }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
         [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -423,14 +423,14 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? StartTime { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -479,15 +479,15 @@ namespace Pulumi.AliCloud.Cms
         }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         /// </summary>
         [Obsolete(@"Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.")]
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -589,14 +589,14 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

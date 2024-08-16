@@ -7,7 +7,6 @@ import com.pulumi.alicloud.arms.outputs.GetPrometheusPromethei;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +44,7 @@ public final class GetPrometheusResult {
      * @return The tag of the Prometheus.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetPrometheusResult() {}
     public Optional<Boolean> enableDetails() {
@@ -92,7 +91,7 @@ public final class GetPrometheusResult {
      * @return The tag of the Prometheus.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -113,7 +112,7 @@ public final class GetPrometheusResult {
         private @Nullable String outputFile;
         private List<GetPrometheusPromethei> prometheis;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetPrometheusResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -194,7 +193,7 @@ public final class GetPrometheusResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

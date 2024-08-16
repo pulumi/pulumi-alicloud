@@ -10,7 +10,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +146,7 @@ public final class GetDedicatedHostsHost {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The zone ID of the ECS Dedicated Host.
      * 
@@ -334,7 +333,7 @@ public final class GetDedicatedHostsHost {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -379,7 +378,7 @@ public final class GetDedicatedHostsHost {
         private List<String> supportedCustomInstanceTypeFamilies;
         private List<String> supportedInstanceTypeFamilies;
         private List<String> supportedInstanceTypesLists;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String zoneId;
         public Builder() {}
         public Builder(GetDedicatedHostsHost defaults) {
@@ -632,7 +631,7 @@ public final class GetDedicatedHostsHost {
             return supportedInstanceTypesLists(List.of(supportedInstanceTypesLists));
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetDedicatedHostsHost", "tags");
             }

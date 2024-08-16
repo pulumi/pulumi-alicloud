@@ -31,7 +31,7 @@ class BucketArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
@@ -51,7 +51,7 @@ class BucketArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input['BucketWebsiteArgs'] website: A website configuration. See `website` below.
@@ -282,14 +282,14 @@ class BucketArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -352,7 +352,7 @@ class _BucketState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
@@ -377,7 +377,7 @@ class _BucketState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input['BucketWebsiteArgs'] website: A website configuration. See `website` below.
@@ -678,14 +678,14 @@ class _BucketState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -745,7 +745,7 @@ class Bucket(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
                  versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
                  website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
@@ -861,7 +861,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: A website configuration. See `website` below.
@@ -997,7 +997,7 @@ class Bucket(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
                  versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
                  website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
@@ -1064,7 +1064,7 @@ class Bucket(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
             versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
             website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
@@ -1094,7 +1094,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']] transfer_acceleration: A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: A website configuration. See `website` below.
@@ -1290,7 +1290,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """

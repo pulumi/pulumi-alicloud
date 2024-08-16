@@ -102,7 +102,7 @@ type Secret struct {
 	// - `ECS`: ECS secret.
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The version number of the initial version.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 	// The stage label that is used to mark the new version.
@@ -192,7 +192,7 @@ type secretState struct {
 	// - `ECS`: ECS secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The version number of the initial version.
 	VersionId *string `pulumi:"versionId"`
 	// The stage label that is used to mark the new version.
@@ -237,7 +237,7 @@ type SecretState struct {
 	// - `ECS`: ECS secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The version number of the initial version.
 	VersionId pulumi.StringPtrInput
 	// The stage label that is used to mark the new version.
@@ -280,7 +280,7 @@ type secretArgs struct {
 	// - `ECS`: ECS secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The version number of the initial version.
 	VersionId string `pulumi:"versionId"`
 	// The stage label that is used to mark the new version.
@@ -320,7 +320,7 @@ type SecretArgs struct {
 	// - `ECS`: ECS secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The version number of the initial version.
 	VersionId pulumi.StringInput
 	// The stage label that is used to mark the new version.
@@ -499,8 +499,8 @@ func (o SecretOutput) SecretType() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o SecretOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Secret) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o SecretOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The version number of the initial version.

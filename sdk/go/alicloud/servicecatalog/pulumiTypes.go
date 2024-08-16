@@ -1582,8 +1582,8 @@ type GetProvisionedProductsProduct struct {
 	// Instance status
 	Status string `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage string                 `pulumi:"statusMessage"`
-	Tags          map[string]interface{} `pulumi:"tags"`
+	StatusMessage string            `pulumi:"statusMessage"`
+	Tags          map[string]string `pulumi:"tags"`
 }
 
 // GetProvisionedProductsProductInput is an input type that accepts GetProvisionedProductsProductArgs and GetProvisionedProductsProductOutput values.
@@ -1638,8 +1638,8 @@ type GetProvisionedProductsProductArgs struct {
 	// Instance status
 	Status pulumi.StringInput `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
-	Tags          pulumi.MapInput    `pulumi:"tags"`
+	StatusMessage pulumi.StringInput    `pulumi:"statusMessage"`
+	Tags          pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetProvisionedProductsProductArgs) ElementType() reflect.Type {
@@ -1800,8 +1800,8 @@ func (o GetProvisionedProductsProductOutput) StatusMessage() pulumi.StringOutput
 	return o.ApplyT(func(v GetProvisionedProductsProduct) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-func (o GetProvisionedProductsProductOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetProvisionedProductsProduct) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetProvisionedProductsProductOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProduct) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetProvisionedProductsProductArrayOutput struct{ *pulumi.OutputState }
@@ -2071,8 +2071,8 @@ type GetProvisionedProductsProvisionedProduct struct {
 	// Instance status
 	Status string `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage string                 `pulumi:"statusMessage"`
-	Tags          map[string]interface{} `pulumi:"tags"`
+	StatusMessage string            `pulumi:"statusMessage"`
+	Tags          map[string]string `pulumi:"tags"`
 }
 
 // GetProvisionedProductsProvisionedProductInput is an input type that accepts GetProvisionedProductsProvisionedProductArgs and GetProvisionedProductsProvisionedProductOutput values.
@@ -2127,8 +2127,8 @@ type GetProvisionedProductsProvisionedProductArgs struct {
 	// Instance status
 	Status pulumi.StringInput `pulumi:"status"`
 	// The status message of the product instance
-	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
-	Tags          pulumi.MapInput    `pulumi:"tags"`
+	StatusMessage pulumi.StringInput    `pulumi:"statusMessage"`
+	Tags          pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetProvisionedProductsProvisionedProductArgs) ElementType() reflect.Type {
@@ -2293,8 +2293,8 @@ func (o GetProvisionedProductsProvisionedProductOutput) StatusMessage() pulumi.S
 	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-func (o GetProvisionedProductsProvisionedProductOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetProvisionedProductsProvisionedProductOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetProvisionedProductsProvisionedProductArrayOutput struct{ *pulumi.OutputState }

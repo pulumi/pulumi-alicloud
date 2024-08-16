@@ -123,7 +123,7 @@ type Domain struct {
 	// The status of the domain name. Valid values:
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
 }
@@ -205,7 +205,7 @@ type domainState struct {
 	// The status of the domain name. Valid values:
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
@@ -248,7 +248,7 @@ type DomainState struct {
 	// The status of the domain name. Valid values:
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrInput
 }
@@ -291,7 +291,7 @@ type domainArgs struct {
 	// The status of the domain name. Valid values:
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
@@ -331,7 +331,7 @@ type DomainArgs struct {
 	// The status of the domain name. Valid values:
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrInput
 }
@@ -514,8 +514,8 @@ func (o DomainOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource
-func (o DomainOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The top-level domain.

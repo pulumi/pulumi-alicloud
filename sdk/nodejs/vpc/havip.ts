@@ -125,7 +125,7 @@ export class HAVip extends pulumi.CustomResource {
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC to which the HAVIP belongs.
      */
@@ -248,7 +248,7 @@ export interface HAVipState {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC to which the HAVIP belongs.
      */
@@ -288,7 +288,7 @@ export interface HAVipArgs {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */

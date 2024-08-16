@@ -17,7 +17,7 @@ class OrderArgs:
                  package_version: pulumi.Input[str],
                  pricing_cycle: pulumi.Input[str],
                  product_code: pulumi.Input[str],
-                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,7 @@ class OrderArgs:
         :param pulumi.Input[str] package_version: The package version of the market product.
         :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[str] product_code: The product_code of market place product.
-        :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
         :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -85,14 +85,14 @@ class OrderArgs:
 
     @property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def components(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Service providers customize additional components.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def components(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "components", value)
 
     @property
@@ -147,7 +147,7 @@ class OrderArgs:
 @pulumi.input_type
 class _OrderState:
     def __init__(__self__, *,
-                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class _OrderState:
                  quantity: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Order resources.
-        :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
         :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] package_version: The package version of the market product.
@@ -185,14 +185,14 @@ class _OrderState:
 
     @property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def components(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Service providers customize additional components.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def components(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "components", value)
 
     @property
@@ -285,7 +285,7 @@ class Order(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
@@ -323,7 +323,7 @@ class Order(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
         :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] package_version: The package version of the market product.
@@ -380,7 +380,7 @@ class Order(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  coupon_id: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  package_version: Optional[pulumi.Input[str]] = None,
@@ -421,7 +421,7 @@ class Order(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            components: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            components: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             coupon_id: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
             package_version: Optional[pulumi.Input[str]] = None,
@@ -436,7 +436,7 @@ class Order(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] components: Service providers customize additional components.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] components: Service providers customize additional components.
         :param pulumi.Input[str] coupon_id: The coupon id of the market product.
         :param pulumi.Input[int] duration: The number of purchase cycles.
         :param pulumi.Input[str] package_version: The package version of the market product.
@@ -461,7 +461,7 @@ class Order(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def components(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def components(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Service providers customize additional components.
         """

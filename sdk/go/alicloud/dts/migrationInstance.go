@@ -92,7 +92,7 @@ type MigrationInstance struct {
 	// The sync architecture. Valid values: `oneway`.
 	SyncArchitecture pulumi.StringPtrOutput `pulumi:"syncArchitecture"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewMigrationInstance registers a new resource with the given unique name, arguments, and options.
@@ -163,7 +163,7 @@ type migrationInstanceState struct {
 	// The sync architecture. Valid values: `oneway`.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type MigrationInstanceState struct {
@@ -190,7 +190,7 @@ type MigrationInstanceState struct {
 	// The sync architecture. Valid values: `oneway`.
 	SyncArchitecture pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (MigrationInstanceState) ElementType() reflect.Type {
@@ -217,7 +217,7 @@ type migrationInstanceArgs struct {
 	// The sync architecture. Valid values: `oneway`.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MigrationInstance resource.
@@ -241,7 +241,7 @@ type MigrationInstanceArgs struct {
 	// The sync architecture. Valid values: `oneway`.
 	SyncArchitecture pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (MigrationInstanceArgs) ElementType() reflect.Type {
@@ -387,8 +387,8 @@ func (o MigrationInstanceOutput) SyncArchitecture() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o MigrationInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *MigrationInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o MigrationInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MigrationInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type MigrationInstanceArrayOutput struct{ *pulumi.OutputState }

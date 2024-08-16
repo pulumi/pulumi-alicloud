@@ -3001,7 +3001,7 @@ type GetPluginsPlugin struct {
 	// The type of the plug-in.
 	PluginType string `pulumi:"pluginType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetPluginsPluginInput is an input type that accepts GetPluginsPluginArgs and GetPluginsPluginOutput values.
@@ -3033,7 +3033,7 @@ type GetPluginsPluginArgs struct {
 	// The type of the plug-in.
 	PluginType pulumi.StringInput `pulumi:"pluginType"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetPluginsPluginArgs) ElementType() reflect.Type {
@@ -3128,8 +3128,8 @@ func (o GetPluginsPluginOutput) PluginType() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetPluginsPluginOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPluginsPlugin) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetPluginsPluginOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPluginsPlugin) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetPluginsPluginArrayOutput struct{ *pulumi.OutputState }

@@ -582,7 +582,7 @@ class GetDedicatedHostsHostResult(dict):
                  open_permission: str,
                  status: str,
                  storage_used: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  vswitch_id: str,
                  zone_id: str):
@@ -613,7 +613,7 @@ class GetDedicatedHostsHostResult(dict):
         :param str open_permission: Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
         :param str status: The state of the host.
         :param str storage_used: The storage usage of the host. Unit: `GB`.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str vpc_id: The ID of the virtual private cloud (VPC) to which the host is connected.
         :param str vswitch_id: The ID of the vSwitch.
         :param str zone_id: The zone ID of the host.
@@ -859,7 +859,7 @@ class GetDedicatedHostsHostResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """

@@ -67,14 +67,14 @@ namespace Pulumi.AliCloud.Sls.Inputs
         public Input<int>? MaxRunTimeInSeconds { get; set; }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// Parameter configuration.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 

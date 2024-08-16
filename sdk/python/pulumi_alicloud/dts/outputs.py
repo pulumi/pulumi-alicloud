@@ -119,7 +119,7 @@ class GetInstancesInstanceResult(dict):
                  source_region: str,
                  status: str,
                  type: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str create_time: Instance creation time
         :param str destination_endpoint_engine_name: The target database engine type.
@@ -133,7 +133,7 @@ class GetInstancesInstanceResult(dict):
         :param str source_region: The source instance region.
         :param str status: Instance status.
         :param str type: The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
-        :param Mapping[str, Any] tags: The tag value corresponding to the tag key.
+        :param Mapping[str, str] tags: The tag value corresponding to the tag key.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
@@ -254,7 +254,7 @@ class GetInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag value corresponding to the tag key.
         """
@@ -628,7 +628,7 @@ class GetSubscriptionJobsJobResult(dict):
                  subscription_instance_network_type: str,
                  subscription_instance_vpc_id: str,
                  subscription_instance_vswitch_id: str,
-                 tags: Mapping[str, Any]):
+                 tags: Mapping[str, str]):
         """
         :param str checkpoint: Subscription start time in Unix timestamp format.
         :param str create_time: The creation time of subscription job instance.
@@ -657,7 +657,7 @@ class GetSubscriptionJobsJobResult(dict):
         :param str subscription_instance_network_type: The type of subscription instance network. Valid value: `classic`, `vpc`.
         :param str subscription_instance_vpc_id: The ID of subscription instance vpc.
         :param str subscription_instance_vswitch_id: The ID of subscription instance vswitch.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         """
         pulumi.set(__self__, "checkpoint", checkpoint)
         pulumi.set(__self__, "create_time", create_time)
@@ -906,7 +906,7 @@ class GetSubscriptionJobsJobResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """

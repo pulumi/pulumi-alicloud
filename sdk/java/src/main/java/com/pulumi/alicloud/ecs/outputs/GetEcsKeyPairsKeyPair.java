@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ecs.outputs;
 import com.pulumi.alicloud.ecs.outputs.GetEcsKeyPairsKeyPairInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +43,7 @@ public final class GetEcsKeyPairsKeyPair {
      * @return The tags.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetEcsKeyPairsKeyPair() {}
     /**
@@ -89,7 +88,7 @@ public final class GetEcsKeyPairsKeyPair {
      * @return The tags.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -108,7 +107,7 @@ public final class GetEcsKeyPairsKeyPair {
         private String keyName;
         private String keyPairName;
         private String resourceGroupId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetEcsKeyPairsKeyPair defaults) {
     	      Objects.requireNonNull(defaults);
@@ -173,7 +172,7 @@ public final class GetEcsKeyPairsKeyPair {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEcsKeyPairsKeyPair", "tags");
             }

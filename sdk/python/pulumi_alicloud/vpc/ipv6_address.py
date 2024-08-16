@@ -18,14 +18,14 @@ class Ipv6AddressArgs:
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Ipv6Address resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if ipv6_address_description is not None:
@@ -87,14 +87,14 @@ class Ipv6AddressArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags for the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -107,7 +107,7 @@ class _Ipv6AddressState:
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Address resources.
@@ -117,7 +117,7 @@ class _Ipv6AddressState:
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.  Available, Pending and Deleting.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
         """
         if create_time is not None:
@@ -211,14 +211,14 @@ class _Ipv6AddressState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags for the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -242,7 +242,7 @@ class Ipv6Address(pulumi.CustomResource):
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -297,7 +297,7 @@ class Ipv6Address(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
         """
         ...
@@ -371,7 +371,7 @@ class Ipv6Address(pulumi.CustomResource):
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -408,7 +408,7 @@ class Ipv6Address(pulumi.CustomResource):
             ipv6_address_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Ipv6Address':
         """
         Get an existing Ipv6Address resource's state with the given name, id, and optional extra
@@ -423,7 +423,7 @@ class Ipv6Address(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.  Available, Pending and Deleting.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -490,7 +490,7 @@ class Ipv6Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags for the resource.
         """

@@ -23,13 +23,13 @@ func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ..
 
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesArgs struct {
-	AvailabilityZone *string                `pulumi:"availabilityZone"`
-	Ids              []string               `pulumi:"ids"`
-	InstanceClass    *string                `pulumi:"instanceClass"`
-	InstanceType     *string                `pulumi:"instanceType"`
-	NameRegex        *string                `pulumi:"nameRegex"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	AvailabilityZone *string           `pulumi:"availabilityZone"`
+	Ids              []string          `pulumi:"ids"`
+	InstanceClass    *string           `pulumi:"instanceClass"`
+	InstanceType     *string           `pulumi:"instanceType"`
+	NameRegex        *string           `pulumi:"nameRegex"`
+	OutputFile       *string           `pulumi:"outputFile"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getMongoInstances.
@@ -44,7 +44,7 @@ type GetMongoInstancesResult struct {
 	NameRegex     *string                     `pulumi:"nameRegex"`
 	Names         []string                    `pulumi:"names"`
 	OutputFile    *string                     `pulumi:"outputFile"`
-	Tags          map[string]interface{}      `pulumi:"tags"`
+	Tags          map[string]string           `pulumi:"tags"`
 }
 
 func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputArgs, opts ...pulumi.InvokeOption) GetMongoInstancesResultOutput {
@@ -68,7 +68,7 @@ type GetMongoInstancesOutputArgs struct {
 	InstanceType     pulumi.StringPtrInput   `pulumi:"instanceType"`
 	NameRegex        pulumi.StringPtrInput   `pulumi:"nameRegex"`
 	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Tags             pulumi.MapInput         `pulumi:"tags"`
+	Tags             pulumi.StringMapInput   `pulumi:"tags"`
 }
 
 func (GetMongoInstancesOutputArgs) ElementType() reflect.Type {
@@ -127,8 +127,8 @@ func (o GetMongoInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetMongoInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetMongoInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetMongoInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

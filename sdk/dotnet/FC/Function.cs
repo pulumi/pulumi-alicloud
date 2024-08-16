@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.FC
         /// A map that defines environment variables for the function.
         /// </summary>
         [Output("environmentVariables")]
-        public Output<ImmutableDictionary<string, object>?> EnvironmentVariables { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
         /// The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
@@ -347,14 +347,14 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// A map that defines environment variables for the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 
@@ -488,14 +488,14 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         [Input("environmentVariables")]
-        private InputMap<object>? _environmentVariables;
+        private InputMap<string>? _environmentVariables;
 
         /// <summary>
         /// A map that defines environment variables for the function.
         /// </summary>
-        public InputMap<object> EnvironmentVariables
+        public InputMap<string> EnvironmentVariables
         {
-            get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
             set => _environmentVariables = value;
         }
 

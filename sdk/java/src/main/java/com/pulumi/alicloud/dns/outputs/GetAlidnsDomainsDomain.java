@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -116,7 +115,7 @@ public final class GetAlidnsDomainsDomain {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return Cloud analysis version code.
      * 
@@ -265,7 +264,7 @@ public final class GetAlidnsDomainsDomain {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -308,7 +307,7 @@ public final class GetAlidnsDomainsDomain {
         private String remark;
         private String resourceGroupId;
         private Boolean slaveDns;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String versionCode;
         private String versionName;
         public Builder() {}
@@ -509,7 +508,7 @@ public final class GetAlidnsDomainsDomain {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetAlidnsDomainsDomain", "tags");
             }

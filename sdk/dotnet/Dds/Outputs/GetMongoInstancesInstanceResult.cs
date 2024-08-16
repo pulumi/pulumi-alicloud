@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Dds.Outputs
         public readonly ImmutableArray<Outputs.GetMongoInstancesInstanceShardResult> Shards;
         public readonly string Status;
         public readonly int Storage;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetMongoInstancesInstanceResult(
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Dds.Outputs
 
             int storage,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             AvailabilityZone = availabilityZone;
             ChargeType = chargeType;

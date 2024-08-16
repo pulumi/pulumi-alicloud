@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The IDs of regions to which to distribute the created image.
         /// </summary>
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             int systemDiskSize,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             ImmutableArray<string> toRegionIds,
 

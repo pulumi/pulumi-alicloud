@@ -24,7 +24,7 @@ class NetworkAclArgs:
                  network_acl_name: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a NetworkAcl resource.
         :param pulumi.Input[str] vpc_id: The ID of the associated VPC.
@@ -37,7 +37,7 @@ class NetworkAclArgs:
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if description is not None:
@@ -161,14 +161,14 @@ class NetworkAclArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -184,7 +184,7 @@ class _NetworkAclState:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NetworkAcl resources.
@@ -197,7 +197,7 @@ class _NetworkAclState:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
         :param pulumi.Input[str] status: The state of the network ACL.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -339,14 +339,14 @@ class _NetworkAclState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -376,7 +376,7 @@ class NetworkAcl(pulumi.CustomResource):
                  network_acl_name: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -450,7 +450,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -545,7 +545,7 @@ class NetworkAcl(pulumi.CustomResource):
                  network_acl_name: Optional[pulumi.Input[str]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -588,7 +588,7 @@ class NetworkAcl(pulumi.CustomResource):
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
             source_network_acl_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'NetworkAcl':
         """
         Get an existing NetworkAcl resource's state with the given name, id, and optional extra
@@ -606,7 +606,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
         :param pulumi.Input[str] status: The state of the network ACL.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -703,7 +703,7 @@ class NetworkAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of this resource.
         """

@@ -205,7 +205,7 @@ type ScalingConfiguration struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrOutput `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -261,7 +261,7 @@ type ScalingConfiguration struct {
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 }
@@ -346,7 +346,7 @@ type scalingConfigurationState struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -402,7 +402,7 @@ type scalingConfigurationState struct {
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData *string `pulumi:"userData"`
 }
@@ -455,7 +455,7 @@ type ScalingConfigurationState struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -511,7 +511,7 @@ type ScalingConfigurationState struct {
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData pulumi.StringPtrInput
 }
@@ -568,7 +568,7 @@ type scalingConfigurationArgs struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -624,7 +624,7 @@ type scalingConfigurationArgs struct {
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData *string `pulumi:"userData"`
 }
@@ -678,7 +678,7 @@ type ScalingConfigurationArgs struct {
 	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-	KmsEncryptionContext pulumi.MapInput
+	KmsEncryptionContext pulumi.StringMapInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -734,7 +734,7 @@ type ScalingConfigurationArgs struct {
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData pulumi.StringPtrInput
 }
@@ -940,8 +940,8 @@ func (o ScalingConfigurationOutput) KmsEncryptedPassword() pulumi.StringPtrOutpu
 }
 
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
-func (o ScalingConfigurationOutput) KmsEncryptionContext() pulumi.MapOutput {
-	return o.ApplyT(func(v *ScalingConfiguration) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
+func (o ScalingConfigurationOutput) KmsEncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
 // Indicates whether to overwrite the existing data. Default to false.
@@ -1056,8 +1056,8 @@ func (o ScalingConfigurationOutput) SystemDiskSize() pulumi.IntPtrOutput {
 // A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
-func (o ScalingConfigurationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ScalingConfigurationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.

@@ -76,7 +76,7 @@ export interface GetSecretsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -107,7 +107,7 @@ export interface GetSecretsResult {
     /**
      * (Optional) A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
@@ -168,5 +168,5 @@ export interface GetSecretsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

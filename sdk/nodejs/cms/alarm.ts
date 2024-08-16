@@ -130,7 +130,7 @@ export class Alarm extends pulumi.CustomResource {
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
+    public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
@@ -199,7 +199,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The information about the resource for which alerts are triggered. See `targets` below.
      */
@@ -298,7 +298,7 @@ export interface AlarmState {
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
@@ -367,7 +367,7 @@ export interface AlarmState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The information about the resource for which alerts are triggered. See `targets` below.
      */
@@ -395,7 +395,7 @@ export interface AlarmArgs {
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
@@ -460,7 +460,7 @@ export interface AlarmArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The information about the resource for which alerts are triggered. See `targets` below.
      */

@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -360,13 +359,13 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="kmsEncryptionContext")
-    private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
+    private @Nullable Output<Map<String,String>> kmsEncryptionContext;
 
     /**
      * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    public Optional<Output<Map<String,Object>>> kmsEncryptionContext() {
+    public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
     }
 
@@ -690,7 +689,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,Object>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -698,7 +697,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34; It can be a null string.
      * 
      */
-    public Optional<Output<Map<String,Object>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -1300,7 +1299,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(@Nullable Output<Map<String,Object>> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(@Nullable Output<Map<String,String>> kmsEncryptionContext) {
             $.kmsEncryptionContext = kmsEncryptionContext;
             return this;
         }
@@ -1311,7 +1310,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder kmsEncryptionContext(Map<String,Object> kmsEncryptionContext) {
+        public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
         }
 
@@ -1784,7 +1783,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
@@ -1797,7 +1796,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 

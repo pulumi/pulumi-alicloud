@@ -86,7 +86,7 @@ type DBCluster struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
@@ -195,7 +195,7 @@ type dbclusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -269,7 +269,7 @@ type DBClusterState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -341,7 +341,7 @@ type dbclusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -410,7 +410,7 @@ type DBClusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	//
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -648,8 +648,8 @@ func (o DBClusterOutput) Status() pulumi.StringOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 //
 // > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
-func (o DBClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DBCluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DBClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The vpc ID of the resource.

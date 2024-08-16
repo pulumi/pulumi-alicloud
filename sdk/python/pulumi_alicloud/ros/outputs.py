@@ -397,10 +397,10 @@ class TemplateScratchSourceTag(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 resource_tags: Mapping[str, Any],
+                 resource_tags: Mapping[str, str],
                  resource_type_filters: Optional[Sequence[str]] = None):
         """
-        :param Mapping[str, Any] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        :param Mapping[str, str] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
         """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
@@ -408,7 +408,7 @@ class TemplateScratchSourceTag(dict):
 
     @property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Mapping[str, Any]:
+    def resource_tags(self) -> Mapping[str, str]:
         """
         Source label. **NOTE:** A maximum of 10 source labels can be configured.
         """
@@ -937,7 +937,7 @@ class GetStacksStackResult(dict):
                  stack_policy_body: str,
                  status: str,
                  status_reason: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  template_description: str,
                  timeout_in_minutes: int):
         """
@@ -956,7 +956,7 @@ class GetStacksStackResult(dict):
         :param str stack_policy_body: The structure that contains the stack policy body.
         :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
         :param str status_reason: Status Reason.
-        :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str template_description: Template Description.
         :param int timeout_in_minutes: Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
         """
@@ -1101,7 +1101,7 @@ class GetStacksStackResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         """
@@ -1382,10 +1382,10 @@ class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
 @pulumi.output_type
 class GetTemplateScratchesScratchSourceTagResult(dict):
     def __init__(__self__, *,
-                 resource_tags: Mapping[str, Any],
+                 resource_tags: Mapping[str, str],
                  resource_type_filters: Sequence[str]):
         """
-        :param Mapping[str, Any] resource_tags: Source label.
+        :param Mapping[str, str] resource_tags: Source label.
         :param Sequence[str] resource_type_filters: Source resource type filter list.
         """
         pulumi.set(__self__, "resource_tags", resource_tags)
@@ -1393,7 +1393,7 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
 
     @property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Mapping[str, Any]:
+    def resource_tags(self) -> Mapping[str, str]:
         """
         Source label.
         """
@@ -1435,7 +1435,7 @@ class GetTemplatesTemplateResult(dict):
                  share_type: str,
                  stack_group_name: str,
                  stack_id: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  template_body: str,
                  template_id: str,
                  template_name: str,
@@ -1447,7 +1447,7 @@ class GetTemplatesTemplateResult(dict):
         :param str share_type: Share Type.
         :param str stack_group_name: The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param str stack_id: The ID of the stack.
-        :param Mapping[str, Any] tags: Tags.
+        :param Mapping[str, str] tags: Tags.
         :param str template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
         :param str template_id: The ID of the template.
         :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -1515,7 +1515,7 @@ class GetTemplatesTemplateResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         Tags.
         """

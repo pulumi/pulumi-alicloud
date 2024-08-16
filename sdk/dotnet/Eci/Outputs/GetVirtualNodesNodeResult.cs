@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Of the virtual node number.
         /// </summary>
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string virtualNodeId,
 

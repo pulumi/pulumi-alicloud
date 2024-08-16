@@ -477,7 +477,7 @@ class GetSecretsSecretResult(dict):
                  secret_data_type: str,
                  secret_name: str,
                  secret_type: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  version_id: str,
                  version_stages: Sequence[str]):
         """
@@ -490,7 +490,7 @@ class GetSecretsSecretResult(dict):
         :param str secret_data_type: (Available in 1.124.0+)  The type of the secret data value.
         :param str secret_name: Name of the KMS Secret.
         :param str secret_type: (Available in 1.124.0+)  The type of the secret.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str version_id: (Available in 1.124.0+)  The version number of the initial version.
         :param Sequence[str] version_stages: (Available in 1.124.0+)  The stage labels that mark the new secret version.
         """
@@ -581,7 +581,7 @@ class GetSecretsSecretResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

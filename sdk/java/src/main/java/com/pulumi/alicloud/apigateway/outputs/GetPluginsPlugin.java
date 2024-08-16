@@ -5,7 +5,6 @@ package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -56,7 +55,7 @@ public final class GetPluginsPlugin {
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetPluginsPlugin() {}
     /**
@@ -119,7 +118,7 @@ public final class GetPluginsPlugin {
      * @return The tag of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -140,7 +139,7 @@ public final class GetPluginsPlugin {
         private String pluginId;
         private String pluginName;
         private String pluginType;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetPluginsPlugin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -220,7 +219,7 @@ public final class GetPluginsPlugin {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetPluginsPlugin", "tags");
             }

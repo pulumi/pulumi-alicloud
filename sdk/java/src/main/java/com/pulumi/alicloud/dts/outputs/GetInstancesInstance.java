@@ -5,7 +5,6 @@ package com.pulumi.alicloud.dts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -73,7 +72,7 @@ public final class GetInstancesInstance {
      * @return The tag value corresponding to the tag key.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
      * 
@@ -165,7 +164,7 @@ public final class GetInstancesInstance {
      * @return The tag value corresponding to the tag key.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -197,7 +196,7 @@ public final class GetInstancesInstance {
         private String sourceEndpointEngineName;
         private String sourceRegion;
         private String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String type;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
@@ -315,7 +314,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

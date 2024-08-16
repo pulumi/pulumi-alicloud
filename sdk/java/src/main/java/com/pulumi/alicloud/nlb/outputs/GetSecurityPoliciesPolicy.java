@@ -5,7 +5,6 @@ package com.pulumi.alicloud.nlb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public final class GetSecurityPoliciesPolicy {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The TLS protocol versions that are supported.
      * 
@@ -89,7 +88,7 @@ public final class GetSecurityPoliciesPolicy {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -114,7 +113,7 @@ public final class GetSecurityPoliciesPolicy {
         private String resourceGroupId;
         private String securityPolicyName;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private List<String> tlsVersions;
         public Builder() {}
         public Builder(GetSecurityPoliciesPolicy defaults) {
@@ -172,7 +171,7 @@ public final class GetSecurityPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSecurityPoliciesPolicy", "tags");
             }

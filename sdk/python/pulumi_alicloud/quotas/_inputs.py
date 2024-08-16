@@ -176,7 +176,7 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
                  application_id: Optional[pulumi.Input[str]] = None,
                  approve_value: Optional[pulumi.Input[float]] = None,
                  audit_reason: Optional[pulumi.Input[str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  env_language: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  period: Optional[pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgs']] = None,
@@ -191,7 +191,7 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
         :param pulumi.Input[str] application_id: The ID of the quota promotion request.
         :param pulumi.Input[float] approve_value: The approved quota value of the quota increase request.
         :param pulumi.Input[str] audit_reason: Approval comments on quota increase applications.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Quota dimension. See `dimensions` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: Quota dimension. See `dimensions` below.
         :param pulumi.Input[str] env_language: The language of the quota application result notification. Value:
                - zh (default): Chinese.
                - en: English.
@@ -290,14 +290,14 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Quota dimension. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property

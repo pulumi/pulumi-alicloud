@@ -123,7 +123,7 @@ type ConsumerGroup struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewConsumerGroup registers a new resource with the given unique name, arguments, and options.
@@ -169,7 +169,7 @@ type consumerGroupState struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId *string `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ConsumerGroupState struct {
@@ -180,7 +180,7 @@ type ConsumerGroupState struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ConsumerGroupState) ElementType() reflect.Type {
@@ -195,7 +195,7 @@ type consumerGroupArgs struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId string `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ConsumerGroup resource.
@@ -207,7 +207,7 @@ type ConsumerGroupArgs struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ConsumerGroupArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o ConsumerGroupOutput) InstanceId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ConsumerGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ConsumerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ConsumerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ConsumerGroupArrayOutput struct{ *pulumi.OutputState }

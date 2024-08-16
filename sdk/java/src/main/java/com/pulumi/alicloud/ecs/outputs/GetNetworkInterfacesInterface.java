@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +86,7 @@ public final class GetNetworkInterfacesInterface {
      * @return A map of tags assigned to the ENI.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     private String type;
     /**
      * @return ID of the VPC that the ENI belongs to.
@@ -223,7 +222,7 @@ public final class GetNetworkInterfacesInterface {
      * @return A map of tags assigned to the ENI.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     public String type() {
@@ -283,7 +282,7 @@ public final class GetNetworkInterfacesInterface {
         private Integer serviceId;
         private Boolean serviceManaged;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String type;
         private String vpcId;
         private String vswitchId;
@@ -524,7 +523,7 @@ public final class GetNetworkInterfacesInterface {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetNetworkInterfacesInterface", "tags");
             }

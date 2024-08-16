@@ -71,7 +71,7 @@ type Zone struct {
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrOutput `pulumi:"syncStatus"`
 	// The tags of the Private Zone.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 	// The user information of the host synchronization task. See `userInfo` below.
@@ -132,7 +132,7 @@ type zoneState struct {
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
 	// The tags of the Private Zone.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The user information of the host synchronization task. See `userInfo` below.
@@ -164,7 +164,7 @@ type ZoneState struct {
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
 	// The tags of the Private Zone.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
 	// The user information of the host synchronization task. See `userInfo` below.
@@ -196,7 +196,7 @@ type zoneArgs struct {
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
 	// The tags of the Private Zone.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The user information of the host synchronization task. See `userInfo` below.
@@ -225,7 +225,7 @@ type ZoneArgs struct {
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
 	// The tags of the Private Zone.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
 	// The user information of the host synchronization task. See `userInfo` below.
@@ -367,8 +367,8 @@ func (o ZoneOutput) SyncStatus() pulumi.StringPtrOutput {
 }
 
 // The tags of the Private Zone.
-func (o ZoneOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ZoneOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The IP address of the client.

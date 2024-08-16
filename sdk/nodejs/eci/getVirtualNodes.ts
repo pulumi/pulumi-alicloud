@@ -80,7 +80,7 @@ export interface GetVirtualNodesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The name of the virtual node.
      */
@@ -104,7 +104,7 @@ export interface GetVirtualNodesResult {
     readonly resourceGroupId?: string;
     readonly securityGroupId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly virtualNodeName?: string;
     readonly vswitchId?: string;
 }
@@ -169,7 +169,7 @@ export interface GetVirtualNodesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the virtual node.
      */

@@ -87,7 +87,7 @@ type PatchBaseline struct {
 	// Source.
 	Sources pulumi.StringArrayOutput `pulumi:"sources"`
 	// Label.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewPatchBaseline registers a new resource with the given unique name, arguments, and options.
@@ -152,7 +152,7 @@ type patchBaselineState struct {
 	// Source.
 	Sources []string `pulumi:"sources"`
 	// Label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type PatchBaselineState struct {
@@ -179,7 +179,7 @@ type PatchBaselineState struct {
 	// Source.
 	Sources pulumi.StringArrayInput
 	// Label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PatchBaselineState) ElementType() reflect.Type {
@@ -208,7 +208,7 @@ type patchBaselineArgs struct {
 	// Source.
 	Sources []string `pulumi:"sources"`
 	// Label.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PatchBaseline resource.
@@ -234,7 +234,7 @@ type PatchBaselineArgs struct {
 	// Source.
 	Sources pulumi.StringArrayInput
 	// Label.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PatchBaselineArgs) ElementType() reflect.Type {
@@ -380,8 +380,8 @@ func (o PatchBaselineOutput) Sources() pulumi.StringArrayOutput {
 }
 
 // Label.
-func (o PatchBaselineOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *PatchBaseline) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PatchBaselineOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type PatchBaselineArrayOutput struct{ *pulumi.OutputState }

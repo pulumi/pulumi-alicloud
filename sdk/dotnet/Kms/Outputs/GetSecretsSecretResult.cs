@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// (Available in 1.124.0+)  The version number of the initial version.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Kms.Outputs
 
             string secretType,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string versionId,
 

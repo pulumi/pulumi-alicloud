@@ -92,7 +92,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -190,7 +190,7 @@ export interface EnvironmentState {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -238,5 +238,5 @@ export interface EnvironmentArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

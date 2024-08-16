@@ -58,7 +58,7 @@ export interface GetSubscriptionJobsArgs {
      * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -76,7 +76,7 @@ export interface GetSubscriptionJobsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
@@ -120,5 +120,5 @@ export interface GetSubscriptionJobsOutputArgs {
      * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

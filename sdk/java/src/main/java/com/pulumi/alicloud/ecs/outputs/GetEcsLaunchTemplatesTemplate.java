@@ -11,7 +11,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -208,7 +207,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      * @return The template tags.
      * 
      */
-    private Map<String,Object> templateTags;
+    private Map<String,String> templateTags;
     /**
      * @return The User Data.
      * 
@@ -499,7 +498,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      * @return The template tags.
      * 
      */
-    public Map<String,Object> templateTags() {
+    public Map<String,String> templateTags() {
         return this.templateTags;
     }
     /**
@@ -584,7 +583,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         private Double spotPriceLimit;
         private String spotStrategy;
         private List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks;
-        private Map<String,Object> templateTags;
+        private Map<String,String> templateTags;
         private String userData;
         private String versionDescription;
         private String vpcId;
@@ -947,7 +946,7 @@ public final class GetEcsLaunchTemplatesTemplate {
             return systemDisks(List.of(systemDisks));
         }
         @CustomType.Setter
-        public Builder templateTags(Map<String,Object> templateTags) {
+        public Builder templateTags(Map<String,String> templateTags) {
             if (templateTags == null) {
               throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "templateTags");
             }

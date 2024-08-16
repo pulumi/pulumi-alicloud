@@ -112,7 +112,7 @@ type Account struct {
 	// A mapping of tags to assign to the resource.
 	//
 	// > **NOTE:** The member name must be unique within the resource directory.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -175,7 +175,7 @@ type accountState struct {
 	// A mapping of tags to assign to the resource.
 	//
 	// > **NOTE:** The member name must be unique within the resource directory.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type *string `pulumi:"type"`
 }
@@ -206,7 +206,7 @@ type AccountState struct {
 	// A mapping of tags to assign to the resource.
 	//
 	// > **NOTE:** The member name must be unique within the resource directory.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringPtrInput
 }
@@ -231,7 +231,7 @@ type accountArgs struct {
 	// A mapping of tags to assign to the resource.
 	//
 	// > **NOTE:** The member name must be unique within the resource directory.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Account resource.
@@ -251,7 +251,7 @@ type AccountArgs struct {
 	// A mapping of tags to assign to the resource.
 	//
 	// > **NOTE:** The member name must be unique within the resource directory.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {
@@ -396,8 +396,8 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 //
 // > **NOTE:** The member name must be unique within the resource directory.
-func (o AccountOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AccountOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Member type. The value of `ResourceAccount` indicates the resource account.

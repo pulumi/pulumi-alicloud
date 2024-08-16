@@ -166,7 +166,7 @@ export class Desktop extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      */
@@ -315,7 +315,7 @@ export interface DesktopState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      */
@@ -397,7 +397,7 @@ export interface DesktopArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      */

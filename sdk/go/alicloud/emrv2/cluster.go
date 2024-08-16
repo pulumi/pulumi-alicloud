@@ -191,9 +191,9 @@ import (
 //					},
 //				},
 //				DeployMode: pulumi.String("NORMAL"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				ReleaseVersion: pulumi.String("EMR-5.10.0"),
 //				Applications: pulumi.StringArray{
@@ -265,7 +265,7 @@ type Cluster struct {
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrOutput `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -345,7 +345,7 @@ type clusterState struct {
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ClusterState struct {
@@ -378,7 +378,7 @@ type ClusterState struct {
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -415,7 +415,7 @@ type clusterArgs struct {
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -449,7 +449,7 @@ type ClusterArgs struct {
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterSubscriptionConfigPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -610,8 +610,8 @@ func (o ClusterOutput) SubscriptionConfig() ClusterSubscriptionConfigPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

@@ -22,7 +22,7 @@ class StateConfigurationArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StateConfiguration resource.
@@ -34,7 +34,7 @@ class StateConfigurationArgs:
         :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] parameters: The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
         """
         pulumi.set(__self__, "schedule_expression", schedule_expression)
@@ -152,14 +152,14 @@ class StateConfigurationArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -184,7 +184,7 @@ class _StateConfigurationState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  schedule_expression: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None):
@@ -196,7 +196,7 @@ class _StateConfigurationState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] schedule_expression: Timing expression.
         :param pulumi.Input[str] schedule_type: Timing type. Valid values: `rate`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] targets: The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
         :param pulumi.Input[str] template_name: The name of the template.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
@@ -296,14 +296,14 @@ class _StateConfigurationState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -354,7 +354,7 @@ class StateConfiguration(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  schedule_expression: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
@@ -406,7 +406,7 @@ class StateConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] schedule_expression: Timing expression.
         :param pulumi.Input[str] schedule_type: Timing type. Valid values: `rate`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] targets: The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
         :param pulumi.Input[str] template_name: The name of the template.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
@@ -477,7 +477,7 @@ class StateConfiguration(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  schedule_expression: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  targets: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  template_version: Optional[pulumi.Input[str]] = None,
@@ -524,7 +524,7 @@ class StateConfiguration(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             schedule_expression: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             targets: Optional[pulumi.Input[str]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
             template_version: Optional[pulumi.Input[str]] = None) -> 'StateConfiguration':
@@ -541,7 +541,7 @@ class StateConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] schedule_expression: Timing expression.
         :param pulumi.Input[str] schedule_type: Timing type. Valid values: `rate`.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] targets: The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
         :param pulumi.Input[str] template_name: The name of the template.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
@@ -612,7 +612,7 @@ class StateConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

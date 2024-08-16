@@ -100,7 +100,7 @@ class GetElasticityAssurancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A mapping of tags to assign to the Capacity Reservation.
         """
@@ -128,7 +128,7 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
                               private_pool_options_ids: Optional[Sequence[str]] = None,
                               resource_group_id: Optional[str] = None,
                               status: Optional[str] = None,
-                              tags: Optional[Mapping[str, Any]] = None,
+                              tags: Optional[Mapping[str, str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElasticityAssurancesResult:
     """
     This data source provides Ecs Elasticity Assurance available to the user.
@@ -151,7 +151,7 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] private_pool_options_ids: The ID of the elastic protection service.
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+    :param Mapping[str, str] tags: The tag key-value pair information bound by the elastic guarantee service.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -180,7 +180,7 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
                                      private_pool_options_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                                     tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticityAssurancesResult]:
     """
     This data source provides Ecs Elasticity Assurance available to the user.
@@ -203,6 +203,6 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
     :param Sequence[str] private_pool_options_ids: The ID of the elastic protection service.
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+    :param Mapping[str, str] tags: The tag key-value pair information bound by the elastic guarantee service.
     """
     ...

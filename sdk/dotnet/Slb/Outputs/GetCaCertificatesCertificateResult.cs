@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetCaCertificatesCertificateResult(
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
 
             string resourceGroupId,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             CaCertificateId = caCertificateId;
             CaCertificateName = caCertificateName;

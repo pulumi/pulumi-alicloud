@@ -8,7 +8,6 @@ import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroupServer;
 import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroupStickySessionConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +64,7 @@ public final class GetServerGroupsGroup {
      * @return A map of tags assigned to the group.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the VPC that you want to access.
      * 
@@ -140,7 +139,7 @@ public final class GetServerGroupsGroup {
      * @return A map of tags assigned to the group.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -169,7 +168,7 @@ public final class GetServerGroupsGroup {
         private List<GetServerGroupsGroupServer> servers;
         private String status;
         private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         public Builder() {}
         public Builder(GetServerGroupsGroup defaults) {
@@ -269,7 +268,7 @@ public final class GetServerGroupsGroup {
             return stickySessionConfigs(List.of(stickySessionConfigs));
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetServerGroupsGroup", "tags");
             }

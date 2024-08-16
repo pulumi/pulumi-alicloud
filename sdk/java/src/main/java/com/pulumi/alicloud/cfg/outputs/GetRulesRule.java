@@ -7,7 +7,6 @@ import com.pulumi.alicloud.cfg.outputs.GetRulesRuleCompliance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +69,7 @@ public final class GetRulesRule {
      * @return The input parameters of the Config Rule.
      * 
      */
-    private Map<String,Object> inputParameters;
+    private Map<String,String> inputParameters;
     /**
      * @return (Available in 1.124.1+) The frequency of maximum execution.
      * 
@@ -225,7 +224,7 @@ public final class GetRulesRule {
      * @return The input parameters of the Config Rule.
      * 
      */
-    public Map<String,Object> inputParameters() {
+    public Map<String,String> inputParameters() {
         return this.inputParameters;
     }
     /**
@@ -354,7 +353,7 @@ public final class GetRulesRule {
         private String eventSource;
         private String excludeResourceIdsScope;
         private String id;
-        private Map<String,Object> inputParameters;
+        private Map<String,String> inputParameters;
         private String maximumExecutionFrequency;
         private String modifiedTimestamp;
         private String regionIdsScope;
@@ -494,7 +493,7 @@ public final class GetRulesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder inputParameters(Map<String,Object> inputParameters) {
+        public Builder inputParameters(Map<String,String> inputParameters) {
             if (inputParameters == null) {
               throw new MissingRequiredPropertyException("GetRulesRule", "inputParameters");
             }

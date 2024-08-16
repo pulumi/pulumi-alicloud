@@ -36,10 +36,10 @@ namespace Pulumi.AliCloud.Yundun
         public string? OutputFile { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
-        public Dictionary<string, object> Tags
+        private Dictionary<string, string>? _tags;
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -66,10 +66,10 @@ namespace Pulumi.AliCloud.Yundun
         public Input<string>? OutputFile { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Yundun
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableArray<Outputs.GetBastionHostInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetBastionHostInstancesResult(
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Yundun
 
             string? outputFile,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;

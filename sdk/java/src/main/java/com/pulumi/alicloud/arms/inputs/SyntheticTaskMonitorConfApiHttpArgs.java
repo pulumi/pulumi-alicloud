@@ -8,7 +8,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -70,13 +69,13 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
      * 
      */
     @Import(name="requestHeaders")
-    private @Nullable Output<Map<String,Object>> requestHeaders;
+    private @Nullable Output<Map<String,String>> requestHeaders;
 
     /**
      * @return HTTP request header.
      * 
      */
-    public Optional<Output<Map<String,Object>>> requestHeaders() {
+    public Optional<Output<Map<String,String>>> requestHeaders() {
         return Optional.ofNullable(this.requestHeaders);
     }
 
@@ -208,7 +207,7 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder requestHeaders(@Nullable Output<Map<String,Object>> requestHeaders) {
+        public Builder requestHeaders(@Nullable Output<Map<String,String>> requestHeaders) {
             $.requestHeaders = requestHeaders;
             return this;
         }
@@ -219,7 +218,7 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder requestHeaders(Map<String,Object> requestHeaders) {
+        public Builder requestHeaders(Map<String,String> requestHeaders) {
             return requestHeaders(Output.of(requestHeaders));
         }
 

@@ -99,7 +99,7 @@ type GetSecurityGroupsArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -122,8 +122,8 @@ type GetSecurityGroupsResult struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instance.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// The ID of the VPC that owns the security group.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -178,7 +178,7 @@ type GetSecurityGroupsOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
@@ -248,8 +248,8 @@ func (o GetSecurityGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput 
 }
 
 // A map of tags assigned to the ECS instance.
-func (o GetSecurityGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecurityGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecurityGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetSecurityGroupsResultOutput) TotalCount() pulumi.IntOutput {

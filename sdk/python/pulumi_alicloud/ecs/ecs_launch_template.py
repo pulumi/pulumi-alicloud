@@ -55,9 +55,9 @@ class EcsLaunchTemplateArgs:
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -109,11 +109,11 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
-        :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -715,7 +715,7 @@ class EcsLaunchTemplateArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to instance, block storage, and elastic network.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -724,7 +724,7 @@ class EcsLaunchTemplateArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -741,14 +741,14 @@ class EcsLaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the launch template.
         """
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
-    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
 
     @property
@@ -867,9 +867,9 @@ class _EcsLaunchTemplateState:
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -921,11 +921,11 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
-        :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1527,7 +1527,7 @@ class _EcsLaunchTemplateState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to instance, block storage, and elastic network.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1536,7 +1536,7 @@ class _EcsLaunchTemplateState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1553,14 +1553,14 @@ class _EcsLaunchTemplateState:
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def template_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the launch template.
         """
         return pulumi.get(self, "template_tags")
 
     @template_tags.setter
-    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def template_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_tags", value)
 
     @property
@@ -1681,9 +1681,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -1838,11 +1838,11 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
-        :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2012,9 +2012,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_resource_group_id: Optional[pulumi.Input[str]] = None,
-                 template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  userdata: Optional[pulumi.Input[str]] = None,
                  version_description: Optional[pulumi.Input[str]] = None,
@@ -2127,9 +2127,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_resource_group_id: Optional[pulumi.Input[str]] = None,
-            template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            template_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             userdata: Optional[pulumi.Input[str]] = None,
             version_description: Optional[pulumi.Input[str]] = None,
@@ -2186,11 +2186,11 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
-        :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
         :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2575,7 +2575,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to instance, block storage, and elastic network.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2593,7 +2593,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateTags")
-    def template_tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def template_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the launch template.
         """

@@ -67,19 +67,19 @@ type GetApplicationsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getApplications.
 type GetApplicationsResult struct {
 	Applications []GetApplicationsApplication `pulumi:"applications"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Id         string            `pulumi:"id"`
+	Ids        []string          `pulumi:"ids"`
+	NameRegex  *string           `pulumi:"nameRegex"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 func GetApplicationsOutput(ctx *pulumi.Context, args GetApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetApplicationsResultOutput {
@@ -104,7 +104,7 @@ type GetApplicationsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetApplicationsOutputArgs) ElementType() reflect.Type {
@@ -151,8 +151,8 @@ func (o GetApplicationsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetApplicationsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

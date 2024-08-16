@@ -151,7 +151,7 @@ type Instance struct {
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayOutput `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
@@ -260,7 +260,7 @@ type instanceState struct {
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs []InstanceSlbConnAddr `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
@@ -324,7 +324,7 @@ type InstanceState struct {
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
 	// The id of the VPC.
@@ -386,7 +386,7 @@ type instanceArgs struct {
 	// The security group resource of the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
@@ -441,7 +441,7 @@ type InstanceArgs struct {
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
@@ -653,8 +653,8 @@ func (o InstanceOutput) SlbConnAddrs() InstanceSlbConnAddrArrayOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.

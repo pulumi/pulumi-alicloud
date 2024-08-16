@@ -175,7 +175,7 @@ func (o GetBindingsBindingArrayOutput) Index(i pulumi.IntInput) GetBindingsBindi
 
 type GetExchangesExchange struct {
 	// The attributes.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// Indicates whether the Auto Delete attribute is configured.
 	AutoDeleteState bool `pulumi:"autoDeleteState"`
 	// The creation time.
@@ -205,7 +205,7 @@ type GetExchangesExchangeInput interface {
 
 type GetExchangesExchangeArgs struct {
 	// The attributes.
-	Attributes pulumi.MapInput `pulumi:"attributes"`
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// Indicates whether the Auto Delete attribute is configured.
 	AutoDeleteState pulumi.BoolInput `pulumi:"autoDeleteState"`
 	// The creation time.
@@ -274,8 +274,8 @@ func (o GetExchangesExchangeOutput) ToGetExchangesExchangeOutputWithContext(ctx 
 }
 
 // The attributes.
-func (o GetExchangesExchangeOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v GetExchangesExchange) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+func (o GetExchangesExchangeOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExchangesExchange) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // Indicates whether the Auto Delete attribute is configured.
@@ -549,7 +549,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 
 type GetQueuesQueue struct {
 	// The attributes for the Queue.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// Specifies whether the Auto Delete attribute is configured.
 	AutoDeleteState bool `pulumi:"autoDeleteState"`
 	// CreateTime.
@@ -581,7 +581,7 @@ type GetQueuesQueueInput interface {
 
 type GetQueuesQueueArgs struct {
 	// The attributes for the Queue.
-	Attributes pulumi.MapInput `pulumi:"attributes"`
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// Specifies whether the Auto Delete attribute is configured.
 	AutoDeleteState pulumi.BoolInput `pulumi:"autoDeleteState"`
 	// CreateTime.
@@ -652,8 +652,8 @@ func (o GetQueuesQueueOutput) ToGetQueuesQueueOutputWithContext(ctx context.Cont
 }
 
 // The attributes for the Queue.
-func (o GetQueuesQueueOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v GetQueuesQueue) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+func (o GetQueuesQueueOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetQueuesQueue) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // Specifies whether the Auto Delete attribute is configured.

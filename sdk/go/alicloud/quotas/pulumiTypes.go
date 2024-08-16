@@ -441,7 +441,7 @@ type TemplateApplicationsQuotaApplicationDetail struct {
 	// Approval comments on quota increase applications.
 	AuditReason *string `pulumi:"auditReason"`
 	// Quota dimension. See `dimensions` below.
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	Dimensions map[string]string `pulumi:"dimensions"`
 	// The language of the quota application result notification. Value:
 	// - zh (default): Chinese.
 	// - en: English.
@@ -492,7 +492,7 @@ type TemplateApplicationsQuotaApplicationDetailArgs struct {
 	// Approval comments on quota increase applications.
 	AuditReason pulumi.StringPtrInput `pulumi:"auditReason"`
 	// Quota dimension. See `dimensions` below.
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	Dimensions pulumi.StringMapInput `pulumi:"dimensions"`
 	// The language of the quota application result notification. Value:
 	// - zh (default): Chinese.
 	// - en: English.
@@ -594,8 +594,8 @@ func (o TemplateApplicationsQuotaApplicationDetailOutput) AuditReason() pulumi.S
 }
 
 // Quota dimension. See `dimensions` below.
-func (o TemplateApplicationsQuotaApplicationDetailOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+func (o TemplateApplicationsQuotaApplicationDetailOutput) Dimensions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) map[string]string { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
 // The language of the quota application result notification. Value:

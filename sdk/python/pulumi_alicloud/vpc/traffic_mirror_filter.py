@@ -20,7 +20,7 @@ class TrafficMirrorFilterArgs:
                  egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
                  ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None):
         """
@@ -31,7 +31,7 @@ class TrafficMirrorFilterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
         :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
@@ -102,14 +102,14 @@ class TrafficMirrorFilterArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -145,7 +145,7 @@ class _TrafficMirrorFilterState:
                  ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None):
         """
@@ -157,7 +157,7 @@ class _TrafficMirrorFilterState:
         :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
@@ -242,14 +242,14 @@ class _TrafficMirrorFilterState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -286,7 +286,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
                  ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -355,7 +355,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
@@ -441,7 +441,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                  egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
                  ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
                  traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -476,7 +476,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
             traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None) -> 'TrafficMirrorFilter':
         """
@@ -493,7 +493,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of this resource.
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
@@ -555,7 +555,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of this resource.
         """

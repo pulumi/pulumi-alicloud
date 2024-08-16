@@ -106,7 +106,7 @@ class GetNestServiceInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag of the Service Instance.
         """
@@ -135,7 +135,7 @@ def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceI
                                name_regex: Optional[str] = None,
                                output_file: Optional[str] = None,
                                status: Optional[str] = None,
-                               tags: Optional[Mapping[str, Any]] = None,
+                               tags: Optional[Mapping[str, str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNestServiceInstancesResult:
     """
     This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
@@ -162,7 +162,7 @@ def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceI
     :param str name_regex: A regex string to filter results by Service Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -192,7 +192,7 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
                                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNestServiceInstancesResult]:
     """
     This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
@@ -219,6 +219,6 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
     :param str name_regex: A regex string to filter results by Service Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

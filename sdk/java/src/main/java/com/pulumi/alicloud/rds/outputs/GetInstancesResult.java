@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +62,7 @@ public final class GetInstancesResult {
      * 
      */
     private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private Integer totalCount;
     /**
      * @return ID of the VPC the instance belongs to.
@@ -148,7 +147,7 @@ public final class GetInstancesResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Integer totalCount() {
@@ -191,7 +190,7 @@ public final class GetInstancesResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
@@ -313,7 +312,7 @@ public final class GetInstancesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

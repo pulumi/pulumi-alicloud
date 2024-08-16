@@ -2305,14 +2305,14 @@ func (o AlertConfigurationSinkEventStorePtrOutput) RoleArn() pulumi.StringPtrOut
 
 type AlertConfigurationTemplateConfiguration struct {
 	// Template Annotations.
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// Template Language.
 	Lang *string `pulumi:"lang"`
 	// Template ID.
 	TemplateId *string `pulumi:"templateId"`
 	// Template Variables.
-	Tokens map[string]interface{} `pulumi:"tokens"`
-	Type   *string                `pulumi:"type"`
+	Tokens map[string]string `pulumi:"tokens"`
+	Type   *string           `pulumi:"type"`
 	// Template Version.
 	Version *string `pulumi:"version"`
 }
@@ -2330,13 +2330,13 @@ type AlertConfigurationTemplateConfigurationInput interface {
 
 type AlertConfigurationTemplateConfigurationArgs struct {
 	// Template Annotations.
-	Annotations pulumi.MapInput `pulumi:"annotations"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Template Language.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// Template ID.
 	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
 	// Template Variables.
-	Tokens pulumi.MapInput       `pulumi:"tokens"`
+	Tokens pulumi.StringMapInput `pulumi:"tokens"`
 	Type   pulumi.StringPtrInput `pulumi:"type"`
 	// Template Version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -2420,8 +2420,8 @@ func (o AlertConfigurationTemplateConfigurationOutput) ToAlertConfigurationTempl
 }
 
 // Template Annotations.
-func (o AlertConfigurationTemplateConfigurationOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o AlertConfigurationTemplateConfigurationOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Template Language.
@@ -2435,8 +2435,8 @@ func (o AlertConfigurationTemplateConfigurationOutput) TemplateId() pulumi.Strin
 }
 
 // Template Variables.
-func (o AlertConfigurationTemplateConfigurationOutput) Tokens() pulumi.MapOutput {
-	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]interface{} { return v.Tokens }).(pulumi.MapOutput)
+func (o AlertConfigurationTemplateConfigurationOutput) Tokens() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]string { return v.Tokens }).(pulumi.StringMapOutput)
 }
 
 func (o AlertConfigurationTemplateConfigurationOutput) Type() pulumi.StringPtrOutput {
@@ -2473,13 +2473,13 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) Elem() AlertConfigurat
 }
 
 // Template Annotations.
-func (o AlertConfigurationTemplateConfigurationPtrOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]interface{} {
+func (o AlertConfigurationTemplateConfigurationPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Annotations
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Template Language.
@@ -2503,13 +2503,13 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) TemplateId() pulumi.St
 }
 
 // Template Variables.
-func (o AlertConfigurationTemplateConfigurationPtrOutput) Tokens() pulumi.MapOutput {
-	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]interface{} {
+func (o AlertConfigurationTemplateConfigurationPtrOutput) Tokens() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Tokens
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o AlertConfigurationTemplateConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
@@ -3015,7 +3015,7 @@ type ScheduledSqlScheduledSqlConfiguration struct {
 	// SQL timeout.
 	MaxRunTimeInSeconds *int `pulumi:"maxRunTimeInSeconds"`
 	// Parameter configuration.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// Resource Pool.
 	ResourcePool *string `pulumi:"resourcePool"`
 	// Read role ARN.
@@ -3063,7 +3063,7 @@ type ScheduledSqlScheduledSqlConfigurationArgs struct {
 	// SQL timeout.
 	MaxRunTimeInSeconds pulumi.IntPtrInput `pulumi:"maxRunTimeInSeconds"`
 	// Parameter configuration.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	// Resource Pool.
 	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
 	// Read role ARN.
@@ -3203,8 +3203,8 @@ func (o ScheduledSqlScheduledSqlConfigurationOutput) MaxRunTimeInSeconds() pulum
 }
 
 // Parameter configuration.
-func (o ScheduledSqlScheduledSqlConfigurationOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o ScheduledSqlScheduledSqlConfigurationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // Resource Pool.
@@ -3357,13 +3357,13 @@ func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) MaxRunTimeInSeconds() pu
 }
 
 // Parameter configuration.
-func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) map[string]interface{} {
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Resource Pool.

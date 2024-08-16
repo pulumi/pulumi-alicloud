@@ -166,7 +166,7 @@ class GetClustersClusterResult(dict):
                  security_ips: Sequence[str],
                  status: str,
                  storage_resource: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_cloud_instance_id: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -185,7 +185,7 @@ class GetClustersClusterResult(dict):
         :param str network_type: The DBClusterNetworkType of the ADB cluster.
         :param str region_id: Region ID the cluster belongs to.
         :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param str vpc_id: ID of the VPC the cluster belongs to.
@@ -466,7 +466,7 @@ class GetClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -780,7 +780,7 @@ class GetDBClustersClusterResult(dict):
                  security_ips: Sequence[str],
                  status: str,
                  storage_resource: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_cloud_instance_id: str,
                  vpc_id: str,
                  vswitch_id: str,
@@ -824,7 +824,7 @@ class GetDBClustersClusterResult(dict):
         :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of an cluster.
         :param str status: The status of the resource.
         :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
-        :param Mapping[str, Any] tags: A map of tags assigned to the cluster.
+        :param Mapping[str, str] tags: A map of tags assigned to the cluster.
         :param str vpc_cloud_instance_id: The vpc cloud instance id.
         :param str vpc_id: The vpc id.
         :param str vswitch_id: The vswitch id.
@@ -1180,7 +1180,7 @@ class GetDBClustersClusterResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the cluster.
         """

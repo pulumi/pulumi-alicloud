@@ -3813,7 +3813,7 @@ class GetLoadBalancersBalancerResult(dict):
                  modification_protection_configs: Sequence['outputs.GetLoadBalancersBalancerModificationProtectionConfigResult'],
                  resource_group_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str,
                  zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult']):
         """
@@ -3838,7 +3838,7 @@ class GetLoadBalancersBalancerResult(dict):
         :param Sequence['GetLoadBalancersBalancerModificationProtectionConfigArgs'] modification_protection_configs: Modify the Protection Configuration.
         :param str resource_group_id: The ID of the resource group.
         :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
         :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and vSwitches. You must specify at least two zones.
         """
@@ -4014,7 +4014,7 @@ class GetLoadBalancersBalancerResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tag of the resource.
         """
@@ -5144,7 +5144,7 @@ class GetServerGroupsGroupResult(dict):
                  servers: Sequence['outputs.GetServerGroupsGroupServerResult'],
                  status: str,
                  sticky_session_configs: Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult'],
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str):
         """
         :param Sequence['GetServerGroupsGroupHealthCheckConfigArgs'] health_check_configs: The configuration of health checks.
@@ -5156,7 +5156,7 @@ class GetServerGroupsGroupResult(dict):
         :param Sequence['GetServerGroupsGroupServerArgs'] servers: The backend server.
         :param str status: The status of the resource.
         :param Sequence['GetServerGroupsGroupStickySessionConfigArgs'] sticky_session_configs: The configuration of the sticky session.
-        :param Mapping[str, Any] tags: A map of tags assigned to the group.
+        :param Mapping[str, str] tags: A map of tags assigned to the group.
         :param str vpc_id: The ID of the VPC that you want to access.
         """
         pulumi.set(__self__, "health_check_configs", health_check_configs)
@@ -5245,7 +5245,7 @@ class GetServerGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the group.
         """

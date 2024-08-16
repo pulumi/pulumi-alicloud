@@ -73,8 +73,8 @@ type GetMonitorGroupsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The select contact groups.
-	SelectContactGroups *bool                  `pulumi:"selectContactGroups"`
-	Tags                map[string]interface{} `pulumi:"tags"`
+	SelectContactGroups *bool             `pulumi:"selectContactGroups"`
+	Tags                map[string]string `pulumi:"tags"`
 	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type *string `pulumi:"type"`
 }
@@ -84,17 +84,17 @@ type GetMonitorGroupsResult struct {
 	DynamicTagRuleId *string                 `pulumi:"dynamicTagRuleId"`
 	Groups           []GetMonitorGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                 `pulumi:"id"`
-	Ids                    []string               `pulumi:"ids"`
-	IncludeTemplateHistory *bool                  `pulumi:"includeTemplateHistory"`
-	Keyword                *string                `pulumi:"keyword"`
-	MonitorGroupName       *string                `pulumi:"monitorGroupName"`
-	NameRegex              *string                `pulumi:"nameRegex"`
-	Names                  []string               `pulumi:"names"`
-	OutputFile             *string                `pulumi:"outputFile"`
-	SelectContactGroups    *bool                  `pulumi:"selectContactGroups"`
-	Tags                   map[string]interface{} `pulumi:"tags"`
-	Type                   *string                `pulumi:"type"`
+	Id                     string            `pulumi:"id"`
+	Ids                    []string          `pulumi:"ids"`
+	IncludeTemplateHistory *bool             `pulumi:"includeTemplateHistory"`
+	Keyword                *string           `pulumi:"keyword"`
+	MonitorGroupName       *string           `pulumi:"monitorGroupName"`
+	NameRegex              *string           `pulumi:"nameRegex"`
+	Names                  []string          `pulumi:"names"`
+	OutputFile             *string           `pulumi:"outputFile"`
+	SelectContactGroups    *bool             `pulumi:"selectContactGroups"`
+	Tags                   map[string]string `pulumi:"tags"`
+	Type                   *string           `pulumi:"type"`
 }
 
 func GetMonitorGroupsOutput(ctx *pulumi.Context, args GetMonitorGroupsOutputArgs, opts ...pulumi.InvokeOption) GetMonitorGroupsResultOutput {
@@ -127,8 +127,8 @@ type GetMonitorGroupsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The select contact groups.
-	SelectContactGroups pulumi.BoolPtrInput `pulumi:"selectContactGroups"`
-	Tags                pulumi.MapInput     `pulumi:"tags"`
+	SelectContactGroups pulumi.BoolPtrInput   `pulumi:"selectContactGroups"`
+	Tags                pulumi.StringMapInput `pulumi:"tags"`
 	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -197,8 +197,8 @@ func (o GetMonitorGroupsResultOutput) SelectContactGroups() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v GetMonitorGroupsResult) *bool { return v.SelectContactGroups }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetMonitorGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetMonitorGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetMonitorGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMonitorGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetMonitorGroupsResultOutput) Type() pulumi.StringPtrOutput {

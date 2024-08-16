@@ -25,7 +25,7 @@ class CapacityReservationArgs:
                  match_criteria: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CapacityReservation resource.
         :param pulumi.Input[int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
@@ -39,7 +39,7 @@ class CapacityReservationArgs:
         :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "instance_amount", instance_amount)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -197,14 +197,14 @@ class CapacityReservationArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -225,7 +225,7 @@ class _CapacityReservationState:
                  start_time: Optional[pulumi.Input[str]] = None,
                  start_time_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_slot: Optional[pulumi.Input[str]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -244,7 +244,7 @@ class _CapacityReservationState:
         :param pulumi.Input[str] start_time: time of the capacity reservation which become active.
         :param pulumi.Input[str] start_time_type: The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of the capacity reservation.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] time_slot: This parameter is under test and is not yet open for use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
@@ -453,14 +453,14 @@ class _CapacityReservationState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -503,7 +503,7 @@ class CapacityReservation(pulumi.CustomResource):
                  match_criteria: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -560,7 +560,7 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         ...
@@ -636,7 +636,7 @@ class CapacityReservation(pulumi.CustomResource):
                  match_criteria: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -694,7 +694,7 @@ class CapacityReservation(pulumi.CustomResource):
             start_time: Optional[pulumi.Input[str]] = None,
             start_time_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             time_slot: Optional[pulumi.Input[str]] = None,
             zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'CapacityReservation':
         """
@@ -718,7 +718,7 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[str] start_time: time of the capacity reservation which become active.
         :param pulumi.Input[str] start_time_type: The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of the capacity reservation.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] time_slot: This parameter is under test and is not yet open for use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
@@ -859,7 +859,7 @@ class CapacityReservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

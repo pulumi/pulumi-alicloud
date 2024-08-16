@@ -21,7 +21,7 @@ class ApplicationArgs:
                  blue_green: Optional[pulumi.Input[bool]] = None,
                  blue_green_confirm: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  latest_image: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
@@ -92,11 +92,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -135,7 +135,7 @@ class _ApplicationState:
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  default_domain: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  latest_image: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]] = None,
@@ -214,11 +214,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -276,7 +276,7 @@ class Application(pulumi.CustomResource):
                  blue_green_confirm: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  latest_image: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
@@ -314,7 +314,7 @@ class Application(pulumi.CustomResource):
                  blue_green_confirm: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  latest_image: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
@@ -358,7 +358,7 @@ class Application(pulumi.CustomResource):
             cluster_name: Optional[pulumi.Input[str]] = None,
             default_domain: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             latest_image: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationServiceArgs', 'ApplicationServiceArgsDict']]]]] = None,
@@ -416,7 +416,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def environment(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def environment(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "environment")
 
     @property

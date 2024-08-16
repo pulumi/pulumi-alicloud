@@ -67,7 +67,7 @@ type GetAutoSnapshotPoliciesArgs struct {
 	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getAutoSnapshotPolicies.
@@ -80,7 +80,7 @@ type GetAutoSnapshotPoliciesResult struct {
 	OutputFile *string                         `pulumi:"outputFile"`
 	Policies   []GetAutoSnapshotPoliciesPolicy `pulumi:"policies"`
 	Status     *string                         `pulumi:"status"`
-	Tags       map[string]interface{}          `pulumi:"tags"`
+	Tags       map[string]string               `pulumi:"tags"`
 }
 
 func GetAutoSnapshotPoliciesOutput(ctx *pulumi.Context, args GetAutoSnapshotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAutoSnapshotPoliciesResultOutput {
@@ -107,7 +107,7 @@ type GetAutoSnapshotPoliciesOutputArgs struct {
 	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetAutoSnapshotPoliciesOutputArgs) ElementType() reflect.Type {
@@ -158,8 +158,8 @@ func (o GetAutoSnapshotPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetAutoSnapshotPoliciesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetAutoSnapshotPoliciesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

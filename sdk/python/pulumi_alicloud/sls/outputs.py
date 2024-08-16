@@ -1004,17 +1004,17 @@ class AlertConfigurationTemplateConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 annotations: Optional[Mapping[str, Any]] = None,
+                 annotations: Optional[Mapping[str, str]] = None,
                  lang: Optional[str] = None,
                  template_id: Optional[str] = None,
-                 tokens: Optional[Mapping[str, Any]] = None,
+                 tokens: Optional[Mapping[str, str]] = None,
                  type: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param Mapping[str, Any] annotations: Template Annotations.
+        :param Mapping[str, str] annotations: Template Annotations.
         :param str lang: Template Language.
         :param str template_id: Template ID.
-        :param Mapping[str, Any] tokens: Template Variables.
+        :param Mapping[str, str] tokens: Template Variables.
         :param str version: Template Version.
         """
         if annotations is not None:
@@ -1032,7 +1032,7 @@ class AlertConfigurationTemplateConfiguration(dict):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[Mapping[str, Any]]:
+    def annotations(self) -> Optional[Mapping[str, str]]:
         """
         Template Annotations.
         """
@@ -1056,7 +1056,7 @@ class AlertConfigurationTemplateConfiguration(dict):
 
     @property
     @pulumi.getter
-    def tokens(self) -> Optional[Mapping[str, Any]]:
+    def tokens(self) -> Optional[Mapping[str, str]]:
         """
         Template Variables.
         """
@@ -1333,7 +1333,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
                  from_time_expr: Optional[str] = None,
                  max_retries: Optional[int] = None,
                  max_run_time_in_seconds: Optional[int] = None,
-                 parameters: Optional[Mapping[str, Any]] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
                  resource_pool: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  script: Optional[str] = None,
@@ -1351,7 +1351,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
         :param str from_time_expr: SQL time window-start.
         :param int max_retries: Maximum retries.
         :param int max_run_time_in_seconds: SQL timeout.
-        :param Mapping[str, Any] parameters: Parameter configuration.
+        :param Mapping[str, str] parameters: Parameter configuration.
         :param str resource_pool: Resource Pool.
         :param str role_arn: Read role ARN.
         :param str script: SQL statement.
@@ -1469,7 +1469,7 @@ class ScheduledSqlScheduledSqlConfiguration(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Mapping[str, Any]]:
+    def parameters(self) -> Optional[Mapping[str, str]]:
         """
         Parameter configuration.
         """

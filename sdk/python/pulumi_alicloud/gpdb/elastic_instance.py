@@ -30,7 +30,7 @@ class ElasticInstanceArgs:
                  payment_duration_unit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ElasticInstance resource.
@@ -54,7 +54,7 @@ class ElasticInstanceArgs:
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
         pulumi.set(__self__, "engine", engine)
@@ -285,14 +285,14 @@ class ElasticInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -329,7 +329,7 @@ class _ElasticInstanceState:
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -356,7 +356,7 @@ class _ElasticInstanceState:
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
@@ -625,14 +625,14 @@ class _ElasticInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -680,7 +680,7 @@ class ElasticInstance(pulumi.CustomResource):
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -751,7 +751,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
@@ -837,7 +837,7 @@ class ElasticInstance(pulumi.CustomResource):
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -912,7 +912,7 @@ class ElasticInstance(pulumi.CustomResource):
             seg_storage_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ElasticInstance':
         """
@@ -944,7 +944,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
@@ -1125,7 +1125,7 @@ class ElasticInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

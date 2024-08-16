@@ -92,7 +92,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
      */
     public readonly retentionDays!: pulumi.Output<number>;
     public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly targetCopyRegions!: pulumi.Output<string[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -174,7 +174,7 @@ export interface SnapshotPolicyState {
      */
     retentionDays?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -208,7 +208,7 @@ export interface SnapshotPolicyArgs {
      * Default value: -1.
      */
     retentionDays: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.

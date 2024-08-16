@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -73,7 +72,7 @@ public final class GetSwitchesVswitch {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return ID of the VPC that owns the vSwitch.
      * 
@@ -177,7 +176,7 @@ public final class GetSwitchesVswitch {
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -229,7 +228,7 @@ public final class GetSwitchesVswitch {
         private String resourceGroupId;
         private String routeTableId;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         private String vswitchName;
@@ -344,7 +343,7 @@ public final class GetSwitchesVswitch {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSwitchesVswitch", "tags");
             }

@@ -72,7 +72,7 @@ type GetDBClustersArgs struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the cluster.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getDBClusters.
@@ -96,8 +96,8 @@ type GetDBClustersResult struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of the resource.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 }
 
 func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
@@ -132,7 +132,7 @@ type GetDBClustersOutputArgs struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the cluster.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetDBClustersOutputArgs) ElementType() reflect.Type {
@@ -209,8 +209,8 @@ func (o GetDBClustersResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // The tags of the resource.
-func (o GetDBClustersResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDBClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDBClustersResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDBClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetDBClustersResultOutput) TotalCount() pulumi.IntOutput {

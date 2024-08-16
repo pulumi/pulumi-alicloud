@@ -149,7 +149,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The ID of private load balancer where the current cluster master node is located.
      */
     public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     public readonly userCa!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<string>;
@@ -355,7 +355,7 @@ export interface ManagedKubernetesState {
      * The ID of private load balancer where the current cluster master node is located.
      */
     slbIntranet?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     timezone?: pulumi.Input<string>;
     userCa?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
@@ -420,7 +420,7 @@ export interface ManagedKubernetesArgs {
     serviceAccountIssuer?: pulumi.Input<string>;
     serviceCidr?: pulumi.Input<string>;
     slbInternetEnabled?: pulumi.Input<boolean>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     timezone?: pulumi.Input<string>;
     userCa?: pulumi.Input<string>;
     version?: pulumi.Input<string>;

@@ -91,7 +91,7 @@ type Project struct {
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Project type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -149,7 +149,7 @@ type projectState struct {
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Project type
 	Type *string `pulumi:"type"`
 }
@@ -178,7 +178,7 @@ type ProjectState struct {
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// Project type
 	Type pulumi.StringPtrInput
 }
@@ -207,7 +207,7 @@ type projectArgs struct {
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -231,7 +231,7 @@ type ProjectArgs struct {
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -377,8 +377,8 @@ func (o ProjectOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource
-func (o ProjectOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ProjectOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Project type

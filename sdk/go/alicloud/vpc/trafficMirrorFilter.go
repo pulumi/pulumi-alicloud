@@ -115,7 +115,7 @@ type TrafficMirrorFilter struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of this resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrOutput `pulumi:"trafficMirrorFilterDescription"`
 	// The name of the TrafficMirrorFilter.
@@ -165,7 +165,7 @@ type trafficMirrorFilterState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription *string `pulumi:"trafficMirrorFilterDescription"`
 	// The name of the TrafficMirrorFilter.
@@ -186,7 +186,7 @@ type TrafficMirrorFilterState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrInput
 	// The name of the TrafficMirrorFilter.
@@ -209,7 +209,7 @@ type trafficMirrorFilterArgs struct {
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tags of this resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription *string `pulumi:"trafficMirrorFilterDescription"`
 	// The name of the TrafficMirrorFilter.
@@ -229,7 +229,7 @@ type TrafficMirrorFilterArgs struct {
 	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tags of this resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrInput
 	// The name of the TrafficMirrorFilter.
@@ -351,8 +351,8 @@ func (o TrafficMirrorFilterOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of this resource.
-func (o TrafficMirrorFilterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TrafficMirrorFilterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The description of the TrafficMirrorFilter.

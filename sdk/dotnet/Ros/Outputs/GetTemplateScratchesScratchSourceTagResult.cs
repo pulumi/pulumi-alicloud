@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// <summary>
         /// Source label.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ResourceTags;
+        public readonly ImmutableDictionary<string, string> ResourceTags;
         /// <summary>
         /// Source resource type filter list.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
 
         [OutputConstructor]
         private GetTemplateScratchesScratchSourceTagResult(
-            ImmutableDictionary<string, object> resourceTags,
+            ImmutableDictionary<string, string> resourceTags,
 
             ImmutableArray<string> resourceTypeFilters)
         {

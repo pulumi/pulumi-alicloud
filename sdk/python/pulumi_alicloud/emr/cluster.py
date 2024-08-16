@@ -39,7 +39,7 @@ class ClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_local_metadb: Optional[pulumi.Input[bool]] = None,
                  user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
@@ -68,7 +68,7 @@ class ClusterArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
         :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
@@ -403,14 +403,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -475,7 +475,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_local_metadb: Optional[pulumi.Input[bool]] = None,
                  user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -504,7 +504,7 @@ class _ClusterState:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
         :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
@@ -831,14 +831,14 @@ class _ClusterState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -917,7 +917,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_local_metadb: Optional[pulumi.Input[bool]] = None,
                  user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1411,7 +1411,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
         :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
@@ -1924,7 +1924,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  ssh_enable: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_local_metadb: Optional[pulumi.Input[bool]] = None,
                  user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2003,7 +2003,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             ssh_enable: Optional[pulumi.Input[bool]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             use_local_metadb: Optional[pulumi.Input[bool]] = None,
             user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2037,7 +2037,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
         :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
         :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
@@ -2254,7 +2254,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Mapping[str, Any]]:
+    def tags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A mapping of tags to assign to the resource.
         """

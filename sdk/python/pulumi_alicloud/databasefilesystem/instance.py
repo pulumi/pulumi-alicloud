@@ -31,7 +31,7 @@ class InstanceArgs:
                  performance_level: Optional[pulumi.Input[str]] = None,
                  raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_scene: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -56,7 +56,7 @@ class InstanceArgs:
                - PL3: single disk maximum random read-write IOPS 1 million.
         :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -288,14 +288,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -333,7 +333,7 @@ class _InstanceState:
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -360,7 +360,7 @@ class _InstanceState:
         :param pulumi.Input[int] size: Size of database file system, unit GiB.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -612,14 +612,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -669,7 +669,7 @@ class Instance(pulumi.CustomResource):
                  raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -730,7 +730,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         :param pulumi.Input[int] size: Size of database file system, unit GiB.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -807,7 +807,7 @@ class Instance(pulumi.CustomResource):
                  raid_stripe_unit_number: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -870,7 +870,7 @@ class Instance(pulumi.CustomResource):
             size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             used_scene: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -902,7 +902,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] size: Size of database file system, unit GiB.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -1070,7 +1070,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

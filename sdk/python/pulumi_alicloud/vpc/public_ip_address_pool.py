@@ -20,7 +20,7 @@ class PublicIpAddressPoolArgs:
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPool resource.
         :param pulumi.Input[str] biz_type: The name of the VPC Public IP address pool.
@@ -31,7 +31,7 @@ class PublicIpAddressPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
                - If the configuration is empty, the default value is DDoS protection (Basic edition).
                - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         if biz_type is not None:
             pulumi.set(__self__, "biz_type", biz_type)
@@ -124,14 +124,14 @@ class PublicIpAddressPoolArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -148,7 +148,7 @@ class _PublicIpAddressPoolState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  total_ip_num: Optional[pulumi.Input[int]] = None,
                  used_ip_num: Optional[pulumi.Input[int]] = None):
         """
@@ -164,7 +164,7 @@ class _PublicIpAddressPoolState:
                - If the configuration is empty, the default value is DDoS protection (Basic edition).
                - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         :param pulumi.Input[int] total_ip_num: The total number of public IP address pools.
         :param pulumi.Input[int] used_ip_num: The number of used IP addresses in the public IP address pool.
         """
@@ -316,14 +316,14 @@ class _PublicIpAddressPoolState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -362,7 +362,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a VPC Public Ip Address Pool resource.
@@ -409,7 +409,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
                - If the configuration is empty, the default value is DDoS protection (Basic edition).
                - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         """
         ...
     @overload
@@ -473,7 +473,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -516,7 +516,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             total_ip_num: Optional[pulumi.Input[int]] = None,
             used_ip_num: Optional[pulumi.Input[int]] = None) -> 'PublicIpAddressPool':
         """
@@ -537,7 +537,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
                - If the configuration is empty, the default value is DDoS protection (Basic edition).
                - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
         :param pulumi.Input[int] total_ip_num: The total number of public IP address pools.
         :param pulumi.Input[int] used_ip_num: The number of used IP addresses in the public IP address pool.
         """
@@ -641,7 +641,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of PrefixList.
         """

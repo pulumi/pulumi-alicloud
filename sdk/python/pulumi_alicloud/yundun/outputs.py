@@ -274,7 +274,7 @@ class GetBastionHostInstancesInstanceResult(dict):
                  public_network_access: bool,
                  security_group_ids: Sequence[str],
                  user_vswitch_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_status", instance_status)
@@ -334,7 +334,7 @@ class GetBastionHostInstancesInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -349,7 +349,7 @@ class GetDBAuditInstanceInstanceResult(dict):
                  public_domain: str,
                  public_network_access: bool,
                  user_vswitch_id: str,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_status", instance_status)
@@ -403,7 +403,7 @@ class GetDBAuditInstanceInstanceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 

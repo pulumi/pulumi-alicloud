@@ -126,7 +126,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the endpoint service.
      */
@@ -255,7 +255,7 @@ export interface VpcEndpointServiceState {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the endpoint service.
      */
@@ -318,7 +318,7 @@ export interface VpcEndpointServiceArgs {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
      * - **true**

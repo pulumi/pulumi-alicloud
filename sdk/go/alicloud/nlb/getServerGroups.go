@@ -73,24 +73,24 @@ type GetServerGroupsArgs struct {
 	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getServerGroups.
 type GetServerGroupsResult struct {
 	Groups []GetServerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                 `pulumi:"id"`
-	Ids              []string               `pulumi:"ids"`
-	NameRegex        *string                `pulumi:"nameRegex"`
-	Names            []string               `pulumi:"names"`
-	OutputFile       *string                `pulumi:"outputFile"`
-	ResourceGroupId  *string                `pulumi:"resourceGroupId"`
-	ServerGroupNames []string               `pulumi:"serverGroupNames"`
-	ServerGroupType  *string                `pulumi:"serverGroupType"`
-	Status           *string                `pulumi:"status"`
-	Tags             map[string]interface{} `pulumi:"tags"`
+	Id               string            `pulumi:"id"`
+	Ids              []string          `pulumi:"ids"`
+	NameRegex        *string           `pulumi:"nameRegex"`
+	Names            []string          `pulumi:"names"`
+	OutputFile       *string           `pulumi:"outputFile"`
+	ResourceGroupId  *string           `pulumi:"resourceGroupId"`
+	ServerGroupNames []string          `pulumi:"serverGroupNames"`
+	ServerGroupType  *string           `pulumi:"serverGroupType"`
+	Status           *string           `pulumi:"status"`
+	Tags             map[string]string `pulumi:"tags"`
 }
 
 func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupsResultOutput {
@@ -122,7 +122,7 @@ type GetServerGroupsOutputArgs struct {
 	ServerGroupType pulumi.StringPtrInput `pulumi:"serverGroupType"`
 	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetServerGroupsOutputArgs) ElementType() reflect.Type {
@@ -185,8 +185,8 @@ func (o GetServerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServerGroupsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerGroupsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

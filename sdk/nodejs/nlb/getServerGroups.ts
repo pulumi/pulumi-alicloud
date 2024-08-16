@@ -75,7 +75,7 @@ export interface GetServerGroupsArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -95,7 +95,7 @@ export interface GetServerGroupsResult {
     readonly serverGroupNames?: string[];
     readonly serverGroupType?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Nlb Server Groups of the current Alibaba Cloud user.
@@ -154,5 +154,5 @@ export interface GetServerGroupsOutputArgs {
      * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

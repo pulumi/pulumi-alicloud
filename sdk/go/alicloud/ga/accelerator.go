@@ -97,7 +97,7 @@ type Accelerator struct {
 	// The status of the GA instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewAccelerator registers a new resource with the given unique name, arguments, and options.
@@ -170,7 +170,7 @@ type acceleratorState struct {
 	// The status of the GA instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type AcceleratorState struct {
@@ -214,7 +214,7 @@ type AcceleratorState struct {
 	// The status of the GA instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AcceleratorState) ElementType() reflect.Type {
@@ -260,7 +260,7 @@ type acceleratorArgs struct {
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Accelerator resource.
@@ -303,7 +303,7 @@ type AcceleratorArgs struct {
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (AcceleratorArgs) ElementType() reflect.Type {
@@ -478,8 +478,8 @@ func (o AcceleratorOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o AcceleratorOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Accelerator) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AcceleratorOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type AcceleratorArrayOutput struct{ *pulumi.OutputState }

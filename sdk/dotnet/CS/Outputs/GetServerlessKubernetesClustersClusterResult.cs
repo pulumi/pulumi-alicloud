@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The ID of security group where the current cluster  is located.
         /// </summary>
         public readonly string SecurityGroupId;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of VPC where the current cluster is located.
         /// </summary>
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string securityGroupId,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

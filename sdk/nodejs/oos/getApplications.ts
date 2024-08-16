@@ -58,7 +58,7 @@ export interface GetApplicationsArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -74,7 +74,7 @@ export interface GetApplicationsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Oos Applications of the current Alibaba Cloud user.
@@ -120,5 +120,5 @@ export interface GetApplicationsOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

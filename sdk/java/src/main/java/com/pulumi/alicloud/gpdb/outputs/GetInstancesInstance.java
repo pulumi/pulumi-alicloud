@@ -7,7 +7,6 @@ import com.pulumi.alicloud.gpdb.outputs.GetInstancesInstanceIpWhitelist;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -141,7 +140,7 @@ public final class GetInstancesInstance {
      * @return The tags of the instance.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of the VPC。.
      * 
@@ -337,7 +336,7 @@ public final class GetInstancesInstance {
      * @return The tags of the instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -397,7 +396,7 @@ public final class GetInstancesInstance {
         private String status;
         private Integer storageSize;
         private String storageType;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         private String zoneId;
@@ -648,7 +647,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
             }

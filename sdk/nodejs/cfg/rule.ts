@@ -123,7 +123,7 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The settings of the input parameters for the rule.
      */
-    public readonly inputParameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly inputParameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
@@ -325,7 +325,7 @@ export interface RuleState {
     /**
      * The settings of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
@@ -415,7 +415,7 @@ export interface RuleArgs {
     /**
      * The settings of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */

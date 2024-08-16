@@ -25,7 +25,7 @@ export interface GetBastionHostInstancesArgs {
     descriptionRegex?: string;
     ids?: string[];
     outputFile?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -41,7 +41,7 @@ export interface GetBastionHostInstancesResult {
     readonly ids: string[];
     readonly instances: outputs.yundun.GetBastionHostInstancesInstance[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 export function getBastionHostInstancesOutput(args?: GetBastionHostInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBastionHostInstancesResult> {
     return pulumi.output(args).apply((a: any) => getBastionHostInstances(a, opts))
@@ -54,5 +54,5 @@ export interface GetBastionHostInstancesOutputArgs {
     descriptionRegex?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

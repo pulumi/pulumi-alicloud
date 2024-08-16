@@ -1229,7 +1229,7 @@ type GetGroupsGroup struct {
 	// Remark of the group.
 	Remark string `pulumi:"remark"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
@@ -1259,7 +1259,7 @@ type GetGroupsGroupArgs struct {
 	// Remark of the group.
 	Remark pulumi.StringInput `pulumi:"remark"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetGroupsGroupArgs) ElementType() reflect.Type {
@@ -1349,8 +1349,8 @@ func (o GetGroupsGroupOutput) Remark() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the Ons instance.
-func (o GetGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
@@ -1399,7 +1399,7 @@ type GetInstancesInstance struct {
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status int `pulumi:"status"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
 	TcpEndpoint string `pulumi:"tcpEndpoint"`
 }
@@ -1441,7 +1441,7 @@ type GetInstancesInstanceArgs struct {
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status pulumi.IntInput `pulumi:"status"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The TCP endpoint for the Message Queue for Apache RocketMQ instance.
 	TcpEndpoint pulumi.StringInput `pulumi:"tcpEndpoint"`
 }
@@ -1558,8 +1558,8 @@ func (o GetInstancesInstanceOutput) Status() pulumi.IntOutput {
 }
 
 // A map of tags assigned to the Ons instance.
-func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The TCP endpoint for the Message Queue for Apache RocketMQ instance.
@@ -1607,7 +1607,7 @@ type GetTopicsTopic struct {
 	// Remark of the topic.
 	Remark string `pulumi:"remark"`
 	// A map of tags assigned to the Ons instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the topic.
 	Topic string `pulumi:"topic"`
 	// The name of the topic.
@@ -1645,7 +1645,7 @@ type GetTopicsTopicArgs struct {
 	// Remark of the topic.
 	Remark pulumi.StringInput `pulumi:"remark"`
 	// A map of tags assigned to the Ons instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of the topic.
 	Topic pulumi.StringInput `pulumi:"topic"`
 	// The name of the topic.
@@ -1749,8 +1749,8 @@ func (o GetTopicsTopicOutput) Remark() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the Ons instance.
-func (o GetTopicsTopicOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetTopicsTopic) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetTopicsTopicOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTopicsTopic) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the topic.

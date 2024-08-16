@@ -20,7 +20,7 @@ class TopicArgs:
                  compact_topic: Optional[pulumi.Input[bool]] = None,
                  local_topic: Optional[pulumi.Input[bool]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
@@ -29,7 +29,7 @@ class TopicArgs:
         :param pulumi.Input[bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "remark", remark)
@@ -117,14 +117,14 @@ class TopicArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -136,7 +136,7 @@ class _TopicState:
                  local_topic: Optional[pulumi.Input[bool]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
@@ -145,7 +145,7 @@ class _TopicState:
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         if compact_topic is not None:
@@ -225,14 +225,14 @@ class _TopicState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -258,7 +258,7 @@ class Topic(pulumi.CustomResource):
                  local_topic: Optional[pulumi.Input[bool]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -325,7 +325,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         ...
@@ -411,7 +411,7 @@ class Topic(pulumi.CustomResource):
                  local_topic: Optional[pulumi.Input[bool]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -450,7 +450,7 @@ class Topic(pulumi.CustomResource):
             local_topic: Optional[pulumi.Input[bool]] = None,
             partition_num: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topic: Optional[pulumi.Input[str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
@@ -464,7 +464,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[bool] local_topic: Whether the topic is localTopic or not.
         :param pulumi.Input[int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -522,7 +522,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

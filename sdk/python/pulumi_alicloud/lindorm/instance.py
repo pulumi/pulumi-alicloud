@@ -49,7 +49,7 @@ class InstanceArgs:
                  stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class InstanceArgs:
         :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
@@ -608,14 +608,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -725,7 +725,7 @@ class _InstanceState:
                  stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -778,7 +778,7 @@ class _InstanceState:
         :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
@@ -1396,14 +1396,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1519,7 +1519,7 @@ class Instance(pulumi.CustomResource):
                  stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -1612,7 +1612,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
@@ -1722,7 +1722,7 @@ class Instance(pulumi.CustomResource):
                  stream_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -1845,7 +1845,7 @@ class Instance(pulumi.CustomResource):
             stream_engine_specification: Optional[pulumi.Input[str]] = None,
             table_engine_node_count: Optional[pulumi.Input[int]] = None,
             table_engine_specification: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
             time_series_engine_specification: Optional[pulumi.Input[str]] = None,
             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -1903,7 +1903,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] stream_engine_specification: The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
@@ -2306,7 +2306,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

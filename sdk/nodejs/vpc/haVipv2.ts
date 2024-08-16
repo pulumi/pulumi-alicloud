@@ -140,7 +140,7 @@ export class HaVipv2 extends pulumi.CustomResource {
     /**
      * The tags of HaVip.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID to which the HaVip instance belongs.
      */
@@ -263,7 +263,7 @@ export interface HaVipv2State {
     /**
      * The tags of HaVip.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID to which the HaVip instance belongs.
      */
@@ -305,7 +305,7 @@ export interface HaVipv2Args {
     /**
      * The tags of HaVip.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The switch ID to which the HaVip instance belongs.
      *

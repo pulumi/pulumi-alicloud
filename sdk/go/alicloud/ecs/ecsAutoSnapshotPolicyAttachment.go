@@ -75,8 +75,8 @@ import (
 //				Size:        pulumi.Int(30),
 //				Encrypted:   pulumi.Bool(true),
 //				KmsKeyId:    exampleKey.ID(),
-//				Tags: pulumi.Map{
-//					"Name": pulumi.Any("terraform-example"),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("terraform-example"),
 //				},
 //			})
 //			if err != nil {

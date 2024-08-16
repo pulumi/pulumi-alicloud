@@ -112,7 +112,7 @@ type PeerConnection struct {
 	// The status of the VPC peer connection.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the requester VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -182,7 +182,7 @@ type peerConnectionState struct {
 	// The status of the VPC peer connection.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the requester VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -214,7 +214,7 @@ type PeerConnectionState struct {
 	// The status of the VPC peer connection.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the requester VPC.
 	VpcId pulumi.StringPtrInput
 }
@@ -248,7 +248,7 @@ type peerConnectionArgs struct {
 	// The status of the VPC peer connection.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the requester VPC.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -279,7 +279,7 @@ type PeerConnectionArgs struct {
 	// The status of the VPC peer connection.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the requester VPC.
 	VpcId pulumi.StringInput
 }
@@ -427,8 +427,8 @@ func (o PeerConnectionOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o PeerConnectionOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *PeerConnection) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PeerConnectionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PeerConnection) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the requester VPC.

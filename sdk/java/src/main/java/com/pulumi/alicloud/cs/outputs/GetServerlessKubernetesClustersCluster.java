@@ -7,7 +7,6 @@ import com.pulumi.alicloud.cs.outputs.GetServerlessKubernetesClustersClusterConn
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -45,7 +44,7 @@ public final class GetServerlessKubernetesClustersCluster {
      * 
      */
     private String securityGroupId;
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The ID of VPC where the current cluster is located.
      * 
@@ -103,7 +102,7 @@ public final class GetServerlessKubernetesClustersCluster {
     public String securityGroupId() {
         return this.securityGroupId;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -137,7 +136,7 @@ public final class GetServerlessKubernetesClustersCluster {
         private String name;
         private String natGatewayId;
         private String securityGroupId;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -212,7 +211,7 @@ public final class GetServerlessKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetServerlessKubernetesClustersCluster", "tags");
             }

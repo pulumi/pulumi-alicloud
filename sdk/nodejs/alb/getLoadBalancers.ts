@@ -101,7 +101,7 @@ export interface GetLoadBalancersArgs {
      * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      */
@@ -140,7 +140,7 @@ export interface GetLoadBalancersResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly vpcId?: string;
     readonly vpcIds?: string[];
     readonly zoneId?: string;
@@ -221,7 +221,7 @@ export interface GetLoadBalancersOutputArgs {
      * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      */

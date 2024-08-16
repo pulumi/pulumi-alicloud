@@ -157,7 +157,7 @@ export interface GetNetworkInterfacesArgs {
     /**
      * A map of tags assigned to the ENI.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     type?: string;
     /**
      * ID of the VPC that the ENI belongs to.
@@ -216,7 +216,7 @@ export interface GetNetworkInterfacesResult {
     /**
      * A map of tags assigned to the ENI.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
     /**
      * ID of the VPC that the ENI belongs to.
@@ -358,7 +358,7 @@ export interface GetNetworkInterfacesOutputArgs {
     /**
      * A map of tags assigned to the ENI.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     type?: pulumi.Input<string>;
     /**
      * ID of the VPC that the ENI belongs to.

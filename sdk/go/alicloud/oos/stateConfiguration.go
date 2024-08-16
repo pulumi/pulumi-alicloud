@@ -48,9 +48,9 @@ import (
 //				ResourceGroupId:    pulumi.String(_default.Ids[0]),
 //				Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
 //				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {
@@ -85,7 +85,7 @@ type StateConfiguration struct {
 	// Timing type. Valid values: `rate`.
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
 	// The tag of the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
 	Targets pulumi.StringOutput `pulumi:"targets"`
 	// The name of the template.
@@ -149,7 +149,7 @@ type stateConfigurationState struct {
 	// Timing type. Valid values: `rate`.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
 	Targets *string `pulumi:"targets"`
 	// The name of the template.
@@ -172,7 +172,7 @@ type StateConfigurationState struct {
 	// Timing type. Valid values: `rate`.
 	ScheduleType pulumi.StringPtrInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
 	Targets pulumi.StringPtrInput
 	// The name of the template.
@@ -199,7 +199,7 @@ type stateConfigurationArgs struct {
 	// Timing type. Valid values: `rate`.
 	ScheduleType string `pulumi:"scheduleType"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
 	Targets string `pulumi:"targets"`
 	// The name of the template.
@@ -223,7 +223,7 @@ type StateConfigurationArgs struct {
 	// Timing type. Valid values: `rate`.
 	ScheduleType pulumi.StringInput
 	// The tag of the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
 	Targets pulumi.StringInput
 	// The name of the template.
@@ -350,8 +350,8 @@ func (o StateConfigurationOutput) ScheduleType() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o StateConfigurationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *StateConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o StateConfigurationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StateConfiguration) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).

@@ -37,7 +37,7 @@ class EipAddressArgs:
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EipAddress resource.
@@ -114,7 +114,7 @@ class EipAddressArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -506,14 +506,14 @@ class EipAddressArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -559,7 +559,7 @@ class _EipAddressState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EipAddress resources.
@@ -638,7 +638,7 @@ class _EipAddressState:
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The state of the EIP.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -1058,14 +1058,14 @@ class _EipAddressState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1111,7 +1111,7 @@ class EipAddress(pulumi.CustomResource):
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1198,7 +1198,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -1256,7 +1256,7 @@ class EipAddress(pulumi.CustomResource):
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1329,7 +1329,7 @@ class EipAddress(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'EipAddress':
         """
         Get an existing EipAddress resource's state with the given name, id, and optional extra
@@ -1413,7 +1413,7 @@ class EipAddress(pulumi.CustomResource):
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The state of the EIP.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -1705,7 +1705,7 @@ class EipAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource
         """

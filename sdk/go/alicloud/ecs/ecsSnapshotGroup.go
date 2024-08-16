@@ -120,9 +120,9 @@ import (
 //				InstanceId:                 defaultInstance.ID(),
 //				InstantAccess:              pulumi.Bool(true),
 //				InstantAccessRetentionDays: pulumi.Int(1),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Acceptance"),
 //				},
 //			})
 //			if err != nil {
@@ -163,7 +163,7 @@ type EcsSnapshotGroup struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot group.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewEcsSnapshotGroup registers a new resource with the given unique name, arguments, and options.
@@ -215,7 +215,7 @@ type ecsSnapshotGroupState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type EcsSnapshotGroupState struct {
@@ -238,7 +238,7 @@ type EcsSnapshotGroupState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the snapshot group.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsSnapshotGroupState) ElementType() reflect.Type {
@@ -263,7 +263,7 @@ type ecsSnapshotGroupArgs struct {
 	// The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
 	SnapshotGroupName *string `pulumi:"snapshotGroupName"`
 	// A mapping of tags to assign to the snapshot group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsSnapshotGroup resource.
@@ -285,7 +285,7 @@ type EcsSnapshotGroupArgs struct {
 	// The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
 	SnapshotGroupName pulumi.StringPtrInput
 	// A mapping of tags to assign to the snapshot group.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (EcsSnapshotGroupArgs) ElementType() reflect.Type {
@@ -421,8 +421,8 @@ func (o EcsSnapshotGroupOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the snapshot group.
-func (o EcsSnapshotGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsSnapshotGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsSnapshotGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type EcsSnapshotGroupArrayOutput struct{ *pulumi.OutputState }

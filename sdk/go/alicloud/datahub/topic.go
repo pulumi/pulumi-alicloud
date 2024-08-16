@@ -62,12 +62,12 @@ import (
 //				Name:        pulumi.Sprintf("%v_tuple", name),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("TUPLE"),
-//				RecordSchema: pulumi.Map{
-//					"bigint_field":    pulumi.Any("BIGINT"),
-//					"timestamp_field": pulumi.Any("TIMESTAMP"),
-//					"string_field":    pulumi.Any("STRING"),
-//					"double_field":    pulumi.Any("DOUBLE"),
-//					"boolean_field":   pulumi.Any("BOOLEAN"),
+//				RecordSchema: pulumi.StringMap{
+//					"bigint_field":    pulumi.String("BIGINT"),
+//					"timestamp_field": pulumi.String("TIMESTAMP"),
+//					"string_field":    pulumi.String("STRING"),
+//					"double_field":    pulumi.String("DOUBLE"),
+//					"boolean_field":   pulumi.String("BOOLEAN"),
 //				},
 //				ShardCount: pulumi.Int(3),
 //				LifeCycle:  pulumi.Int(7),
@@ -112,7 +112,7 @@ type Topic struct {
 	// - BOOLEAN
 	// - DOUBLE
 	// - TIMESTAMP
-	RecordSchema pulumi.MapOutput `pulumi:"recordSchema"`
+	RecordSchema pulumi.StringMapOutput `pulumi:"recordSchema"`
 	// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
 	RecordType pulumi.StringPtrOutput `pulumi:"recordType"`
 	// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
@@ -172,7 +172,7 @@ type topicState struct {
 	// - BOOLEAN
 	// - DOUBLE
 	// - TIMESTAMP
-	RecordSchema map[string]interface{} `pulumi:"recordSchema"`
+	RecordSchema map[string]string `pulumi:"recordSchema"`
 	// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
 	RecordType *string `pulumi:"recordType"`
 	// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
@@ -200,7 +200,7 @@ type TopicState struct {
 	// - BOOLEAN
 	// - DOUBLE
 	// - TIMESTAMP
-	RecordSchema pulumi.MapInput
+	RecordSchema pulumi.StringMapInput
 	// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
 	RecordType pulumi.StringPtrInput
 	// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
@@ -228,7 +228,7 @@ type topicArgs struct {
 	// - BOOLEAN
 	// - DOUBLE
 	// - TIMESTAMP
-	RecordSchema map[string]interface{} `pulumi:"recordSchema"`
+	RecordSchema map[string]string `pulumi:"recordSchema"`
 	// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
 	RecordType *string `pulumi:"recordType"`
 	// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
@@ -253,7 +253,7 @@ type TopicArgs struct {
 	// - BOOLEAN
 	// - DOUBLE
 	// - TIMESTAMP
-	RecordSchema pulumi.MapInput
+	RecordSchema pulumi.StringMapInput
 	// The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
 	RecordType pulumi.StringPtrInput
 	// The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
@@ -385,8 +385,8 @@ func (o TopicOutput) ProjectName() pulumi.StringOutput {
 // - BOOLEAN
 // - DOUBLE
 // - TIMESTAMP
-func (o TopicOutput) RecordSchema() pulumi.MapOutput {
-	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.RecordSchema }).(pulumi.MapOutput)
+func (o TopicOutput) RecordSchema() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.RecordSchema }).(pulumi.StringMapOutput)
 }
 
 // The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.

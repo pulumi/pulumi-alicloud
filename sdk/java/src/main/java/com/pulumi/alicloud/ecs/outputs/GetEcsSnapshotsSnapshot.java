@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -121,7 +120,7 @@ public final class GetEcsSnapshotsSnapshot {
      * @return The tags.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     private String type;
     /**
      * @return A resource type that has a reference relationship.
@@ -283,7 +282,7 @@ public final class GetEcsSnapshotsSnapshot {
      * @return The tags.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     public String type() {
@@ -329,7 +328,7 @@ public final class GetEcsSnapshotsSnapshot {
         private String sourceDiskType;
         private String sourceStorageType;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String type;
         private String usage;
         public Builder() {}
@@ -548,7 +547,7 @@ public final class GetEcsSnapshotsSnapshot {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetEcsSnapshotsSnapshot", "tags");
             }

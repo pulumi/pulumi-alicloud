@@ -25,7 +25,7 @@ export interface GetDBAuditInstanceArgs {
     descriptionRegex?: string;
     ids?: string[];
     outputFile?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -41,7 +41,7 @@ export interface GetDBAuditInstanceResult {
     readonly ids: string[];
     readonly instances: outputs.yundun.GetDBAuditInstanceInstance[];
     readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBAuditInstanceResult> {
     return pulumi.output(args).apply((a: any) => getDBAuditInstance(a, opts))
@@ -54,5 +54,5 @@ export interface GetDBAuditInstanceOutputArgs {
     descriptionRegex?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

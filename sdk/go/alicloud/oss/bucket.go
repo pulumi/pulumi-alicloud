@@ -243,7 +243,7 @@ type Bucket struct {
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationTypePtrOutput `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
@@ -326,7 +326,7 @@ type bucketState struct {
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration *BucketTransferAccelerationType `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
@@ -380,7 +380,7 @@ type BucketState struct {
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationTypePtrInput
 	// A state of versioning. See `versioning` below.
@@ -428,7 +428,7 @@ type bucketArgs struct {
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration *BucketTransferAccelerationType `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
@@ -473,7 +473,7 @@ type BucketArgs struct {
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationTypePtrInput
 	// A state of versioning. See `versioning` below.
@@ -673,8 +673,8 @@ func (o BucketOutput) StorageClass() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
-func (o BucketOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Bucket) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o BucketOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // A transfer acceleration status of a bucket. See `transferAcceleration` below.

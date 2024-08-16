@@ -107,8 +107,8 @@ import (
 //				SourceRegionId: pulumi.String("cn-hangzhou"),
 //				ImageName:      pulumi.String("terraform-example"),
 //				Description:    pulumi.String("terraform-example"),
-//				Tags: pulumi.Map{
-//					"FinanceDept": pulumi.Any("FinanceDeptJoshua"),
+//				Tags: pulumi.StringMap{
+//					"FinanceDept": pulumi.String("FinanceDeptJoshua"),
 //				},
 //			})
 //			if err != nil {
@@ -156,7 +156,7 @@ type ImageCopy struct {
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewImageCopy registers a new resource with the given unique name, arguments, and options.
@@ -215,7 +215,7 @@ type imageCopyState struct {
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId *string `pulumi:"sourceRegionId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ImageCopyState struct {
@@ -239,7 +239,7 @@ type ImageCopyState struct {
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId pulumi.StringPtrInput
 	// The tag value of an image. The value of N ranges from 1 to 20.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ImageCopyState) ElementType() reflect.Type {
@@ -267,7 +267,7 @@ type imageCopyArgs struct {
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId string `pulumi:"sourceRegionId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ImageCopy resource.
@@ -292,7 +292,7 @@ type ImageCopyArgs struct {
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId pulumi.StringInput
 	// The tag value of an image. The value of N ranges from 1 to 20.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ImageCopyArgs) ElementType() reflect.Type {
@@ -429,8 +429,8 @@ func (o ImageCopyOutput) SourceRegionId() pulumi.StringOutput {
 }
 
 // The tag value of an image. The value of N ranges from 1 to 20.
-func (o ImageCopyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ImageCopy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ImageCopyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ImageCopy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ImageCopyArrayOutput struct{ *pulumi.OutputState }

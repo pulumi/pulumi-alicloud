@@ -12,7 +12,6 @@ import com.pulumi.alicloud.oss.outputs.GetBucketsBucketVersioning;
 import com.pulumi.alicloud.oss.outputs.GetBucketsBucketWebsite;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +96,7 @@ public final class GetBucketsBucket {
      * @return A mapping of tags.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return If present , the versioning state has been set on the bucket. It contains the following attribute.
      * 
@@ -215,7 +214,7 @@ public final class GetBucketsBucket {
      * @return A mapping of tags.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -257,7 +256,7 @@ public final class GetBucketsBucket {
         private GetBucketsBucketRefererConfig refererConfig;
         private GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
         private String storageClass;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private GetBucketsBucketVersioning versioning;
         private GetBucketsBucketWebsite website;
         public Builder() {}
@@ -408,7 +407,7 @@ public final class GetBucketsBucket {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetBucketsBucket", "tags");
             }

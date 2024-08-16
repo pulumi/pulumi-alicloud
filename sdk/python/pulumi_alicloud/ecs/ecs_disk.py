@@ -35,7 +35,7 @@ class EcsDiskArgs:
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  storage_set_id: Optional[pulumi.Input[str]] = None,
                  storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -65,7 +65,7 @@ class EcsDiskArgs:
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
         :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
@@ -380,14 +380,14 @@ class EcsDiskArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -440,7 +440,7 @@ class _EcsDiskState:
                  status: Optional[pulumi.Input[str]] = None,
                  storage_set_id: Optional[pulumi.Input[str]] = None,
                  storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -471,7 +471,7 @@ class _EcsDiskState:
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
         :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
@@ -800,14 +800,14 @@ class _EcsDiskState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -861,7 +861,7 @@ class EcsDisk(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  storage_set_id: Optional[pulumi.Input[str]] = None,
                  storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -901,7 +901,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
         :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
@@ -956,7 +956,7 @@ class EcsDisk(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  storage_set_id: Optional[pulumi.Input[str]] = None,
                  storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1025,7 +1025,7 @@ class EcsDisk(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             storage_set_id: Optional[pulumi.Input[str]] = None,
             storage_set_partition_number: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'EcsDisk':
         """
@@ -1061,7 +1061,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
         :param pulumi.Input[str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
         """
@@ -1276,7 +1276,7 @@ class EcsDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

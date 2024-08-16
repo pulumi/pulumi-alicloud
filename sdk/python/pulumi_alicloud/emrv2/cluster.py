@@ -30,7 +30,7 @@ class ClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
                  subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
@@ -47,7 +47,7 @@ class ClusterArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "applications", applications)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -244,14 +244,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -272,7 +272,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
                  subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
@@ -289,7 +289,7 @@ class _ClusterState:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if application_configs is not None:
             pulumi.set(__self__, "application_configs", application_configs)
@@ -492,14 +492,14 @@ class _ClusterState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -522,7 +522,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
                  subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a EMR cluster resource. This resource is based on EMR's new version OpenAPI.
@@ -681,7 +681,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -859,7 +859,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
                  subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -920,7 +920,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_mode: Optional[pulumi.Input[str]] = None,
             subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Cluster':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -942,7 +942,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         :param pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1079,7 +1079,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

@@ -102,7 +102,7 @@ export class EcsImageComponent extends pulumi.CustomResource {
     /**
      * List of label key-value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsImageComponent resource with the given unique name, arguments, and options.
@@ -179,7 +179,7 @@ export interface EcsImageComponentState {
     /**
      * List of label key-value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -213,5 +213,5 @@ export interface EcsImageComponentArgs {
     /**
      * List of label key-value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

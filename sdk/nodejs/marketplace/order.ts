@@ -63,7 +63,7 @@ export class Order extends pulumi.CustomResource {
     /**
      * Service providers customize additional components.
      */
-    public readonly components!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly components!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The coupon id of the market product.
      */
@@ -146,7 +146,7 @@ export interface OrderState {
     /**
      * Service providers customize additional components.
      */
-    components?: pulumi.Input<{[key: string]: any}>;
+    components?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The coupon id of the market product.
      */
@@ -184,7 +184,7 @@ export interface OrderArgs {
     /**
      * Service providers customize additional components.
      */
-    components?: pulumi.Input<{[key: string]: any}>;
+    components?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The coupon id of the market product.
      */

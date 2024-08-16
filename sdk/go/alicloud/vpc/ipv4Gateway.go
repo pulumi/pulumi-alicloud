@@ -108,7 +108,7 @@ type Ipv4Gateway struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of the current resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -165,7 +165,7 @@ type ipv4GatewayState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The tags of the current resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -190,7 +190,7 @@ type Ipv4GatewayState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The tags of the current resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
 	VpcId pulumi.StringPtrInput
 }
@@ -211,7 +211,7 @@ type ipv4GatewayArgs struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tags of the current resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -229,7 +229,7 @@ type Ipv4GatewayArgs struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tags of the current resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
 	VpcId pulumi.StringInput
 }
@@ -367,8 +367,8 @@ func (o Ipv4GatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of the current resource.
-func (o Ipv4GatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Ipv4Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o Ipv4GatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Ipv4Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.

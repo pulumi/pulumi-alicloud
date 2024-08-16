@@ -6,7 +6,6 @@ package com.pulumi.alicloud.apigateway.outputs;
 import com.pulumi.alicloud.apigateway.outputs.GetAppsApp;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,7 @@ public final class GetAppsResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetAppsResult() {}
     /**
@@ -75,7 +74,7 @@ public final class GetAppsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -94,7 +93,7 @@ public final class GetAppsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetAppsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -161,7 +160,7 @@ public final class GetAppsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

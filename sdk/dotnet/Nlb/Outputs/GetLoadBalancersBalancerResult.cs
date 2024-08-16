@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The ID of the VPC where the NLB instance is deployed.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string vpcId,
 

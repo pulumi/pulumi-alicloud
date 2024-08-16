@@ -19,7 +19,7 @@ class DBAuditInstanceArgs:
                  plan_code: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DBAuditInstance resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -28,7 +28,7 @@ class DBAuditInstanceArgs:
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "period", period)
@@ -102,14 +102,14 @@ class DBAuditInstanceArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -120,7 +120,7 @@ class _DBAuditInstanceState:
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DBAuditInstance resources.
@@ -129,7 +129,7 @@ class _DBAuditInstanceState:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
         """
         if description is not None:
@@ -196,14 +196,14 @@ class _DBAuditInstanceState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -228,7 +228,7 @@ class DBAuditInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -247,7 +247,7 @@ class DBAuditInstance(pulumi.CustomResource):
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
         """
         ...
@@ -284,7 +284,7 @@ class DBAuditInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,7 +323,7 @@ class DBAuditInstance(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             plan_code: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'DBAuditInstance':
         """
         Get an existing DBAuditInstance resource's state with the given name, id, and optional extra
@@ -337,7 +337,7 @@ class DBAuditInstance(pulumi.CustomResource):
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -387,7 +387,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

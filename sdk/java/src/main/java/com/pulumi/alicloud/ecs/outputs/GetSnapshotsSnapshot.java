@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -93,7 +92,7 @@ public final class GetSnapshotsSnapshot {
      * @return A map of tags assigned to the snapshot.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     private String type;
     /**
      * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
@@ -227,7 +226,7 @@ public final class GetSnapshotsSnapshot {
      * @return A map of tags assigned to the snapshot.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     public String type() {
@@ -273,7 +272,7 @@ public final class GetSnapshotsSnapshot {
         private String sourceDiskType;
         private String sourceStorageType;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String type;
         private String usage;
         public Builder() {}
@@ -492,7 +491,7 @@ public final class GetSnapshotsSnapshot {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSnapshotsSnapshot", "tags");
             }

@@ -181,7 +181,7 @@ export class EndpointGroup extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
@@ -340,7 +340,7 @@ export interface EndpointGroupState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
@@ -421,7 +421,7 @@ export interface EndpointGroupArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */

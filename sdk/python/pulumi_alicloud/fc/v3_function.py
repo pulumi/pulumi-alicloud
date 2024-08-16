@@ -25,7 +25,7 @@ class V3FunctionArgs:
                  custom_runtime_config: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
@@ -50,7 +50,7 @@ class V3FunctionArgs:
         :param pulumi.Input['V3FunctionCustomRuntimeConfigArgs'] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
@@ -220,14 +220,14 @@ class V3FunctionArgs:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The environment variable set for the function, you can get the value of the environment variable in the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -398,7 +398,7 @@ class _V3FunctionState:
                  custom_runtime_config: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -424,7 +424,7 @@ class _V3FunctionState:
         :param pulumi.Input['V3FunctionCustomRuntimeConfigArgs'] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
@@ -588,14 +588,14 @@ class _V3FunctionState:
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The environment variable set for the function, you can get the value of the environment variable in the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @property
@@ -791,7 +791,7 @@ class V3Function(pulumi.CustomResource):
                  custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -909,7 +909,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
@@ -1046,7 +1046,7 @@ class V3Function(pulumi.CustomResource):
                  custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
                  handler: Optional[pulumi.Input[str]] = None,
@@ -1119,7 +1119,7 @@ class V3Function(pulumi.CustomResource):
             custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
             handler: Optional[pulumi.Input[str]] = None,
@@ -1150,7 +1150,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']] custom_runtime_config: Customize the runtime configuration. See `custom_runtime_config` below.
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
-        :param pulumi.Input[Mapping[str, Any]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
@@ -1263,7 +1263,7 @@ class V3Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The environment variable set for the function, you can get the value of the environment variable in the function.
         """

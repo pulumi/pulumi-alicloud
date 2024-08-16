@@ -99,7 +99,7 @@ class GetEcsDedicatedHostClustersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -131,7 +131,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
                                     ids: Optional[Sequence[str]] = None,
                                     name_regex: Optional[str] = None,
                                     output_file: Optional[str] = None,
-                                    tags: Optional[Mapping[str, Any]] = None,
+                                    tags: Optional[Mapping[str, str]] = None,
                                     zone_id: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsDedicatedHostClustersResult:
     """
@@ -165,7 +165,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
     :param Sequence[str] ids: A list of Dedicated Host Cluster IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the dedicated host cluster.
     """
     __args__ = dict()
@@ -198,7 +198,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
                                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                           tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                           tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                            zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDedicatedHostClustersResult]:
     """
@@ -232,7 +232,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     :param Sequence[str] ids: A list of Dedicated Host Cluster IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the dedicated host cluster.
     """
     ...

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.ros.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +23,13 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="resourceTags", required=true)
-    private Output<Map<String,Object>> resourceTags;
+    private Output<Map<String,String>> resourceTags;
 
     /**
      * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
      * 
      */
-    public Output<Map<String,Object>> resourceTags() {
+    public Output<Map<String,String>> resourceTags() {
         return this.resourceTags;
     }
 
@@ -72,7 +71,7 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder resourceTags(Output<Map<String,Object>> resourceTags) {
+        public Builder resourceTags(Output<Map<String,String>> resourceTags) {
             $.resourceTags = resourceTags;
             return this;
         }
@@ -83,7 +82,7 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder resourceTags(Map<String,Object> resourceTags) {
+        public Builder resourceTags(Map<String,String> resourceTags) {
             return resourceTags(Output.of(resourceTags));
         }
 

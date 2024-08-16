@@ -216,7 +216,7 @@ export namespace actiontrail {
         /**
          * A mapping of tags to assign to the consumer group.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetHistoryDeliveryJobsJob {
@@ -366,7 +366,7 @@ export namespace actiontrail {
         /**
          * A mapping of tags to assign to the instance.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The max num of topic can be create of the instance.
          */
@@ -511,7 +511,7 @@ export namespace actiontrail {
         /**
          * A mapping of tags to assign to the topic.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * A topic to filter results by the topic name.
          */
@@ -744,7 +744,7 @@ export namespace adb {
          * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
          * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         vpcCloudInstanceId: string;
         /**
          * ID of the VPC the cluster belongs to.
@@ -1000,7 +1000,7 @@ export namespace adb {
         /**
          * A map of tags assigned to the cluster.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The vpc cloud instance id.
          */
@@ -1595,7 +1595,7 @@ export namespace alb {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
          */
@@ -2056,7 +2056,7 @@ export namespace alb {
         /**
          * A map of tags assigned to the group.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC that you want to access.
          */
@@ -2915,7 +2915,7 @@ export namespace amqp {
         /**
          * The attributes.
          */
-        attributes: {[key: string]: any};
+        attributes: {[key: string]: string};
         /**
          * Indicates whether the Auto Delete attribute is configured.
          */
@@ -3009,7 +3009,7 @@ export namespace amqp {
         /**
          * The attributes for the Queue.
          */
-        attributes: {[key: string]: any};
+        attributes: {[key: string]: string};
         /**
          * Specifies whether the Auto Delete attribute is configured.
          */
@@ -3548,7 +3548,7 @@ export namespace apigateway {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface InstanceToConnectVpcIpBlock {
@@ -3960,7 +3960,7 @@ export namespace arms {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC.
          */
@@ -4147,7 +4147,7 @@ export namespace arms {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC.
          */
@@ -4351,7 +4351,7 @@ export namespace arms {
         /**
          * HTTP request header.
          */
-        requestHeaders?: {[key: string]: any};
+        requestHeaders?: {[key: string]: string};
         /**
          * The target URL.
          */
@@ -4378,7 +4378,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: {[key: string]: any};
+        customHeaderContent?: {[key: string]: string};
         /**
          * Download the kernel.
          * - 1:curl
@@ -4557,7 +4557,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: {[key: string]: any};
+        customHeaderContent?: {[key: string]: string};
         /**
          * Player, do not pass the default 12.
          * - 12:VLC
@@ -4605,7 +4605,7 @@ export namespace arms {
         /**
          * Custom header, in JSON Map format.
          */
-        customHeaderContent?: {[key: string]: any};
+        customHeaderContent?: {[key: string]: string};
         /**
          * Whether to disable caching.
          * - 0: not disabled
@@ -4867,7 +4867,7 @@ export namespace bastionhost {
          * });
          * ```
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The instance's vSwitch ID.
          */
@@ -5499,7 +5499,7 @@ export namespace cassandra {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetDataCentersCenter {
@@ -5872,7 +5872,7 @@ export namespace cddc {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the virtual private cloud (VPC) to which the host is connected.
          */
@@ -6340,7 +6340,7 @@ export namespace cen {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetInterRegionTrafficQosPoliciesPolicy {
@@ -7574,7 +7574,7 @@ export namespace cfg {
         /**
          * The settings of the input parameters for the rule.
          */
-        inputParameters: {[key: string]: any};
+        inputParameters: {[key: string]: string};
         /**
          * The frequency of the compliance evaluations.
          */
@@ -7981,7 +7981,7 @@ export namespace cfg {
         /**
          * The input parameters of the Config Rule.
          */
-        inputParameters: {[key: string]: any};
+        inputParameters: {[key: string]: string};
         /**
          * (Available in 1.124.1+) The frequency of maximum execution.
          */
@@ -10402,7 +10402,7 @@ export namespace cms {
         /**
          * The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
          */
-        annotations?: {[key: string]: any};
+        annotations?: {[key: string]: string};
         /**
          * The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
          */
@@ -11464,7 +11464,7 @@ export namespace cms {
         /**
          * A map of tags assigned to the Cms Monitor Group.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The alert templates applied to the application group.
          */
@@ -11995,7 +11995,7 @@ export namespace compute {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The name of the template.
          */
@@ -13919,7 +13919,7 @@ export namespace cs {
          * The ID of security group where the current cluster  is located.
          */
         securityGroupId: string;
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of VPC where the current cluster is located.
          */
@@ -14354,15 +14354,15 @@ export namespace cs {
         /**
          * Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
          */
-        evictionHard?: {[key: string]: any};
+        evictionHard?: {[key: string]: string};
         /**
          * Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
          */
-        evictionSoft?: {[key: string]: any};
+        evictionSoft?: {[key: string]: string};
         /**
          * Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
          */
-        evictionSoftGracePeriod?: {[key: string]: any};
+        evictionSoftGracePeriod?: {[key: string]: string};
         /**
          * Feature switch to enable configuration of experimental features.
          */
@@ -14378,7 +14378,7 @@ export namespace cs {
         /**
          * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
-        kubeReserved?: {[key: string]: any};
+        kubeReserved?: {[key: string]: string};
         /**
          * The maximum number of running pods.
          */
@@ -14402,7 +14402,7 @@ export namespace cs {
         /**
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
-        systemReserved?: {[key: string]: any};
+        systemReserved?: {[key: string]: string};
     }
 
     export interface NodePoolLabel {
@@ -16790,7 +16790,7 @@ export namespace dds {
         shards: outputs.dds.GetMongoInstancesInstanceShard[];
         status: string;
         storage: number;
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetMongoInstancesInstanceMongo {
@@ -18042,7 +18042,7 @@ export namespace dns {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Cloud analysis version code.
          */
@@ -18286,7 +18286,7 @@ export namespace dns {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Cloud analysis version code.
          */
@@ -18651,7 +18651,7 @@ export namespace dts {
         /**
          * The tag value corresponding to the tag key.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
          */
@@ -18893,7 +18893,7 @@ export namespace dts {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetSubscriptionJobsJobSubscriptionHost {
@@ -19919,7 +19919,7 @@ export namespace eci {
         /**
          * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The information about the mounted volume. You can mount up to 20 volumes.
          */
@@ -20393,7 +20393,7 @@ export namespace eci {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Of the virtual node number.
          */
@@ -20907,7 +20907,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The destination region to which the snapshot is copied.
          */
@@ -20986,7 +20986,7 @@ export namespace ecs {
         /**
          * The tag of the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * This parameter is under test and is not yet open for use.
          */
@@ -21144,7 +21144,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The zone ID of the ECS Dedicated Host.
          */
@@ -21315,7 +21315,7 @@ export namespace ecs {
          * });
          * ```
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Disk type. Possible values: `system` and `data`.
          */
@@ -21375,7 +21375,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The zone ID of the dedicated host cluster.
          */
@@ -21600,7 +21600,7 @@ export namespace ecs {
         /**
          * A map of tags assigned to the disk.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Disk type.
          */
@@ -21678,7 +21678,7 @@ export namespace ecs {
         /**
          * List of label key-value pairs.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetEcsImagePipelinePipeline {
@@ -21745,7 +21745,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The IDs of regions to which to distribute the created image.
          */
@@ -21903,7 +21903,7 @@ export namespace ecs {
         /**
          * The tags.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetEcsKeyPairsKeyPairInstance {
@@ -21967,7 +21967,7 @@ export namespace ecs {
         /**
          * The tags.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetEcsKeyPairsPairInstance {
@@ -22158,7 +22158,7 @@ export namespace ecs {
         /**
          * The template tags.
          */
-        templateTags: {[key: string]: any};
+        templateTags: {[key: string]: string};
         /**
          * The User Data.
          */
@@ -22397,7 +22397,7 @@ export namespace ecs {
         /**
          * A map of tags assigned to ENIs.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The type of ENI. Valid Values: `Primary`, `Secondary`.
          */
@@ -22499,7 +22499,7 @@ export namespace ecs {
         /**
          * List of label key-value pairs.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetEcsSnapshotsSnapshot {
@@ -22589,7 +22589,7 @@ export namespace ecs {
         /**
          * The tags.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         type: string;
         /**
          * A resource type that has a reference relationship.
@@ -22764,7 +22764,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetEipAddressesEip {
@@ -22864,7 +22864,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetEipsEip {
@@ -22962,7 +22962,7 @@ export namespace ecs {
         /**
          * The tag key-value pair information bound by the elastic guarantee service.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The total number of flexible guarantee services.
          */
@@ -23094,7 +23094,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * Specifies whether to check the validity of the request without actually making the request. Valid values:
          */
@@ -23302,7 +23302,7 @@ export namespace ecs {
          * });
          * ```
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * ID of the VPC linked to the instances.
          */
@@ -23365,7 +23365,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetKeyPairsKeyPairInstance {
@@ -23429,7 +23429,7 @@ export namespace ecs {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetKeyPairsPairInstance {
@@ -23528,7 +23528,7 @@ export namespace ecs {
         /**
          * A map of tags assigned to the ENI.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         type: string;
         /**
          * ID of the VPC that the ENI belongs to.
@@ -23646,7 +23646,7 @@ export namespace ecs {
          * });
          * ```
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * Used to retrieve security groups that belong to the specified VPC ID.
          */
@@ -23719,7 +23719,7 @@ export namespace ecs {
         /**
          * A map of tags assigned to the snapshot.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         type: string;
         /**
          * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
@@ -25991,7 +25991,7 @@ export namespace elasticsearch {
         id: string;
         instanceChargeType: string;
         status: string;
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         updatedAt: string;
         version: string;
         vswitchId: string;
@@ -26315,7 +26315,7 @@ export namespace emr {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Disk type.
          */
@@ -27151,7 +27151,7 @@ export namespace emrv2 {
         /**
          * The cluster state change reason.
          */
-        stateChangeReason: {[key: string]: any};
+        stateChangeReason: {[key: string]: string};
         /**
          * A mapping of tags to assign to the resource.
          */
@@ -27635,7 +27635,7 @@ export namespace ess {
         /**
          * The dimension map for the alarm's associated metric.
          */
-        dimensions: {[key: string]: any};
+        dimensions: {[key: string]: string};
         /**
          * Whether to enable specific ess alarm.
          */
@@ -27945,7 +27945,7 @@ export namespace ess {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * Number of instances in scaling group.
          */
@@ -28435,7 +28435,7 @@ export namespace eventbridge {
         /**
          * The config of external data source.
          */
-        externalSourceConfig: {[key: string]: any};
+        externalSourceConfig: {[key: string]: string};
         /**
          * The type of external data source.
          */
@@ -29426,7 +29426,7 @@ export namespace fc {
         /**
          * A map that defines environment variables for the function.
          */
-        environmentVariables: {[key: string]: any};
+        environmentVariables: {[key: string]: string};
         /**
          * Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
          */
@@ -29674,7 +29674,7 @@ export namespace fc {
         /**
          * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
          */
-        params: {[key: string]: any};
+        params: {[key: string]: string};
         /**
          * Tracing protocol type. Currently, only Jaeger is supported.
          */
@@ -31834,7 +31834,7 @@ export namespace gpdb {
         /**
          * The tags of the instance.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC。.
          */
@@ -32207,7 +32207,7 @@ export namespace hbase {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * VPC ID the instance belongs to.
          */
@@ -33997,7 +33997,7 @@ export namespace kms {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * (Available in 1.124.0+)  The version number of the initial version.
          */
@@ -34151,7 +34151,7 @@ export namespace kvstore {
         /**
          * The parameter configuration of the instance.
          */
-        config: {[key: string]: any};
+        config: {[key: string]: string};
         /**
          * Instance connection domain (only Intranet access supported).
          */
@@ -34283,7 +34283,7 @@ export namespace kvstore {
         /**
          * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The username of the instance.
          */
@@ -35735,7 +35735,7 @@ export namespace mongodb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetInstancesInstanceMongo {
@@ -35868,7 +35868,7 @@ export namespace mongodb {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Intranet secret free access mode.
          */
@@ -37093,7 +37093,7 @@ export namespace nlb {
         /**
          * The tag of the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The ID of the VPC where the NLB instance is deployed.
          */
@@ -37170,7 +37170,7 @@ export namespace nlb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The TLS protocol versions that are supported.
          */
@@ -37280,7 +37280,7 @@ export namespace nlb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC to which the server group belongs.
          */
@@ -37601,7 +37601,7 @@ export namespace oos {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The Updated time of the application.
          */
@@ -37739,7 +37739,7 @@ export namespace oos {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The data type of the common parameter.
          */
@@ -37857,7 +37857,7 @@ export namespace oos {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The data type of the encryption parameter.
          */
@@ -37912,7 +37912,7 @@ export namespace oos {
         /**
          * The tag of the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The target resource.
          */
@@ -37967,7 +37967,7 @@ export namespace oos {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The format of the template. Valid values: `JSON`, `YAML`.
          */
@@ -38262,7 +38262,7 @@ export namespace oss {
         /**
          * Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
          */
@@ -38625,7 +38625,7 @@ export namespace oss {
         /**
          * A mapping of tags.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * If present , the versioning state has been set on the bucket. It contains the following attribute.
          */
@@ -38842,7 +38842,7 @@ export namespace oss {
          * });
          * ```
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The user id of the instance.
          */
@@ -38992,7 +38992,7 @@ export namespace ots {
          * });
          * ```
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The user id of the instance.
          */
@@ -40683,7 +40683,7 @@ export namespace quotas {
         /**
          * Quota dimension. See `dimensions` below.
          */
-        dimensions: {[key: string]: any};
+        dimensions: {[key: string]: string};
         /**
          * The language of the quota application result notification. Value:
          * - zh (default): Chinese.
@@ -42680,7 +42680,7 @@ export namespace rocketmq {
         /**
          * A map of tags assigned to the Ons instance.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetInstancesInstance {
@@ -42735,7 +42735,7 @@ export namespace rocketmq {
         /**
          * A map of tags assigned to the Ons instance.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The TCP endpoint for the Message Queue for Apache RocketMQ instance.
          */
@@ -42782,7 +42782,7 @@ export namespace rocketmq {
         /**
          * A map of tags assigned to the Ons instance.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The name of the topic.
          */
@@ -43159,7 +43159,7 @@ export namespace ros {
         /**
          * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Template Description.
          */
@@ -43269,7 +43269,7 @@ export namespace ros {
         /**
          * Source label.
          */
-        resourceTags: {[key: string]: any};
+        resourceTags: {[key: string]: string};
         /**
          * Source resource type filter list.
          */
@@ -43311,7 +43311,7 @@ export namespace ros {
         /**
          * Tags.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
          */
@@ -43397,7 +43397,7 @@ export namespace ros {
         /**
          * Source label. **NOTE:** A maximum of 10 source labels can be configured.
          */
-        resourceTags: {[key: string]: any};
+        resourceTags: {[key: string]: string};
         resourceTypeFilters?: string[];
     }
 
@@ -44202,7 +44202,7 @@ export namespace sae {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
          */
@@ -45470,7 +45470,7 @@ export namespace servicecatalog {
          * The status message of the product instance
          */
         statusMessage: string;
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetProvisionedProductsProductOutput {
@@ -45564,7 +45564,7 @@ export namespace servicecatalog {
          * The status message of the product instance
          */
         statusMessage: string;
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetProvisionedProductsProvisionedProductOutput {
@@ -46600,7 +46600,7 @@ export namespace slb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetAclsAclEntryList {
@@ -46735,7 +46735,7 @@ export namespace slb {
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC linked to the SLBs.
          */
@@ -46825,7 +46825,7 @@ export namespace slb {
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC linked to the SLBs.
          */
@@ -46906,7 +46906,7 @@ export namespace slb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetDomainExtensionsExtension {
@@ -47143,7 +47143,7 @@ export namespace slb {
          * });
          * ```
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC linked to the SLBs.
          */
@@ -47229,7 +47229,7 @@ export namespace slb {
          * });
          * ```
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC linked to the SLBs.
          */
@@ -47357,7 +47357,7 @@ export namespace slb {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface GetServerGroupsSlbServerGroup {
@@ -47796,7 +47796,7 @@ export namespace sls {
         /**
          * Template Annotations.
          */
-        annotations?: {[key: string]: any};
+        annotations?: {[key: string]: string};
         /**
          * Template Language.
          */
@@ -47808,7 +47808,7 @@ export namespace sls {
         /**
          * Template Variables.
          */
-        tokens?: {[key: string]: any};
+        tokens?: {[key: string]: string};
         type?: string;
         /**
          * Template Version.
@@ -47910,7 +47910,7 @@ export namespace sls {
         /**
          * Parameter configuration.
          */
-        parameters?: {[key: string]: any};
+        parameters?: {[key: string]: string};
         /**
          * Resource Pool.
          */
@@ -49535,7 +49535,7 @@ export namespace vpc {
         /**
          * The tags of NAT gateway.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * The ID of the VPC.
          */
@@ -49784,7 +49784,7 @@ export namespace vpc {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * A list of user CIDRs.
          */
@@ -50092,7 +50092,7 @@ export namespace vpc {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Vpc id of the route table.
          */
@@ -50340,7 +50340,7 @@ export namespace vpc {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * ID of the VPC that owns the vSwitch.
          */
@@ -51737,7 +51737,7 @@ export namespace vpn {
         /**
          * The Tag of.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
         /**
          * Use the VPC ID as the search key.
          */
@@ -52339,7 +52339,7 @@ export namespace yundun {
         publicDomain: string;
         publicNetworkAccess: boolean;
         securityGroupIds: string[];
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         userVswitchId: string;
     }
 
@@ -52351,7 +52351,7 @@ export namespace yundun {
         privateDomain: string;
         publicDomain: string;
         publicNetworkAccess: boolean;
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         userVswitchId: string;
     }
 

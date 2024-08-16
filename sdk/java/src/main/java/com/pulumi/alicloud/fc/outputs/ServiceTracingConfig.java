@@ -5,7 +5,6 @@ package com.pulumi.alicloud.fc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,7 +15,7 @@ public final class ServiceTracingConfig {
      * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
      * 
      */
-    private Map<String,Object> params;
+    private Map<String,String> params;
     /**
      * @return Tracing protocol type. Currently, only Jaeger is supported.
      * 
@@ -28,7 +27,7 @@ public final class ServiceTracingConfig {
      * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
      * 
      */
-    public Map<String,Object> params() {
+    public Map<String,String> params() {
         return this.params;
     }
     /**
@@ -48,7 +47,7 @@ public final class ServiceTracingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> params;
+        private Map<String,String> params;
         private String type;
         public Builder() {}
         public Builder(ServiceTracingConfig defaults) {
@@ -58,7 +57,7 @@ public final class ServiceTracingConfig {
         }
 
         @CustomType.Setter
-        public Builder params(Map<String,Object> params) {
+        public Builder params(Map<String,String> params) {
             if (params == null) {
               throw new MissingRequiredPropertyException("ServiceTracingConfig", "params");
             }

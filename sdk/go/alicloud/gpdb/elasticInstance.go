@@ -131,7 +131,7 @@ type ElasticInstance struct {
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -230,7 +230,7 @@ type elasticInstanceState struct {
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize *int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -279,7 +279,7 @@ type ElasticInstanceState struct {
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -326,7 +326,7 @@ type elasticInstanceArgs struct {
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize int `pulumi:"storageSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -370,7 +370,7 @@ type ElasticInstanceArgs struct {
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -559,8 +559,8 @@ func (o ElasticInstanceOutput) StorageSize() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ElasticInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ElasticInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ElasticInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ElasticInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The virtual switch ID to launch ADB PG instances in one VPC.

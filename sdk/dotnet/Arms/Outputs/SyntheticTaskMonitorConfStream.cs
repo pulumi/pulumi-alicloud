@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// <summary>
         /// Custom header, in JSON Map format.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? CustomHeaderContent;
+        public readonly ImmutableDictionary<string, string>? CustomHeaderContent;
         /// <summary>
         /// Player, do not pass the default 12.
         /// - 12:VLC
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
         [OutputConstructor]
         private SyntheticTaskMonitorConfStream(
-            ImmutableDictionary<string, object>? customHeaderContent,
+            ImmutableDictionary<string, string>? customHeaderContent,
 
             int? playerType,
 

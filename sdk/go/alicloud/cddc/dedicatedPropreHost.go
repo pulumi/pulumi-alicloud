@@ -84,7 +84,7 @@ type DedicatedPropreHost struct {
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Host tag information.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// User-defined script data. The maximum size of the original data is 16kB.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Whether custom data is encoded in Base64 format.
@@ -208,7 +208,7 @@ type dedicatedPropreHostState struct {
 	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Host tag information.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// User-defined script data. The maximum size of the original data is 16kB.
 	UserData *string `pulumi:"userData"`
 	// Whether custom data is encoded in Base64 format.
@@ -282,7 +282,7 @@ type DedicatedPropreHostState struct {
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
 	// Host tag information.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// User-defined script data. The maximum size of the original data is 16kB.
 	UserData pulumi.StringPtrInput
 	// Whether custom data is encoded in Base64 format.
@@ -358,7 +358,7 @@ type dedicatedPropreHostArgs struct {
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// Host tag information.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// User-defined script data. The maximum size of the original data is 16kB.
 	UserData *string `pulumi:"userData"`
 	// Whether custom data is encoded in Base64 format.
@@ -431,7 +431,7 @@ type DedicatedPropreHostArgs struct {
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput
 	// Host tag information.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// User-defined script data. The maximum size of the original data is 16kB.
 	UserData pulumi.StringPtrInput
 	// Whether custom data is encoded in Base64 format.
@@ -657,8 +657,8 @@ func (o DedicatedPropreHostOutput) SecurityGroupId() pulumi.StringOutput {
 }
 
 // Host tag information.
-func (o DedicatedPropreHostOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o DedicatedPropreHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // User-defined script data. The maximum size of the original data is 16kB.

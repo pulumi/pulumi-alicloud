@@ -178,7 +178,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * The tags of Vpc.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of user CIDRs.
      */
@@ -362,7 +362,7 @@ export interface NetworkState {
     /**
      * The tags of Vpc.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of user CIDRs.
      */
@@ -454,7 +454,7 @@ export interface NetworkArgs {
     /**
      * The tags of Vpc.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of user CIDRs.
      */

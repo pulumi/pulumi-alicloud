@@ -43,8 +43,8 @@ import (
 //			ecsDisk, err := ecs.NewDisk(ctx, "ecs_disk", &ecs.DiskArgs{
 //				AvailabilityZone: pulumi.String("cn-beijing-a"),
 //				Size:             pulumi.Int(50),
-//				Tags: pulumi.Map{
-//					"Name": pulumi.Any("TerraformTest-disk"),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("TerraformTest-disk"),
 //				},
 //			})
 //			if err != nil {

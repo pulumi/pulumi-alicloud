@@ -55,38 +55,38 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? EventRecordQps { get; set; }
 
         [Input("evictionHard")]
-        private InputMap<object>? _evictionHard;
+        private InputMap<string>? _evictionHard;
 
         /// <summary>
         /// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         /// </summary>
-        public InputMap<object> EvictionHard
+        public InputMap<string> EvictionHard
         {
-            get => _evictionHard ?? (_evictionHard = new InputMap<object>());
+            get => _evictionHard ?? (_evictionHard = new InputMap<string>());
             set => _evictionHard = value;
         }
 
         [Input("evictionSoft")]
-        private InputMap<object>? _evictionSoft;
+        private InputMap<string>? _evictionSoft;
 
         /// <summary>
         /// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         /// </summary>
-        public InputMap<object> EvictionSoft
+        public InputMap<string> EvictionSoft
         {
-            get => _evictionSoft ?? (_evictionSoft = new InputMap<object>());
+            get => _evictionSoft ?? (_evictionSoft = new InputMap<string>());
             set => _evictionSoft = value;
         }
 
         [Input("evictionSoftGracePeriod")]
-        private InputMap<object>? _evictionSoftGracePeriod;
+        private InputMap<string>? _evictionSoftGracePeriod;
 
         /// <summary>
         /// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
         /// </summary>
-        public InputMap<object> EvictionSoftGracePeriod
+        public InputMap<string> EvictionSoftGracePeriod
         {
-            get => _evictionSoftGracePeriod ?? (_evictionSoftGracePeriod = new InputMap<object>());
+            get => _evictionSoftGracePeriod ?? (_evictionSoftGracePeriod = new InputMap<string>());
             set => _evictionSoftGracePeriod = value;
         }
 
@@ -115,14 +115,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? KubeApiQps { get; set; }
 
         [Input("kubeReserved")]
-        private InputMap<object>? _kubeReserved;
+        private InputMap<string>? _kubeReserved;
 
         /// <summary>
         /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
-        public InputMap<object> KubeReserved
+        public InputMap<string> KubeReserved
         {
-            get => _kubeReserved ?? (_kubeReserved = new InputMap<object>());
+            get => _kubeReserved ?? (_kubeReserved = new InputMap<string>());
             set => _kubeReserved = value;
         }
 
@@ -157,14 +157,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? SerializeImagePulls { get; set; }
 
         [Input("systemReserved")]
-        private InputMap<object>? _systemReserved;
+        private InputMap<string>? _systemReserved;
 
         /// <summary>
         /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
-        public InputMap<object> SystemReserved
+        public InputMap<string> SystemReserved
         {
-            get => _systemReserved ?? (_systemReserved = new InputMap<object>());
+            get => _systemReserved ?? (_systemReserved = new InputMap<string>());
             set => _systemReserved = value;
         }
 

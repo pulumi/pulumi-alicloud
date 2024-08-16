@@ -61,7 +61,7 @@ export interface GetSecretParametersArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -82,7 +82,7 @@ export interface GetSecretParametersResult {
     readonly secretParameterName?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -126,5 +126,5 @@ export interface GetSecretParametersOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

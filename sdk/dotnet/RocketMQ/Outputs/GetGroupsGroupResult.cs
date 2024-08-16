@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// <summary>
         /// A map of tags assigned to the Ons instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetGroupsGroupResult(
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
 
             string remark,
 
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             GroupName = groupName;
             GroupType = groupType;

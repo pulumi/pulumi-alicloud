@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Vpc id of the route table.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

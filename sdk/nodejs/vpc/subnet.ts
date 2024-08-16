@@ -51,7 +51,7 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly vpcId!: pulumi.Output<string>;
     public readonly vswitchName!: pulumi.Output<string>;
     public readonly zoneId!: pulumi.Output<string>;
@@ -131,7 +131,7 @@ export interface SubnetState {
      */
     name?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vpcId?: pulumi.Input<string>;
     vswitchName?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;
@@ -153,7 +153,7 @@ export interface SubnetArgs {
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
     name?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vpcId: pulumi.Input<string>;
     vswitchName?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;

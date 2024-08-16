@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// VPC ID the instance belongs to.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string vpcId,
 

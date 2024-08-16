@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A map of tags assigned to the ENI.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Type;
         /// <summary>
         /// ID of the VPC that the ENI belongs to.
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string type,
 

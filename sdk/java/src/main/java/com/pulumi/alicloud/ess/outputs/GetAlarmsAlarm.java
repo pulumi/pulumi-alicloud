@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +38,7 @@ public final class GetAlarmsAlarm {
      * @return The dimension map for the alarm&#39;s associated metric.
      * 
      */
-    private Map<String,Object> dimensions;
+    private Map<String,String> dimensions;
     /**
      * @return Whether to enable specific ess alarm.
      * 
@@ -129,7 +128,7 @@ public final class GetAlarmsAlarm {
      * @return The dimension map for the alarm&#39;s associated metric.
      * 
      */
-    public Map<String,Object> dimensions() {
+    public Map<String,String> dimensions() {
         return this.dimensions;
     }
     /**
@@ -223,7 +222,7 @@ public final class GetAlarmsAlarm {
         private Integer cloudMonitorGroupId;
         private String comparisonOperator;
         private String description;
-        private Map<String,Object> dimensions;
+        private Map<String,String> dimensions;
         private Boolean enable;
         private Integer evaluationCount;
         private String id;
@@ -292,7 +291,7 @@ public final class GetAlarmsAlarm {
             return this;
         }
         @CustomType.Setter
-        public Builder dimensions(Map<String,Object> dimensions) {
+        public Builder dimensions(Map<String,String> dimensions) {
             if (dimensions == null) {
               throw new MissingRequiredPropertyException("GetAlarmsAlarm", "dimensions");
             }

@@ -42,16 +42,16 @@ import * as utilities from "../utilities";
  *     loadBalancerSpec: "slb.s2.small",
  *     vswitchId: defaultSwitch.id,
  *     tags: {
- *         tag_a: 1,
- *         tag_b: 2,
- *         tag_c: 3,
- *         tag_d: 4,
- *         tag_e: 5,
- *         tag_f: 6,
- *         tag_g: 7,
- *         tag_h: 8,
- *         tag_i: 9,
- *         tag_j: 10,
+ *         tag_a: "1",
+ *         tag_b: "2",
+ *         tag_c: "3",
+ *         tag_d: "4",
+ *         tag_e: "5",
+ *         tag_f: "6",
+ *         tag_g: "7",
+ *         tag_h: "8",
+ *         tag_i: "9",
+ *         tag_j: "10",
  *     },
  * });
  * ```
@@ -189,7 +189,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any}>;
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
@@ -359,7 +359,7 @@ export interface LoadBalancerState {
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
@@ -464,7 +464,7 @@ export interface LoadBalancerArgs {
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */

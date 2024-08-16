@@ -155,7 +155,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * A map that defines environment variables for the function.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
@@ -323,7 +323,7 @@ export interface FunctionState {
     /**
      * A map that defines environment variables for the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
@@ -418,7 +418,7 @@ export interface FunctionArgs {
     /**
      * A map that defines environment variables for the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */

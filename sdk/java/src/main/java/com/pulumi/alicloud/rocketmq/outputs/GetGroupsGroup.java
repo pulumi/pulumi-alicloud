@@ -6,7 +6,6 @@ package com.pulumi.alicloud.rocketmq.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -52,7 +51,7 @@ public final class GetGroupsGroup {
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
 
     private GetGroupsGroup() {}
     /**
@@ -108,7 +107,7 @@ public final class GetGroupsGroup {
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
 
@@ -128,7 +127,7 @@ public final class GetGroupsGroup {
         private String instanceId;
         private String owner;
         private String remark;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
@@ -199,7 +198,7 @@ public final class GetGroupsGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "tags");
             }

@@ -1193,7 +1193,7 @@ type GetLoadBalancersBalancer struct {
 	// The status of the NLB instance.
 	Status string `pulumi:"status"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
 	// The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
@@ -1245,7 +1245,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// The status of the NLB instance.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
@@ -1384,8 +1384,8 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetLoadBalancersBalancerOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC where the NLB instance is deployed.
@@ -1687,7 +1687,7 @@ type GetSecurityPoliciesPolicy struct {
 	// The status of the resource.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The TLS protocol versions that are supported.
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
@@ -1715,7 +1715,7 @@ type GetSecurityPoliciesPolicyArgs struct {
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The TLS protocol versions that are supported.
 	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
 }
@@ -1797,8 +1797,8 @@ func (o GetSecurityPoliciesPolicyOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetSecurityPoliciesPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecurityPoliciesPolicy) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecurityPoliciesPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesPolicy) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The TLS protocol versions that are supported.
@@ -2034,7 +2034,7 @@ type GetServerGroupsGroup struct {
 	// The status of the server group.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the server group belongs.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -2080,7 +2080,7 @@ type GetServerGroupsGroupArgs struct {
 	// The status of the server group.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC to which the server group belongs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
@@ -2207,8 +2207,8 @@ func (o GetServerGroupsGroupOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetServerGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC to which the server group belongs.

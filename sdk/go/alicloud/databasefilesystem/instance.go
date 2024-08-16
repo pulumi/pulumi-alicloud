@@ -108,7 +108,7 @@ type Instance struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
 	// - PostgreSQL
@@ -199,7 +199,7 @@ type instanceState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
 	// - PostgreSQL
@@ -252,7 +252,7 @@ type InstanceState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
 	// - PostgreSQL
@@ -305,7 +305,7 @@ type instanceArgs struct {
 	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
 	// - PostgreSQL
@@ -355,7 +355,7 @@ type InstanceArgs struct {
 	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
 	// - PostgreSQL
@@ -542,8 +542,8 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o InstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The usage scenario of DBFS. Value range:

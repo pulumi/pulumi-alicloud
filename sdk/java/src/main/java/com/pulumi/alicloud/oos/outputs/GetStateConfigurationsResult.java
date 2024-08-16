@@ -6,7 +6,6 @@ package com.pulumi.alicloud.oos.outputs;
 import com.pulumi.alicloud.oos.outputs.GetStateConfigurationsConfiguration;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ public final class GetStateConfigurationsResult {
     private List<String> ids;
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetStateConfigurationsResult() {}
     public List<GetStateConfigurationsConfiguration> configurations() {
@@ -47,7 +46,7 @@ public final class GetStateConfigurationsResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -65,7 +64,7 @@ public final class GetStateConfigurationsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetStateConfigurationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -120,7 +119,7 @@ public final class GetStateConfigurationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

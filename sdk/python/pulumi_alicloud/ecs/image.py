@@ -33,7 +33,7 @@ class ImageArgs:
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
@@ -73,7 +73,7 @@ class ImageArgs:
                
                > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create the custom image.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -344,7 +344,7 @@ class ImageArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag
 
@@ -353,7 +353,7 @@ class ImageArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -379,7 +379,7 @@ class _ImageState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
@@ -421,7 +421,7 @@ class _ImageState:
                > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create the custom image.
         :param pulumi.Input[str] status: The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -720,7 +720,7 @@ class _ImageState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag
 
@@ -729,7 +729,7 @@ class _ImageState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -755,7 +755,7 @@ class Image(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Image resource.
@@ -864,7 +864,7 @@ class Image(pulumi.CustomResource):
                
                > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create the custom image.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -974,7 +974,7 @@ class Image(pulumi.CustomResource):
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1033,7 +1033,7 @@ class Image(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Image':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1080,7 +1080,7 @@ class Image(pulumi.CustomResource):
                > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create the custom image.
         :param pulumi.Input[str] status: The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1285,7 +1285,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag
 

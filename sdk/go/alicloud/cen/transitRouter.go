@@ -71,7 +71,7 @@ type TransitRouter struct {
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
 	SupportMulticast pulumi.BoolPtrOutput `pulumi:"supportMulticast"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringPtrOutput `pulumi:"transitRouterDescription"`
 	// The transit router id of the transit router.
@@ -124,7 +124,7 @@ type transitRouterState struct {
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
 	SupportMulticast *bool `pulumi:"supportMulticast"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router.
 	TransitRouterDescription *string `pulumi:"transitRouterDescription"`
 	// The transit router id of the transit router.
@@ -145,7 +145,7 @@ type TransitRouterState struct {
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
 	SupportMulticast pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringPtrInput
 	// The transit router id of the transit router.
@@ -168,7 +168,7 @@ type transitRouterArgs struct {
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
 	SupportMulticast *bool `pulumi:"supportMulticast"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router.
 	TransitRouterDescription *string `pulumi:"transitRouterDescription"`
 	// The name of the transit router.
@@ -184,7 +184,7 @@ type TransitRouterArgs struct {
 	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
 	SupportMulticast pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringPtrInput
 	// The name of the transit router.
@@ -299,8 +299,8 @@ func (o TransitRouterOutput) SupportMulticast() pulumi.BoolPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o TransitRouterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransitRouter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o TransitRouterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The description of the transit router.

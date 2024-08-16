@@ -6,7 +6,6 @@ package com.pulumi.alicloud.amqp.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class GetQueuesQueue {
      * @return The attributes for the Queue.
      * 
      */
-    private Map<String,Object> attributes;
+    private Map<String,String> attributes;
     /**
      * @return Specifies whether the Auto Delete attribute is configured.
      * 
@@ -64,7 +63,7 @@ public final class GetQueuesQueue {
      * @return The attributes for the Queue.
      * 
      */
-    public Map<String,Object> attributes() {
+    public Map<String,String> attributes() {
         return this.attributes;
     }
     /**
@@ -133,7 +132,7 @@ public final class GetQueuesQueue {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> attributes;
+        private Map<String,String> attributes;
         private Boolean autoDeleteState;
         private String createTime;
         private Boolean exclusiveState;
@@ -157,7 +156,7 @@ public final class GetQueuesQueue {
         }
 
         @CustomType.Setter
-        public Builder attributes(Map<String,Object> attributes) {
+        public Builder attributes(Map<String,String> attributes) {
             if (attributes == null) {
               throw new MissingRequiredPropertyException("GetQueuesQueue", "attributes");
             }

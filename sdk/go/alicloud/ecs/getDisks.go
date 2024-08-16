@@ -115,7 +115,7 @@ type GetDisksArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -166,8 +166,8 @@ type GetDisksResult struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disk.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// Disk type. Possible values: `system` and `data`.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -252,7 +252,7 @@ type GetDisksOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -407,8 +407,8 @@ func (o GetDisksResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the disk.
-func (o GetDisksResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDisksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDisksResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDisksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetDisksResultOutput) TotalCount() pulumi.IntOutput {

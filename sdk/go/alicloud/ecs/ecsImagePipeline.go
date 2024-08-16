@@ -103,9 +103,9 @@ import (
 //					pulumi.String("cn-zhangjiakou"),
 //				},
 //				VswitchId: defaultSwitch.ID(),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Acceptance-test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Acceptance-test"),
 //				},
 //			})
 //			if err != nil {
@@ -154,7 +154,7 @@ type EcsImagePipeline struct {
 	// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of region to which to distribute the created image.
 	ToRegionIds pulumi.StringArrayOutput `pulumi:"toRegionIds"`
 	// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
@@ -224,7 +224,7 @@ type ecsImagePipelineState struct {
 	// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of region to which to distribute the created image.
 	ToRegionIds []string `pulumi:"toRegionIds"`
 	// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
@@ -259,7 +259,7 @@ type EcsImagePipelineState struct {
 	// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of region to which to distribute the created image.
 	ToRegionIds pulumi.StringArrayInput
 	// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
@@ -298,7 +298,7 @@ type ecsImagePipelineArgs struct {
 	// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of region to which to distribute the created image.
 	ToRegionIds []string `pulumi:"toRegionIds"`
 	// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
@@ -334,7 +334,7 @@ type EcsImagePipelineArgs struct {
 	// The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of region to which to distribute the created image.
 	ToRegionIds pulumi.StringArrayInput
 	// The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
@@ -491,8 +491,8 @@ func (o EcsImagePipelineOutput) SystemDiskSize() pulumi.IntOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o EcsImagePipelineOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EcsImagePipeline) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EcsImagePipelineOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EcsImagePipeline) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of region to which to distribute the created image.

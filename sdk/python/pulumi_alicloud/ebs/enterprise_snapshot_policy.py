@@ -26,7 +26,7 @@ class EnterpriseSnapshotPolicyArgs:
                  special_retain_rules: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_rule: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a EnterpriseSnapshotPolicy resource.
         :param pulumi.Input[str] enterprise_snapshot_policy_name: The name of the resource.
@@ -39,7 +39,7 @@ class EnterpriseSnapshotPolicyArgs:
         :param pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs'] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs'] storage_rule: Snapshot storage policy. See `storage_rule` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "enterprise_snapshot_policy_name", enterprise_snapshot_policy_name)
         pulumi.set(__self__, "retain_rule", retain_rule)
@@ -182,14 +182,14 @@ class EnterpriseSnapshotPolicyArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -206,7 +206,7 @@ class _EnterpriseSnapshotPolicyState:
                  special_retain_rules: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_rule: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseSnapshotPolicy resources.
@@ -220,7 +220,7 @@ class _EnterpriseSnapshotPolicyState:
         :param pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs'] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs'] storage_rule: Snapshot storage policy. See `storage_rule` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] target_type: Represents the target type of resource binding.
         """
         if create_time is not None:
@@ -370,14 +370,14 @@ class _EnterpriseSnapshotPolicyState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -407,7 +407,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
                  special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -469,7 +469,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']] storage_rule: Snapshot storage policy. See `storage_rule` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] target_type: Represents the target type of resource binding.
         """
         ...
@@ -550,7 +550,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
                  special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -601,7 +601,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
             special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             target_type: Optional[pulumi.Input[str]] = None) -> 'EnterpriseSnapshotPolicy':
         """
         Get an existing EnterpriseSnapshotPolicy resource's state with the given name, id, and optional extra
@@ -620,7 +620,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']] special_retain_rules: Snapshot special retention rules. See `special_retain_rules` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']] storage_rule: Snapshot storage policy. See `storage_rule` below.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] target_type: Represents the target type of resource binding.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -723,7 +723,7 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource.
         """

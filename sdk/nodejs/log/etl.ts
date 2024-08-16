@@ -170,11 +170,11 @@ export class Etl extends pulumi.CustomResource {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly kmsEncryptionAccessKeyIdContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly kmsEncryptionAccessKeyIdContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly kmsEncryptionAccessKeySecretContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly kmsEncryptionAccessKeySecretContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ETL job last modified time.
      */
@@ -354,11 +354,11 @@ export interface EtlState {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ETL job last modified time.
      */
@@ -452,11 +452,11 @@ export interface EtlArgs {
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ETL job last modified time.
      */

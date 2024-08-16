@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             string vpcId,
 

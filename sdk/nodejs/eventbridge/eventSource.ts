@@ -104,7 +104,7 @@ export class EventSource extends pulumi.CustomResource {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    public readonly externalSourceConfig!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly externalSourceConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      */
@@ -185,7 +185,7 @@ export interface EventSourceState {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    externalSourceConfig?: pulumi.Input<{[key: string]: any}>;
+    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      */
@@ -228,7 +228,7 @@ export interface EventSourceArgs {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    externalSourceConfig?: pulumi.Input<{[key: string]: any}>;
+    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      */

@@ -49,9 +49,9 @@ import (
 //			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				Description:     pulumi.String("example_value"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("acceptance test"),
 //				},
 //			})
 //			if err != nil {

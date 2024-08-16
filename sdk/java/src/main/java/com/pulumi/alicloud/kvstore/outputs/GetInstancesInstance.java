@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,7 @@ public final class GetInstancesInstance {
      * @return The parameter configuration of the instance.
      * 
      */
-    private Map<String,Object> config;
+    private Map<String,String> config;
     /**
      * @return Instance connection domain (only Intranet access supported).
      * 
@@ -209,7 +208,7 @@ public final class GetInstancesInstance {
      * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return The username of the instance.
      * 
@@ -283,7 +282,7 @@ public final class GetInstancesInstance {
      * @return The parameter configuration of the instance.
      * 
      */
-    public Map<String,Object> config() {
+    public Map<String,String> config() {
         return this.config;
     }
     /**
@@ -524,7 +523,7 @@ public final class GetInstancesInstance {
      * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -582,7 +581,7 @@ public final class GetInstancesInstance {
         private Integer bandwidth;
         private Integer capacity;
         private String chargeType;
-        private Map<String,Object> config;
+        private Map<String,String> config;
         private String connectionDomain;
         private String connectionMode;
         private Integer connections;
@@ -621,7 +620,7 @@ public final class GetInstancesInstance {
         private List<String> securityIps;
         private String sslEnable;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String userName;
         private String vpcAuthMode;
         private String vpcCloudInstanceId;
@@ -743,7 +742,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder config(Map<String,Object> config) {
+        public Builder config(Map<String,String> config) {
             if (config == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "config");
             }
@@ -1058,7 +1057,7 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "tags");
             }

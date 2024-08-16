@@ -899,7 +899,7 @@ type GetDedicatedHostsHost struct {
 	// The storage usage of the host. Unit: `GB`.
 	StorageUsed string `pulumi:"storageUsed"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) to which the host is connected.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch.
@@ -973,7 +973,7 @@ type GetDedicatedHostsHostArgs struct {
 	// The storage usage of the host. Unit: `GB`.
 	StorageUsed pulumi.StringInput `pulumi:"storageUsed"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) to which the host is connected.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the vSwitch.
@@ -1164,8 +1164,8 @@ func (o GetDedicatedHostsHostOutput) StorageUsed() pulumi.StringOutput {
 }
 
 // The tag of the resource.
-func (o GetDedicatedHostsHostOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetDedicatedHostsHostOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) to which the host is connected.

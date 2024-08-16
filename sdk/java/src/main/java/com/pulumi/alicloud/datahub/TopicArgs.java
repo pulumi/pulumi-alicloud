@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -93,7 +92,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="recordSchema")
-    private @Nullable Output<Map<String,Object>> recordSchema;
+    private @Nullable Output<Map<String,String>> recordSchema;
 
     /**
      * @return Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -104,7 +103,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
      * - TIMESTAMP
      * 
      */
-    public Optional<Output<Map<String,Object>>> recordSchema() {
+    public Optional<Output<Map<String,String>>> recordSchema() {
         return Optional.ofNullable(this.recordSchema);
     }
 
@@ -267,7 +266,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder recordSchema(@Nullable Output<Map<String,Object>> recordSchema) {
+        public Builder recordSchema(@Nullable Output<Map<String,String>> recordSchema) {
             $.recordSchema = recordSchema;
             return this;
         }
@@ -283,7 +282,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder recordSchema(Map<String,Object> recordSchema) {
+        public Builder recordSchema(Map<String,String> recordSchema) {
             return recordSchema(Output.of(recordSchema));
         }
 

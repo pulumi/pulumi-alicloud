@@ -181,7 +181,7 @@ class GetNetworkInterfacesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         A map of tags assigned to the ENI.
         """
@@ -248,7 +248,7 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
                            security_group_id: Optional[str] = None,
                            service_managed: Optional[bool] = None,
                            status: Optional[str] = None,
-                           tags: Optional[Mapping[str, Any]] = None,
+                           tags: Optional[Mapping[str, str]] = None,
                            type: Optional[str] = None,
                            vpc_id: Optional[str] = None,
                            vswitch_id: Optional[str] = None,
@@ -340,7 +340,7 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     :param str private_ip: Primary private IP of the ENI.
     :param str resource_group_id: The Id of resource group.
     :param str status: Current status of the ENI.
-    :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
+    :param Mapping[str, str] tags: A map of tags assigned to the ENI.
     :param str vpc_id: ID of the VPC that the ENI belongs to.
     :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
     """
@@ -399,7 +399,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   service_managed: Optional[pulumi.Input[Optional[bool]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
-                                  tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                   type: Optional[pulumi.Input[Optional[str]]] = None,
                                   vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -491,7 +491,7 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str private_ip: Primary private IP of the ENI.
     :param str resource_group_id: The Id of resource group.
     :param str status: Current status of the ENI.
-    :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
+    :param Mapping[str, str] tags: A map of tags assigned to the ENI.
     :param str vpc_id: ID of the VPC that the ENI belongs to.
     :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
     """

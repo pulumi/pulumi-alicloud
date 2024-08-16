@@ -82,7 +82,7 @@ type GetInstancesArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
@@ -96,7 +96,7 @@ type GetInstancesResult struct {
 	Instances  []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string                `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -143,7 +143,7 @@ type GetInstancesOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -192,8 +192,8 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the bastionhost instance.
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

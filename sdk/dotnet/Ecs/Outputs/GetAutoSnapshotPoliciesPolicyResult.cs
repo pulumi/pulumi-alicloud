@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The destination region to which the snapshot is copied.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
 
             ImmutableArray<string> targetCopyRegions,
 

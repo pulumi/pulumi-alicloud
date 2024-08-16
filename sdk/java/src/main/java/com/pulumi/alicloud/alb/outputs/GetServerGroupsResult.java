@@ -7,7 +7,6 @@ import com.pulumi.alicloud.alb.outputs.GetServerGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +51,7 @@ public final class GetServerGroupsResult {
      * @return The tags of the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The ID of the VPC that you want to access.
      * 
@@ -117,7 +116,7 @@ public final class GetServerGroupsResult {
      * @return The tags of the resource.
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
@@ -148,7 +147,7 @@ public final class GetServerGroupsResult {
         private @Nullable List<String> serverGroupIds;
         private @Nullable String serverGroupName;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String vpcId;
         public Builder() {}
         public Builder(GetServerGroupsResult defaults) {
@@ -255,7 +254,7 @@ public final class GetServerGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

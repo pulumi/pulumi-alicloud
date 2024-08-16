@@ -67,7 +67,7 @@ type GetInstancesArgs struct {
 	// The name of file that can save the collection of instances after running `pulumi preview`.
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
@@ -86,9 +86,9 @@ type GetInstancesResult struct {
 	Instances []GetInstancesInstance `pulumi:"instances"`
 	NameRegex *string                `pulumi:"nameRegex"`
 	// The names list of MongoDB instances
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Tags       map[string]interface{} `pulumi:"tags"`
+	Names      []string          `pulumi:"names"`
+	OutputFile *string           `pulumi:"outputFile"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -119,7 +119,7 @@ type GetInstancesOutputArgs struct {
 	// The name of file that can save the collection of instances after running `pulumi preview`.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -184,8 +184,8 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -104,7 +104,7 @@ class GetEcsImageComponentsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +132,7 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
                              output_file: Optional[str] = None,
                              owner: Optional[str] = None,
                              resource_group_id: Optional[str] = None,
-                             tags: Optional[Mapping[str, Any]] = None,
+                             tags: Optional[Mapping[str, str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEcsImageComponentsResult:
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
@@ -162,7 +162,7 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
            - SELF: The custom image component you created.
            - ALIYUN: System components provided by Alibaba Cloud.
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -195,7 +195,7 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     owner: Optional[pulumi.Input[Optional[str]]] = None,
                                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsImageComponentsResult]:
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
@@ -225,6 +225,6 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
            - SELF: The custom image component you created.
            - ALIYUN: System components provided by Alibaba Cloud.
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

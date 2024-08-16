@@ -22,7 +22,7 @@ class ZoneArgs:
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sync_status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
                  user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None):
@@ -37,7 +37,7 @@ class ZoneArgs:
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the Private Zone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -144,14 +144,14 @@ class ZoneArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the Private Zone.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -202,7 +202,7 @@ class _ZoneState:
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sync_status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
                  user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None):
@@ -219,7 +219,7 @@ class _ZoneState:
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the Private Zone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -354,14 +354,14 @@ class _ZoneState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tags of the Private Zone.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -412,7 +412,7 @@ class Zone(pulumi.CustomResource):
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sync_status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
                  user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
@@ -448,7 +448,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the Private Zone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -500,7 +500,7 @@ class Zone(pulumi.CustomResource):
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sync_status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
                  user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
@@ -543,7 +543,7 @@ class Zone(pulumi.CustomResource):
             remark: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             sync_status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_client_ip: Optional[pulumi.Input[str]] = None,
             user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
             zone_name: Optional[pulumi.Input[str]] = None) -> 'Zone':
@@ -565,7 +565,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the Private Zone.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]] user_infos: The user information of the host synchronization task. See `user_info` below.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -658,7 +658,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tags of the Private Zone.
         """

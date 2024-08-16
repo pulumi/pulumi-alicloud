@@ -87,7 +87,7 @@ export interface GetNatGatewaysArgs {
     /**
      * The tags of NAT gateway.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the VPC.
      */
@@ -147,7 +147,7 @@ export interface GetNatGatewaysResult {
     /**
      * The tags of NAT gateway.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
      * The ID of the VPC.
@@ -216,7 +216,7 @@ export interface GetNatGatewaysOutputArgs {
     /**
      * The tags of NAT gateway.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC.
      */

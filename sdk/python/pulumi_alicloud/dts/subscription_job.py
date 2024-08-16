@@ -52,7 +52,7 @@ class SubscriptionJobArgs:
                  subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SubscriptionJob resource.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
@@ -93,7 +93,7 @@ class SubscriptionJobArgs:
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
@@ -628,14 +628,14 @@ class SubscriptionJobArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -680,7 +680,7 @@ class _SubscriptionJobState:
                  subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering SubscriptionJob resources.
         :param pulumi.Input[str] checkpoint: Subscription start time in Unix timestamp format.
@@ -721,7 +721,7 @@ class _SubscriptionJobState:
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
@@ -1260,14 +1260,14 @@ class _SubscriptionJobState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -1314,7 +1314,7 @@ class SubscriptionJob(pulumi.CustomResource):
                  subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a DTS Subscription Job resource.
@@ -1392,12 +1392,16 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.json_dumps(pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: {
-                example_database_name: {
-                    "name": example_database_name1,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database.name,
+                exampleDatabaseName1=example_database.name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
                     "all": True,
                 },
-            })),
+            })
+        ),
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,
@@ -1452,7 +1456,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -1536,12 +1540,16 @@ class SubscriptionJob(pulumi.CustomResource):
             source_endpoint_database_name=example_database.name,
             source_endpoint_user_name=example_rds_account.account_name,
             source_endpoint_password=example_rds_account.account_password,
-            db_list=pulumi.Output.json_dumps(pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: {
-                example_database_name: {
-                    "name": example_database_name1,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database.name,
+                exampleDatabaseName1=example_database.name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
                     "all": True,
                 },
-            })),
+            })
+        ),
             subscription_instance_network_type="vpc",
             subscription_instance_vpc_id=example_network.id,
             subscription_instance_vswitch_id=example_switch.id,
@@ -1609,7 +1617,7 @@ class SubscriptionJob(pulumi.CustomResource):
                  subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
                  sync_architecture: Optional[pulumi.Input[str]] = None,
                  synchronization_direction: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1714,7 +1722,7 @@ class SubscriptionJob(pulumi.CustomResource):
             subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
             sync_architecture: Optional[pulumi.Input[str]] = None,
             synchronization_direction: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'SubscriptionJob':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'SubscriptionJob':
         """
         Get an existing SubscriptionJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1760,7 +1768,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2113,7 +2121,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

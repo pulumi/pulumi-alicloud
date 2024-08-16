@@ -42,92 +42,92 @@ import (
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
 //				Aliuid:      pulumi.String(_default.Id),
-//				VariableMap: pulumi.Map{
-//					"actiontrail_enabled":             pulumi.Any("true"),
-//					"actiontrail_ttl":                 pulumi.Any("180"),
-//					"oss_access_enabled":              pulumi.Any("true"),
-//					"oss_access_ttl":                  pulumi.Any("7"),
-//					"oss_sync_enabled":                pulumi.Any("true"),
-//					"oss_sync_ttl":                    pulumi.Any("180"),
-//					"oss_metering_enabled":            pulumi.Any("true"),
-//					"oss_metering_ttl":                pulumi.Any("180"),
-//					"rds_enabled":                     pulumi.Any("true"),
-//					"rds_audit_collection_policy":     pulumi.Any(""),
-//					"rds_ttl":                         pulumi.Any("180"),
-//					"rds_slow_enabled":                pulumi.Any("false"),
-//					"rds_slow_collection_policy":      pulumi.Any(""),
-//					"rds_slow_ttl":                    pulumi.Any("180"),
-//					"rds_perf_enabled":                pulumi.Any("false"),
-//					"rds_perf_collection_policy":      pulumi.Any(""),
-//					"rds_perf_ttl":                    pulumi.Any("180"),
-//					"vpc_flow_enabled":                pulumi.Any("false"),
-//					"vpc_flow_ttl":                    pulumi.Any("7"),
-//					"vpc_flow_collection_policy":      pulumi.Any(""),
-//					"vpc_sync_enabled":                pulumi.Any("true"),
-//					"vpc_sync_ttl":                    pulumi.Any("180"),
-//					"polardb_enabled":                 pulumi.Any("true"),
-//					"polardb_audit_collection_policy": pulumi.Any(""),
-//					"polardb_ttl":                     pulumi.Any("180"),
-//					"polardb_slow_enabled":            pulumi.Any("false"),
-//					"polardb_slow_collection_policy":  pulumi.Any(""),
-//					"polardb_slow_ttl":                pulumi.Any("180"),
-//					"polardb_perf_enabled":            pulumi.Any("false"),
-//					"polardb_perf_collection_policy":  pulumi.Any(""),
-//					"polardb_perf_ttl":                pulumi.Any("180"),
-//					"drds_audit_enabled":              pulumi.Any("true"),
-//					"drds_audit_collection_policy":    pulumi.Any(""),
-//					"drds_audit_ttl":                  pulumi.Any("7"),
-//					"drds_sync_enabled":               pulumi.Any("true"),
-//					"drds_sync_ttl":                   pulumi.Any("180"),
-//					"slb_access_enabled":              pulumi.Any("true"),
-//					"slb_access_collection_policy":    pulumi.Any(""),
-//					"slb_access_ttl":                  pulumi.Any("7"),
-//					"slb_sync_enabled":                pulumi.Any("true"),
-//					"slb_sync_ttl":                    pulumi.Any("180"),
-//					"bastion_enabled":                 pulumi.Any("true"),
-//					"bastion_ttl":                     pulumi.Any("180"),
-//					"waf_enabled":                     pulumi.Any("true"),
-//					"waf_ttl":                         pulumi.Any("180"),
-//					"cloudfirewall_enabled":           pulumi.Any("true"),
-//					"cloudfirewall_ttl":               pulumi.Any("180"),
-//					"ddos_coo_access_enabled":         pulumi.Any("false"),
-//					"ddos_coo_access_ttl":             pulumi.Any("180"),
-//					"ddos_bgp_access_enabled":         pulumi.Any("false"),
-//					"ddos_bgp_access_ttl":             pulumi.Any("180"),
-//					"ddos_dip_access_enabled":         pulumi.Any("false"),
-//					"ddos_dip_access_ttl":             pulumi.Any("180"),
-//					"sas_crack_enabled":               pulumi.Any("true"),
-//					"sas_dns_enabled":                 pulumi.Any("true"),
-//					"sas_http_enabled":                pulumi.Any("true"),
-//					"sas_local_dns_enabled":           pulumi.Any("true"),
-//					"sas_login_enabled":               pulumi.Any("true"),
-//					"sas_network_enabled":             pulumi.Any("true"),
-//					"sas_process_enabled":             pulumi.Any("true"),
-//					"sas_security_alert_enabled":      pulumi.Any("true"),
-//					"sas_security_hc_enabled":         pulumi.Any("true"),
-//					"sas_security_vul_enabled":        pulumi.Any("true"),
-//					"sas_session_enabled":             pulumi.Any("true"),
-//					"sas_snapshot_account_enabled":    pulumi.Any("true"),
-//					"sas_snapshot_port_enabled":       pulumi.Any("true"),
-//					"sas_snapshot_process_enabled":    pulumi.Any("true"),
-//					"sas_ttl":                         pulumi.Any("180"),
-//					"apigateway_enabled":              pulumi.Any("true"),
-//					"apigateway_ttl":                  pulumi.Any("180"),
-//					"nas_enabled":                     pulumi.Any("true"),
-//					"nas_ttl":                         pulumi.Any("180"),
-//					"appconnect_enabled":              pulumi.Any("false"),
-//					"appconnect_ttl":                  pulumi.Any("180"),
-//					"cps_enabled":                     pulumi.Any("true"),
-//					"cps_ttl":                         pulumi.Any("180"),
-//					"k8s_audit_enabled":               pulumi.Any("true"),
-//					"k8s_audit_collection_policy":     pulumi.Any(""),
-//					"k8s_audit_ttl":                   pulumi.Any("180"),
-//					"k8s_event_enabled":               pulumi.Any("true"),
-//					"k8s_event_collection_policy":     pulumi.Any(""),
-//					"k8s_event_ttl":                   pulumi.Any("180"),
-//					"k8s_ingress_enabled":             pulumi.Any("true"),
-//					"k8s_ingress_collection_policy":   pulumi.Any(""),
-//					"k8s_ingress_ttl":                 pulumi.Any("180"),
+//				VariableMap: pulumi.StringMap{
+//					"actiontrail_enabled":             pulumi.String("true"),
+//					"actiontrail_ttl":                 pulumi.String("180"),
+//					"oss_access_enabled":              pulumi.String("true"),
+//					"oss_access_ttl":                  pulumi.String("7"),
+//					"oss_sync_enabled":                pulumi.String("true"),
+//					"oss_sync_ttl":                    pulumi.String("180"),
+//					"oss_metering_enabled":            pulumi.String("true"),
+//					"oss_metering_ttl":                pulumi.String("180"),
+//					"rds_enabled":                     pulumi.String("true"),
+//					"rds_audit_collection_policy":     pulumi.String(""),
+//					"rds_ttl":                         pulumi.String("180"),
+//					"rds_slow_enabled":                pulumi.String("false"),
+//					"rds_slow_collection_policy":      pulumi.String(""),
+//					"rds_slow_ttl":                    pulumi.String("180"),
+//					"rds_perf_enabled":                pulumi.String("false"),
+//					"rds_perf_collection_policy":      pulumi.String(""),
+//					"rds_perf_ttl":                    pulumi.String("180"),
+//					"vpc_flow_enabled":                pulumi.String("false"),
+//					"vpc_flow_ttl":                    pulumi.String("7"),
+//					"vpc_flow_collection_policy":      pulumi.String(""),
+//					"vpc_sync_enabled":                pulumi.String("true"),
+//					"vpc_sync_ttl":                    pulumi.String("180"),
+//					"polardb_enabled":                 pulumi.String("true"),
+//					"polardb_audit_collection_policy": pulumi.String(""),
+//					"polardb_ttl":                     pulumi.String("180"),
+//					"polardb_slow_enabled":            pulumi.String("false"),
+//					"polardb_slow_collection_policy":  pulumi.String(""),
+//					"polardb_slow_ttl":                pulumi.String("180"),
+//					"polardb_perf_enabled":            pulumi.String("false"),
+//					"polardb_perf_collection_policy":  pulumi.String(""),
+//					"polardb_perf_ttl":                pulumi.String("180"),
+//					"drds_audit_enabled":              pulumi.String("true"),
+//					"drds_audit_collection_policy":    pulumi.String(""),
+//					"drds_audit_ttl":                  pulumi.String("7"),
+//					"drds_sync_enabled":               pulumi.String("true"),
+//					"drds_sync_ttl":                   pulumi.String("180"),
+//					"slb_access_enabled":              pulumi.String("true"),
+//					"slb_access_collection_policy":    pulumi.String(""),
+//					"slb_access_ttl":                  pulumi.String("7"),
+//					"slb_sync_enabled":                pulumi.String("true"),
+//					"slb_sync_ttl":                    pulumi.String("180"),
+//					"bastion_enabled":                 pulumi.String("true"),
+//					"bastion_ttl":                     pulumi.String("180"),
+//					"waf_enabled":                     pulumi.String("true"),
+//					"waf_ttl":                         pulumi.String("180"),
+//					"cloudfirewall_enabled":           pulumi.String("true"),
+//					"cloudfirewall_ttl":               pulumi.String("180"),
+//					"ddos_coo_access_enabled":         pulumi.String("false"),
+//					"ddos_coo_access_ttl":             pulumi.String("180"),
+//					"ddos_bgp_access_enabled":         pulumi.String("false"),
+//					"ddos_bgp_access_ttl":             pulumi.String("180"),
+//					"ddos_dip_access_enabled":         pulumi.String("false"),
+//					"ddos_dip_access_ttl":             pulumi.String("180"),
+//					"sas_crack_enabled":               pulumi.String("true"),
+//					"sas_dns_enabled":                 pulumi.String("true"),
+//					"sas_http_enabled":                pulumi.String("true"),
+//					"sas_local_dns_enabled":           pulumi.String("true"),
+//					"sas_login_enabled":               pulumi.String("true"),
+//					"sas_network_enabled":             pulumi.String("true"),
+//					"sas_process_enabled":             pulumi.String("true"),
+//					"sas_security_alert_enabled":      pulumi.String("true"),
+//					"sas_security_hc_enabled":         pulumi.String("true"),
+//					"sas_security_vul_enabled":        pulumi.String("true"),
+//					"sas_session_enabled":             pulumi.String("true"),
+//					"sas_snapshot_account_enabled":    pulumi.String("true"),
+//					"sas_snapshot_port_enabled":       pulumi.String("true"),
+//					"sas_snapshot_process_enabled":    pulumi.String("true"),
+//					"sas_ttl":                         pulumi.String("180"),
+//					"apigateway_enabled":              pulumi.String("true"),
+//					"apigateway_ttl":                  pulumi.String("180"),
+//					"nas_enabled":                     pulumi.String("true"),
+//					"nas_ttl":                         pulumi.String("180"),
+//					"appconnect_enabled":              pulumi.String("false"),
+//					"appconnect_ttl":                  pulumi.String("180"),
+//					"cps_enabled":                     pulumi.String("true"),
+//					"cps_ttl":                         pulumi.String("180"),
+//					"k8s_audit_enabled":               pulumi.String("true"),
+//					"k8s_audit_collection_policy":     pulumi.String(""),
+//					"k8s_audit_ttl":                   pulumi.String("180"),
+//					"k8s_event_enabled":               pulumi.String("true"),
+//					"k8s_event_collection_policy":     pulumi.String(""),
+//					"k8s_event_ttl":                   pulumi.String("180"),
+//					"k8s_ingress_enabled":             pulumi.String("true"),
+//					"k8s_ingress_collection_policy":   pulumi.String(""),
+//					"k8s_ingress_ttl":                 pulumi.String("180"),
 //				},
 //			})
 //			if err != nil {
@@ -160,11 +160,11 @@ import (
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
 //				Aliuid:      pulumi.String(_default.Id),
-//				VariableMap: pulumi.Map{
-//					"actiontrail_enabled": pulumi.Any("true"),
-//					"actiontrail_ttl":     pulumi.Any("180"),
-//					"oss_access_enabled":  pulumi.Any("true"),
-//					"oss_access_ttl":      pulumi.Any("180"),
+//				VariableMap: pulumi.StringMap{
+//					"actiontrail_enabled": pulumi.String("true"),
+//					"actiontrail_ttl":     pulumi.String("180"),
+//					"oss_access_enabled":  pulumi.String("true"),
+//					"oss_access_ttl":      pulumi.String("180"),
 //				},
 //				MultiAccounts: pulumi.StringArray{
 //					pulumi.String("123456789123"),
@@ -201,11 +201,11 @@ import (
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
 //				Aliuid:      pulumi.String(_default.Id),
-//				VariableMap: pulumi.Map{
-//					"actiontrail_enabled": pulumi.Any("true"),
-//					"actiontrail_ttl":     pulumi.Any("180"),
-//					"oss_access_enabled":  pulumi.Any("true"),
-//					"oss_access_ttl":      pulumi.Any("180"),
+//				VariableMap: pulumi.StringMap{
+//					"actiontrail_enabled": pulumi.String("true"),
+//					"actiontrail_ttl":     pulumi.String("180"),
+//					"oss_access_enabled":  pulumi.String("true"),
+//					"oss_access_ttl":      pulumi.String("180"),
 //				},
 //				ResourceDirectoryType: pulumi.String("all"),
 //			})
@@ -237,11 +237,11 @@ import (
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
 //				Aliuid:      pulumi.String(_default.Id),
-//				VariableMap: pulumi.Map{
-//					"actiontrail_enabled": pulumi.Any("true"),
-//					"actiontrail_ttl":     pulumi.Any("180"),
-//					"oss_access_enabled":  pulumi.Any("true"),
-//					"oss_access_ttl":      pulumi.Any("180"),
+//				VariableMap: pulumi.StringMap{
+//					"actiontrail_enabled": pulumi.String("true"),
+//					"actiontrail_ttl":     pulumi.String("180"),
+//					"oss_access_enabled":  pulumi.String("true"),
+//					"oss_access_ttl":      pulumi.String("180"),
 //				},
 //				MultiAccounts:         pulumi.StringArray{},
 //				ResourceDirectoryType: pulumi.String("custom"),
@@ -274,7 +274,7 @@ type Audit struct {
 	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
 	ResourceDirectoryType pulumi.StringPtrOutput `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
-	VariableMap pulumi.MapOutput `pulumi:"variableMap"`
+	VariableMap pulumi.StringMapOutput `pulumi:"variableMap"`
 }
 
 // NewAudit registers a new resource with the given unique name, arguments, and options.
@@ -322,7 +322,7 @@ type auditState struct {
 	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
 	ResourceDirectoryType *string `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
-	VariableMap map[string]interface{} `pulumi:"variableMap"`
+	VariableMap map[string]string `pulumi:"variableMap"`
 }
 
 type AuditState struct {
@@ -335,7 +335,7 @@ type AuditState struct {
 	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
 	ResourceDirectoryType pulumi.StringPtrInput
 	// Log audit detailed configuration.
-	VariableMap pulumi.MapInput
+	VariableMap pulumi.StringMapInput
 }
 
 func (AuditState) ElementType() reflect.Type {
@@ -352,7 +352,7 @@ type auditArgs struct {
 	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
 	ResourceDirectoryType *string `pulumi:"resourceDirectoryType"`
 	// Log audit detailed configuration.
-	VariableMap map[string]interface{} `pulumi:"variableMap"`
+	VariableMap map[string]string `pulumi:"variableMap"`
 }
 
 // The set of arguments for constructing a Audit resource.
@@ -366,7 +366,7 @@ type AuditArgs struct {
 	// Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
 	ResourceDirectoryType pulumi.StringPtrInput
 	// Log audit detailed configuration.
-	VariableMap pulumi.MapInput
+	VariableMap pulumi.StringMapInput
 }
 
 func (AuditArgs) ElementType() reflect.Type {
@@ -477,8 +477,8 @@ func (o AuditOutput) ResourceDirectoryType() pulumi.StringPtrOutput {
 }
 
 // Log audit detailed configuration.
-func (o AuditOutput) VariableMap() pulumi.MapOutput {
-	return o.ApplyT(func(v *Audit) pulumi.MapOutput { return v.VariableMap }).(pulumi.MapOutput)
+func (o AuditOutput) VariableMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Audit) pulumi.StringMapOutput { return v.VariableMap }).(pulumi.StringMapOutput)
 }
 
 type AuditArrayOutput struct{ *pulumi.OutputState }

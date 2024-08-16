@@ -73,9 +73,9 @@ import (
 //					pulumi.String("100.69.7.112"),
 //				},
 //				Name: pulumi.String(name),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

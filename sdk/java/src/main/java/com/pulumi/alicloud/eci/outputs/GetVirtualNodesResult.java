@@ -6,7 +6,6 @@ package com.pulumi.alicloud.eci.outputs;
 import com.pulumi.alicloud.eci.outputs.GetVirtualNodesNode;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,7 @@ public final class GetVirtualNodesResult {
     private @Nullable String resourceGroupId;
     private @Nullable String securityGroupId;
     private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String virtualNodeName;
     private @Nullable String vswitchId;
 
@@ -65,7 +64,7 @@ public final class GetVirtualNodesResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> virtualNodeName() {
@@ -93,7 +92,7 @@ public final class GetVirtualNodesResult {
         private @Nullable String resourceGroupId;
         private @Nullable String securityGroupId;
         private @Nullable String status;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String virtualNodeName;
         private @Nullable String vswitchId;
         public Builder() {}
@@ -185,7 +184,7 @@ public final class GetVirtualNodesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

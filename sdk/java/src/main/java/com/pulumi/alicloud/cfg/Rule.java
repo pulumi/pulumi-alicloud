@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -239,14 +238,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The settings of the input parameters for the rule.
      * 
      */
-    @Export(name="inputParameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> inputParameters;
+    @Export(name="inputParameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> inputParameters;
 
     /**
      * @return The settings of the input parameters for the rule.
      * 
      */
-    public Output<Optional<Map<String,Object>>> inputParameters() {
+    public Output<Optional<Map<String,String>>> inputParameters() {
         return Codegen.optional(this.inputParameters);
     }
     /**

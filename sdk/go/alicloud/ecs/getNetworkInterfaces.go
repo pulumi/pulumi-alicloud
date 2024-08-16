@@ -77,8 +77,8 @@ import (
 // },
 // Description: pulumi.String("Basic test"),
 // PrivateIp: pulumi.String("192.168.0.2"),
-// Tags: pulumi.Map{
-// "TF-VER": pulumi.Any("0.11.3"),
+// Tags: pulumi.StringMap{
+// "TF-VER": pulumi.String("0.11.3"),
 // },
 // })
 // if err != nil {
@@ -111,8 +111,8 @@ import (
 // attachment.NetworkInterfaceId,
 // },
 // NameRegex: pulumi.String(name),
-// Tags: pulumi.Map{
-// "TF-VER": pulumi.Any("0.11.3"),
+// Tags: pulumi.StringMap{
+// "TF-VER": pulumi.String("0.11.3"),
 // },
 // VpcId: vpc.ID(),
 // VswitchId: vswitch.ID(),
@@ -179,8 +179,8 @@ type GetNetworkInterfacesArgs struct {
 	// Current status of the ENI.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch that the ENI is linked to.
@@ -216,8 +216,8 @@ type GetNetworkInterfacesResult struct {
 	// Current status of the ENI.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch that the ENI is linked to.
@@ -261,7 +261,7 @@ type GetNetworkInterfacesOutputArgs struct {
 	// Current status of the ENI.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the ENI.
-	Tags pulumi.MapInput       `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
@@ -360,8 +360,8 @@ func (o GetNetworkInterfacesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the ENI.
-func (o GetNetworkInterfacesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetNetworkInterfacesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetNetworkInterfacesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetNetworkInterfacesResultOutput) Type() pulumi.StringPtrOutput {

@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// The tag of the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// This parameter is under test and is not yet open for use.
         /// </summary>
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string status,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string timeSlot,
 

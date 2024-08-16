@@ -7,7 +7,6 @@ import com.pulumi.alicloud.oos.outputs.GetTemplatesTemplate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public final class GetTemplatesResult {
     private @Nullable String shareType;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private @Nullable String templateFormat;
     private @Nullable String templateType;
     /**
@@ -103,7 +102,7 @@ public final class GetTemplatesResult {
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public Optional<String> templateFormat() {
@@ -142,7 +141,7 @@ public final class GetTemplatesResult {
         private @Nullable String shareType;
         private @Nullable String sortField;
         private @Nullable String sortOrder;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private @Nullable String templateFormat;
         private @Nullable String templateType;
         private List<GetTemplatesTemplate> templates;
@@ -259,7 +258,7 @@ public final class GetTemplatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

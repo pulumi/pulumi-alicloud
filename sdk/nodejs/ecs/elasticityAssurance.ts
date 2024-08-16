@@ -143,7 +143,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * This parameter is not yet available.
      */
@@ -288,7 +288,7 @@ export interface ElasticityAssuranceState {
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This parameter is not yet available.
      */
@@ -348,7 +348,7 @@ export interface ElasticityAssuranceArgs {
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */

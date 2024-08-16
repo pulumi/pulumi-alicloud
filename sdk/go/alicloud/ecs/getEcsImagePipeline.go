@@ -75,7 +75,7 @@ type LookupEcsImagePipelineArgs struct {
 	// The ID of the resource group to which the image template belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsImagePipeline.
@@ -89,7 +89,7 @@ type LookupEcsImagePipelineResult struct {
 	OutputFile      *string                       `pulumi:"outputFile"`
 	Pipelines       []GetEcsImagePipelinePipeline `pulumi:"pipelines"`
 	ResourceGroupId *string                       `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{}        `pulumi:"tags"`
+	Tags            map[string]string             `pulumi:"tags"`
 }
 
 func LookupEcsImagePipelineOutput(ctx *pulumi.Context, args LookupEcsImagePipelineOutputArgs, opts ...pulumi.InvokeOption) LookupEcsImagePipelineResultOutput {
@@ -118,7 +118,7 @@ type LookupEcsImagePipelineOutputArgs struct {
 	// The ID of the resource group to which the image template belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (LookupEcsImagePipelineOutputArgs) ElementType() reflect.Type {
@@ -173,8 +173,8 @@ func (o LookupEcsImagePipelineResultOutput) ResourceGroupId() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupEcsImagePipelineResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupEcsImagePipelineResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupEcsImagePipelineResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEcsImagePipelineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

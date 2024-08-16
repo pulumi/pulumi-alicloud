@@ -93,7 +93,7 @@ type PublicIpAddressPool struct {
 	// The status of the VPC Public IP address pool.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of PrefixList.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The total number of public IP address pools.
 	TotalIpNum pulumi.IntOutput `pulumi:"totalIpNum"`
 	// The number of used IP addresses in the public IP address pool.
@@ -152,7 +152,7 @@ type publicIpAddressPoolState struct {
 	// The status of the VPC Public IP address pool.
 	Status *string `pulumi:"status"`
 	// The tags of PrefixList.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The total number of public IP address pools.
 	TotalIpNum *int `pulumi:"totalIpNum"`
 	// The number of used IP addresses in the public IP address pool.
@@ -182,7 +182,7 @@ type PublicIpAddressPoolState struct {
 	// The status of the VPC Public IP address pool.
 	Status pulumi.StringPtrInput
 	// The tags of PrefixList.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The total number of public IP address pools.
 	TotalIpNum pulumi.IntPtrInput
 	// The number of used IP addresses in the public IP address pool.
@@ -209,7 +209,7 @@ type publicIpAddressPoolArgs struct {
 	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The tags of PrefixList.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PublicIpAddressPool resource.
@@ -229,7 +229,7 @@ type PublicIpAddressPoolArgs struct {
 	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// The tags of PrefixList.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (PublicIpAddressPoolArgs) ElementType() reflect.Type {
@@ -371,8 +371,8 @@ func (o PublicIpAddressPoolOutput) Status() pulumi.StringOutput {
 }
 
 // The tags of PrefixList.
-func (o PublicIpAddressPoolOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o PublicIpAddressPoolOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The total number of public IP address pools.

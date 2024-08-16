@@ -73,9 +73,9 @@ import (
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ECS::Instance"),
 //				},
-//				InputParameters: pulumi.Map{
-//					"key":   pulumi.Any("example"),
-//					"value": pulumi.Any("example"),
+//				InputParameters: pulumi.StringMap{
+//					"key":   pulumi.String("example"),
+//					"value": pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

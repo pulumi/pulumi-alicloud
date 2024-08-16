@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         /// </summary>
         [Output("settingConfig")]
-        public Output<ImmutableDictionary<string, object>> SettingConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> SettingConfig { get; private set; } = null!;
 
         /// <summary>
         /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
@@ -438,14 +438,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -532,26 +532,26 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("settingConfig")]
-        private InputMap<object>? _settingConfig;
+        private InputMap<string>? _settingConfig;
 
         /// <summary>
         /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         /// </summary>
-        public InputMap<object> SettingConfig
+        public InputMap<string> SettingConfig
         {
-            get => _settingConfig ?? (_settingConfig = new InputMap<object>());
+            get => _settingConfig ?? (_settingConfig = new InputMap<string>());
             set => _settingConfig = value;
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -720,14 +720,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -832,14 +832,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("settingConfig")]
-        private InputMap<object>? _settingConfig;
+        private InputMap<string>? _settingConfig;
 
         /// <summary>
         /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         /// </summary>
-        public InputMap<object> SettingConfig
+        public InputMap<string> SettingConfig
         {
-            get => _settingConfig ?? (_settingConfig = new InputMap<object>());
+            get => _settingConfig ?? (_settingConfig = new InputMap<string>());
             set => _settingConfig = value;
         }
 
@@ -850,14 +850,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

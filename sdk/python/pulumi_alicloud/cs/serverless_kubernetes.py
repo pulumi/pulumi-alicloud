@@ -41,7 +41,7 @@ class ServerlessKubernetesArgs:
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sls_project_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -78,7 +78,7 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
@@ -460,14 +460,14 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -559,7 +559,7 @@ class _ServerlessKubernetesState:
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sls_project_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -596,7 +596,7 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -968,14 +968,14 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -1081,7 +1081,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sls_project_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1199,7 +1199,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -1332,7 +1332,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sls_project_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1415,7 +1415,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             service_cidr: Optional[pulumi.Input[str]] = None,
             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sls_project_name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             time_zone: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1457,7 +1457,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
-        :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -1698,7 +1698,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         """

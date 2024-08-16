@@ -72,7 +72,7 @@ export interface GetInstancesArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -105,7 +105,7 @@ export interface GetInstancesResult {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
@@ -163,5 +163,5 @@ export interface GetInstancesOutputArgs {
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

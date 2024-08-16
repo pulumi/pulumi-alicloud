@@ -727,7 +727,7 @@ class GetLoadBalancersBalancerResult(dict):
                  status: str,
                  vpc_id: str,
                  zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str address_ip_version: The IP version.
         :param str address_type: The type of IPv4 address used by the NLB instance.
@@ -747,7 +747,7 @@ class GetLoadBalancersBalancerResult(dict):
         :param str status: The status of the NLB instance.
         :param str vpc_id: The ID of the VPC where the NLB instance is deployed.
         :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, str] tags: The tag of the resource.
         """
         pulumi.set(__self__, "address_ip_version", address_ip_version)
         pulumi.set(__self__, "address_type", address_type)
@@ -916,7 +916,7 @@ class GetLoadBalancersBalancerResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tag of the resource.
         """
@@ -1044,7 +1044,7 @@ class GetSecurityPoliciesPolicyResult(dict):
                  resource_group_id: str,
                  security_policy_name: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  tls_versions: Sequence[str]):
         """
         :param Sequence[str] ciphers: The supported cipher suites, which are determined by the TLS protocol version.
@@ -1052,7 +1052,7 @@ class GetSecurityPoliciesPolicyResult(dict):
         :param str resource_group_id: The ID of the resource group.
         :param str security_policy_name: The name of the TLS security policy.
         :param str status: The status of the resource.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param Sequence[str] tls_versions: The TLS protocol versions that are supported.
         """
         pulumi.set(__self__, "ciphers", ciphers)
@@ -1105,7 +1105,7 @@ class GetSecurityPoliciesPolicyResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """
@@ -1254,7 +1254,7 @@ class GetServerGroupsGroupResult(dict):
                  server_group_name: str,
                  server_group_type: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  vpc_id: str):
         """
         :param str address_ip_version: The protocol version.
@@ -1271,7 +1271,7 @@ class GetServerGroupsGroupResult(dict):
         :param str server_group_name: The name of the server group.
         :param str server_group_type: The type of the server group.
         :param str status: The status of the server group.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: The ID of the VPC to which the server group belongs.
         """
         pulumi.set(__self__, "address_ip_version", address_ip_version)
@@ -1405,7 +1405,7 @@ class GetServerGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

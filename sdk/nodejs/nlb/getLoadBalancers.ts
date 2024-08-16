@@ -99,7 +99,7 @@ export interface GetLoadBalancersArgs {
      * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
      */
@@ -131,7 +131,7 @@ export interface GetLoadBalancersResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly vpcIds?: string[];
     readonly zoneId?: string;
 }
@@ -210,7 +210,7 @@ export interface GetLoadBalancersOutputArgs {
      * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
      */

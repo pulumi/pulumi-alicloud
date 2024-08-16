@@ -113,7 +113,7 @@ export class GatewayEndpoint extends pulumi.CustomResource {
     /**
      * The tags of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC.
      */
@@ -199,7 +199,7 @@ export interface GatewayEndpointState {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC.
      */
@@ -233,7 +233,7 @@ export interface GatewayEndpointArgs {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPC.
      */

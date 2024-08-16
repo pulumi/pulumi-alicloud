@@ -21,7 +21,7 @@ class AnycastEipAddressArgs:
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AnycastEipAddress resource.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
@@ -31,7 +31,7 @@ class AnycastEipAddressArgs:
         :param pulumi.Input[str] internet_charge_type: The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource-bound tags.
         """
         pulumi.set(__self__, "service_location", service_location)
         if anycast_eip_address_name is not None:
@@ -135,14 +135,14 @@ class AnycastEipAddressArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         List of resource-bound tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -158,7 +158,7 @@ class _AnycastEipAddressState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AnycastEipAddress resources.
         :param pulumi.Input[str] anycast_eip_address_name: Anycast EIP instance name.
@@ -170,7 +170,7 @@ class _AnycastEipAddressState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource-bound tags.
         """
         if anycast_eip_address_name is not None:
             pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
@@ -303,14 +303,14 @@ class _AnycastEipAddressState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         List of resource-bound tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -326,7 +326,7 @@ class AnycastEipAddress(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
@@ -373,7 +373,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource-bound tags.
         """
         ...
     @overload
@@ -439,7 +439,7 @@ class AnycastEipAddress(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_location: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -480,7 +480,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             service_location: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'AnycastEipAddress':
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'AnycastEipAddress':
         """
         Get an existing AnycastEipAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -497,7 +497,7 @@ class AnycastEipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, Any]] tags: List of resource-bound tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource-bound tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -589,7 +589,7 @@ class AnycastEipAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         List of resource-bound tags.
         """

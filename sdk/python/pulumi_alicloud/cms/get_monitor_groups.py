@@ -123,7 +123,7 @@ class GetMonitorGroupsResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -161,7 +161,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
                        name_regex: Optional[str] = None,
                        output_file: Optional[str] = None,
                        select_contact_groups: Optional[bool] = None,
-                       tags: Optional[Mapping[str, Any]] = None,
+                       tags: Optional[Mapping[str, str]] = None,
                        type: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorGroupsResult:
     """
@@ -232,7 +232,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               select_contact_groups: Optional[pulumi.Input[Optional[bool]]] = None,
-                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               type: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupsResult]:
     """

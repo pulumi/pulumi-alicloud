@@ -6,7 +6,6 @@ package com.pulumi.alicloud.amqp.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class GetExchangesExchange {
      * @return The attributes.
      * 
      */
-    private Map<String,Object> attributes;
+    private Map<String,String> attributes;
     /**
      * @return Indicates whether the Auto Delete attribute is configured.
      * 
@@ -59,7 +58,7 @@ public final class GetExchangesExchange {
      * @return The attributes.
      * 
      */
-    public Map<String,Object> attributes() {
+    public Map<String,String> attributes() {
         return this.attributes;
     }
     /**
@@ -121,7 +120,7 @@ public final class GetExchangesExchange {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> attributes;
+        private Map<String,String> attributes;
         private Boolean autoDeleteState;
         private String createTime;
         private String exchangeName;
@@ -143,7 +142,7 @@ public final class GetExchangesExchange {
         }
 
         @CustomType.Setter
-        public Builder attributes(Map<String,Object> attributes) {
+        public Builder attributes(Map<String,String> attributes) {
             if (attributes == null) {
               throw new MissingRequiredPropertyException("GetExchangesExchange", "attributes");
             }

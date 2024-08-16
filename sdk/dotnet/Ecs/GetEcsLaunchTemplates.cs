@@ -130,10 +130,10 @@ namespace Pulumi.AliCloud.Ecs
         public string? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private Dictionary<string, object>? _templateTags;
-        public Dictionary<string, object> TemplateTags
+        private Dictionary<string, string>? _templateTags;
+        public Dictionary<string, string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new Dictionary<string, object>());
+            get => _templateTags ?? (_templateTags = new Dictionary<string, string>());
             set => _templateTags = value;
         }
 
@@ -188,10 +188,10 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? TemplateResourceGroupId { get; set; }
 
         [Input("templateTags")]
-        private InputMap<object>? _templateTags;
-        public InputMap<object> TemplateTags
+        private InputMap<string>? _templateTags;
+        public InputMap<string> TemplateTags
         {
-            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            get => _templateTags ?? (_templateTags = new InputMap<string>());
             set => _templateTags = value;
         }
 
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? TemplateResourceGroupId;
-        public readonly ImmutableDictionary<string, object>? TemplateTags;
+        public readonly ImmutableDictionary<string, string>? TemplateTags;
         public readonly ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateResult> Templates;
 
         [OutputConstructor]
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.Ecs
 
             string? templateResourceGroupId,
 
-            ImmutableDictionary<string, object>? templateTags,
+            ImmutableDictionary<string, string>? templateTags,
 
             ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateResult> templates)
         {

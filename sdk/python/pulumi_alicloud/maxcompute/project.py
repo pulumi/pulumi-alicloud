@@ -25,7 +25,7 @@ class ProjectArgs:
                  properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
                  security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
@@ -37,7 +37,7 @@ class ProjectArgs:
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -170,14 +170,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -195,7 +195,7 @@ class _ProjectState:
                  properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
                  security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
@@ -210,7 +210,7 @@ class _ProjectState:
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] type: Project type
         """
         if comment is not None:
@@ -374,14 +374,14 @@ class _ProjectState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -411,7 +411,7 @@ class Project(pulumi.CustomResource):
                  properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
                  security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides a Max Compute Project resource.
@@ -462,7 +462,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
         ...
     @overload
@@ -532,7 +532,7 @@ class Project(pulumi.CustomResource):
                  properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
                  security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -576,7 +576,7 @@ class Project(pulumi.CustomResource):
             properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
             security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -596,7 +596,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
         :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         :param pulumi.Input[str] type: Project type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -708,7 +708,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag of the resource
         """

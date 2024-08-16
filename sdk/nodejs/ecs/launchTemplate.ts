@@ -256,9 +256,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly templateResourceGroupId!: pulumi.Output<string | undefined>;
-    public readonly templateTags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly templateTags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly userData!: pulumi.Output<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -543,9 +543,9 @@ export interface LaunchTemplateState {
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateResourceGroupId?: pulumi.Input<string>;
-    templateTags?: pulumi.Input<{[key: string]: any}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
@@ -714,9 +714,9 @@ export interface LaunchTemplateArgs {
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateResourceGroupId?: pulumi.Input<string>;
-    templateTags?: pulumi.Input<{[key: string]: any}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     userData?: pulumi.Input<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.

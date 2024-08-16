@@ -7098,7 +7098,7 @@ type GetApplicationsApplication struct {
 	// The status of the resource.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
 	TerminationGracePeriodSeconds int `pulumi:"terminationGracePeriodSeconds"`
 	// Time zone, the default value is Asia/Shanghai.
@@ -7216,7 +7216,7 @@ type GetApplicationsApplicationArgs struct {
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
 	TerminationGracePeriodSeconds pulumi.IntInput `pulumi:"terminationGracePeriodSeconds"`
 	// Time zone, the default value is Asia/Shanghai.
@@ -7513,8 +7513,8 @@ func (o GetApplicationsApplicationOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o GetApplicationsApplicationOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetApplicationsApplicationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.

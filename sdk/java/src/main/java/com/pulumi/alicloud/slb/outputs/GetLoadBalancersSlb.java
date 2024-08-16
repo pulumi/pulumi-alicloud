@@ -6,7 +6,6 @@ package com.pulumi.alicloud.slb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -102,7 +101,7 @@ public final class GetLoadBalancersSlb {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    private Map<String,Object> tags;
+    private Map<String,String> tags;
     /**
      * @return ID of the VPC linked to the SLBs.
      * 
@@ -224,7 +223,7 @@ public final class GetLoadBalancersSlb {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags;
     }
     /**
@@ -261,7 +260,7 @@ public final class GetLoadBalancersSlb {
         private String regionId;
         private String slaveAvailabilityZone;
         private String status;
-        private Map<String,Object> tags;
+        private Map<String,String> tags;
         private String vpcId;
         private String vswitchId;
         public Builder() {}
@@ -363,7 +362,7 @@ public final class GetLoadBalancersSlb {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,Object> tags) {
+        public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancersSlb", "tags");
             }

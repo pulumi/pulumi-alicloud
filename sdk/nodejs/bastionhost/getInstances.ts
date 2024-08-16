@@ -70,7 +70,7 @@ export interface GetInstancesArgs {
      * });
      * ```
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -92,7 +92,7 @@ export interface GetInstancesResult {
     /**
      * A map of tags assigned to the bastionhost instance.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * > **NOTE:** From the version 1.132.0, the data source has been renamed to `alicloud.bastionhost.getInstances`.
@@ -150,5 +150,5 @@ export interface GetInstancesOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

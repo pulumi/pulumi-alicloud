@@ -116,9 +116,9 @@ import (
 //				},
 //				Description:      pulumi.String("Basic example"),
 //				PrimaryIpAddress: pulumi.String("192.168.0.2"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //			})

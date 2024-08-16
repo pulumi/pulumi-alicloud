@@ -495,12 +495,12 @@ class AlarmPrometheus(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 annotations: Optional[Mapping[str, Any]] = None,
+                 annotations: Optional[Mapping[str, str]] = None,
                  level: Optional[str] = None,
                  prom_ql: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param Mapping[str, Any] annotations: The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
+        :param Mapping[str, str] annotations: The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         :param str level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         :param str prom_ql: The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
         :param int times: The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
@@ -516,7 +516,7 @@ class AlarmPrometheus(dict):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[Mapping[str, Any]]:
+    def annotations(self) -> Optional[Mapping[str, str]]:
         """
         The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         """
@@ -4818,7 +4818,7 @@ class GetMonitorGroupsGroupResult(dict):
                  id: str,
                  monitor_group_name: str,
                  service_id: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  template_ids: Sequence[str],
                  type: str):
         """
@@ -4831,7 +4831,7 @@ class GetMonitorGroupsGroupResult(dict):
         :param str id: The ID of the Monitor Group.
         :param str monitor_group_name: The name of the application group.
         :param str service_id: The ID of the Alibaba Cloud service.
-        :param Mapping[str, Any] tags: A map of tags assigned to the Cms Monitor Group.
+        :param Mapping[str, str] tags: A map of tags assigned to the Cms Monitor Group.
         :param Sequence[str] template_ids: The alert templates applied to the application group.
         :param str type: The type of the application group.
         """
@@ -4922,7 +4922,7 @@ class GetMonitorGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A map of tags assigned to the Cms Monitor Group.
         """

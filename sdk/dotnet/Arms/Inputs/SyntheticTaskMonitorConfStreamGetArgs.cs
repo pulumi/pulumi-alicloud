@@ -13,14 +13,14 @@ namespace Pulumi.AliCloud.Arms.Inputs
     public sealed class SyntheticTaskMonitorConfStreamGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("customHeaderContent")]
-        private InputMap<object>? _customHeaderContent;
+        private InputMap<string>? _customHeaderContent;
 
         /// <summary>
         /// Custom header, in JSON Map format.
         /// </summary>
-        public InputMap<object> CustomHeaderContent
+        public InputMap<string> CustomHeaderContent
         {
-            get => _customHeaderContent ?? (_customHeaderContent = new InputMap<object>());
+            get => _customHeaderContent ?? (_customHeaderContent = new InputMap<string>());
             set => _customHeaderContent = value;
         }
 

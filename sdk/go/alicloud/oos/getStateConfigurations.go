@@ -60,18 +60,18 @@ type GetStateConfigurationsArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getStateConfigurations.
 type GetStateConfigurationsResult struct {
 	Configurations []GetStateConfigurationsConfiguration `pulumi:"configurations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	Id              string            `pulumi:"id"`
+	Ids             []string          `pulumi:"ids"`
+	OutputFile      *string           `pulumi:"outputFile"`
+	ResourceGroupId *string           `pulumi:"resourceGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 }
 
 func GetStateConfigurationsOutput(ctx *pulumi.Context, args GetStateConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetStateConfigurationsResultOutput {
@@ -96,7 +96,7 @@ type GetStateConfigurationsOutputArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetStateConfigurationsOutputArgs) ElementType() reflect.Type {
@@ -139,8 +139,8 @@ func (o GetStateConfigurationsResultOutput) ResourceGroupId() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetStateConfigurationsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetStateConfigurationsResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetStateConfigurationsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetStateConfigurationsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStateConfigurationsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

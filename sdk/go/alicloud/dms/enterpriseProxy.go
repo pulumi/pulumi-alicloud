@@ -116,9 +116,9 @@ import (
 //					pulumi.String("100.104.5.0/24"),
 //					pulumi.String("192.168.0.6"),
 //				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

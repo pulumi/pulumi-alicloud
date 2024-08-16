@@ -221,7 +221,7 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -296,7 +296,7 @@ def get_instances(architecture_type: Optional[str] = None,
                   resource_group_id: Optional[str] = None,
                   search_key: Optional[str] = None,
                   status: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   vpc_id: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   zone_id: Optional[str] = None,
@@ -332,7 +332,7 @@ def get_instances(architecture_type: Optional[str] = None,
     :param str resource_group_id: The ID of the resource group.
     :param str search_key: The name of the instance.
     :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
-    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     :param str zone_id: The ID of the zone.
@@ -404,7 +404,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                          search_key: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -440,7 +440,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str resource_group_id: The ID of the resource group.
     :param str search_key: The name of the instance.
     :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
-    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     :param str zone_id: The ID of the zone.

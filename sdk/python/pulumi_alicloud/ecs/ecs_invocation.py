@@ -17,7 +17,7 @@ class EcsInvocationArgs:
                  command_id: pulumi.Input[str],
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  frequency: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  repeat_mode: Optional[pulumi.Input[str]] = None,
                  timed: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,7 @@ class EcsInvocationArgs:
                * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
                * When you set Timed to true, you must specify Frequency.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
-        :param pulumi.Input[Mapping[str, Any]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[bool] timed: Specifies whether to periodically run the command. Default value: `false`.
         :param pulumi.Input[str] username: The username that is used to run the command on the ECS instance. 
@@ -95,14 +95,14 @@ class EcsInvocationArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -163,7 +163,7 @@ class _EcsInvocationState:
                  command_id: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  repeat_mode: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  timed: Optional[pulumi.Input[bool]] = None,
@@ -177,7 +177,7 @@ class _EcsInvocationState:
                * When you set Timed to true, you must specify Frequency.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
-        :param pulumi.Input[Mapping[str, Any]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] timed: Specifies whether to periodically run the command. Default value: `false`.
@@ -247,14 +247,14 @@ class _EcsInvocationState:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -329,7 +329,7 @@ class EcsInvocation(pulumi.CustomResource):
                  command_id: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  repeat_mode: Optional[pulumi.Input[str]] = None,
                  timed: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -417,7 +417,7 @@ class EcsInvocation(pulumi.CustomResource):
                * When you set Timed to true, you must specify Frequency.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
-        :param pulumi.Input[Mapping[str, Any]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[bool] timed: Specifies whether to periodically run the command. Default value: `false`.
         :param pulumi.Input[str] username: The username that is used to run the command on the ECS instance. 
@@ -524,7 +524,7 @@ class EcsInvocation(pulumi.CustomResource):
                  command_id: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  repeat_mode: Optional[pulumi.Input[str]] = None,
                  timed: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -564,7 +564,7 @@ class EcsInvocation(pulumi.CustomResource):
             command_id: Optional[pulumi.Input[str]] = None,
             frequency: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             repeat_mode: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             timed: Optional[pulumi.Input[bool]] = None,
@@ -583,7 +583,7 @@ class EcsInvocation(pulumi.CustomResource):
                * When you set Timed to true, you must specify Frequency.
                * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of instances to execute the command. You can specify up to 50 instance IDs.
-        :param pulumi.Input[Mapping[str, Any]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] timed: Specifies whether to periodically run the command. Default value: `false`.
@@ -637,7 +637,7 @@ class EcsInvocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         """

@@ -46,8 +46,8 @@ import (
 //				ProductVersionId:       pulumi.String("pv-bp1d7dxy2pcc1g"),
 //				ProductId:              pulumi.String("prod-bp1u3dkc282cwd"),
 //				PortfolioId:            pulumi.String("port-bp119dvn27jccw"),
-//				Tags: pulumi.Map{
-//					"v1": pulumi.Any("tf-test"),
+//				Tags: pulumi.StringMap{
+//					"v1": pulumi.String("tf-test"),
 //				},
 //				Parameters: servicecatalog.ProvisionedProductParameterArray{
 //					&servicecatalog.ProvisionedProductParameterArgs{
@@ -118,7 +118,7 @@ type ProvisionedProduct struct {
 	// The status message of the product instance
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewProvisionedProduct registers a new resource with the given unique name, arguments, and options.
@@ -206,7 +206,7 @@ type provisionedProductState struct {
 	// The status message of the product instance
 	StatusMessage *string `pulumi:"statusMessage"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ProvisionedProductState struct {
@@ -253,7 +253,7 @@ type ProvisionedProductState struct {
 	// The status message of the product instance
 	StatusMessage pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ProvisionedProductState) ElementType() reflect.Type {
@@ -276,7 +276,7 @@ type provisionedProductArgs struct {
 	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
 	StackRegionId string `pulumi:"stackRegionId"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ProvisionedProduct resource.
@@ -296,7 +296,7 @@ type ProvisionedProductArgs struct {
 	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
 	StackRegionId pulumi.StringInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ProvisionedProductArgs) ElementType() reflect.Type {
@@ -492,8 +492,8 @@ func (o ProvisionedProductOutput) StatusMessage() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ProvisionedProductOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ProvisionedProduct) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ProvisionedProductOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProvisionedProduct) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ProvisionedProductArrayOutput struct{ *pulumi.OutputState }

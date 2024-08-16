@@ -21,7 +21,7 @@ class AlarmArgs:
                  cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
@@ -39,7 +39,7 @@ class AlarmArgs:
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -144,14 +144,14 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -282,7 +282,7 @@ class _AlarmState:
                  cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
@@ -301,7 +301,7 @@ class _AlarmState:
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -403,14 +403,14 @@ class _AlarmState:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -570,7 +570,7 @@ class Alarm(pulumi.CustomResource):
                  cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -690,7 +690,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -829,7 +829,7 @@ class Alarm(pulumi.CustomResource):
                  cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -885,7 +885,7 @@ class Alarm(pulumi.CustomResource):
             cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
             comparison_operator: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             evaluation_count: Optional[pulumi.Input[int]] = None,
             expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -909,7 +909,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -983,7 +983,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
+    def dimensions(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """

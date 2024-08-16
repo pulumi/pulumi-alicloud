@@ -30,7 +30,7 @@ class DesktopArgs:
                  root_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_assign_mode: Optional[pulumi.Input[str]] = None,
                  user_disk_size_gib: Optional[pulumi.Input[int]] = None):
         """
@@ -51,7 +51,7 @@ class DesktopArgs:
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[str] stopped_mode: The stopped mode of the Desktop.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
@@ -285,14 +285,14 @@ class DesktopArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -339,7 +339,7 @@ class _DesktopState:
                  root_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_assign_mode: Optional[pulumi.Input[str]] = None,
                  user_disk_size_gib: Optional[pulumi.Input[int]] = None):
         """
@@ -360,7 +360,7 @@ class _DesktopState:
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[str] stopped_mode: The stopped mode of the Desktop.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
@@ -597,14 +597,14 @@ class _DesktopState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -653,7 +653,7 @@ class Desktop(pulumi.CustomResource):
                  root_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_assign_mode: Optional[pulumi.Input[str]] = None,
                  user_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -738,7 +738,7 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[str] stopped_mode: The stopped mode of the Desktop.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
@@ -842,7 +842,7 @@ class Desktop(pulumi.CustomResource):
                  root_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_assign_mode: Optional[pulumi.Input[str]] = None,
                  user_disk_size_gib: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -905,7 +905,7 @@ class Desktop(pulumi.CustomResource):
             root_disk_size_gib: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             stopped_mode: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_assign_mode: Optional[pulumi.Input[str]] = None,
             user_disk_size_gib: Optional[pulumi.Input[int]] = None) -> 'Desktop':
         """
@@ -931,7 +931,7 @@ class Desktop(pulumi.CustomResource):
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib of the Desktop.
         :param pulumi.Input[str] status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param pulumi.Input[str] stopped_mode: The stopped mode of the Desktop.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_assign_mode: The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         :param pulumi.Input[int] user_disk_size_gib: The user disk size gib of the Desktop.
         """
@@ -1090,7 +1090,7 @@ class Desktop(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

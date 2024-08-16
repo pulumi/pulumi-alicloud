@@ -39,9 +39,9 @@ import (
 //			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "default", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
 //				GroupId:    _default.ID(),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
 //				},
 //			})
 //			if err != nil {

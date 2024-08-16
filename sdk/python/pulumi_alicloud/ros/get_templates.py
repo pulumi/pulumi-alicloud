@@ -94,7 +94,7 @@ class GetTemplatesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -131,7 +131,7 @@ def get_templates(enable_details: Optional[bool] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   share_type: Optional[str] = None,
-                  tags: Optional[Mapping[str, Any]] = None,
+                  tags: Optional[Mapping[str, str]] = None,
                   template_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTemplatesResult:
     """
@@ -158,7 +158,7 @@ def get_templates(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Share Type. Valid Values: `Private`, `Shared`
-    :param Mapping[str, Any] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
     """
     __args__ = dict()
@@ -191,7 +191,7 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          share_type: Optional[pulumi.Input[Optional[str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          template_name: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplatesResult]:
     """
@@ -218,7 +218,7 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param str name_regex: A regex string to filter results by Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Share Type. Valid Values: `Private`, `Shared`
-    :param Mapping[str, Any] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
     """
     ...

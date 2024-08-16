@@ -120,7 +120,7 @@ class GetStacksResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -152,7 +152,7 @@ def get_stacks(enable_details: Optional[bool] = None,
                show_nested_stack: Optional[bool] = None,
                stack_name: Optional[str] = None,
                status: Optional[str] = None,
-               tags: Optional[Mapping[str, Any]] = None,
+               tags: Optional[Mapping[str, str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStacksResult:
     """
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
@@ -181,7 +181,7 @@ def get_stacks(enable_details: Optional[bool] = None,
     :param bool show_nested_stack: The show nested stack.
     :param str stack_name: StackName.
     :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
-    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -220,7 +220,7 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
                       show_nested_stack: Optional[pulumi.Input[Optional[bool]]] = None,
                       stack_name: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStacksResult]:
     """
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
@@ -249,6 +249,6 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param bool show_nested_stack: The show nested stack.
     :param str stack_name: StackName.
     :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
-    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     """
     ...

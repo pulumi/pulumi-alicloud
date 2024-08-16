@@ -557,7 +557,7 @@ namespace Pulumi.AliCloud.Rds
         /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
@@ -1225,7 +1225,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SwitchTime { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -1234,9 +1234,9 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1898,7 +1898,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SwitchTime { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -1907,9 +1907,9 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// `QueueName` - The queue name of MNS.
         /// </summary>
         [Output("externalSourceConfig")]
-        public Output<ImmutableDictionary<string, object>?> ExternalSourceConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ExternalSourceConfig { get; private set; } = null!;
 
         /// <summary>
         /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string> EventSourceName { get; set; } = null!;
 
         [Input("externalSourceConfig")]
-        private InputMap<object>? _externalSourceConfig;
+        private InputMap<string>? _externalSourceConfig;
 
         /// <summary>
         /// The config of external source.
@@ -206,9 +206,9 @@ namespace Pulumi.AliCloud.EventBridge
         /// When `external_source_type` is `MNS`, The following attributes are supported:
         /// `QueueName` - The queue name of MNS.
         /// </summary>
-        public InputMap<object> ExternalSourceConfig
+        public InputMap<string> ExternalSourceConfig
         {
-            get => _externalSourceConfig ?? (_externalSourceConfig = new InputMap<object>());
+            get => _externalSourceConfig ?? (_externalSourceConfig = new InputMap<string>());
             set => _externalSourceConfig = value;
         }
 
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? EventSourceName { get; set; }
 
         [Input("externalSourceConfig")]
-        private InputMap<object>? _externalSourceConfig;
+        private InputMap<string>? _externalSourceConfig;
 
         /// <summary>
         /// The config of external source.
@@ -269,9 +269,9 @@ namespace Pulumi.AliCloud.EventBridge
         /// When `external_source_type` is `MNS`, The following attributes are supported:
         /// `QueueName` - The queue name of MNS.
         /// </summary>
-        public InputMap<object> ExternalSourceConfig
+        public InputMap<string> ExternalSourceConfig
         {
-            get => _externalSourceConfig ?? (_externalSourceConfig = new InputMap<object>());
+            get => _externalSourceConfig ?? (_externalSourceConfig = new InputMap<string>());
             set => _externalSourceConfig = value;
         }
 

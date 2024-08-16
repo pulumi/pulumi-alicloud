@@ -104,7 +104,7 @@ class GetMongoInstancesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +132,7 @@ def get_mongo_instances(availability_zone: Optional[str] = None,
                         instance_type: Optional[str] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
-                        tags: Optional[Mapping[str, Any]] = None,
+                        tags: Optional[Mapping[str, str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMongoInstancesResult:
     """
     Use this data source to access information about an existing resource.
@@ -168,7 +168,7 @@ def get_mongo_instances_output(availability_zone: Optional[pulumi.Input[Optional
                                instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMongoInstancesResult]:
     """
     Use this data source to access information about an existing resource.

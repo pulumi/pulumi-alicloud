@@ -100,7 +100,7 @@ class GetServerCertificatesResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         (Available in v1.66.0+) A mapping of tags to assign to the resource.
         """
@@ -127,7 +127,7 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
                             name_regex: Optional[str] = None,
                             output_file: Optional[str] = None,
                             resource_group_id: Optional[str] = None,
-                            tags: Optional[Mapping[str, Any]] = None,
+                            tags: Optional[Mapping[str, str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerCertificatesResult:
     """
     This data source provides the server certificate list.
@@ -147,7 +147,7 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by server certificate name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -174,7 +174,7 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                   tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                   tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerCertificatesResult]:
     """
     This data source provides the server certificate list.
@@ -194,6 +194,6 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str name_regex: A regex string to filter results by server certificate name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     ...

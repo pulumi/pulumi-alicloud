@@ -99,7 +99,7 @@ type GetInstancesArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the instances.
@@ -133,8 +133,8 @@ type GetInstancesResult struct {
 	// Instance current status.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ECS instance.
-	Tags       map[string]interface{} `pulumi:"tags"`
-	TotalCount int                    `pulumi:"totalCount"`
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// ID of the VPC the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the vSwitch the instance belongs to.
@@ -202,7 +202,7 @@ type GetInstancesOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// ID of the vSwitch linked to the instances.
@@ -298,8 +298,8 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A map of tags assigned to the ECS instance.
-func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetInstancesResultOutput) TotalCount() pulumi.IntOutput {

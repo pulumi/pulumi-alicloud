@@ -117,7 +117,7 @@ type ServerGroup struct {
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewServerGroup registers a new resource with the given unique name, arguments, and options.
@@ -165,7 +165,7 @@ type serverGroupState struct {
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ServerGroupState struct {
@@ -181,7 +181,7 @@ type ServerGroupState struct {
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	Servers ServerGroupServerArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ServerGroupState) ElementType() reflect.Type {
@@ -201,7 +201,7 @@ type serverGroupArgs struct {
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ServerGroup resource.
@@ -218,7 +218,7 @@ type ServerGroupArgs struct {
 	// Deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
 	Servers ServerGroupServerArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 }
 
 func (ServerGroupArgs) ElementType() reflect.Type {
@@ -332,8 +332,8 @@ func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ServerGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }

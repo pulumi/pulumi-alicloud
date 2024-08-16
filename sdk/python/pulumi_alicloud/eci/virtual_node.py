@@ -22,7 +22,7 @@ class VirtualNodeArgs:
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_public_network: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
                  virtual_node_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -34,7 +34,7 @@ class VirtualNodeArgs:
         :param pulumi.Input[str] eip_instance_id: The Id of eip.
         :param pulumi.Input[bool] enable_public_network: Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
         :param pulumi.Input[str] resource_group_id: The resource group ID.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] zone_id: The Zone.
@@ -131,14 +131,14 @@ class VirtualNodeArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -187,7 +187,7 @@ class _VirtualNodeState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
                  virtual_node_name: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -200,7 +200,7 @@ class _VirtualNodeState:
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[str] status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -303,14 +303,14 @@ class _VirtualNodeState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -372,7 +372,7 @@ class VirtualNode(pulumi.CustomResource):
                  kube_config: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
                  virtual_node_name: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -450,7 +450,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[str] kube_config: The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[str] security_group_id: The security group ID.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -547,7 +547,7 @@ class VirtualNode(pulumi.CustomResource):
                  kube_config: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
                  virtual_node_name: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -594,7 +594,7 @@ class VirtualNode(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
             virtual_node_name: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -612,7 +612,7 @@ class VirtualNode(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The resource group ID.
         :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[str] status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]] taints: The taint. See `taints` below.
         :param pulumi.Input[str] virtual_node_name: The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -685,7 +685,7 @@ class VirtualNode(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

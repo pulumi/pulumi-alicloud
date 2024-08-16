@@ -6,7 +6,6 @@ package com.pulumi.alicloud.yundun.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +20,7 @@ public final class GetDBAuditInstanceInstance {
     private String privateDomain;
     private String publicDomain;
     private Boolean publicNetworkAccess;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
     private String userVswitchId;
 
     private GetDBAuditInstanceInstance() {}
@@ -46,7 +45,7 @@ public final class GetDBAuditInstanceInstance {
     public Boolean publicNetworkAccess() {
         return this.publicNetworkAccess;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public String userVswitchId() {
@@ -69,7 +68,7 @@ public final class GetDBAuditInstanceInstance {
         private String privateDomain;
         private String publicDomain;
         private Boolean publicNetworkAccess;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         private String userVswitchId;
         public Builder() {}
         public Builder(GetDBAuditInstanceInstance defaults) {
@@ -142,7 +141,7 @@ public final class GetDBAuditInstanceInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

@@ -73,8 +73,8 @@ type GetSecurityPoliciesArgs struct {
 	// The name of the resource.
 	SecurityPolicyName *string `pulumi:"securityPolicyName"`
 	// The status of the resource. Valid values : `Available`, `Configuring`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecurityPolicies.
@@ -90,7 +90,7 @@ type GetSecurityPoliciesResult struct {
 	SecurityPolicyIds  []string                    `pulumi:"securityPolicyIds"`
 	SecurityPolicyName *string                     `pulumi:"securityPolicyName"`
 	Status             *string                     `pulumi:"status"`
-	Tags               map[string]interface{}      `pulumi:"tags"`
+	Tags               map[string]string           `pulumi:"tags"`
 }
 
 func GetSecurityPoliciesOutput(ctx *pulumi.Context, args GetSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPoliciesResultOutput {
@@ -122,7 +122,7 @@ type GetSecurityPoliciesOutputArgs struct {
 	SecurityPolicyName pulumi.StringPtrInput `pulumi:"securityPolicyName"`
 	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSecurityPoliciesOutputArgs) ElementType() reflect.Type {
@@ -185,8 +185,8 @@ func (o GetSecurityPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSecurityPoliciesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecurityPoliciesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetSecurityPoliciesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -2000,7 +2000,7 @@ class GetContainerGroupsGroupResult(dict):
                  security_group_id: str,
                  status: str,
                  succeeded_time: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  volumes: Sequence['outputs.GetContainerGroupsGroupVolumeResult'],
                  vpc_id: str,
                  vswitch_id: str,
@@ -2030,7 +2030,7 @@ class GetContainerGroupsGroupResult(dict):
         :param str security_group_id: The ID of the security group.
         :param str status: The status of container.
         :param str succeeded_time: The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
-        :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        :param Mapping[str, str] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
         :param Sequence['GetContainerGroupsGroupVolumeArgs'] volumes: The information about the mounted volume. You can mount up to 20 volumes.
         :param str vpc_id: The if of vpc.
         :param str vswitch_id: The vswitch id.
@@ -2266,7 +2266,7 @@ class GetContainerGroupsGroupResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
         """
@@ -3410,7 +3410,7 @@ class GetVirtualNodesNodeResult(dict):
                  resource_group_id: str,
                  security_group_id: str,
                  status: str,
-                 tags: Mapping[str, Any],
+                 tags: Mapping[str, str],
                  virtual_node_id: str,
                  virtual_node_name: str,
                  vpc_id: str,
@@ -3429,7 +3429,7 @@ class GetVirtualNodesNodeResult(dict):
         :param str resource_group_id: The resource group ID.
         :param str security_group_id: The security group ID.
         :param str status: The Status of the virtual node.
-        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
         :param str virtual_node_id: Of the virtual node number.
         :param str virtual_node_name: The name of the virtual node.
         :param str vswitch_id: The vswitch id.
@@ -3552,7 +3552,7 @@ class GetVirtualNodesNodeResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Mapping[str, Any]:
+    def tags(self) -> Mapping[str, str]:
         """
         A mapping of tags to assign to the resource.
         """

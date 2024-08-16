@@ -111,7 +111,7 @@ type ReservedInstance struct {
 	// The status of the reserved instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -195,7 +195,7 @@ type reservedInstanceState struct {
 	// The status of the reserved instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -247,7 +247,7 @@ type ReservedInstanceState struct {
 	// The status of the reserved instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId pulumi.StringPtrInput
 }
@@ -291,7 +291,7 @@ type reservedInstanceArgs struct {
 	// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
 	Scope *string `pulumi:"scope"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -332,7 +332,7 @@ type ReservedInstanceArgs struct {
 	// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
 	Scope pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
 	ZoneId pulumi.StringPtrInput
 }
@@ -527,8 +527,8 @@ func (o ReservedInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ReservedInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ReservedInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ReservedInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ReservedInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).

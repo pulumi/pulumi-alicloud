@@ -88,7 +88,7 @@ type AutoSnapshotPolicy struct {
 	// The status of Auto Snapshot Policy.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The destination region to which the snapshot is copied. You can set a destination region.
 	TargetCopyRegions pulumi.StringArrayOutput `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -157,7 +157,7 @@ type autoSnapshotPolicyState struct {
 	// The status of Auto Snapshot Policy.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which the snapshot is copied. You can set a destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -188,7 +188,7 @@ type AutoSnapshotPolicyState struct {
 	// The status of Auto Snapshot Policy.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The destination region to which the snapshot is copied. You can set a destination region.
 	TargetCopyRegions pulumi.StringArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -221,7 +221,7 @@ type autoSnapshotPolicyArgs struct {
 	//   Default value: -1.
 	RetentionDays int `pulumi:"retentionDays"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The destination region to which the snapshot is copied. You can set a destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -251,7 +251,7 @@ type AutoSnapshotPolicyArgs struct {
 	//   Default value: -1.
 	RetentionDays pulumi.IntInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The destination region to which the snapshot is copied. You can set a destination region.
 	TargetCopyRegions pulumi.StringArrayInput
 	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
@@ -386,8 +386,8 @@ func (o AutoSnapshotPolicyOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o AutoSnapshotPolicyOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o AutoSnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The destination region to which the snapshot is copied. You can set a destination region.

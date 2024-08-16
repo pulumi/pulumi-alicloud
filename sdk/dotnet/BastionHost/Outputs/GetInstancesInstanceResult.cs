@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The instance's vSwitch ID.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string userVswitchId)
         {

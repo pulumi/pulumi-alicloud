@@ -62,7 +62,7 @@ export interface GetAutoSnapshotPoliciesArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -79,7 +79,7 @@ export interface GetAutoSnapshotPoliciesResult {
     readonly outputFile?: string;
     readonly policies: outputs.ecs.GetAutoSnapshotPoliciesPolicy[];
     readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
@@ -128,5 +128,5 @@ export interface GetAutoSnapshotPoliciesOutputArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

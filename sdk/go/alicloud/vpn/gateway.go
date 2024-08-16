@@ -69,7 +69,7 @@ type Gateway struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Tag of.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The name of the VPN gateway.
@@ -163,7 +163,7 @@ type gatewayState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The Tag of.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId *string `pulumi:"vpcId"`
 	// The name of the VPN gateway.
@@ -222,7 +222,7 @@ type GatewayState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The Tag of.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringPtrInput
 	// The name of the VPN gateway.
@@ -273,7 +273,7 @@ type gatewayArgs struct {
 	// Maximum number of clients.
 	SslConnections *int `pulumi:"sslConnections"`
 	// The Tag of.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId string `pulumi:"vpcId"`
 	// The name of the VPN gateway.
@@ -321,7 +321,7 @@ type GatewayArgs struct {
 	// Maximum number of clients.
 	SslConnections pulumi.IntPtrInput
 	// The Tag of.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC to which the VPN gateway belongs.
 	VpcId pulumi.StringInput
 	// The name of the VPN gateway.
@@ -526,8 +526,8 @@ func (o GatewayOutput) Status() pulumi.StringOutput {
 }
 
 // The Tag of.
-func (o GatewayOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o GatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC to which the VPN gateway belongs.

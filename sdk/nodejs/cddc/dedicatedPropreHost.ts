@@ -151,7 +151,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
     /**
      * Host tag information.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User-defined script data. The maximum size of the original data is 16kB.
      */
@@ -377,7 +377,7 @@ export interface DedicatedPropreHostState {
     /**
      * Host tag information.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User-defined script data. The maximum size of the original data is 16kB.
      */
@@ -504,7 +504,7 @@ export interface DedicatedPropreHostArgs {
     /**
      * Host tag information.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User-defined script data. The maximum size of the original data is 16kB.
      */

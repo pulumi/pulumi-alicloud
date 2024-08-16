@@ -126,7 +126,7 @@ type EipAddress struct {
 	// The state of the EIP.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -268,7 +268,7 @@ type eipAddressState struct {
 	// The state of the EIP.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -381,7 +381,7 @@ type EipAddressState struct {
 	// The state of the EIP.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -494,7 +494,7 @@ type eipAddressArgs struct {
 	// - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The tag of the resource
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -604,7 +604,7 @@ type EipAddressArgs struct {
 	// - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// The tag of the resource
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -878,8 +878,8 @@ func (o EipAddressOutput) Status() pulumi.StringOutput {
 }
 
 // The tag of the resource
-func (o EipAddressOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *EipAddress) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o EipAddressOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).

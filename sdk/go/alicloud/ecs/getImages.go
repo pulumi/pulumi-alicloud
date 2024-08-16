@@ -100,7 +100,7 @@ type GetImagesArgs struct {
 	// * `Deprecated`: The image is discontinued.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
 	Usage *string `pulumi:"usage"`
 }
@@ -133,9 +133,9 @@ type GetImagesResult struct {
 	// Snapshot ID.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
-	Usage  *string                `pulumi:"usage"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
+	Usage  *string           `pulumi:"usage"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -200,7 +200,7 @@ type GetImagesOutputArgs struct {
 	// * `Deprecated`: The image is discontinued.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
@@ -314,8 +314,8 @@ func (o GetImagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetImagesResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetImagesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetImagesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetImagesResultOutput) Usage() pulumi.StringPtrOutput {

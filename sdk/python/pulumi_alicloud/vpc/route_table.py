@@ -19,7 +19,7 @@ class RouteTableArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RouteTable resource.
         :param pulumi.Input[str] vpc_id: The ID of VPC.
@@ -31,7 +31,7 @@ class RouteTableArgs:
         :param pulumi.Input[str] description: Description of the routing table.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if associate_type is not None:
@@ -115,14 +115,14 @@ class RouteTableArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -136,7 +136,7 @@ class _RouteTableState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
@@ -149,7 +149,7 @@ class _RouteTableState:
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] route_table_name: The name of the routing table.
         :param pulumi.Input[str] status: Routing table state.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -265,14 +265,14 @@ class _RouteTableState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -299,7 +299,7 @@ class RouteTable(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -343,7 +343,7 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the routing table.
         :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -406,7 +406,7 @@ class RouteTable(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -445,7 +445,7 @@ class RouteTable(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             route_table_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'RouteTable':
         """
         Get an existing RouteTable resource's state with the given name, id, and optional extra
@@ -463,7 +463,7 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] route_table_name: The name of the routing table.
         :param pulumi.Input[str] status: Routing table state.
-        :param pulumi.Input[Mapping[str, Any]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -544,7 +544,7 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The tag.
         """

@@ -18,7 +18,7 @@ class TemplateArgs:
                  template_name: pulumi.Input[str],
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Template resource.
@@ -26,7 +26,7 @@ class TemplateArgs:
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         :param pulumi.Input[bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_name: The name of template version.
         """
         pulumi.set(__self__, "content", content)
@@ -90,14 +90,14 @@ class TemplateArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -124,7 +124,7 @@ class _TemplateState:
                  has_trigger: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  share_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_format: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class _TemplateState:
         :param pulumi.Input[bool] has_trigger: Is it triggered successfully.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[str] share_type: The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_format: The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
         :param pulumi.Input[str] template_id: The id of OOS Template.
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
@@ -286,14 +286,14 @@ class _TemplateState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -401,7 +401,7 @@ class Template(pulumi.CustomResource):
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  version_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -461,7 +461,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
         :param pulumi.Input[str] content: The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         :param pulumi.Input[str] version_name: The name of template version.
         """
@@ -540,7 +540,7 @@ class Template(pulumi.CustomResource):
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  version_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -591,7 +591,7 @@ class Template(pulumi.CustomResource):
             has_trigger: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             share_type: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             template_format: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             template_name: Optional[pulumi.Input[str]] = None,
@@ -615,7 +615,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[bool] has_trigger: Is it triggered successfully.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[str] share_type: The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_format: The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
         :param pulumi.Input[str] template_id: The id of OOS Template.
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
@@ -714,7 +714,7 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
         """

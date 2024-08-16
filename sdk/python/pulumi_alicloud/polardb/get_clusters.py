@@ -111,7 +111,7 @@ class GetClustersResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 
@@ -137,7 +137,7 @@ def get_clusters(db_type: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  status: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
@@ -181,7 +181,7 @@ def get_clusters(db_type: Optional[str] = None,
     :param Sequence[str] ids: A list of PolarDB cluster IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: status of the cluster.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
     """
@@ -213,7 +213,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
     The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
@@ -257,7 +257,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] ids: A list of PolarDB cluster IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: status of the cluster.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
     """

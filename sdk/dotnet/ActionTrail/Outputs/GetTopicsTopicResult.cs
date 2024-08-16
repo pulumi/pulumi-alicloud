@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// <summary>
         /// A mapping of tags to assign to the topic.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// A topic to filter results by the topic name.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string statusName,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string topic)
         {

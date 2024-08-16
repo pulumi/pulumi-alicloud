@@ -7,7 +7,6 @@ import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisio
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisionedProductParameter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -114,7 +113,7 @@ public final class GetProvisionedProductsProvisionedProduct {
      * 
      */
     private String statusMessage;
-    private @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,String> tags;
 
     private GetProvisionedProductsProvisionedProduct() {}
     /**
@@ -259,7 +258,7 @@ public final class GetProvisionedProductsProvisionedProduct {
     public String statusMessage() {
         return this.statusMessage;
     }
-    public Map<String,Object> tags() {
+    public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
 
@@ -294,7 +293,7 @@ public final class GetProvisionedProductsProvisionedProduct {
         private String stackRegionId;
         private String status;
         private String statusMessage;
-        private @Nullable Map<String,Object> tags;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetProvisionedProductsProvisionedProduct defaults) {
     	      Objects.requireNonNull(defaults);
@@ -506,7 +505,7 @@ public final class GetProvisionedProductsProvisionedProduct {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,Object> tags) {
+        public Builder tags(@Nullable Map<String,String> tags) {
 
             this.tags = tags;
             return this;

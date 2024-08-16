@@ -6,7 +6,6 @@ package com.pulumi.alicloud.rds.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -113,13 +112,13 @@ public final class ReadWriteSplittingConnectionState extends com.pulumi.resource
      * 
      */
     @Import(name="weight")
-    private @Nullable Output<Map<String,Object>> weight;
+    private @Nullable Output<Map<String,String>> weight;
 
     /**
      * @return Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {&#34;Instanceid&#34;:&#34;Weight&#34;,&#34;Instanceid&#34;:&#34;Weight&#34;}. This parameter must be set when distribution_type is set to Custom.
      * 
      */
-    public Optional<Output<Map<String,Object>>> weight() {
+    public Optional<Output<Map<String,String>>> weight() {
         return Optional.ofNullable(this.weight);
     }
 
@@ -285,7 +284,7 @@ public final class ReadWriteSplittingConnectionState extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder weight(@Nullable Output<Map<String,Object>> weight) {
+        public Builder weight(@Nullable Output<Map<String,String>> weight) {
             $.weight = weight;
             return this;
         }
@@ -296,7 +295,7 @@ public final class ReadWriteSplittingConnectionState extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder weight(Map<String,Object> weight) {
+        public Builder weight(Map<String,String> weight) {
             return weight(Output.of(weight));
         }
 

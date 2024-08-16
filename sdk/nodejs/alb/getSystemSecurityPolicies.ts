@@ -48,7 +48,7 @@ export interface GetSystemSecurityPoliciesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -68,7 +68,7 @@ export interface GetSystemSecurityPoliciesResult {
      * A list of ALB Security Policies. Each element contains the following attributes:
      */
     readonly policies: outputs.alb.GetSystemSecurityPoliciesPolicy[];
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
@@ -105,5 +105,5 @@ export interface GetSystemSecurityPoliciesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

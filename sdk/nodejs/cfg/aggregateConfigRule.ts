@@ -112,7 +112,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
     /**
      * The settings map of the input parameters for the rule.
      */
-    public readonly inputParameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly inputParameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */
@@ -261,7 +261,7 @@ export interface AggregateConfigRuleState {
     /**
      * The settings map of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */
@@ -331,7 +331,7 @@ export interface AggregateConfigRuleArgs {
     /**
      * The settings map of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */

@@ -3737,11 +3737,11 @@ type NodePoolKubeletConfiguration struct {
 	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
 	EventRecordQps *string `pulumi:"eventRecordQps"`
 	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-	EvictionHard map[string]interface{} `pulumi:"evictionHard"`
+	EvictionHard map[string]string `pulumi:"evictionHard"`
 	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-	EvictionSoft map[string]interface{} `pulumi:"evictionSoft"`
+	EvictionSoft map[string]string `pulumi:"evictionSoft"`
 	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-	EvictionSoftGracePeriod map[string]interface{} `pulumi:"evictionSoftGracePeriod"`
+	EvictionSoftGracePeriod map[string]string `pulumi:"evictionSoftGracePeriod"`
 	// Feature switch to enable configuration of experimental features.
 	FeatureGates map[string]bool `pulumi:"featureGates"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
@@ -3749,7 +3749,7 @@ type NodePoolKubeletConfiguration struct {
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps *string `pulumi:"kubeApiQps"`
 	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-	KubeReserved map[string]interface{} `pulumi:"kubeReserved"`
+	KubeReserved map[string]string `pulumi:"kubeReserved"`
 	// The maximum number of running pods.
 	MaxPods *string `pulumi:"maxPods"`
 	// Read-only port number.
@@ -3761,7 +3761,7 @@ type NodePoolKubeletConfiguration struct {
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls *string `pulumi:"serializeImagePulls"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-	SystemReserved map[string]interface{} `pulumi:"systemReserved"`
+	SystemReserved map[string]string `pulumi:"systemReserved"`
 }
 
 // NodePoolKubeletConfigurationInput is an input type that accepts NodePoolKubeletConfigurationArgs and NodePoolKubeletConfigurationOutput values.
@@ -3789,11 +3789,11 @@ type NodePoolKubeletConfigurationArgs struct {
 	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
 	EventRecordQps pulumi.StringPtrInput `pulumi:"eventRecordQps"`
 	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-	EvictionHard pulumi.MapInput `pulumi:"evictionHard"`
+	EvictionHard pulumi.StringMapInput `pulumi:"evictionHard"`
 	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-	EvictionSoft pulumi.MapInput `pulumi:"evictionSoft"`
+	EvictionSoft pulumi.StringMapInput `pulumi:"evictionSoft"`
 	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-	EvictionSoftGracePeriod pulumi.MapInput `pulumi:"evictionSoftGracePeriod"`
+	EvictionSoftGracePeriod pulumi.StringMapInput `pulumi:"evictionSoftGracePeriod"`
 	// Feature switch to enable configuration of experimental features.
 	FeatureGates pulumi.BoolMapInput `pulumi:"featureGates"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
@@ -3801,7 +3801,7 @@ type NodePoolKubeletConfigurationArgs struct {
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps pulumi.StringPtrInput `pulumi:"kubeApiQps"`
 	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-	KubeReserved pulumi.MapInput `pulumi:"kubeReserved"`
+	KubeReserved pulumi.StringMapInput `pulumi:"kubeReserved"`
 	// The maximum number of running pods.
 	MaxPods pulumi.StringPtrInput `pulumi:"maxPods"`
 	// Read-only port number.
@@ -3813,7 +3813,7 @@ type NodePoolKubeletConfigurationArgs struct {
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls pulumi.StringPtrInput `pulumi:"serializeImagePulls"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-	SystemReserved pulumi.MapInput `pulumi:"systemReserved"`
+	SystemReserved pulumi.StringMapInput `pulumi:"systemReserved"`
 }
 
 func (NodePoolKubeletConfigurationArgs) ElementType() reflect.Type {
@@ -3924,18 +3924,18 @@ func (o NodePoolKubeletConfigurationOutput) EventRecordQps() pulumi.StringPtrOut
 }
 
 // Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-func (o NodePoolKubeletConfigurationOutput) EvictionHard() pulumi.MapOutput {
-	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionHard }).(pulumi.MapOutput)
+func (o NodePoolKubeletConfigurationOutput) EvictionHard() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.EvictionHard }).(pulumi.StringMapOutput)
 }
 
 // Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-func (o NodePoolKubeletConfigurationOutput) EvictionSoft() pulumi.MapOutput {
-	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionSoft }).(pulumi.MapOutput)
+func (o NodePoolKubeletConfigurationOutput) EvictionSoft() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.EvictionSoft }).(pulumi.StringMapOutput)
 }
 
 // Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-func (o NodePoolKubeletConfigurationOutput) EvictionSoftGracePeriod() pulumi.MapOutput {
-	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionSoftGracePeriod }).(pulumi.MapOutput)
+func (o NodePoolKubeletConfigurationOutput) EvictionSoftGracePeriod() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.EvictionSoftGracePeriod }).(pulumi.StringMapOutput)
 }
 
 // Feature switch to enable configuration of experimental features.
@@ -3954,8 +3954,8 @@ func (o NodePoolKubeletConfigurationOutput) KubeApiQps() pulumi.StringPtrOutput 
 }
 
 // Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-func (o NodePoolKubeletConfigurationOutput) KubeReserved() pulumi.MapOutput {
-	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.KubeReserved }).(pulumi.MapOutput)
+func (o NodePoolKubeletConfigurationOutput) KubeReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.KubeReserved }).(pulumi.StringMapOutput)
 }
 
 // The maximum number of running pods.
@@ -3984,8 +3984,8 @@ func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringP
 }
 
 // Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-func (o NodePoolKubeletConfigurationOutput) SystemReserved() pulumi.MapOutput {
-	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.SystemReserved }).(pulumi.MapOutput)
+func (o NodePoolKubeletConfigurationOutput) SystemReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]string { return v.SystemReserved }).(pulumi.StringMapOutput)
 }
 
 type NodePoolKubeletConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -4073,33 +4073,33 @@ func (o NodePoolKubeletConfigurationPtrOutput) EventRecordQps() pulumi.StringPtr
 }
 
 // Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-func (o NodePoolKubeletConfigurationPtrOutput) EvictionHard() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionHard() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.EvictionHard
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
-func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoft() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoft() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.EvictionSoft
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
-func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoftGracePeriod() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoftGracePeriod() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.EvictionSoftGracePeriod
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // Feature switch to enable configuration of experimental features.
@@ -4133,13 +4133,13 @@ func (o NodePoolKubeletConfigurationPtrOutput) KubeApiQps() pulumi.StringPtrOutp
 }
 
 // Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-func (o NodePoolKubeletConfigurationPtrOutput) KubeReserved() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+func (o NodePoolKubeletConfigurationPtrOutput) KubeReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.KubeReserved
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The maximum number of running pods.
@@ -4193,13 +4193,13 @@ func (o NodePoolKubeletConfigurationPtrOutput) SerializeImagePulls() pulumi.Stri
 }
 
 // Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
-func (o NodePoolKubeletConfigurationPtrOutput) SystemReserved() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
+func (o NodePoolKubeletConfigurationPtrOutput) SystemReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.SystemReserved
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 type NodePoolLabel struct {
@@ -9559,8 +9559,8 @@ type GetServerlessKubernetesClustersCluster struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
-	SecurityGroupId string                 `pulumi:"securityGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	SecurityGroupId string            `pulumi:"securityGroupId"`
+	Tags            map[string]string `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of vSwitch where the current cluster is located.
@@ -9591,8 +9591,8 @@ type GetServerlessKubernetesClustersClusterArgs struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	Tags            pulumi.MapInput    `pulumi:"tags"`
+	SecurityGroupId pulumi.StringInput    `pulumi:"securityGroupId"`
+	Tags            pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of vSwitch where the current cluster is located.
@@ -9686,8 +9686,8 @@ func (o GetServerlessKubernetesClustersClusterOutput) SecurityGroupId() pulumi.S
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-func (o GetServerlessKubernetesClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetServerlessKubernetesClustersClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of VPC where the current cluster is located.

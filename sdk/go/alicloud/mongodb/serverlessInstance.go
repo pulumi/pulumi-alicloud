@@ -73,9 +73,9 @@ import (
 //				VpcId:                 pulumi.String(defaultGetNetworks.Ids[0]),
 //				ZoneId:                pulumi.String(_default.Zones[0].Id),
 //				VswitchId:             pulumi.String(defaultGetSwitches.Ids[0]),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("MongodbServerlessInstance"),
-//					"For":     pulumi.Any("TF"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("MongodbServerlessInstance"),
+//					"For":     pulumi.String("TF"),
 //				},
 //				SecurityIpGroups: mongodb.ServerlessInstanceSecurityIpGroupArray{
 //					&mongodb.ServerlessInstanceSecurityIpGroupArgs{
@@ -137,7 +137,7 @@ type ServerlessInstance struct {
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The of the vswitch.
@@ -237,7 +237,7 @@ type serverlessInstanceState struct {
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId *string `pulumi:"vpcId"`
 	// The of the vswitch.
@@ -280,7 +280,7 @@ type ServerlessInstanceState struct {
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC network.
 	VpcId pulumi.StringPtrInput
 	// The of the vswitch.
@@ -325,7 +325,7 @@ type serverlessInstanceArgs struct {
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId string `pulumi:"vpcId"`
 	// The of the vswitch.
@@ -367,7 +367,7 @@ type ServerlessInstanceArgs struct {
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags pulumi.StringMapInput
 	// The ID of the VPC network.
 	VpcId pulumi.StringInput
 	// The of the vswitch.
@@ -541,8 +541,8 @@ func (o ServerlessInstanceOutput) StorageEngine() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
-func (o ServerlessInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerlessInstance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o ServerlessInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPC network.

@@ -19,7 +19,7 @@ class ReadWriteSplittingConnectionArgs:
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  max_delay_time: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ReadWriteSplittingConnection resource.
         :param pulumi.Input[str] distribution_type: Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
@@ -27,7 +27,7 @@ class ReadWriteSplittingConnectionArgs:
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
-        :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         pulumi.set(__self__, "distribution_type", distribution_type)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -102,14 +102,14 @@ class ReadWriteSplittingConnectionArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def weight(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def weight(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "weight", value)
 
 
@@ -122,7 +122,7 @@ class _ReadWriteSplittingConnectionState:
                  instance_id: Optional[pulumi.Input[str]] = None,
                  max_delay_time: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ReadWriteSplittingConnection resources.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
@@ -131,7 +131,7 @@ class _ReadWriteSplittingConnectionState:
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
-        :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         if connection_prefix is not None:
             pulumi.set(__self__, "connection_prefix", connection_prefix)
@@ -222,14 +222,14 @@ class _ReadWriteSplittingConnectionState:
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def weight(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def weight(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "weight", value)
 
 
@@ -243,7 +243,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  max_delay_time: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
@@ -324,7 +324,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
-        :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         ...
     @overload
@@ -424,7 +424,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  max_delay_time: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -461,7 +461,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             max_delay_time: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[int]] = None,
-            weight: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ReadWriteSplittingConnection':
+            weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ReadWriteSplittingConnection':
         """
         Get an existing ReadWriteSplittingConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -475,7 +475,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         :param pulumi.Input[int] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
-        :param pulumi.Input[Mapping[str, Any]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -540,7 +540,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def weight(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """

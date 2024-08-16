@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Rds
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
@@ -238,14 +238,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -336,14 +336,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? KmsEncryptedPassword { get; set; }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 

@@ -193,7 +193,7 @@ class GetNatGatewaysResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         The tags of NAT gateway.
         """
@@ -253,7 +253,7 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
                      resource_group_id: Optional[str] = None,
                      specification: Optional[str] = None,
                      status: Optional[str] = None,
-                     tags: Optional[Mapping[str, Any]] = None,
+                     tags: Optional[Mapping[str, str]] = None,
                      vpc_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatGatewaysResult:
     """
@@ -273,7 +273,7 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
     :param str resource_group_id: The resource group id of NAT gateway.
     :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
     :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
-    :param Mapping[str, Any] tags: The tags of NAT gateway.
+    :param Mapping[str, str] tags: The tags of NAT gateway.
     :param str vpc_id: The ID of the VPC.
     """
     __args__ = dict()
@@ -331,7 +331,7 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                             specification: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatGatewaysResult]:
     """
@@ -351,7 +351,7 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
     :param str resource_group_id: The resource group id of NAT gateway.
     :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
     :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
-    :param Mapping[str, Any] tags: The tags of NAT gateway.
+    :param Mapping[str, str] tags: The tags of NAT gateway.
     :param str vpc_id: The ID of the VPC.
     """
     ...

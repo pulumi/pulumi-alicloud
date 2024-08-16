@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.CS
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
         [Output("kmsEncryptionContext")]
-        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.CS
         /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
@@ -702,14 +702,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1011,14 +1011,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskSnapshotPolicyId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1247,14 +1247,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         [Input("kmsEncryptionContext")]
-        private InputMap<object>? _kmsEncryptionContext;
+        private InputMap<string>? _kmsEncryptionContext;
 
         /// <summary>
         /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         /// </summary>
-        public InputMap<object> KmsEncryptionContext
+        public InputMap<string> KmsEncryptionContext
         {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
 
@@ -1568,14 +1568,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskSnapshotPolicyId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

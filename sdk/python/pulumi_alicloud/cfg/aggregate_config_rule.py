@@ -23,7 +23,7 @@ class AggregateConfigRuleArgs:
                  source_owner: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  region_ids_scope: Optional[pulumi.Input[str]] = None,
                  resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -41,7 +41,7 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
-        :param pulumi.Input[Mapping[str, Any]] input_parameters: The settings map of the input parameters for the rule.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
@@ -185,14 +185,14 @@ class AggregateConfigRuleArgs:
 
     @property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The settings map of the input parameters for the rule.
         """
         return pulumi.get(self, "input_parameters")
 
     @input_parameters.setter
-    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "input_parameters", value)
 
     @property
@@ -277,7 +277,7 @@ class _AggregateConfigRuleState:
                  config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  region_ids_scope: Optional[pulumi.Input[str]] = None,
                  resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -296,7 +296,7 @@ class _AggregateConfigRuleState:
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
-        :param pulumi.Input[Mapping[str, Any]] input_parameters: The settings map of the input parameters for the rule.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
@@ -417,14 +417,14 @@ class _AggregateConfigRuleState:
 
     @property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The settings map of the input parameters for the rule.
         """
         return pulumi.get(self, "input_parameters")
 
     @input_parameters.setter
-    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "input_parameters", value)
 
     @property
@@ -558,7 +558,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                  config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  region_ids_scope: Optional[pulumi.Input[str]] = None,
                  resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -628,7 +628,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
-        :param pulumi.Input[Mapping[str, Any]] input_parameters: The settings map of the input parameters for the rule.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
@@ -717,7 +717,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                  config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  region_ids_scope: Optional[pulumi.Input[str]] = None,
                  resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -784,7 +784,7 @@ class AggregateConfigRule(pulumi.CustomResource):
             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
-            input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
             region_ids_scope: Optional[pulumi.Input[str]] = None,
             resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
@@ -808,7 +808,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
-        :param pulumi.Input[Mapping[str, Any]] input_parameters: The settings map of the input parameters for the rule.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
@@ -893,7 +893,7 @@ class AggregateConfigRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def input_parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The settings map of the input parameters for the rule.
         """

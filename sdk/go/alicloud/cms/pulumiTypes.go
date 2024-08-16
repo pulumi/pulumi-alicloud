@@ -940,7 +940,7 @@ func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 
 type AlarmPrometheus struct {
 	// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
-	Annotations map[string]interface{} `pulumi:"annotations"`
+	Annotations map[string]string `pulumi:"annotations"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level *string `pulumi:"level"`
 	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
@@ -962,7 +962,7 @@ type AlarmPrometheusInput interface {
 
 type AlarmPrometheusArgs struct {
 	// The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
-	Annotations pulumi.MapInput `pulumi:"annotations"`
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level pulumi.StringPtrInput `pulumi:"level"`
 	// The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
@@ -1023,8 +1023,8 @@ func (o AlarmPrometheusOutput) ToAlarmPrometheusOutputWithContext(ctx context.Co
 }
 
 // The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
-func (o AlarmPrometheusOutput) Annotations() pulumi.MapOutput {
-	return o.ApplyT(func(v AlarmPrometheus) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
+func (o AlarmPrometheusOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlarmPrometheus) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
@@ -10315,7 +10315,7 @@ type GetMonitorGroupsGroup struct {
 	// The ID of the Alibaba Cloud service.
 	ServiceId string `pulumi:"serviceId"`
 	// A map of tags assigned to the Cms Monitor Group.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// The alert templates applied to the application group.
 	TemplateIds []string `pulumi:"templateIds"`
 	// The type of the application group.
@@ -10353,7 +10353,7 @@ type GetMonitorGroupsGroupArgs struct {
 	// The ID of the Alibaba Cloud service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
 	// A map of tags assigned to the Cms Monitor Group.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The alert templates applied to the application group.
 	TemplateIds pulumi.StringArrayInput `pulumi:"templateIds"`
 	// The type of the application group.
@@ -10457,8 +10457,8 @@ func (o GetMonitorGroupsGroupOutput) ServiceId() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the Cms Monitor Group.
-func (o GetMonitorGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetMonitorGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetMonitorGroupsGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMonitorGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The alert templates applied to the application group.

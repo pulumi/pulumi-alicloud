@@ -110,7 +110,7 @@ type GetEcsDisksArgs struct {
 	// The status of disk.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disks.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -152,7 +152,7 @@ type GetEcsDisksResult struct {
 	ResourceGroupId *string                    `pulumi:"resourceGroupId"`
 	SnapshotId      *string                    `pulumi:"snapshotId"`
 	Status          *string                    `pulumi:"status"`
-	Tags            map[string]interface{}     `pulumi:"tags"`
+	Tags            map[string]string          `pulumi:"tags"`
 	TotalCount      int                        `pulumi:"totalCount"`
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 	Type   *string `pulumi:"type"`
@@ -226,7 +226,7 @@ type GetEcsDisksOutputArgs struct {
 	// The status of disk.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the disks.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -372,8 +372,8 @@ func (o GetEcsDisksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o GetEcsDisksResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v GetEcsDisksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o GetEcsDisksResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o GetEcsDisksResultOutput) TotalCount() pulumi.IntOutput {
