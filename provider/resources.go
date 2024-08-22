@@ -120,7 +120,6 @@ const (
 	messageMod             = "Message"
 	mhubMod                = "Mhub"
 	mnsMod                 = "Mns"
-	slsMod                 = "Sls"
 	mongoDbMod             = "MongoDB"
 	mseMod                 = "Mse"
 	nasMod                 = "Nas"
@@ -148,9 +147,11 @@ const (
 	schedulerXMod          = "SchedulerX"
 	sddpMod                = "Sddp"
 	securityCenterMod      = "SecurityCenter"
+	selectDbMod            = "SelectDB"
 	serviceCatalogMod      = "ServiceCatalog"
 	serviceMeshMod         = "ServiceMesh"
 	slbMod                 = "Slb"
+	slsMod                 = "Sls"
 	smsMod                 = "Sms"
 	tagMod                 = "Tag"
 	threatDetectionMod     = "ThreatDetection"
@@ -167,12 +168,12 @@ const (
 // A mapping between the terraform prefix and the pulumi module name.
 // This mapping is used by x.TokensKnownModules to compute module names.
 var mappedMods = map[string]string{
+	"ack_one":               ackOneMod,
 	"actiontrail":           actionTrailMod,
 	"adb":                   adbMod,
-	"ack_one":               ackOneMod,
 	"alb":                   albMod,
-	"alikafa":               aliKafaMod,
 	"aligreen":              "Aligreen",
+	"alikafa":               aliKafaMod,
 	"amqp":                  amqpMod,
 	"api_gateway":           apiGatewayMod,
 	"arms":                  armsMod,
@@ -234,7 +235,7 @@ var mappedMods = map[string]string{
 	"fc":                    fcMod,
 	"fnf":                   fnfMod,
 	"ga":                    gaMod,
-	"governance": "Governance",
+	"governance":            "Governance",
 	"gpdb":                  gpdbMod,
 	"graph_database":        graphDatabaseMod,
 	"hbase":                 hbaseMod,
@@ -283,6 +284,7 @@ var mappedMods = map[string]string{
 	"schedulerx":            schedulerXMod,
 	"sddp":                  sddpMod,
 	"security_center":       securityCenterMod,
+	"selectdb":              selectDbMod,
 	"service_catalog":       serviceCatalogMod,
 	"service_mesh":          serviceMeshMod,
 	"slb":                   slbMod,
