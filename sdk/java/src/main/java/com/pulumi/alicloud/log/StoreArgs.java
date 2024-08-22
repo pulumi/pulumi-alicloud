@@ -94,6 +94,21 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Low frequency storage time
+     * 
+     */
+    @Import(name="infrequentAccessTtl")
+    private @Nullable Output<Integer> infrequentAccessTtl;
+
+    /**
+     * @return Low frequency storage time
+     * 
+     */
+    public Optional<Output<Integer>> infrequentAccessTtl() {
+        return Optional.ofNullable(this.infrequentAccessTtl);
+    }
+
+    /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
      * 
      */
@@ -271,6 +286,7 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         this.enableWebTracking = $.enableWebTracking;
         this.encryptConf = $.encryptConf;
         this.hotTtl = $.hotTtl;
+        this.infrequentAccessTtl = $.infrequentAccessTtl;
         this.logstoreName = $.logstoreName;
         this.maxSplitShardCount = $.maxSplitShardCount;
         this.meteringMode = $.meteringMode;
@@ -404,6 +420,27 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hotTtl(Integer hotTtl) {
             return hotTtl(Output.of(hotTtl));
+        }
+
+        /**
+         * @param infrequentAccessTtl Low frequency storage time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infrequentAccessTtl(@Nullable Output<Integer> infrequentAccessTtl) {
+            $.infrequentAccessTtl = infrequentAccessTtl;
+            return this;
+        }
+
+        /**
+         * @param infrequentAccessTtl Low frequency storage time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infrequentAccessTtl(Integer infrequentAccessTtl) {
+            return infrequentAccessTtl(Output.of(infrequentAccessTtl));
         }
 
         /**

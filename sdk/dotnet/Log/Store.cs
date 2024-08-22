@@ -70,10 +70,41 @@ namespace Pulumi.AliCloud.Log
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var example = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
+    ///     {
+    ///         ProductVersion = "3",
+    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+    ///         ZoneIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[1]?.ZoneId),
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///         VpcNum = 1,
+    ///         KeyNum = 1000,
+    ///         SecretNum = 0,
+    ///         Spec = 1000,
+    ///         ForceDeleteWithoutBackup = "true",
+    ///         PaymentType = "PayAsYouGo",
     ///     });
     /// 
     ///     var exampleKey = new AliCloud.Kms.Key("example", new()
@@ -81,18 +112,19 @@ namespace Pulumi.AliCloud.Log
     ///         Description = "terraform-example",
     ///         PendingWindowInDays = 7,
     ///         Status = "Enabled",
+    ///         DkmsInstanceId = defaultInstance.Id,
     ///     });
     /// 
     ///     var exampleProject = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = exampleProject.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         ShardCount = 1,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
@@ -163,6 +195,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Output("hotTtl")]
         public Output<int?> HotTtl { get; private set; } = null!;
+
+        /// <summary>
+        /// Low frequency storage time
+        /// </summary>
+        [Output("infrequentAccessTtl")]
+        public Output<int?> InfrequentAccessTtl { get; private set; } = null!;
 
         /// <summary>
         /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
@@ -309,6 +347,12 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? HotTtl { get; set; }
 
         /// <summary>
+        /// Low frequency storage time
+        /// </summary>
+        [Input("infrequentAccessTtl")]
+        public Input<int>? InfrequentAccessTtl { get; set; }
+
+        /// <summary>
         /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         /// </summary>
         [Input("logstoreName")]
@@ -413,6 +457,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Input("hotTtl")]
         public Input<int>? HotTtl { get; set; }
+
+        /// <summary>
+        /// Low frequency storage time
+        /// </summary>
+        [Input("infrequentAccessTtl")]
+        public Input<int>? InfrequentAccessTtl { get; set; }
 
         /// <summary>
         /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.

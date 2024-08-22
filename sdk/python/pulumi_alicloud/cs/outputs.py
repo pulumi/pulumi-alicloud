@@ -1753,12 +1753,18 @@ class NodePoolDataDisk(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "autoSnapshotPolicyId":
+        if key == "autoFormat":
+            suggest = "auto_format"
+        elif key == "autoSnapshotPolicyId":
             suggest = "auto_snapshot_policy_id"
         elif key == "burstingEnabled":
             suggest = "bursting_enabled"
+        elif key == "fileSystem":
+            suggest = "file_system"
         elif key == "kmsKeyId":
             suggest = "kms_key_id"
+        elif key == "mountTarget":
+            suggest = "mount_target"
         elif key == "performanceLevel":
             suggest = "performance_level"
         elif key == "provisionedIops":
@@ -1778,30 +1784,38 @@ class NodePoolDataDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_format: Optional[str] = None,
                  auto_snapshot_policy_id: Optional[str] = None,
                  bursting_enabled: Optional[bool] = None,
                  category: Optional[str] = None,
                  device: Optional[str] = None,
                  encrypted: Optional[str] = None,
+                 file_system: Optional[str] = None,
                  kms_key_id: Optional[str] = None,
+                 mount_target: Optional[str] = None,
                  name: Optional[str] = None,
                  performance_level: Optional[str] = None,
                  provisioned_iops: Optional[int] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
+        :param str auto_format: Whether to automatically mount the data disk. Valid values: true and false.
         :param str auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
         :param bool bursting_enabled: Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
         :param str category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
         :param str device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param str file_system: The Mount path. Works when auto_format is true.
         :param str kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        :param str name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+        :param str mount_target: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        :param str name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param int provisioned_iops: The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
         :param int size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         :param str snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
+        if auto_format is not None:
+            pulumi.set(__self__, "auto_format", auto_format)
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if bursting_enabled is not None:
@@ -1812,8 +1826,12 @@ class NodePoolDataDisk(dict):
             pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if file_system is not None:
+            pulumi.set(__self__, "file_system", file_system)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if mount_target is not None:
+            pulumi.set(__self__, "mount_target", mount_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
@@ -1824,6 +1842,14 @@ class NodePoolDataDisk(dict):
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="autoFormat")
+    def auto_format(self) -> Optional[str]:
+        """
+        Whether to automatically mount the data disk. Valid values: true and false.
+        """
+        return pulumi.get(self, "auto_format")
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1866,6 +1892,14 @@ class NodePoolDataDisk(dict):
         return pulumi.get(self, "encrypted")
 
     @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> Optional[str]:
+        """
+        The Mount path. Works when auto_format is true.
+        """
+        return pulumi.get(self, "file_system")
+
+    @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
         """
@@ -1874,10 +1908,18 @@ class NodePoolDataDisk(dict):
         return pulumi.get(self, "kms_key_id")
 
     @property
+    @pulumi.getter(name="mountTarget")
+    def mount_target(self) -> Optional[str]:
+        """
+        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        """
+        return pulumi.get(self, "mount_target")
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+        The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         """
         return pulumi.get(self, "name")
 

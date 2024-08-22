@@ -58,7 +58,9 @@ type Instance struct {
 	KibanaNodeSpec pulumi.StringOutput `pulumi:"kibanaNodeSpec"`
 	// Kibana console port.
 	KibanaPort pulumi.IntOutput `pulumi:"kibanaPort"`
-	// Set the Kibana's IP whitelist in private network.
+	// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+	KibanaPrivateSecurityGroupId pulumi.StringPtrOutput `pulumi:"kibanaPrivateSecurityGroupId"`
+	// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 	KibanaPrivateWhitelists pulumi.StringArrayOutput `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayOutput `pulumi:"kibanaWhitelists"`
@@ -98,10 +100,20 @@ type Instance struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+	WarmNodeAmount pulumi.IntPtrOutput `pulumi:"warmNodeAmount"`
+	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+	WarmNodeDiskEncrypted pulumi.BoolPtrOutput `pulumi:"warmNodeDiskEncrypted"`
+	// The single warm node storage space, should between 500 and 20480
+	WarmNodeDiskSize pulumi.IntPtrOutput `pulumi:"warmNodeDiskSize"`
+	// The warm node disk type. Supported values:  cloud_efficiency.
+	WarmNodeDiskType pulumi.StringPtrOutput `pulumi:"warmNodeDiskType"`
+	// The warm node specifications of the Elasticsearch instance.
+	WarmNodeSpec pulumi.StringPtrOutput `pulumi:"warmNodeSpec"`
 	// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
 	ZoneCount pulumi.IntPtrOutput `pulumi:"zoneCount"`
 }
@@ -197,7 +209,9 @@ type instanceState struct {
 	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
 	// Kibana console port.
 	KibanaPort *int `pulumi:"kibanaPort"`
-	// Set the Kibana's IP whitelist in private network.
+	// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+	KibanaPrivateSecurityGroupId *string `pulumi:"kibanaPrivateSecurityGroupId"`
+	// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
@@ -237,10 +251,20 @@ type instanceState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+	WarmNodeAmount *int `pulumi:"warmNodeAmount"`
+	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+	WarmNodeDiskEncrypted *bool `pulumi:"warmNodeDiskEncrypted"`
+	// The single warm node storage space, should between 500 and 20480
+	WarmNodeDiskSize *int `pulumi:"warmNodeDiskSize"`
+	// The warm node disk type. Supported values:  cloud_efficiency.
+	WarmNodeDiskType *string `pulumi:"warmNodeDiskType"`
+	// The warm node specifications of the Elasticsearch instance.
+	WarmNodeSpec *string `pulumi:"warmNodeSpec"`
 	// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
 	ZoneCount *int `pulumi:"zoneCount"`
 }
@@ -282,7 +306,9 @@ type InstanceState struct {
 	KibanaNodeSpec pulumi.StringPtrInput
 	// Kibana console port.
 	KibanaPort pulumi.IntPtrInput
-	// Set the Kibana's IP whitelist in private network.
+	// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+	KibanaPrivateSecurityGroupId pulumi.StringPtrInput
+	// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
@@ -322,10 +348,20 @@ type InstanceState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 	Version pulumi.StringPtrInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringPtrInput
+	// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+	WarmNodeAmount pulumi.IntPtrInput
+	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+	WarmNodeDiskEncrypted pulumi.BoolPtrInput
+	// The single warm node storage space, should between 500 and 20480
+	WarmNodeDiskSize pulumi.IntPtrInput
+	// The warm node disk type. Supported values:  cloud_efficiency.
+	WarmNodeDiskType pulumi.StringPtrInput
+	// The warm node specifications of the Elasticsearch instance.
+	WarmNodeSpec pulumi.StringPtrInput
 	// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
 	ZoneCount pulumi.IntPtrInput
 }
@@ -365,7 +401,9 @@ type instanceArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
-	// Set the Kibana's IP whitelist in private network.
+	// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+	KibanaPrivateSecurityGroupId *string `pulumi:"kibanaPrivateSecurityGroupId"`
+	// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
@@ -397,10 +435,20 @@ type instanceArgs struct {
 	SettingConfig map[string]string `pulumi:"settingConfig"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
 	VswitchId string `pulumi:"vswitchId"`
+	// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+	WarmNodeAmount *int `pulumi:"warmNodeAmount"`
+	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+	WarmNodeDiskEncrypted *bool `pulumi:"warmNodeDiskEncrypted"`
+	// The single warm node storage space, should between 500 and 20480
+	WarmNodeDiskSize *int `pulumi:"warmNodeDiskSize"`
+	// The warm node disk type. Supported values:  cloud_efficiency.
+	WarmNodeDiskType *string `pulumi:"warmNodeDiskType"`
+	// The warm node specifications of the Elasticsearch instance.
+	WarmNodeSpec *string `pulumi:"warmNodeSpec"`
 	// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
 	ZoneCount *int `pulumi:"zoneCount"`
 }
@@ -437,7 +485,9 @@ type InstanceArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
 	KibanaNodeSpec pulumi.StringPtrInput
-	// Set the Kibana's IP whitelist in private network.
+	// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+	KibanaPrivateSecurityGroupId pulumi.StringPtrInput
+	// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
@@ -469,10 +519,20 @@ type InstanceArgs struct {
 	SettingConfig pulumi.StringMapInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 	Version pulumi.StringInput
 	// The ID of VSwitch.
 	VswitchId pulumi.StringInput
+	// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+	WarmNodeAmount pulumi.IntPtrInput
+	// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+	WarmNodeDiskEncrypted pulumi.BoolPtrInput
+	// The single warm node storage space, should between 500 and 20480
+	WarmNodeDiskSize pulumi.IntPtrInput
+	// The warm node disk type. Supported values:  cloud_efficiency.
+	WarmNodeDiskType pulumi.StringPtrInput
+	// The warm node specifications of the Elasticsearch instance.
+	WarmNodeSpec pulumi.StringPtrInput
 	// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
 	ZoneCount pulumi.IntPtrInput
 }
@@ -654,7 +714,12 @@ func (o InstanceOutput) KibanaPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.KibanaPort }).(pulumi.IntOutput)
 }
 
-// Set the Kibana's IP whitelist in private network.
+// the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+func (o InstanceOutput) KibanaPrivateSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KibanaPrivateSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
 func (o InstanceOutput) KibanaPrivateWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.KibanaPrivateWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -754,7 +819,7 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
 func (o InstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
@@ -762,6 +827,31 @@ func (o InstanceOutput) Version() pulumi.StringOutput {
 // The ID of VSwitch.
 func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+func (o InstanceOutput) WarmNodeAmount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.WarmNodeAmount }).(pulumi.IntPtrOutput)
+}
+
+// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+func (o InstanceOutput) WarmNodeDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.WarmNodeDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The single warm node storage space, should between 500 and 20480
+func (o InstanceOutput) WarmNodeDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.WarmNodeDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The warm node disk type. Supported values:  cloud_efficiency.
+func (o InstanceOutput) WarmNodeDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.WarmNodeDiskType }).(pulumi.StringPtrOutput)
+}
+
+// The warm node specifications of the Elasticsearch instance.
+func (o InstanceOutput) WarmNodeSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.WarmNodeSpec }).(pulumi.StringPtrOutput)
 }
 
 // The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.

@@ -693,6 +693,8 @@ type ProviderEndpoint struct {
 	Scdn *string `pulumi:"scdn"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
 	Sddp *string `pulumi:"sddp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+	Selectdb *string `pulumi:"selectdb"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
 	Serverless *string `pulumi:"serverless"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
@@ -964,6 +966,8 @@ type ProviderEndpointArgs struct {
 	Scdn pulumi.StringPtrInput `pulumi:"scdn"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
 	Sddp pulumi.StringPtrInput `pulumi:"sddp"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+	Selectdb pulumi.StringPtrInput `pulumi:"selectdb"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
 	Serverless pulumi.StringPtrInput `pulumi:"serverless"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
@@ -1614,6 +1618,11 @@ func (o ProviderEndpointOutput) Scdn() pulumi.StringPtrOutput {
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
 func (o ProviderEndpointOutput) Sddp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sddp }).(pulumi.StringPtrOutput)
+}
+
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+func (o ProviderEndpointOutput) Selectdb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Selectdb }).(pulumi.StringPtrOutput)
 }
 
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.

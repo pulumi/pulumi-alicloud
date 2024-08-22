@@ -16,14 +16,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     public static final ShardingNetworkPrivateAddressNetworkAddressArgs Empty = new ShardingNetworkPrivateAddressNetworkAddressArgs();
 
     /**
-     * The remaining duration of the classic network address. Unit: `seconds`.
+     * The remaining duration of the classic network endpoint.
      * 
      */
     @Import(name="expiredTime")
     private @Nullable Output<String> expiredTime;
 
     /**
-     * @return The remaining duration of the classic network address. Unit: `seconds`.
+     * @return The remaining duration of the classic network endpoint.
      * 
      */
     public Optional<Output<String>> expiredTime() {
@@ -46,14 +46,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     }
 
     /**
-     * The endpoint of the instance.
+     * The connection string of the instance.
      * 
      */
     @Import(name="networkAddress")
     private @Nullable Output<String> networkAddress;
 
     /**
-     * @return The endpoint of the instance.
+     * @return The connection string of the instance.
      * 
      */
     public Optional<Output<String>> networkAddress() {
@@ -61,14 +61,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     }
 
     /**
-     * The network type.
+     * The network type of the instance.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type.
+     * @return The network type of the instance.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -76,14 +76,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     }
 
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return The ID of the Shard node or the ConfigServer node.
+     * @return The ID of the Shard node or ConfigServer node.
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -106,14 +106,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     }
 
     /**
-     * The port number.
+     * The port that is used to connect to the instance.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The port number.
+     * @return The port that is used to connect to the instance.
      * 
      */
     public Optional<Output<String>> port() {
@@ -151,14 +151,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
     }
 
     /**
-     * The vSwitch ID of the VPC.
+     * The ID of the vSwitch in the VPC.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vSwitch ID of the VPC.
+     * @return The ID of the vSwitch in the VPC.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -199,7 +199,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param expiredTime The remaining duration of the classic network address. Unit: `seconds`.
+         * @param expiredTime The remaining duration of the classic network endpoint.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param expiredTime The remaining duration of the classic network address. Unit: `seconds`.
+         * @param expiredTime The remaining duration of the classic network endpoint.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param networkAddress The endpoint of the instance.
+         * @param networkAddress The connection string of the instance.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param networkAddress The endpoint of the instance.
+         * @param networkAddress The connection string of the instance.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param networkType The network type.
+         * @param networkType The network type of the instance.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param networkType The network type.
+         * @param networkType The network type of the instance.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param nodeId The ID of the Shard node or the ConfigServer node.
+         * @param nodeId The ID of the Shard node or ConfigServer node.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param nodeId The ID of the Shard node or the ConfigServer node.
+         * @param nodeId The ID of the Shard node or ConfigServer node.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param port The port number.
+         * @param port The port that is used to connect to the instance.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param port The port number.
+         * @param port The port that is used to connect to the instance.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param vswitchId The vSwitch ID of the VPC.
+         * @param vswitchId The ID of the vSwitch in the VPC.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddressArgs extends com.p
         }
 
         /**
-         * @param vswitchId The vSwitch ID of the VPC.
+         * @param vswitchId The ID of the vSwitch in the VPC.
          * 
          * @return builder
          * 

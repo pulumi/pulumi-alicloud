@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolDataDisk {
     /**
+     * @return Whether to automatically mount the data disk. Valid values: true and false.
+     * 
+     */
+    private @Nullable String autoFormat;
+    /**
      * @return The ID of the automatic snapshot policy that you want to apply to the system disk.
      * 
      */
@@ -39,12 +44,22 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String encrypted;
     /**
+     * @return The Mount path. Works when auto_format is true.
+     * 
+     */
+    private @Nullable String fileSystem;
+    /**
      * @return The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
      * 
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * 
+     */
+    private @Nullable String mountTarget;
+    /**
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
      * 
      */
     private @Nullable String name;
@@ -70,6 +85,13 @@ public final class NodePoolDataDisk {
     private @Nullable String snapshotId;
 
     private NodePoolDataDisk() {}
+    /**
+     * @return Whether to automatically mount the data disk. Valid values: true and false.
+     * 
+     */
+    public Optional<String> autoFormat() {
+        return Optional.ofNullable(this.autoFormat);
+    }
     /**
      * @return The ID of the automatic snapshot policy that you want to apply to the system disk.
      * 
@@ -106,6 +128,13 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.encrypted);
     }
     /**
+     * @return The Mount path. Works when auto_format is true.
+     * 
+     */
+    public Optional<String> fileSystem() {
+        return Optional.ofNullable(this.fileSystem);
+    }
+    /**
      * @return The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
      * 
      */
@@ -113,7 +142,14 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * 
+     */
+    public Optional<String> mountTarget() {
+        return Optional.ofNullable(this.mountTarget);
+    }
+    /**
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
      * 
      */
     public Optional<String> name() {
@@ -157,12 +193,15 @@ public final class NodePoolDataDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String autoFormat;
         private @Nullable String autoSnapshotPolicyId;
         private @Nullable Boolean burstingEnabled;
         private @Nullable String category;
         private @Nullable String device;
         private @Nullable String encrypted;
+        private @Nullable String fileSystem;
         private @Nullable String kmsKeyId;
+        private @Nullable String mountTarget;
         private @Nullable String name;
         private @Nullable String performanceLevel;
         private @Nullable Integer provisionedIops;
@@ -171,12 +210,15 @@ public final class NodePoolDataDisk {
         public Builder() {}
         public Builder(NodePoolDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoFormat = defaults.autoFormat;
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
     	      this.burstingEnabled = defaults.burstingEnabled;
     	      this.category = defaults.category;
     	      this.device = defaults.device;
     	      this.encrypted = defaults.encrypted;
+    	      this.fileSystem = defaults.fileSystem;
     	      this.kmsKeyId = defaults.kmsKeyId;
+    	      this.mountTarget = defaults.mountTarget;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
     	      this.provisionedIops = defaults.provisionedIops;
@@ -184,6 +226,12 @@ public final class NodePoolDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
+        @CustomType.Setter
+        public Builder autoFormat(@Nullable String autoFormat) {
+
+            this.autoFormat = autoFormat;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
 
@@ -215,9 +263,21 @@ public final class NodePoolDataDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder fileSystem(@Nullable String fileSystem) {
+
+            this.fileSystem = fileSystem;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
 
             this.kmsKeyId = kmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mountTarget(@Nullable String mountTarget) {
+
+            this.mountTarget = mountTarget;
             return this;
         }
         @CustomType.Setter
@@ -252,12 +312,15 @@ public final class NodePoolDataDisk {
         }
         public NodePoolDataDisk build() {
             final var _resultValue = new NodePoolDataDisk();
+            _resultValue.autoFormat = autoFormat;
             _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
             _resultValue.burstingEnabled = burstingEnabled;
             _resultValue.category = category;
             _resultValue.device = device;
             _resultValue.encrypted = encrypted;
+            _resultValue.fileSystem = fileSystem;
             _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.mountTarget = mountTarget;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
             _resultValue.provisionedIops = provisionedIops;

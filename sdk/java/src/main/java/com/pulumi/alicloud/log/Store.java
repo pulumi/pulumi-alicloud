@@ -95,6 +95,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.random.integer;
  * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.kms.Instance;
+ * import com.pulumi.alicloud.kms.InstanceArgs;
  * import com.pulumi.alicloud.kms.Key;
  * import com.pulumi.alicloud.kms.KeyArgs;
  * import com.pulumi.alicloud.log.Project;
@@ -120,25 +125,49 @@ import javax.annotation.Nullable;
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var example = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
+ *             .build());
+ * 
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .productVersion("3")
+ *             .vpcId(default_.ids()[0])
+ *             .zoneIds(            
+ *                 defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()),
+ *                 defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[1].zoneId()))
+ *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpcNum("1")
+ *             .keyNum("1000")
+ *             .secretNum("0")
+ *             .spec("1000")
+ *             .forceDeleteWithoutBackup(true)
+ *             .paymentType("PayAsYouGo")
  *             .build());
  * 
  *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
  *             .description("terraform-example")
  *             .pendingWindowInDays("7")
  *             .status("Enabled")
+ *             .dkmsInstanceId(defaultInstance.id())
  *             .build());
  * 
  *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(exampleProject.name())
- *             .name("example-store")
+ *             .projectName(exampleProject.projectName())
+ *             .logstoreName("example-store")
  *             .shardCount(1)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -258,6 +287,20 @@ public class Store extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> hotTtl() {
         return Codegen.optional(this.hotTtl);
+    }
+    /**
+     * Low frequency storage time
+     * 
+     */
+    @Export(name="infrequentAccessTtl", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> infrequentAccessTtl;
+
+    /**
+     * @return Low frequency storage time
+     * 
+     */
+    public Output<Optional<Integer>> infrequentAccessTtl() {
+        return Codegen.optional(this.infrequentAccessTtl);
     }
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.

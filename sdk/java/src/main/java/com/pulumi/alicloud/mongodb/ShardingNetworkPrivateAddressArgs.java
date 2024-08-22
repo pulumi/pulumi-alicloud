@@ -17,9 +17,9 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     public static final ShardingNetworkPrivateAddressArgs Empty = new ShardingNetworkPrivateAddressArgs();
 
     /**
-     * The name of the account.
+     * The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      * 
      */
@@ -27,9 +27,9 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     private @Nullable Output<String> accountName;
 
     /**
-     * @return The name of the account.
+     * @return The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      * 
      */
@@ -38,7 +38,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     }
 
     /**
-     * Account password.
+     * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
@@ -47,7 +47,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return Account password.
+     * @return The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
@@ -57,14 +57,14 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     }
 
     /**
-     * The db instance id.
+     * The ID of the sharded cluster instance.
      * 
      */
     @Import(name="dbInstanceId", required=true)
     private Output<String> dbInstanceId;
 
     /**
-     * @return The db instance id.
+     * @return The ID of the sharded cluster instance.
      * 
      */
     public Output<String> dbInstanceId() {
@@ -72,14 +72,14 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      * 
      */
     @Import(name="nodeId", required=true)
     private Output<String> nodeId;
 
     /**
-     * @return The ID of the Shard node or the ConfigServer node.
+     * @return The ID of the Shard node or ConfigServer node.
      * 
      */
     public Output<String> nodeId() {
@@ -130,9 +130,9 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountName The name of the account.
+         * @param accountName The username of the account.
          * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-         * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+         * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
          * - The permissions of this account are fixed to read-only.
          * 
          * @return builder
@@ -144,9 +144,9 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountName The name of the account.
+         * @param accountName The username of the account.
          * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-         * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+         * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
          * - The permissions of this account are fixed to read-only.
          * 
          * @return builder
@@ -157,7 +157,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountPassword Account password.
+         * @param accountPassword The password for the account.
          * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
          * - The password must be 8 to 32 characters in length.
          * 
@@ -170,7 +170,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountPassword Account password.
+         * @param accountPassword The password for the account.
          * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
          * - The password must be 8 to 32 characters in length.
          * 
@@ -182,7 +182,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dbInstanceId The db instance id.
+         * @param dbInstanceId The ID of the sharded cluster instance.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dbInstanceId The db instance id.
+         * @param dbInstanceId The ID of the sharded cluster instance.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeId The ID of the Shard node or the ConfigServer node.
+         * @param nodeId The ID of the Shard node or ConfigServer node.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ShardingNetworkPrivateAddressArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nodeId The ID of the Shard node or the ConfigServer node.
+         * @param nodeId The ID of the Shard node or ConfigServer node.
          * 
          * @return builder
          * 

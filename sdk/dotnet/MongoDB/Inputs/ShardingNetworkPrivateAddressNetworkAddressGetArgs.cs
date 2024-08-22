@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class ShardingNetworkPrivateAddressNetworkAddressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The remaining duration of the classic network address. Unit: `seconds`.
+        /// The remaining duration of the classic network endpoint.
         /// </summary>
         [Input("expiredTime")]
         public Input<string>? ExpiredTime { get; set; }
@@ -25,19 +25,19 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The endpoint of the instance.
+        /// The connection string of the instance.
         /// </summary>
         [Input("networkAddress")]
         public Input<string>? NetworkAddress { get; set; }
 
         /// <summary>
-        /// The network type.
+        /// The network type of the instance.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
         /// <summary>
-        /// The ID of the Shard node or the ConfigServer node.
+        /// The ID of the Shard node or ConfigServer node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// The port number.
+        /// The port that is used to connect to the instance.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vSwitch ID of the VPC.
+        /// The ID of the vSwitch in the VPC.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

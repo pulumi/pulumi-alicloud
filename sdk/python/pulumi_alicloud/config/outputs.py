@@ -276,6 +276,7 @@ class Endpoints(dict):
                  sas: Optional[str] = None,
                  scdn: Optional[str] = None,
                  sddp: Optional[str] = None,
+                 selectdb: Optional[str] = None,
                  serverless: Optional[str] = None,
                  servicemesh: Optional[str] = None,
                  sgw: Optional[str] = None,
@@ -405,6 +406,7 @@ class Endpoints(dict):
         :param str sas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
         :param str scdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
         :param str sddp: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
+        :param str selectdb: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
         :param str serverless: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         :param str servicemesh: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
         :param str sgw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
@@ -649,6 +651,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "scdn", scdn)
         if sddp is not None:
             pulumi.set(__self__, "sddp", sddp)
+        if selectdb is not None:
+            pulumi.set(__self__, "selectdb", selectdb)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
         if servicemesh is not None:
@@ -1588,6 +1592,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
         """
         return pulumi.get(self, "sddp")
+
+    @property
+    @pulumi.getter
+    def selectdb(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+        """
+        return pulumi.get(self, "selectdb")
 
     @property
     @pulumi.getter

@@ -12597,6 +12597,10 @@ export namespace config {
          */
         sddp?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+         */
+        selectdb?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
          */
         serverless?: string;
@@ -14281,6 +14285,10 @@ export namespace cs {
 
     export interface NodePoolDataDisk {
         /**
+         * Whether to automatically mount the data disk. Valid values: true and false.
+         */
+        autoFormat?: string;
+        /**
          * The ID of the automatic snapshot policy that you want to apply to the system disk.
          */
         autoSnapshotPolicyId?: string;
@@ -14301,13 +14309,21 @@ export namespace cs {
          */
         encrypted?: string;
         /**
+         * The Mount path. Works when autoFormat is true.
+         */
+        fileSystem?: string;
+        /**
          * The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
          */
         kmsKeyId?: string;
         /**
-         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
          */
-        name?: string;
+        mountTarget?: string;
+        /**
+         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
+         */
+        name: string;
         /**
          * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
@@ -36141,7 +36157,7 @@ export namespace mongodb {
 
     export interface ShardingNetworkPrivateAddressNetworkAddress {
         /**
-         * The remaining duration of the classic network address. Unit: `seconds`.
+         * The remaining duration of the classic network endpoint.
          */
         expiredTime: string;
         /**
@@ -36149,15 +36165,15 @@ export namespace mongodb {
          */
         ipAddress: string;
         /**
-         * The endpoint of the instance.
+         * The connection string of the instance.
          */
         networkAddress: string;
         /**
-         * The network type.
+         * The network type of the instance.
          */
         networkType: string;
         /**
-         * The ID of the Shard node or the ConfigServer node.
+         * The ID of the Shard node or ConfigServer node.
          */
         nodeId: string;
         /**
@@ -36165,7 +36181,7 @@ export namespace mongodb {
          */
         nodeType: string;
         /**
-         * The port number.
+         * The port that is used to connect to the instance.
          */
         port: string;
         /**
@@ -36177,7 +36193,7 @@ export namespace mongodb {
          */
         vpcId: string;
         /**
-         * The vSwitch ID of the VPC.
+         * The ID of the vSwitch in the VPC.
          */
         vswitchId: string;
     }
@@ -45130,6 +45146,365 @@ export namespace securitycenter {
          * The ID of the Group(same as the group_id).
          */
         id: string;
+    }
+
+}
+
+export namespace selectdb {
+    export interface DbClusterDesiredParam {
+        /**
+         * Parameter name.
+         */
+        name?: string;
+        /**
+         * The new value of Parameter.
+         */
+        value?: string;
+    }
+
+    export interface DbClusterParamChangeLog {
+        /**
+         * The id of parameter change.
+         */
+        configId: number;
+        /**
+         * When the parameter change is created.
+         */
+        gmtCreated: string;
+        /**
+         * When the parameter change is modified.
+         */
+        gmtModified: string;
+        /**
+         * Whether the parameter changing is applied.
+         */
+        isApplied: boolean;
+        /**
+         * Changed parameter name.
+         */
+        name: string;
+        /**
+         * The new value of parameter.
+         */
+        newValue: string;
+        /**
+         * The old value of parameter.
+         */
+        oldValue: string;
+    }
+
+    export interface DbInstanceDesiredSecurityIpList {
+        /**
+         * Security group name.
+         */
+        groupName?: string;
+        /**
+         * The IP list of Security group. Each single IP value should be Separated by comma.
+         */
+        securityIpList?: string;
+    }
+
+    export interface DbInstanceInstanceNetInfo {
+        /**
+         * The connection string of the instance.
+         */
+        connectionString: string;
+        /**
+         * The IP address of the instance.
+         */
+        dbIp: string;
+        /**
+         * The network type of the instance.
+         */
+        netType: string;
+        /**
+         * A list for port provides SelectDB service.
+         */
+        portLists: outputs.selectdb.DbInstanceInstanceNetInfoPortList[];
+        /**
+         * The VPC ID.
+         */
+        vpcInstanceId: string;
+        /**
+         * The ID of vswitch for DBInstance.
+         */
+        vswitchId: string;
+    }
+
+    export interface DbInstanceInstanceNetInfoPortList {
+        /**
+         * The port that is used to connect.
+         */
+        port: string;
+        /**
+         * The protocol of the port.
+         */
+        protocol: string;
+    }
+
+    export interface DbInstanceSecurityIpList {
+        /**
+         * Security group name.
+         */
+        groupName: string;
+        /**
+         * The tag of Security group.
+         */
+        groupTag: string;
+        /**
+         * The network type of Security group.
+         */
+        listNetType: string;
+        /**
+         * The IP list of Security group. Each single IP value should be Separated by comma.
+         */
+        securityIpList: string;
+        /**
+         * The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
+         */
+        securityIpType: string;
+    }
+
+    export interface GetDbClustersCluster {
+        /**
+         * The cache size for DBCluster.
+         */
+        cacheSize: number;
+        /**
+         * The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
+         */
+        cpu: number;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
+         */
+        dbClusterClass: string;
+        /**
+         * The DBCluster description.
+         */
+        dbClusterDescription: string;
+        /**
+         * The cluster ID.
+         */
+        dbClusterId: string;
+        /**
+         * The instance ID.
+         */
+        dbInstanceId: string;
+        /**
+         * The Engine of the DBCluster.
+         */
+        engine: string;
+        /**
+         * The engine version of the DBCluster.
+         */
+        engineVersion: string;
+        id: string;
+        /**
+         * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
+         */
+        memory: number;
+        /**
+         * The configuration change logs of parameters.
+         */
+        paramChangeLogs: outputs.selectdb.GetDbClustersClusterParamChangeLog[];
+        /**
+         * The details about each parameter in DBCluster returned.
+         */
+        params: outputs.selectdb.GetDbClustersClusterParam[];
+        /**
+         * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
+         */
+        paymentType: string;
+        /**
+         * The ID of region for the cluster.
+         */
+        regionId: string;
+        /**
+         * The status of the DBCluster. Valid values: `ACTIVATION`,`CREATING`,`DELETING`,`RESTARTING`,`ORDER_PREPARING`.
+         */
+        status: string;
+        /**
+         * The ID of the VPC for the cluster.
+         */
+        vpcId: string;
+        /**
+         * The ID of zone for the cluster.
+         */
+        zoneId: string;
+    }
+
+    export interface GetDbClustersClusterParam {
+        /**
+         * The comments on the parameter.
+         */
+        comment: string;
+        /**
+         * The default value of the parameter.
+         */
+        defaultValue: string;
+        /**
+         * Indicates whether the parameter immediately takes effect without requiring a restart.
+         */
+        isDynamic: number;
+        /**
+         * Indicates whether the parameter is modifiable.
+         */
+        isUserModifiable: number;
+        /**
+         * Changed parameter name.
+         */
+        name: string;
+        /**
+         * The value range of the parameter.
+         */
+        optional: number;
+        /**
+         * The category of the parameter.
+         */
+        paramCategory: string;
+        /**
+         * The new value of Parameter.
+         */
+        value: string;
+    }
+
+    export interface GetDbClustersClusterParamChangeLog {
+        /**
+         * The id of parameter change.
+         */
+        configId: number;
+        /**
+         * When the parameter change is created.
+         */
+        gmtCreated: string;
+        /**
+         * When the parameter change is modified.
+         */
+        gmtModified: string;
+        /**
+         * Whether the parameter changing is applied.
+         */
+        isApplied: number;
+        /**
+         * Changed parameter name.
+         */
+        name: string;
+        /**
+         * The new value of parameter.
+         */
+        newValue: string;
+        /**
+         * The old value of parameter.
+         */
+        oldValue: string;
+    }
+
+    export interface GetDbInstancesInstance {
+        /**
+         * The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
+         */
+        cacheSizePostpaid: number;
+        /**
+         * The sum of cache size for every `Subscription` clusters in DBInstance.
+         */
+        cacheSizePrepaid: number;
+        /**
+         * The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
+         */
+        clusterCountPostpaid: number;
+        /**
+         * The sum of cluster counts for `Subscription` clusters in DBInstance.
+         */
+        clusterCountPrepaid: number;
+        /**
+         * The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
+         */
+        cpuPostpaid: number;
+        /**
+         * The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
+         */
+        cpuPrepaid: number;
+        /**
+         * The DBInstance description.
+         */
+        dbInstanceDescription: string;
+        /**
+         * The instance ID.
+         */
+        dbInstanceId: string;
+        /**
+         * The Engine of the DBInstance.
+         */
+        engine: string;
+        /**
+         * The engine minor version of the DBInstance.
+         */
+        engineMinorVersion: string;
+        /**
+         * The engine version of the DBInstance.
+         */
+        engineVersion: string;
+        /**
+         * The time when DBInstance is created.
+         */
+        gmtCreated: string;
+        /**
+         * The time when DBInstance will be expired. Available on `Subscription` DBInstance.
+         */
+        gmtExpired: string;
+        /**
+         * The time when DBInstance is modified.
+         */
+        gmtModified: string;
+        id: string;
+        /**
+         * The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
+         */
+        lockMode: string;
+        /**
+         * The reason why the instance is locked.
+         */
+        lockReason: string;
+        /**
+         * The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
+         */
+        memoryPostpaid: number;
+        /**
+         * The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
+         */
+        memoryPrepaid: number;
+        /**
+         * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
+         */
+        paymentType: string;
+        /**
+         * The ID of region for DBInstance.
+         */
+        regionId: string;
+        /**
+         * The status of the DBInstance. Valid values: `ACTIVATION`,`CREATING`,`DELETING`,`RESTARTING`,`ORDER_PREPARING`.
+         */
+        status: string;
+        /**
+         * The sub domain of DBInstance.
+         */
+        subDomain: string;
+        /**
+         * The ID of the VPC for DBInstance.
+         */
+        vpcId: string;
+        /**
+         * The ID of vswitch for DBInstance.
+         */
+        vswitchId: string;
+        /**
+         * The ID of zone for DBInstance.
+         */
+        zoneId: string;
     }
 
 }

@@ -578,6 +578,11 @@ public final class Endpoints {
      */
     private @Nullable String sddp;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+     * 
+     */
+    private @Nullable String selectdb;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
      * 
      */
@@ -1449,6 +1454,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.sddp);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+     * 
+     */
+    public Optional<String> selectdb() {
+        return Optional.ofNullable(this.selectdb);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
      * 
      */
@@ -1677,6 +1689,7 @@ public final class Endpoints {
         private @Nullable String sas;
         private @Nullable String scdn;
         private @Nullable String sddp;
+        private @Nullable String selectdb;
         private @Nullable String serverless;
         private @Nullable String servicemesh;
         private @Nullable String sgw;
@@ -1809,6 +1822,7 @@ public final class Endpoints {
     	      this.sas = defaults.sas;
     	      this.scdn = defaults.scdn;
     	      this.sddp = defaults.sddp;
+    	      this.selectdb = defaults.selectdb;
     	      this.serverless = defaults.serverless;
     	      this.servicemesh = defaults.servicemesh;
     	      this.sgw = defaults.sgw;
@@ -2511,6 +2525,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder selectdb(@Nullable String selectdb) {
+
+            this.selectdb = selectdb;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverless(@Nullable String serverless) {
 
             this.serverless = serverless;
@@ -2716,6 +2736,7 @@ public final class Endpoints {
             _resultValue.sas = sas;
             _resultValue.scdn = scdn;
             _resultValue.sddp = sddp;
+            _resultValue.selectdb = selectdb;
             _resultValue.serverless = serverless;
             _resultValue.servicemesh = servicemesh;
             _resultValue.sgw = sgw;

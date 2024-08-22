@@ -163,6 +163,8 @@ type Instance struct {
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntOutput `pulumi:"period"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrOutput `pulumi:"provisionedIops"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntOutput `pulumi:"readonlyReplicas"`
 	// The name of the mongo replica set.
@@ -196,7 +198,7 @@ type Instance struct {
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -314,6 +316,8 @@ type instanceState struct {
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
 	// The name of the mongo replica set.
@@ -347,7 +351,7 @@ type instanceState struct {
 	SslStatus *string `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -420,6 +424,8 @@ type InstanceState struct {
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntPtrInput
 	// The name of the mongo replica set.
@@ -453,7 +459,7 @@ type InstanceState struct {
 	SslStatus pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -530,6 +536,8 @@ type instanceArgs struct {
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
 	// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
@@ -555,7 +563,7 @@ type instanceArgs struct {
 	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -629,6 +637,8 @@ type InstanceArgs struct {
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 	ReadonlyReplicas pulumi.IntPtrInput
 	// Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
@@ -654,7 +664,7 @@ type InstanceArgs struct {
 	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -888,6 +898,11 @@ func (o InstanceOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }
 
+// The provisioned IOPS. Valid values: `0` to `50000`.
+func (o InstanceOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
 // The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
 func (o InstanceOutput) ReadonlyReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ReadonlyReplicas }).(pulumi.IntOutput)
@@ -963,7 +978,7 @@ func (o InstanceOutput) StorageEngine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StorageEngine }).(pulumi.StringOutput)
 }
 
-// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 func (o InstanceOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

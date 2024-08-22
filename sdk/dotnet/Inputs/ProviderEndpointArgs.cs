@@ -694,6 +694,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Sddp { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+        /// </summary>
+        [Input("selectdb")]
+        public Input<string>? Selectdb { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         /// </summary>
         [Input("serverless")]

@@ -23,6 +23,97 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.157.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingInstance;
+ * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddress;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = MongodbFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.17.3.0/24")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("172.17.3.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .engineVersion("4.2")
+ *             .name(name)
+ *             .shardLists(            
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass("dds.shard.mid")
+ *                     .nodeStorage("10")
+ *                     .build(),
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass("dds.shard.standard")
+ *                     .nodeStorage("20")
+ *                     .readonlyReplicas("1")
+ *                     .build())
+ *             .mongoLists(            
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass("dds.mongos.mid")
+ *                     .build(),
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass("dds.mongos.mid")
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultShardingNetworkPrivateAddress = new ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", ShardingNetworkPrivateAddressArgs.builder()
+ *             .dbInstanceId(defaultShardingInstance.id())
+ *             .nodeId(defaultShardingInstance.shardLists().applyValue(shardLists -> shardLists[0].nodeId()))
+ *             .zoneId(defaultShardingInstance.zoneId())
+ *             .accountName("example")
+ *             .accountPassword("Example_123")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -35,9 +126,9 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress")
 public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the account.
+     * The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      * 
      */
@@ -45,9 +136,9 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
     private Output</* @Nullable */ String> accountName;
 
     /**
-     * @return The name of the account.
+     * @return The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      * 
      */
@@ -55,7 +146,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.accountName);
     }
     /**
-     * Account password.
+     * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
@@ -64,7 +155,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
     private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return Account password.
+     * @return The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      * 
@@ -73,42 +164,42 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.accountPassword);
     }
     /**
-     * The db instance id.
+     * The ID of the sharded cluster instance.
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The db instance id.
+     * @return The ID of the sharded cluster instance.
      * 
      */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
     /**
-     * The endpoint of the instance.
+     * The connection string of the instance.
      * 
      */
     @Export(name="networkAddresses", refs={List.class,ShardingNetworkPrivateAddressNetworkAddress.class}, tree="[0,1]")
     private Output<List<ShardingNetworkPrivateAddressNetworkAddress>> networkAddresses;
 
     /**
-     * @return The endpoint of the instance.
+     * @return The connection string of the instance.
      * 
      */
     public Output<List<ShardingNetworkPrivateAddressNetworkAddress>> networkAddresses() {
         return this.networkAddresses;
     }
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      * 
      */
     @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**
-     * @return The ID of the Shard node or the ConfigServer node.
+     * @return The ID of the Shard node or ConfigServer node.
      * 
      */
     public Output<String> nodeId() {

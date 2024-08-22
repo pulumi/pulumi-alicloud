@@ -122,15 +122,15 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
     /**
-     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
     public readonly instances!: pulumi.Output<string[] | undefined>;
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      */
     public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
     /**
@@ -231,7 +231,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -305,7 +305,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskCategories!: pulumi.Output<string[]>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string>;
     /**
@@ -341,7 +341,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -626,15 +626,15 @@ export interface NodePoolState {
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
@@ -735,7 +735,7 @@ export interface NodePoolState {
      */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -809,7 +809,7 @@ export interface NodePoolState {
      */
     systemDiskCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -845,7 +845,7 @@ export interface NodePoolState {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -953,15 +953,15 @@ export interface NodePoolArgs {
      */
     instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
@@ -1058,7 +1058,7 @@ export interface NodePoolArgs {
      */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -1128,7 +1128,7 @@ export interface NodePoolArgs {
      */
     systemDiskCategories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -1164,7 +1164,7 @@ export interface NodePoolArgs {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

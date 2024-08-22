@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to automatically mount the data disk. Valid values: true and false.
+        /// </summary>
+        [Input("autoFormat")]
+        public Input<string>? AutoFormat { get; set; }
+
+        /// <summary>
         /// The ID of the automatic snapshot policy that you want to apply to the system disk.
         /// </summary>
         [Input("autoSnapshotPolicyId")]
@@ -43,13 +49,25 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Encrypted { get; set; }
 
         /// <summary>
+        /// The Mount path. Works when auto_format is true.
+        /// </summary>
+        [Input("fileSystem")]
+        public Input<string>? FileSystem { get; set; }
+
+        /// <summary>
         /// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        /// </summary>
+        [Input("mountTarget")]
+        public Input<string>? MountTarget { get; set; }
+
+        /// <summary>
+        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

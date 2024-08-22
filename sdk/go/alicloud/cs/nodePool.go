@@ -68,11 +68,11 @@ type NodePool struct {
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
-	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
 	KeepInstanceName pulumi.BoolOutput `pulumi:"keepInstanceName"`
@@ -127,7 +127,7 @@ type NodePool struct {
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrOutput `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Rotary configuration. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
@@ -167,7 +167,7 @@ type NodePool struct {
 	SystemDiskBurstingEnabled pulumi.BoolPtrOutput `pulumi:"systemDiskBurstingEnabled"`
 	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
 	SystemDiskCategories pulumi.StringArrayOutput `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
@@ -187,7 +187,7 @@ type NodePool struct {
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
@@ -295,11 +295,11 @@ type nodePoolState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 	Instances []string `pulumi:"instances"`
-	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
 	KeepInstanceName *bool `pulumi:"keepInstanceName"`
@@ -354,7 +354,7 @@ type nodePoolState struct {
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Rotary configuration. See `rollingPolicy` below.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
@@ -394,7 +394,7 @@ type nodePoolState struct {
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
 	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
 	SystemDiskCategories []string `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -414,7 +414,7 @@ type nodePoolState struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 	Tags map[string]string `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -473,11 +473,11 @@ type NodePoolState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
-	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 	Instances pulumi.StringArrayInput
-	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringPtrInput
-	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
 	KeepInstanceName pulumi.BoolPtrInput
@@ -532,7 +532,7 @@ type NodePoolState struct {
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
 	// The list of RDS instances.
 	RdsInstances pulumi.StringArrayInput
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Rotary configuration. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrInput
@@ -572,7 +572,7 @@ type NodePoolState struct {
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
 	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
 	SystemDiskCategories pulumi.StringArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -592,7 +592,7 @@ type NodePoolState struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 	Tags pulumi.StringMapInput
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
@@ -655,11 +655,11 @@ type nodePoolArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 	Instances []string `pulumi:"instances"`
-	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
 	KeepInstanceName *bool `pulumi:"keepInstanceName"`
@@ -712,7 +712,7 @@ type nodePoolArgs struct {
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
 	RdsInstances []string `pulumi:"rdsInstances"`
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Rotary configuration. See `rollingPolicy` below.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
@@ -750,7 +750,7 @@ type nodePoolArgs struct {
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
 	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
 	SystemDiskCategories []string `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -770,7 +770,7 @@ type nodePoolArgs struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 	Tags map[string]string `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -830,11 +830,11 @@ type NodePoolArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
-	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 	Instances pulumi.StringArrayInput
-	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 	InternetChargeType pulumi.StringPtrInput
-	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
 	KeepInstanceName pulumi.BoolPtrInput
@@ -887,7 +887,7 @@ type NodePoolArgs struct {
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
 	// The list of RDS instances.
 	RdsInstances pulumi.StringArrayInput
-	// The ID of the resource group.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Rotary configuration. See `rollingPolicy` below.
 	RollingPolicy NodePoolRollingPolicyPtrInput
@@ -925,7 +925,7 @@ type NodePoolArgs struct {
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
 	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
 	SystemDiskCategories pulumi.StringArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -945,7 +945,7 @@ type NodePoolArgs struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 	Tags pulumi.StringMapInput
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
@@ -1138,17 +1138,17 @@ func (o NodePoolOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+// The instance list. Add existing nodes under the same cluster VPC to the node pool.
 func (o NodePoolOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }
 
-// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
+// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
 func (o NodePoolOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 func (o NodePoolOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
 }
@@ -1272,7 +1272,7 @@ func (o NodePoolOutput) RdsInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.RdsInstances }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the resource group.
+// The ID of the resource group
 func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -1363,7 +1363,7 @@ func (o NodePoolOutput) SystemDiskCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SystemDiskCategories }).(pulumi.StringArrayOutput)
 }
 
-// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`. .
+// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
 func (o NodePoolOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
@@ -1407,7 +1407,7 @@ func (o NodePoolOutput) SystemDiskSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
 func (o NodePoolOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

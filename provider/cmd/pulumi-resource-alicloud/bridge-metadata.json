@@ -2180,6 +2180,9 @@
             "alicloud_data_works_folder": {
                 "current": "alicloud:dataworks/folder:Folder"
             },
+            "alicloud_data_works_project": {
+                "current": "alicloud:dataworks/project:Project"
+            },
             "alicloud_database_gateway_gateway": {
                 "current": "alicloud:databasegateway/gateway:Gateway"
             },
@@ -7123,6 +7126,38 @@
             },
             "alicloud_security_group_rule": {
                 "current": "alicloud:ecs/securityGroupRule:SecurityGroupRule"
+            },
+            "alicloud_selectdb_db_cluster": {
+                "current": "alicloud:selectdb/dbCluster:DbCluster",
+                "fields": {
+                    "desired_params": {
+                        "maxItemsOne": false
+                    },
+                    "param_change_logs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_selectdb_db_instance": {
+                "current": "alicloud:selectdb/dbInstance:DbInstance",
+                "fields": {
+                    "desired_security_ip_lists": {
+                        "maxItemsOne": false
+                    },
+                    "instance_net_infos": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "port_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "security_ip_lists": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_service_catalog_portfolio": {
                 "current": "alicloud:servicecatalog/portfolio:Portfolio"
@@ -18309,6 +18344,38 @@
                         "maxItemsOne": false
                     },
                     "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_selectdb_db_clusters": {
+                "current": "alicloud:selectdb/getDbClusters:getDbClusters",
+                "fields": {
+                    "clusters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "param_change_logs": {
+                                    "maxItemsOne": false
+                                },
+                                "params": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_selectdb_db_instances": {
+                "current": "alicloud:selectdb/getDbInstances:getDbInstances",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "instances": {
                         "maxItemsOne": false
                     }
                 }

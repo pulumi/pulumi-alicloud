@@ -289,42 +289,42 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.instanceTypes;
     }
     /**
-     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      * 
      */
     @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instances;
 
     /**
-     * @return The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * @return The instance list. Add existing nodes under the same cluster VPC to the node pool.
      * 
      */
     public Output<Optional<List<String>>> instances() {
         return Codegen.optional(this.instances);
     }
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      * 
      */
     public Output<Optional<Integer>> internetMaxBandwidthOut() {
@@ -657,14 +657,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rdsInstances);
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Output<String> resourceGroupId() {
@@ -907,14 +907,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.systemDiskCategories;
     }
     /**
-     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
      * 
      */
     public Output<String> systemDiskCategory() {
@@ -1027,14 +1027,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskSnapshotPolicyId);
     }
     /**
-     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * @return Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

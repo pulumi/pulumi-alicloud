@@ -576,16 +576,16 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
                  vpc_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str expired_time: The remaining duration of the classic network address. Unit: `seconds`.
+        :param str expired_time: The remaining duration of the classic network endpoint.
         :param str ip_address: The IP address of the instance.
-        :param str network_address: The endpoint of the instance.
-        :param str network_type: The network type.
-        :param str node_id: The ID of the Shard node or the ConfigServer node.
+        :param str network_address: The connection string of the instance.
+        :param str network_type: The network type of the instance.
+        :param str node_id: The ID of the Shard node or ConfigServer node.
         :param str node_type: The type of the node.
-        :param str port: The port number.
+        :param str port: The port that is used to connect to the instance.
         :param str role: The role of the node.
         :param str vpc_id: The ID of the VPC.
-        :param str vswitch_id: The vSwitch ID of the VPC.
+        :param str vswitch_id: The ID of the vSwitch in the VPC.
         """
         if expired_time is not None:
             pulumi.set(__self__, "expired_time", expired_time)
@@ -612,7 +612,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> Optional[str]:
         """
-        The remaining duration of the classic network address. Unit: `seconds`.
+        The remaining duration of the classic network endpoint.
         """
         return pulumi.get(self, "expired_time")
 
@@ -628,7 +628,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter(name="networkAddress")
     def network_address(self) -> Optional[str]:
         """
-        The endpoint of the instance.
+        The connection string of the instance.
         """
         return pulumi.get(self, "network_address")
 
@@ -636,7 +636,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[str]:
         """
-        The network type.
+        The network type of the instance.
         """
         return pulumi.get(self, "network_type")
 
@@ -644,7 +644,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
         """
-        The ID of the Shard node or the ConfigServer node.
+        The ID of the Shard node or ConfigServer node.
         """
         return pulumi.get(self, "node_id")
 
@@ -660,7 +660,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port number.
+        The port that is used to connect to the instance.
         """
         return pulumi.get(self, "port")
 
@@ -684,7 +684,7 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        The vSwitch ID of the VPC.
+        The ID of the vSwitch in the VPC.
         """
         return pulumi.get(self, "vswitch_id")
 

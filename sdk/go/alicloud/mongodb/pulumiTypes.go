@@ -800,25 +800,25 @@ func (o ShardingInstanceShardListArrayOutput) Index(i pulumi.IntInput) ShardingI
 }
 
 type ShardingNetworkPrivateAddressNetworkAddress struct {
-	// The remaining duration of the classic network address. Unit: `seconds`.
+	// The remaining duration of the classic network endpoint.
 	ExpiredTime *string `pulumi:"expiredTime"`
 	// The IP address of the instance.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The endpoint of the instance.
+	// The connection string of the instance.
 	NetworkAddress *string `pulumi:"networkAddress"`
-	// The network type.
+	// The network type of the instance.
 	NetworkType *string `pulumi:"networkType"`
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId *string `pulumi:"nodeId"`
 	// The type of the node.
 	NodeType *string `pulumi:"nodeType"`
-	// The port number.
+	// The port that is used to connect to the instance.
 	Port *string `pulumi:"port"`
 	// The role of the node.
 	Role *string `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
-	// The vSwitch ID of the VPC.
+	// The ID of the vSwitch in the VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -834,25 +834,25 @@ type ShardingNetworkPrivateAddressNetworkAddressInput interface {
 }
 
 type ShardingNetworkPrivateAddressNetworkAddressArgs struct {
-	// The remaining duration of the classic network address. Unit: `seconds`.
+	// The remaining duration of the classic network endpoint.
 	ExpiredTime pulumi.StringPtrInput `pulumi:"expiredTime"`
 	// The IP address of the instance.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// The endpoint of the instance.
+	// The connection string of the instance.
 	NetworkAddress pulumi.StringPtrInput `pulumi:"networkAddress"`
-	// The network type.
+	// The network type of the instance.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// The type of the node.
 	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
-	// The port number.
+	// The port that is used to connect to the instance.
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The role of the node.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// The vSwitch ID of the VPC.
+	// The ID of the vSwitch in the VPC.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -907,7 +907,7 @@ func (o ShardingNetworkPrivateAddressNetworkAddressOutput) ToShardingNetworkPriv
 	return o
 }
 
-// The remaining duration of the classic network address. Unit: `seconds`.
+// The remaining duration of the classic network endpoint.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) ExpiredTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.ExpiredTime }).(pulumi.StringPtrOutput)
 }
@@ -917,17 +917,17 @@ func (o ShardingNetworkPrivateAddressNetworkAddressOutput) IpAddress() pulumi.St
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The endpoint of the instance.
+// The connection string of the instance.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) NetworkAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.NetworkAddress }).(pulumi.StringPtrOutput)
 }
 
-// The network type.
+// The network type of the instance.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the Shard node or the ConfigServer node.
+// The ID of the Shard node or ConfigServer node.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
@@ -937,7 +937,7 @@ func (o ShardingNetworkPrivateAddressNetworkAddressOutput) NodeType() pulumi.Str
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.NodeType }).(pulumi.StringPtrOutput)
 }
 
-// The port number.
+// The port that is used to connect to the instance.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -952,7 +952,7 @@ func (o ShardingNetworkPrivateAddressNetworkAddressOutput) VpcId() pulumi.String
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// The vSwitch ID of the VPC.
+// The ID of the vSwitch in the VPC.
 func (o ShardingNetworkPrivateAddressNetworkAddressOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingNetworkPrivateAddressNetworkAddress) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

@@ -109,6 +109,7 @@ type Binding struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 	Argument pulumi.StringOutput `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -180,6 +181,7 @@ type bindingState struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -204,6 +206,7 @@ type BindingState struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -232,6 +235,7 @@ type bindingArgs struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -257,6 +261,7 @@ type BindingArgs struct {
 	// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 	// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 	// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+	// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -367,6 +372,7 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 // The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
 // - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
 // - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+// - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
 func (o BindingOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Argument }).(pulumi.StringOutput)
 }

@@ -43,7 +43,8 @@ class InstanceArgs:
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
@@ -66,7 +67,7 @@ class InstanceArgs:
                |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
                |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
@@ -172,7 +173,8 @@ class InstanceArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "config")
 
@@ -316,7 +318,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         """
         return pulumi.get(self, "service_version")
 
@@ -425,7 +427,8 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -459,7 +462,7 @@ class _InstanceState:
                |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
                |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -544,7 +547,8 @@ class _InstanceState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "config")
 
@@ -798,7 +802,7 @@ class _InstanceState:
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         """
         return pulumi.get(self, "service_version")
 
@@ -969,7 +973,8 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -997,7 +1002,7 @@ class Instance(pulumi.CustomResource):
                |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
                |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
@@ -1155,7 +1160,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
                - 4: eip/vpc instance
                - 5: vpc instance.
@@ -1189,7 +1195,7 @@ class Instance(pulumi.CustomResource):
                |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
                |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
-        :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -1245,7 +1251,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[str]:
         """
-        The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "config")
 
@@ -1419,7 +1426,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> pulumi.Output[str]:
         """
-        The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         """
         return pulumi.get(self, "service_version")
 

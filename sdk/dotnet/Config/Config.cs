@@ -770,6 +770,10 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public string? Sddp { get; set; } = null!;
             /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+            /// </summary>
+                public string? Selectdb { get; set; } = null!;
+            /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
             /// </summary>
                 public string? Serverless { get; set; } = null!;

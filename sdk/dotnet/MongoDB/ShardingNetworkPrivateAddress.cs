@@ -16,6 +16,81 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// &gt; **NOTE:** Available since v1.157.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("default", new()
+    ///     {
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         EngineVersion = "4.2",
+    ///         Name = name,
+    ///         ShardLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.standard",
+    ///                 NodeStorage = 20,
+    ///                 ReadonlyReplicas = 1,
+    ///             },
+    ///         },
+    ///         MongoLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultShardingNetworkPrivateAddress = new AliCloud.MongoDB.ShardingNetworkPrivateAddress("default", new()
+    ///     {
+    ///         DbInstanceId = defaultShardingInstance.Id,
+    ///         NodeId = defaultShardingInstance.ShardLists.Apply(shardLists =&gt; shardLists[0].NodeId),
+    ///         ZoneId = defaultShardingInstance.ZoneId,
+    ///         AccountName = "example",
+    ///         AccountPassword = "Example_123",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -28,16 +103,16 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class ShardingNetworkPrivateAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the account. 
+        /// The username of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        /// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         /// - The permissions of this account are fixed to read-only.
         /// </summary>
         [Output("accountName")]
         public Output<string?> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Account password. 
+        /// The password for the account.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
@@ -45,19 +120,19 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The db instance id.
+        /// The ID of the sharded cluster instance.
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint of the instance.
+        /// The connection string of the instance.
         /// </summary>
         [Output("networkAddresses")]
         public Output<ImmutableArray<Outputs.ShardingNetworkPrivateAddressNetworkAddress>> NetworkAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Shard node or the ConfigServer node.
+        /// The ID of the Shard node or ConfigServer node.
         /// </summary>
         [Output("nodeId")]
         public Output<string> NodeId { get; private set; } = null!;
@@ -119,9 +194,9 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class ShardingNetworkPrivateAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the account. 
+        /// The username of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        /// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         /// - The permissions of this account are fixed to read-only.
         /// </summary>
         [Input("accountName")]
@@ -131,7 +206,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Account password. 
+        /// The password for the account.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
@@ -146,13 +221,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The db instance id.
+        /// The ID of the sharded cluster instance.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Shard node or the ConfigServer node.
+        /// The ID of the Shard node or ConfigServer node.
         /// </summary>
         [Input("nodeId", required: true)]
         public Input<string> NodeId { get; set; } = null!;
@@ -172,9 +247,9 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class ShardingNetworkPrivateAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the account. 
+        /// The username of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        /// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         /// - The permissions of this account are fixed to read-only.
         /// </summary>
         [Input("accountName")]
@@ -184,7 +259,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Account password. 
+        /// The password for the account.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
@@ -199,7 +274,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The db instance id.
+        /// The ID of the sharded cluster instance.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
@@ -208,7 +283,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingNetworkPrivateAddressNetworkAddressGetArgs>? _networkAddresses;
 
         /// <summary>
-        /// The endpoint of the instance.
+        /// The connection string of the instance.
         /// </summary>
         public InputList<Inputs.ShardingNetworkPrivateAddressNetworkAddressGetArgs> NetworkAddresses
         {
@@ -217,7 +292,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The ID of the Shard node or the ConfigServer node.
+        /// The ID of the Shard node or ConfigServer node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

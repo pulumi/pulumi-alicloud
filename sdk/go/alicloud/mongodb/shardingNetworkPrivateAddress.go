@@ -18,6 +18,95 @@ import (
 //
 // > **NOTE:** Available since v1.157.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
+//				ZoneId:        pulumi.String(_default.Zones[0].Id),
+//				VswitchId:     defaultSwitch.ID(),
+//				EngineVersion: pulumi.String("4.2"),
+//				Name:          pulumi.String(name),
+//				ShardLists: mongodb.ShardingInstanceShardListArray{
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:   pulumi.String("dds.shard.mid"),
+//						NodeStorage: pulumi.Int(10),
+//					},
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:        pulumi.String("dds.shard.standard"),
+//						NodeStorage:      pulumi.Int(20),
+//						ReadonlyReplicas: pulumi.Int(1),
+//					},
+//				},
+//				MongoLists: mongodb.ShardingInstanceMongoListArray{
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "default", &mongodb.ShardingNetworkPrivateAddressArgs{
+//				DbInstanceId: defaultShardingInstance.ID(),
+//				NodeId: pulumi.String(defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (*string, error) {
+//					return &shardLists[0].NodeId, nil
+//				}).(pulumi.StringPtrOutput)),
+//				ZoneId:          defaultShardingInstance.ZoneId,
+//				AccountName:     pulumi.String("example"),
+//				AccountPassword: pulumi.String("Example_123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -28,20 +117,20 @@ import (
 type ShardingNetworkPrivateAddress struct {
 	pulumi.CustomResourceState
 
-	// The name of the account.
+	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-	// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+	// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrOutput `pulumi:"accountName"`
-	// Account password.
+	// The password for the account.
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
-	// The db instance id.
+	// The ID of the sharded cluster instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
-	// The endpoint of the instance.
+	// The connection string of the instance.
 	NetworkAddresses ShardingNetworkPrivateAddressNetworkAddressArrayOutput `pulumi:"networkAddresses"`
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId pulumi.StringOutput `pulumi:"nodeId"`
 	// The zone ID of the instance.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -93,40 +182,40 @@ func GetShardingNetworkPrivateAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ShardingNetworkPrivateAddress resources.
 type shardingNetworkPrivateAddressState struct {
-	// The name of the account.
+	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-	// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+	// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 	// - The permissions of this account are fixed to read-only.
 	AccountName *string `pulumi:"accountName"`
-	// Account password.
+	// The password for the account.
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The db instance id.
+	// The ID of the sharded cluster instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// The endpoint of the instance.
+	// The connection string of the instance.
 	NetworkAddresses []ShardingNetworkPrivateAddressNetworkAddress `pulumi:"networkAddresses"`
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId *string `pulumi:"nodeId"`
 	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ShardingNetworkPrivateAddressState struct {
-	// The name of the account.
+	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-	// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+	// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrInput
-	// Account password.
+	// The password for the account.
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrInput
-	// The db instance id.
+	// The ID of the sharded cluster instance.
 	DbInstanceId pulumi.StringPtrInput
-	// The endpoint of the instance.
+	// The connection string of the instance.
 	NetworkAddresses ShardingNetworkPrivateAddressNetworkAddressArrayInput
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId pulumi.StringPtrInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
@@ -137,18 +226,18 @@ func (ShardingNetworkPrivateAddressState) ElementType() reflect.Type {
 }
 
 type shardingNetworkPrivateAddressArgs struct {
-	// The name of the account.
+	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-	// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+	// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 	// - The permissions of this account are fixed to read-only.
 	AccountName *string `pulumi:"accountName"`
-	// Account password.
+	// The password for the account.
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The db instance id.
+	// The ID of the sharded cluster instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId string `pulumi:"nodeId"`
 	// The zone ID of the instance.
 	ZoneId string `pulumi:"zoneId"`
@@ -156,18 +245,18 @@ type shardingNetworkPrivateAddressArgs struct {
 
 // The set of arguments for constructing a ShardingNetworkPrivateAddress resource.
 type ShardingNetworkPrivateAddressArgs struct {
-	// The name of the account.
+	// The username of the account.
 	// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-	// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+	// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 	// - The permissions of this account are fixed to read-only.
 	AccountName pulumi.StringPtrInput
-	// Account password.
+	// The password for the account.
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 	// - The password must be 8 to 32 characters in length.
 	AccountPassword pulumi.StringPtrInput
-	// The db instance id.
+	// The ID of the sharded cluster instance.
 	DbInstanceId pulumi.StringInput
-	// The ID of the Shard node or the ConfigServer node.
+	// The ID of the Shard node or ConfigServer node.
 	NodeId pulumi.StringInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringInput
@@ -260,34 +349,34 @@ func (o ShardingNetworkPrivateAddressOutput) ToShardingNetworkPrivateAddressOutp
 	return o
 }
 
-// The name of the account.
+// The username of the account.
 // - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
 // - The permissions of this account are fixed to read-only.
 func (o ShardingNetworkPrivateAddressOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringPtrOutput { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
-// Account password.
+// The password for the account.
 // - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
 // - The password must be 8 to 32 characters in length.
 func (o ShardingNetworkPrivateAddressOutput) AccountPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
 }
 
-// The db instance id.
+// The ID of the sharded cluster instance.
 func (o ShardingNetworkPrivateAddressOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// The endpoint of the instance.
+// The connection string of the instance.
 func (o ShardingNetworkPrivateAddressOutput) NetworkAddresses() ShardingNetworkPrivateAddressNetworkAddressArrayOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) ShardingNetworkPrivateAddressNetworkAddressArrayOutput {
 		return v.NetworkAddresses
 	}).(ShardingNetworkPrivateAddressNetworkAddressArrayOutput)
 }
 
-// The ID of the Shard node or the ConfigServer node.
+// The ID of the Shard node or ConfigServer node.
 func (o ShardingNetworkPrivateAddressOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingNetworkPrivateAddress) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
 }

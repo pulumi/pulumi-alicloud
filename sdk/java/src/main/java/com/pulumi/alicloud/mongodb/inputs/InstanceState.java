@@ -409,6 +409,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      * 
      */
@@ -629,14 +644,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -750,6 +765,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.orderType = $.orderType;
         this.parameters = $.parameters;
         this.period = $.period;
+        this.provisionedIops = $.provisionedIops;
         this.readonlyReplicas = $.readonlyReplicas;
         this.replicaSetName = $.replicaSetName;
         this.replicaSets = $.replicaSets;
@@ -1348,6 +1364,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param provisionedIops The provisioned IOPS. Valid values: `0` to `50000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops The provisioned IOPS. Valid values: `0` to `50000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
          * @param readonlyReplicas The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
          * 
          * @return builder
@@ -1672,7 +1709,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
          * 
          * @return builder
          * 
@@ -1683,7 +1720,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
          * 
          * @return builder
          * 

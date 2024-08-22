@@ -13,6 +13,61 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.157.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.mongodb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchId: defaultSwitch.id,
+ *     engineVersion: "4.2",
+ *     name: name,
+ *     shardLists: [
+ *         {
+ *             nodeClass: "dds.shard.mid",
+ *             nodeStorage: 10,
+ *         },
+ *         {
+ *             nodeClass: "dds.shard.standard",
+ *             nodeStorage: 20,
+ *             readonlyReplicas: 1,
+ *         },
+ *     ],
+ *     mongoLists: [
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *     ],
+ * });
+ * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("default", {
+ *     dbInstanceId: defaultShardingInstance.id,
+ *     nodeId: defaultShardingInstance.shardLists.apply(shardLists => shardLists[0].nodeId),
+ *     zoneId: defaultShardingInstance.zoneId,
+ *     accountName: "example",
+ *     accountPassword: "Example_123",
+ * });
+ * ```
+ *
  * ## Import
  *
  * MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -50,28 +105,28 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the account. 
+     * The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
     public readonly accountName!: pulumi.Output<string | undefined>;
     /**
-     * Account password. 
+     * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
-     * The db instance id.
+     * The ID of the sharded cluster instance.
      */
     public readonly dbInstanceId!: pulumi.Output<string>;
     /**
-     * The endpoint of the instance.
+     * The connection string of the instance.
      */
     public /*out*/ readonly networkAddresses!: pulumi.Output<outputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress[]>;
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      */
     public readonly nodeId!: pulumi.Output<string>;
     /**
@@ -128,28 +183,28 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
  */
 export interface ShardingNetworkPrivateAddressState {
     /**
-     * The name of the account. 
+     * The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * Account password. 
+     * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The db instance id.
+     * The ID of the sharded cluster instance.
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The endpoint of the instance.
+     * The connection string of the instance.
      */
     networkAddresses?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress>[]>;
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      */
     nodeId?: pulumi.Input<string>;
     /**
@@ -163,24 +218,24 @@ export interface ShardingNetworkPrivateAddressState {
  */
 export interface ShardingNetworkPrivateAddressArgs {
     /**
-     * The name of the account. 
+     * The username of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-     * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+     * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * Account password. 
+     * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The db instance id.
+     * The ID of the sharded cluster instance.
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * The ID of the Shard node or the ConfigServer node.
+     * The ID of the Shard node or ConfigServer node.
      */
     nodeId: pulumi.Input<string>;
     /**
