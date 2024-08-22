@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolDataDisk
     {
         /// <summary>
+        /// Whether to automatically mount the data disk. Valid values: true and false.
+        /// </summary>
+        public readonly string? AutoFormat;
+        /// <summary>
         /// The ID of the automatic snapshot policy that you want to apply to the system disk.
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
@@ -34,11 +38,19 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Encrypted;
         /// <summary>
+        /// The Mount path. Works when auto_format is true.
+        /// </summary>
+        public readonly string? FileSystem;
+        /// <summary>
         /// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        /// </summary>
+        public readonly string? MountTarget;
+        /// <summary>
+        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -60,6 +72,8 @@ namespace Pulumi.AliCloud.CS.Outputs
 
         [OutputConstructor]
         private NodePoolDataDisk(
+            string? autoFormat,
+
             string? autoSnapshotPolicyId,
 
             bool? burstingEnabled,
@@ -70,7 +84,11 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? encrypted,
 
+            string? fileSystem,
+
             string? kmsKeyId,
+
+            string? mountTarget,
 
             string? name,
 
@@ -82,12 +100,15 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? snapshotId)
         {
+            AutoFormat = autoFormat;
             AutoSnapshotPolicyId = autoSnapshotPolicyId;
             BurstingEnabled = burstingEnabled;
             Category = category;
             Device = device;
             Encrypted = encrypted;
+            FileSystem = fileSystem;
             KmsKeyId = kmsKeyId;
+            MountTarget = mountTarget;
             Name = name;
             PerformanceLevel = performanceLevel;
             ProvisionedIops = provisionedIops;

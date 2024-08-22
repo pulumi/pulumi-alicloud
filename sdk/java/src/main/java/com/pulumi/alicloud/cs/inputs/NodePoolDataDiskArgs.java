@@ -18,6 +18,21 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     public static final NodePoolDataDiskArgs Empty = new NodePoolDataDiskArgs();
 
     /**
+     * Whether to automatically mount the data disk. Valid values: true and false.
+     * 
+     */
+    @Import(name="autoFormat")
+    private @Nullable Output<String> autoFormat;
+
+    /**
+     * @return Whether to automatically mount the data disk. Valid values: true and false.
+     * 
+     */
+    public Optional<Output<String>> autoFormat() {
+        return Optional.ofNullable(this.autoFormat);
+    }
+
+    /**
      * The ID of the automatic snapshot policy that you want to apply to the system disk.
      * 
      */
@@ -93,6 +108,21 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Mount path. Works when auto_format is true.
+     * 
+     */
+    @Import(name="fileSystem")
+    private @Nullable Output<String> fileSystem;
+
+    /**
+     * @return The Mount path. Works when auto_format is true.
+     * 
+     */
+    public Optional<Output<String>> fileSystem() {
+        return Optional.ofNullable(this.fileSystem);
+    }
+
+    /**
      * The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
      * 
      */
@@ -108,14 +138,29 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * 
+     */
+    @Import(name="mountTarget")
+    private @Nullable Output<String> mountTarget;
+
+    /**
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * 
+     */
+    public Optional<Output<String>> mountTarget() {
+        return Optional.ofNullable(this.mountTarget);
+    }
+
+    /**
+     * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
      * 
      */
     public Optional<Output<String>> name() {
@@ -185,12 +230,15 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     private NodePoolDataDiskArgs() {}
 
     private NodePoolDataDiskArgs(NodePoolDataDiskArgs $) {
+        this.autoFormat = $.autoFormat;
         this.autoSnapshotPolicyId = $.autoSnapshotPolicyId;
         this.burstingEnabled = $.burstingEnabled;
         this.category = $.category;
         this.device = $.device;
         this.encrypted = $.encrypted;
+        this.fileSystem = $.fileSystem;
         this.kmsKeyId = $.kmsKeyId;
+        this.mountTarget = $.mountTarget;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
         this.provisionedIops = $.provisionedIops;
@@ -214,6 +262,27 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(NodePoolDataDiskArgs defaults) {
             $ = new NodePoolDataDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoFormat Whether to automatically mount the data disk. Valid values: true and false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoFormat(@Nullable Output<String> autoFormat) {
+            $.autoFormat = autoFormat;
+            return this;
+        }
+
+        /**
+         * @param autoFormat Whether to automatically mount the data disk. Valid values: true and false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoFormat(String autoFormat) {
+            return autoFormat(Output.of(autoFormat));
         }
 
         /**
@@ -322,6 +391,27 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param fileSystem The Mount path. Works when auto_format is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystem(@Nullable Output<String> fileSystem) {
+            $.fileSystem = fileSystem;
+            return this;
+        }
+
+        /**
+         * @param fileSystem The Mount path. Works when auto_format is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystem(String fileSystem) {
+            return fileSystem(Output.of(fileSystem));
+        }
+
+        /**
          * @param kmsKeyId The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
          * 
          * @return builder
@@ -343,7 +433,28 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+         * @param mountTarget The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountTarget(@Nullable Output<String> mountTarget) {
+            $.mountTarget = mountTarget;
+            return this;
+        }
+
+        /**
+         * @param mountTarget The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountTarget(String mountTarget) {
+            return mountTarget(Output.of(mountTarget));
+        }
+
+        /**
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
          * 
          * @return builder
          * 
@@ -354,7 +465,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
          * 
          * @return builder
          * 

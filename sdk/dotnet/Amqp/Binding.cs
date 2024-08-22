@@ -93,6 +93,7 @@ namespace Pulumi.AliCloud.Amqp
         /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
         /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
         /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - &gt; **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         /// </summary>
         [Output("argument")]
         public Output<string> Argument { get; private set; } = null!;
@@ -188,6 +189,7 @@ namespace Pulumi.AliCloud.Amqp
         /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
         /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
         /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - &gt; **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }
@@ -245,6 +247,7 @@ namespace Pulumi.AliCloud.Amqp
         /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
         /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
         /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - &gt; **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }

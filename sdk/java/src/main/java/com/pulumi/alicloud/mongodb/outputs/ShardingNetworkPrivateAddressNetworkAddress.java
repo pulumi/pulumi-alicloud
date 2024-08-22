@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShardingNetworkPrivateAddressNetworkAddress {
     /**
-     * @return The remaining duration of the classic network address. Unit: `seconds`.
+     * @return The remaining duration of the classic network endpoint.
      * 
      */
     private @Nullable String expiredTime;
@@ -22,17 +22,17 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
      */
     private @Nullable String ipAddress;
     /**
-     * @return The endpoint of the instance.
+     * @return The connection string of the instance.
      * 
      */
     private @Nullable String networkAddress;
     /**
-     * @return The network type.
+     * @return The network type of the instance.
      * 
      */
     private @Nullable String networkType;
     /**
-     * @return The ID of the Shard node or the ConfigServer node.
+     * @return The ID of the Shard node or ConfigServer node.
      * 
      */
     private @Nullable String nodeId;
@@ -42,7 +42,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
      */
     private @Nullable String nodeType;
     /**
-     * @return The port number.
+     * @return The port that is used to connect to the instance.
      * 
      */
     private @Nullable String port;
@@ -57,14 +57,14 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
      */
     private @Nullable String vpcId;
     /**
-     * @return The vSwitch ID of the VPC.
+     * @return The ID of the vSwitch in the VPC.
      * 
      */
     private @Nullable String vswitchId;
 
     private ShardingNetworkPrivateAddressNetworkAddress() {}
     /**
-     * @return The remaining duration of the classic network address. Unit: `seconds`.
+     * @return The remaining duration of the classic network endpoint.
      * 
      */
     public Optional<String> expiredTime() {
@@ -78,21 +78,21 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
         return Optional.ofNullable(this.ipAddress);
     }
     /**
-     * @return The endpoint of the instance.
+     * @return The connection string of the instance.
      * 
      */
     public Optional<String> networkAddress() {
         return Optional.ofNullable(this.networkAddress);
     }
     /**
-     * @return The network type.
+     * @return The network type of the instance.
      * 
      */
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
     /**
-     * @return The ID of the Shard node or the ConfigServer node.
+     * @return The ID of the Shard node or ConfigServer node.
      * 
      */
     public Optional<String> nodeId() {
@@ -106,7 +106,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
         return Optional.ofNullable(this.nodeType);
     }
     /**
-     * @return The port number.
+     * @return The port that is used to connect to the instance.
      * 
      */
     public Optional<String> port() {
@@ -127,7 +127,7 @@ public final class ShardingNetworkPrivateAddressNetworkAddress {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return The vSwitch ID of the VPC.
+     * @return The ID of the vSwitch in the VPC.
      * 
      */
     public Optional<String> vswitchId() {

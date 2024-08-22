@@ -23,14 +23,14 @@ class ShardingNetworkPrivateAddressArgs:
                  account_password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ShardingNetworkPrivateAddress resource.
-        :param pulumi.Input[str] db_instance_id: The db instance id.
-        :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
+        :param pulumi.Input[str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[str] node_id: The ID of the Shard node or ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
-        :param pulumi.Input[str] account_name: The name of the account. 
+        :param pulumi.Input[str] account_name: The username of the account.
                - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-               - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+               - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
                - The permissions of this account are fixed to read-only.
-        :param pulumi.Input[str] account_password: Account password. 
+        :param pulumi.Input[str] account_password: The password for the account.
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         """
@@ -46,7 +46,7 @@ class ShardingNetworkPrivateAddressArgs:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[str]:
         """
-        The db instance id.
+        The ID of the sharded cluster instance.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -58,7 +58,7 @@ class ShardingNetworkPrivateAddressArgs:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Shard node or the ConfigServer node.
+        The ID of the Shard node or ConfigServer node.
         """
         return pulumi.get(self, "node_id")
 
@@ -82,9 +82,9 @@ class ShardingNetworkPrivateAddressArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the account. 
+        The username of the account.
         - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         - The permissions of this account are fixed to read-only.
         """
         return pulumi.get(self, "account_name")
@@ -97,7 +97,7 @@ class ShardingNetworkPrivateAddressArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Account password. 
+        The password for the account.
         - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
@@ -119,16 +119,16 @@ class _ShardingNetworkPrivateAddressState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ShardingNetworkPrivateAddress resources.
-        :param pulumi.Input[str] account_name: The name of the account. 
+        :param pulumi.Input[str] account_name: The username of the account.
                - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-               - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+               - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
                - The permissions of this account are fixed to read-only.
-        :param pulumi.Input[str] account_password: Account password. 
+        :param pulumi.Input[str] account_password: The password for the account.
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[str] db_instance_id: The db instance id.
-        :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]] network_addresses: The endpoint of the instance.
-        :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
+        :param pulumi.Input[str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]] network_addresses: The connection string of the instance.
+        :param pulumi.Input[str] node_id: The ID of the Shard node or ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if account_name is not None:
@@ -148,9 +148,9 @@ class _ShardingNetworkPrivateAddressState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the account. 
+        The username of the account.
         - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         - The permissions of this account are fixed to read-only.
         """
         return pulumi.get(self, "account_name")
@@ -163,7 +163,7 @@ class _ShardingNetworkPrivateAddressState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Account password. 
+        The password for the account.
         - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
@@ -177,7 +177,7 @@ class _ShardingNetworkPrivateAddressState:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The db instance id.
+        The ID of the sharded cluster instance.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -189,7 +189,7 @@ class _ShardingNetworkPrivateAddressState:
     @pulumi.getter(name="networkAddresses")
     def network_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]]]:
         """
-        The endpoint of the instance.
+        The connection string of the instance.
         """
         return pulumi.get(self, "network_addresses")
 
@@ -201,7 +201,7 @@ class _ShardingNetworkPrivateAddressState:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Shard node or the ConfigServer node.
+        The ID of the Shard node or ConfigServer node.
         """
         return pulumi.get(self, "node_id")
 
@@ -240,6 +240,59 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.mongodb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
+            zone_id=default.zones[0].id,
+            vswitch_id=default_switch.id,
+            engine_version="4.2",
+            name=name,
+            shard_lists=[
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
+            ],
+            mongo_lists=[
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+            ])
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("default",
+            db_instance_id=default_sharding_instance.id,
+            node_id=default_sharding_instance.shard_lists[0].node_id,
+            zone_id=default_sharding_instance.zone_id,
+            account_name="example",
+            account_password="Example_123")
+        ```
+
         ## Import
 
         MongoDB Sharding Network Private Address can be imported using the id, e.g.
@@ -250,15 +303,15 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the account. 
+        :param pulumi.Input[str] account_name: The username of the account.
                - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-               - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+               - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
                - The permissions of this account are fixed to read-only.
-        :param pulumi.Input[str] account_password: Account password. 
+        :param pulumi.Input[str] account_password: The password for the account.
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[str] db_instance_id: The db instance id.
-        :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
+        :param pulumi.Input[str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[str] node_id: The ID of the Shard node or ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
@@ -273,6 +326,59 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 
         > **NOTE:** Available since v1.157.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.mongodb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
+            zone_id=default.zones[0].id,
+            vswitch_id=default_switch.id,
+            engine_version="4.2",
+            name=name,
+            shard_lists=[
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
+            ],
+            mongo_lists=[
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+            ])
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("default",
+            db_instance_id=default_sharding_instance.id,
+            node_id=default_sharding_instance.shard_lists[0].node_id,
+            zone_id=default_sharding_instance.zone_id,
+            account_name="example",
+            account_password="Example_123")
+        ```
 
         ## Import
 
@@ -348,16 +454,16 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the account. 
+        :param pulumi.Input[str] account_name: The username of the account.
                - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-               - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+               - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
                - The permissions of this account are fixed to read-only.
-        :param pulumi.Input[str] account_password: Account password. 
+        :param pulumi.Input[str] account_password: The password for the account.
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[str] db_instance_id: The db instance id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPrivateAddressNetworkAddressArgs', 'ShardingNetworkPrivateAddressNetworkAddressArgsDict']]]] network_addresses: The endpoint of the instance.
-        :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
+        :param pulumi.Input[str] db_instance_id: The ID of the sharded cluster instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPrivateAddressNetworkAddressArgs', 'ShardingNetworkPrivateAddressNetworkAddressArgsDict']]]] network_addresses: The connection string of the instance.
+        :param pulumi.Input[str] node_id: The ID of the Shard node or ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -376,9 +482,9 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the account. 
+        The username of the account.
         - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
+        - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
         - The permissions of this account are fixed to read-only.
         """
         return pulumi.get(self, "account_name")
@@ -387,7 +493,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Account password. 
+        The password for the account.
         - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
@@ -397,7 +503,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[str]:
         """
-        The db instance id.
+        The ID of the sharded cluster instance.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -405,7 +511,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     @pulumi.getter(name="networkAddresses")
     def network_addresses(self) -> pulumi.Output[Sequence['outputs.ShardingNetworkPrivateAddressNetworkAddress']]:
         """
-        The endpoint of the instance.
+        The connection string of the instance.
         """
         return pulumi.get(self, "network_addresses")
 
@@ -413,7 +519,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Shard node or the ConfigServer node.
+        The ID of the Shard node or ConfigServer node.
         """
         return pulumi.get(self, "node_id")
 

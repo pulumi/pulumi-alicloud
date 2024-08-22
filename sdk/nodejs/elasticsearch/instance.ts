@@ -114,7 +114,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly kibanaPort!: pulumi.Output<number>;
     /**
-     * Set the Kibana's IP whitelist in private network.
+     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     */
+    public readonly kibanaPrivateSecurityGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      */
     public readonly kibanaPrivateWhitelists!: pulumi.Output<string[]>;
     /**
@@ -194,13 +198,33 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      */
     public readonly version!: pulumi.Output<string>;
     /**
      * The ID of VSwitch.
      */
     public readonly vswitchId!: pulumi.Output<string>;
+    /**
+     * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     */
+    public readonly warmNodeAmount!: pulumi.Output<number | undefined>;
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    public readonly warmNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The single warm node storage space, should between 500 and 20480
+     */
+    public readonly warmNodeDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * The warm node disk type. Supported values:  cloud_efficiency.
+     */
+    public readonly warmNodeDiskType!: pulumi.Output<string | undefined>;
+    /**
+     * The warm node specifications of the Elasticsearch instance.
+     */
+    public readonly warmNodeSpec!: pulumi.Output<string | undefined>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */
@@ -237,6 +261,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
             resourceInputs["kibanaNodeSpec"] = state ? state.kibanaNodeSpec : undefined;
             resourceInputs["kibanaPort"] = state ? state.kibanaPort : undefined;
+            resourceInputs["kibanaPrivateSecurityGroupId"] = state ? state.kibanaPrivateSecurityGroupId : undefined;
             resourceInputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
             resourceInputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -259,6 +284,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["warmNodeAmount"] = state ? state.warmNodeAmount : undefined;
+            resourceInputs["warmNodeDiskEncrypted"] = state ? state.warmNodeDiskEncrypted : undefined;
+            resourceInputs["warmNodeDiskSize"] = state ? state.warmNodeDiskSize : undefined;
+            resourceInputs["warmNodeDiskType"] = state ? state.warmNodeDiskType : undefined;
+            resourceInputs["warmNodeSpec"] = state ? state.warmNodeSpec : undefined;
             resourceInputs["zoneCount"] = state ? state.zoneCount : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -295,6 +325,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["kibanaNodeSpec"] = args ? args.kibanaNodeSpec : undefined;
+            resourceInputs["kibanaPrivateSecurityGroupId"] = args ? args.kibanaPrivateSecurityGroupId : undefined;
             resourceInputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
             resourceInputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -313,6 +344,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["warmNodeAmount"] = args ? args.warmNodeAmount : undefined;
+            resourceInputs["warmNodeDiskEncrypted"] = args ? args.warmNodeDiskEncrypted : undefined;
+            resourceInputs["warmNodeDiskSize"] = args ? args.warmNodeDiskSize : undefined;
+            resourceInputs["warmNodeDiskType"] = args ? args.warmNodeDiskType : undefined;
+            resourceInputs["warmNodeSpec"] = args ? args.warmNodeSpec : undefined;
             resourceInputs["zoneCount"] = args ? args.zoneCount : undefined;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["kibanaDomain"] = undefined /*out*/;
@@ -406,7 +442,11 @@ export interface InstanceState {
      */
     kibanaPort?: pulumi.Input<number>;
     /**
-     * Set the Kibana's IP whitelist in private network.
+     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     */
+    kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
+    /**
+     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -486,13 +526,33 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      */
     version?: pulumi.Input<string>;
     /**
      * The ID of VSwitch.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     */
+    warmNodeAmount?: pulumi.Input<number>;
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    warmNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The single warm node storage space, should between 500 and 20480
+     */
+    warmNodeDiskSize?: pulumi.Input<number>;
+    /**
+     * The warm node disk type. Supported values:  cloud_efficiency.
+     */
+    warmNodeDiskType?: pulumi.Input<string>;
+    /**
+     * The warm node specifications of the Elasticsearch instance.
+     */
+    warmNodeSpec?: pulumi.Input<string>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */
@@ -564,7 +624,11 @@ export interface InstanceArgs {
      */
     kibanaNodeSpec?: pulumi.Input<string>;
     /**
-     * Set the Kibana's IP whitelist in private network.
+     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     */
+    kibanaPrivateSecurityGroupId?: pulumi.Input<string>;
+    /**
+     * Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
      */
     kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -628,13 +692,33 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      */
     version: pulumi.Input<string>;
     /**
      * The ID of VSwitch.
      */
     vswitchId: pulumi.Input<string>;
+    /**
+     * The Elasticsearch cluster's warm node quantity, between 3 and 50.
+     */
+    warmNodeAmount?: pulumi.Input<number>;
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    warmNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The single warm node storage space, should between 500 and 20480
+     */
+    warmNodeDiskSize?: pulumi.Input<number>;
+    /**
+     * The warm node disk type. Supported values:  cloud_efficiency.
+     */
+    warmNodeDiskType?: pulumi.Input<string>;
+    /**
+     * The warm node specifications of the Elasticsearch instance.
+     */
+    warmNodeSpec?: pulumi.Input<string>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */

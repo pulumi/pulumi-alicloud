@@ -20,6 +20,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,9 +32,12 @@ const _module = {
         switch (type) {
             case "alicloud:dataworks/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "alicloud:dataworks/project:Project":
+                return new Project(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "dataworks/folder", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dataworks/project", _module)

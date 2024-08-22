@@ -294,14 +294,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
     /**
-     * @return The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+     * @return The instance list. Add existing nodes under the same cluster VPC to the node pool.
      * 
      */
     public Optional<Output<List<String>>> instances() {
@@ -309,14 +309,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -324,14 +324,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -699,14 +699,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -970,14 +970,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -1098,14 +1098,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * @return Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -1679,7 +1679,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
          * 
          * @return builder
          * 
@@ -1690,7 +1690,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
          * 
          * @return builder
          * 
@@ -1700,7 +1700,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
          * 
          * @return builder
          * 
@@ -1710,7 +1710,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
@@ -1721,7 +1721,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
@@ -1731,7 +1731,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
          * 
          * @return builder
          * 
@@ -1742,7 +1742,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
          * 
          * @return builder
          * 
@@ -2264,7 +2264,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -2275,7 +2275,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -2667,7 +2667,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
          * 
          * @return builder
          * 
@@ -2678,7 +2678,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
          * 
          * @return builder
          * 
@@ -2843,7 +2843,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+         * @param tags Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
          * 
          * @return builder
          * 
@@ -2854,7 +2854,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+         * @param tags Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
          * 
          * @return builder
          * 

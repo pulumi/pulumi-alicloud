@@ -20,6 +20,7 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
      * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
      * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
      * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - &gt; **NOTE:** If the exchange type is not &#39;HEADERS&#39;, the `argument` should not been set, otherwise, there are always &#34;forces replacement&#34; changes.
      * 
      */
     @Import(name="argument")
@@ -29,6 +30,7 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
      * @return The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
      * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
      * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - &gt; **NOTE:** If the exchange type is not &#39;HEADERS&#39;, the `argument` should not been set, otherwise, there are always &#34;forces replacement&#34; changes.
      * 
      */
     public Optional<Output<String>> argument() {
@@ -169,6 +171,7 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
          * @param argument The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
          * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
          * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+         * - &gt; **NOTE:** If the exchange type is not &#39;HEADERS&#39;, the `argument` should not been set, otherwise, there are always &#34;forces replacement&#34; changes.
          * 
          * @return builder
          * 
@@ -182,6 +185,7 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
          * @param argument The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
          * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
          * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+         * - &gt; **NOTE:** If the exchange type is not &#39;HEADERS&#39;, the `argument` should not been set, otherwise, there are always &#34;forces replacement&#34; changes.
          * 
          * @return builder
          * 

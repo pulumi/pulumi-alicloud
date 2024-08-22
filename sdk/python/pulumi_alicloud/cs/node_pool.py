@@ -114,9 +114,9 @@ class NodePoolArgs:
                - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
-        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -141,7 +141,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -161,7 +161,7 @@ class NodePoolArgs:
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -173,7 +173,7 @@ class NodePoolArgs:
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
@@ -552,7 +552,7 @@ class NodePoolArgs:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
         """
         return pulumi.get(self, "instances")
 
@@ -564,7 +564,7 @@ class NodePoolArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -576,7 +576,7 @@ class NodePoolArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -846,7 +846,7 @@ class NodePoolArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1043,7 +1043,7 @@ class NodePoolArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1143,7 +1143,7 @@ class NodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         """
         return pulumi.get(self, "tags")
 
@@ -1314,9 +1314,9 @@ class _NodePoolState:
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
-        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -1342,7 +1342,7 @@ class _NodePoolState:
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -1363,7 +1363,7 @@ class _NodePoolState:
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -1375,7 +1375,7 @@ class _NodePoolState:
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
@@ -1750,7 +1750,7 @@ class _NodePoolState:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
         """
         return pulumi.get(self, "instances")
 
@@ -1762,7 +1762,7 @@ class _NodePoolState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1774,7 +1774,7 @@ class _NodePoolState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -2056,7 +2056,7 @@ class _NodePoolState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -2265,7 +2265,7 @@ class _NodePoolState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -2365,7 +2365,7 @@ class _NodePoolState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         """
         return pulumi.get(self, "tags")
 
@@ -2562,9 +2562,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
-        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -2589,7 +2589,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -2609,7 +2609,7 @@ class NodePool(pulumi.CustomResource):
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -2621,7 +2621,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
@@ -2938,9 +2938,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
-        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
-        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -2966,7 +2966,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -2987,7 +2987,7 @@ class NodePool(pulumi.CustomResource):
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -2999,7 +2999,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
@@ -3227,7 +3227,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        The instance list. Add existing nodes under the same cluster VPC to the node pool.
         """
         return pulumi.get(self, "instances")
 
@@ -3235,7 +3235,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -3243,7 +3243,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
+        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -3433,7 +3433,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -3574,7 +3574,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[str]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -3642,7 +3642,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         """
         return pulumi.get(self, "tags")
 

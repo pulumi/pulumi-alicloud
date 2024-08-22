@@ -22,7 +22,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -76,7 +77,7 @@ type Instance struct {
 	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
 	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
-	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
@@ -147,7 +148,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -201,7 +203,7 @@ type instanceState struct {
 	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
 	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
-	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
@@ -231,7 +233,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -285,7 +288,7 @@ type InstanceState struct {
 	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
 	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
-	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
@@ -319,7 +322,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config *string `pulumi:"config"`
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -361,7 +365,7 @@ type instanceArgs struct {
 	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
 	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
-	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
@@ -384,7 +388,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 	Config pulumi.StringPtrInput
 	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
 	// - 4: eip/vpc instance
@@ -426,7 +431,7 @@ type InstanceArgs struct {
 	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
 	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
-	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
@@ -534,7 +539,8 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
 func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
@@ -648,7 +654,7 @@ func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
 
-// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
 }

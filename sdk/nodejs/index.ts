@@ -186,6 +186,7 @@ import * as scdn from "./scdn";
 import * as schedulerx from "./schedulerx";
 import * as sddp from "./sddp";
 import * as securitycenter from "./securitycenter";
+import * as selectdb from "./selectdb";
 import * as servicecatalog from "./servicecatalog";
 import * as servicemesh from "./servicemesh";
 import * as simpleapplicationserver from "./simpleapplicationserver";
@@ -319,6 +320,7 @@ export {
     schedulerx,
     sddp,
     securitycenter,
+    selectdb,
     servicecatalog,
     servicemesh,
     simpleapplicationserver,

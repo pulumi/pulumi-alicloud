@@ -505,6 +505,10 @@ export interface ProviderEndpoint {
      */
     sddp?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
+     */
+    selectdb?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
      */
     serverless?: pulumi.Input<string>;
@@ -4307,6 +4311,10 @@ export namespace cs {
 
     export interface NodePoolDataDisk {
         /**
+         * Whether to automatically mount the data disk. Valid values: true and false.
+         */
+        autoFormat?: pulumi.Input<string>;
+        /**
          * The ID of the automatic snapshot policy that you want to apply to the system disk.
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
@@ -4327,11 +4335,19 @@ export namespace cs {
          */
         encrypted?: pulumi.Input<string>;
         /**
+         * The Mount path. Works when autoFormat is true.
+         */
+        fileSystem?: pulumi.Input<string>;
+        /**
          * The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
          */
         kmsKeyId?: pulumi.Input<string>;
         /**
-         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+         */
+        mountTarget?: pulumi.Input<string>;
+        /**
+         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
          */
         name?: pulumi.Input<string>;
         /**
@@ -10836,7 +10852,7 @@ export namespace mongodb {
 
     export interface ShardingNetworkPrivateAddressNetworkAddress {
         /**
-         * The remaining duration of the classic network address. Unit: `seconds`.
+         * The remaining duration of the classic network endpoint.
          */
         expiredTime?: pulumi.Input<string>;
         /**
@@ -10844,15 +10860,15 @@ export namespace mongodb {
          */
         ipAddress?: pulumi.Input<string>;
         /**
-         * The endpoint of the instance.
+         * The connection string of the instance.
          */
         networkAddress?: pulumi.Input<string>;
         /**
-         * The network type.
+         * The network type of the instance.
          */
         networkType?: pulumi.Input<string>;
         /**
-         * The ID of the Shard node or the ConfigServer node.
+         * The ID of the Shard node or ConfigServer node.
          */
         nodeId?: pulumi.Input<string>;
         /**
@@ -10860,7 +10876,7 @@ export namespace mongodb {
          */
         nodeType?: pulumi.Input<string>;
         /**
-         * The port number.
+         * The port that is used to connect to the instance.
          */
         port?: pulumi.Input<string>;
         /**
@@ -10872,7 +10888,7 @@ export namespace mongodb {
          */
         vpcId?: pulumi.Input<string>;
         /**
-         * The vSwitch ID of the VPC.
+         * The ID of the vSwitch in the VPC.
          */
         vswitchId?: pulumi.Input<string>;
     }
@@ -13380,6 +13396,123 @@ export namespace sddp {
 }
 
 export namespace securitycenter {
+}
+
+export namespace selectdb {
+    export interface DbClusterDesiredParam {
+        /**
+         * Parameter name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The new value of Parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DbClusterParamChangeLog {
+        /**
+         * The id of parameter change.
+         */
+        configId?: pulumi.Input<number>;
+        /**
+         * When the parameter change is created.
+         */
+        gmtCreated?: pulumi.Input<string>;
+        /**
+         * When the parameter change is modified.
+         */
+        gmtModified?: pulumi.Input<string>;
+        /**
+         * Whether the parameter changing is applied.
+         */
+        isApplied?: pulumi.Input<boolean>;
+        /**
+         * Changed parameter name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The new value of parameter.
+         */
+        newValue?: pulumi.Input<string>;
+        /**
+         * The old value of parameter.
+         */
+        oldValue?: pulumi.Input<string>;
+    }
+
+    export interface DbInstanceDesiredSecurityIpList {
+        /**
+         * Security group name.
+         */
+        groupName?: pulumi.Input<string>;
+        /**
+         * The IP list of Security group. Each single IP value should be Separated by comma.
+         */
+        securityIpList?: pulumi.Input<string>;
+    }
+
+    export interface DbInstanceInstanceNetInfo {
+        /**
+         * The connection string of the instance.
+         */
+        connectionString?: pulumi.Input<string>;
+        /**
+         * The IP address of the instance.
+         */
+        dbIp?: pulumi.Input<string>;
+        /**
+         * The network type of the instance.
+         */
+        netType?: pulumi.Input<string>;
+        /**
+         * A list for port provides SelectDB service.
+         */
+        portLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceInstanceNetInfoPortList>[]>;
+        /**
+         * The VPC ID.
+         */
+        vpcInstanceId?: pulumi.Input<string>;
+        /**
+         * The ID of vswitch for DBInstance.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface DbInstanceInstanceNetInfoPortList {
+        /**
+         * The port that is used to connect.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The protocol of the port.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
+    export interface DbInstanceSecurityIpList {
+        /**
+         * Security group name.
+         */
+        groupName?: pulumi.Input<string>;
+        /**
+         * The tag of Security group.
+         */
+        groupTag?: pulumi.Input<string>;
+        /**
+         * The network type of Security group.
+         */
+        listNetType?: pulumi.Input<string>;
+        /**
+         * The IP list of Security group. Each single IP value should be Separated by comma.
+         */
+        securityIpList?: pulumi.Input<string>;
+        /**
+         * The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
+         */
+        securityIpType?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace servicecatalog {

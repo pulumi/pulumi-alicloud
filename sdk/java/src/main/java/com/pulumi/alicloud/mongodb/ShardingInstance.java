@@ -351,6 +351,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.protocolType;
     }
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    @Export(name="provisionedIops", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> provisionedIops;
+
+    /**
+     * @return The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    public Output<Optional<Integer>> provisionedIops() {
+        return Codegen.optional(this.provisionedIops);
+    }
+    /**
      * The ID of the Resource Group.
      * 
      */
@@ -435,14 +449,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.storageEngine;
     }
     /**
-     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     public Output<String> storageType() {

@@ -1718,6 +1718,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+     * 
+     */
+    @Import(name="selectdb")
+    private @Nullable Output<String> selectdb;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+     * 
+     */
+    public Optional<Output<String>> selectdb() {
+        return Optional.ofNullable(this.selectdb);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom serverless endpoints.
      * 
      */
@@ -2059,6 +2074,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.sas = $.sas;
         this.scdn = $.scdn;
         this.sddp = $.sddp;
+        this.selectdb = $.selectdb;
         this.serverless = $.serverless;
         this.servicemesh = $.servicemesh;
         this.sgw = $.sgw;
@@ -4474,6 +4490,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder sddp(String sddp) {
             return sddp(Output.of(sddp));
+        }
+
+        /**
+         * @param selectdb Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectdb(@Nullable Output<String> selectdb) {
+            $.selectdb = selectdb;
+            return this;
+        }
+
+        /**
+         * @param selectdb Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom selectdb endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectdb(String selectdb) {
+            return selectdb(Output.of(selectdb));
         }
 
         /**

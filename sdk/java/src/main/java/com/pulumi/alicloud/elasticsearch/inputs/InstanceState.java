@@ -290,14 +290,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the Kibana&#39;s IP whitelist in private network.
+     * the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * 
+     */
+    @Import(name="kibanaPrivateSecurityGroupId")
+    private @Nullable Output<String> kibanaPrivateSecurityGroupId;
+
+    /**
+     * @return the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * 
+     */
+    public Optional<Output<String>> kibanaPrivateSecurityGroupId() {
+        return Optional.ofNullable(this.kibanaPrivateSecurityGroupId);
+    }
+
+    /**
+     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
      * 
      */
     @Import(name="kibanaPrivateWhitelists")
     private @Nullable Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network.
+     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
      * 
      */
     public Optional<Output<List<String>>> kibanaPrivateWhitelists() {
@@ -590,14 +605,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -617,6 +632,81 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
+     * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+     * 
+     */
+    @Import(name="warmNodeAmount")
+    private @Nullable Output<Integer> warmNodeAmount;
+
+    /**
+     * @return The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+     * 
+     */
+    public Optional<Output<Integer>> warmNodeAmount() {
+        return Optional.ofNullable(this.warmNodeAmount);
+    }
+
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     */
+    @Import(name="warmNodeDiskEncrypted")
+    private @Nullable Output<Boolean> warmNodeDiskEncrypted;
+
+    /**
+     * @return If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> warmNodeDiskEncrypted() {
+        return Optional.ofNullable(this.warmNodeDiskEncrypted);
+    }
+
+    /**
+     * The single warm node storage space, should between 500 and 20480
+     * 
+     */
+    @Import(name="warmNodeDiskSize")
+    private @Nullable Output<Integer> warmNodeDiskSize;
+
+    /**
+     * @return The single warm node storage space, should between 500 and 20480
+     * 
+     */
+    public Optional<Output<Integer>> warmNodeDiskSize() {
+        return Optional.ofNullable(this.warmNodeDiskSize);
+    }
+
+    /**
+     * The warm node disk type. Supported values:  cloud_efficiency.
+     * 
+     */
+    @Import(name="warmNodeDiskType")
+    private @Nullable Output<String> warmNodeDiskType;
+
+    /**
+     * @return The warm node disk type. Supported values:  cloud_efficiency.
+     * 
+     */
+    public Optional<Output<String>> warmNodeDiskType() {
+        return Optional.ofNullable(this.warmNodeDiskType);
+    }
+
+    /**
+     * The warm node specifications of the Elasticsearch instance.
+     * 
+     */
+    @Import(name="warmNodeSpec")
+    private @Nullable Output<String> warmNodeSpec;
+
+    /**
+     * @return The warm node specifications of the Elasticsearch instance.
+     * 
+     */
+    public Optional<Output<String>> warmNodeSpec() {
+        return Optional.ofNullable(this.warmNodeSpec);
     }
 
     /**
@@ -655,6 +745,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.kibanaDomain = $.kibanaDomain;
         this.kibanaNodeSpec = $.kibanaNodeSpec;
         this.kibanaPort = $.kibanaPort;
+        this.kibanaPrivateSecurityGroupId = $.kibanaPrivateSecurityGroupId;
         this.kibanaPrivateWhitelists = $.kibanaPrivateWhitelists;
         this.kibanaWhitelists = $.kibanaWhitelists;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
@@ -677,6 +768,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.version = $.version;
         this.vswitchId = $.vswitchId;
+        this.warmNodeAmount = $.warmNodeAmount;
+        this.warmNodeDiskEncrypted = $.warmNodeDiskEncrypted;
+        this.warmNodeDiskSize = $.warmNodeDiskSize;
+        this.warmNodeDiskType = $.warmNodeDiskType;
+        this.warmNodeSpec = $.warmNodeSpec;
         this.zoneCount = $.zoneCount;
     }
 
@@ -1077,7 +1173,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network.
+         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaPrivateSecurityGroupId(@Nullable Output<String> kibanaPrivateSecurityGroupId) {
+            $.kibanaPrivateSecurityGroupId = kibanaPrivateSecurityGroupId;
+            return this;
+        }
+
+        /**
+         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaPrivateSecurityGroupId(String kibanaPrivateSecurityGroupId) {
+            return kibanaPrivateSecurityGroupId(Output.of(kibanaPrivateSecurityGroupId));
+        }
+
+        /**
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
          * 
          * @return builder
          * 
@@ -1088,7 +1205,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network.
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
          * 
          * @return builder
          * 
@@ -1098,7 +1215,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network.
+         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
          * 
          * @return builder
          * 
@@ -1537,7 +1654,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
          * 
          * @return builder
          * 
@@ -1548,7 +1665,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
          * 
          * @return builder
          * 
@@ -1576,6 +1693,111 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param warmNodeAmount The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeAmount(@Nullable Output<Integer> warmNodeAmount) {
+            $.warmNodeAmount = warmNodeAmount;
+            return this;
+        }
+
+        /**
+         * @param warmNodeAmount The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeAmount(Integer warmNodeAmount) {
+            return warmNodeAmount(Output.of(warmNodeAmount));
+        }
+
+        /**
+         * @param warmNodeDiskEncrypted If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskEncrypted(@Nullable Output<Boolean> warmNodeDiskEncrypted) {
+            $.warmNodeDiskEncrypted = warmNodeDiskEncrypted;
+            return this;
+        }
+
+        /**
+         * @param warmNodeDiskEncrypted If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskEncrypted(Boolean warmNodeDiskEncrypted) {
+            return warmNodeDiskEncrypted(Output.of(warmNodeDiskEncrypted));
+        }
+
+        /**
+         * @param warmNodeDiskSize The single warm node storage space, should between 500 and 20480
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskSize(@Nullable Output<Integer> warmNodeDiskSize) {
+            $.warmNodeDiskSize = warmNodeDiskSize;
+            return this;
+        }
+
+        /**
+         * @param warmNodeDiskSize The single warm node storage space, should between 500 and 20480
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskSize(Integer warmNodeDiskSize) {
+            return warmNodeDiskSize(Output.of(warmNodeDiskSize));
+        }
+
+        /**
+         * @param warmNodeDiskType The warm node disk type. Supported values:  cloud_efficiency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskType(@Nullable Output<String> warmNodeDiskType) {
+            $.warmNodeDiskType = warmNodeDiskType;
+            return this;
+        }
+
+        /**
+         * @param warmNodeDiskType The warm node disk type. Supported values:  cloud_efficiency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeDiskType(String warmNodeDiskType) {
+            return warmNodeDiskType(Output.of(warmNodeDiskType));
+        }
+
+        /**
+         * @param warmNodeSpec The warm node specifications of the Elasticsearch instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeSpec(@Nullable Output<String> warmNodeSpec) {
+            $.warmNodeSpec = warmNodeSpec;
+            return this;
+        }
+
+        /**
+         * @param warmNodeSpec The warm node specifications of the Elasticsearch instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeSpec(String warmNodeSpec) {
+            return warmNodeSpec(Output.of(warmNodeSpec));
         }
 
         /**

@@ -206,6 +206,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
     public readonly readonlyReplicas!: pulumi.Output<number>;
@@ -267,7 +271,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
@@ -331,6 +335,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
             resourceInputs["readonlyReplicas"] = state ? state.readonlyReplicas : undefined;
             resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
             resourceInputs["replicaSets"] = state ? state.replicaSets : undefined;
@@ -387,6 +392,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             resourceInputs["readonlyReplicas"] = args ? args.readonlyReplicas : undefined;
             resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -526,6 +532,10 @@ export interface InstanceState {
      */
     period?: pulumi.Input<number>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    provisionedIops?: pulumi.Input<number>;
+    /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
     readonlyReplicas?: pulumi.Input<number>;
@@ -587,7 +597,7 @@ export interface InstanceState {
      */
     storageEngine?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     storageType?: pulumi.Input<string>;
     /**
@@ -725,6 +735,10 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    provisionedIops?: pulumi.Input<number>;
+    /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
     readonlyReplicas?: pulumi.Input<number>;
@@ -770,7 +784,7 @@ export interface InstanceArgs {
      */
     storageEngine?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     storageType?: pulumi.Input<string>;
     /**

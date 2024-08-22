@@ -3537,6 +3537,8 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 }
 
 type NodePoolDataDisk struct {
+	// Whether to automatically mount the data disk. Valid values: true and false.
+	AutoFormat *string `pulumi:"autoFormat"`
 	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
@@ -3547,9 +3549,13 @@ type NodePoolDataDisk struct {
 	Device *string `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted *string `pulumi:"encrypted"`
+	// The Mount path. Works when autoFormat is true.
+	FileSystem *string `pulumi:"fileSystem"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	MountTarget *string `pulumi:"mountTarget"`
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
 	Name *string `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
@@ -3573,6 +3579,8 @@ type NodePoolDataDiskInput interface {
 }
 
 type NodePoolDataDiskArgs struct {
+	// Whether to automatically mount the data disk. Valid values: true and false.
+	AutoFormat pulumi.StringPtrInput `pulumi:"autoFormat"`
 	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
@@ -3583,9 +3591,13 @@ type NodePoolDataDiskArgs struct {
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
+	// The Mount path. Works when autoFormat is true.
+	FileSystem pulumi.StringPtrInput `pulumi:"fileSystem"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	MountTarget pulumi.StringPtrInput `pulumi:"mountTarget"`
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
@@ -3648,6 +3660,11 @@ func (o NodePoolDataDiskOutput) ToNodePoolDataDiskOutputWithContext(ctx context.
 	return o
 }
 
+// Whether to automatically mount the data disk. Valid values: true and false.
+func (o NodePoolDataDiskOutput) AutoFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoFormat }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the automatic snapshot policy that you want to apply to the system disk.
 func (o NodePoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
@@ -3673,12 +3690,22 @@ func (o NodePoolDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
 
+// The Mount path. Works when autoFormat is true.
+func (o NodePoolDataDiskOutput) FileSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.FileSystem }).(pulumi.StringPtrOutput)
+}
+
 // The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 func (o NodePoolDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
+// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+func (o NodePoolDataDiskOutput) MountTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.MountTarget }).(pulumi.StringPtrOutput)
+}
+
+// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
 func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

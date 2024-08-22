@@ -130,7 +130,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> KibanaPort { get; private set; } = null!;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network.
+        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// </summary>
+        [Output("kibanaPrivateSecurityGroupId")]
+        public Output<string?> KibanaPrivateSecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         /// </summary>
         [Output("kibanaPrivateWhitelists")]
         public Output<ImmutableArray<string>> KibanaPrivateWhitelists { get; private set; } = null!;
@@ -250,7 +256,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -260,6 +266,36 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        /// </summary>
+        [Output("warmNodeAmount")]
+        public Output<int?> WarmNodeAmount { get; private set; } = null!;
+
+        /// <summary>
+        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Output("warmNodeDiskEncrypted")]
+        public Output<bool?> WarmNodeDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The single warm node storage space, should between 500 and 20480
+        /// </summary>
+        [Output("warmNodeDiskSize")]
+        public Output<int?> WarmNodeDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The warm node disk type. Supported values:  cloud_efficiency.
+        /// </summary>
+        [Output("warmNodeDiskType")]
+        public Output<string?> WarmNodeDiskType { get; private set; } = null!;
+
+        /// <summary>
+        /// The warm node specifications of the Elasticsearch instance.
+        /// </summary>
+        [Output("warmNodeSpec")]
+        public Output<string?> WarmNodeSpec { get; private set; } = null!;
 
         /// <summary>
         /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -407,11 +443,17 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("kibanaNodeSpec")]
         public Input<string>? KibanaNodeSpec { get; set; }
 
+        /// <summary>
+        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// </summary>
+        [Input("kibanaPrivateSecurityGroupId")]
+        public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
+
         [Input("kibanaPrivateWhitelists")]
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network.
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -556,7 +598,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -566,6 +608,36 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
+
+        /// <summary>
+        /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        /// </summary>
+        [Input("warmNodeAmount")]
+        public Input<int>? WarmNodeAmount { get; set; }
+
+        /// <summary>
+        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Input("warmNodeDiskEncrypted")]
+        public Input<bool>? WarmNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The single warm node storage space, should between 500 and 20480
+        /// </summary>
+        [Input("warmNodeDiskSize")]
+        public Input<int>? WarmNodeDiskSize { get; set; }
+
+        /// <summary>
+        /// The warm node disk type. Supported values:  cloud_efficiency.
+        /// </summary>
+        [Input("warmNodeDiskType")]
+        public Input<string>? WarmNodeDiskType { get; set; }
+
+        /// <summary>
+        /// The warm node specifications of the Elasticsearch instance.
+        /// </summary>
+        [Input("warmNodeSpec")]
+        public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
         /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -689,11 +761,17 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("kibanaPort")]
         public Input<int>? KibanaPort { get; set; }
 
+        /// <summary>
+        /// the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        /// </summary>
+        [Input("kibanaPrivateSecurityGroupId")]
+        public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
+
         [Input("kibanaPrivateWhitelists")]
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network.
+        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -862,7 +940,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -872,6 +950,36 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        /// </summary>
+        [Input("warmNodeAmount")]
+        public Input<int>? WarmNodeAmount { get; set; }
+
+        /// <summary>
+        /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Input("warmNodeDiskEncrypted")]
+        public Input<bool>? WarmNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The single warm node storage space, should between 500 and 20480
+        /// </summary>
+        [Input("warmNodeDiskSize")]
+        public Input<int>? WarmNodeDiskSize { get; set; }
+
+        /// <summary>
+        /// The warm node disk type. Supported values:  cloud_efficiency.
+        /// </summary>
+        [Input("warmNodeDiskType")]
+        public Input<string>? WarmNodeDiskType { get; set; }
+
+        /// <summary>
+        /// The warm node specifications of the Elasticsearch instance.
+        /// </summary>
+        [Input("warmNodeSpec")]
+        public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
         /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.

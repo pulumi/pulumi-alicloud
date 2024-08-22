@@ -255,6 +255,21 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return The provisioned IOPS. Valid values: `0` to `50000`.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
      * The ID of the Resource Group.
      * 
      */
@@ -330,14 +345,14 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -439,6 +454,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.orderType = $.orderType;
         this.period = $.period;
         this.protocolType = $.protocolType;
+        this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
@@ -822,6 +838,27 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param provisionedIops The provisioned IOPS. Valid values: `0` to `50000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops The provisioned IOPS. Valid values: `0` to `50000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
          * @param resourceGroupId The ID of the Resource Group.
          * 
          * @return builder
@@ -947,7 +984,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
          * 
          * @return builder
          * 
@@ -958,7 +995,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
          * 
          * @return builder
          * 

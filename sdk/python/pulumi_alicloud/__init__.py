@@ -251,6 +251,8 @@ if typing.TYPE_CHECKING:
     sddp = __sddp
     import pulumi_alicloud.securitycenter as __securitycenter
     securitycenter = __securitycenter
+    import pulumi_alicloud.selectdb as __selectdb
+    selectdb = __selectdb
     import pulumi_alicloud.servicecatalog as __servicecatalog
     servicecatalog = __servicecatalog
     import pulumi_alicloud.servicemesh as __servicemesh
@@ -398,6 +400,7 @@ else:
     schedulerx = _utilities.lazy_import('pulumi_alicloud.schedulerx')
     sddp = _utilities.lazy_import('pulumi_alicloud.sddp')
     securitycenter = _utilities.lazy_import('pulumi_alicloud.securitycenter')
+    selectdb = _utilities.lazy_import('pulumi_alicloud.selectdb')
     servicecatalog = _utilities.lazy_import('pulumi_alicloud.servicecatalog')
     servicemesh = _utilities.lazy_import('pulumi_alicloud.servicemesh')
     simpleapplicationserver = _utilities.lazy_import('pulumi_alicloud.simpleapplicationserver')
@@ -2352,6 +2355,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dataworks",
   "classes": {
    "alicloud:dataworks/folder:Folder": "Folder"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/project",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/project:Project": "Project"
   }
  },
  {
@@ -6536,6 +6547,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.securitycenter",
   "classes": {
    "alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "selectdb/dbCluster",
+  "fqn": "pulumi_alicloud.selectdb",
+  "classes": {
+   "alicloud:selectdb/dbCluster:DbCluster": "DbCluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "selectdb/dbInstance",
+  "fqn": "pulumi_alicloud.selectdb",
+  "classes": {
+   "alicloud:selectdb/dbInstance:DbInstance": "DbInstance"
   }
  },
  {

@@ -31,6 +31,7 @@ class InstanceArgs:
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[str]] = None,
+                 kibana_private_security_group_id: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,11 @@ class InstanceArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 warm_node_amount: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 warm_node_disk_size: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_type: Optional[pulumi.Input[str]] = None,
+                 warm_node_spec: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -54,7 +60,7 @@ class InstanceArgs:
         :param pulumi.Input[int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
         :param pulumi.Input[int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -67,7 +73,8 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -83,6 +90,11 @@ class InstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
+        :param pulumi.Input[str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
+        :param pulumi.Input[str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         pulumi.set(__self__, "data_node_amount", data_node_amount)
@@ -113,6 +125,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kibana_node_spec is not None:
             pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
+        if kibana_private_security_group_id is not None:
+            pulumi.set(__self__, "kibana_private_security_group_id", kibana_private_security_group_id)
         if kibana_private_whitelists is not None:
             pulumi.set(__self__, "kibana_private_whitelists", kibana_private_whitelists)
         if kibana_whitelists is not None:
@@ -145,6 +159,16 @@ class InstanceArgs:
             pulumi.set(__self__, "setting_config", setting_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if warm_node_amount is not None:
+            pulumi.set(__self__, "warm_node_amount", warm_node_amount)
+        if warm_node_disk_encrypted is not None:
+            pulumi.set(__self__, "warm_node_disk_encrypted", warm_node_disk_encrypted)
+        if warm_node_disk_size is not None:
+            pulumi.set(__self__, "warm_node_disk_size", warm_node_disk_size)
+        if warm_node_disk_type is not None:
+            pulumi.set(__self__, "warm_node_disk_type", warm_node_disk_type)
+        if warm_node_spec is not None:
+            pulumi.set(__self__, "warm_node_spec", warm_node_spec)
         if zone_count is not None:
             pulumi.set(__self__, "zone_count", zone_count)
 
@@ -200,7 +224,7 @@ class InstanceArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         """
         return pulumi.get(self, "version")
 
@@ -353,10 +377,22 @@ class InstanceArgs:
         pulumi.set(self, "kibana_node_spec", value)
 
     @property
+    @pulumi.getter(name="kibanaPrivateSecurityGroupId")
+    def kibana_private_security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        """
+        return pulumi.get(self, "kibana_private_security_group_id")
+
+    @kibana_private_security_group_id.setter
+    def kibana_private_security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kibana_private_security_group_id", value)
+
+    @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Set the Kibana's IP whitelist in private network.
+        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -545,6 +581,66 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="warmNodeAmount")
+    def warm_node_amount(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        """
+        return pulumi.get(self, "warm_node_amount")
+
+    @warm_node_amount.setter
+    def warm_node_amount(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "warm_node_amount", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskEncrypted")
+    def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        """
+        return pulumi.get(self, "warm_node_disk_encrypted")
+
+    @warm_node_disk_encrypted.setter
+    def warm_node_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "warm_node_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskSize")
+    def warm_node_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The single warm node storage space, should between 500 and 20480
+        """
+        return pulumi.get(self, "warm_node_disk_size")
+
+    @warm_node_disk_size.setter
+    def warm_node_disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "warm_node_disk_size", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskType")
+    def warm_node_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The warm node disk type. Supported values:  cloud_efficiency.
+        """
+        return pulumi.get(self, "warm_node_disk_type")
+
+    @warm_node_disk_type.setter
+    def warm_node_disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warm_node_disk_type", value)
+
+    @property
+    @pulumi.getter(name="warmNodeSpec")
+    def warm_node_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The warm node specifications of the Elasticsearch instance.
+        """
+        return pulumi.get(self, "warm_node_spec")
+
+    @warm_node_spec.setter
+    def warm_node_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warm_node_spec", value)
+
+    @property
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -578,6 +674,7 @@ class _InstanceState:
                  kibana_domain: Optional[pulumi.Input[str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[str]] = None,
                  kibana_port: Optional[pulumi.Input[int]] = None,
+                 kibana_private_security_group_id: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -600,6 +697,11 @@ class _InstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 warm_node_amount: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 warm_node_disk_size: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_type: Optional[pulumi.Input[str]] = None,
+                 warm_node_spec: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -621,7 +723,8 @@ class _InstanceState:
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[int] kibana_port: Kibana console port.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -641,8 +744,13 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
+        :param pulumi.Input[str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
+        :param pulumi.Input[str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         if auto_renew_duration is not None:
@@ -681,6 +789,8 @@ class _InstanceState:
             pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_port is not None:
             pulumi.set(__self__, "kibana_port", kibana_port)
+        if kibana_private_security_group_id is not None:
+            pulumi.set(__self__, "kibana_private_security_group_id", kibana_private_security_group_id)
         if kibana_private_whitelists is not None:
             pulumi.set(__self__, "kibana_private_whitelists", kibana_private_whitelists)
         if kibana_whitelists is not None:
@@ -725,6 +835,16 @@ class _InstanceState:
             pulumi.set(__self__, "version", version)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if warm_node_amount is not None:
+            pulumi.set(__self__, "warm_node_amount", warm_node_amount)
+        if warm_node_disk_encrypted is not None:
+            pulumi.set(__self__, "warm_node_disk_encrypted", warm_node_disk_encrypted)
+        if warm_node_disk_size is not None:
+            pulumi.set(__self__, "warm_node_disk_size", warm_node_disk_size)
+        if warm_node_disk_type is not None:
+            pulumi.set(__self__, "warm_node_disk_type", warm_node_disk_type)
+        if warm_node_spec is not None:
+            pulumi.set(__self__, "warm_node_spec", warm_node_spec)
         if zone_count is not None:
             pulumi.set(__self__, "zone_count", zone_count)
 
@@ -945,10 +1065,22 @@ class _InstanceState:
         pulumi.set(self, "kibana_port", value)
 
     @property
+    @pulumi.getter(name="kibanaPrivateSecurityGroupId")
+    def kibana_private_security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        """
+        return pulumi.get(self, "kibana_private_security_group_id")
+
+    @kibana_private_security_group_id.setter
+    def kibana_private_security_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kibana_private_security_group_id", value)
+
+    @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Set the Kibana's IP whitelist in private network.
+        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -1188,7 +1320,7 @@ class _InstanceState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         """
         return pulumi.get(self, "version")
 
@@ -1207,6 +1339,66 @@ class _InstanceState:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="warmNodeAmount")
+    def warm_node_amount(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        """
+        return pulumi.get(self, "warm_node_amount")
+
+    @warm_node_amount.setter
+    def warm_node_amount(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "warm_node_amount", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskEncrypted")
+    def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        """
+        return pulumi.get(self, "warm_node_disk_encrypted")
+
+    @warm_node_disk_encrypted.setter
+    def warm_node_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "warm_node_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskSize")
+    def warm_node_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The single warm node storage space, should between 500 and 20480
+        """
+        return pulumi.get(self, "warm_node_disk_size")
+
+    @warm_node_disk_size.setter
+    def warm_node_disk_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "warm_node_disk_size", value)
+
+    @property
+    @pulumi.getter(name="warmNodeDiskType")
+    def warm_node_disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The warm node disk type. Supported values:  cloud_efficiency.
+        """
+        return pulumi.get(self, "warm_node_disk_type")
+
+    @warm_node_disk_type.setter
+    def warm_node_disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warm_node_disk_type", value)
+
+    @property
+    @pulumi.getter(name="warmNodeSpec")
+    def warm_node_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The warm node specifications of the Elasticsearch instance.
+        """
+        return pulumi.get(self, "warm_node_spec")
+
+    @warm_node_spec.setter
+    def warm_node_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warm_node_spec", value)
 
     @property
     @pulumi.getter(name="zoneCount")
@@ -1241,6 +1433,7 @@ class Instance(pulumi.CustomResource):
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[str]] = None,
+                 kibana_private_security_group_id: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1259,6 +1452,11 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 warm_node_amount: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 warm_node_disk_size: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_type: Optional[pulumi.Input[str]] = None,
+                 warm_node_spec: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1287,7 +1485,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -1303,8 +1502,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
+        :param pulumi.Input[str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
+        :param pulumi.Input[str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         ...
@@ -1352,6 +1556,7 @@ class Instance(pulumi.CustomResource):
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[str]] = None,
+                 kibana_private_security_group_id: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1370,6 +1575,11 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 warm_node_amount: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 warm_node_disk_size: Optional[pulumi.Input[int]] = None,
+                 warm_node_disk_type: Optional[pulumi.Input[str]] = None,
+                 warm_node_spec: Optional[pulumi.Input[str]] = None,
                  zone_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1403,6 +1613,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_public"] = enable_public
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kibana_node_spec"] = kibana_node_spec
+            __props__.__dict__["kibana_private_security_group_id"] = kibana_private_security_group_id
             __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
             __props__.__dict__["kibana_whitelists"] = kibana_whitelists
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -1425,6 +1636,11 @@ class Instance(pulumi.CustomResource):
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["warm_node_amount"] = warm_node_amount
+            __props__.__dict__["warm_node_disk_encrypted"] = warm_node_disk_encrypted
+            __props__.__dict__["warm_node_disk_size"] = warm_node_disk_size
+            __props__.__dict__["warm_node_disk_type"] = warm_node_disk_type
+            __props__.__dict__["warm_node_spec"] = warm_node_spec
             __props__.__dict__["zone_count"] = zone_count
             __props__.__dict__["domain"] = None
             __props__.__dict__["kibana_domain"] = None
@@ -1463,6 +1679,7 @@ class Instance(pulumi.CustomResource):
             kibana_domain: Optional[pulumi.Input[str]] = None,
             kibana_node_spec: Optional[pulumi.Input[str]] = None,
             kibana_port: Optional[pulumi.Input[int]] = None,
+            kibana_private_security_group_id: Optional[pulumi.Input[str]] = None,
             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1485,6 +1702,11 @@ class Instance(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
+            warm_node_amount: Optional[pulumi.Input[int]] = None,
+            warm_node_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            warm_node_disk_size: Optional[pulumi.Input[int]] = None,
+            warm_node_disk_type: Optional[pulumi.Input[str]] = None,
+            warm_node_spec: Optional[pulumi.Input[str]] = None,
             zone_count: Optional[pulumi.Input[int]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -1511,7 +1733,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
         :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[int] kibana_port: Kibana console port.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
+        :param pulumi.Input[str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -1531,8 +1754,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
+        :param pulumi.Input[str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
+        :param pulumi.Input[str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
         :param pulumi.Input[int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1557,6 +1785,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["kibana_domain"] = kibana_domain
         __props__.__dict__["kibana_node_spec"] = kibana_node_spec
         __props__.__dict__["kibana_port"] = kibana_port
+        __props__.__dict__["kibana_private_security_group_id"] = kibana_private_security_group_id
         __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
         __props__.__dict__["kibana_whitelists"] = kibana_whitelists
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -1579,6 +1808,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["version"] = version
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["warm_node_amount"] = warm_node_amount
+        __props__.__dict__["warm_node_disk_encrypted"] = warm_node_disk_encrypted
+        __props__.__dict__["warm_node_disk_size"] = warm_node_disk_size
+        __props__.__dict__["warm_node_disk_type"] = warm_node_disk_type
+        __props__.__dict__["warm_node_spec"] = warm_node_spec
         __props__.__dict__["zone_count"] = zone_count
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -1727,10 +1961,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "kibana_port")
 
     @property
+    @pulumi.getter(name="kibanaPrivateSecurityGroupId")
+    def kibana_private_security_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        """
+        return pulumi.get(self, "kibana_private_security_group_id")
+
+    @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> pulumi.Output[Sequence[str]]:
         """
-        Set the Kibana's IP whitelist in private network.
+        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -1890,7 +2132,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
         """
         return pulumi.get(self, "version")
 
@@ -1901,6 +2143,46 @@ class Instance(pulumi.CustomResource):
         The ID of VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="warmNodeAmount")
+    def warm_node_amount(self) -> pulumi.Output[Optional[int]]:
+        """
+        The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        """
+        return pulumi.get(self, "warm_node_amount")
+
+    @property
+    @pulumi.getter(name="warmNodeDiskEncrypted")
+    def warm_node_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+        """
+        return pulumi.get(self, "warm_node_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="warmNodeDiskSize")
+    def warm_node_disk_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        The single warm node storage space, should between 500 and 20480
+        """
+        return pulumi.get(self, "warm_node_disk_size")
+
+    @property
+    @pulumi.getter(name="warmNodeDiskType")
+    def warm_node_disk_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The warm node disk type. Supported values:  cloud_efficiency.
+        """
+        return pulumi.get(self, "warm_node_disk_type")
+
+    @property
+    @pulumi.getter(name="warmNodeSpec")
+    def warm_node_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The warm node specifications of the Elasticsearch instance.
+        """
+        return pulumi.get(self, "warm_node_spec")
 
     @property
     @pulumi.getter(name="zoneCount")

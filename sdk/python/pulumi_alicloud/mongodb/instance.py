@@ -41,6 +41,7 @@ class InstanceArgs:
                  order_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -90,6 +91,7 @@ class InstanceArgs:
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -105,7 +107,7 @@ class InstanceArgs:
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
-        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
@@ -161,6 +163,8 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if readonly_replicas is not None:
             pulumi.set(__self__, "readonly_replicas", readonly_replicas)
         if replication_factor is not None:
@@ -501,6 +505,18 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The provisioned IOPS. Valid values: `0` to `50000`.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="readonlyReplicas")
     def readonly_replicas(self) -> Optional[pulumi.Input[int]]:
         """
@@ -629,7 +645,7 @@ class InstanceArgs:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         """
         return pulumi.get(self, "storage_type")
 
@@ -728,6 +744,7 @@ class _InstanceState:
                  order_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
                  replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]] = None,
@@ -781,6 +798,7 @@ class _InstanceState:
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information.
@@ -800,7 +818,7 @@ class _InstanceState:
                - `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
-        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
@@ -859,6 +877,8 @@ class _InstanceState:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if readonly_replicas is not None:
             pulumi.set(__self__, "readonly_replicas", readonly_replicas)
         if replica_set_name is not None:
@@ -1207,6 +1227,18 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The provisioned IOPS. Valid values: `0` to `50000`.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="readonlyReplicas")
     def readonly_replicas(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1383,7 +1415,7 @@ class _InstanceState:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         """
         return pulumi.get(self, "storage_type")
 
@@ -1484,6 +1516,7 @@ class Instance(pulumi.CustomResource):
                  order_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1598,6 +1631,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -1613,7 +1647,7 @@ class Instance(pulumi.CustomResource):
                - `Close`: turn off SSL encryption.
                - `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
-        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
@@ -1732,6 +1766,7 @@ class Instance(pulumi.CustomResource):
                  order_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1788,6 +1823,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["order_type"] = order_type
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
+            __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["readonly_replicas"] = readonly_replicas
             __props__.__dict__["replication_factor"] = replication_factor
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -1845,6 +1881,7 @@ class Instance(pulumi.CustomResource):
             order_type: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            provisioned_iops: Optional[pulumi.Input[int]] = None,
             readonly_replicas: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
             replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]]] = None,
@@ -1903,6 +1940,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
+        :param pulumi.Input[int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceReplicaSetArgs', 'InstanceReplicaSetArgsDict']]]] replica_sets: Replica set instance information.
@@ -1922,7 +1960,7 @@ class Instance(pulumi.CustomResource):
                - `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
-        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
@@ -1960,6 +1998,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
+        __props__.__dict__["provisioned_iops"] = provisioned_iops
         __props__.__dict__["readonly_replicas"] = readonly_replicas
         __props__.__dict__["replica_set_name"] = replica_set_name
         __props__.__dict__["replica_sets"] = replica_sets
@@ -2189,6 +2228,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[Optional[int]]:
+        """
+        The provisioned IOPS. Valid values: `0` to `50000`.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
     @pulumi.getter(name="readonlyReplicas")
     def readonly_replicas(self) -> pulumi.Output[int]:
         """
@@ -2309,7 +2356,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Output[str]:
         """
-        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         """
         return pulumi.get(self, "storage_type")
 

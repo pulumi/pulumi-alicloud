@@ -51,22 +51,44 @@ import * as utilities from "../utilities";
  * // The region of kms key.
  * const region = config.get("region") || "cn-hangzhou";
  * const example = alicloud.getAccount({});
- * const _default = new random.index.Integer("default", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
+ * });
+ * const default = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
+ * }));
+ * const defaultInstance = new alicloud.kms.Instance("default", {
+ *     productVersion: "3",
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
+ *     zoneIds: [
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.zoneId),
+ *         defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[1]?.zoneId),
+ *     ],
+ *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
+ *     vpcNum: 1,
+ *     keyNum: 1000,
+ *     secretNum: 0,
+ *     spec: 1000,
+ *     forceDeleteWithoutBackup: "true",
+ *     paymentType: "PayAsYouGo",
  * });
  * const exampleKey = new alicloud.kms.Key("example", {
  *     description: "terraform-example",
  *     pendingWindowInDays: 7,
  *     status: "Enabled",
+ *     dkmsInstanceId: defaultInstance.id,
  * });
  * const exampleProject = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${defaultInteger.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: exampleProject.name,
- *     name: "example-store",
+ *     projectName: exampleProject.projectName,
+ *     logstoreName: "example-store",
  *     shardCount: 1,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
@@ -148,6 +170,10 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly hotTtl!: pulumi.Output<number | undefined>;
     /**
+     * Low frequency storage time
+     */
+    public readonly infrequentAccessTtl!: pulumi.Output<number | undefined>;
+    /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */
     public readonly logstoreName!: pulumi.Output<string>;
@@ -217,6 +243,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
             resourceInputs["encryptConf"] = state ? state.encryptConf : undefined;
             resourceInputs["hotTtl"] = state ? state.hotTtl : undefined;
+            resourceInputs["infrequentAccessTtl"] = state ? state.infrequentAccessTtl : undefined;
             resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
             resourceInputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
             resourceInputs["meteringMode"] = state ? state.meteringMode : undefined;
@@ -235,6 +262,7 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
             resourceInputs["encryptConf"] = args ? args.encryptConf : undefined;
             resourceInputs["hotTtl"] = args ? args.hotTtl : undefined;
+            resourceInputs["infrequentAccessTtl"] = args ? args.infrequentAccessTtl : undefined;
             resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
             resourceInputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
             resourceInputs["meteringMode"] = args ? args.meteringMode : undefined;
@@ -281,6 +309,10 @@ export interface StoreState {
      * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      */
     hotTtl?: pulumi.Input<number>;
+    /**
+     * Low frequency storage time
+     */
+    infrequentAccessTtl?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */
@@ -357,6 +389,10 @@ export interface StoreArgs {
      * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      */
     hotTtl?: pulumi.Input<number>;
+    /**
+     * Low frequency storage time
+     */
+    infrequentAccessTtl?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */

@@ -130,19 +130,19 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> SystemDiskCategories { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -441,7 +441,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
         /// </summary>
         public InputList<string> Instances
         {
@@ -662,13 +662,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -841,7 +841,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -959,7 +959,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1014,7 +1014,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1198,7 +1198,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
+        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
         /// </summary>
         public InputList<string> Instances
         {
@@ -1207,13 +1207,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
+        /// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
+        /// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -1392,7 +1392,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -1516,7 +1516,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1571,7 +1571,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
         /// </summary>
         public InputMap<string> Tags
         {

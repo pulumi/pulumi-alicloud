@@ -250,6 +250,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The provisioned IOPS. Valid values: `0` to `50000`.
+        /// </summary>
+        [Output("provisionedIops")]
+        public Output<int?> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
         /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         /// </summary>
         [Output("readonlyReplicas")]
@@ -339,7 +345,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> StorageEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -611,6 +617,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The provisioned IOPS. Valid values: `0` to `50000`.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
         /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         /// </summary>
         [Input("readonlyReplicas")]
@@ -682,7 +694,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? StorageEngine { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
@@ -918,6 +930,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The provisioned IOPS. Valid values: `0` to `50000`.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
         /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         /// </summary>
         [Input("readonlyReplicas")]
@@ -1019,7 +1037,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? StorageEngine { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

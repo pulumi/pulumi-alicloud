@@ -79,6 +79,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -97,9 +98,41 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 99999,
 //				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := kms.NewInstance(ctx, "default", &kms.InstanceArgs{
+//				ProductVersion: pulumi.String("3"),
+//				VpcId:          pulumi.String(_default.Ids[0]),
+//				ZoneIds: pulumi.StringArray{
+//					pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
+//					pulumi.String(defaultGetSwitches.Vswitches[1].ZoneId),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					pulumi.String(defaultGetSwitches.Ids[0]),
+//				},
+//				VpcNum:                   pulumi.Int(1),
+//				KeyNum:                   pulumi.Int(1000),
+//				SecretNum:                pulumi.Int(0),
+//				Spec:                     pulumi.Int(1000),
+//				ForceDeleteWithoutBackup: pulumi.String("true"),
+//				PaymentType:              pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
 //				return err
@@ -108,20 +141,21 @@ import (
 //				Description:         pulumi.String("terraform-example"),
 //				PendingWindowInDays: pulumi.Int(7),
 //				Status:              pulumi.String("Enabled"),
+//				DkmsInstanceId:      defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            exampleProject.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        exampleProject.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				ShardCount:         pulumi.Int(1),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -171,6 +205,8 @@ type Store struct {
 	EncryptConf StoreEncryptConfOutput `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrOutput `pulumi:"hotTtl"`
+	// Low frequency storage time
+	InfrequentAccessTtl pulumi.IntPtrOutput `pulumi:"infrequentAccessTtl"`
 	// The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
 	LogstoreName pulumi.StringOutput `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -243,6 +279,8 @@ type storeState struct {
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 	HotTtl *int `pulumi:"hotTtl"`
+	// Low frequency storage time
+	InfrequentAccessTtl *int `pulumi:"infrequentAccessTtl"`
 	// The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
 	LogstoreName *string `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -286,6 +324,8 @@ type StoreState struct {
 	EncryptConf StoreEncryptConfPtrInput
 	// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrInput
+	// Low frequency storage time
+	InfrequentAccessTtl pulumi.IntPtrInput
 	// The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
 	LogstoreName pulumi.StringPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -331,6 +371,8 @@ type storeArgs struct {
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 	HotTtl *int `pulumi:"hotTtl"`
+	// Low frequency storage time
+	InfrequentAccessTtl *int `pulumi:"infrequentAccessTtl"`
 	// The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
 	LogstoreName *string `pulumi:"logstoreName"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -371,6 +413,8 @@ type StoreArgs struct {
 	EncryptConf StoreEncryptConfPtrInput
 	// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrInput
+	// Low frequency storage time
+	InfrequentAccessTtl pulumi.IntPtrInput
 	// The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
 	LogstoreName pulumi.StringPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -514,6 +558,11 @@ func (o StoreOutput) EncryptConf() StoreEncryptConfOutput {
 // The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
 func (o StoreOutput) HotTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.HotTtl }).(pulumi.IntPtrOutput)
+}
+
+// Low frequency storage time
+func (o StoreOutput) InfrequentAccessTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.InfrequentAccessTtl }).(pulumi.IntPtrOutput)
 }
 
 // The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.

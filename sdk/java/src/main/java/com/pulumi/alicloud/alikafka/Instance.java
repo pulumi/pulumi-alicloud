@@ -30,14 +30,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alikafka/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
      * 
      */
     @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
-     * @return The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+     * @return The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
      * 
      */
     public Output<String> config() {
@@ -338,14 +340,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.selectedZones);
     }
     /**
-     * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
      * 
      */
     @Export(name="serviceVersion", refs={String.class}, tree="[0]")
     private Output<String> serviceVersion;
 
     /**
-     * @return The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+     * @return The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
      * 
      */
     public Output<String> serviceVersion() {

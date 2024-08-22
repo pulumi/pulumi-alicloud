@@ -283,14 +283,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaPort;
     }
     /**
-     * Set the Kibana&#39;s IP whitelist in private network.
+     * the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * 
+     */
+    @Export(name="kibanaPrivateSecurityGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kibanaPrivateSecurityGroupId;
+
+    /**
+     * @return the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+     * 
+     */
+    public Output<Optional<String>> kibanaPrivateSecurityGroupId() {
+        return Codegen.optional(this.kibanaPrivateSecurityGroupId);
+    }
+    /**
+     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
      * 
      */
     @Export(name="kibanaPrivateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network.
+     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
      * 
      */
     public Output<List<String>> kibanaPrivateWhitelists() {
@@ -563,14 +577,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
+     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
      * 
      */
     public Output<String> version() {
@@ -589,6 +603,76 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
+    }
+    /**
+     * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+     * 
+     */
+    @Export(name="warmNodeAmount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> warmNodeAmount;
+
+    /**
+     * @return The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
+     * 
+     */
+    public Output<Optional<Integer>> warmNodeAmount() {
+        return Codegen.optional(this.warmNodeAmount);
+    }
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     */
+    @Export(name="warmNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> warmNodeDiskEncrypted;
+
+    /**
+     * @return If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> warmNodeDiskEncrypted() {
+        return Codegen.optional(this.warmNodeDiskEncrypted);
+    }
+    /**
+     * The single warm node storage space, should between 500 and 20480
+     * 
+     */
+    @Export(name="warmNodeDiskSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> warmNodeDiskSize;
+
+    /**
+     * @return The single warm node storage space, should between 500 and 20480
+     * 
+     */
+    public Output<Optional<Integer>> warmNodeDiskSize() {
+        return Codegen.optional(this.warmNodeDiskSize);
+    }
+    /**
+     * The warm node disk type. Supported values:  cloud_efficiency.
+     * 
+     */
+    @Export(name="warmNodeDiskType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> warmNodeDiskType;
+
+    /**
+     * @return The warm node disk type. Supported values:  cloud_efficiency.
+     * 
+     */
+    public Output<Optional<String>> warmNodeDiskType() {
+        return Codegen.optional(this.warmNodeDiskType);
+    }
+    /**
+     * The warm node specifications of the Elasticsearch instance.
+     * 
+     */
+    @Export(name="warmNodeSpec", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> warmNodeSpec;
+
+    /**
+     * @return The warm node specifications of the Elasticsearch instance.
+     * 
+     */
+    public Output<Optional<String>> warmNodeSpec() {
+        return Codegen.optional(this.warmNodeSpec);
     }
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.

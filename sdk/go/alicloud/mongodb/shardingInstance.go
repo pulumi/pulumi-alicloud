@@ -150,6 +150,8 @@ type ShardingInstance struct {
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrOutput `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -162,7 +164,7 @@ type ShardingInstance struct {
 	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -256,6 +258,8 @@ type shardingInstanceState struct {
 	Period *int `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
 	ProtocolType *string `pulumi:"protocolType"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -268,7 +272,7 @@ type shardingInstanceState struct {
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -317,6 +321,8 @@ type ShardingInstanceState struct {
 	Period pulumi.IntPtrInput
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
 	ProtocolType pulumi.StringPtrInput
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// (Available since v1.42.0) Instance data backup retention days.
@@ -329,7 +335,7 @@ type ShardingInstanceState struct {
 	ShardLists ShardingInstanceShardListArrayInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -382,6 +388,8 @@ type shardingInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
 	ProtocolType *string `pulumi:"protocolType"`
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
@@ -392,7 +400,7 @@ type shardingInstanceArgs struct {
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -442,6 +450,8 @@ type ShardingInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
 	ProtocolType pulumi.StringPtrInput
+	// The provisioned IOPS. Valid values: `0` to `50000`.
+	ProvisionedIops pulumi.IntPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
@@ -452,7 +462,7 @@ type ShardingInstanceArgs struct {
 	ShardLists ShardingInstanceShardListArrayInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
-	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -632,6 +642,11 @@ func (o ShardingInstanceOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
+// The provisioned IOPS. Valid values: `0` to `50000`.
+func (o ShardingInstanceOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntPtrOutput { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
 // The ID of the Resource Group.
 func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -662,7 +677,7 @@ func (o ShardingInstanceOutput) StorageEngine() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.StorageEngine }).(pulumi.StringOutput)
 }
 
-// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
 func (o ShardingInstanceOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

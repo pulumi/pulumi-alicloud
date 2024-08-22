@@ -173,6 +173,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    /**
      * The ID of the Resource Group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -197,7 +201,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
@@ -250,6 +254,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["protocolType"] = state ? state.protocolType : undefined;
+            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -288,6 +293,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
+            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
@@ -376,6 +382,10 @@ export interface ShardingInstanceState {
      */
     protocolType?: pulumi.Input<string>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    provisionedIops?: pulumi.Input<number>;
+    /**
      * The ID of the Resource Group.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -400,7 +410,7 @@ export interface ShardingInstanceState {
      */
     storageEngine?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     storageType?: pulumi.Input<string>;
     /**
@@ -494,6 +504,10 @@ export interface ShardingInstanceArgs {
      */
     protocolType?: pulumi.Input<string>;
     /**
+     * The provisioned IOPS. Valid values: `0` to `50000`.
+     */
+    provisionedIops?: pulumi.Input<number>;
+    /**
      * The ID of the Resource Group.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -514,7 +528,7 @@ export interface ShardingInstanceArgs {
      */
     storageEngine?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
     storageType?: pulumi.Input<string>;
     /**

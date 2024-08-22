@@ -22,7 +22,8 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
@@ -156,7 +157,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
 
         /// <summary>
-        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         /// </summary>
         [Output("serviceVersion")]
         public Output<string> ServiceVersion { get; private set; } = null!;
@@ -271,7 +272,8 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -375,7 +377,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }
@@ -434,7 +436,8 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
+        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -574,7 +577,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
+        /// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         /// </summary>
         [Input("serviceVersion")]
         public Input<string>? ServiceVersion { get; set; }

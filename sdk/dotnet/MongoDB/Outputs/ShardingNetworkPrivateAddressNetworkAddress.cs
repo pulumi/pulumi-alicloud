@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class ShardingNetworkPrivateAddressNetworkAddress
     {
         /// <summary>
-        /// The remaining duration of the classic network address. Unit: `seconds`.
+        /// The remaining duration of the classic network endpoint.
         /// </summary>
         public readonly string? ExpiredTime;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? IpAddress;
         /// <summary>
-        /// The endpoint of the instance.
+        /// The connection string of the instance.
         /// </summary>
         public readonly string? NetworkAddress;
         /// <summary>
-        /// The network type.
+        /// The network type of the instance.
         /// </summary>
         public readonly string? NetworkType;
         /// <summary>
-        /// The ID of the Shard node or the ConfigServer node.
+        /// The ID of the Shard node or ConfigServer node.
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? NodeType;
         /// <summary>
-        /// The port number.
+        /// The port that is used to connect to the instance.
         /// </summary>
         public readonly string? Port;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// The vSwitch ID of the VPC.
+        /// The ID of the vSwitch in the VPC.
         /// </summary>
         public readonly string? VswitchId;
 

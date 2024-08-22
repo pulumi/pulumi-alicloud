@@ -21,6 +21,7 @@ class StoreArgs:
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 infrequent_access_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  metering_mode: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,7 @@ class StoreArgs:
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
@@ -61,6 +63,8 @@ class StoreArgs:
             pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
             pulumi.set(__self__, "hot_ttl", hot_ttl)
+        if infrequent_access_ttl is not None:
+            pulumi.set(__self__, "infrequent_access_ttl", infrequent_access_ttl)
         if logstore_name is not None:
             pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
@@ -147,6 +151,18 @@ class StoreArgs:
     @hot_ttl.setter
     def hot_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hot_ttl", value)
+
+    @property
+    @pulumi.getter(name="infrequentAccessTtl")
+    def infrequent_access_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Low frequency storage time
+        """
+        return pulumi.get(self, "infrequent_access_ttl")
+
+    @infrequent_access_ttl.setter
+    def infrequent_access_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "infrequent_access_ttl", value)
 
     @property
     @pulumi.getter(name="logstoreName")
@@ -282,6 +298,7 @@ class _StoreState:
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 infrequent_access_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  metering_mode: Optional[pulumi.Input[str]] = None,
@@ -301,6 +318,7 @@ class _StoreState:
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
@@ -327,6 +345,8 @@ class _StoreState:
             pulumi.set(__self__, "encrypt_conf", encrypt_conf)
         if hot_ttl is not None:
             pulumi.set(__self__, "hot_ttl", hot_ttl)
+        if infrequent_access_ttl is not None:
+            pulumi.set(__self__, "infrequent_access_ttl", infrequent_access_ttl)
         if logstore_name is not None:
             pulumi.set(__self__, "logstore_name", logstore_name)
         if max_split_shard_count is not None:
@@ -427,6 +447,18 @@ class _StoreState:
     @hot_ttl.setter
     def hot_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hot_ttl", value)
+
+    @property
+    @pulumi.getter(name="infrequentAccessTtl")
+    def infrequent_access_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Low frequency storage time
+        """
+        return pulumi.get(self, "infrequent_access_ttl")
+
+    @infrequent_access_ttl.setter
+    def infrequent_access_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "infrequent_access_ttl", value)
 
     @property
     @pulumi.getter(name="logstoreName")
@@ -575,6 +607,7 @@ class Store(pulumi.CustomResource):
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 infrequent_access_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  metering_mode: Optional[pulumi.Input[str]] = None,
@@ -630,19 +663,36 @@ class Store(pulumi.CustomResource):
         if region is None:
             region = "cn-hangzhou"
         example = alicloud.get_account()
-        default = random.index.Integer("default",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+        default_instance = alicloud.kms.Instance("default",
+            product_version="3",
+            vpc_id=default.ids[0],
+            zone_ids=[
+                default_get_switches.vswitches[0].zone_id,
+                default_get_switches.vswitches[1].zone_id,
+            ],
+            vswitch_ids=[default_get_switches.ids[0]],
+            vpc_num=1,
+            key_num=1000,
+            secret_num=0,
+            spec=1000,
+            force_delete_without_backup="true",
+            payment_type="PayAsYouGo")
         example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
-            status="Enabled")
+            status="Enabled",
+            dkms_instance_id=default_instance.id)
         example_project = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example_project.name,
-            name="example-store",
+            project_name=example_project.project_name,
+            logstore_name="example-store",
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
@@ -677,6 +727,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
@@ -740,19 +791,36 @@ class Store(pulumi.CustomResource):
         if region is None:
             region = "cn-hangzhou"
         example = alicloud.get_account()
-        default = random.index.Integer("default",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+        default_instance = alicloud.kms.Instance("default",
+            product_version="3",
+            vpc_id=default.ids[0],
+            zone_ids=[
+                default_get_switches.vswitches[0].zone_id,
+                default_get_switches.vswitches[1].zone_id,
+            ],
+            vswitch_ids=[default_get_switches.ids[0]],
+            vpc_num=1,
+            key_num=1000,
+            secret_num=0,
+            spec=1000,
+            force_delete_without_backup="true",
+            payment_type="PayAsYouGo")
         example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
-            status="Enabled")
+            status="Enabled",
+            dkms_instance_id=default_instance.id)
         example_project = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example_project.name,
-            name="example-store",
+            project_name=example_project.project_name,
+            logstore_name="example-store",
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
@@ -800,6 +868,7 @@ class Store(pulumi.CustomResource):
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
                  encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
+                 infrequent_access_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
                  metering_mode: Optional[pulumi.Input[str]] = None,
@@ -824,6 +893,7 @@ class Store(pulumi.CustomResource):
             __props__.__dict__["enable_web_tracking"] = enable_web_tracking
             __props__.__dict__["encrypt_conf"] = encrypt_conf
             __props__.__dict__["hot_ttl"] = hot_ttl
+            __props__.__dict__["infrequent_access_ttl"] = infrequent_access_ttl
             __props__.__dict__["logstore_name"] = logstore_name
             __props__.__dict__["max_split_shard_count"] = max_split_shard_count
             __props__.__dict__["metering_mode"] = metering_mode
@@ -852,6 +922,7 @@ class Store(pulumi.CustomResource):
             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
             encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
             hot_ttl: Optional[pulumi.Input[int]] = None,
+            infrequent_access_ttl: Optional[pulumi.Input[int]] = None,
             logstore_name: Optional[pulumi.Input[str]] = None,
             max_split_shard_count: Optional[pulumi.Input[int]] = None,
             metering_mode: Optional[pulumi.Input[str]] = None,
@@ -876,6 +947,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
+        :param pulumi.Input[int] infrequent_access_ttl: Low frequency storage time
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] metering_mode: Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
@@ -900,6 +972,7 @@ class Store(pulumi.CustomResource):
         __props__.__dict__["enable_web_tracking"] = enable_web_tracking
         __props__.__dict__["encrypt_conf"] = encrypt_conf
         __props__.__dict__["hot_ttl"] = hot_ttl
+        __props__.__dict__["infrequent_access_ttl"] = infrequent_access_ttl
         __props__.__dict__["logstore_name"] = logstore_name
         __props__.__dict__["max_split_shard_count"] = max_split_shard_count
         __props__.__dict__["metering_mode"] = metering_mode
@@ -960,6 +1033,14 @@ class Store(pulumi.CustomResource):
         The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
+
+    @property
+    @pulumi.getter(name="infrequentAccessTtl")
+    def infrequent_access_ttl(self) -> pulumi.Output[Optional[int]]:
+        """
+        Low frequency storage time
+        """
+        return pulumi.get(self, "infrequent_access_ttl")
 
     @property
     @pulumi.getter(name="logstoreName")
