@@ -15,6 +15,7 @@
 package alicloud
 
 import (
+	"bytes"
 	"fmt"
 	"path"
 	"strings"
@@ -28,6 +29,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -354,6 +356,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:    "aliyun",
 		Repository:   "https://github.com/pulumi/pulumi-alicloud",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		DocRules:     &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"ecs_role_name": {
 				Default: &tfbridge.DefaultInfo{
@@ -2593,6 +2596,45 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		removeContent(versionNote, "index.md"),
+		removeContent(configurationSource, "index.md"),
+		skipUserAgentSection,
+	)
+}
+
+// Removes a User Agent section that includes TF User Agent instructions.
+var skipUserAgentSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Custom User-Agent Information"
+		})
+	},
+}
+
+// Removes a reference to TF version and compatibility
+var versionNote = []byte("-> **Note:** From version 1.50.0, the provider start to support Terraform 0.12.x.")
+var configurationSource = []byte("* `configuration_source` - (Optional, Available since 1.56.0) Use a string to " +
+	"mark a configuration file source, like `terraform-alicloud-modules/terraform-alicloud-ecs-instance` or " +
+	"`terraform-provider-alicloud/examples/vpc`.\nThe length should not more than 128(Before 1.207.2, it " +
+	"should not more than 64). Since the version 1.145.0, it supports to be set by environment variable " +
+	"`TF_APPEND_USER_AGENT`. See `Custom User-Agent Information`.")
+
+// Helper func to remove a content byte from a file
+func removeContent(text []byte, path string) tfbridge.DocsEdit {
+	return tfbridge.DocsEdit{
+		Path: path,
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			contentSplit := bytes.Split(content, text)
+			content = bytes.Join(contentSplit, []byte(" "))
+			return content, nil
+		},
+	}
 }
 
 //go:embed cmd/pulumi-resource-alicloud/bridge-metadata.json
