@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -72,8 +72,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleOssExport = new OssExport("exampleOssExport", OssExportArgs.builder()
- *             .projectName(example.name())
- *             .logstoreName(exampleStore.name())
+ *             .projectName(example.projectName())
+ *             .logstoreName(exampleStore.logstoreName())
  *             .exportName("terraform-example")
  *             .displayName("terraform-example")
  *             .bucket("example-bucket")

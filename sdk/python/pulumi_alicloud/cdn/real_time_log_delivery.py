@@ -219,7 +219,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-store",
             shard_count=3,
             auto_split=True,
@@ -290,7 +290,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-store",
             shard_count=3,
             auto_split=True,

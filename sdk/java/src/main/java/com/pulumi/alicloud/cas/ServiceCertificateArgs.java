@@ -32,10 +32,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the Certificate.
-     * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;,
-     * and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time.
-     * Suffix .sh and .tel are not supported.
+     * Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
      * **NOTE:** One of `certificate_name` and `name` must be specified.
      * 
      */
@@ -43,10 +40,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> certificateName;
 
     /**
-     * @return Name of the Certificate.
-     * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;,
-     * and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time.
-     * Suffix .sh and .tel are not supported.
+     * @return Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
      * **NOTE:** One of `certificate_name` and `name` must be specified.
      * 
      */
@@ -157,10 +151,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName Name of the Certificate.
-         * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;,
-         * and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time.
-         * Suffix .sh and .tel are not supported.
+         * @param certificateName Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
          * **NOTE:** One of `certificate_name` and `name` must be specified.
          * 
          * @return builder
@@ -172,10 +163,7 @@ public final class ServiceCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName Name of the Certificate.
-         * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or &#34;-&#34;,
-         * and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time.
-         * Suffix .sh and .tel are not supported.
+         * @param certificateName Name of the Certificate. `certificate_name` must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
          * **NOTE:** One of `certificate_name` and `name` must be specified.
          * 
          * @return builder

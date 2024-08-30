@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     ///     var defaultInstance = new AliCloud.RocketMQ.Instance("default", new()
     ///     {
-    ///         Name = $"{name}-{@default.Result}",
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///         Remark = "default_ons_instance_remark",
     ///     });
     /// 

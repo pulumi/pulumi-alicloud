@@ -455,7 +455,7 @@ class Account(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default.regions[0].zone_ids[0].zone_id)
+            zone_id=default.regions[0].zone_ids[1].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="22.8.5.29",
             category="Basic",
@@ -533,7 +533,7 @@ class Account(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default.regions[0].zone_ids[0].zone_id)
+            zone_id=default.regions[0].zone_ids[1].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="22.8.5.29",
             category="Basic",

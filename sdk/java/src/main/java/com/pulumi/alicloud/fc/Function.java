@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
- *             .projectName(defaultProject.name())
+ *             .projectName(defaultProject.projectName())
  *             .logstoreName("example-value")
  *             .build());
  * 
@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
- *                 .project(defaultProject.name())
- *                 .logstore(defaultStore.name())
+ *                 .project(defaultProject.projectName())
+ *                 .logstore(defaultStore.logstoreName())
  *                 .enableInstanceMetrics(true)
  *                 .enableRequestMetrics(true)
  *                 .build())

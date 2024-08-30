@@ -45,6 +45,12 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "bucket-acl", &oss.BucketAclArgs{
+//				Bucket: bucket_acl.Bucket,
 //				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
@@ -122,6 +128,12 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "bucket-target", &oss.BucketAclArgs{
+//				Bucket: bucket_target.Bucket,
 //				Acl:    pulumi.String("public-read"),
 //			})
 //			if err != nil {
@@ -169,7 +181,6 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
-//				Acl:    pulumi.String("private"),
 //				RefererConfig: &oss.BucketRefererConfigArgs{
 //					AllowEmpty: pulumi.Bool(false),
 //					Referers: pulumi.StringArray{
@@ -177,6 +188,13 @@ import (
 //						pulumi.String("https://www.aliyun.com"),
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "default", &oss.BucketAclArgs{
+//				Bucket: bucket_referer.Bucket,
+//				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err

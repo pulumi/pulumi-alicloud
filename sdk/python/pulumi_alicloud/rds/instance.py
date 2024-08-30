@@ -3521,7 +3521,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["babelfish_port"] = babelfish_port
             __props__.__dict__["ca_type"] = ca_type
             __props__.__dict__["category"] = category
-            __props__.__dict__["client_ca_cert"] = client_ca_cert
+            __props__.__dict__["client_ca_cert"] = None if client_ca_cert is None else pulumi.Output.secret(client_ca_cert)
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
@@ -3573,7 +3573,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["security_ip_mode"] = security_ip_mode
             __props__.__dict__["security_ip_type"] = security_ip_type
             __props__.__dict__["security_ips"] = security_ips
-            __props__.__dict__["server_cert"] = server_cert
+            __props__.__dict__["server_cert"] = None if server_cert is None else pulumi.Output.secret(server_cert)
             __props__.__dict__["server_key"] = server_key
             __props__.__dict__["serverless_configs"] = serverless_configs
             __props__.__dict__["sql_collector_config_value"] = sql_collector_config_value
@@ -3600,6 +3600,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_instance_type"] = None
             __props__.__dict__["ssl_status"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCaCert", "serverCert"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:rds/instance:Instance',
             resource_name,

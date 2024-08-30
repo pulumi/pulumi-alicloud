@@ -21,7 +21,15 @@ public final class GetIndustrialPidOrganizationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Pid Organization names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
+     * 
+     */
     private List<GetIndustrialPidOrganizationsOrganization> organizations;
     private @Nullable String outputFile;
     private @Nullable String parentOrganizationId;
@@ -40,9 +48,17 @@ public final class GetIndustrialPidOrganizationsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Pid Organization names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
+     * 
+     */
     public List<GetIndustrialPidOrganizationsOrganization> organizations() {
         return this.organizations;
     }

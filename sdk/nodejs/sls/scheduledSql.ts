@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  * });
  * const defaultKIe4KV = new alicloud.log.Project("defaultKIe4KV", {
  *     description: `${name}-${_default.result}`,
- *     name: `${name}-${_default.result}`,
+ *     projectName: `${name}-${_default.result}`,
  * });
  * const default1LI9we = new alicloud.log.Store("default1LI9we", {
  *     hotTtl: 8,
  *     retentionPeriod: 30,
  *     shardCount: 2,
- *     project: defaultKIe4KV.name,
- *     name: `${name}-${_default.result}`,
+ *     projectName: defaultKIe4KV.projectName,
+ *     logstoreName: `${name}-${_default.result}`,
  * });
  * const defaultScheduledSql = new alicloud.sls.ScheduledSql("default", {
  *     description: "example-tf-scheduled-sql-0006",
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *         sqlType: "searchQuery",
  *         destEndpoint: "ap-northeast-1.log.aliyuncs.com",
  *         destProject: "job-e2e-project-jj78kur-ap-southeast-1",
- *         sourceLogstore: default1LI9we.name,
+ *         sourceLogstore: default1LI9we.logstoreName,
  *         destLogstore: "example-open-api02",
  *         roleArn: "acs:ram::1395894005868720:role/aliyunlogetlrole",
  *         destRoleArn: "acs:ram::1395894005868720:role/aliyunlogetlrole",
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *         dataFormat: "log2log",
  *     },
  *     scheduledSqlName: name,
- *     project: defaultKIe4KV.name,
+ *     project: defaultKIe4KV.projectName,
  * });
  * ```
  *

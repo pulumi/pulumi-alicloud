@@ -19,10 +19,6 @@ public final class GetTransitRouterRouteTablesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of CEN Transit Router Route Table IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
@@ -31,6 +27,10 @@ public final class GetTransitRouterRouteTablesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the route table.
+     * 
+     */
     private @Nullable String status;
     /**
      * @return A list of CEN Route Entries. Each element contains the following attributes:
@@ -40,11 +40,12 @@ public final class GetTransitRouterRouteTablesResult {
     private String transitRouterId;
     private @Nullable List<String> transitRouterRouteTableIds;
     private @Nullable List<String> transitRouterRouteTableNames;
+    private @Nullable String transitRouterRouteTableStatus;
     /**
-     * @return The status of the route table.
+     * @return Type of the transit router route table.
      * 
      */
-    private @Nullable String transitRouterRouteTableStatus;
+    private @Nullable String transitRouterRouteTableType;
 
     private GetTransitRouterRouteTablesResult() {}
     /**
@@ -54,10 +55,6 @@ public final class GetTransitRouterRouteTablesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of CEN Transit Router Route Table IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -74,6 +71,10 @@ public final class GetTransitRouterRouteTablesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the route table.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -93,12 +94,15 @@ public final class GetTransitRouterRouteTablesResult {
     public List<String> transitRouterRouteTableNames() {
         return this.transitRouterRouteTableNames == null ? List.of() : this.transitRouterRouteTableNames;
     }
-    /**
-     * @return The status of the route table.
-     * 
-     */
     public Optional<String> transitRouterRouteTableStatus() {
         return Optional.ofNullable(this.transitRouterRouteTableStatus);
+    }
+    /**
+     * @return Type of the transit router route table.
+     * 
+     */
+    public Optional<String> transitRouterRouteTableType() {
+        return Optional.ofNullable(this.transitRouterRouteTableType);
     }
 
     public static Builder builder() {
@@ -121,6 +125,7 @@ public final class GetTransitRouterRouteTablesResult {
         private @Nullable List<String> transitRouterRouteTableIds;
         private @Nullable List<String> transitRouterRouteTableNames;
         private @Nullable String transitRouterRouteTableStatus;
+        private @Nullable String transitRouterRouteTableType;
         public Builder() {}
         public Builder(GetTransitRouterRouteTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,6 +140,7 @@ public final class GetTransitRouterRouteTablesResult {
     	      this.transitRouterRouteTableIds = defaults.transitRouterRouteTableIds;
     	      this.transitRouterRouteTableNames = defaults.transitRouterRouteTableNames;
     	      this.transitRouterRouteTableStatus = defaults.transitRouterRouteTableStatus;
+    	      this.transitRouterRouteTableType = defaults.transitRouterRouteTableType;
         }
 
         @CustomType.Setter
@@ -228,6 +234,12 @@ public final class GetTransitRouterRouteTablesResult {
             this.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
             return this;
         }
+        @CustomType.Setter
+        public Builder transitRouterRouteTableType(@Nullable String transitRouterRouteTableType) {
+
+            this.transitRouterRouteTableType = transitRouterRouteTableType;
+            return this;
+        }
         public GetTransitRouterRouteTablesResult build() {
             final var _resultValue = new GetTransitRouterRouteTablesResult();
             _resultValue.id = id;
@@ -241,6 +253,7 @@ public final class GetTransitRouterRouteTablesResult {
             _resultValue.transitRouterRouteTableIds = transitRouterRouteTableIds;
             _resultValue.transitRouterRouteTableNames = transitRouterRouteTableNames;
             _resultValue.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
+            _resultValue.transitRouterRouteTableType = transitRouterRouteTableType;
             return _resultValue;
         }
     }

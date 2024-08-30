@@ -38,6 +38,11 @@ namespace Pulumi.AliCloud.Oss
     ///     var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new()
     ///     {
     ///         BucketName = $"example-value-{@default.Result}",
+    ///     });
+    /// 
+    ///     var bucket_aclBucketAcl = new AliCloud.Oss.BucketAcl("bucket-acl", new()
+    ///     {
+    ///         Bucket = bucket_acl.BucketName,
     ///         Acl = "private",
     ///     });
     /// 
@@ -94,6 +99,11 @@ namespace Pulumi.AliCloud.Oss
     ///     var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new()
     ///     {
     ///         BucketName = $"example-value-{@default.Result}",
+    ///     });
+    /// 
+    ///     var bucket_targetBucketAcl = new AliCloud.Oss.BucketAcl("bucket-target", new()
+    ///     {
+    ///         Bucket = bucket_target.BucketName,
     ///         Acl = "public-read",
     ///     });
     /// 
@@ -130,7 +140,6 @@ namespace Pulumi.AliCloud.Oss
     ///     var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new()
     ///     {
     ///         BucketName = $"example-value-{@default.Result}",
-    ///         Acl = "private",
     ///         RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
     ///         {
     ///             AllowEmpty = false,
@@ -140,6 +149,12 @@ namespace Pulumi.AliCloud.Oss
     ///                 "https://www.aliyun.com",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var defaultBucketAcl = new AliCloud.Oss.BucketAcl("default", new()
+    ///     {
+    ///         Bucket = bucket_referer.BucketName,
+    ///         Acl = "private",
     ///     });
     /// 
     /// });

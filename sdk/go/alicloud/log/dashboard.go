@@ -44,15 +44,15 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
-//				ProjectName:   example.Name,
+//				ProjectName:   example.ProjectName,
 //				DashboardName: pulumi.String("terraform-example"),
 //				DisplayName:   pulumi.String("terraform-example"),
 //				Attribute:     pulumi.String("  {\n    \"type\":\"grid\"\n  }\n"),

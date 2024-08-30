@@ -43,7 +43,7 @@ import (
 //			}
 //			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				Name:      pulumi.String(name),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -55,10 +55,10 @@ import (
 //				return err
 //			}
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
-//				VpcId:     foo.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				Name:      pulumi.String(name),
+//				VpcId:       foo.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Nlb
     ///         VpcId = defaultNetwork.Id,
     ///         Scheduler = "Wrr",
     ///         Protocol = "TCP",
-    ///         ConnectionDrain = true,
+    ///         ConnectionDrainEnabled = true,
     ///         ConnectionDrainTimeout = 60,
     ///         AddressIpVersion = "Ipv4",
     ///         HealthCheck = new AliCloud.Nlb.Inputs.ServerGroupHealthCheckArgs

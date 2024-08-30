@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -40,8 +40,8 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const exampleLogTailConfig = new alicloud.log.LogTailConfig("example", {
- *     project: example.name,
- *     logstore: exampleStore.name,
+ *     project: example.projectName,
+ *     logstore: exampleStore.logstoreName,
  *     inputType: "file",
  *     name: "terraform-example",
  *     outputType: "LogService",
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const exampleMachineGroup = new alicloud.log.MachineGroup("example", {
- *     project: example.name,
+ *     project: example.projectName,
  *     name: "terraform-example",
  *     identifyType: "ip",
  *     topic: "terraform",
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * const exampleLogTailAttachment = new alicloud.log.LogTailAttachment("example", {
- *     project: example.name,
+ *     project: example.projectName,
  *     logtailConfigName: exampleLogTailConfig.name,
  *     machineGroupName: exampleMachineGroup.name,
  * });

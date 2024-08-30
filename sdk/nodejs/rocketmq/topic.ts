@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     max: 99999,
  * });
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     name: `${name}-${_default.result}`,
+ *     instanceName: `${name}-${_default.result}`,
  *     remark: "default_ons_instance_remark",
  * });
  * const defaultTopic = new alicloud.rocketmq.Topic("default", {

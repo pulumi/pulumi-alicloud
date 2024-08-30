@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
@@ -47,8 +47,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -58,8 +58,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleIngestion = new AliCloud.Log.Ingestion("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Logstore = exampleStore.Name,
+    ///         Project = example.ProjectName,
+    ///         Logstore = exampleStore.LogstoreName,
     ///         IngestionName = "terraform-example",
     ///         DisplayName = "terraform-example",
     ///         Description = "terraform-example",

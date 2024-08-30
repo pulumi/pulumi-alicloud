@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterPostInstallScript {
+    /**
+     * @return The parameters of the script.
+     * 
+     */
     private String args;
+    /**
+     * @return The download path of the script.
+     * 
+     */
     private String url;
 
     private GetClustersClusterPostInstallScript() {}
+    /**
+     * @return The parameters of the script.
+     * 
+     */
     public String args() {
         return this.args;
     }
+    /**
+     * @return The download path of the script.
+     * 
+     */
     public String url() {
         return this.url;
     }

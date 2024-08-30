@@ -185,13 +185,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  *         var example_2 = new Alert("example-2", AlertArgs.builder()
  *             .version("2.0")
  *             .type("default")
- *             .projectName(example.name())
+ *             .projectName(example.projectName())
  *             .alertName("example-alert")
  *             .alertDisplayname("example-alert")
  *             .muteUntil("1632486684")
@@ -210,7 +210,6 @@ import javax.annotation.Nullable;
  *             .noDataSeverity(8)
  *             .sendResolved(true)
  *             .autoAnnotation(true)
- *             .dashboard("example-dashboard")
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type("FixedRate")
  *                 .interval("5m")
@@ -221,26 +220,28 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .queryLists(            
  *                 AlertQueryListArgs.builder()
- *                     .store(exampleStore.name())
+ *                     .store(exampleStore.logstoreName())
  *                     .storeType("log")
- *                     .project(example.name())
+ *                     .project(example.projectName())
  *                     .region("cn-heyuan")
  *                     .chartTitle("chart_title")
  *                     .start("-60s")
  *                     .end("20s")
  *                     .query("* AND aliyun | select count(1) as cnt")
  *                     .powerSqlMode("auto")
+ *                     .dashboardId("example-dashboard")
  *                     .build(),
  *                 AlertQueryListArgs.builder()
- *                     .store(exampleStore.name())
+ *                     .store(exampleStore.logstoreName())
  *                     .storeType("log")
- *                     .project(example.name())
+ *                     .project(example.projectName())
  *                     .region("cn-heyuan")
  *                     .chartTitle("chart_title")
  *                     .start("-60s")
  *                     .end("20s")
  *                     .query("error | select count(1) as error_cnt")
  *                     .powerSqlMode("enable")
+ *                     .dashboardId("example-dashboard")
  *                     .build())
  *             .labels(AlertLabelArgs.builder()
  *                 .key("env")
@@ -341,13 +342,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -358,7 +359,7 @@ import javax.annotation.Nullable;
  *         var example_3 = new Alert("example-3", AlertArgs.builder()
  *             .version("2.0")
  *             .type("tpl")
- *             .projectName(example.name())
+ *             .projectName(example.projectName())
  *             .alertName("example-alert")
  *             .alertDisplayname("example-alert")
  *             .muteUntil("1632486684")
@@ -380,7 +381,7 @@ import javax.annotation.Nullable;
  *                     Map.entry("default.action_policy", "sls.app.ack.builtin"),
  *                     Map.entry("default.severity", "6"),
  *                     Map.entry("sendResolved", "false"),
- *                     Map.entry("default.project", example.name()),
+ *                     Map.entry("default.project", example.projectName()),
  *                     Map.entry("default.logstore", "k8s-event"),
  *                     Map.entry("default.repeatInterval", "4h"),
  *                     Map.entry("trigger_threshold", "1"),

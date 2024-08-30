@@ -18,44 +18,48 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
     public static final RegistryEnterpriseNamespaceArgs Empty = new RegistryEnterpriseNamespaceArgs();
 
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
-    @Import(name="autoCreate", required=true)
-    private Output<Boolean> autoCreate;
+    @Import(name="autoCreate")
+    private @Nullable Output<Boolean> autoCreate;
 
     /**
-     * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * @return Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
-    public Output<Boolean> autoCreate() {
-        return this.autoCreate;
+    public Optional<Output<Boolean>> autoCreate() {
+        return Optional.ofNullable(this.autoCreate);
     }
 
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
-    @Import(name="defaultVisibility", required=true)
-    private Output<String> defaultVisibility;
+    @Import(name="defaultVisibility")
+    private @Nullable Output<String> defaultVisibility;
 
     /**
-     * @return `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * @return The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
-    public Output<String> defaultVisibility() {
-        return this.defaultVisibility;
+    public Optional<Output<String>> defaultVisibility() {
+        return Optional.ofNullable(this.defaultVisibility);
     }
 
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     public Output<String> instanceId() {
@@ -63,14 +67,14 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * @return The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -105,18 +109,18 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoCreate Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+         * @param autoCreate Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
          */
-        public Builder autoCreate(Output<Boolean> autoCreate) {
+        public Builder autoCreate(@Nullable Output<Boolean> autoCreate) {
             $.autoCreate = autoCreate;
             return this;
         }
 
         /**
-         * @param autoCreate Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+         * @param autoCreate Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -126,18 +130,22 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param defaultVisibility `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+         * @param defaultVisibility The default type of the repository that is automatically created. Valid values:
+         * - `PUBLIC`: A public repository.
+         * - `PRIVATE`: A private repository.
          * 
          * @return builder
          * 
          */
-        public Builder defaultVisibility(Output<String> defaultVisibility) {
+        public Builder defaultVisibility(@Nullable Output<String> defaultVisibility) {
             $.defaultVisibility = defaultVisibility;
             return this;
         }
 
         /**
-         * @param defaultVisibility `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+         * @param defaultVisibility The default type of the repository that is automatically created. Valid values:
+         * - `PUBLIC`: A public repository.
+         * - `PRIVATE`: A private repository.
          * 
          * @return builder
          * 
@@ -147,7 +155,7 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -158,7 +166,7 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -168,7 +176,7 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+         * @param name The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
          * 
          * @return builder
          * 
@@ -179,7 +187,7 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+         * @param name The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
          * 
          * @return builder
          * 
@@ -189,12 +197,6 @@ public final class RegistryEnterpriseNamespaceArgs extends com.pulumi.resources.
         }
 
         public RegistryEnterpriseNamespaceArgs build() {
-            if ($.autoCreate == null) {
-                throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "autoCreate");
-            }
-            if ($.defaultVisibility == null) {
-                throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "defaultVisibility");
-            }
             if ($.instanceId == null) {
                 throw new MissingRequiredPropertyException("RegistryEnterpriseNamespaceArgs", "instanceId");
             }

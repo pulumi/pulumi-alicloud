@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultINsMgl = new Project("defaultINsMgl", ProjectArgs.builder()
  *             .description(String.format("%s-%s", projectName,default_.result()))
- *             .name(String.format("%s-%s", projectName,default_.result()))
+ *             .projectName(String.format("%s-%s", projectName,default_.result()))
  *             .build());
  * 
  *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *                         .roleArn("acs:ram::1654218965343050:role/aliyunslsalertmonitorrole")
  *                         .query("* | select *")
  *                         .timeSpanType("Relative")
- *                         .project(defaultINsMgl.name())
+ *                         .project(defaultINsMgl.projectName())
  *                         .powerSqlMode("disable")
  *                         .dashboardId("wkb-dashboard")
  *                         .chartTitle("wkb-chart")
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *                     "sls")
  *                 .build())
  *             .alertName(alertName)
- *             .projectName(defaultINsMgl.name())
+ *             .projectName(defaultINsMgl.projectName())
  *             .build());
  * 
  *     }

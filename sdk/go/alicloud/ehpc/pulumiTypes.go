@@ -493,7 +493,8 @@ func (o ClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) ClusterPos
 
 type GetClustersCluster struct {
 	// The server type of the account.
-	AccountType  string                          `pulumi:"accountType"`
+	AccountType string `pulumi:"accountType"`
+	// A list of clustered applications.
 	Applications []GetClustersClusterApplication `pulumi:"applications"`
 	// The version number of the client used by the cluster.
 	ClientVersion string `pulumi:"clientVersion"`
@@ -528,11 +529,13 @@ type GetClustersCluster struct {
 	LoginCount int `pulumi:"loginCount"`
 	// Cluster login node specifications.
 	LoginInstanceType string `pulumi:"loginInstanceType"`
-	ManagerCount      int    `pulumi:"managerCount"`
+	// The number of control nodes.
+	ManagerCount int `pulumi:"managerCount"`
 	// The instance type of manager nodes.
 	ManagerInstanceType string `pulumi:"managerInstanceType"`
 	// The image tag of the operating system.
-	OsTag              string                                `pulumi:"osTag"`
+	OsTag string `pulumi:"osTag"`
+	// List of post-installation scripts.
 	PostInstallScripts []GetClustersClusterPostInstallScript `pulumi:"postInstallScripts"`
 	// Mount the remote directory of the shared storage.
 	RemoteDirectory string `pulumi:"remoteDirectory"`
@@ -542,7 +545,7 @@ type GetClustersCluster struct {
 	SchedulerType string `pulumi:"schedulerType"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values:
 	Status string `pulumi:"status"`
 	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
 	VolumeId string `pulumi:"volumeId"`
@@ -556,7 +559,8 @@ type GetClustersCluster struct {
 	VpcId string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
-	ZoneId    string `pulumi:"zoneId"`
+	// The available zone ID.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
@@ -572,7 +576,8 @@ type GetClustersClusterInput interface {
 
 type GetClustersClusterArgs struct {
 	// The server type of the account.
-	AccountType  pulumi.StringInput                      `pulumi:"accountType"`
+	AccountType pulumi.StringInput `pulumi:"accountType"`
+	// A list of clustered applications.
 	Applications GetClustersClusterApplicationArrayInput `pulumi:"applications"`
 	// The version number of the client used by the cluster.
 	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
@@ -607,11 +612,13 @@ type GetClustersClusterArgs struct {
 	LoginCount pulumi.IntInput `pulumi:"loginCount"`
 	// Cluster login node specifications.
 	LoginInstanceType pulumi.StringInput `pulumi:"loginInstanceType"`
-	ManagerCount      pulumi.IntInput    `pulumi:"managerCount"`
+	// The number of control nodes.
+	ManagerCount pulumi.IntInput `pulumi:"managerCount"`
 	// The instance type of manager nodes.
 	ManagerInstanceType pulumi.StringInput `pulumi:"managerInstanceType"`
 	// The image tag of the operating system.
-	OsTag              pulumi.StringInput                            `pulumi:"osTag"`
+	OsTag pulumi.StringInput `pulumi:"osTag"`
+	// List of post-installation scripts.
 	PostInstallScripts GetClustersClusterPostInstallScriptArrayInput `pulumi:"postInstallScripts"`
 	// Mount the remote directory of the shared storage.
 	RemoteDirectory pulumi.StringInput `pulumi:"remoteDirectory"`
@@ -621,7 +628,7 @@ type GetClustersClusterArgs struct {
 	SchedulerType pulumi.StringInput `pulumi:"schedulerType"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values:
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
 	VolumeId pulumi.StringInput `pulumi:"volumeId"`
@@ -635,7 +642,8 @@ type GetClustersClusterArgs struct {
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+	// The available zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetClustersClusterArgs) ElementType() reflect.Type {
@@ -694,6 +702,7 @@ func (o GetClustersClusterOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.AccountType }).(pulumi.StringOutput)
 }
 
+// A list of clustered applications.
 func (o GetClustersClusterOutput) Applications() GetClustersClusterApplicationArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterApplication { return v.Applications }).(GetClustersClusterApplicationArrayOutput)
 }
@@ -773,6 +782,7 @@ func (o GetClustersClusterOutput) LoginInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.LoginInstanceType }).(pulumi.StringOutput)
 }
 
+// The number of control nodes.
 func (o GetClustersClusterOutput) ManagerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.ManagerCount }).(pulumi.IntOutput)
 }
@@ -787,6 +797,7 @@ func (o GetClustersClusterOutput) OsTag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.OsTag }).(pulumi.StringOutput)
 }
 
+// List of post-installation scripts.
 func (o GetClustersClusterOutput) PostInstallScripts() GetClustersClusterPostInstallScriptArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterPostInstallScript { return v.PostInstallScripts }).(GetClustersClusterPostInstallScriptArrayOutput)
 }
@@ -811,7 +822,7 @@ func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values:
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -846,6 +857,7 @@ func (o GetClustersClusterOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
+// The available zone ID.
 func (o GetClustersClusterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -871,6 +883,7 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 }
 
 type GetClustersClusterApplication struct {
+	// Application Tags.
 	Tag string `pulumi:"tag"`
 }
 
@@ -886,6 +899,7 @@ type GetClustersClusterApplicationInput interface {
 }
 
 type GetClustersClusterApplicationArgs struct {
+	// Application Tags.
 	Tag pulumi.StringInput `pulumi:"tag"`
 }
 
@@ -940,6 +954,7 @@ func (o GetClustersClusterApplicationOutput) ToGetClustersClusterApplicationOutp
 	return o
 }
 
+// Application Tags.
 func (o GetClustersClusterApplicationOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterApplication) string { return v.Tag }).(pulumi.StringOutput)
 }
@@ -965,8 +980,10 @@ func (o GetClustersClusterApplicationArrayOutput) Index(i pulumi.IntInput) GetCl
 }
 
 type GetClustersClusterPostInstallScript struct {
+	// The parameters of the script.
 	Args string `pulumi:"args"`
-	Url  string `pulumi:"url"`
+	// The download path of the script.
+	Url string `pulumi:"url"`
 }
 
 // GetClustersClusterPostInstallScriptInput is an input type that accepts GetClustersClusterPostInstallScriptArgs and GetClustersClusterPostInstallScriptOutput values.
@@ -981,8 +998,10 @@ type GetClustersClusterPostInstallScriptInput interface {
 }
 
 type GetClustersClusterPostInstallScriptArgs struct {
+	// The parameters of the script.
 	Args pulumi.StringInput `pulumi:"args"`
-	Url  pulumi.StringInput `pulumi:"url"`
+	// The download path of the script.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetClustersClusterPostInstallScriptArgs) ElementType() reflect.Type {
@@ -1036,10 +1055,12 @@ func (o GetClustersClusterPostInstallScriptOutput) ToGetClustersClusterPostInsta
 	return o
 }
 
+// The parameters of the script.
 func (o GetClustersClusterPostInstallScriptOutput) Args() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterPostInstallScript) string { return v.Args }).(pulumi.StringOutput)
 }
 
+// The download path of the script.
 func (o GetClustersClusterPostInstallScriptOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterPostInstallScript) string { return v.Url }).(pulumi.StringOutput)
 }

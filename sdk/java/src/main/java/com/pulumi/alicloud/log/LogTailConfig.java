@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleLogTailConfig = new LogTailConfig("exampleLogTailConfig", LogTailConfigArgs.builder()
- *             .project(example.name())
- *             .logstore(exampleStore.name())
+ *             .project(example.projectName())
+ *             .logstore(exampleStore.logstoreName())
  *             .inputType("file")
  *             .name("terraform-example")
  *             .outputType("LogService")

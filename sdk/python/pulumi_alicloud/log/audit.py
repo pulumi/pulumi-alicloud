@@ -342,6 +342,7 @@ class Audit(pulumi.CustomResource):
             },
             resource_directory_type="all")
         ```
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -528,6 +529,7 @@ class Audit(pulumi.CustomResource):
             },
             resource_directory_type="all")
         ```
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud

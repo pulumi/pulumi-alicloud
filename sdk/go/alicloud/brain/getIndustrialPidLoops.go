@@ -13,7 +13,9 @@ import (
 
 // This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.117.0+.
+// > **NOTE:** Available since v1.117.0.
+//
+// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 //
 // ## Example Usage
 //
@@ -78,15 +80,19 @@ type GetIndustrialPidLoopsArgs struct {
 type GetIndustrialPidLoopsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                      `pulumi:"id"`
-	Ids          []string                    `pulumi:"ids"`
-	Loops        []GetIndustrialPidLoopsLoop `pulumi:"loops"`
-	NameRegex    *string                     `pulumi:"nameRegex"`
-	Names        []string                    `pulumi:"names"`
-	OutputFile   *string                     `pulumi:"outputFile"`
-	PidLoopName  *string                     `pulumi:"pidLoopName"`
-	PidProjectId string                      `pulumi:"pidProjectId"`
-	Status       *string                     `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+	Loops     []GetIndustrialPidLoopsLoop `pulumi:"loops"`
+	NameRegex *string                     `pulumi:"nameRegex"`
+	// A list of Pid Loop names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of Pid Loop.
+	PidLoopName  *string `pulumi:"pidLoopName"`
+	PidProjectId string  `pulumi:"pidProjectId"`
+	// The status of Pid Loop.
+	Status *string `pulumi:"status"`
 }
 
 func GetIndustrialPidLoopsOutput(ctx *pulumi.Context, args GetIndustrialPidLoopsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidLoopsResultOutput {
@@ -151,6 +157,7 @@ func (o GetIndustrialPidLoopsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Brain Industrial Pid Loops. Each element contains the following attributes:
 func (o GetIndustrialPidLoopsResultOutput) Loops() GetIndustrialPidLoopsLoopArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) []GetIndustrialPidLoopsLoop { return v.Loops }).(GetIndustrialPidLoopsLoopArrayOutput)
 }
@@ -159,6 +166,7 @@ func (o GetIndustrialPidLoopsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Pid Loop names.
 func (o GetIndustrialPidLoopsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -167,6 +175,7 @@ func (o GetIndustrialPidLoopsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of Pid Loop.
 func (o GetIndustrialPidLoopsResultOutput) PidLoopName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) *string { return v.PidLoopName }).(pulumi.StringPtrOutput)
 }
@@ -175,6 +184,7 @@ func (o GetIndustrialPidLoopsResultOutput) PidProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) string { return v.PidProjectId }).(pulumi.StringOutput)
 }
 
+// The status of Pid Loop.
 func (o GetIndustrialPidLoopsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

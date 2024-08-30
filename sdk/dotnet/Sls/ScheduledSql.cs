@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var defaultKIe4KV = new AliCloud.Log.Project("defaultKIe4KV", new()
     ///     {
     ///         Description = $"{name}-{@default.Result}",
-    ///         Name = $"{name}-{@default.Result}",
+    ///         ProjectName = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var default1LI9we = new AliCloud.Log.Store("default1LI9we", new()
@@ -48,8 +48,8 @@ namespace Pulumi.AliCloud.Sls
     ///         HotTtl = 8,
     ///         RetentionPeriod = 30,
     ///         ShardCount = 2,
-    ///         Project = defaultKIe4KV.Name,
-    ///         Name = $"{name}-{@default.Result}",
+    ///         ProjectName = defaultKIe4KV.ProjectName,
+    ///         LogstoreName = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var defaultScheduledSql = new AliCloud.Sls.ScheduledSql("default", new()
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Sls
     ///             SqlType = "searchQuery",
     ///             DestEndpoint = "ap-northeast-1.log.aliyuncs.com",
     ///             DestProject = "job-e2e-project-jj78kur-ap-southeast-1",
-    ///             SourceLogstore = default1LI9we.Name,
+    ///             SourceLogstore = default1LI9we.LogstoreName,
     ///             DestLogstore = "example-open-api02",
     ///             RoleArn = "acs:ram::1395894005868720:role/aliyunlogetlrole",
     ///             DestRoleArn = "acs:ram::1395894005868720:role/aliyunlogetlrole",
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Sls
     ///             DataFormat = "log2log",
     ///         },
     ///         ScheduledSqlName = name,
-    ///         Project = defaultKIe4KV.Name,
+    ///         Project = defaultKIe4KV.ProjectName,
     ///     });
     /// 
     /// });

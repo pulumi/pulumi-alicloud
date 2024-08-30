@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Output the secret to a file.
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -74,6 +75,7 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Using `pgp_key` to encrypt the secret.
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

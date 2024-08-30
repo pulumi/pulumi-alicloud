@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     [OutputType]
     public sealed class GetClustersClusterApplicationResult
     {
+        /// <summary>
+        /// Application Tags.
+        /// </summary>
         public readonly string Tag;
 
         [OutputConstructor]

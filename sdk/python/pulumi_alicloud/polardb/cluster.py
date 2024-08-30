@@ -50,6 +50,7 @@ class ClusterArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  proxy_class: Optional[pulumi.Input[str]] = None,
                  proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -82,7 +83,8 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
@@ -132,6 +134,8 @@ class ClusterArgs:
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+               > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
         :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
                > **NOTE:** This parameter is valid only for standard edition clusters.
         :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
@@ -158,8 +162,7 @@ class ClusterArgs:
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
-        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-               > **NOTE:** Serverless cluster does not support this parameter.
+        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -238,6 +241,8 @@ class ClusterArgs:
             pulumi.set(__self__, "planned_end_time", planned_end_time)
         if planned_start_time is not None:
             pulumi.set(__self__, "planned_start_time", planned_start_time)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if proxy_class is not None:
             pulumi.set(__self__, "proxy_class", proxy_class)
         if proxy_type is not None:
@@ -301,7 +306,8 @@ class ClusterArgs:
         """
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -722,6 +728,19 @@ class ClusterArgs:
         pulumi.set(self, "planned_start_time", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -960,8 +979,7 @@ class ClusterArgs:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-        > **NOTE:** Serverless cluster does not support this parameter.
+        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
 
@@ -1111,6 +1129,7 @@ class _ClusterState:
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  proxy_class: Optional[pulumi.Input[str]] = None,
                  proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -1158,7 +1177,8 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -1199,6 +1219,8 @@ class _ClusterState:
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0) PolarDB cluster connection port.
+        :param pulumi.Input[str] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+               > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
         :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
                > **NOTE:** This parameter is valid only for standard edition clusters.
         :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
@@ -1226,8 +1248,7 @@ class _ClusterState:
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
-        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-               > **NOTE:** Serverless cluster does not support this parameter.
+        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1320,6 +1341,8 @@ class _ClusterState:
             pulumi.set(__self__, "planned_start_time", planned_start_time)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if proxy_class is not None:
             pulumi.set(__self__, "proxy_class", proxy_class)
         if proxy_type is not None:
@@ -1510,7 +1533,8 @@ class _ClusterState:
         """
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -1856,6 +1880,19 @@ class _ClusterState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2106,8 +2143,7 @@ class _ClusterState:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-        > **NOTE:** Serverless cluster does not support this parameter.
+        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
 
@@ -2269,6 +2305,7 @@ class Cluster(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  proxy_class: Optional[pulumi.Input[str]] = None,
                  proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -2322,7 +2359,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -2361,6 +2399,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
+        :param pulumi.Input[str] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+               > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
         :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
                > **NOTE:** This parameter is valid only for standard edition clusters.
         :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
@@ -2387,8 +2427,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
-        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-               > **NOTE:** Serverless cluster does not support this parameter.
+        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2466,6 +2505,7 @@ class Cluster(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
                  planned_start_time: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[str]] = None,
                  proxy_class: Optional[pulumi.Input[str]] = None,
                  proxy_type: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -2543,6 +2583,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["planned_end_time"] = planned_end_time
             __props__.__dict__["planned_start_time"] = planned_start_time
+            __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["proxy_class"] = proxy_class
             __props__.__dict__["proxy_type"] = proxy_type
             __props__.__dict__["renewal_status"] = renewal_status
@@ -2625,6 +2666,7 @@ class Cluster(pulumi.CustomResource):
             planned_end_time: Optional[pulumi.Input[str]] = None,
             planned_start_time: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            provisioned_iops: Optional[pulumi.Input[str]] = None,
             proxy_class: Optional[pulumi.Input[str]] = None,
             proxy_type: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
@@ -2677,7 +2719,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+               From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -2718,6 +2761,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0) PolarDB cluster connection port.
+        :param pulumi.Input[str] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+               > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
         :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
                > **NOTE:** This parameter is valid only for standard edition clusters.
         :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
@@ -2745,8 +2790,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
-        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-               > **NOTE:** Serverless cluster does not support this parameter.
+        :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2805,6 +2849,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["planned_end_time"] = planned_end_time
         __props__.__dict__["planned_start_time"] = planned_start_time
         __props__.__dict__["port"] = port
+        __props__.__dict__["provisioned_iops"] = provisioned_iops
         __props__.__dict__["proxy_class"] = proxy_class
         __props__.__dict__["proxy_type"] = proxy_type
         __props__.__dict__["renewal_status"] = renewal_status
@@ -2926,7 +2971,8 @@ class Cluster(pulumi.CustomResource):
         """
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+        From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
         """
         return pulumi.get(self, "db_node_class")
 
@@ -3160,6 +3206,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[str]:
+        """
+        The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> pulumi.Output[Optional[str]]:
         """
@@ -3330,8 +3385,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Output[str]:
         """
-        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-        > **NOTE:** Serverless cluster does not support this parameter.
+        The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
 

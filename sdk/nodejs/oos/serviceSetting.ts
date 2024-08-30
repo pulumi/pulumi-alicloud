@@ -21,17 +21,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testaccoossetting";
- * const _default = new alicloud.oss.Bucket("default", {
- *     bucket: name,
+ * const _default = new alicloud.oss.Bucket("default", {bucket: name});
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: _default.bucket,
  *     acl: "public-read-write",
  * });
- * const defaultProject = new alicloud.log.Project("default", {name: name});
+ * const defaultProject = new alicloud.log.Project("default", {projectName: name});
  * const defaultServiceSetting = new alicloud.oos.ServiceSetting("default", {
  *     deliveryOssEnabled: true,
  *     deliveryOssKeyPrefix: "path1/",
  *     deliveryOssBucketName: _default.bucket,
  *     deliverySlsEnabled: true,
- *     deliverySlsProjectName: defaultProject.name,
+ *     deliverySlsProjectName: defaultProject.projectName,
  * });
  * ```
  *

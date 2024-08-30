@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleHAVipAttachment = new HAVipAttachment("exampleHAVipAttachment", HAVipAttachmentArgs.builder()
- *             .havipId(exampleHAVip.id())
+ *             .haVipId(exampleHAVip.id())
  *             .instanceId(exampleInstance.id())
  *             .build());
  * 

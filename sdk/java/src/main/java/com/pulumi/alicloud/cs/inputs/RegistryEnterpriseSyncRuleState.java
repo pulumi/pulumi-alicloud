@@ -16,14 +16,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     public static final RegistryEnterpriseSyncRuleState Empty = new RegistryEnterpriseSyncRuleState();
 
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition source instance.
+     * @return The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -31,14 +31,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition sync rule.
+     * @return The name of the sync rule.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      * 
      */
     @Import(name="namespaceName")
     private @Nullable Output<String> namespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * @return The namespace name of the source instance.
      * 
      */
     public Optional<Output<String>> namespaceName() {
@@ -61,14 +61,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      * 
      */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
     /**
-     * @return Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * @return The image repository name of the source instance.
      * 
      */
     public Optional<Output<String>> repoName() {
@@ -76,14 +76,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * The uuid of Container Registry Enterprise Edition sync rule.
+     * The ID of the sync rule.
      * 
      */
     @Import(name="ruleId")
     private @Nullable Output<String> ruleId;
 
     /**
-     * @return The uuid of Container Registry Enterprise Edition sync rule.
+     * @return The ID of the sync rule.
      * 
      */
     public Optional<Output<String>> ruleId() {
@@ -91,14 +91,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * The synchronization direction.
      * 
      */
     @Import(name="syncDirection")
     private @Nullable Output<String> syncDirection;
 
     /**
-     * @return `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * @return The synchronization direction.
      * 
      */
     public Optional<Output<String>> syncDirection() {
@@ -106,14 +106,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * The synchronization scope.
      * 
      */
     @Import(name="syncScope")
     private @Nullable Output<String> syncScope;
 
     /**
-     * @return `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * @return The synchronization scope.
      * 
      */
     public Optional<Output<String>> syncScope() {
@@ -121,14 +121,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      * 
      */
     @Import(name="tagFilter")
     private @Nullable Output<String> tagFilter;
 
     /**
-     * @return The regular expression used to filter image tags for synchronization in the source repository.
+     * @return The regular expression used to filter image tags.
      * 
      */
     public Optional<Output<String>> tagFilter() {
@@ -136,14 +136,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      * 
      */
     @Import(name="targetInstanceId")
     private @Nullable Output<String> targetInstanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * @return The ID of the destination instance.
      * 
      */
     public Optional<Output<String>> targetInstanceId() {
@@ -151,14 +151,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      * 
      */
     @Import(name="targetNamespaceName")
     private @Nullable Output<String> targetNamespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * @return The namespace name of the destination instance.
      * 
      */
     public Optional<Output<String>> targetNamespaceName() {
@@ -166,14 +166,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      * 
      */
     @Import(name="targetRegionId")
     private @Nullable Output<String> targetRegionId;
 
     /**
-     * @return The target region to be synchronized.
+     * @return The region ID of the destination instance.
      * 
      */
     public Optional<Output<String>> targetRegionId() {
@@ -181,14 +181,14 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      * 
      */
     @Import(name="targetRepoName")
     private @Nullable Output<String> targetRepoName;
 
     /**
-     * @return Name of the target repository.
+     * @return The image repository name of the destination instance.
      * 
      */
     public Optional<Output<String>> targetRepoName() {
@@ -231,7 +231,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition sync rule.
+         * @param name The name of the sync rule.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition sync rule.
+         * @param name The name of the sync rule.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param namespaceName Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+         * @param namespaceName The namespace name of the source instance.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param namespaceName Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+         * @param namespaceName The namespace name of the source instance.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param repoName Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+         * @param repoName The image repository name of the source instance.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param repoName Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+         * @param repoName The image repository name of the source instance.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleId The uuid of Container Registry Enterprise Edition sync rule.
+         * @param ruleId The ID of the sync rule.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleId The uuid of Container Registry Enterprise Edition sync rule.
+         * @param ruleId The ID of the sync rule.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param syncDirection `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+         * @param syncDirection The synchronization direction.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param syncDirection `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+         * @param syncDirection The synchronization direction.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param syncScope `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+         * @param syncScope The synchronization scope.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param syncScope `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+         * @param syncScope The synchronization scope.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param tagFilter The regular expression used to filter image tags for synchronization in the source repository.
+         * @param tagFilter The regular expression used to filter image tags.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param tagFilter The regular expression used to filter image tags for synchronization in the source repository.
+         * @param tagFilter The regular expression used to filter image tags.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetInstanceId ID of Container Registry Enterprise Edition target instance to be synchronized.
+         * @param targetInstanceId The ID of the destination instance.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetInstanceId ID of Container Registry Enterprise Edition target instance to be synchronized.
+         * @param targetInstanceId The ID of the destination instance.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetNamespaceName Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+         * @param targetNamespaceName The namespace name of the destination instance.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetNamespaceName Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+         * @param targetNamespaceName The namespace name of the destination instance.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetRegionId The target region to be synchronized.
+         * @param targetRegionId The region ID of the destination instance.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetRegionId The target region to be synchronized.
+         * @param targetRegionId The region ID of the destination instance.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetRepoName Name of the target repository.
+         * @param targetRepoName The image repository name of the destination instance.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class RegistryEnterpriseSyncRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param targetRepoName Name of the target repository.
+         * @param targetRepoName The image repository name of the destination instance.
          * 
          * @return builder
          * 

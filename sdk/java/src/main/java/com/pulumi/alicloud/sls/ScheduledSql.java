@@ -67,15 +67,15 @@ import javax.annotation.Nullable;
  * 
  *         var defaultKIe4KV = new Project("defaultKIe4KV", ProjectArgs.builder()
  *             .description(String.format("%s-%s", name,default_.result()))
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .projectName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var default1LI9we = new Store("default1LI9we", StoreArgs.builder()
  *             .hotTtl("8")
  *             .retentionPeriod("30")
  *             .shardCount("2")
- *             .project(defaultKIe4KV.name())
- *             .name(String.format("%s-%s", name,default_.result()))
+ *             .projectName(defaultKIe4KV.projectName())
+ *             .logstoreName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var defaultScheduledSql = new ScheduledSql("defaultScheduledSql", ScheduledSqlArgs.builder()
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *                 .sqlType("searchQuery")
  *                 .destEndpoint("ap-northeast-1.log.aliyuncs.com")
  *                 .destProject("job-e2e-project-jj78kur-ap-southeast-1")
- *                 .sourceLogstore(default1LI9we.name())
+ *                 .sourceLogstore(default1LI9we.logstoreName())
  *                 .destLogstore("example-open-api02")
  *                 .roleArn("acs:ram::1395894005868720:role/aliyunlogetlrole")
  *                 .destRoleArn("acs:ram::1395894005868720:role/aliyunlogetlrole")
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *                 .dataFormat("log2log")
  *                 .build())
  *             .scheduledSqlName(name)
- *             .project(defaultKIe4KV.name())
+ *             .project(defaultKIe4KV.projectName())
  *             .build());
  * 
  *     }}{@code

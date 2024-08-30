@@ -33,12 +33,17 @@ namespace Pulumi.AliCloud.Oos
     ///     var @default = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = name,
+    ///     });
+    /// 
+    ///     var defaultBucketAcl = new AliCloud.Oss.BucketAcl("default", new()
+    ///     {
+    ///         Bucket = @default.BucketName,
     ///         Acl = "public-read-write",
     ///     });
     /// 
     ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         Name = name,
+    ///         ProjectName = name,
     ///     });
     /// 
     ///     var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("default", new()
@@ -47,7 +52,7 @@ namespace Pulumi.AliCloud.Oos
     ///         DeliveryOssKeyPrefix = "path1/",
     ///         DeliveryOssBucketName = @default.BucketName,
     ///         DeliverySlsEnabled = true,
-    ///         DeliverySlsProjectName = defaultProject.Name,
+    ///         DeliverySlsProjectName = defaultProject.ProjectName,
     ///     });
     /// 
     /// });

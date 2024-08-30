@@ -65,13 +65,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -80,8 +80,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleLogTailConfig = new LogTailConfig("exampleLogTailConfig", LogTailConfigArgs.builder()
- *             .project(example.name())
- *             .logstore(exampleStore.name())
+ *             .project(example.projectName())
+ *             .logstore(exampleStore.logstoreName())
  *             .inputType("file")
  *             .name("terraform-example")
  *             .outputType("LogService")
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()
- *             .project(example.name())
+ *             .project(example.projectName())
  *             .name("terraform-example")
  *             .identifyType("ip")
  *             .topic("terraform")
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleLogTailAttachment = new LogTailAttachment("exampleLogTailAttachment", LogTailAttachmentArgs.builder()
- *             .project(example.name())
+ *             .project(example.projectName())
  *             .logtailConfigName(exampleLogTailConfig.name())
  *             .machineGroupName(exampleMachineGroup.name())
  *             .build());

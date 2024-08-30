@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleStoreIndex = new StoreIndex("exampleStoreIndex", StoreIndexArgs.builder()
- *             .project(example.name())
- *             .logstore(exampleStore.name())
+ *             .project(example.projectName())
+ *             .logstore(exampleStore.logstoreName())
  *             .fullText(StoreIndexFullTextArgs.builder()
  *                 .caseSensitive(true)
  *                 .token("""

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultINsMgl = new alicloud.log.Project("defaultINsMgl", {
  *     description: `${projectName}-${_default.result}`,
- *     name: `${projectName}-${_default.result}`,
+ *     projectName: `${projectName}-${_default.result}`,
  * });
  * const defaultAlert = new alicloud.sls.Alert("default", {
  *     schedule: {
@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  *                 roleArn: "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
  *                 query: "* | select *",
  *                 timeSpanType: "Relative",
- *                 project: defaultINsMgl.name,
+ *                 project: defaultINsMgl.projectName,
  *                 powerSqlMode: "disable",
  *                 dashboardId: "wkb-dashboard",
  *                 chartTitle: "wkb-chart",
@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  *         ],
  *     },
  *     alertName: alertName,
- *     projectName: defaultINsMgl.name,
+ *     projectName: defaultINsMgl.projectName,
  * });
  * ```
  *

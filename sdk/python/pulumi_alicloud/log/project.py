@@ -315,7 +315,7 @@ class Project(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
@@ -334,7 +334,7 @@ class Project(pulumi.CustomResource):
             max=99999,
             min=10000)
         example_policy = alicloud.log.Project("example_policy",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example",
             policy=\"\"\"{
           "Statement": [
@@ -412,7 +412,7 @@ class Project(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
@@ -431,7 +431,7 @@ class Project(pulumi.CustomResource):
             max=99999,
             min=10000)
         example_policy = alicloud.log.Project("example_policy",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example",
             policy=\"\"\"{
           "Statement": [

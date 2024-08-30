@@ -22,12 +22,28 @@ public final class GetIndustrialPidLoopsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+     * 
+     */
     private List<GetIndustrialPidLoopsLoop> loops;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Pid Loop names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of Pid Loop.
+     * 
+     */
     private @Nullable String pidLoopName;
     private String pidProjectId;
+    /**
+     * @return The status of Pid Loop.
+     * 
+     */
     private @Nullable String status;
 
     private GetIndustrialPidLoopsResult() {}
@@ -44,24 +60,40 @@ public final class GetIndustrialPidLoopsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+     * 
+     */
     public List<GetIndustrialPidLoopsLoop> loops() {
         return this.loops;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Pid Loop names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of Pid Loop.
+     * 
+     */
     public Optional<String> pidLoopName() {
         return Optional.ofNullable(this.pidLoopName);
     }
     public String pidProjectId() {
         return this.pidProjectId;
     }
+    /**
+     * @return The status of Pid Loop.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

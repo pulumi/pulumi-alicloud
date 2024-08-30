@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
     ///     {
-    ///         PolicyName = policy.Name,
+    ///         PolicyName = policy.PolicyName,
     ///         PolicyType = policy.Type,
     ///         RoleName = role.Name,
     ///     });

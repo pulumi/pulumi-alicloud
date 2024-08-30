@@ -308,7 +308,7 @@ class Alert(pulumi.CustomResource):
             max=99999)
         default_ins_mgl = alicloud.log.Project("defaultINsMgl",
             description=f"{project_name}-{default['result']}",
-            name=f"{project_name}-{default['result']}")
+            project_name=f"{project_name}-{default['result']}")
         default_alert = alicloud.sls.Alert("default",
             schedule={
                 "type": "FixedRate",
@@ -381,7 +381,7 @@ class Alert(pulumi.CustomResource):
                         "role_arn": "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
                         "query": "* | select *",
                         "time_span_type": "Relative",
-                        "project": default_ins_mgl.name,
+                        "project": default_ins_mgl.project_name,
                         "power_sql_mode": "disable",
                         "dashboard_id": "wkb-dashboard",
                         "chart_title": "wkb-chart",
@@ -432,7 +432,7 @@ class Alert(pulumi.CustomResource):
                 ],
             },
             alert_name=alert_name,
-            project_name=default_ins_mgl.name)
+            project_name=default_ins_mgl.project_name)
         ```
 
         ## Import
@@ -490,7 +490,7 @@ class Alert(pulumi.CustomResource):
             max=99999)
         default_ins_mgl = alicloud.log.Project("defaultINsMgl",
             description=f"{project_name}-{default['result']}",
-            name=f"{project_name}-{default['result']}")
+            project_name=f"{project_name}-{default['result']}")
         default_alert = alicloud.sls.Alert("default",
             schedule={
                 "type": "FixedRate",
@@ -563,7 +563,7 @@ class Alert(pulumi.CustomResource):
                         "role_arn": "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
                         "query": "* | select *",
                         "time_span_type": "Relative",
-                        "project": default_ins_mgl.name,
+                        "project": default_ins_mgl.project_name,
                         "power_sql_mode": "disable",
                         "dashboard_id": "wkb-dashboard",
                         "chart_title": "wkb-chart",
@@ -614,7 +614,7 @@ class Alert(pulumi.CustomResource):
                 ],
             },
             alert_name=alert_name,
-            project_name=default_ins_mgl.name)
+            project_name=default_ins_mgl.project_name)
         ```
 
         ## Import

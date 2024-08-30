@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
  *
- * > **NOTE:** Available in v1.115.0+
+ * > **NOTE:** Available since v1.115.0.
  *
  * > **NOTE:** The Brain Industrial service is not support in the international site.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *
@@ -60,9 +62,11 @@ export interface GetIndustrialSericeResult {
 /**
  * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
  *
- * > **NOTE:** Available in v1.115.0+
+ * > **NOTE:** Available since v1.115.0.
  *
  * > **NOTE:** The Brain Industrial service is not support in the international site.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *

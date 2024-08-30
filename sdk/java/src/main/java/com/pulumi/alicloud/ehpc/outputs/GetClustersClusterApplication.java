@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterApplication {
+    /**
+     * @return Application Tags.
+     * 
+     */
     private String tag;
 
     private GetClustersClusterApplication() {}
+    /**
+     * @return Application Tags.
+     * 
+     */
     public String tag() {
         return this.tag;
     }

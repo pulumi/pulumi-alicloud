@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *
@@ -82,18 +84,32 @@ export interface GetIndustrialPidLoopsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+     */
     readonly loops: outputs.brain.GetIndustrialPidLoopsLoop[];
     readonly nameRegex?: string;
+    /**
+     * A list of Pid Loop names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of Pid Loop.
+     */
     readonly pidLoopName?: string;
     readonly pidProjectId: string;
+    /**
+     * The status of Pid Loop.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *

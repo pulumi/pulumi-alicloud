@@ -305,7 +305,7 @@ class Group(pulumi.CustomResource):
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.rocketmq.Instance("default", name=f"{name}-{default['result']}")
+        default_instance = alicloud.rocketmq.Instance("default", instance_name=f"{name}-{default['result']}")
         default_group = alicloud.rocketmq.Group("default",
             group_name=group_name,
             instance_id=default_instance.id,
@@ -364,7 +364,7 @@ class Group(pulumi.CustomResource):
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.rocketmq.Instance("default", name=f"{name}-{default['result']}")
+        default_instance = alicloud.rocketmq.Instance("default", instance_name=f"{name}-{default['result']}")
         default_group = alicloud.rocketmq.Group("default",
             group_name=group_name,
             instance_id=default_instance.id,

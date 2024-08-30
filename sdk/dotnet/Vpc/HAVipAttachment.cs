@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     ///     var exampleHAVipAttachment = new AliCloud.Vpc.HAVipAttachment("example", new()
     ///     {
-    ///         HavipId = exampleHAVip.Id,
+    ///         HaVipId = exampleHAVip.Id,
     ///         InstanceId = exampleInstance.Id,
     ///     });
     /// 

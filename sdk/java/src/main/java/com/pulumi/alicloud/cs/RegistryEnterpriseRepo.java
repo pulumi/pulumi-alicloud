@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition repositories.
+ * Provides a Container Registry Enterprise Edition Repository resource.
  * 
- * For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+ * For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
  * 
  * &gt; **NOTE:** Available since v1.86.0.
  * 
@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
@@ -56,28 +58,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(name)
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
- *             .instanceId(example.id())
- *             .name(name)
+ *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var exampleRegistryEnterpriseRepo = new RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
- *             .instanceId(example.id())
- *             .namespace(exampleRegistryEnterpriseNamespace.name())
- *             .name(name)
- *             .summary("this is summary of my new repo")
+ *         var example = new RegistryEnterpriseRepo("example", RegistryEnterpriseRepoArgs.builder()
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .namespace(defaultRegistryEnterpriseNamespace.name())
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .repoType("PUBLIC")
+ *             .summary("this is summary of my new repo")
  *             .detail("this is a public repo")
  *             .build());
  * 
@@ -89,108 +96,112 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+ * Container Registry Enterprise Edition Repository can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+ * $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example &lt;instance_id&gt;:&lt;namespace&gt;:&lt;name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo")
 public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource {
     /**
-     * The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * The description of the repository.
      * 
      */
     @Export(name="detail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detail;
 
     /**
-     * @return The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * @return The description of the repository.
      * 
      */
     public Output<Optional<String>> detail() {
         return Codegen.optional(this.detail);
     }
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * The name of the image repository.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * @return The name of the image repository.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * The name of the namespace to which the image repository belongs.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * @return The name of the namespace to which the image repository belongs.
      * 
      */
     public Output<String> namespace() {
         return this.namespace;
     }
     /**
-     * The uuid of Container Registry Enterprise Edition repository.
+     * The ID of the repository.
      * 
      */
     @Export(name="repoId", refs={String.class}, tree="[0]")
     private Output<String> repoId;
 
     /**
-     * @return The uuid of Container Registry Enterprise Edition repository.
+     * @return The ID of the repository.
      * 
      */
     public Output<String> repoId() {
         return this.repoId;
     }
     /**
-     * `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+     * The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      * 
      */
     @Export(name="repoType", refs={String.class}, tree="[0]")
     private Output<String> repoType;
 
     /**
-     * @return `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+     * @return The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      * 
      */
     public Output<String> repoType() {
         return this.repoType;
     }
     /**
-     * The repository general information. It can contain 1 to 100 characters.
+     * The summary about the repository.
      * 
      */
     @Export(name="summary", refs={String.class}, tree="[0]")
     private Output<String> summary;
 
     /**
-     * @return The repository general information. It can contain 1 to 100 characters.
+     * @return The summary about the repository.
      * 
      */
     public Output<String> summary() {

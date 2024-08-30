@@ -69,6 +69,9 @@ class GetIndustrialPidProjectsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Pid Project names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -79,16 +82,25 @@ class GetIndustrialPidProjectsResult:
     @property
     @pulumi.getter(name="pidOrganizationId")
     def pid_organization_id(self) -> Optional[str]:
+        """
+        The ID of Pid Organization.
+        """
         return pulumi.get(self, "pid_organization_id")
 
     @property
     @pulumi.getter(name="pidProjectName")
     def pid_project_name(self) -> Optional[str]:
+        """
+        The name of Pid Project.
+        """
         return pulumi.get(self, "pid_project_name")
 
     @property
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetIndustrialPidProjectsProjectResult']:
+        """
+        A list of Brain Industrial Pid Projects. Each element contains the following attributes:
+        """
         return pulumi.get(self, "projects")
 
 
@@ -117,7 +129,9 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 
@@ -169,7 +183,9 @@ def get_industrial_pid_projects_output(ids: Optional[pulumi.Input[Optional[Seque
     """
     This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 

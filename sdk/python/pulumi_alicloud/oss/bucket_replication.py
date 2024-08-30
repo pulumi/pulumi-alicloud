@@ -422,7 +422,7 @@ class BucketReplication(pulumi.CustomResource):
             description="this is a policy test",
             force=True)
         attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             role_name=role.name)
         key = alicloud.kms.Key("key",
@@ -540,7 +540,7 @@ class BucketReplication(pulumi.CustomResource):
             description="this is a policy test",
             force=True)
         attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             role_name=role.name)
         key = alicloud.kms.Key("key",

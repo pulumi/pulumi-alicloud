@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
-//				Name: pulumi.String("foo.test.com"),
+//				ZoneName: pulumi.String("foo.test.com"),
 //			})
 //			if err != nil {
 //				return err

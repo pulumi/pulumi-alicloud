@@ -14,52 +14,32 @@ __all__ = ['RegistryEnterpriseNamespaceArgs', 'RegistryEnterpriseNamespace']
 @pulumi.input_type
 class RegistryEnterpriseNamespaceArgs:
     def __init__(__self__, *,
-                 auto_create: pulumi.Input[bool],
-                 default_visibility: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 auto_create: Optional[pulumi.Input[bool]] = None,
+                 default_visibility: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseNamespace resource.
-        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] default_visibility: The default type of the repository that is automatically created. Valid values:
+               - `PUBLIC`: A public repository.
+               - `PRIVATE`: A private repository.
+        :param pulumi.Input[str] name: The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
-        pulumi.set(__self__, "auto_create", auto_create)
-        pulumi.set(__self__, "default_visibility", default_visibility)
         pulumi.set(__self__, "instance_id", instance_id)
+        if auto_create is not None:
+            pulumi.set(__self__, "auto_create", auto_create)
+        if default_visibility is not None:
+            pulumi.set(__self__, "default_visibility", default_visibility)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> pulumi.Input[bool]:
-        """
-        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        """
-        return pulumi.get(self, "auto_create")
-
-    @auto_create.setter
-    def auto_create(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "auto_create", value)
-
-    @property
-    @pulumi.getter(name="defaultVisibility")
-    def default_visibility(self) -> pulumi.Input[str]:
-        """
-        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        """
-        return pulumi.get(self, "default_visibility")
-
-    @default_visibility.setter
-    def default_visibility(self, value: pulumi.Input[str]):
-        pulumi.set(self, "default_visibility", value)
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -68,10 +48,36 @@ class RegistryEnterpriseNamespaceArgs:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="autoCreate")
+    def auto_create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_create")
+
+    @auto_create.setter
+    def auto_create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create", value)
+
+    @property
+    @pulumi.getter(name="defaultVisibility")
+    def default_visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default type of the repository that is automatically created. Valid values:
+        - `PUBLIC`: A public repository.
+        - `PRIVATE`: A private repository.
+        """
+        return pulumi.get(self, "default_visibility")
+
+    @default_visibility.setter
+    def default_visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_visibility", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         return pulumi.get(self, "name")
 
@@ -89,10 +95,12 @@ class _RegistryEnterpriseNamespaceState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.
-        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] default_visibility: The default type of the repository that is automatically created. Valid values:
+               - `PUBLIC`: A public repository.
+               - `PRIVATE`: A private repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         if auto_create is not None:
             pulumi.set(__self__, "auto_create", auto_create)
@@ -107,7 +115,7 @@ class _RegistryEnterpriseNamespaceState:
     @pulumi.getter(name="autoCreate")
     def auto_create(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_create")
 
@@ -119,7 +127,9 @@ class _RegistryEnterpriseNamespaceState:
     @pulumi.getter(name="defaultVisibility")
     def default_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        The default type of the repository that is automatically created. Valid values:
+        - `PUBLIC`: A public repository.
+        - `PRIVATE`: A private repository.
         """
         return pulumi.get(self, "default_visibility")
 
@@ -131,7 +141,7 @@ class _RegistryEnterpriseNamespaceState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -143,7 +153,7 @@ class _RegistryEnterpriseNamespaceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         return pulumi.get(self, "name")
 
@@ -163,9 +173,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition namespaces.
+        Provides a Container Registry Enterprise Edition Namespace resource.
 
-        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
+        For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 
         > **NOTE:** Available since v1.86.0.
 
@@ -178,39 +188,45 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example-name"
-        example = alicloud.cr.RegistryEnterpriseInstance("example",
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
-            instance_id=example.id,
-            name=name,
+            instance_name=f"{name}-{default['result']}")
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         ```
 
         ## Import
 
-        Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+        Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] default_visibility: The default type of the repository that is automatically created. Valid values:
+               - `PUBLIC`: A public repository.
+               - `PRIVATE`: A private repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         ...
     @overload
@@ -219,9 +235,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
                  args: RegistryEnterpriseNamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition namespaces.
+        Provides a Container Registry Enterprise Edition Namespace resource.
 
-        For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
+        For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 
         > **NOTE:** Available since v1.86.0.
 
@@ -234,31 +250,35 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example-name"
-        example = alicloud.cr.RegistryEnterpriseInstance("example",
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
-            instance_id=example.id,
-            name=name,
+            instance_name=f"{name}-{default['result']}")
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         ```
 
         ## Import
 
-        Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+        Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+        $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -289,11 +309,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegistryEnterpriseNamespaceArgs.__new__(RegistryEnterpriseNamespaceArgs)
 
-            if auto_create is None and not opts.urn:
-                raise TypeError("Missing required property 'auto_create'")
             __props__.__dict__["auto_create"] = auto_create
-            if default_visibility is None and not opts.urn:
-                raise TypeError("Missing required property 'default_visibility'")
             __props__.__dict__["default_visibility"] = default_visibility
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -320,10 +336,12 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        :param pulumi.Input[bool] auto_create: Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] default_visibility: The default type of the repository that is automatically created. Valid values:
+               - `PUBLIC`: A public repository.
+               - `PRIVATE`: A private repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,9 +355,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> pulumi.Output[bool]:
+    def auto_create(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+        Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_create")
 
@@ -347,7 +365,9 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     @pulumi.getter(name="defaultVisibility")
     def default_visibility(self) -> pulumi.Output[str]:
         """
-        `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+        The default type of the repository that is automatically created. Valid values:
+        - `PUBLIC`: A public repository.
+        - `PRIVATE`: A private repository.
         """
         return pulumi.get(self, "default_visibility")
 
@@ -355,7 +375,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -363,7 +383,7 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+        The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         return pulumi.get(self, "name")
 

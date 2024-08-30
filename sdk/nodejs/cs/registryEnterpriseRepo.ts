@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition repositories.
+ * Provides a Container Registry Enterprise Edition Repository resource.
  *
- * For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+ * For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
  *
  * > **NOTE:** Available since v1.86.0.
  *
@@ -20,39 +20,44 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const example = new alicloud.cr.RegistryEnterpriseInstance("example", {
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${_default.result}`,
  * });
- * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("example", {
- *     instanceId: example.id,
- *     name: name,
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     name: `${name}-${_default.result}`,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const exampleRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("example", {
- *     instanceId: example.id,
- *     namespace: exampleRegistryEnterpriseNamespace.name,
- *     name: name,
- *     summary: "this is summary of my new repo",
+ * const example = new alicloud.cs.RegistryEnterpriseRepo("example", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     namespace: defaultRegistryEnterpriseNamespace.name,
+ *     name: `${name}-${_default.result}`,
  *     repoType: "PUBLIC",
+ *     summary: "this is summary of my new repo",
  *     detail: "this is a public repo",
  * });
  * ```
  *
  * ## Import
  *
- * Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+ * Container Registry Enterprise Edition Repository can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+ * $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
  * ```
  */
 export class RegistryEnterpriseRepo extends pulumi.CustomResource {
@@ -84,31 +89,33 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
     }
 
     /**
-     * The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * The description of the repository.
      */
     public readonly detail!: pulumi.Output<string | undefined>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * The name of the image repository.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * The name of the namespace to which the image repository belongs.
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
-     * The uuid of Container Registry Enterprise Edition repository.
+     * The ID of the repository.
      */
     public /*out*/ readonly repoId!: pulumi.Output<string>;
     /**
-     * `PUBLIC` or `PRIVATE`, repo's visibility.
+     * The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      */
     public readonly repoType!: pulumi.Output<string>;
     /**
-     * The repository general information. It can contain 1 to 100 characters.
+     * The summary about the repository.
      */
     public readonly summary!: pulumi.Output<string>;
 
@@ -164,31 +171,33 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
  */
 export interface RegistryEnterpriseRepoState {
     /**
-     * The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * The description of the repository.
      */
     detail?: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * The name of the image repository.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * The name of the namespace to which the image repository belongs.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The uuid of Container Registry Enterprise Edition repository.
+     * The ID of the repository.
      */
     repoId?: pulumi.Input<string>;
     /**
-     * `PUBLIC` or `PRIVATE`, repo's visibility.
+     * The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      */
     repoType?: pulumi.Input<string>;
     /**
-     * The repository general information. It can contain 1 to 100 characters.
+     * The summary about the repository.
      */
     summary?: pulumi.Input<string>;
 }
@@ -198,27 +207,29 @@ export interface RegistryEnterpriseRepoState {
  */
 export interface RegistryEnterpriseRepoArgs {
     /**
-     * The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * The description of the repository.
      */
     detail?: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * The name of the image repository.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * The name of the namespace to which the image repository belongs.
      */
     namespace: pulumi.Input<string>;
     /**
-     * `PUBLIC` or `PRIVATE`, repo's visibility.
+     * The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      */
     repoType: pulumi.Input<string>;
     /**
-     * The repository general information. It can contain 1 to 100 characters.
+     * The summary about the repository.
      */
     summary: pulumi.Input<string>;
 }

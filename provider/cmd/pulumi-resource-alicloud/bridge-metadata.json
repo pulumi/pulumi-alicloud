@@ -2152,6 +2152,9 @@
                     "addons": {
                         "maxItemsOne": false
                     },
+                    "delete_options": {
+                        "maxItemsOne": false
+                    },
                     "retain_resources": {
                         "maxItemsOne": false
                     },

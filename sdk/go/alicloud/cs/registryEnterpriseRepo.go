@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry Enterprise Edition repositories.
+// Provides a Container Registry Enterprise Edition Repository resource.
 //
-// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+// For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 //
 // > **NOTE:** Available since v1.86.0.
 //
@@ -29,8 +29,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -43,20 +46,27 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "example", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        example.ID(),
-//				Name:              pulumi.String(name),
+//			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -64,11 +74,11 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewRegistryEnterpriseRepo(ctx, "example", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: example.ID(),
-//				Namespace:  exampleRegistryEnterpriseNamespace.Name,
-//				Name:       pulumi.String(name),
-//				Summary:    pulumi.String("this is summary of my new repo"),
+//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
+//				Namespace:  defaultRegistryEnterpriseNamespace.Name,
+//				Name:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //				RepoType:   pulumi.String("PUBLIC"),
+//				Summary:    pulumi.String("this is summary of my new repo"),
 //				Detail:     pulumi.String("this is a public repo"),
 //			})
 //			if err != nil {
@@ -82,27 +92,29 @@ import (
 //
 // ## Import
 //
-// Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+// Container Registry Enterprise Edition Repository can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+// $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
 // ```
 type RegistryEnterpriseRepo struct {
 	pulumi.CustomResourceState
 
-	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+	// The description of the repository.
 	Detail pulumi.StringPtrOutput `pulumi:"detail"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+	// The name of the image repository.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+	// The name of the namespace to which the image repository belongs.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
-	// The uuid of Container Registry Enterprise Edition repository.
+	// The ID of the repository.
 	RepoId pulumi.StringOutput `pulumi:"repoId"`
-	// `PUBLIC` or `PRIVATE`, repo's visibility.
+	// The type of the repository. Valid values:
+	// - `PUBLIC`: The repository is a public repository.
+	// - `PRIVATE`: The repository is a private repository.
 	RepoType pulumi.StringOutput `pulumi:"repoType"`
-	// The repository general information. It can contain 1 to 100 characters.
+	// The summary about the repository.
 	Summary pulumi.StringOutput `pulumi:"summary"`
 }
 
@@ -148,36 +160,40 @@ func GetRegistryEnterpriseRepo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistryEnterpriseRepo resources.
 type registryEnterpriseRepoState struct {
-	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+	// The description of the repository.
 	Detail *string `pulumi:"detail"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+	// The name of the image repository.
 	Name *string `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+	// The name of the namespace to which the image repository belongs.
 	Namespace *string `pulumi:"namespace"`
-	// The uuid of Container Registry Enterprise Edition repository.
+	// The ID of the repository.
 	RepoId *string `pulumi:"repoId"`
-	// `PUBLIC` or `PRIVATE`, repo's visibility.
+	// The type of the repository. Valid values:
+	// - `PUBLIC`: The repository is a public repository.
+	// - `PRIVATE`: The repository is a private repository.
 	RepoType *string `pulumi:"repoType"`
-	// The repository general information. It can contain 1 to 100 characters.
+	// The summary about the repository.
 	Summary *string `pulumi:"summary"`
 }
 
 type RegistryEnterpriseRepoState struct {
-	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+	// The description of the repository.
 	Detail pulumi.StringPtrInput
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+	// The name of the image repository.
 	Name pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+	// The name of the namespace to which the image repository belongs.
 	Namespace pulumi.StringPtrInput
-	// The uuid of Container Registry Enterprise Edition repository.
+	// The ID of the repository.
 	RepoId pulumi.StringPtrInput
-	// `PUBLIC` or `PRIVATE`, repo's visibility.
+	// The type of the repository. Valid values:
+	// - `PUBLIC`: The repository is a public repository.
+	// - `PRIVATE`: The repository is a private repository.
 	RepoType pulumi.StringPtrInput
-	// The repository general information. It can contain 1 to 100 characters.
+	// The summary about the repository.
 	Summary pulumi.StringPtrInput
 }
 
@@ -186,33 +202,37 @@ func (RegistryEnterpriseRepoState) ElementType() reflect.Type {
 }
 
 type registryEnterpriseRepoArgs struct {
-	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+	// The description of the repository.
 	Detail *string `pulumi:"detail"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+	// The name of the image repository.
 	Name *string `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+	// The name of the namespace to which the image repository belongs.
 	Namespace string `pulumi:"namespace"`
-	// `PUBLIC` or `PRIVATE`, repo's visibility.
+	// The type of the repository. Valid values:
+	// - `PUBLIC`: The repository is a public repository.
+	// - `PRIVATE`: The repository is a private repository.
 	RepoType string `pulumi:"repoType"`
-	// The repository general information. It can contain 1 to 100 characters.
+	// The summary about the repository.
 	Summary string `pulumi:"summary"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseRepo resource.
 type RegistryEnterpriseRepoArgs struct {
-	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+	// The description of the repository.
 	Detail pulumi.StringPtrInput
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringInput
-	// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+	// The name of the image repository.
 	Name pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+	// The name of the namespace to which the image repository belongs.
 	Namespace pulumi.StringInput
-	// `PUBLIC` or `PRIVATE`, repo's visibility.
+	// The type of the repository. Valid values:
+	// - `PUBLIC`: The repository is a public repository.
+	// - `PRIVATE`: The repository is a private repository.
 	RepoType pulumi.StringInput
-	// The repository general information. It can contain 1 to 100 characters.
+	// The summary about the repository.
 	Summary pulumi.StringInput
 }
 
@@ -303,37 +323,39 @@ func (o RegistryEnterpriseRepoOutput) ToRegistryEnterpriseRepoOutputWithContext(
 	return o
 }
 
-// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+// The description of the repository.
 func (o RegistryEnterpriseRepoOutput) Detail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
 }
 
-// ID of Container Registry Enterprise Edition instance.
+// The ID of the Container Registry Enterprise Edition instance.
 func (o RegistryEnterpriseRepoOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+// The name of the image repository.
 func (o RegistryEnterpriseRepoOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+// The name of the namespace to which the image repository belongs.
 func (o RegistryEnterpriseRepoOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// The uuid of Container Registry Enterprise Edition repository.
+// The ID of the repository.
 func (o RegistryEnterpriseRepoOutput) RepoId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.RepoId }).(pulumi.StringOutput)
 }
 
-// `PUBLIC` or `PRIVATE`, repo's visibility.
+// The type of the repository. Valid values:
+// - `PUBLIC`: The repository is a public repository.
+// - `PRIVATE`: The repository is a private repository.
 func (o RegistryEnterpriseRepoOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The repository general information. It can contain 1 to 100 characters.
+// The summary about the repository.
 func (o RegistryEnterpriseRepoOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Summary }).(pulumi.StringOutput)
 }

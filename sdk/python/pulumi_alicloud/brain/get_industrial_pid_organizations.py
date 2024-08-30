@@ -66,11 +66,17 @@ class GetIndustrialPidOrganizationsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Pid Organization names.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter
     def organizations(self) -> Sequence['outputs.GetIndustrialPidOrganizationsOrganizationResult']:
+        """
+        A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "organizations")
 
     @property
@@ -107,7 +113,9 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 
@@ -155,7 +163,9 @@ def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[
     """
     This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 

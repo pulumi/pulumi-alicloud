@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  *     tags: {
  *         Created: "TF",
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const examplePolicy = new alicloud.log.Project("example_policy", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  *     policy: `{
  *   "Statement": [

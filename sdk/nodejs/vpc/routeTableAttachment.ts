@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const foo = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
- *     name: name,
+ *     vpcName: name,
  * });
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     vpcId: foo.id,
  *     cidrBlock: "172.16.0.0/21",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- *     name: name,
+ *     vswitchName: name,
  * });
  * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
  *     vpcId: foo.id,

@@ -34,13 +34,13 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("example", new()
     ///     {
-    ///         Project = example.Name,
+    ///         Project = example.ProjectName,
     ///         Name = "terraform-example",
     ///         IdentifyType = "ip",
     ///         Topic = "terraform",

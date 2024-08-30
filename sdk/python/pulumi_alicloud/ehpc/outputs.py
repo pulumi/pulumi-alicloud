@@ -285,6 +285,7 @@ class GetClustersClusterResult(dict):
                  zone_id: str):
         """
         :param str account_type: The server type of the account.
+        :param Sequence['GetClustersClusterApplicationArgs'] applications: A list of clustered applications.
         :param str client_version: The version number of the client used by the cluster.
         :param str cluster_id: The id of E-HPC Cluster.
         :param str cluster_name: The name of E-HPC cluster.
@@ -304,19 +305,22 @@ class GetClustersClusterResult(dict):
         :param str image_owner_alias: The type of the image.
         :param int login_count: The number of cluster login nodes. Only configuration 1 is supported.
         :param str login_instance_type: Cluster login node specifications.
+        :param int manager_count: The number of control nodes.
         :param str manager_instance_type: The instance type of manager nodes.
         :param str os_tag: The image tag of the operating system.
+        :param Sequence['GetClustersClusterPostInstallScriptArgs'] post_install_scripts: List of post-installation scripts.
         :param str remote_directory: Mount the remote directory of the shared storage.
         :param str scc_cluster_id: The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
         :param str scheduler_type: Dispatch server type.
         :param str security_group_id: The ID of the security group.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values:
         :param str volume_id: The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
         :param str volume_mountpoint: The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
         :param str volume_protocol: The type of the protocol that is used by the file system.
         :param str volume_type: The type of the network shared storage. Valid value: NAS.
         :param str vpc_id: The ID of the VPC network.
         :param str vswitch_id: The vswitch id.
+        :param str zone_id: The available zone ID.
         """
         pulumi.set(__self__, "account_type", account_type)
         pulumi.set(__self__, "applications", applications)
@@ -362,6 +366,9 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetClustersClusterApplicationResult']:
+        """
+        A list of clustered applications.
+        """
         return pulumi.get(self, "applications")
 
     @property
@@ -484,6 +491,9 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="managerCount")
     def manager_count(self) -> int:
+        """
+        The number of control nodes.
+        """
         return pulumi.get(self, "manager_count")
 
     @property
@@ -505,6 +515,9 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="postInstallScripts")
     def post_install_scripts(self) -> Sequence['outputs.GetClustersClusterPostInstallScriptResult']:
+        """
+        List of post-installation scripts.
+        """
         return pulumi.get(self, "post_install_scripts")
 
     @property
@@ -543,7 +556,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -598,6 +611,9 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
+        """
+        The available zone ID.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -605,11 +621,17 @@ class GetClustersClusterResult(dict):
 class GetClustersClusterApplicationResult(dict):
     def __init__(__self__, *,
                  tag: str):
+        """
+        :param str tag: Application Tags.
+        """
         pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        Application Tags.
+        """
         return pulumi.get(self, "tag")
 
 
@@ -618,17 +640,27 @@ class GetClustersClusterPostInstallScriptResult(dict):
     def __init__(__self__, *,
                  args: str,
                  url: str):
+        """
+        :param str args: The parameters of the script.
+        :param str url: The download path of the script.
+        """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
     def args(self) -> str:
+        """
+        The parameters of the script.
+        """
         return pulumi.get(self, "args")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The download path of the script.
+        """
         return pulumi.get(self, "url")
 
 

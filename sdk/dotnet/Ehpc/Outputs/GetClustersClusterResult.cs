@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// The server type of the account.
         /// </summary>
         public readonly string AccountType;
+        /// <summary>
+        /// A list of clustered applications.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterApplicationResult> Applications;
         /// <summary>
         /// The version number of the client used by the cluster.
@@ -79,6 +82,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// Cluster login node specifications.
         /// </summary>
         public readonly string LoginInstanceType;
+        /// <summary>
+        /// The number of control nodes.
+        /// </summary>
         public readonly int ManagerCount;
         /// <summary>
         /// The instance type of manager nodes.
@@ -88,6 +94,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// The image tag of the operating system.
         /// </summary>
         public readonly string OsTag;
+        /// <summary>
+        /// List of post-installation scripts.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterPostInstallScriptResult> PostInstallScripts;
         /// <summary>
         /// Mount the remote directory of the shared storage.
@@ -106,7 +115,7 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values:
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -133,6 +142,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// The vswitch id.
         /// </summary>
         public readonly string VswitchId;
+        /// <summary>
+        /// The available zone ID.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

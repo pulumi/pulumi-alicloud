@@ -667,6 +667,11 @@ namespace Pulumi.AliCloud.Rds
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientCaCert",
+                    "serverCert",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -768,11 +773,21 @@ namespace Pulumi.AliCloud.Rds
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        [Input("clientCaCert")]
+        private Input<string>? _clientCaCert;
+
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         /// </summary>
-        [Input("clientCaCert")]
-        public Input<string>? ClientCaCert { get; set; }
+        public Input<string>? ClientCaCert
+        {
+            get => _clientCaCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCaCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -1135,11 +1150,21 @@ namespace Pulumi.AliCloud.Rds
             set => _securityIps = value;
         }
 
+        [Input("serverCert")]
+        private Input<string>? _serverCert;
+
         /// <summary>
         /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         /// </summary>
-        [Input("serverCert")]
-        public Input<string>? ServerCert { get; set; }
+        public Input<string>? ServerCert
+        {
+            get => _serverCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -1411,11 +1436,21 @@ namespace Pulumi.AliCloud.Rds
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        [Input("clientCaCert")]
+        private Input<string>? _clientCaCert;
+
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         /// </summary>
-        [Input("clientCaCert")]
-        public Input<string>? ClientCaCert { get; set; }
+        public Input<string>? ClientCaCert
+        {
+            get => _clientCaCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCaCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
@@ -1796,11 +1831,21 @@ namespace Pulumi.AliCloud.Rds
             set => _securityIps = value;
         }
 
+        [Input("serverCert")]
+        private Input<string>? _serverCert;
+
         /// <summary>
         /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         /// </summary>
-        [Input("serverCert")]
-        public Input<string>? ServerCert { get; set; }
+        public Input<string>? ServerCert
+        {
+            get => _serverCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.

@@ -57,6 +57,9 @@ class GetJobTemplatesResult:
     @property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetJobTemplatesTemplateResult']:
+        """
+        A list of Ehpc Job Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -78,7 +81,7 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -119,7 +122,7 @@ def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     """
     This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

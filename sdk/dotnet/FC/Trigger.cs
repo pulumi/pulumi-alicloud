@@ -395,7 +395,7 @@ namespace Pulumi.AliCloud.FC
     ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("default", new()
     ///     {
     ///         RoleName = defaultRole.Name,
-    ///         PolicyName = defaultPolicy.Name,
+    ///         PolicyName = defaultPolicy.PolicyName,
     ///         PolicyType = "Custom",
     ///     });
     /// 

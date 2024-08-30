@@ -43,8 +43,8 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///         Name = name,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchName = name,
     ///         Ipv6CidrBlockMask = 22,
     ///     });
     /// 

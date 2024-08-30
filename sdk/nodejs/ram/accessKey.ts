@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * Output the secret to a file.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * Using `pgpKey` to encrypt the secret.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";

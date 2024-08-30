@@ -34,14 +34,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
@@ -50,8 +50,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleStoreIndex = new AliCloud.Log.StoreIndex("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Logstore = exampleStore.Name,
+    ///         Project = example.ProjectName,
+    ///         Logstore = exampleStore.LogstoreName,
     ///         FullText = new AliCloud.Log.Inputs.StoreIndexFullTextArgs
     ///         {
     ///             CaseSensitive = true,

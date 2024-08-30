@@ -18,7 +18,7 @@ public final class ManagedKubernetesDeleteOption {
     private @Nullable String deleteMode;
     /**
      * @return The type of resources that are created by cluster. Valid values:
-     * - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+     * - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
      * - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
      * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
      * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -36,7 +36,7 @@ public final class ManagedKubernetesDeleteOption {
     }
     /**
      * @return The type of resources that are created by cluster. Valid values:
-     * - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+     * - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
      * - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
      * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
      * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.

@@ -65,13 +65,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -80,8 +80,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example2 = new Store("example2", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store2")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store2")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -90,8 +90,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example3 = new Store("example3", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store3")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store3")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -101,29 +101,29 @@ import javax.annotation.Nullable;
  * 
  *         var exampleEtl = new Etl("exampleEtl", EtlArgs.builder()
  *             .etlName("terraform-example")
- *             .project(example.name())
+ *             .project(example.projectName())
  *             .displayName("terraform-example")
  *             .description("terraform-example")
  *             .accessKeyId("access_key_id")
  *             .accessKeySecret("access_key_secret")
  *             .script("e_set('new','key')")
- *             .logstore(exampleStore.name())
+ *             .logstore(exampleStore.logstoreName())
  *             .etlSinks(            
  *                 EtlEtlSinkArgs.builder()
  *                     .name("target_name")
  *                     .accessKeyId("example2_access_key_id")
  *                     .accessKeySecret("example2_access_key_secret")
  *                     .endpoint("cn-hangzhou.log.aliyuncs.com")
- *                     .project(example.name())
- *                     .logstore(example2.name())
+ *                     .project(example.projectName())
+ *                     .logstore(example2.logstoreName())
  *                     .build(),
  *                 EtlEtlSinkArgs.builder()
  *                     .name("target_name2")
  *                     .accessKeyId("example3_access_key_id")
  *                     .accessKeySecret("example3_access_key_secret")
  *                     .endpoint("cn-hangzhou.log.aliyuncs.com")
- *                     .project(example.name())
- *                     .logstore(example3.name())
+ *                     .project(example.projectName())
+ *                     .logstore(example3.logstoreName())
  *                     .build())
  *             .build());
  * 

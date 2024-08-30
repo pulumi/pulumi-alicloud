@@ -15,6 +15,10 @@ public final class GetTransitRouterRouteTablesTable {
      * 
      */
     private String id;
+    /**
+     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * 
+     */
     private String status;
     /**
      * @return The description of the transit router route table.
@@ -32,7 +36,7 @@ public final class GetTransitRouterRouteTablesTable {
      */
     private String transitRouterRouteTableName;
     /**
-     * @return The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
      * 
      */
     private String transitRouterRouteTableType;
@@ -45,6 +49,10 @@ public final class GetTransitRouterRouteTablesTable {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * 
+     */
     public String status() {
         return this.status;
     }
@@ -70,7 +78,7 @@ public final class GetTransitRouterRouteTablesTable {
         return this.transitRouterRouteTableName;
     }
     /**
-     * @return The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
      * 
      */
     public String transitRouterRouteTableType() {

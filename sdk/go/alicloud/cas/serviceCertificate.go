@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
-//				CertificateName: pulumi.Sprintf("tf-example-%v", _default.Result),
+//				CertificateName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -123,10 +123,7 @@ type ServiceCertificate struct {
 
 	// Cert of the Certificate in which the Certificate will add.
 	Cert pulumi.StringOutput `pulumi:"cert"`
-	// Name of the Certificate.
-	// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-	// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-	// Suffix .sh and .tel are not supported.
+	// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 	// **NOTE:** One of `certificateName` and `name` must be specified.
 	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
@@ -177,10 +174,7 @@ func GetServiceCertificate(ctx *pulumi.Context,
 type serviceCertificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
 	Cert *string `pulumi:"cert"`
-	// Name of the Certificate.
-	// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-	// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-	// Suffix .sh and .tel are not supported.
+	// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 	// **NOTE:** One of `certificateName` and `name` must be specified.
 	CertificateName *string `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
@@ -196,10 +190,7 @@ type serviceCertificateState struct {
 type ServiceCertificateState struct {
 	// Cert of the Certificate in which the Certificate will add.
 	Cert pulumi.StringPtrInput
-	// Name of the Certificate.
-	// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-	// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-	// Suffix .sh and .tel are not supported.
+	// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 	// **NOTE:** One of `certificateName` and `name` must be specified.
 	CertificateName pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
@@ -219,10 +210,7 @@ func (ServiceCertificateState) ElementType() reflect.Type {
 type serviceCertificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
 	Cert string `pulumi:"cert"`
-	// Name of the Certificate.
-	// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-	// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-	// Suffix .sh and .tel are not supported.
+	// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 	// **NOTE:** One of `certificateName` and `name` must be specified.
 	CertificateName *string `pulumi:"certificateName"`
 	// Key of the Certificate in which the Certificate will add.
@@ -239,10 +227,7 @@ type serviceCertificateArgs struct {
 type ServiceCertificateArgs struct {
 	// Cert of the Certificate in which the Certificate will add.
 	Cert pulumi.StringInput
-	// Name of the Certificate.
-	// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-	// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-	// Suffix .sh and .tel are not supported.
+	// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 	// **NOTE:** One of `certificateName` and `name` must be specified.
 	CertificateName pulumi.StringPtrInput
 	// Key of the Certificate in which the Certificate will add.
@@ -347,10 +332,7 @@ func (o ServiceCertificateOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringOutput { return v.Cert }).(pulumi.StringOutput)
 }
 
-// Name of the Certificate.
-// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-// Suffix .sh and .tel are not supported.
+// Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
 // **NOTE:** One of `certificateName` and `name` must be specified.
 func (o ServiceCertificateOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringOutput { return v.CertificateName }).(pulumi.StringOutput)

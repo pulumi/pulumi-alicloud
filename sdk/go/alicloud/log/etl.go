@@ -45,15 +45,15 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -64,8 +64,8 @@ import (
 //				return err
 //			}
 //			example2, err := log.NewStore(ctx, "example2", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store2"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store2"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -76,8 +76,8 @@ import (
 //				return err
 //			}
 //			example3, err := log.NewStore(ctx, "example3", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store3"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store3"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -89,29 +89,29 @@ import (
 //			}
 //			_, err = log.NewEtl(ctx, "example", &log.EtlArgs{
 //				EtlName:         pulumi.String("terraform-example"),
-//				Project:         example.Name,
+//				Project:         example.ProjectName,
 //				DisplayName:     pulumi.String("terraform-example"),
 //				Description:     pulumi.String("terraform-example"),
 //				AccessKeyId:     pulumi.String("access_key_id"),
 //				AccessKeySecret: pulumi.String("access_key_secret"),
 //				Script:          pulumi.String("e_set('new','key')"),
-//				Logstore:        exampleStore.Name,
+//				Logstore:        exampleStore.LogstoreName,
 //				EtlSinks: log.EtlEtlSinkArray{
 //					&log.EtlEtlSinkArgs{
 //						Name:            pulumi.String("target_name"),
 //						AccessKeyId:     pulumi.String("example2_access_key_id"),
 //						AccessKeySecret: pulumi.String("example2_access_key_secret"),
 //						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         example.Name,
-//						Logstore:        example2.Name,
+//						Project:         example.ProjectName,
+//						Logstore:        example2.LogstoreName,
 //					},
 //					&log.EtlEtlSinkArgs{
 //						Name:            pulumi.String("target_name2"),
 //						AccessKeyId:     pulumi.String("example3_access_key_id"),
 //						AccessKeySecret: pulumi.String("example3_access_key_secret"),
 //						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         example.Name,
-//						Logstore:        example3.Name,
+//						Project:         example.ProjectName,
+//						Logstore:        example3.LogstoreName,
 //					},
 //				},
 //			})

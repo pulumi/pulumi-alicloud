@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetClustersArgs {
  * A collection of values returned by getClusters.
  */
 export interface GetClustersResult {
+    /**
+     * A list of Ehpc Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.ehpc.GetClustersCluster[];
     readonly enableDetails?: boolean;
     /**
@@ -80,14 +83,20 @@ export interface GetClustersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Cluster names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *

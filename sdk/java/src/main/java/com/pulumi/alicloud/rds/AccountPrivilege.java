@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *         var privilege = new AccountPrivilege("privilege", AccountPrivilegeArgs.builder()
  *             .instanceId(instance.id())
- *             .accountName(account.name())
+ *             .accountName(account.accountName())
  *             .privilege("ReadOnly")
  *             .dbNames(db.stream().map(element -> element.name()).collect(toList()))
  *             .build());

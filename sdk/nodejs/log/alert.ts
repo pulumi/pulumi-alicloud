@@ -99,12 +99,12 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -114,7 +114,7 @@ import * as utilities from "../utilities";
  * const example_2 = new alicloud.log.Alert("example-2", {
  *     version: "2.0",
  *     type: "default",
- *     projectName: example.name,
+ *     projectName: example.projectName,
  *     alertName: "example-alert",
  *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
@@ -122,7 +122,6 @@ import * as utilities from "../utilities";
  *     noDataSeverity: 8,
  *     sendResolved: true,
  *     autoAnnotation: true,
- *     dashboard: "example-dashboard",
  *     schedule: {
  *         type: "FixedRate",
  *         interval: "5m",
@@ -133,26 +132,28 @@ import * as utilities from "../utilities";
  *     },
  *     queryLists: [
  *         {
- *             store: exampleStore.name,
+ *             store: exampleStore.logstoreName,
  *             storeType: "log",
- *             project: example.name,
+ *             project: example.projectName,
  *             region: "cn-heyuan",
  *             chartTitle: "chart_title",
  *             start: "-60s",
  *             end: "20s",
  *             query: "* AND aliyun | select count(1) as cnt",
  *             powerSqlMode: "auto",
+ *             dashboardId: "example-dashboard",
  *         },
  *         {
- *             store: exampleStore.name,
+ *             store: exampleStore.logstoreName,
  *             storeType: "log",
- *             project: example.name,
+ *             project: example.projectName,
  *             region: "cn-heyuan",
  *             chartTitle: "chart_title",
  *             start: "-60s",
  *             end: "20s",
  *             query: "error | select count(1) as error_cnt",
  *             powerSqlMode: "enable",
+ *             dashboardId: "example-dashboard",
  *         },
  *     ],
  *     labels: [{
@@ -224,12 +225,12 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -239,7 +240,7 @@ import * as utilities from "../utilities";
  * const example_3 = new alicloud.log.Alert("example-3", {
  *     version: "2.0",
  *     type: "tpl",
- *     projectName: example.name,
+ *     projectName: example.projectName,
  *     alertName: "example-alert",
  *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
@@ -261,7 +262,7 @@ import * as utilities from "../utilities";
  *             "default.action_policy": "sls.app.ack.builtin",
  *             "default.severity": "6",
  *             sendResolved: "false",
- *             "default.project": example.name,
+ *             "default.project": example.projectName,
  *             "default.logstore": "k8s-event",
  *             "default.repeatInterval": "4h",
  *             trigger_threshold: "1",

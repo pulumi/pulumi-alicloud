@@ -627,7 +627,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
+            resourceInputs["clientCaCert"] = args?.clientCaCert ? pulumi.secret(args.clientCaCert) : undefined;
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
@@ -671,7 +671,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIpMode"] = args ? args.securityIpMode : undefined;
             resourceInputs["securityIpType"] = args ? args.securityIpType : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["serverCert"] = args ? args.serverCert : undefined;
+            resourceInputs["serverCert"] = args?.serverCert ? pulumi.secret(args.serverCert) : undefined;
             resourceInputs["serverKey"] = args ? args.serverKey : undefined;
             resourceInputs["serverlessConfigs"] = args ? args.serverlessConfigs : undefined;
             resourceInputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
@@ -700,6 +700,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientCaCert", "serverCert"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

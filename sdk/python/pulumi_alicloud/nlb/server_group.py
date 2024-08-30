@@ -585,7 +585,7 @@ class ServerGroup(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            connection_drain=True,
+            connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
             health_check={
@@ -679,7 +679,7 @@ class ServerGroup(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            connection_drain=True,
+            connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
             health_check={

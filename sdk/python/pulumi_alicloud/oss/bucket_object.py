@@ -535,8 +535,9 @@ class BucketObject(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("default",
-            bucket=f"terraform-example-{default['result']}",
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
             acl="private")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,
@@ -554,8 +555,9 @@ class BucketObject(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("default",
-            bucket=f"terraform-example-{default['result']}",
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
             acl="private")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,
@@ -603,8 +605,9 @@ class BucketObject(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("default",
-            bucket=f"terraform-example-{default['result']}",
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
             acl="private")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,
@@ -622,8 +625,9 @@ class BucketObject(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("default",
-            bucket=f"terraform-example-{default['result']}",
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
             acl="private")
         default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.bucket,

@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAccountPrivilege = new AccountPrivilege("exampleAccountPrivilege", AccountPrivilegeArgs.builder()
  *             .instanceId(exampleInstance.id())
- *             .accountName(exampleRdsAccount.name())
+ *             .accountName(exampleRdsAccount.accountName())
  *             .privilege("ReadWrite")
  *             .dbNames(exampleDatabase.name())
  *             .build());

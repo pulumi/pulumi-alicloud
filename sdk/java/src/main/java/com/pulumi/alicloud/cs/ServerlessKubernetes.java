@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.ServerlessKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesAddon;
+import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesRrsaMetadata;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -39,6 +40,8 @@ import javax.annotation.Nullable;
  * Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
  * 
  * &gt; **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
+ * 
+ * &gt; **NOTE:** From version 1.229.1, support to migrate basic serverless cluster to professional serverless cluster.
  * 
  * ## Example Usage
  * 
@@ -75,20 +78,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("ask-example");
+ *         final var name = config.get("name").orElse("ask-example-pro");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
- *             .cidrBlock("10.1.0.0/21")
+ *             .cidrBlock("10.2.0.0/21")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock("10.1.1.0/24")
+ *             .cidrBlock("10.2.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
@@ -118,6 +121,9 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 ServerlessKubernetesAddonArgs.builder()
  *                     .name("knative")
+ *                     .build(),
+ *                 ServerlessKubernetesAddonArgs.builder()
+ *                     .name("arms-prometheus")
  *                     .build())
  *             .build());
  * 
@@ -139,18 +145,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
      * 
      */
     @Export(name="addons", refs={List.class,ServerlessKubernetesAddon.class}, tree="[0,1]")
-    private Output<List<ServerlessKubernetesAddon>> addons;
+    private Output</* @Nullable */ List<ServerlessKubernetesAddon>> addons;
 
     /**
-     * @return You can specific network plugin,log component,ingress component and so on. See `addons` below.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
      * 
      */
-    public Output<List<ServerlessKubernetesAddon>> addons() {
-        return this.addons;
+    public Output<Optional<List<ServerlessKubernetesAddon>>> addons() {
+        return Codegen.optional(this.addons);
     }
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -213,22 +219,38 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.clusterSpec;
     }
     /**
-     * whether to create a v2 version cluster.
+     * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      * *Removed params*
      * 
      */
-    @Export(name="createV2Cluster", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> createV2Cluster;
+    @Export(name="customSan", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customSan;
 
     /**
-     * @return whether to create a v2 version cluster.
+     * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      * *Removed params*
      * 
      */
-    public Output<Boolean> createV2Cluster() {
-        return this.createV2Cluster;
+    public Output<Optional<String>> customSan() {
+        return Codegen.optional(this.customSan);
+    }
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    @Export(name="deleteOptions", refs={List.class,ServerlessKubernetesDeleteOption.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ServerlessKubernetesDeleteOption>> deleteOptions;
+
+    /**
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    public Output<Optional<List<ServerlessKubernetesDeleteOption>>> deleteOptions() {
+        return Codegen.optional(this.deleteOptions);
     }
     /**
      * Whether enable the deletion protection or not.
@@ -263,32 +285,18 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableRrsa);
     }
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false.
      * 
      */
     @Export(name="endpointPublicAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> endpointPublicAccessEnabled;
 
     /**
-     * @return Whether to create internet  eip for API Server. Default to false.
+     * @return Whether to create internet eip for API Server. Default to false.
      * 
      */
     public Output<Optional<Boolean>> endpointPublicAccessEnabled() {
         return Codegen.optional(this.endpointPublicAccessEnabled);
-    }
-    /**
-     * Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
-     * 
-     */
-    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> forceUpdate;
-
-    /**
-     * @return Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
-     * 
-     */
-    public Output<Optional<Boolean>> forceUpdate() {
-        return Codegen.optional(this.forceUpdate);
     }
     /**
      * The path of kube config, like `~/.kube/config`.
@@ -311,7 +319,11 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * 
+     * @deprecated
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+     * 
      */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore. */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
@@ -325,7 +337,11 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Enable log service, Valid value `SLS`.
      * 
+     * @deprecated
+     * Field &#39;logging_type&#39; has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
+     * 
      */
+    @Deprecated /* Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging. */
     @Export(name="loggingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loggingType;
 
@@ -409,14 +425,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+     * Nested attribute containing RRSA related data for your cluster.
      * 
      */
     @Export(name="rrsaMetadata", refs={ServerlessKubernetesRrsaMetadata.class}, tree="[0]")
     private Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata;
 
     /**
-     * @return Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+     * @return Nested attribute containing RRSA related data for your cluster.
      * 
      */
     public Output<ServerlessKubernetesRrsaMetadata> rrsaMetadata() {
@@ -451,14 +467,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceCidr);
     }
     /**
-     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      * 
      */
     @Export(name="serviceDiscoveryTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> serviceDiscoveryTypes;
 
     /**
-     * @return Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     * @return Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      * 
      */
     public Output<Optional<List<String>>> serviceDiscoveryTypes() {
@@ -467,7 +483,11 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * If you use an existing SLS project, you must specify `sls_project_name`.
      * 
+     * @deprecated
+     * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
+     * 
      */
+    @Deprecated /* Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name. */
     @Export(name="slsProjectName", refs={String.class}, tree="[0]")
     private Output<String> slsProjectName;
 
@@ -521,36 +541,18 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.version;
     }
     /**
-     * The vpc where new kubernetes cluster will be located. Specify one vpc&#39;s id, if it is not specified, a new VPC  will be built.
+     * The vpc where new kubernetes cluster will be located. Specify one vpc&#39;s id, if it is not specified, a new VPC will be built.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The vpc where new kubernetes cluster will be located. Specify one vpc&#39;s id, if it is not specified, a new VPC  will be built.
+     * @return The vpc where new kubernetes cluster will be located. Specify one vpc&#39;s id, if it is not specified, a new VPC will be built.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
-    }
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-     * 
-     * @deprecated
-     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
-     * 
-     */
-    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it. */
-    @Export(name="vswitchId", refs={String.class}, tree="[0]")
-    private Output<String> vswitchId;
-
-    /**
-     * @return The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-     * 
-     */
-    public Output<String> vswitchId() {
-        return this.vswitchId;
     }
     /**
      * The vswitches where new kubernetes cluster will be located.
@@ -593,7 +595,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServerlessKubernetes(java.lang.String name, ServerlessKubernetesArgs args) {
+    public ServerlessKubernetes(java.lang.String name, @Nullable ServerlessKubernetesArgs args) {
         this(name, args, null);
     }
     /**
@@ -602,7 +604,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServerlessKubernetes(java.lang.String name, ServerlessKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ServerlessKubernetes(java.lang.String name, @Nullable ServerlessKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -610,7 +612,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         super("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ServerlessKubernetesArgs makeArgs(ServerlessKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ServerlessKubernetesArgs makeArgs(@Nullable ServerlessKubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

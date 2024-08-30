@@ -53,7 +53,7 @@ import (
 //			}
 //			defaultKIe4KV, err := log.NewProject(ctx, "defaultKIe4KV", &log.ProjectArgs{
 //				Description: pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
+//				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -62,8 +62,8 @@ import (
 //				HotTtl:          pulumi.Int(8),
 //				RetentionPeriod: pulumi.Int(30),
 //				ShardCount:      pulumi.Int(2),
-//				Project:         defaultKIe4KV.Name,
-//				Name:            pulumi.Sprintf("%v-%v", name, _default.Result),
+//				ProjectName:     defaultKIe4KV.ProjectName,
+//				LogstoreName:    pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //					SqlType:             pulumi.String("searchQuery"),
 //					DestEndpoint:        pulumi.String("ap-northeast-1.log.aliyuncs.com"),
 //					DestProject:         pulumi.String("job-e2e-project-jj78kur-ap-southeast-1"),
-//					SourceLogstore:      default1LI9we.Name,
+//					SourceLogstore:      default1LI9we.LogstoreName,
 //					DestLogstore:        pulumi.String("example-open-api02"),
 //					RoleArn:             pulumi.String("acs:ram::1395894005868720:role/aliyunlogetlrole"),
 //					DestRoleArn:         pulumi.String("acs:ram::1395894005868720:role/aliyunlogetlrole"),
@@ -96,7 +96,7 @@ import (
 //					DataFormat:          pulumi.String("log2log"),
 //				},
 //				ScheduledSqlName: pulumi.String(name),
-//				Project:          defaultKIe4KV.Name,
+//				Project:          defaultKIe4KV.ProjectName,
 //			})
 //			if err != nil {
 //				return err

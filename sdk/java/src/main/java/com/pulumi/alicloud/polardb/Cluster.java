@@ -181,7 +181,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The db_node_class of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
@@ -190,7 +191,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The db_node_class of cluster node.
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
-     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
+     * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
+     * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      * 
      */
     public Output<String> dbNodeClass() {
@@ -601,6 +603,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
+     * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+     * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+     * 
+     */
+    @Export(name="provisionedIops", refs={String.class}, tree="[0]")
+    private Output<String> provisionedIops;
+
+    /**
+     * @return The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+     * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+     * 
+     */
+    public Output<String> provisionedIops() {
+        return this.provisionedIops;
+    }
+    /**
      * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
      * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
@@ -895,16 +913,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.storageSpace;
     }
     /**
-     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-     * &gt; **NOTE:** Serverless cluster does not support this parameter.
+     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-     * &gt; **NOTE:** Serverless cluster does not support this parameter.
+     * @return The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
      * 
      */
     public Output<String> storageType() {

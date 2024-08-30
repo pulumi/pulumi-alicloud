@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
  * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import java.util.List;
@@ -55,6 +57,10 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(defaultBucket.bucket())
  *             .acl("private")
  *             .build());
  * 
@@ -84,6 +90,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
  * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import java.util.List;
@@ -106,6 +114,10 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(defaultBucket.bucket())
  *             .acl("private")
  *             .build());
  * 

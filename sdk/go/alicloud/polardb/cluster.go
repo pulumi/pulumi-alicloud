@@ -47,7 +47,8 @@ type Cluster struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayOutput `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -116,6 +117,9 @@ type Cluster struct {
 	PlannedStartTime pulumi.StringPtrOutput `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrOutput `pulumi:"proxyClass"`
@@ -163,8 +167,7 @@ type Cluster struct {
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
 	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace pulumi.IntOutput `pulumi:"storageSpace"`
-	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-	// > **NOTE:** Serverless cluster does not support this parameter.
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringOutput `pulumi:"subCategory"`
@@ -256,7 +259,8 @@ type clusterState struct {
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -325,6 +329,9 @@ type clusterState struct {
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port *string `pulumi:"port"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
@@ -372,8 +379,7 @@ type clusterState struct {
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
 	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace *int `pulumi:"storageSpace"`
-	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-	// > **NOTE:** Serverless cluster does not support this parameter.
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType *string `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
@@ -427,7 +433,8 @@ type ClusterState struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringPtrInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -496,6 +503,9 @@ type ClusterState struct {
 	PlannedStartTime pulumi.StringPtrInput
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringPtrInput
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	ProvisionedIops pulumi.StringPtrInput
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrInput
@@ -543,8 +553,7 @@ type ClusterState struct {
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
 	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace pulumi.IntPtrInput
-	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-	// > **NOTE:** Serverless cluster does not support this parameter.
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
@@ -598,7 +607,8 @@ type clusterArgs struct {
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -663,6 +673,9 @@ type clusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
@@ -708,8 +721,7 @@ type clusterArgs struct {
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
 	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace *int `pulumi:"storageSpace"`
-	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-	// > **NOTE:** Serverless cluster does not support this parameter.
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType *string `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
@@ -756,7 +768,8 @@ type ClusterArgs struct {
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
 	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-	// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+	// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 	DbNodeClass pulumi.StringInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -821,6 +834,9 @@ type ClusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime pulumi.StringPtrInput
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	ProvisionedIops pulumi.StringPtrInput
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrInput
@@ -866,8 +882,7 @@ type ClusterArgs struct {
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
 	// **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
 	StorageSpace pulumi.IntPtrInput
-	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-	// > **NOTE:** Serverless cluster does not support this parameter.
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 	StorageType pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
@@ -1033,7 +1048,8 @@ func (o ClusterOutput) DbClusterIpArrays() ClusterDbClusterIpArrayArrayOutput {
 
 // The dbNodeClass of cluster node.
 // > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
-// From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
+// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
+// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
 func (o ClusterOutput) DbNodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
 }
@@ -1186,6 +1202,12 @@ func (o ClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
+// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+// > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+func (o ClusterOutput) ProvisionedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
 // The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
 // > **NOTE:** This parameter is valid only for standard edition clusters.
 func (o ClusterOutput) ProxyClass() pulumi.StringPtrOutput {
@@ -1293,8 +1315,7 @@ func (o ClusterOutput) StorageSpace() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.StorageSpace }).(pulumi.IntOutput)
 }
 
-// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
-// > **NOTE:** Serverless cluster does not support this parameter.
+// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
 func (o ClusterOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

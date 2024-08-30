@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// The following example is the definition of addons block, The type of this field is list:
         /// 
         /// ```
-        /// # install nginx ingress, conflict with SLB ingress
+        /// # install nginx ingress, conflict with ALB ingress
         /// addons {
         /// name = "nginx-ingress-controller"
         /// # use internet
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// # if use intranet, detail below.
         /// # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
         /// }
-        /// # install SLB ingress, conflict with nginx ingress
+        /// # install ALB ingress, conflict with nginx ingress
         /// addons {
         /// name = "alb-ingress-controller"
         /// }
@@ -46,8 +46,6 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// # install prometheus
         /// addons {
         /// name = "arms-prometheus"
-        /// # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
-        /// # name = "managed-arms-prometheus"
         /// }
         /// ```
         /// </summary>
@@ -56,6 +54,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// It specifies the version of the component.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private ServerlessKubernetesAddon(
@@ -63,11 +65,14 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             bool? disabled,
 
-            string? name)
+            string? name,
+
+            string? version)
         {
             Config = config;
             Disabled = disabled;
             Name = name;
+            Version = version;
         }
     }
 }

@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
-//				PolicyName: policy.Name,
+//				PolicyName: policy.PolicyName,
 //				PolicyType: policy.Type,
 //				RoleName:   role.Name,
 //			})

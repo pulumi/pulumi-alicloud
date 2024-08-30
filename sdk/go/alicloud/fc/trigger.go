@@ -456,7 +456,7 @@ import (
 //			}
 //			_, err = ram.NewRolePolicyAttachment(ctx, "default", &ram.RolePolicyAttachmentArgs{
 //				RoleName:   defaultRole.Name,
-//				PolicyName: defaultPolicy.Name,
+//				PolicyName: defaultPolicy.PolicyName,
 //				PolicyType: pulumi.String("Custom"),
 //			})
 //			if err != nil {

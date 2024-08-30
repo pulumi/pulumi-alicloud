@@ -159,8 +159,6 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-     * 
      */
     @Export(name="backupInterval", refs={String.class}, tree="[0]")
     private Output<String> backupInterval;
@@ -176,11 +174,33 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
      * 
-     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-     * 
      */
     public Output<String> backupInterval() {
         return this.backupInterval;
+    }
+    /**
+     * The backup method of the instance. Valid values:
+     * - Physical: physical backup
+     * - Snapshot: snapshot backup
+     *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * 
+     */
+    @Export(name="backupMethod", refs={String.class}, tree="[0]")
+    private Output<String> backupMethod;
+
+    /**
+     * @return The backup method of the instance. Valid values:
+     * - Physical: physical backup
+     * - Snapshot: snapshot backup
+     *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * 
+     */
+    public Output<String> backupMethod() {
+        return this.backupMethod;
     }
     /**
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
@@ -199,6 +219,26 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> backupPeriods() {
         return this.backupPeriods;
+    }
+    /**
+     * Specifies whether the backup settings of a secondary instance are configured. Valid values:
+     * - 1: secondary instance preferred
+     * - 2: primary instance preferred
+     *   -&gt;**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+     * 
+     */
+    @Export(name="backupPriority", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> backupPriority;
+
+    /**
+     * @return Specifies whether the backup settings of a secondary instance are configured. Valid values:
+     * - 1: secondary instance preferred
+     * - 2: primary instance preferred
+     *   -&gt;**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+     * 
+     */
+    public Output<Optional<Integer>> backupPriority() {
+        return Codegen.optional(this.backupPriority);
     }
     /**
      * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
@@ -275,6 +315,26 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableBackupLog() {
         return this.enableBackupLog;
+    }
+    /**
+     * Specifies whether to enable incremental backup. Valid values:
+     * - false (default): disables the feature.
+     * - true: enables the feature.
+     *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     */
+    @Export(name="enableIncrementDataBackup", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableIncrementDataBackup;
+
+    /**
+     * @return Specifies whether to enable incremental backup. Valid values:
+     * - false (default): disables the feature.
+     * - true: enables the feature.
+     *   -&gt;**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     */
+    public Output<Boolean> enableIncrementDataBackup() {
+        return this.enableIncrementDataBackup;
     }
     /**
      * Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
@@ -363,6 +423,22 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> logBackupFrequency() {
         return this.logBackupFrequency;
+    }
+    /**
+     * The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+     * -&gt;**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
+     * 
+     */
+    @Export(name="logBackupLocalRetentionNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> logBackupLocalRetentionNumber;
+
+    /**
+     * @return The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+     * -&gt;**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
+     * 
+     */
+    public Output<Integer> logBackupLocalRetentionNumber() {
+        return this.logBackupLocalRetentionNumber;
     }
     /**
      * Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.

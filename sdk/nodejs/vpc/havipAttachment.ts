@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     userData: "echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
  * });
  * const exampleHAVipAttachment = new alicloud.vpc.HAVipAttachment("example", {
- *     havipId: exampleHAVip.id,
+ *     haVipId: exampleHAVip.id,
  *     instanceId: exampleInstance.id,
  * });
  * ```

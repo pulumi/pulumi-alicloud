@@ -37,14 +37,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -54,8 +54,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example2 = new AliCloud.Log.Store("example2", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store2",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store2",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -65,8 +65,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example3 = new AliCloud.Log.Store("example3", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store3",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store3",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -77,13 +77,13 @@ namespace Pulumi.AliCloud.Log
     ///     var exampleEtl = new AliCloud.Log.Etl("example", new()
     ///     {
     ///         EtlName = "terraform-example",
-    ///         Project = example.Name,
+    ///         Project = example.ProjectName,
     ///         DisplayName = "terraform-example",
     ///         Description = "terraform-example",
     ///         AccessKeyId = "access_key_id",
     ///         AccessKeySecret = "access_key_secret",
     ///         Script = "e_set('new','key')",
-    ///         Logstore = exampleStore.Name,
+    ///         Logstore = exampleStore.LogstoreName,
     ///         EtlSinks = new[]
     ///         {
     ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
@@ -92,8 +92,8 @@ namespace Pulumi.AliCloud.Log
     ///                 AccessKeyId = "example2_access_key_id",
     ///                 AccessKeySecret = "example2_access_key_secret",
     ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = example.Name,
-    ///                 Logstore = example2.Name,
+    ///                 Project = example.ProjectName,
+    ///                 Logstore = example2.LogstoreName,
     ///             },
     ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
     ///             {
@@ -101,8 +101,8 @@ namespace Pulumi.AliCloud.Log
     ///                 AccessKeyId = "example3_access_key_id",
     ///                 AccessKeySecret = "example3_access_key_secret",
     ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = example.Name,
-    ///                 Logstore = example3.Name,
+    ///                 Project = example.ProjectName,
+    ///                 Logstore = example3.LogstoreName,
     ///             },
     ///         },
     ///     });

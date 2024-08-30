@@ -21,10 +21,26 @@ public final class GetIndustrialPidProjectsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Pid Project names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of Pid Organization.
+     * 
+     */
     private @Nullable String pidOrganizationId;
+    /**
+     * @return The name of Pid Project.
+     * 
+     */
     private @Nullable String pidProjectName;
+    /**
+     * @return A list of Brain Industrial Pid Projects. Each element contains the following attributes:
+     * 
+     */
     private List<GetIndustrialPidProjectsProject> projects;
 
     private GetIndustrialPidProjectsResult() {}
@@ -41,18 +57,34 @@ public final class GetIndustrialPidProjectsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Pid Project names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of Pid Organization.
+     * 
+     */
     public Optional<String> pidOrganizationId() {
         return Optional.ofNullable(this.pidOrganizationId);
     }
+    /**
+     * @return The name of Pid Project.
+     * 
+     */
     public Optional<String> pidProjectName() {
         return Optional.ofNullable(this.pidProjectName);
     }
+    /**
+     * @return A list of Brain Industrial Pid Projects. Each element contains the following attributes:
+     * 
+     */
     public List<GetIndustrialPidProjectsProject> projects() {
         return this.projects;
     }

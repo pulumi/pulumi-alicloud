@@ -77,10 +77,10 @@ import (
 //				return err
 //			}
 //			template, err := ecs.NewEcsLaunchTemplate(ctx, "template", &ecs.EcsLaunchTemplateArgs{
-//				Name:            pulumi.String(name),
-//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:    pulumi.String("ecs.n1.tiny"),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				LaunchTemplateName: pulumi.String(name),
+//				ImageId:            pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:       pulumi.String("ecs.n1.tiny"),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
 //				return err

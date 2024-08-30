@@ -13,7 +13,9 @@ import (
 
 // This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
+//
+// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 //
 // ## Example Usage
 //
@@ -73,14 +75,18 @@ type GetIndustrialPidProjectsArgs struct {
 // A collection of values returned by getIndustrialPidProjects.
 type GetIndustrialPidProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                            `pulumi:"id"`
-	Ids               []string                          `pulumi:"ids"`
-	NameRegex         *string                           `pulumi:"nameRegex"`
-	Names             []string                          `pulumi:"names"`
-	OutputFile        *string                           `pulumi:"outputFile"`
-	PidOrganizationId *string                           `pulumi:"pidOrganizationId"`
-	PidProjectName    *string                           `pulumi:"pidProjectName"`
-	Projects          []GetIndustrialPidProjectsProject `pulumi:"projects"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Pid Project names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of Pid Organization.
+	PidOrganizationId *string `pulumi:"pidOrganizationId"`
+	// The name of Pid Project.
+	PidProjectName *string `pulumi:"pidProjectName"`
+	// A list of Brain Industrial Pid Projects. Each element contains the following attributes:
+	Projects []GetIndustrialPidProjectsProject `pulumi:"projects"`
 }
 
 func GetIndustrialPidProjectsOutput(ctx *pulumi.Context, args GetIndustrialPidProjectsOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialPidProjectsResultOutput {
@@ -142,6 +148,7 @@ func (o GetIndustrialPidProjectsResultOutput) NameRegex() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Pid Project names.
 func (o GetIndustrialPidProjectsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -150,14 +157,17 @@ func (o GetIndustrialPidProjectsResultOutput) OutputFile() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of Pid Organization.
 func (o GetIndustrialPidProjectsResultOutput) PidOrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.PidOrganizationId }).(pulumi.StringPtrOutput)
 }
 
+// The name of Pid Project.
 func (o GetIndustrialPidProjectsResultOutput) PidProjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) *string { return v.PidProjectName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Brain Industrial Pid Projects. Each element contains the following attributes:
 func (o GetIndustrialPidProjectsResultOutput) Projects() GetIndustrialPidProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidProjectsResult) []GetIndustrialPidProjectsProject { return v.Projects }).(GetIndustrialPidProjectsProjectArrayOutput)
 }

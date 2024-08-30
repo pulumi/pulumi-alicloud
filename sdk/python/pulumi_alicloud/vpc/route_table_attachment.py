@@ -134,13 +134,13 @@ class RouteTableAttachment(pulumi.CustomResource):
             name = "terraform-example"
         foo = alicloud.vpc.Network("foo",
             cidr_block="172.16.0.0/12",
-            name=name)
+            vpc_name=name)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         foo_switch = alicloud.vpc.Switch("foo",
             vpc_id=foo.id,
             cidr_block="172.16.0.0/21",
             zone_id=default.zones[0].id,
-            name=name)
+            vswitch_name=name)
         foo_route_table = alicloud.vpc.RouteTable("foo",
             vpc_id=foo.id,
             route_table_name=name,
@@ -190,13 +190,13 @@ class RouteTableAttachment(pulumi.CustomResource):
             name = "terraform-example"
         foo = alicloud.vpc.Network("foo",
             cidr_block="172.16.0.0/12",
-            name=name)
+            vpc_name=name)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         foo_switch = alicloud.vpc.Switch("foo",
             vpc_id=foo.id,
             cidr_block="172.16.0.0/21",
             zone_id=default.zones[0].id,
-            name=name)
+            vswitch_name=name)
         foo_route_table = alicloud.vpc.RouteTable("foo",
             vpc_id=foo.id,
             route_table_name=name,

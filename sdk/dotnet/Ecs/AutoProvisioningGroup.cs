@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var template = new AliCloud.Ecs.EcsLaunchTemplate("template", new()
     ///     {
-    ///         Name = name,
+    ///         LaunchTemplateName = name,
     ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = "ecs.n1.tiny",
     ///         SecurityGroupId = defaultSecurityGroup.Id,

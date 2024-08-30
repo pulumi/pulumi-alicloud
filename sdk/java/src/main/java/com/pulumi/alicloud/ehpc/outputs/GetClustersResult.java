@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
+    /**
+     * @return A list of Ehpc Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetClustersCluster> clusters;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,11 +28,23 @@ public final class GetClustersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetClustersResult() {}
+    /**
+     * @return A list of Ehpc Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetClustersCluster> clusters() {
         return this.clusters;
     }
@@ -48,12 +64,20 @@ public final class GetClustersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,6 +31,8 @@ import (
 //
 // > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
 //
+// > **NOTE:** From version 1.229.1, support to migrate basic serverless cluster to professional serverless cluster.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -52,7 +53,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "ask-example"
+//			name := "ask-example-pro"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -64,7 +65,7 @@ import (
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//				CidrBlock: pulumi.String("10.2.0.0/21"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +73,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				CidrBlock:   pulumi.String("10.2.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -109,6 +110,9 @@ import (
 //					&cs.ServerlessKubernetesAddonArgs{
 //						Name: pulumi.String("knative"),
 //					},
+//					&cs.ServerlessKubernetesAddonArgs{
+//						Name: pulumi.String("arms-prometheus"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -130,7 +134,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
-	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -142,27 +146,32 @@ type ServerlessKubernetes struct {
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// whether to create a v2 version cluster.
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	//
 	// *Removed params*
-	CreateV2Cluster pulumi.BoolOutput `pulumi:"createV2Cluster"`
+	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions ServerlessKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"endpointPublicAccessEnabled"`
-	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
+	//
+	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrOutput `pulumi:"loggingType"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
@@ -176,15 +185,17 @@ type ServerlessKubernetes struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+	// Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ServerlessKubernetesRrsaMetadataOutput `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayOutput `pulumi:"serviceDiscoveryTypes"`
 	// If you use an existing SLS project, you must specify `slsProjectName`.
+	//
+	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringOutput `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -192,12 +203,8 @@ type ServerlessKubernetes struct {
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringOutput `pulumi:"version"`
-	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	//
-	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -208,12 +215,9 @@ type ServerlessKubernetes struct {
 func NewServerlessKubernetes(ctx *pulumi.Context,
 	name string, args *ServerlessKubernetesArgs, opts ...pulumi.ResourceOption) (*ServerlessKubernetes, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ServerlessKubernetesArgs{}
 	}
 
-	if args.VpcId == nil {
-		return nil, errors.New("invalid value for required argument 'VpcId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerlessKubernetes
 	err := ctx.RegisterResource("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", name, args, &resource, opts...)
@@ -237,7 +241,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
-	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -249,27 +253,32 @@ type serverlessKubernetesState struct {
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// whether to create a v2 version cluster.
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	//
 	// *Removed params*
-	CreateV2Cluster *bool `pulumi:"createV2Cluster"`
+	CustomSan *string `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
-	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
+	//
+	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType *string `pulumi:"loggingType"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
@@ -283,15 +292,17 @@ type serverlessKubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+	// Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata *ServerlessKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
 	ServiceCidr *string `pulumi:"serviceCidr"`
-	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
 	// If you use an existing SLS project, you must specify `slsProjectName`.
+	//
+	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]string `pulumi:"tags"`
@@ -299,12 +310,8 @@ type serverlessKubernetesState struct {
 	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
-	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId *string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	//
-	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId *string `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -312,7 +319,7 @@ type serverlessKubernetesState struct {
 }
 
 type ServerlessKubernetesState struct {
-	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -324,27 +331,32 @@ type ServerlessKubernetesState struct {
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
-	// whether to create a v2 version cluster.
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	//
 	// *Removed params*
-	CreateV2Cluster pulumi.BoolPtrInput
+	CustomSan pulumi.StringPtrInput
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
-	// Whether to create internet  eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
-	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-	ForceUpdate pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable log service, Valid value `SLS`.
+	//
+	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
@@ -358,15 +370,17 @@ type ServerlessKubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+	// Nested attribute containing RRSA related data for your cluster.
 	RrsaMetadata ServerlessKubernetesRrsaMetadataPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
 	ServiceCidr pulumi.StringPtrInput
-	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayInput
 	// If you use an existing SLS project, you must specify `slsProjectName`.
+	//
+	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.StringMapInput
@@ -374,12 +388,8 @@ type ServerlessKubernetesState struct {
 	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput
-	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId pulumi.StringPtrInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	//
-	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -391,7 +401,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
-	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -403,27 +413,32 @@ type serverlessKubernetesArgs struct {
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// whether to create a v2 version cluster.
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	//
 	// *Removed params*
-	CreateV2Cluster *bool `pulumi:"createV2Cluster"`
+	CustomSan *string `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
-	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
+	//
+	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType *string `pulumi:"loggingType"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
@@ -437,15 +452,15 @@ type serverlessKubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
-	RrsaMetadata *ServerlessKubernetesRrsaMetadata `pulumi:"rrsaMetadata"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
 	ServiceCidr *string `pulumi:"serviceCidr"`
-	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
 	// If you use an existing SLS project, you must specify `slsProjectName`.
+	//
+	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName *string `pulumi:"slsProjectName"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]string `pulumi:"tags"`
@@ -453,12 +468,8 @@ type serverlessKubernetesArgs struct {
 	TimeZone *string `pulumi:"timeZone"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version *string `pulumi:"version"`
-	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-	VpcId string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	//
-	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId *string `pulumi:"vswitchId"`
+	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -467,7 +478,7 @@ type serverlessKubernetesArgs struct {
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
-	// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -479,27 +490,32 @@ type ServerlessKubernetesArgs struct {
 	// - ack.standard: Standard serverless clusters.
 	// - ack.pro.small: Professional serverless clusters.
 	ClusterSpec pulumi.StringPtrInput
-	// whether to create a v2 version cluster.
+	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 	//
 	// *Removed params*
-	CreateV2Cluster pulumi.BoolPtrInput
+	CustomSan pulumi.StringPtrInput
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
-	// Whether to create internet  eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
-	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-	ForceUpdate pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable log service, Valid value `SLS`.
+	//
+	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
@@ -513,15 +529,15 @@ type ServerlessKubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
-	RrsaMetadata ServerlessKubernetesRrsaMetadataPtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
 	ServiceCidr pulumi.StringPtrInput
-	// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayInput
 	// If you use an existing SLS project, you must specify `slsProjectName`.
+	//
+	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.StringMapInput
@@ -529,12 +545,8 @@ type ServerlessKubernetesArgs struct {
 	TimeZone pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
 	Version pulumi.StringPtrInput
-	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
-	VpcId pulumi.StringInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	//
-	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId pulumi.StringPtrInput
+	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
+	VpcId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -628,7 +640,7 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
-// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
 func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
 }
@@ -655,11 +667,17 @@ func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// whether to create a v2 version cluster.
+// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
 //
 // *Removed params*
-func (o ServerlessKubernetesOutput) CreateV2Cluster() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolOutput { return v.CreateV2Cluster }).(pulumi.BoolOutput)
+func (o ServerlessKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
+}
+
+// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+func (o ServerlessKubernetesOutput) DeleteOptions() ServerlessKubernetesDeleteOptionArrayOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesDeleteOptionArrayOutput { return v.DeleteOptions }).(ServerlessKubernetesDeleteOptionArrayOutput)
 }
 
 // Whether enable the deletion protection or not.
@@ -674,14 +692,9 @@ func (o ServerlessKubernetesOutput) EnableRrsa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EnableRrsa }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to create internet  eip for API Server. Default to false.
+// Whether to create internet eip for API Server. Default to false.
 func (o ServerlessKubernetesOutput) EndpointPublicAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EndpointPublicAccessEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-func (o ServerlessKubernetesOutput) ForceUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
 // The path of kube config, like `~/.kube/config`.
@@ -692,11 +705,15 @@ func (o ServerlessKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 }
 
 // The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+//
+// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
 func (o ServerlessKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
 // Enable log service, Valid value `SLS`.
+//
+// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 func (o ServerlessKubernetesOutput) LoggingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.LoggingType }).(pulumi.StringPtrOutput)
 }
@@ -731,7 +748,7 @@ func (o ServerlessKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+// Nested attribute containing RRSA related data for your cluster.
 func (o ServerlessKubernetesOutput) RrsaMetadata() ServerlessKubernetesRrsaMetadataOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesRrsaMetadataOutput { return v.RrsaMetadata }).(ServerlessKubernetesRrsaMetadataOutput)
 }
@@ -746,12 +763,14 @@ func (o ServerlessKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
 }
 
-// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 func (o ServerlessKubernetesOutput) ServiceDiscoveryTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.ServiceDiscoveryTypes }).(pulumi.StringArrayOutput)
 }
 
 // If you use an existing SLS project, you must specify `slsProjectName`.
+//
+// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 func (o ServerlessKubernetesOutput) SlsProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.SlsProjectName }).(pulumi.StringOutput)
 }
@@ -771,16 +790,9 @@ func (o ServerlessKubernetesOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
-// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 func (o ServerlessKubernetesOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
-}
-
-// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-//
-// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-func (o ServerlessKubernetesOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The vswitches where new kubernetes cluster will be located.

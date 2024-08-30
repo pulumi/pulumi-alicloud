@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -72,10 +72,11 @@ type GetJobTemplatesArgs struct {
 // A collection of values returned by getJobTemplates.
 type GetJobTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Templates  []GetJobTemplatesTemplate `pulumi:"templates"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ehpc Job Templates. Each element contains the following attributes:
+	Templates []GetJobTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetJobTemplatesOutput(ctx *pulumi.Context, args GetJobTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetJobTemplatesResultOutput {
@@ -131,6 +132,7 @@ func (o GetJobTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ehpc Job Templates. Each element contains the following attributes:
 func (o GetJobTemplatesResultOutput) Templates() GetJobTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetJobTemplatesResult) []GetJobTemplatesTemplate { return v.Templates }).(GetJobTemplatesTemplateArrayOutput)
 }

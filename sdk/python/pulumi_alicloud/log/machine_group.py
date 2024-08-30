@@ -213,10 +213,10 @@ class MachineGroup(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_machine_group = alicloud.log.MachineGroup("example",
-            project=example.name,
+            project=example.project_name,
             name="terraform-example",
             identify_type="ip",
             topic="terraform",
@@ -270,10 +270,10 @@ class MachineGroup(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_machine_group = alicloud.log.MachineGroup("example",
-            project=example.name,
+            project=example.project_name,
             name="terraform-example",
             identify_type="ip",
             topic="terraform",

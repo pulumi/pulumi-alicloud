@@ -39,6 +39,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// 
     /// create a subscription instance
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

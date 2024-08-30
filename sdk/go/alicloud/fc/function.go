@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-//				ProjectName:  defaultProject.Name,
+//				ProjectName:  defaultProject.ProjectName,
 //				LogstoreName: pulumi.String("example-value"),
 //			})
 //			if err != nil {
@@ -100,8 +100,8 @@ import (
 //				Description: pulumi.String("example-value"),
 //				Role:        defaultRole.Arn,
 //				LogConfig: &fc.ServiceLogConfigArgs{
-//					Project:               defaultProject.Name,
-//					Logstore:              defaultStore.Name,
+//					Project:               defaultProject.ProjectName,
+//					Logstore:              defaultStore.LogstoreName,
 //					EnableInstanceMetrics: pulumi.Bool(true),
 //					EnableRequestMetrics:  pulumi.Bool(true),
 //				},

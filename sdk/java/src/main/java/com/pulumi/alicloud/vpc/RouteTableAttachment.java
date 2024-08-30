@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var foo = new Network("foo", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
- *             .name(name)
+ *             .vpcName(name)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vpcId(foo.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
- *             .name(name)
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()

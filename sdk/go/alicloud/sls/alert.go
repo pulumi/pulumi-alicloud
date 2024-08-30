@@ -61,7 +61,7 @@ import (
 //			}
 //			defaultINsMgl, err := log.NewProject(ctx, "defaultINsMgl", &log.ProjectArgs{
 //				Description: pulumi.Sprintf("%v-%v", projectName, _default.Result),
-//				Name:        pulumi.Sprintf("%v-%v", projectName, _default.Result),
+//				ProjectName: pulumi.Sprintf("%v-%v", projectName, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -144,7 +144,7 @@ import (
 //							RoleArn:      pulumi.String("acs:ram::1654218965343050:role/aliyunslsalertmonitorrole"),
 //							Query:        pulumi.String("* | select *"),
 //							TimeSpanType: pulumi.String("Relative"),
-//							Project:      defaultINsMgl.Name,
+//							Project:      defaultINsMgl.ProjectName,
 //							PowerSqlMode: pulumi.String("disable"),
 //							DashboardId:  pulumi.String("wkb-dashboard"),
 //							ChartTitle:   pulumi.String("wkb-chart"),
@@ -195,7 +195,7 @@ import (
 //					},
 //				},
 //				AlertName:   pulumi.String(alertName),
-//				ProjectName: defaultINsMgl.Name,
+//				ProjectName: defaultINsMgl.ProjectName,
 //			})
 //			if err != nil {
 //				return err

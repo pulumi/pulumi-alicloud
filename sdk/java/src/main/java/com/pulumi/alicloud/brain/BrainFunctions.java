@@ -26,7 +26,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -75,7 +77,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -124,7 +128,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -173,7 +179,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -222,7 +230,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -270,7 +280,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -318,7 +330,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -366,7 +380,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -414,7 +430,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -462,7 +480,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -510,7 +530,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -558,7 +580,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -606,7 +630,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -654,7 +680,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -702,7 +730,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -750,7 +780,9 @@ public final class BrainFunctions {
     /**
      * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -798,9 +830,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -844,9 +878,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -890,9 +926,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -936,9 +974,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -982,9 +1022,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 
@@ -1028,9 +1070,11 @@ public final class BrainFunctions {
     /**
      * Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
      * 
-     * &gt; **NOTE:** Available in v1.115.0+
+     * &gt; **NOTE:** Available since v1.115.0.
      * 
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+     * 
+     * &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
      * 
      * ## Example Usage
      * 

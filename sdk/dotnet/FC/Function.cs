@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
-    ///         ProjectName = defaultProject.Name,
+    ///         ProjectName = defaultProject.ProjectName,
     ///         LogstoreName = "example-value",
     ///     });
     /// 
@@ -83,8 +83,8 @@ namespace Pulumi.AliCloud.FC
     ///         Role = defaultRole.Arn,
     ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
     ///         {
-    ///             Project = defaultProject.Name,
-    ///             Logstore = defaultStore.Name,
+    ///             Project = defaultProject.ProjectName,
+    ///             Logstore = defaultStore.LogstoreName,
     ///             EnableInstanceMetrics = true,
     ///             EnableRequestMetrics = true,
     ///         },

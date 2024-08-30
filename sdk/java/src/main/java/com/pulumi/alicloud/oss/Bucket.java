@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,6 +71,10 @@ import javax.annotation.Nullable;
  * 
  *         var bucket_acl = new Bucket("bucket-acl", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .build());
+ * 
+ *         var bucket_aclBucketAcl = new BucketAcl("bucket-aclBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_acl.bucket())
  *             .acl("private")
  *             .build());
  * 
@@ -139,6 +145,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketLoggingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -160,6 +168,10 @@ import javax.annotation.Nullable;
  * 
  *         var bucket_target = new Bucket("bucket-target", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .build());
+ * 
+ *         var bucket_targetBucketAcl = new BucketAcl("bucket-targetBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_target.bucket())
  *             .acl("public-read")
  *             .build());
  * 
@@ -192,6 +204,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketRefererConfigArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -212,13 +226,17 @@ import javax.annotation.Nullable;
  * 
  *         var bucket_referer = new Bucket("bucket-referer", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
- *             .acl("private")
  *             .refererConfig(BucketRefererConfigArgs.builder()
  *                 .allowEmpty(false)
  *                 .referers(                
  *                     "http://www.aliyun.com",
  *                     "https://www.aliyun.com")
  *                 .build())
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_referer.bucket())
+ *             .acl("private")
  *             .build());
  * 
  *     }

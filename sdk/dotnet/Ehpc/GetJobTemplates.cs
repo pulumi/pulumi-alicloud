@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ehpc
         /// <summary>
         /// This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ehpc
         /// <summary>
         /// This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -157,6 +157,9 @@ namespace Pulumi.AliCloud.Ehpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ehpc Job Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

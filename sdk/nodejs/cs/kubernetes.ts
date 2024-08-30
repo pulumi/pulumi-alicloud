@@ -78,7 +78,7 @@ export class Kubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * The addon you want to install in cluster. See `addons` below.
+     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
      *
      * *Network params*
      */
@@ -480,7 +480,7 @@ export class Kubernetes extends pulumi.CustomResource {
  */
 export interface KubernetesState {
     /**
-     * The addon you want to install in cluster. See `addons` below.
+     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
      *
      * *Network params*
      */
@@ -734,7 +734,7 @@ export interface KubernetesState {
  */
 export interface KubernetesArgs {
     /**
-     * The addon you want to install in cluster. See `addons` below.
+     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
      *
      * *Network params*
      */

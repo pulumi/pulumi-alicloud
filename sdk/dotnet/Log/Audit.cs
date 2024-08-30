@@ -186,6 +186,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// });
     /// ```
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

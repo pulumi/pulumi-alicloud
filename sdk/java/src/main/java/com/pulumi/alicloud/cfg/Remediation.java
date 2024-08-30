@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import com.pulumi.alicloud.cfg.Rule;
  * import com.pulumi.alicloud.cfg.RuleArgs;
  * import com.pulumi.alicloud.cfg.Remediation;
@@ -68,8 +70,12 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("%s-%s", name,defaultInteger.result()))
- *             .acl("public-read")
  *             .tags(Map.of("For", "example"))
+ *             .build());
+ * 
+ *         var nameBucketAcl = new BucketAcl("nameBucketAcl", BucketAclArgs.builder()
+ *             .bucket(defaultBucket.bucket())
+ *             .acl("public-read")
  *             .build());
  * 
  *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()

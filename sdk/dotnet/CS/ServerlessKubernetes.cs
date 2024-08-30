@@ -30,6 +30,8 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
     /// 
+    /// &gt; **NOTE:** From version 1.229.1, support to migrate basic serverless cluster to professional serverless cluster.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -43,7 +45,7 @@ namespace Pulumi.AliCloud.CS
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "ask-example";
+    ///     var name = config.Get("name") ?? "ask-example-pro";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -52,14 +54,14 @@ namespace Pulumi.AliCloud.CS
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "10.1.0.0/21",
+    ///         CidrBlock = "10.2.0.0/21",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "10.1.1.0/24",
+    ///         CidrBlock = "10.2.1.0/24",
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
@@ -102,6 +104,10 @@ namespace Pulumi.AliCloud.CS
     ///             {
     ///                 Name = "knative",
     ///             },
+    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///             {
+    ///                 Name = "arms-prometheus",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -120,7 +126,7 @@ namespace Pulumi.AliCloud.CS
     public partial class ServerlessKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
@@ -152,12 +158,19 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// whether to create a v2 version cluster.
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// 
         /// *Removed params*
         /// </summary>
-        [Output("createV2Cluster")]
-        public Output<bool> CreateV2Cluster { get; private set; } = null!;
+        [Output("customSan")]
+        public Output<string?> CustomSan { get; private set; } = null!;
+
+        /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        [Output("deleteOptions")]
+        public Output<ImmutableArray<Outputs.ServerlessKubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
 
         /// <summary>
         /// Whether enable the deletion protection or not.
@@ -174,16 +187,10 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EnableRrsa { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false.
         /// </summary>
         [Output("endpointPublicAccessEnabled")]
         public Output<bool?> EndpointPublicAccessEnabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
-        /// </summary>
-        [Output("forceUpdate")]
-        public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         /// <summary>
         /// The path of kube config, like `~/.kube/config`.
@@ -234,7 +241,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+        /// Nested attribute containing RRSA related data for your cluster.
         /// </summary>
         [Output("rrsaMetadata")]
         public Output<Outputs.ServerlessKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
@@ -252,7 +259,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         /// </summary>
         [Output("serviceDiscoveryTypes")]
         public Output<ImmutableArray<string>> ServiceDiscoveryTypes { get; private set; } = null!;
@@ -282,16 +289,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Version { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Output("vswitchId")]
-        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The vswitches where new kubernetes cluster will be located.
@@ -313,7 +314,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ServerlessKubernetes(string name, ServerlessKubernetesArgs args, CustomResourceOptions? options = null)
+        public ServerlessKubernetes(string name, ServerlessKubernetesArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:cs/serverlessKubernetes:ServerlessKubernetes", name, args ?? new ServerlessKubernetesArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -355,7 +356,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
         {
@@ -390,12 +391,25 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// whether to create a v2 version cluster.
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// 
         /// *Removed params*
         /// </summary>
-        [Input("createV2Cluster")]
-        public Input<bool>? CreateV2Cluster { get; set; }
+        [Input("customSan")]
+        public Input<string>? CustomSan { get; set; }
+
+        [Input("deleteOptions")]
+        private InputList<Inputs.ServerlessKubernetesDeleteOptionArgs>? _deleteOptions;
+
+        /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        public InputList<Inputs.ServerlessKubernetesDeleteOptionArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.ServerlessKubernetesDeleteOptionArgs>());
+            set => _deleteOptions = value;
+        }
 
         /// <summary>
         /// Whether enable the deletion protection or not.
@@ -412,16 +426,10 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false.
         /// </summary>
         [Input("endpointPublicAccessEnabled")]
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
-
-        /// <summary>
-        /// Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
-        /// </summary>
-        [Input("forceUpdate")]
-        public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
         /// The path of kube config, like `~/.kube/config`.
@@ -477,12 +485,6 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
-        /// </summary>
-        [Input("rrsaMetadata")]
-        public Input<Inputs.ServerlessKubernetesRrsaMetadataArgs>? RrsaMetadata { get; set; }
-
-        /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Input("securityGroupId")]
@@ -498,7 +500,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _serviceDiscoveryTypes;
 
         /// <summary>
-        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         /// </summary>
         public InputList<string> ServiceDiscoveryTypes
         {
@@ -537,16 +539,10 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         [Input("vswitchIds")]
         private InputList<string>? _vswitchIds;
@@ -578,7 +574,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin,log component,ingress component and so on. See `addons` below.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
         {
@@ -613,12 +609,25 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// whether to create a v2 version cluster.
+        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         /// 
         /// *Removed params*
         /// </summary>
-        [Input("createV2Cluster")]
-        public Input<bool>? CreateV2Cluster { get; set; }
+        [Input("customSan")]
+        public Input<string>? CustomSan { get; set; }
+
+        [Input("deleteOptions")]
+        private InputList<Inputs.ServerlessKubernetesDeleteOptionGetArgs>? _deleteOptions;
+
+        /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        public InputList<Inputs.ServerlessKubernetesDeleteOptionGetArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.ServerlessKubernetesDeleteOptionGetArgs>());
+            set => _deleteOptions = value;
+        }
 
         /// <summary>
         /// Whether enable the deletion protection or not.
@@ -635,16 +644,10 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false.
         /// </summary>
         [Input("endpointPublicAccessEnabled")]
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
-
-        /// <summary>
-        /// Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
-        /// </summary>
-        [Input("forceUpdate")]
-        public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
         /// The path of kube config, like `~/.kube/config`.
@@ -700,7 +703,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+        /// Nested attribute containing RRSA related data for your cluster.
         /// </summary>
         [Input("rrsaMetadata")]
         public Input<Inputs.ServerlessKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
@@ -721,7 +724,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _serviceDiscoveryTypes;
 
         /// <summary>
-        /// Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+        /// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
         /// </summary>
         public InputList<string> ServiceDiscoveryTypes
         {
@@ -760,16 +763,10 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+        /// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
 
         [Input("vswitchIds")]
         private InputList<string>? _vswitchIds;

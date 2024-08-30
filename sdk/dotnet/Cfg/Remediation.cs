@@ -45,11 +45,16 @@ namespace Pulumi.AliCloud.Cfg
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = $"{name}-{defaultInteger.Result}",
-    ///         Acl = "public-read",
     ///         Tags = 
     ///         {
     ///             { "For", "example" },
     ///         },
+    ///     });
+    /// 
+    ///     var nameBucketAcl = new AliCloud.Oss.BucketAcl("name", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
+    ///         Acl = "public-read",
     ///     });
     /// 
     ///     var defaultRule = new AliCloud.Cfg.Rule("default", new()

@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// ID of resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// </summary>
         public readonly string Status;
         /// <summary>
         /// The description of the transit router route table.
@@ -31,7 +34,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string TransitRouterRouteTableName;
         /// <summary>
-        /// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        /// The type of the transit router route table to query. Valid values `System` and `Custom`.
         /// </summary>
         public readonly string TransitRouterRouteTableType;
 

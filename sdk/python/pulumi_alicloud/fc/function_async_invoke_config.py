@@ -352,7 +352,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         \"\"\")
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
-            policy_name=default_policy.name,
+            policy_name=default_policy.policy_name,
             policy_type="Custom")
         default_service = alicloud.fc.Service("default",
             name=f"example-value-{default_integer['result']}",
@@ -477,7 +477,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         \"\"\")
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
-            policy_name=default_policy.name,
+            policy_name=default_policy.policy_name,
             policy_type="Custom")
         default_service = alicloud.fc.Service("default",
             name=f"example-value-{default_integer['result']}",

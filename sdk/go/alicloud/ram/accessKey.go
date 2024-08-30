@@ -22,6 +22,7 @@ import (
 // ## Example Usage
 //
 // Output the secret to a file.
+//
 // ```go
 // package main
 //
@@ -60,6 +61,7 @@ import (
 // ```
 //
 // Using `pgpKey` to encrypt the secret.
+//
 // ```go
 // package main
 //

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var examplePolicy = new AliCloud.Log.Project("example_policy", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Policy = @"{
     ///   ""Statement"": [

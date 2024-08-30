@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -63,12 +63,15 @@ export interface GetJobTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ehpc Job Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.ehpc.GetJobTemplatesTemplate[];
 }
 /**
  * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
