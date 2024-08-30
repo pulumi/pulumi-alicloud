@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Cas
     /// 
     ///     var defaultServiceCertificate = new AliCloud.Cas.ServiceCertificate("default", new()
     ///     {
-    ///         CertificateName = $"tf-example-{@default.Result}",
+    ///         CertificateName = $"terraform-example-{@default.Result}",
     ///         Cert = @"-----BEGIN CERTIFICATE-----
     /// MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
     /// TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -112,10 +112,7 @@ namespace Pulumi.AliCloud.Cas
         public Output<string> Cert { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Certificate. 
-        /// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        /// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        /// Suffix .sh and .tel are not supported.
+        /// Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         /// **NOTE:** One of `certificate_name` and `name` must be specified.
         /// </summary>
         [Output("certificateName")]
@@ -192,10 +189,7 @@ namespace Pulumi.AliCloud.Cas
         public Input<string> Cert { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Certificate. 
-        /// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        /// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        /// Suffix .sh and .tel are not supported.
+        /// Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         /// **NOTE:** One of `certificate_name` and `name` must be specified.
         /// </summary>
         [Input("certificateName")]
@@ -234,10 +228,7 @@ namespace Pulumi.AliCloud.Cas
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// Name of the Certificate. 
-        /// This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        /// and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        /// Suffix .sh and .tel are not supported.
+        /// Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         /// **NOTE:** One of `certificate_name` and `name` must be specified.
         /// </summary>
         [Input("certificateName")]

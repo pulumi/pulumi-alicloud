@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .category("standard")
  *             .zoneId("cn-hangzhou-i")
  *             .performanceLevel("PL1")
- *             .instanceName(name)
+ *             .fsName(name)
  *             .size(100)
  *             .build());
  * 

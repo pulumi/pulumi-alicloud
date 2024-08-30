@@ -13,7 +13,9 @@ import (
 
 // This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
+//
+// > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 //
 // ## Example Usage
 //
@@ -71,10 +73,12 @@ type GetIndustrialPidOrganizationsArgs struct {
 // A collection of values returned by getIndustrialPidOrganizations.
 type GetIndustrialPidOrganizationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                   string                                      `pulumi:"id"`
-	Ids                  []string                                    `pulumi:"ids"`
-	NameRegex            *string                                     `pulumi:"nameRegex"`
-	Names                []string                                    `pulumi:"names"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Pid Organization names.
+	Names []string `pulumi:"names"`
+	// A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
 	Organizations        []GetIndustrialPidOrganizationsOrganization `pulumi:"organizations"`
 	OutputFile           *string                                     `pulumi:"outputFile"`
 	ParentOrganizationId *string                                     `pulumi:"parentOrganizationId"`
@@ -137,10 +141,12 @@ func (o GetIndustrialPidOrganizationsResultOutput) NameRegex() pulumi.StringPtrO
 	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Pid Organization names.
 func (o GetIndustrialPidOrganizationsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
 func (o GetIndustrialPidOrganizationsResultOutput) Organizations() GetIndustrialPidOrganizationsOrganizationArrayOutput {
 	return o.ApplyT(func(v GetIndustrialPidOrganizationsResult) []GetIndustrialPidOrganizationsOrganization {
 		return v.Organizations

@@ -227,6 +227,7 @@ class AccessKey(pulumi.CustomResource):
         ## Example Usage
 
         Output the secret to a file.
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,6 +246,7 @@ class AccessKey(pulumi.CustomResource):
         ```
 
         Using `pgp_key` to encrypt the secret.
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -314,6 +316,7 @@ class AccessKey(pulumi.CustomResource):
         ## Example Usage
 
         Output the secret to a file.
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,6 +335,7 @@ class AccessKey(pulumi.CustomResource):
         ```
 
         Using `pgp_key` to encrypt the secret.
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud

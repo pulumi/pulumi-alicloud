@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultProject = new alicloud.log.Project("default", {projectName: `example-value-${_default.result}`});
  * const defaultStore = new alicloud.log.Store("default", {
- *     projectName: defaultProject.name,
+ *     projectName: defaultProject.projectName,
  *     logstoreName: "example-value",
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
@@ -62,8 +62,8 @@ import * as utilities from "../utilities";
  *     description: "example-value",
  *     role: defaultRole.arn,
  *     logConfig: {
- *         project: defaultProject.name,
- *         logstore: defaultStore.name,
+ *         project: defaultProject.projectName,
+ *         logstore: defaultStore.logstoreName,
  *         enableInstanceMetrics: true,
  *         enableRequestMetrics: true,
  *     },

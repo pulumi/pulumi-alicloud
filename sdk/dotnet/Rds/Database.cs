@@ -106,7 +106,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        /// The name of the database. 
+        /// * &gt; **NOTE:**
+        /// The name must be 2 to 64 characters in length.
+        /// The name must start with a lowercase letter and end with a lowercase letter or digit.
+        /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        /// The name must be unique within the instance.
+        /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -187,7 +193,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        /// The name of the database. 
+        /// * &gt; **NOTE:**
+        /// The name must be 2 to 64 characters in length.
+        /// The name must start with a lowercase letter and end with a lowercase letter or digit.
+        /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        /// The name must be unique within the instance.
+        /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -230,7 +242,13 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        /// The name of the database. 
+        /// * &gt; **NOTE:**
+        /// The name must be 2 to 64 characters in length.
+        /// The name must start with a lowercase letter and end with a lowercase letter or digit.
+        /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        /// The name must be unique within the instance.
+        /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

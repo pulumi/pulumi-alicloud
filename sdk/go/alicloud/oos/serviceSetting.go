@@ -43,13 +43,19 @@ import (
 //			}
 //			_, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
 //				Bucket: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "default", &oss.BucketAclArgs{
+//				Bucket: _default.Bucket,
 //				Acl:    pulumi.String("public-read-write"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				Name: pulumi.String(name),
+//				ProjectName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +65,7 @@ import (
 //				DeliveryOssKeyPrefix:   pulumi.String("path1/"),
 //				DeliveryOssBucketName:  _default.Bucket,
 //				DeliverySlsEnabled:     pulumi.Bool(true),
-//				DeliverySlsProjectName: defaultProject.Name,
+//				DeliverySlsProjectName: defaultProject.ProjectName,
 //			})
 //			if err != nil {
 //				return err

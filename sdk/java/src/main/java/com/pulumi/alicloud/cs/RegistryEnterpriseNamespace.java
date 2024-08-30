@@ -12,12 +12,13 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition namespaces.
+ * Provides a Container Registry Enterprise Edition Namespace resource.
  * 
- * For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
+ * For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
  * 
  * &gt; **NOTE:** Available since v1.86.0.
  * 
@@ -35,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
@@ -53,19 +56,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example-name");
- *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(name)
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
- *             .instanceId(example.id())
- *             .name(name)
+ *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
@@ -78,66 +86,70 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+ * Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+ * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example &lt;instance_id&gt;:&lt;name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace")
 public class RegistryEnterpriseNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="autoCreate", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoCreate;
+    private Output</* @Nullable */ Boolean> autoCreate;
 
     /**
-     * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * @return Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
-    public Output<Boolean> autoCreate() {
-        return this.autoCreate;
+    public Output<Optional<Boolean>> autoCreate() {
+        return Codegen.optional(this.autoCreate);
     }
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
     @Export(name="defaultVisibility", refs={String.class}, tree="[0]")
     private Output<String> defaultVisibility;
 
     /**
-     * @return `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * @return The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
     public Output<String> defaultVisibility() {
         return this.defaultVisibility;
     }
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * @return The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     public Output<String> name() {

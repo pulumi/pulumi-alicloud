@@ -217,16 +217,17 @@ class ServiceSetting(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testaccoossetting"
-        default = alicloud.oss.Bucket("default",
-            bucket=name,
+        default = alicloud.oss.Bucket("default", bucket=name)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default.bucket,
             acl="public-read-write")
-        default_project = alicloud.log.Project("default", name=name)
+        default_project = alicloud.log.Project("default", project_name=name)
         default_service_setting = alicloud.oos.ServiceSetting("default",
             delivery_oss_enabled=True,
             delivery_oss_key_prefix="path1/",
             delivery_oss_bucket_name=default.bucket,
             delivery_sls_enabled=True,
-            delivery_sls_project_name=default_project.name)
+            delivery_sls_project_name=default_project.project_name)
         ```
 
         ## Import
@@ -270,16 +271,17 @@ class ServiceSetting(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testaccoossetting"
-        default = alicloud.oss.Bucket("default",
-            bucket=name,
+        default = alicloud.oss.Bucket("default", bucket=name)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default.bucket,
             acl="public-read-write")
-        default_project = alicloud.log.Project("default", name=name)
+        default_project = alicloud.log.Project("default", project_name=name)
         default_service_setting = alicloud.oos.ServiceSetting("default",
             delivery_oss_enabled=True,
             delivery_oss_key_prefix="path1/",
             delivery_oss_bucket_name=default.bucket,
             delivery_sls_enabled=True,
-            delivery_sls_project_name=default_project.name)
+            delivery_sls_project_name=default_project.project_name)
         ```
 
         ## Import

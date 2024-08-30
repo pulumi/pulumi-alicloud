@@ -104,7 +104,7 @@ import (
 //			}
 //			_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
 //				InstanceId:  instance.ID(),
-//				AccountName: account.Name,
+//				AccountName: account.AccountName,
 //				Privilege:   pulumi.String("ReadOnly"),
 //				DbNames:     splat0,
 //			})

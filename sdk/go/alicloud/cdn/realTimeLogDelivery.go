@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-//				ProjectName:        defaultProject.Name,
+//				ProjectName:        defaultProject.ProjectName,
 //				LogstoreName:       pulumi.String("example-store"),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),

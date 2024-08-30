@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *
@@ -75,16 +77,30 @@ export interface GetIndustrialPidProjectsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Pid Project names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of Pid Organization.
+     */
     readonly pidOrganizationId?: string;
+    /**
+     * The name of Pid Project.
+     */
     readonly pidProjectName?: string;
+    /**
+     * A list of Brain Industrial Pid Projects. Each element contains the following attributes:
+     */
     readonly projects: outputs.brain.GetIndustrialPidProjectsProject[];
 }
 /**
  * This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
+ *
+ * > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
  *
  * ## Example Usage
  *

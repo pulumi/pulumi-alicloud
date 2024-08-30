@@ -7118,6 +7118,9 @@ export namespace cen {
          * ID of resource.
          */
         id: string;
+        /**
+         * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         */
         status: string;
         /**
          * The description of the transit router route table.
@@ -7132,7 +7135,7 @@ export namespace cen {
          */
         transitRouterRouteTableName: string;
         /**
-         * The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * The type of the transit router route table to query. Valid values `System` and `Custom`.
          */
         transitRouterRouteTableType: string;
     }
@@ -14037,7 +14040,7 @@ export namespace cs {
         deleteMode?: string;
         /**
          * The type of resources that are created by cluster. Valid values:
-         * - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+         * - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
          * - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
          * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
          * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -14045,7 +14048,7 @@ export namespace cs {
          * ```
          * ...
          * // Specify delete_options as below when deleting cluster
-         * // delete SLB resources created by the cluster
+         * // delete SLB resources created by the Nginx Ingress Service
          * delete_options {
          * delete_mode = "delete"
          * resource_type = "SLB"
@@ -14163,11 +14166,11 @@ export namespace cs {
 
     export interface ManagedKubernetesCertificateAuthority {
         /**
-         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
          */
         clientCert: string;
         /**
-         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+         * The path of client key, like `~/.kube/client-key.pem`.
          */
         clientKey: string;
         /**
@@ -14202,7 +14205,7 @@ export namespace cs {
         deleteMode?: string;
         /**
          * The type of resources that are created by cluster. Valid values:
-         * - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+         * - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
          * - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
          * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
          * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -14210,7 +14213,7 @@ export namespace cs {
          * ```
          * ...
          * // Specify delete_options as below when deleting cluster
-         * // delete SLB resources created by the cluster
+         * // delete SLB resources created by the Nginx Ingress Service
          * delete_options {
          * delete_mode = "delete"
          * resource_type = "SLB"
@@ -14597,7 +14600,7 @@ export namespace cs {
          * The following example is the definition of addons block, The type of this field is list:
          *
          * ```
-         * # install nginx ingress, conflict with SLB ingress
+         * # install nginx ingress, conflict with ALB ingress
          * addons {
          * name = "nginx-ingress-controller"
          * # use internet
@@ -14605,7 +14608,7 @@ export namespace cs {
          * # if use intranet, detail below.
          * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
          * }
-         * # install SLB ingress, conflict with nginx ingress
+         * # install ALB ingress, conflict with nginx ingress
          * addons {
          * name = "alb-ingress-controller"
          * }
@@ -14620,8 +14623,6 @@ export namespace cs {
          * # install prometheus
          * addons {
          * name = "arms-prometheus"
-         * # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
-         * # name = "managed-arms-prometheus"
          * }
          * ```
          */
@@ -14630,6 +14631,55 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
+        /**
+         * It specifies the version of the component.
+         */
+        version?: string;
+    }
+
+    export interface ServerlessKubernetesDeleteOption {
+        /**
+         * The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+         */
+        deleteMode?: string;
+        /**
+         * The type of resources that are created by cluster. Valid values:
+         * - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+         * - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+         * - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+         * - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+         * - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+         * ```
+         * ...
+         * // Specify delete_options as below when deleting cluster
+         * // delete SLB resources created by the Nginx Ingress Service
+         * delete_options {
+         * delete_mode = "delete"
+         * resource_type = "SLB"
+         * }
+         * // delete ALB resources created by the ALB Ingress Controller
+         * delete_options {
+         * delete_mode = "delete"
+         * resource_type = "ALB"
+         * }
+         * // delete SLS Project used by the cluster logging feature
+         * delete_options {
+         * delete_mode = "delete"
+         * resource_type = "SLS_Data"
+         * }
+         * // delete SLS Project used for the managed cluster control plane logs
+         * delete_options {
+         * delete_mode = "delete"
+         * resource_type = "SLS_ControlPlane"
+         * }
+         * // delete PrivateZone resources created by the cluster
+         * delete_options {
+         * delete_mode = "delete"
+         * resource_type = "PrivateZone"
+         * }
+         * ```
+         */
+        resourceType?: string;
     }
 
     export interface ServerlessKubernetesRrsaMetadata {
@@ -25699,6 +25749,9 @@ export namespace ehpc {
          * The server type of the account.
          */
         accountType: string;
+        /**
+         * A list of clustered applications.
+         */
         applications: outputs.ehpc.GetClustersClusterApplication[];
         /**
          * The version number of the client used by the cluster.
@@ -25761,6 +25814,9 @@ export namespace ehpc {
          * Cluster login node specifications.
          */
         loginInstanceType: string;
+        /**
+         * The number of control nodes.
+         */
         managerCount: number;
         /**
          * The instance type of manager nodes.
@@ -25770,6 +25826,9 @@ export namespace ehpc {
          * The image tag of the operating system.
          */
         osTag: string;
+        /**
+         * List of post-installation scripts.
+         */
         postInstallScripts: outputs.ehpc.GetClustersClusterPostInstallScript[];
         /**
          * Mount the remote directory of the shared storage.
@@ -25788,7 +25847,7 @@ export namespace ehpc {
          */
         securityGroupId: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values:
          */
         status: string;
         /**
@@ -25815,15 +25874,27 @@ export namespace ehpc {
          * The vswitch id.
          */
         vswitchId: string;
+        /**
+         * The available zone ID.
+         */
         zoneId: string;
     }
 
     export interface GetClustersClusterApplication {
+        /**
+         * Application Tags.
+         */
         tag: string;
     }
 
     export interface GetClustersClusterPostInstallScript {
+        /**
+         * The parameters of the script.
+         */
         args: string;
+        /**
+         * The download path of the script.
+         */
         url: string;
     }
 

@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var template = new EcsLaunchTemplate("template", EcsLaunchTemplateArgs.builder()
- *             .name(name)
+ *             .launchTemplateName(name)
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType("ecs.n1.tiny")
  *             .securityGroupId(defaultSecurityGroup.id())

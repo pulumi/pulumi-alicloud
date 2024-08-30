@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.oos.ServiceSetting;
@@ -57,11 +59,15 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-testaccoossetting");
  *         var default_ = new Bucket("default", BucketArgs.builder()
  *             .bucket(name)
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(default_.bucket())
  *             .acl("public-read-write")
  *             .build());
  * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
- *             .name(name)
+ *             .projectName(name)
  *             .build());
  * 
  *         var defaultServiceSetting = new ServiceSetting("defaultServiceSetting", ServiceSettingArgs.builder()
@@ -69,7 +75,7 @@ import javax.annotation.Nullable;
  *             .deliveryOssKeyPrefix("path1/")
  *             .deliveryOssBucketName(default_.bucket())
  *             .deliverySlsEnabled(true)
- *             .deliverySlsProjectName(defaultProject.name())
+ *             .deliverySlsProjectName(defaultProject.projectName())
  *             .build());
  * 
  *     }

@@ -17,14 +17,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     public static final RegistryEnterpriseSyncRuleArgs Empty = new RegistryEnterpriseSyncRuleArgs();
 
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition source instance.
+     * @return The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     public Output<String> instanceId() {
@@ -32,14 +32,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition sync rule.
+     * @return The name of the sync rule.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      * 
      */
     @Import(name="namespaceName", required=true)
     private Output<String> namespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * @return The namespace name of the source instance.
      * 
      */
     public Output<String> namespaceName() {
@@ -62,14 +62,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      * 
      */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
     /**
-     * @return Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * @return The image repository name of the source instance.
      * 
      */
     public Optional<Output<String>> repoName() {
@@ -77,14 +77,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      * 
      */
     @Import(name="tagFilter", required=true)
     private Output<String> tagFilter;
 
     /**
-     * @return The regular expression used to filter image tags for synchronization in the source repository.
+     * @return The regular expression used to filter image tags.
      * 
      */
     public Output<String> tagFilter() {
@@ -92,14 +92,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      * 
      */
     @Import(name="targetInstanceId", required=true)
     private Output<String> targetInstanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * @return The ID of the destination instance.
      * 
      */
     public Output<String> targetInstanceId() {
@@ -107,14 +107,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      * 
      */
     @Import(name="targetNamespaceName", required=true)
     private Output<String> targetNamespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * @return The namespace name of the destination instance.
      * 
      */
     public Output<String> targetNamespaceName() {
@@ -122,14 +122,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      * 
      */
     @Import(name="targetRegionId", required=true)
     private Output<String> targetRegionId;
 
     /**
-     * @return The target region to be synchronized.
+     * @return The region ID of the destination instance.
      * 
      */
     public Output<String> targetRegionId() {
@@ -137,14 +137,14 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      * 
      */
     @Import(name="targetRepoName")
     private @Nullable Output<String> targetRepoName;
 
     /**
-     * @return Name of the target repository.
+     * @return The image repository name of the destination instance.
      * 
      */
     public Optional<Output<String>> targetRepoName() {
@@ -184,7 +184,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition source instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition source instance.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition sync rule.
+         * @param name The name of the sync rule.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition sync rule.
+         * @param name The name of the sync rule.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespaceName Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+         * @param namespaceName The namespace name of the source instance.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespaceName Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+         * @param namespaceName The namespace name of the source instance.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param repoName Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+         * @param repoName The image repository name of the source instance.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param repoName Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+         * @param repoName The image repository name of the source instance.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tagFilter The regular expression used to filter image tags for synchronization in the source repository.
+         * @param tagFilter The regular expression used to filter image tags.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param tagFilter The regular expression used to filter image tags for synchronization in the source repository.
+         * @param tagFilter The regular expression used to filter image tags.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetInstanceId ID of Container Registry Enterprise Edition target instance to be synchronized.
+         * @param targetInstanceId The ID of the destination instance.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetInstanceId ID of Container Registry Enterprise Edition target instance to be synchronized.
+         * @param targetInstanceId The ID of the destination instance.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetNamespaceName Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+         * @param targetNamespaceName The namespace name of the destination instance.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetNamespaceName Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+         * @param targetNamespaceName The namespace name of the destination instance.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetRegionId The target region to be synchronized.
+         * @param targetRegionId The region ID of the destination instance.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetRegionId The target region to be synchronized.
+         * @param targetRegionId The region ID of the destination instance.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetRepoName Name of the target repository.
+         * @param targetRepoName The image repository name of the destination instance.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class RegistryEnterpriseSyncRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetRepoName Name of the target repository.
+         * @param targetRepoName The image repository name of the destination instance.
          * 
          * @return builder
          * 

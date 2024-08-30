@@ -282,7 +282,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {
  *     roleName: defaultRole.name,
- *     policyName: defaultPolicy.name,
+ *     policyName: defaultPolicy.policyName,
  *     policyType: "Custom",
  * });
  * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${defaultInteger.result}`});

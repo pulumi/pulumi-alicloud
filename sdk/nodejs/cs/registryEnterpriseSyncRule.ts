@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition sync rules.
+ * Provides a Container Registry Enterprise Edition Sync Rule resource.
  *
- * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+ * For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
  *
  * > **NOTE:** Available since v1.90.0.
  *
@@ -20,16 +20,24 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const source = new alicloud.cr.RegistryEnterpriseInstance("source", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: `${name}-source`,
+ *     instanceName: `${name}-source-${defaultInteger.result}`,
  * });
  * const target = new alicloud.cr.RegistryEnterpriseInstance("target", {
  *     paymentType: "Subscription",
@@ -37,7 +45,7 @@ import * as utilities from "../utilities";
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: `${name}-target`,
+ *     instanceName: `${name}-target-${defaultInteger.result}`,
  * });
  * const sourceRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("source", {
  *     instanceId: source.id,
@@ -57,7 +65,6 @@ import * as utilities from "../utilities";
  *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
- *     detail: "this is a public repo",
  * });
  * const targetRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("target", {
  *     instanceId: target.id,
@@ -65,18 +72,14 @@ import * as utilities from "../utilities";
  *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
- *     detail: "this is a public repo",
- * });
- * const default = alicloud.getRegions({
- *     current: true,
  * });
  * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
  *     instanceId: source.id,
  *     namespaceName: sourceRegistryEnterpriseNamespace.name,
  *     name: name,
- *     targetRegionId: _default.then(_default => _default.regions?.[0]?.id),
  *     targetInstanceId: target.id,
  *     targetNamespaceName: targetRegistryEnterpriseNamespace.name,
+ *     targetRegionId: _default.then(_default => _default.regions?.[0]?.id),
  *     tagFilter: ".*",
  *     repoName: sourceRegistryEnterpriseRepo.name,
  *     targetRepoName: targetRegistryEnterpriseRepo.name,
@@ -85,10 +88,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+ * Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+ * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
  * ```
  */
 export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
@@ -120,51 +123,51 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     }
 
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      */
     public readonly namespaceName!: pulumi.Output<string>;
     /**
-     * Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      */
     public readonly repoName!: pulumi.Output<string | undefined>;
     /**
-     * The uuid of Container Registry Enterprise Edition sync rule.
+     * The ID of the sync rule.
      */
     public /*out*/ readonly ruleId!: pulumi.Output<string>;
     /**
-     * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * The synchronization direction.
      */
     public /*out*/ readonly syncDirection!: pulumi.Output<string>;
     /**
-     * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * The synchronization scope.
      */
     public /*out*/ readonly syncScope!: pulumi.Output<string>;
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      */
     public readonly tagFilter!: pulumi.Output<string>;
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      */
     public readonly targetInstanceId!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      */
     public readonly targetNamespaceName!: pulumi.Output<string>;
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      */
     public readonly targetRegionId!: pulumi.Output<string>;
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      */
     public readonly targetRepoName!: pulumi.Output<string | undefined>;
 
@@ -236,51 +239,51 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
  */
 export interface RegistryEnterpriseSyncRuleState {
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      */
     namespaceName?: pulumi.Input<string>;
     /**
-     * Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      */
     repoName?: pulumi.Input<string>;
     /**
-     * The uuid of Container Registry Enterprise Edition sync rule.
+     * The ID of the sync rule.
      */
     ruleId?: pulumi.Input<string>;
     /**
-     * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * The synchronization direction.
      */
     syncDirection?: pulumi.Input<string>;
     /**
-     * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * The synchronization scope.
      */
     syncScope?: pulumi.Input<string>;
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      */
     tagFilter?: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      */
     targetInstanceId?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      */
     targetNamespaceName?: pulumi.Input<string>;
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      */
     targetRegionId?: pulumi.Input<string>;
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      */
     targetRepoName?: pulumi.Input<string>;
 }
@@ -290,39 +293,39 @@ export interface RegistryEnterpriseSyncRuleState {
  */
 export interface RegistryEnterpriseSyncRuleArgs {
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      */
     namespaceName: pulumi.Input<string>;
     /**
-     * Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      */
     repoName?: pulumi.Input<string>;
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      */
     tagFilter: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      */
     targetInstanceId: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      */
     targetNamespaceName: pulumi.Input<string>;
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      */
     targetRegionId: pulumi.Input<string>;
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      */
     targetRepoName?: pulumi.Input<string>;
 }

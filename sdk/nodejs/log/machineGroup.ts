@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleMachineGroup = new alicloud.log.MachineGroup("example", {
- *     project: example.name,
+ *     project: example.projectName,
  *     name: "terraform-example",
  *     identifyType: "ip",
  *     topic: "terraform",

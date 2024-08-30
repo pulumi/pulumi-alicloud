@@ -130,7 +130,7 @@ import (
 //			}
 //			_, err = rds.NewAccountPrivilege(ctx, "example", &rds.AccountPrivilegeArgs{
 //				InstanceId:  exampleInstance.ID(),
-//				AccountName: exampleRdsAccount.Name,
+//				AccountName: exampleRdsAccount.AccountName,
 //				Privilege:   pulumi.String("ReadWrite"),
 //				DbNames: pulumi.StringArray{
 //					exampleDatabase.Name,

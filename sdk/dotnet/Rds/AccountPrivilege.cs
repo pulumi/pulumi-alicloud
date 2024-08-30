@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Rds
     ///     var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new()
     ///     {
     ///         InstanceId = instance.Id,
-    ///         AccountName = account.Name,
+    ///         AccountName = account.AccountName,
     ///         Privilege = "ReadOnly",
     ///         DbNames = db.Select(__item =&gt; __item.Name).ToList(),
     ///     });

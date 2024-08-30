@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+ *             .zoneId(default_.regions()[0].zoneIds()[1].zoneId())
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()

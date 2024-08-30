@@ -30,8 +30,8 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
- *     name: name,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
  *     ipv6CidrBlockMask: 22,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {

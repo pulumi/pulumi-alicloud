@@ -22,7 +22,7 @@ class GetTransitRouterRouteTablesResult:
     """
     A collection of values returned by getTransitRouterRouteTables.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, tables=None, transit_router_id=None, transit_router_route_table_ids=None, transit_router_route_table_names=None, transit_router_route_table_status=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, tables=None, transit_router_id=None, transit_router_route_table_ids=None, transit_router_route_table_names=None, transit_router_route_table_status=None, transit_router_route_table_type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -56,6 +56,9 @@ class GetTransitRouterRouteTablesResult:
         if transit_router_route_table_status and not isinstance(transit_router_route_table_status, str):
             raise TypeError("Expected argument 'transit_router_route_table_status' to be a str")
         pulumi.set(__self__, "transit_router_route_table_status", transit_router_route_table_status)
+        if transit_router_route_table_type and not isinstance(transit_router_route_table_type, str):
+            raise TypeError("Expected argument 'transit_router_route_table_type' to be a str")
+        pulumi.set(__self__, "transit_router_route_table_type", transit_router_route_table_type)
 
     @property
     @pulumi.getter
@@ -68,9 +71,6 @@ class GetTransitRouterRouteTablesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        A list of CEN Transit Router Route Table IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -94,6 +94,9 @@ class GetTransitRouterRouteTablesResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the route table.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -122,10 +125,15 @@ class GetTransitRouterRouteTablesResult:
     @property
     @pulumi.getter(name="transitRouterRouteTableStatus")
     def transit_router_route_table_status(self) -> Optional[str]:
-        """
-        The status of the route table.
-        """
         return pulumi.get(self, "transit_router_route_table_status")
+
+    @property
+    @pulumi.getter(name="transitRouterRouteTableType")
+    def transit_router_route_table_type(self) -> Optional[str]:
+        """
+        Type of the transit router route table.
+        """
+        return pulumi.get(self, "transit_router_route_table_type")
 
 
 class AwaitableGetTransitRouterRouteTablesResult(GetTransitRouterRouteTablesResult):
@@ -144,7 +152,8 @@ class AwaitableGetTransitRouterRouteTablesResult(GetTransitRouterRouteTablesResu
             transit_router_id=self.transit_router_id,
             transit_router_route_table_ids=self.transit_router_route_table_ids,
             transit_router_route_table_names=self.transit_router_route_table_names,
-            transit_router_route_table_status=self.transit_router_route_table_status)
+            transit_router_route_table_status=self.transit_router_route_table_status,
+            transit_router_route_table_type=self.transit_router_route_table_type)
 
 
 def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
@@ -155,19 +164,47 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
                                     transit_router_route_table_ids: Optional[Sequence[str]] = None,
                                     transit_router_route_table_names: Optional[Sequence[str]] = None,
                                     transit_router_route_table_status: Optional[str] = None,
+                                    transit_router_route_table_type: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterRouteTablesResult:
     """
-    This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+    This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_instance = alicloud.cen.Instance("default",
+        cen_instance_name=name,
+        protection_level="REDUCED")
+    default_transit_router = alicloud.cen.TransitRouter("default",
+        cen_id=default_instance.id,
+        transit_router_name=name)
+    default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default",
+        transit_router_id=default_transit_router.transit_router_id,
+        transit_router_route_table_description="desp",
+        transit_router_route_table_name=name)
+    default = alicloud.cen.get_transit_router_route_tables_output(transit_router_id=default_transit_router.transit_router_id)
+    pulumi.export("firstTransitRouterRouteTableType", default.tables[0].transit_router_route_table_type)
+    ```
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table IDs.
+    :param str name_regex: A regex string to filter CEN Transit Router Route Table by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
     :param str transit_router_id: ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_ids: A list of ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_names: A list of name of the CEN Transit Router Route Table.
-    :param str transit_router_route_table_status: The status of the transit router route table to query.
+    :param str transit_router_route_table_status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+    :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `System` and `Custom`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -178,6 +215,7 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
     __args__['transitRouterRouteTableIds'] = transit_router_route_table_ids
     __args__['transitRouterRouteTableNames'] = transit_router_route_table_names
     __args__['transitRouterRouteTableStatus'] = transit_router_route_table_status
+    __args__['transitRouterRouteTableType'] = transit_router_route_table_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables', __args__, opts=opts, typ=GetTransitRouterRouteTablesResult).value
 
@@ -192,7 +230,8 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
         transit_router_route_table_ids=pulumi.get(__ret__, 'transit_router_route_table_ids'),
         transit_router_route_table_names=pulumi.get(__ret__, 'transit_router_route_table_names'),
-        transit_router_route_table_status=pulumi.get(__ret__, 'transit_router_route_table_status'))
+        transit_router_route_table_status=pulumi.get(__ret__, 'transit_router_route_table_status'),
+        transit_router_route_table_type=pulumi.get(__ret__, 'transit_router_route_table_type'))
 
 
 @_utilities.lift_output_func(get_transit_router_route_tables)
@@ -204,18 +243,46 @@ def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[S
                                            transit_router_route_table_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            transit_router_route_table_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            transit_router_route_table_status: Optional[pulumi.Input[Optional[str]]] = None,
+                                           transit_router_route_table_type: Optional[pulumi.Input[Optional[str]]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTablesResult]:
     """
-    This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+    This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default_instance = alicloud.cen.Instance("default",
+        cen_instance_name=name,
+        protection_level="REDUCED")
+    default_transit_router = alicloud.cen.TransitRouter("default",
+        cen_id=default_instance.id,
+        transit_router_name=name)
+    default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default",
+        transit_router_id=default_transit_router.transit_router_id,
+        transit_router_route_table_description="desp",
+        transit_router_route_table_name=name)
+    default = alicloud.cen.get_transit_router_route_tables_output(transit_router_id=default_transit_router.transit_router_id)
+    pulumi.export("firstTransitRouterRouteTableType", default.tables[0].transit_router_route_table_type)
+    ```
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table IDs.
+    :param str name_regex: A regex string to filter CEN Transit Router Route Table by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
     :param str transit_router_id: ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_ids: A list of ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_names: A list of name of the CEN Transit Router Route Table.
-    :param str transit_router_route_table_status: The status of the transit router route table to query.
+    :param str transit_router_route_table_status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+    :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `System` and `Custom`.
     """
     ...

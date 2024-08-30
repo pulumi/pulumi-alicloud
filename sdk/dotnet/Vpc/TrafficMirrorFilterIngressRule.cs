@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         TrafficMirrorFilterId = example.Id,
     ///         Priority = 1,
-    ///         RuleAction = "accept",
+    ///         Action = "accept",
     ///         Protocol = "UDP",
     ///         DestinationCidrBlock = "10.0.0.0/24",
     ///         SourceCidrBlock = "10.0.0.0/24",

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry Enterprise Edition sync rules.
+// Provides a Container Registry Enterprise Edition Sync Rule resource.
 //
-// For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+// For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 //
 // > **NOTE:** Available since v1.90.0.
 //
@@ -34,6 +34,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -42,9 +43,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			source, err := cr.NewRegistryEnterpriseInstance(ctx, "source", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
@@ -52,7 +66,7 @@ import (
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.Sprintf("%v-source", name),
+//				InstanceName:  pulumi.Sprintf("%v-source-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +77,7 @@ import (
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.Sprintf("%v-target", name),
+//				InstanceName:  pulumi.Sprintf("%v-target-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -92,7 +106,6 @@ import (
 //				Name:       pulumi.String(name),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
-//				Detail:     pulumi.String("this is a public repo"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,14 +116,7 @@ import (
 //				Name:       pulumi.String(name),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
-//				Detail:     pulumi.String("this is a public repo"),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
-//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -118,9 +124,9 @@ import (
 //				InstanceId:          source.ID(),
 //				NamespaceName:       sourceRegistryEnterpriseNamespace.Name,
 //				Name:                pulumi.String(name),
-//				TargetRegionId:      pulumi.String(_default.Regions[0].Id),
 //				TargetInstanceId:    target.ID(),
 //				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
+//				TargetRegionId:      pulumi.String(_default.Regions[0].Id),
 //				TagFilter:           pulumi.String(".*"),
 //				RepoName:            sourceRegistryEnterpriseRepo.Name,
 //				TargetRepoName:      targetRegistryEnterpriseRepo.Name,
@@ -136,37 +142,37 @@ import (
 //
 // ## Import
 //
-// Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+// Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
 // ```
 type RegistryEnterpriseSyncRule struct {
 	pulumi.CustomResourceState
 
-	// ID of Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry Enterprise Edition source instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition sync rule.
+	// The name of the sync rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+	// The namespace name of the source instance.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
-	// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrOutput `pulumi:"repoName"`
-	// The uuid of Container Registry Enterprise Edition sync rule.
+	// The ID of the sync rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
-	// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+	// The synchronization direction.
 	SyncDirection pulumi.StringOutput `pulumi:"syncDirection"`
-	// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+	// The synchronization scope.
 	SyncScope pulumi.StringOutput `pulumi:"syncScope"`
-	// The regular expression used to filter image tags for synchronization in the source repository.
+	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringOutput `pulumi:"tagFilter"`
-	// ID of Container Registry Enterprise Edition target instance to be synchronized.
+	// The ID of the destination instance.
 	TargetInstanceId pulumi.StringOutput `pulumi:"targetInstanceId"`
-	// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+	// The namespace name of the destination instance.
 	TargetNamespaceName pulumi.StringOutput `pulumi:"targetNamespaceName"`
-	// The target region to be synchronized.
+	// The region ID of the destination instance.
 	TargetRegionId pulumi.StringOutput `pulumi:"targetRegionId"`
-	// Name of the target repository.
+	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrOutput `pulumi:"targetRepoName"`
 }
 
@@ -218,56 +224,56 @@ func GetRegistryEnterpriseSyncRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
 type registryEnterpriseSyncRuleState struct {
-	// ID of Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry Enterprise Edition source instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition sync rule.
+	// The name of the sync rule.
 	Name *string `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+	// The namespace name of the source instance.
 	NamespaceName *string `pulumi:"namespaceName"`
-	// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+	// The image repository name of the source instance.
 	RepoName *string `pulumi:"repoName"`
-	// The uuid of Container Registry Enterprise Edition sync rule.
+	// The ID of the sync rule.
 	RuleId *string `pulumi:"ruleId"`
-	// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+	// The synchronization direction.
 	SyncDirection *string `pulumi:"syncDirection"`
-	// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+	// The synchronization scope.
 	SyncScope *string `pulumi:"syncScope"`
-	// The regular expression used to filter image tags for synchronization in the source repository.
+	// The regular expression used to filter image tags.
 	TagFilter *string `pulumi:"tagFilter"`
-	// ID of Container Registry Enterprise Edition target instance to be synchronized.
+	// The ID of the destination instance.
 	TargetInstanceId *string `pulumi:"targetInstanceId"`
-	// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+	// The namespace name of the destination instance.
 	TargetNamespaceName *string `pulumi:"targetNamespaceName"`
-	// The target region to be synchronized.
+	// The region ID of the destination instance.
 	TargetRegionId *string `pulumi:"targetRegionId"`
-	// Name of the target repository.
+	// The image repository name of the destination instance.
 	TargetRepoName *string `pulumi:"targetRepoName"`
 }
 
 type RegistryEnterpriseSyncRuleState struct {
-	// ID of Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry Enterprise Edition source instance.
 	InstanceId pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition sync rule.
+	// The name of the sync rule.
 	Name pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+	// The namespace name of the source instance.
 	NamespaceName pulumi.StringPtrInput
-	// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrInput
-	// The uuid of Container Registry Enterprise Edition sync rule.
+	// The ID of the sync rule.
 	RuleId pulumi.StringPtrInput
-	// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+	// The synchronization direction.
 	SyncDirection pulumi.StringPtrInput
-	// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+	// The synchronization scope.
 	SyncScope pulumi.StringPtrInput
-	// The regular expression used to filter image tags for synchronization in the source repository.
+	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringPtrInput
-	// ID of Container Registry Enterprise Edition target instance to be synchronized.
+	// The ID of the destination instance.
 	TargetInstanceId pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+	// The namespace name of the destination instance.
 	TargetNamespaceName pulumi.StringPtrInput
-	// The target region to be synchronized.
+	// The region ID of the destination instance.
 	TargetRegionId pulumi.StringPtrInput
-	// Name of the target repository.
+	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrInput
 }
 
@@ -276,45 +282,45 @@ func (RegistryEnterpriseSyncRuleState) ElementType() reflect.Type {
 }
 
 type registryEnterpriseSyncRuleArgs struct {
-	// ID of Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry Enterprise Edition source instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition sync rule.
+	// The name of the sync rule.
 	Name *string `pulumi:"name"`
-	// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+	// The namespace name of the source instance.
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+	// The image repository name of the source instance.
 	RepoName *string `pulumi:"repoName"`
-	// The regular expression used to filter image tags for synchronization in the source repository.
+	// The regular expression used to filter image tags.
 	TagFilter string `pulumi:"tagFilter"`
-	// ID of Container Registry Enterprise Edition target instance to be synchronized.
+	// The ID of the destination instance.
 	TargetInstanceId string `pulumi:"targetInstanceId"`
-	// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+	// The namespace name of the destination instance.
 	TargetNamespaceName string `pulumi:"targetNamespaceName"`
-	// The target region to be synchronized.
+	// The region ID of the destination instance.
 	TargetRegionId string `pulumi:"targetRegionId"`
-	// Name of the target repository.
+	// The image repository name of the destination instance.
 	TargetRepoName *string `pulumi:"targetRepoName"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
 type RegistryEnterpriseSyncRuleArgs struct {
-	// ID of Container Registry Enterprise Edition source instance.
+	// The ID of the Container Registry Enterprise Edition source instance.
 	InstanceId pulumi.StringInput
-	// Name of Container Registry Enterprise Edition sync rule.
+	// The name of the sync rule.
 	Name pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+	// The namespace name of the source instance.
 	NamespaceName pulumi.StringInput
-	// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+	// The image repository name of the source instance.
 	RepoName pulumi.StringPtrInput
-	// The regular expression used to filter image tags for synchronization in the source repository.
+	// The regular expression used to filter image tags.
 	TagFilter pulumi.StringInput
-	// ID of Container Registry Enterprise Edition target instance to be synchronized.
+	// The ID of the destination instance.
 	TargetInstanceId pulumi.StringInput
-	// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+	// The namespace name of the destination instance.
 	TargetNamespaceName pulumi.StringInput
-	// The target region to be synchronized.
+	// The region ID of the destination instance.
 	TargetRegionId pulumi.StringInput
-	// Name of the target repository.
+	// The image repository name of the destination instance.
 	TargetRepoName pulumi.StringPtrInput
 }
 
@@ -405,62 +411,62 @@ func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRuleOutputWith
 	return o
 }
 
-// ID of Container Registry Enterprise Edition source instance.
+// The ID of the Container Registry Enterprise Edition source instance.
 func (o RegistryEnterpriseSyncRuleOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition sync rule.
+// The name of the sync rule.
 func (o RegistryEnterpriseSyncRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+// The namespace name of the source instance.
 func (o RegistryEnterpriseSyncRuleOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
-// Name of the source repository which should be set together with `targetRepoName`, if empty means that the synchronization scope is the entire namespace level.
+// The image repository name of the source instance.
 func (o RegistryEnterpriseSyncRuleOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// The uuid of Container Registry Enterprise Edition sync rule.
+// The ID of the sync rule.
 func (o RegistryEnterpriseSyncRuleOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+// The synchronization direction.
 func (o RegistryEnterpriseSyncRuleOutput) SyncDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncDirection }).(pulumi.StringOutput)
 }
 
-// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+// The synchronization scope.
 func (o RegistryEnterpriseSyncRuleOutput) SyncScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.SyncScope }).(pulumi.StringOutput)
 }
 
-// The regular expression used to filter image tags for synchronization in the source repository.
+// The regular expression used to filter image tags.
 func (o RegistryEnterpriseSyncRuleOutput) TagFilter() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.TagFilter }).(pulumi.StringOutput)
 }
 
-// ID of Container Registry Enterprise Edition target instance to be synchronized.
+// The ID of the destination instance.
 func (o RegistryEnterpriseSyncRuleOutput) TargetInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.TargetInstanceId }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+// The namespace name of the destination instance.
 func (o RegistryEnterpriseSyncRuleOutput) TargetNamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.TargetNamespaceName }).(pulumi.StringOutput)
 }
 
-// The target region to be synchronized.
+// The region ID of the destination instance.
 func (o RegistryEnterpriseSyncRuleOutput) TargetRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringOutput { return v.TargetRegionId }).(pulumi.StringOutput)
 }
 
-// Name of the target repository.
+// The image repository name of the destination instance.
 func (o RegistryEnterpriseSyncRuleOutput) TargetRepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) pulumi.StringPtrOutput { return v.TargetRepoName }).(pulumi.StringPtrOutput)
 }

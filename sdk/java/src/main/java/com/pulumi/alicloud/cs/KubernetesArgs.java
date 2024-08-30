@@ -24,7 +24,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     public static final KubernetesArgs Empty = new KubernetesArgs();
 
     /**
-     * The addon you want to install in cluster. See `addons` below.
+     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -33,7 +33,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<KubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` below.
+     * @return The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -881,7 +881,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below.
+         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -894,7 +894,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below.
+         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -906,7 +906,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` below.
+         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
          * 
          * *Network params*
          * 

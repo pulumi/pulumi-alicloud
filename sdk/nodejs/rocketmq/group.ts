@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.rocketmq.Instance("default", {name: `${name}-${_default.result}`});
+ * const defaultInstance = new alicloud.rocketmq.Instance("default", {instanceName: `${name}-${_default.result}`});
  * const defaultGroup = new alicloud.rocketmq.Group("default", {
  *     groupName: groupName,
  *     instanceId: defaultInstance.id,

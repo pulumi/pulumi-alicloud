@@ -750,7 +750,7 @@ class Function(pulumi.CustomResource):
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default['result']}")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-value")
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default['result']}",
@@ -780,8 +780,8 @@ class Function(pulumi.CustomResource):
             description="example-value",
             role=default_role.arn,
             log_config={
-                "project": default_project.name,
-                "logstore": default_store.name,
+                "project": default_project.project_name,
+                "logstore": default_store.logstore_name,
                 "enable_instance_metrics": True,
                 "enable_request_metrics": True,
             })
@@ -874,7 +874,7 @@ class Function(pulumi.CustomResource):
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default['result']}")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-value")
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default['result']}",
@@ -904,8 +904,8 @@ class Function(pulumi.CustomResource):
             description="example-value",
             role=default_role.arn,
             log_config={
-                "project": default_project.name,
-                "logstore": default_store.name,
+                "project": default_project.project_name,
+                "logstore": default_store.logstore_name,
                 "enable_instance_metrics": True,
                 "enable_request_metrics": True,
             })

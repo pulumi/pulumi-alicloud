@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId)),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[1]?.ZoneId)),
     ///     });
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()

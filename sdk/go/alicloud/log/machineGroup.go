@@ -43,14 +43,14 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = log.NewMachineGroup(ctx, "example", &log.MachineGroupArgs{
-//				Project:      example.Name,
+//				Project:      example.ProjectName,
 //				Name:         pulumi.String("terraform-example"),
 //				IdentifyType: pulumi.String("ip"),
 //				Topic:        pulumi.String("terraform"),

@@ -60,7 +60,7 @@ import (
 //				VpcId:                  defaultNetwork.ID(),
 //				Scheduler:              pulumi.String("Wrr"),
 //				Protocol:               pulumi.String("TCP"),
-//				ConnectionDrain:        pulumi.Bool(true),
+//				ConnectionDrainEnabled: pulumi.Bool(true),
 //				ConnectionDrainTimeout: pulumi.Int(60),
 //				AddressIpVersion:       pulumi.String("Ipv4"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{

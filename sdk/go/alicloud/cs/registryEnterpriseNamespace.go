@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manager Container Registry Enterprise Edition namespaces.
+// Provides a Container Registry Enterprise Edition Namespace resource.
 //
-// For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
+// For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 //
 // > **NOTE:** Available since v1.86.0.
 //
@@ -29,8 +29,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,24 +42,31 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example-name"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "example", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        example.ID(),
-//				Name:              pulumi.String(name),
+//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -71,21 +81,23 @@ import (
 //
 // ## Import
 //
-// Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+// Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+// $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
 // ```
 type RegistryEnterpriseNamespace struct {
 	pulumi.CustomResourceState
 
-	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-	AutoCreate pulumi.BoolOutput `pulumi:"autoCreate"`
-	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+	AutoCreate pulumi.BoolPtrOutput `pulumi:"autoCreate"`
+	// The default type of the repository that is automatically created. Valid values:
+	// - `PUBLIC`: A public repository.
+	// - `PRIVATE`: A private repository.
 	DefaultVisibility pulumi.StringOutput `pulumi:"defaultVisibility"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+	// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -96,12 +108,6 @@ func NewRegistryEnterpriseNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AutoCreate == nil {
-		return nil, errors.New("invalid value for required argument 'AutoCreate'")
-	}
-	if args.DefaultVisibility == nil {
-		return nil, errors.New("invalid value for required argument 'DefaultVisibility'")
-	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
@@ -128,24 +134,28 @@ func GetRegistryEnterpriseNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.
 type registryEnterpriseNamespaceState struct {
-	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
 	AutoCreate *bool `pulumi:"autoCreate"`
-	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+	// The default type of the repository that is automatically created. Valid values:
+	// - `PUBLIC`: A public repository.
+	// - `PRIVATE`: A private repository.
 	DefaultVisibility *string `pulumi:"defaultVisibility"`
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+	// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 	Name *string `pulumi:"name"`
 }
 
 type RegistryEnterpriseNamespaceState struct {
-	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
 	AutoCreate pulumi.BoolPtrInput
-	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+	// The default type of the repository that is automatically created. Valid values:
+	// - `PUBLIC`: A public repository.
+	// - `PRIVATE`: A private repository.
 	DefaultVisibility pulumi.StringPtrInput
-	// ID of Container Registry Enterprise Edition instance.
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+	// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 	Name pulumi.StringPtrInput
 }
 
@@ -154,25 +164,29 @@ func (RegistryEnterpriseNamespaceState) ElementType() reflect.Type {
 }
 
 type registryEnterpriseNamespaceArgs struct {
-	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-	AutoCreate bool `pulumi:"autoCreate"`
-	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-	DefaultVisibility string `pulumi:"defaultVisibility"`
-	// ID of Container Registry Enterprise Edition instance.
+	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+	AutoCreate *bool `pulumi:"autoCreate"`
+	// The default type of the repository that is automatically created. Valid values:
+	// - `PUBLIC`: A public repository.
+	// - `PRIVATE`: A private repository.
+	DefaultVisibility *string `pulumi:"defaultVisibility"`
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+	// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseNamespace resource.
 type RegistryEnterpriseNamespaceArgs struct {
-	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-	AutoCreate pulumi.BoolInput
-	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-	DefaultVisibility pulumi.StringInput
-	// ID of Container Registry Enterprise Edition instance.
+	// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+	AutoCreate pulumi.BoolPtrInput
+	// The default type of the repository that is automatically created. Valid values:
+	// - `PUBLIC`: A public repository.
+	// - `PRIVATE`: A private repository.
+	DefaultVisibility pulumi.StringPtrInput
+	// The ID of the Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringInput
-	// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+	// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 	Name pulumi.StringPtrInput
 }
 
@@ -263,22 +277,24 @@ func (o RegistryEnterpriseNamespaceOutput) ToRegistryEnterpriseNamespaceOutputWi
 	return o
 }
 
-// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-func (o RegistryEnterpriseNamespaceOutput) AutoCreate() pulumi.BoolOutput {
-	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.BoolOutput { return v.AutoCreate }).(pulumi.BoolOutput)
+// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
+func (o RegistryEnterpriseNamespaceOutput) AutoCreate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.BoolPtrOutput { return v.AutoCreate }).(pulumi.BoolPtrOutput)
 }
 
-// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+// The default type of the repository that is automatically created. Valid values:
+// - `PUBLIC`: A public repository.
+// - `PRIVATE`: A private repository.
 func (o RegistryEnterpriseNamespaceOutput) DefaultVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.DefaultVisibility }).(pulumi.StringOutput)
 }
 
-// ID of Container Registry Enterprise Edition instance.
+// The ID of the Container Registry Enterprise Edition instance.
 func (o RegistryEnterpriseNamespaceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
 func (o RegistryEnterpriseNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

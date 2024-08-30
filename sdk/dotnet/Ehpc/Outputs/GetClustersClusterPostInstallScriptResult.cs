@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     [OutputType]
     public sealed class GetClustersClusterPostInstallScriptResult
     {
+        /// <summary>
+        /// The parameters of the script.
+        /// </summary>
         public readonly string Args;
+        /// <summary>
+        /// The download path of the script.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

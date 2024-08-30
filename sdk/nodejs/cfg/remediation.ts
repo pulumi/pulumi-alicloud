@@ -31,10 +31,13 @@ import * as utilities from "../utilities";
  * });
  * const defaultBucket = new alicloud.oss.Bucket("default", {
  *     bucket: `${name}-${defaultInteger.result}`,
- *     acl: "public-read",
  *     tags: {
  *         For: "example",
  *     },
+ * });
+ * const nameBucketAcl = new alicloud.oss.BucketAcl("name", {
+ *     bucket: defaultBucket.bucket,
+ *     acl: "public-read",
  * });
  * const defaultRule = new alicloud.cfg.Rule("default", {
  *     description: "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",

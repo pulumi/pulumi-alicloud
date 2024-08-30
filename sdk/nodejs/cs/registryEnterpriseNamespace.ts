@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition namespaces.
+ * Provides a Container Registry Enterprise Edition Namespace resource.
  *
- * For information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
+ * For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
  *
  * > **NOTE:** Available since v1.86.0.
  *
@@ -20,20 +20,25 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example-name";
- * const example = new alicloud.cr.RegistryEnterpriseInstance("example", {
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${_default.result}`,
  * });
- * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("example", {
- *     instanceId: example.id,
- *     name: name,
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     name: `${name}-${_default.result}`,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
@@ -41,10 +46,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Container Registry Enterprise Edition namespace can be imported using the `{instance_id}:{namespace}`, e.g.
+ * Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace default cri-xxx:my-namespace
+ * $ pulumi import alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace example <instance_id>:<name>
  * ```
  */
 export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
@@ -76,19 +81,21 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly autoCreate!: pulumi.Output<boolean>;
+    public readonly autoCreate!: pulumi.Output<boolean | undefined>;
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      */
     public readonly defaultVisibility!: pulumi.Output<string>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -111,12 +118,6 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseNamespaceArgs | undefined;
-            if ((!args || args.autoCreate === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'autoCreate'");
-            }
-            if ((!args || args.defaultVisibility === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'defaultVisibility'");
-            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -135,19 +136,21 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
  */
 export interface RegistryEnterpriseNamespaceState {
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
     autoCreate?: pulumi.Input<boolean>;
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      */
     defaultVisibility?: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
     name?: pulumi.Input<string>;
 }
@@ -157,19 +160,21 @@ export interface RegistryEnterpriseNamespaceState {
  */
 export interface RegistryEnterpriseNamespaceArgs {
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
-    autoCreate: pulumi.Input<boolean>;
+    autoCreate?: pulumi.Input<boolean>;
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      */
-    defaultVisibility: pulumi.Input<string>;
+    defaultVisibility?: pulumi.Input<string>;
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
     name?: pulumi.Input<string>;
 }

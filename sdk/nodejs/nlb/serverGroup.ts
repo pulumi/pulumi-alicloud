@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     scheduler: "Wrr",
  *     protocol: "TCP",
- *     connectionDrain: true,
+ *     connectionDrainEnabled: true,
  *     connectionDrainTimeout: 60,
  *     addressIpVersion: "Ipv4",
  *     healthCheck: {

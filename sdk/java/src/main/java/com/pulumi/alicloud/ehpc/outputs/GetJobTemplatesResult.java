@@ -21,6 +21,10 @@ public final class GetJobTemplatesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ehpc Job Templates. Each element contains the following attributes:
+     * 
+     */
     private List<GetJobTemplatesTemplate> templates;
 
     private GetJobTemplatesResult() {}
@@ -37,6 +41,10 @@ public final class GetJobTemplatesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ehpc Job Templates. Each element contains the following attributes:
+     * 
+     */
     public List<GetJobTemplatesTemplate> templates() {
         return this.templates;
     }

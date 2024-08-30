@@ -16,14 +16,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     public static final RegistryEnterpriseRepoState Empty = new RegistryEnterpriseRepoState();
 
     /**
-     * The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * The description of the repository.
      * 
      */
     @Import(name="detail")
     private @Nullable Output<String> detail;
 
     /**
-     * @return The repository specific information. MarkDown format is supported, and the length limit is 2000.
+     * @return The description of the repository.
      * 
      */
     public Optional<Output<String>> detail() {
@@ -31,14 +31,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -46,14 +46,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * The name of the image repository.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+     * @return The name of the image repository.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * The name of the namespace to which the image repository belongs.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+     * @return The name of the namespace to which the image repository belongs.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -76,14 +76,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The uuid of Container Registry Enterprise Edition repository.
+     * The ID of the repository.
      * 
      */
     @Import(name="repoId")
     private @Nullable Output<String> repoId;
 
     /**
-     * @return The uuid of Container Registry Enterprise Edition repository.
+     * @return The ID of the repository.
      * 
      */
     public Optional<Output<String>> repoId() {
@@ -91,14 +91,18 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+     * The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      * 
      */
     @Import(name="repoType")
     private @Nullable Output<String> repoType;
 
     /**
-     * @return `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+     * @return The type of the repository. Valid values:
+     * - `PUBLIC`: The repository is a public repository.
+     * - `PRIVATE`: The repository is a private repository.
      * 
      */
     public Optional<Output<String>> repoType() {
@@ -106,14 +110,14 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The repository general information. It can contain 1 to 100 characters.
+     * The summary about the repository.
      * 
      */
     @Import(name="summary")
     private @Nullable Output<String> summary;
 
     /**
-     * @return The repository general information. It can contain 1 to 100 characters.
+     * @return The summary about the repository.
      * 
      */
     public Optional<Output<String>> summary() {
@@ -151,7 +155,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param detail The repository specific information. MarkDown format is supported, and the length limit is 2000.
+         * @param detail The description of the repository.
          * 
          * @return builder
          * 
@@ -162,7 +166,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param detail The repository specific information. MarkDown format is supported, and the length limit is 2000.
+         * @param detail The description of the repository.
          * 
          * @return builder
          * 
@@ -172,7 +176,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -183,7 +187,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -193,7 +197,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+         * @param name The name of the image repository.
          * 
          * @return builder
          * 
@@ -204,7 +208,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+         * @param name The name of the image repository.
          * 
          * @return builder
          * 
@@ -214,7 +218,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param namespace Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+         * @param namespace The name of the namespace to which the image repository belongs.
          * 
          * @return builder
          * 
@@ -225,7 +229,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param namespace Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+         * @param namespace The name of the namespace to which the image repository belongs.
          * 
          * @return builder
          * 
@@ -235,7 +239,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param repoId The uuid of Container Registry Enterprise Edition repository.
+         * @param repoId The ID of the repository.
          * 
          * @return builder
          * 
@@ -246,7 +250,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param repoId The uuid of Container Registry Enterprise Edition repository.
+         * @param repoId The ID of the repository.
          * 
          * @return builder
          * 
@@ -256,7 +260,9 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param repoType `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+         * @param repoType The type of the repository. Valid values:
+         * - `PUBLIC`: The repository is a public repository.
+         * - `PRIVATE`: The repository is a private repository.
          * 
          * @return builder
          * 
@@ -267,7 +273,9 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param repoType `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
+         * @param repoType The type of the repository. Valid values:
+         * - `PUBLIC`: The repository is a public repository.
+         * - `PRIVATE`: The repository is a private repository.
          * 
          * @return builder
          * 
@@ -277,7 +285,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param summary The repository general information. It can contain 1 to 100 characters.
+         * @param summary The summary about the repository.
          * 
          * @return builder
          * 
@@ -288,7 +296,7 @@ public final class RegistryEnterpriseRepoState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param summary The repository general information. It can contain 1 to 100 characters.
+         * @param summary The summary about the repository.
          * 
          * @return builder
          * 

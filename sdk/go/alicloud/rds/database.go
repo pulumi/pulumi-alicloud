@@ -111,7 +111,13 @@ type Database struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+	// The name of the database.
+	// * > **NOTE:**
+	// The name must be 2 to 64 characters in length.
+	// The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// The name must be unique within the instance.
+	// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -165,7 +171,13 @@ type databaseState struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+	// The name of the database.
+	// * > **NOTE:**
+	// The name must be 2 to 64 characters in length.
+	// The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// The name must be unique within the instance.
+	// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 	Name *string `pulumi:"name"`
 }
 
@@ -187,7 +199,13 @@ type DatabaseState struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringPtrInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+	// The name of the database.
+	// * > **NOTE:**
+	// The name must be 2 to 64 characters in length.
+	// The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// The name must be unique within the instance.
+	// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 	Name pulumi.StringPtrInput
 }
 
@@ -213,7 +231,13 @@ type databaseArgs struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance that can run database.
 	InstanceId string `pulumi:"instanceId"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+	// The name of the database.
+	// * > **NOTE:**
+	// The name must be 2 to 64 characters in length.
+	// The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// The name must be unique within the instance.
+	// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 	Name *string `pulumi:"name"`
 }
 
@@ -236,7 +260,13 @@ type DatabaseArgs struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance that can run database.
 	InstanceId pulumi.StringInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+	// The name of the database.
+	// * > **NOTE:**
+	// The name must be 2 to 64 characters in length.
+	// The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// The name must be unique within the instance.
+	// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 	Name pulumi.StringPtrInput
 }
 
@@ -353,7 +383,13 @@ func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+// The name of the database.
+// * > **NOTE:**
+// The name must be 2 to 64 characters in length.
+// The name must start with a lowercase letter and end with a lowercase letter or digit.
+// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+// The name must be unique within the instance.
+// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

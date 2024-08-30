@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
- *     policyName: policy.name,
+ *     policyName: policy.policyName,
  *     policyType: policy.type,
  *     roleName: role.name,
  * });

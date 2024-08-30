@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const exampleTrafficMirrorFilterIngressRule = new alicloud.vpc.TrafficMirrorFilterIngressRule("example", {
  *     trafficMirrorFilterId: example.id,
  *     priority: 1,
- *     ruleAction: "accept",
+ *     action: "accept",
  *     protocol: "UDP",
  *     destinationCidrBlock: "10.0.0.0/24",
  *     sourceCidrBlock: "10.0.0.0/24",

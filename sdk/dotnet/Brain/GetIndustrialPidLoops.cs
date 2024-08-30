@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Brain
         /// <summary>
         /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +53,9 @@ namespace Pulumi.AliCloud.Brain
         /// <summary>
         /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
         /// 
         /// ## Example Usage
         /// 
@@ -203,12 +207,24 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIndustrialPidLoopsLoopResult> Loops;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Pid Loop names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of Pid Loop.
+        /// </summary>
         public readonly string? PidLoopName;
         public readonly string PidProjectId;
+        /// <summary>
+        /// The status of Pid Loop.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

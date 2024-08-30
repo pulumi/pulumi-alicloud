@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Brain
     /// <summary>
     /// Provides a Brain Industrial Pid Loop resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.117.0+.
+    /// &gt; **NOTE:** Available since v1.117.0.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.229.1`.
     /// 
     /// ## Example Usage
     /// 

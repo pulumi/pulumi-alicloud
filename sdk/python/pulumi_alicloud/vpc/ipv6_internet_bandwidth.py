@@ -205,8 +205,8 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         vsw = alicloud.vpc.Switch("vsw",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default.zones[0].id,
-            name=name,
+            zone_id=default.zones[0].id,
+            vswitch_name=name,
             ipv6_cidr_block_mask=22)
         group = alicloud.ecs.SecurityGroup("group",
             name=name,
@@ -289,8 +289,8 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         vsw = alicloud.vpc.Switch("vsw",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            availability_zone=default.zones[0].id,
-            name=name,
+            zone_id=default.zones[0].id,
+            vswitch_name=name,
             ipv6_cidr_block_mask=22)
         group = alicloud.ecs.SecurityGroup("group",
             name=name,

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manager Container Registry Enterprise Edition repositories.
+    /// Provides a Container Registry Enterprise Edition Repository resource.
     /// 
-    /// For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+    /// For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
     /// 
     /// &gt; **NOTE:** Available since v1.86.0.
     /// 
@@ -27,36 +27,43 @@ namespace Pulumi.AliCloud.CS
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var example = new AliCloud.CR.RegistryEnterpriseInstance("example", new()
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("example", new()
+    ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("default", new()
     ///     {
-    ///         InstanceId = example.Id,
-    ///         Name = name,
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         Name = $"{name}-{@default.Result}",
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var exampleRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("example", new()
+    ///     var example = new AliCloud.CS.RegistryEnterpriseRepo("example", new()
     ///     {
-    ///         InstanceId = example.Id,
-    ///         Namespace = exampleRegistryEnterpriseNamespace.Name,
-    ///         Name = name,
-    ///         Summary = "this is summary of my new repo",
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
+    ///         Name = $"{name}-{@default.Result}",
     ///         RepoType = "PUBLIC",
+    ///         Summary = "this is summary of my new repo",
     ///         Detail = "this is a public repo",
     ///     });
     /// 
@@ -65,53 +72,55 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+    /// Container Registry Enterprise Edition Repository can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+    /// $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example &lt;instance_id&gt;:&lt;namespace&gt;:&lt;name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo")]
     public partial class RegistryEnterpriseRepo : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        /// The description of the repository.
         /// </summary>
         [Output("detail")]
         public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry Enterprise Edition instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        /// The name of the image repository.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        /// The name of the namespace to which the image repository belongs.
         /// </summary>
         [Output("namespace")]
         public Output<string> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// The uuid of Container Registry Enterprise Edition repository.
+        /// The ID of the repository.
         /// </summary>
         [Output("repoId")]
         public Output<string> RepoId { get; private set; } = null!;
 
         /// <summary>
-        /// `PUBLIC` or `PRIVATE`, repo's visibility.
+        /// The type of the repository. Valid values:
+        /// - `PUBLIC`: The repository is a public repository.
+        /// - `PRIVATE`: The repository is a private repository.
         /// </summary>
         [Output("repoType")]
         public Output<string> RepoType { get; private set; } = null!;
 
         /// <summary>
-        /// The repository general information. It can contain 1 to 100 characters.
+        /// The summary about the repository.
         /// </summary>
         [Output("summary")]
         public Output<string> Summary { get; private set; } = null!;
@@ -163,37 +172,39 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseRepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        /// The description of the repository.
         /// </summary>
         [Input("detail")]
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry Enterprise Edition instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        /// The name of the image repository.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        /// The name of the namespace to which the image repository belongs.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// `PUBLIC` or `PRIVATE`, repo's visibility.
+        /// The type of the repository. Valid values:
+        /// - `PUBLIC`: The repository is a public repository.
+        /// - `PRIVATE`: The repository is a private repository.
         /// </summary>
         [Input("repoType", required: true)]
         public Input<string> RepoType { get; set; } = null!;
 
         /// <summary>
-        /// The repository general information. It can contain 1 to 100 characters.
+        /// The summary about the repository.
         /// </summary>
         [Input("summary", required: true)]
         public Input<string> Summary { get; set; } = null!;
@@ -207,43 +218,45 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseRepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        /// The description of the repository.
         /// </summary>
         [Input("detail")]
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition instance.
+        /// The ID of the Container Registry Enterprise Edition instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        /// The name of the image repository.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        /// The name of the namespace to which the image repository belongs.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The uuid of Container Registry Enterprise Edition repository.
+        /// The ID of the repository.
         /// </summary>
         [Input("repoId")]
         public Input<string>? RepoId { get; set; }
 
         /// <summary>
-        /// `PUBLIC` or `PRIVATE`, repo's visibility.
+        /// The type of the repository. Valid values:
+        /// - `PUBLIC`: The repository is a public repository.
+        /// - `PRIVATE`: The repository is a private repository.
         /// </summary>
         [Input("repoType")]
         public Input<string>? RepoType { get; set; }
 
         /// <summary>
-        /// The repository general information. It can contain 1 to 100 characters.
+        /// The summary about the repository.
         /// </summary>
         [Input("summary")]
         public Input<string>? Summary { get; set; }

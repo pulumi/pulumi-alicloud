@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var zone = new Zone("zone", ZoneArgs.builder()
- *             .name("foo.test.com")
+ *             .zoneName("foo.test.com")
  *             .build());
  * 
  *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()

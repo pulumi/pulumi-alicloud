@@ -26,8 +26,9 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const bucket_acl = new alicloud.oss.Bucket("bucket-acl", {
- *     bucket: `example-value-${_default.result}`,
+ * const bucket_acl = new alicloud.oss.Bucket("bucket-acl", {bucket: `example-value-${_default.result}`});
+ * const bucket_aclBucketAcl = new alicloud.oss.BucketAcl("bucket-acl", {
+ *     bucket: bucket_acl.bucket,
  *     acl: "private",
  * });
  * ```
@@ -63,8 +64,9 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const bucket_target = new alicloud.oss.Bucket("bucket-target", {
- *     bucket: `example-value-${_default.result}`,
+ * const bucket_target = new alicloud.oss.Bucket("bucket-target", {bucket: `example-value-${_default.result}`});
+ * const bucket_targetBucketAcl = new alicloud.oss.BucketAcl("bucket-target", {
+ *     bucket: bucket_target.bucket,
  *     acl: "public-read",
  * });
  * const bucket_logging = new alicloud.oss.Bucket("bucket-logging", {
@@ -89,7 +91,6 @@ import * as utilities from "../utilities";
  * });
  * const bucket_referer = new alicloud.oss.Bucket("bucket-referer", {
  *     bucket: `example-value-${_default.result}`,
- *     acl: "private",
  *     refererConfig: {
  *         allowEmpty: false,
  *         referers: [
@@ -97,6 +98,10 @@ import * as utilities from "../utilities";
  *             "https://www.aliyun.com",
  *         ],
  *     },
+ * });
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: bucket_referer.bucket,
+ *     acl: "private",
  * });
  * ```
  *

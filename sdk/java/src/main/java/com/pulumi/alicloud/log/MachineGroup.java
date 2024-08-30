@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
  *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()
- *             .project(example.name())
+ *             .project(example.projectName())
  *             .name("terraform-example")
  *             .identifyType("ip")
  *             .topic("terraform")

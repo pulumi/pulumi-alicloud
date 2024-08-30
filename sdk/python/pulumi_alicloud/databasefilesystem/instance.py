@@ -696,7 +696,7 @@ class Instance(pulumi.CustomResource):
             category="standard",
             zone_id="cn-hangzhou-i",
             performance_level="PL1",
-            instance_name=name,
+            fs_name=name,
             size=100)
         ```
 
@@ -766,7 +766,7 @@ class Instance(pulumi.CustomResource):
             category="standard",
             zone_id="cn-hangzhou-i",
             performance_level="PL1",
-            instance_name=name,
+            fs_name=name,
             size=100)
         ```
 

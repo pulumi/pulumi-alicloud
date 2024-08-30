@@ -769,8 +769,9 @@ class Bucket(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_acl = alicloud.oss.Bucket("bucket-acl",
-            bucket=f"example-value-{default['result']}",
+        bucket_acl = alicloud.oss.Bucket("bucket-acl", bucket=f"example-value-{default['result']}")
+        bucket_acl_bucket_acl = alicloud.oss.BucketAcl("bucket-acl",
+            bucket=bucket_acl.bucket,
             acl="private")
         ```
 
@@ -802,8 +803,9 @@ class Bucket(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket=f"example-value-{default['result']}",
+        bucket_target = alicloud.oss.Bucket("bucket-target", bucket=f"example-value-{default['result']}")
+        bucket_target_bucket_acl = alicloud.oss.BucketAcl("bucket-target",
+            bucket=bucket_target.bucket,
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
             bucket=f"example-logging-{default['result']}",
@@ -825,7 +827,6 @@ class Bucket(pulumi.CustomResource):
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
             bucket=f"example-value-{default['result']}",
-            acl="private",
             referer_config={
                 "allow_empty": False,
                 "referers": [
@@ -833,6 +834,9 @@ class Bucket(pulumi.CustomResource):
                     "https://www.aliyun.com",
                 ],
             })
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_referer.bucket,
+            acl="private")
         ```
 
         Set lifecycle rule
@@ -891,8 +895,9 @@ class Bucket(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_acl = alicloud.oss.Bucket("bucket-acl",
-            bucket=f"example-value-{default['result']}",
+        bucket_acl = alicloud.oss.Bucket("bucket-acl", bucket=f"example-value-{default['result']}")
+        bucket_acl_bucket_acl = alicloud.oss.BucketAcl("bucket-acl",
+            bucket=bucket_acl.bucket,
             acl="private")
         ```
 
@@ -924,8 +929,9 @@ class Bucket(pulumi.CustomResource):
         default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket=f"example-value-{default['result']}",
+        bucket_target = alicloud.oss.Bucket("bucket-target", bucket=f"example-value-{default['result']}")
+        bucket_target_bucket_acl = alicloud.oss.BucketAcl("bucket-target",
+            bucket=bucket_target.bucket,
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
             bucket=f"example-logging-{default['result']}",
@@ -947,7 +953,6 @@ class Bucket(pulumi.CustomResource):
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
             bucket=f"example-value-{default['result']}",
-            acl="private",
             referer_config={
                 "allow_empty": False,
                 "referers": [
@@ -955,6 +960,9 @@ class Bucket(pulumi.CustomResource):
                     "https://www.aliyun.com",
                 ],
             })
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_referer.bucket,
+            acl="private")
         ```
 
         Set lifecycle rule

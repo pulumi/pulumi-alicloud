@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var defaultINsMgl = new AliCloud.Log.Project("defaultINsMgl", new()
     ///     {
     ///         Description = $"{projectName}-{@default.Result}",
-    ///         Name = $"{projectName}-{@default.Result}",
+    ///         ProjectName = $"{projectName}-{@default.Result}",
     ///     });
     /// 
     ///     var defaultAlert = new AliCloud.Sls.Alert("default", new()
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Sls
     ///                     RoleArn = "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
     ///                     Query = "* | select *",
     ///                     TimeSpanType = "Relative",
-    ///                     Project = defaultINsMgl.Name,
+    ///                     Project = defaultINsMgl.ProjectName,
     ///                     PowerSqlMode = "disable",
     ///                     DashboardId = "wkb-dashboard",
     ///                     ChartTitle = "wkb-chart",
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Sls
     ///             },
     ///         },
     ///         AlertName = alertName,
-    ///         ProjectName = defaultINsMgl.Name,
+    ///         ProjectName = defaultINsMgl.ProjectName,
     ///     });
     /// 
     /// });

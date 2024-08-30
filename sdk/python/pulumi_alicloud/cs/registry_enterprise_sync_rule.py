@@ -25,15 +25,15 @@ class RegistryEnterpriseSyncRuleArgs:
                  target_repo_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
-        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
-        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
-        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
+        :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
+        :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
+        :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
+        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "namespace_name", namespace_name)
@@ -52,7 +52,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        ID of Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry Enterprise Edition source instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -64,7 +64,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> pulumi.Input[str]:
         """
-        Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        The namespace name of the source instance.
         """
         return pulumi.get(self, "namespace_name")
 
@@ -76,7 +76,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="tagFilter")
     def tag_filter(self) -> pulumi.Input[str]:
         """
-        The regular expression used to filter image tags for synchronization in the source repository.
+        The regular expression used to filter image tags.
         """
         return pulumi.get(self, "tag_filter")
 
@@ -88,7 +88,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> pulumi.Input[str]:
         """
-        ID of Container Registry Enterprise Edition target instance to be synchronized.
+        The ID of the destination instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -100,7 +100,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="targetNamespaceName")
     def target_namespace_name(self) -> pulumi.Input[str]:
         """
-        Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        The namespace name of the destination instance.
         """
         return pulumi.get(self, "target_namespace_name")
 
@@ -112,7 +112,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="targetRegionId")
     def target_region_id(self) -> pulumi.Input[str]:
         """
-        The target region to be synchronized.
+        The region ID of the destination instance.
         """
         return pulumi.get(self, "target_region_id")
 
@@ -124,7 +124,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition sync rule.
+        The name of the sync rule.
         """
         return pulumi.get(self, "name")
 
@@ -136,7 +136,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        The image repository name of the source instance.
         """
         return pulumi.get(self, "repo_name")
 
@@ -148,7 +148,7 @@ class RegistryEnterpriseSyncRuleArgs:
     @pulumi.getter(name="targetRepoName")
     def target_repo_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the target repository.
+        The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
 
@@ -174,18 +174,18 @@ class _RegistryEnterpriseSyncRuleState:
                  target_repo_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
-        :param pulumi.Input[str] rule_id: The uuid of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] sync_direction: `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
-        :param pulumi.Input[str] sync_scope: `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
-        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
-        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
-        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
-        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] rule_id: The ID of the sync rule.
+        :param pulumi.Input[str] sync_direction: The synchronization direction.
+        :param pulumi.Input[str] sync_scope: The synchronization scope.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
+        :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
+        :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
+        :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
+        :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -216,7 +216,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry Enterprise Edition source instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -228,7 +228,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition sync rule.
+        The name of the sync rule.
         """
         return pulumi.get(self, "name")
 
@@ -240,7 +240,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        The namespace name of the source instance.
         """
         return pulumi.get(self, "namespace_name")
 
@@ -252,7 +252,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        The image repository name of the source instance.
         """
         return pulumi.get(self, "repo_name")
 
@@ -264,7 +264,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The uuid of Container Registry Enterprise Edition sync rule.
+        The ID of the sync rule.
         """
         return pulumi.get(self, "rule_id")
 
@@ -276,7 +276,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="syncDirection")
     def sync_direction(self) -> Optional[pulumi.Input[str]]:
         """
-        `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        The synchronization direction.
         """
         return pulumi.get(self, "sync_direction")
 
@@ -288,7 +288,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="syncScope")
     def sync_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        The synchronization scope.
         """
         return pulumi.get(self, "sync_scope")
 
@@ -300,7 +300,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="tagFilter")
     def tag_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        The regular expression used to filter image tags for synchronization in the source repository.
+        The regular expression used to filter image tags.
         """
         return pulumi.get(self, "tag_filter")
 
@@ -312,7 +312,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Container Registry Enterprise Edition target instance to be synchronized.
+        The ID of the destination instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -324,7 +324,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="targetNamespaceName")
     def target_namespace_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        The namespace name of the destination instance.
         """
         return pulumi.get(self, "target_namespace_name")
 
@@ -336,7 +336,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="targetRegionId")
     def target_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The target region to be synchronized.
+        The region ID of the destination instance.
         """
         return pulumi.get(self, "target_region_id")
 
@@ -348,7 +348,7 @@ class _RegistryEnterpriseSyncRuleState:
     @pulumi.getter(name="targetRepoName")
     def target_repo_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the target repository.
+        The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
 
@@ -373,9 +373,9 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                  target_repo_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition sync rules.
+        Provides a Container Registry Enterprise Edition Sync Rule resource.
 
-        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+        For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 
         > **NOTE:** Available since v1.90.0.
 
@@ -388,25 +388,30 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         source = alicloud.cr.RegistryEnterpriseInstance("source",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-source")
+            instance_name=f"{name}-source-{default_integer['result']}")
         target = alicloud.cr.RegistryEnterpriseInstance("target",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-target")
+            instance_name=f"{name}-target-{default_integer['result']}")
         source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("source",
             instance_id=source.id,
             name=name,
@@ -422,23 +427,20 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             namespace=source_registry_enterprise_namespace.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
+            repo_type="PUBLIC")
         target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("target",
             instance_id=target.id,
             namespace=target_registry_enterprise_namespace.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        default = alicloud.get_regions(current=True)
+            repo_type="PUBLIC")
         default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("default",
             instance_id=source.id,
             namespace_name=source_registry_enterprise_namespace.name,
             name=name,
-            target_region_id=default.regions[0].id,
             target_instance_id=target.id,
             target_namespace_name=target_registry_enterprise_namespace.name,
+            target_region_id=default.regions[0].id,
             tag_filter=".*",
             repo_name=source_registry_enterprise_repo.name,
             target_repo_name=target_registry_enterprise_repo.name)
@@ -446,23 +448,23 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+        Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
-        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
-        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
-        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
-        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
+        :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
+        :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
+        :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
+        :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
         """
         ...
     @overload
@@ -471,9 +473,9 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
                  args: RegistryEnterpriseSyncRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition sync rules.
+        Provides a Container Registry Enterprise Edition Sync Rule resource.
 
-        For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+        For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 
         > **NOTE:** Available since v1.90.0.
 
@@ -486,25 +488,30 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         source = alicloud.cr.RegistryEnterpriseInstance("source",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-source")
+            instance_name=f"{name}-source-{default_integer['result']}")
         target = alicloud.cr.RegistryEnterpriseInstance("target",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=f"{name}-target")
+            instance_name=f"{name}-target-{default_integer['result']}")
         source_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("source",
             instance_id=source.id,
             name=name,
@@ -520,23 +527,20 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             namespace=source_registry_enterprise_namespace.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
+            repo_type="PUBLIC")
         target_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("target",
             instance_id=target.id,
             namespace=target_registry_enterprise_namespace.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
-        default = alicloud.get_regions(current=True)
+            repo_type="PUBLIC")
         default_registry_enterprise_sync_rule = alicloud.cs.RegistryEnterpriseSyncRule("default",
             instance_id=source.id,
             namespace_name=source_registry_enterprise_namespace.name,
             name=name,
-            target_region_id=default.regions[0].id,
             target_instance_id=target.id,
             target_namespace_name=target_registry_enterprise_namespace.name,
+            target_region_id=default.regions[0].id,
             tag_filter=".*",
             repo_name=source_registry_enterprise_repo.name,
             target_repo_name=target_registry_enterprise_repo.name)
@@ -544,10 +548,10 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         ## Import
 
-        Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+        Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+        $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example <instance_id>:<namespace_name>:<rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -636,18 +640,18 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition source instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] namespace_name: Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
-        :param pulumi.Input[str] rule_id: The uuid of Container Registry Enterprise Edition sync rule.
-        :param pulumi.Input[str] sync_direction: `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
-        :param pulumi.Input[str] sync_scope: `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
-        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags for synchronization in the source repository.
-        :param pulumi.Input[str] target_instance_id: ID of Container Registry Enterprise Edition target instance to be synchronized.
-        :param pulumi.Input[str] target_namespace_name: Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] target_region_id: The target region to be synchronized.
-        :param pulumi.Input[str] target_repo_name: Name of the target repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition source instance.
+        :param pulumi.Input[str] name: The name of the sync rule.
+        :param pulumi.Input[str] namespace_name: The namespace name of the source instance.
+        :param pulumi.Input[str] repo_name: The image repository name of the source instance.
+        :param pulumi.Input[str] rule_id: The ID of the sync rule.
+        :param pulumi.Input[str] sync_direction: The synchronization direction.
+        :param pulumi.Input[str] sync_scope: The synchronization scope.
+        :param pulumi.Input[str] tag_filter: The regular expression used to filter image tags.
+        :param pulumi.Input[str] target_instance_id: The ID of the destination instance.
+        :param pulumi.Input[str] target_namespace_name: The namespace name of the destination instance.
+        :param pulumi.Input[str] target_region_id: The region ID of the destination instance.
+        :param pulumi.Input[str] target_repo_name: The image repository name of the destination instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -671,7 +675,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        ID of Container Registry Enterprise Edition source instance.
+        The ID of the Container Registry Enterprise Edition source instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -679,7 +683,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition sync rule.
+        The name of the sync rule.
         """
         return pulumi.get(self, "name")
 
@@ -687,7 +691,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="namespaceName")
     def namespace_name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        The namespace name of the source instance.
         """
         return pulumi.get(self, "namespace_name")
 
@@ -695,7 +699,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="repoName")
     def repo_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        The image repository name of the source instance.
         """
         return pulumi.get(self, "repo_name")
 
@@ -703,7 +707,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> pulumi.Output[str]:
         """
-        The uuid of Container Registry Enterprise Edition sync rule.
+        The ID of the sync rule.
         """
         return pulumi.get(self, "rule_id")
 
@@ -711,7 +715,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="syncDirection")
     def sync_direction(self) -> pulumi.Output[str]:
         """
-        `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        The synchronization direction.
         """
         return pulumi.get(self, "sync_direction")
 
@@ -719,7 +723,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="syncScope")
     def sync_scope(self) -> pulumi.Output[str]:
         """
-        `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        The synchronization scope.
         """
         return pulumi.get(self, "sync_scope")
 
@@ -727,7 +731,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="tagFilter")
     def tag_filter(self) -> pulumi.Output[str]:
         """
-        The regular expression used to filter image tags for synchronization in the source repository.
+        The regular expression used to filter image tags.
         """
         return pulumi.get(self, "tag_filter")
 
@@ -735,7 +739,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> pulumi.Output[str]:
         """
-        ID of Container Registry Enterprise Edition target instance to be synchronized.
+        The ID of the destination instance.
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -743,7 +747,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="targetNamespaceName")
     def target_namespace_name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        The namespace name of the destination instance.
         """
         return pulumi.get(self, "target_namespace_name")
 
@@ -751,7 +755,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="targetRegionId")
     def target_region_id(self) -> pulumi.Output[str]:
         """
-        The target region to be synchronized.
+        The region ID of the destination instance.
         """
         return pulumi.get(self, "target_region_id")
 
@@ -759,7 +763,7 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     @pulumi.getter(name="targetRepoName")
     def target_repo_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the target repository.
+        The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
 

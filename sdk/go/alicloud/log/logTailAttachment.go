@@ -47,15 +47,15 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -66,8 +66,8 @@ import (
 //				return err
 //			}
 //			exampleLogTailConfig, err := log.NewLogTailConfig(ctx, "example", &log.LogTailConfigArgs{
-//				Project:    example.Name,
-//				Logstore:   exampleStore.Name,
+//				Project:    example.ProjectName,
+//				Logstore:   exampleStore.LogstoreName,
 //				InputType:  pulumi.String("file"),
 //				Name:       pulumi.String("terraform-example"),
 //				OutputType: pulumi.String("LogService"),
@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			exampleMachineGroup, err := log.NewMachineGroup(ctx, "example", &log.MachineGroupArgs{
-//				Project:      example.Name,
+//				Project:      example.ProjectName,
 //				Name:         pulumi.String("terraform-example"),
 //				IdentifyType: pulumi.String("ip"),
 //				Topic:        pulumi.String("terraform"),
@@ -102,7 +102,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewLogTailAttachment(ctx, "example", &log.LogTailAttachmentArgs{
-//				Project:           example.Name,
+//				Project:           example.ProjectName,
 //				LogtailConfigName: exampleLogTailConfig.Name,
 //				MachineGroupName:  exampleMachineGroup.Name,
 //			})

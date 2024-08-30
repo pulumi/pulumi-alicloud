@@ -2969,10 +2969,11 @@ class GetTransitRouterRouteTablesTableResult(dict):
                  transit_router_route_table_type: str):
         """
         :param str id: ID of resource.
+        :param str status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
         :param str transit_router_route_table_description: The description of the transit router route table.
         :param str transit_router_route_table_id: ID of the trabsit router route table.
         :param str transit_router_route_table_name: Name of the transit router route table.
-        :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `System` and `Custom`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "status", status)
@@ -2992,6 +2993,9 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -3022,7 +3026,7 @@ class GetTransitRouterRouteTablesTableResult(dict):
     @pulumi.getter(name="transitRouterRouteTableType")
     def transit_router_route_table_type(self) -> str:
         """
-        The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+        The type of the transit router route table to query. Valid values `System` and `Custom`.
         """
         return pulumi.get(self, "transit_router_route_table_type")
 

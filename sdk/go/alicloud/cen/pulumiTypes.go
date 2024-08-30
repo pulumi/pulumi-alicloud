@@ -4853,7 +4853,8 @@ func (o GetTransitRouterRouteTablePropagationsPropagationArrayOutput) Index(i pu
 
 type GetTransitRouterRouteTablesTable struct {
 	// ID of resource.
-	Id     string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
 	Status string `pulumi:"status"`
 	// The description of the transit router route table.
 	TransitRouterRouteTableDescription string `pulumi:"transitRouterRouteTableDescription"`
@@ -4861,7 +4862,7 @@ type GetTransitRouterRouteTablesTable struct {
 	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
 	// Name of the transit router route table.
 	TransitRouterRouteTableName string `pulumi:"transitRouterRouteTableName"`
-	// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	// The type of the transit router route table to query. Valid values `System` and `Custom`.
 	TransitRouterRouteTableType string `pulumi:"transitRouterRouteTableType"`
 }
 
@@ -4878,7 +4879,8 @@ type GetTransitRouterRouteTablesTableInput interface {
 
 type GetTransitRouterRouteTablesTableArgs struct {
 	// ID of resource.
-	Id     pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
 	Status pulumi.StringInput `pulumi:"status"`
 	// The description of the transit router route table.
 	TransitRouterRouteTableDescription pulumi.StringInput `pulumi:"transitRouterRouteTableDescription"`
@@ -4886,7 +4888,7 @@ type GetTransitRouterRouteTablesTableArgs struct {
 	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
 	// Name of the transit router route table.
 	TransitRouterRouteTableName pulumi.StringInput `pulumi:"transitRouterRouteTableName"`
-	// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+	// The type of the transit router route table to query. Valid values `System` and `Custom`.
 	TransitRouterRouteTableType pulumi.StringInput `pulumi:"transitRouterRouteTableType"`
 }
 
@@ -4946,6 +4948,7 @@ func (o GetTransitRouterRouteTablesTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
 func (o GetTransitRouterRouteTablesTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4965,7 +4968,7 @@ func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableName() pu
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableName }).(pulumi.StringOutput)
 }
 
-// The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+// The type of the transit router route table to query. Valid values `System` and `Custom`.
 func (o GetTransitRouterRouteTablesTableOutput) TransitRouterRouteTableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTablesTable) string { return v.TransitRouterRouteTableType }).(pulumi.StringOutput)
 }

@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
- *             .projectName(defaultProject.name())
+ *             .projectName(defaultProject.projectName())
  *             .logstoreName("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)

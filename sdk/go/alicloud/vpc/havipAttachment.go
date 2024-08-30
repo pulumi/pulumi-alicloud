@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewHAVipAttachment(ctx, "example", &vpc.HAVipAttachmentArgs{
-//				HavipId:    exampleHAVip.ID(),
+//				HaVipId:    exampleHAVip.ID(),
 //				InstanceId: exampleInstance.ID(),
 //			})
 //			if err != nil {

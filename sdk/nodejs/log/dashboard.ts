@@ -24,19 +24,19 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
  * const exampleDashboard = new alicloud.log.Dashboard("example", {
- *     projectName: example.name,
+ *     projectName: example.projectName,
  *     dashboardName: "terraform-example",
  *     displayName: "terraform-example",
  *     attribute: `  {

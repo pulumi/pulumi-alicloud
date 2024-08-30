@@ -20,7 +20,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -72,7 +72,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -124,7 +124,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -176,7 +176,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -228,7 +228,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -280,7 +280,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -332,7 +332,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -386,7 +386,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -440,7 +440,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -494,7 +494,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -548,7 +548,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -602,7 +602,7 @@ public final class EhpcFunctions {
     /**
      * This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 

@@ -20,8 +20,9 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultBucket = new alicloud.oss.Bucket("default", {
- *     bucket: `terraform-example-${_default.result}`,
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: defaultBucket.bucket,
  *     acl: "private",
  * });
  * const defaultBucketObject = new alicloud.oss.BucketObject("default", {
@@ -42,8 +43,9 @@ import * as utilities from "../utilities";
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultBucket = new alicloud.oss.Bucket("default", {
- *     bucket: `terraform-example-${_default.result}`,
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: defaultBucket.bucket,
  *     acl: "private",
  * });
  * const defaultBucketObject = new alicloud.oss.BucketObject("default", {

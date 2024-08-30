@@ -43,7 +43,7 @@ import (
 //			_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "example", &vpc.TrafficMirrorFilterIngressRuleArgs{
 //				TrafficMirrorFilterId: example.ID(),
 //				Priority:              pulumi.Int(1),
-//				RuleAction:            pulumi.String("accept"),
+//				Action:                pulumi.String("accept"),
 //				Protocol:              pulumi.String("UDP"),
 //				DestinationCidrBlock:  pulumi.String("10.0.0.0/24"),
 //				SourceCidrBlock:       pulumi.String("10.0.0.0/24"),

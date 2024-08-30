@@ -276,10 +276,12 @@ class Remediation(pulumi.CustomResource):
             max=99999)
         default_bucket = alicloud.oss.Bucket("default",
             bucket=f"{name}-{default_integer['result']}",
-            acl="public-read",
             tags={
                 "For": "example",
             })
+        name_bucket_acl = alicloud.oss.BucketAcl("name",
+            bucket=default_bucket.bucket,
+            acl="public-read")
         default_rule = alicloud.cfg.Rule("default",
             description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",
@@ -351,10 +353,12 @@ class Remediation(pulumi.CustomResource):
             max=99999)
         default_bucket = alicloud.oss.Bucket("default",
             bucket=f"{name}-{default_integer['result']}",
-            acl="public-read",
             tags={
                 "For": "example",
             })
+        name_bucket_acl = alicloud.oss.BucketAcl("name",
+            bucket=default_bucket.bucket,
+            acl="public-read")
         default_rule = alicloud.cfg.Rule("default",
             description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",

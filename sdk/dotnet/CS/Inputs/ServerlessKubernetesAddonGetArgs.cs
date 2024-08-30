@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// The following example is the definition of addons block, The type of this field is list:
         /// 
         /// ```
-        /// # install nginx ingress, conflict with SLB ingress
+        /// # install nginx ingress, conflict with ALB ingress
         /// addons {
         /// name = "nginx-ingress-controller"
         /// # use internet
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// # if use intranet, detail below.
         /// # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
         /// }
-        /// # install SLB ingress, conflict with nginx ingress
+        /// # install ALB ingress, conflict with nginx ingress
         /// addons {
         /// name = "alb-ingress-controller"
         /// }
@@ -47,8 +47,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// # install prometheus
         /// addons {
         /// name = "arms-prometheus"
-        /// # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
-        /// # name = "managed-arms-prometheus"
         /// }
         /// ```
         /// </summary>
@@ -60,6 +58,12 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// It specifies the version of the component.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public ServerlessKubernetesAddonGetArgs()
         {

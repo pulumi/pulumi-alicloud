@@ -22,12 +22,14 @@ class RegistryEnterpriseRepoArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseRepo resource.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] namespace: Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
-        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 100 characters.
-        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] namespace: The name of the namespace to which the image repository belongs.
+        :param pulumi.Input[str] repo_type: The type of the repository. Valid values:
+               - `PUBLIC`: The repository is a public repository.
+               - `PRIVATE`: The repository is a private repository.
+        :param pulumi.Input[str] summary: The summary about the repository.
+        :param pulumi.Input[str] detail: The description of the repository.
+        :param pulumi.Input[str] name: The name of the image repository.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "namespace", namespace)
@@ -42,7 +44,7 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -54,7 +56,7 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        The name of the namespace to which the image repository belongs.
         """
         return pulumi.get(self, "namespace")
 
@@ -66,7 +68,9 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter(name="repoType")
     def repo_type(self) -> pulumi.Input[str]:
         """
-        `PUBLIC` or `PRIVATE`, repo's visibility.
+        The type of the repository. Valid values:
+        - `PUBLIC`: The repository is a public repository.
+        - `PRIVATE`: The repository is a private repository.
         """
         return pulumi.get(self, "repo_type")
 
@@ -78,7 +82,7 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter
     def summary(self) -> pulumi.Input[str]:
         """
-        The repository general information. It can contain 1 to 100 characters.
+        The summary about the repository.
         """
         return pulumi.get(self, "summary")
 
@@ -90,7 +94,7 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter
     def detail(self) -> Optional[pulumi.Input[str]]:
         """
-        The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        The description of the repository.
         """
         return pulumi.get(self, "detail")
 
@@ -102,7 +106,7 @@ class RegistryEnterpriseRepoArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        The name of the image repository.
         """
         return pulumi.get(self, "name")
 
@@ -123,13 +127,15 @@ class _RegistryEnterpriseRepoState:
                  summary: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseRepo resources.
-        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
-        :param pulumi.Input[str] namespace: Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_id: The uuid of Container Registry Enterprise Edition repository.
-        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
-        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 100 characters.
+        :param pulumi.Input[str] detail: The description of the repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the image repository.
+        :param pulumi.Input[str] namespace: The name of the namespace to which the image repository belongs.
+        :param pulumi.Input[str] repo_id: The ID of the repository.
+        :param pulumi.Input[str] repo_type: The type of the repository. Valid values:
+               - `PUBLIC`: The repository is a public repository.
+               - `PRIVATE`: The repository is a private repository.
+        :param pulumi.Input[str] summary: The summary about the repository.
         """
         if detail is not None:
             pulumi.set(__self__, "detail", detail)
@@ -150,7 +156,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter
     def detail(self) -> Optional[pulumi.Input[str]]:
         """
-        The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        The description of the repository.
         """
         return pulumi.get(self, "detail")
 
@@ -162,7 +168,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -174,7 +180,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        The name of the image repository.
         """
         return pulumi.get(self, "name")
 
@@ -186,7 +192,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        The name of the namespace to which the image repository belongs.
         """
         return pulumi.get(self, "namespace")
 
@@ -198,7 +204,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter(name="repoId")
     def repo_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The uuid of Container Registry Enterprise Edition repository.
+        The ID of the repository.
         """
         return pulumi.get(self, "repo_id")
 
@@ -210,7 +216,9 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter(name="repoType")
     def repo_type(self) -> Optional[pulumi.Input[str]]:
         """
-        `PUBLIC` or `PRIVATE`, repo's visibility.
+        The type of the repository. Valid values:
+        - `PUBLIC`: The repository is a public repository.
+        - `PRIVATE`: The repository is a private repository.
         """
         return pulumi.get(self, "repo_type")
 
@@ -222,7 +230,7 @@ class _RegistryEnterpriseRepoState:
     @pulumi.getter
     def summary(self) -> Optional[pulumi.Input[str]]:
         """
-        The repository general information. It can contain 1 to 100 characters.
+        The summary about the repository.
         """
         return pulumi.get(self, "summary")
 
@@ -244,9 +252,9 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                  summary: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition repositories.
+        Provides a Container Registry Enterprise Edition Repository resource.
 
-        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+        For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 
         > **NOTE:** Available since v1.86.0.
 
@@ -259,48 +267,54 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        example = alicloud.cr.RegistryEnterpriseInstance("example",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
-            instance_id=example.id,
-            name=name,
+            instance_name=f"{name}-{default['result']}")
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
-        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("example",
-            instance_id=example.id,
-            namespace=example_registry_enterprise_namespace.name,
-            name=name,
-            summary="this is summary of my new repo",
+        example = alicloud.cs.RegistryEnterpriseRepo("example",
+            instance_id=default_registry_enterprise_instance.id,
+            namespace=default_registry_enterprise_namespace.name,
+            name=f"{name}-{default['result']}",
             repo_type="PUBLIC",
+            summary="this is summary of my new repo",
             detail="this is a public repo")
         ```
 
         ## Import
 
-        Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+        Container Registry Enterprise Edition Repository can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
-        :param pulumi.Input[str] namespace: Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
-        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 100 characters.
+        :param pulumi.Input[str] detail: The description of the repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the image repository.
+        :param pulumi.Input[str] namespace: The name of the namespace to which the image repository belongs.
+        :param pulumi.Input[str] repo_type: The type of the repository. Valid values:
+               - `PUBLIC`: The repository is a public repository.
+               - `PRIVATE`: The repository is a private repository.
+        :param pulumi.Input[str] summary: The summary about the repository.
         """
         ...
     @overload
@@ -309,9 +323,9 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                  args: RegistryEnterpriseRepoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manager Container Registry Enterprise Edition repositories.
+        Provides a Container Registry Enterprise Edition Repository resource.
 
-        For information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
+        For information about Container Registry Enterprise Edition Repository and how to use it, see [What is Repository](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createrepository)
 
         > **NOTE:** Available since v1.86.0.
 
@@ -324,38 +338,42 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        example = alicloud.cr.RegistryEnterpriseInstance("example",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
-            instance_id=example.id,
-            name=name,
+            instance_name=f"{name}-{default['result']}")
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
-        example_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("example",
-            instance_id=example.id,
-            namespace=example_registry_enterprise_namespace.name,
-            name=name,
-            summary="this is summary of my new repo",
+        example = alicloud.cs.RegistryEnterpriseRepo("example",
+            instance_id=default_registry_enterprise_instance.id,
+            namespace=default_registry_enterprise_namespace.name,
+            name=f"{name}-{default['result']}",
             repo_type="PUBLIC",
+            summary="this is summary of my new repo",
             detail="this is a public repo")
         ```
 
         ## Import
 
-        Container Registry Enterprise Edition repository can be imported using the `{instance_id}:{namespace}:{repository}`, e.g.
+        Container Registry Enterprise Edition Repository can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo default `cri-xxx:my-namespace:my-repo`
+        $ pulumi import alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo example <instance_id>:<namespace>:<name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -427,13 +445,15 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[str] instance_id: ID of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] name: Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
-        :param pulumi.Input[str] namespace: Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
-        :param pulumi.Input[str] repo_id: The uuid of Container Registry Enterprise Edition repository.
-        :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
-        :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 100 characters.
+        :param pulumi.Input[str] detail: The description of the repository.
+        :param pulumi.Input[str] instance_id: The ID of the Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] name: The name of the image repository.
+        :param pulumi.Input[str] namespace: The name of the namespace to which the image repository belongs.
+        :param pulumi.Input[str] repo_id: The ID of the repository.
+        :param pulumi.Input[str] repo_type: The type of the repository. Valid values:
+               - `PUBLIC`: The repository is a public repository.
+               - `PRIVATE`: The repository is a private repository.
+        :param pulumi.Input[str] summary: The summary about the repository.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,7 +472,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter
     def detail(self) -> pulumi.Output[Optional[str]]:
         """
-        The repository specific information. MarkDown format is supported, and the length limit is 2000.
+        The description of the repository.
         """
         return pulumi.get(self, "detail")
 
@@ -460,7 +480,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        ID of Container Registry Enterprise Edition instance.
+        The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -468,7 +488,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
+        The name of the image repository.
         """
         return pulumi.get(self, "name")
 
@@ -476,7 +496,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
+        The name of the namespace to which the image repository belongs.
         """
         return pulumi.get(self, "namespace")
 
@@ -484,7 +504,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter(name="repoId")
     def repo_id(self) -> pulumi.Output[str]:
         """
-        The uuid of Container Registry Enterprise Edition repository.
+        The ID of the repository.
         """
         return pulumi.get(self, "repo_id")
 
@@ -492,7 +512,9 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter(name="repoType")
     def repo_type(self) -> pulumi.Output[str]:
         """
-        `PUBLIC` or `PRIVATE`, repo's visibility.
+        The type of the repository. Valid values:
+        - `PUBLIC`: The repository is a public repository.
+        - `PRIVATE`: The repository is a private repository.
         """
         return pulumi.get(self, "repo_type")
 
@@ -500,7 +522,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     @pulumi.getter
     def summary(self) -> pulumi.Output[str]:
         """
-        The repository general information. It can contain 1 to 100 characters.
+        The summary about the repository.
         """
         return pulumi.get(self, "summary")
 

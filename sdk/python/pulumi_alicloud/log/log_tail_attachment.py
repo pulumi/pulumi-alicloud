@@ -151,19 +151,19 @@ class LogTailAttachment(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example.name,
-            name="example-store",
+            project_name=example.project_name,
+            logstore_name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example_log_tail_config = alicloud.log.LogTailConfig("example",
-            project=example.name,
-            logstore=example_store.name,
+            project=example.project_name,
+            logstore=example_store.logstore_name,
             input_type="file",
             name="terraform-example",
             output_type="LogService",
@@ -179,7 +179,7 @@ class LogTailAttachment(pulumi.CustomResource):
         \\x09}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
-            project=example.name,
+            project=example.project_name,
             name="terraform-example",
             identify_type="ip",
             topic="terraform",
@@ -188,7 +188,7 @@ class LogTailAttachment(pulumi.CustomResource):
                 "10.0.0.2",
             ])
         example_log_tail_attachment = alicloud.log.LogTailAttachment("example",
-            project=example.name,
+            project=example.project_name,
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
@@ -235,19 +235,19 @@ class LogTailAttachment(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example.name,
-            name="example-store",
+            project_name=example.project_name,
+            logstore_name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example_log_tail_config = alicloud.log.LogTailConfig("example",
-            project=example.name,
-            logstore=example_store.name,
+            project=example.project_name,
+            logstore=example_store.logstore_name,
             input_type="file",
             name="terraform-example",
             output_type="LogService",
@@ -263,7 +263,7 @@ class LogTailAttachment(pulumi.CustomResource):
         \\x09}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
-            project=example.name,
+            project=example.project_name,
             name="terraform-example",
             identify_type="ip",
             topic="terraform",
@@ -272,7 +272,7 @@ class LogTailAttachment(pulumi.CustomResource):
                 "10.0.0.2",
             ])
         example_log_tail_attachment = alicloud.log.LogTailAttachment("example",
-            project=example.name,
+            project=example.project_name,
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```

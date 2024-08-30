@@ -724,7 +724,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         template = alicloud.ecs.EcsLaunchTemplate("template",
-            name=name,
+            launch_template_name=name,
             image_id=default_get_images.images[0].id,
             instance_type="ecs.n1.tiny",
             security_group_id=default_security_group.id)
@@ -810,7 +810,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             most_recent=True,
             owners="system")
         template = alicloud.ecs.EcsLaunchTemplate("template",
-            name=name,
+            launch_template_name=name,
             image_id=default_get_images.images[0].id,
             instance_type="ecs.n1.tiny",
             security_group_id=default_security_group.id)

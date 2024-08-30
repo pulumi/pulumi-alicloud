@@ -39,14 +39,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -56,8 +56,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Logstore = exampleStore.Name,
+    ///         Project = example.ProjectName,
+    ///         Logstore = exampleStore.LogstoreName,
     ///         InputType = "file",
     ///         Name = "terraform-example",
     ///         OutputType = "LogService",
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("example", new()
     ///     {
-    ///         Project = example.Name,
+    ///         Project = example.ProjectName,
     ///         Name = "terraform-example",
     ///         IdentifyType = "ip",
     ///         Topic = "terraform",
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleLogTailAttachment = new AliCloud.Log.LogTailAttachment("example", new()
     ///     {
-    ///         Project = example.Name,
+    ///         Project = example.ProjectName,
     ///         LogtailConfigName = exampleLogTailConfig.Name,
     ///         MachineGroupName = exampleMachineGroup.Name,
     ///     });

@@ -70,9 +70,11 @@ def get_industrial_serice(enable: Optional[str] = None,
     """
     Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
 
-    > **NOTE:** Available in v1.115.0+
+    > **NOTE:** Available since v1.115.0.
 
     > **NOTE:** The Brain Industrial service is not support in the international site.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 
@@ -105,9 +107,11 @@ def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] =
     """
     Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
 
-    > **NOTE:** Available in v1.115.0+
+    > **NOTE:** Available since v1.115.0.
 
     > **NOTE:** The Brain Industrial service is not support in the international site.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 

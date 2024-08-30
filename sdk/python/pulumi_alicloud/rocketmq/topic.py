@@ -321,7 +321,7 @@ class Topic(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_instance = alicloud.rocketmq.Instance("default",
-            name=f"{name}-{default['result']}",
+            instance_name=f"{name}-{default['result']}",
             remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("default",
             topic_name=topic,
@@ -385,7 +385,7 @@ class Topic(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_instance = alicloud.rocketmq.Instance("default",
-            name=f"{name}-{default['result']}",
+            instance_name=f"{name}-{default['result']}",
             remark="default_ons_instance_remark")
         default_topic = alicloud.rocketmq.Topic("default",
             topic_name=topic,

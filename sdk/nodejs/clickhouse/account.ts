@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[1]?.zoneId),
  * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "22.8.5.29",

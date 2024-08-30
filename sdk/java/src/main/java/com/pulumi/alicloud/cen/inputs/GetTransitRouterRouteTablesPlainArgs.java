@@ -31,9 +31,17 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter CEN Transit Router Route Table by name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter CEN Transit Router Route Table by name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -53,9 +61,17 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * 
+     */
     @Import(name="status")
     private @Nullable String status;
 
+    /**
+     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -106,18 +122,33 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * The status of the transit router route table to query.
+     * The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
      * 
      */
     @Import(name="transitRouterRouteTableStatus")
     private @Nullable String transitRouterRouteTableStatus;
 
     /**
-     * @return The status of the transit router route table to query.
+     * @return The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
      * 
      */
     public Optional<String> transitRouterRouteTableStatus() {
         return Optional.ofNullable(this.transitRouterRouteTableStatus);
+    }
+
+    /**
+     * The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * 
+     */
+    @Import(name="transitRouterRouteTableType")
+    private @Nullable String transitRouterRouteTableType;
+
+    /**
+     * @return The type of the transit router route table to query. Valid values `System` and `Custom`.
+     * 
+     */
+    public Optional<String> transitRouterRouteTableType() {
+        return Optional.ofNullable(this.transitRouterRouteTableType);
     }
 
     private GetTransitRouterRouteTablesPlainArgs() {}
@@ -131,6 +162,7 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
         this.transitRouterRouteTableIds = $.transitRouterRouteTableIds;
         this.transitRouterRouteTableNames = $.transitRouterRouteTableNames;
         this.transitRouterRouteTableStatus = $.transitRouterRouteTableStatus;
+        this.transitRouterRouteTableType = $.transitRouterRouteTableType;
     }
 
     public static Builder builder() {
@@ -172,6 +204,12 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter CEN Transit Router Route Table by name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -188,6 +226,12 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
             return this;
         }
 
+        /**
+         * @param status The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;
@@ -247,13 +291,24 @@ public final class GetTransitRouterRouteTablesPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param transitRouterRouteTableStatus The status of the transit router route table to query.
+         * @param transitRouterRouteTableStatus The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
          * 
          * @return builder
          * 
          */
         public Builder transitRouterRouteTableStatus(@Nullable String transitRouterRouteTableStatus) {
             $.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
+            return this;
+        }
+
+        /**
+         * @param transitRouterRouteTableType The type of the transit router route table to query. Valid values `System` and `Custom`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterRouteTableType(@Nullable String transitRouterRouteTableType) {
+            $.transitRouterRouteTableType = transitRouterRouteTableType;
             return this;
         }
 

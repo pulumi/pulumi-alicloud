@@ -145,15 +145,15 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -166,7 +166,7 @@ import (
 //			_, err = log.NewAlert(ctx, "example-2", &log.AlertArgs{
 //				Version:          pulumi.String("2.0"),
 //				Type:             pulumi.String("default"),
-//				ProjectName:      example.Name,
+//				ProjectName:      example.ProjectName,
 //				AlertName:        pulumi.String("example-alert"),
 //				AlertDisplayname: pulumi.String("example-alert"),
 //				MuteUntil:        pulumi.Int(1632486684),
@@ -174,7 +174,6 @@ import (
 //				NoDataSeverity:   pulumi.Int(8),
 //				SendResolved:     pulumi.Bool(true),
 //				AutoAnnotation:   pulumi.Bool(true),
-//				Dashboard:        pulumi.String("example-dashboard"),
 //				Schedule: &log.AlertScheduleArgs{
 //					Type:           pulumi.String("FixedRate"),
 //					Interval:       pulumi.String("5m"),
@@ -185,26 +184,28 @@ import (
 //				},
 //				QueryLists: log.AlertQueryListArray{
 //					&log.AlertQueryListArgs{
-//						Store:        exampleStore.Name,
+//						Store:        exampleStore.LogstoreName,
 //						StoreType:    pulumi.String("log"),
-//						Project:      example.Name,
+//						Project:      example.ProjectName,
 //						Region:       pulumi.String("cn-heyuan"),
 //						ChartTitle:   pulumi.String("chart_title"),
 //						Start:        pulumi.String("-60s"),
 //						End:          pulumi.String("20s"),
 //						Query:        pulumi.String("* AND aliyun | select count(1) as cnt"),
 //						PowerSqlMode: pulumi.String("auto"),
+//						DashboardId:  pulumi.String("example-dashboard"),
 //					},
 //					&log.AlertQueryListArgs{
-//						Store:        exampleStore.Name,
+//						Store:        exampleStore.LogstoreName,
 //						StoreType:    pulumi.String("log"),
-//						Project:      example.Name,
+//						Project:      example.ProjectName,
 //						Region:       pulumi.String("cn-heyuan"),
 //						ChartTitle:   pulumi.String("chart_title"),
 //						Start:        pulumi.String("-60s"),
 //						End:          pulumi.String("20s"),
 //						Query:        pulumi.String("error | select count(1) as error_cnt"),
 //						PowerSqlMode: pulumi.String("enable"),
+//						DashboardId:  pulumi.String("example-dashboard"),
 //					},
 //				},
 //				Labels: log.AlertLabelArray{
@@ -302,15 +303,15 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -323,7 +324,7 @@ import (
 //			_, err = log.NewAlert(ctx, "example-3", &log.AlertArgs{
 //				Version:          pulumi.String("2.0"),
 //				Type:             pulumi.String("tpl"),
-//				ProjectName:      example.Name,
+//				ProjectName:      example.ProjectName,
 //				AlertName:        pulumi.String("example-alert"),
 //				AlertDisplayname: pulumi.String("example-alert"),
 //				MuteUntil:        pulumi.Int(1632486684),
@@ -345,7 +346,7 @@ import (
 //						"default.action_policy":  pulumi.String("sls.app.ack.builtin"),
 //						"default.severity":       pulumi.String("6"),
 //						"sendResolved":           pulumi.String("false"),
-//						"default.project":        example.Name,
+//						"default.project":        example.ProjectName,
 //						"default.logstore":       pulumi.String("k8s-event"),
 //						"default.repeatInterval": pulumi.String("4h"),
 //						"trigger_threshold":      pulumi.String("1"),

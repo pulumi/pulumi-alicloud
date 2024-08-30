@@ -1964,7 +1964,7 @@ type KubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
-	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -1986,7 +1986,7 @@ type KubernetesDeleteOptionArgs struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
-	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -2050,7 +2050,7 @@ func (o KubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput {
 }
 
 // The type of resources that are created by cluster. Valid values:
-// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 // - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 // - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 // - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -2654,9 +2654,9 @@ func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 }
 
 type ManagedKubernetesCertificateAuthority struct {
-	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
-	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -2674,9 +2674,9 @@ type ManagedKubernetesCertificateAuthorityInput interface {
 }
 
 type ManagedKubernetesCertificateAuthorityArgs struct {
-	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -2759,12 +2759,12 @@ func (o ManagedKubernetesCertificateAuthorityOutput) ToManagedKubernetesCertific
 	}).(ManagedKubernetesCertificateAuthorityPtrOutput)
 }
 
-// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+// The path of client certificate, like `~/.kube/client-cert.pem`.
 func (o ManagedKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+// The path of client key, like `~/.kube/client-key.pem`.
 func (o ManagedKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -2798,7 +2798,7 @@ func (o ManagedKubernetesCertificateAuthorityPtrOutput) Elem() ManagedKubernetes
 	}).(ManagedKubernetesCertificateAuthorityOutput)
 }
 
-// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+// The path of client certificate, like `~/.kube/client-cert.pem`.
 func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -2808,7 +2808,7 @@ func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+// The path of client key, like `~/.kube/client-key.pem`.
 func (o ManagedKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -3026,7 +3026,7 @@ type ManagedKubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
-	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -3048,7 +3048,7 @@ type ManagedKubernetesDeleteOptionArgs struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
-	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -3112,7 +3112,7 @@ func (o ManagedKubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput
 }
 
 // The type of resources that are created by cluster. Valid values:
-// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
 // - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
 // - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
 // - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -6000,6 +6000,8 @@ type ServerlessKubernetesAddon struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
+	// It specifies the version of the component.
+	Version *string `pulumi:"version"`
 }
 
 // ServerlessKubernetesAddonInput is an input type that accepts ServerlessKubernetesAddonArgs and ServerlessKubernetesAddonOutput values.
@@ -6022,6 +6024,8 @@ type ServerlessKubernetesAddonArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// It specifies the version of the component.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ServerlessKubernetesAddonArgs) ElementType() reflect.Type {
@@ -6092,6 +6096,11 @@ func (o ServerlessKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// It specifies the version of the component.
+func (o ServerlessKubernetesAddonOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type ServerlessKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerlessKubernetesAddonArrayOutput) ElementType() reflect.Type {
@@ -6110,6 +6119,127 @@ func (o ServerlessKubernetesAddonArrayOutput) Index(i pulumi.IntInput) Serverles
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetesAddon {
 		return vs[0].([]ServerlessKubernetesAddon)[vs[1].(int)]
 	}).(ServerlessKubernetesAddonOutput)
+}
+
+type ServerlessKubernetesDeleteOption struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode *string `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+	// - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// ServerlessKubernetesDeleteOptionInput is an input type that accepts ServerlessKubernetesDeleteOptionArgs and ServerlessKubernetesDeleteOptionOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesDeleteOptionInput` via:
+//
+//	ServerlessKubernetesDeleteOptionArgs{...}
+type ServerlessKubernetesDeleteOptionInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesDeleteOptionOutput() ServerlessKubernetesDeleteOptionOutput
+	ToServerlessKubernetesDeleteOptionOutputWithContext(context.Context) ServerlessKubernetesDeleteOptionOutput
+}
+
+type ServerlessKubernetesDeleteOptionArgs struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+	// - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (ServerlessKubernetesDeleteOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesDeleteOptionArgs) ToServerlessKubernetesDeleteOptionOutput() ServerlessKubernetesDeleteOptionOutput {
+	return i.ToServerlessKubernetesDeleteOptionOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesDeleteOptionArgs) ToServerlessKubernetesDeleteOptionOutputWithContext(ctx context.Context) ServerlessKubernetesDeleteOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesDeleteOptionOutput)
+}
+
+// ServerlessKubernetesDeleteOptionArrayInput is an input type that accepts ServerlessKubernetesDeleteOptionArray and ServerlessKubernetesDeleteOptionArrayOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesDeleteOptionArrayInput` via:
+//
+//	ServerlessKubernetesDeleteOptionArray{ ServerlessKubernetesDeleteOptionArgs{...} }
+type ServerlessKubernetesDeleteOptionArrayInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesDeleteOptionArrayOutput() ServerlessKubernetesDeleteOptionArrayOutput
+	ToServerlessKubernetesDeleteOptionArrayOutputWithContext(context.Context) ServerlessKubernetesDeleteOptionArrayOutput
+}
+
+type ServerlessKubernetesDeleteOptionArray []ServerlessKubernetesDeleteOptionInput
+
+func (ServerlessKubernetesDeleteOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesDeleteOptionArray) ToServerlessKubernetesDeleteOptionArrayOutput() ServerlessKubernetesDeleteOptionArrayOutput {
+	return i.ToServerlessKubernetesDeleteOptionArrayOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesDeleteOptionArray) ToServerlessKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) ServerlessKubernetesDeleteOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesDeleteOptionArrayOutput)
+}
+
+type ServerlessKubernetesDeleteOptionOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesDeleteOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesDeleteOptionOutput) ToServerlessKubernetesDeleteOptionOutput() ServerlessKubernetesDeleteOptionOutput {
+	return o
+}
+
+func (o ServerlessKubernetesDeleteOptionOutput) ToServerlessKubernetesDeleteOptionOutputWithContext(ctx context.Context) ServerlessKubernetesDeleteOptionOutput {
+	return o
+}
+
+// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+func (o ServerlessKubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesDeleteOption) *string { return v.DeleteMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of resources that are created by cluster. Valid values:
+// - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+// - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+func (o ServerlessKubernetesDeleteOptionOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesDeleteOption) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type ServerlessKubernetesDeleteOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesDeleteOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesDeleteOptionArrayOutput) ToServerlessKubernetesDeleteOptionArrayOutput() ServerlessKubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesDeleteOptionArrayOutput) ToServerlessKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) ServerlessKubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o ServerlessKubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) ServerlessKubernetesDeleteOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetesDeleteOption {
+		return vs[0].([]ServerlessKubernetesDeleteOption)[vs[1].(int)]
+	}).(ServerlessKubernetesDeleteOptionOutput)
 }
 
 type ServerlessKubernetesRrsaMetadata struct {
@@ -9892,6 +10022,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTeeConfigPtrInput)(nil)).Elem(), NodePoolTeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonInput)(nil)).Elem(), ServerlessKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesDeleteOptionInput)(nil)).Elem(), ServerlessKubernetesDeleteOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesDeleteOptionArrayInput)(nil)).Elem(), ServerlessKubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
@@ -10013,6 +10145,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolTeeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesDeleteOptionOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})

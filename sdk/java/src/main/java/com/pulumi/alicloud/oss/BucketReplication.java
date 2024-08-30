@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()
- *             .policyName(policy.name())
+ *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .roleName(role.name())
  *             .build());

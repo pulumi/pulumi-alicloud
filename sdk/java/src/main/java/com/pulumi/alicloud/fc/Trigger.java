@@ -468,7 +468,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
- *             .policyName(defaultPolicy.name())
+ *             .policyName(defaultPolicy.policyName())
  *             .policyType("Custom")
  *             .build());
  * 

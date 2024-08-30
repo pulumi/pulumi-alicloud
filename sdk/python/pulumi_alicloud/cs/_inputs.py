@@ -47,6 +47,7 @@ __all__ = [
     'NodePoolTaintArgs',
     'NodePoolTeeConfigArgs',
     'ServerlessKubernetesAddonArgs',
+    'ServerlessKubernetesDeleteOptionArgs',
     'ServerlessKubernetesRrsaMetadataArgs',
     'SwarmNodeArgs',
 ]
@@ -979,7 +980,7 @@ class KubernetesDeleteOptionArgs:
         """
         :param pulumi.Input[str] delete_mode: The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
         :param pulumi.Input[str] resource_type: The type of resources that are created by cluster. Valid values:
-               - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+               - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
                - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
                - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
                - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -987,7 +988,7 @@ class KubernetesDeleteOptionArgs:
                ```
                ...
                // Specify delete_options as below when deleting cluster
-               // delete SLB resources created by the cluster
+               // delete SLB resources created by the Nginx Ingress Service
                delete_options {
                delete_mode = "delete"
                resource_type = "SLB"
@@ -1031,7 +1032,7 @@ class KubernetesDeleteOptionArgs:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of resources that are created by cluster. Valid values:
-        - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
         - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
         - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -1039,7 +1040,7 @@ class KubernetesDeleteOptionArgs:
         ```
         ...
         // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the cluster
+        // delete SLB resources created by the Nginx Ingress Service
         delete_options {
         delete_mode = "delete"
         resource_type = "SLB"
@@ -1378,8 +1379,8 @@ class ManagedKubernetesCertificateAuthorityArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_cert: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
-        :param pulumi.Input[str] client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -1393,7 +1394,7 @@ class ManagedKubernetesCertificateAuthorityArgs:
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        The path of client certificate, like `~/.kube/client-cert.pem`.
         """
         return pulumi.get(self, "client_cert")
 
@@ -1405,7 +1406,7 @@ class ManagedKubernetesCertificateAuthorityArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+        The path of client key, like `~/.kube/client-key.pem`.
         """
         return pulumi.get(self, "client_key")
 
@@ -1505,7 +1506,7 @@ class ManagedKubernetesDeleteOptionArgs:
         """
         :param pulumi.Input[str] delete_mode: The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
         :param pulumi.Input[str] resource_type: The type of resources that are created by cluster. Valid values:
-               - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+               - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
                - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
                - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
                - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -1513,7 +1514,7 @@ class ManagedKubernetesDeleteOptionArgs:
                ```
                ...
                // Specify delete_options as below when deleting cluster
-               // delete SLB resources created by the cluster
+               // delete SLB resources created by the Nginx Ingress Service
                delete_options {
                delete_mode = "delete"
                resource_type = "SLB"
@@ -1557,7 +1558,7 @@ class ManagedKubernetesDeleteOptionArgs:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of resources that are created by cluster. Valid values:
-        - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
         - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
         - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
@@ -1565,7 +1566,7 @@ class ManagedKubernetesDeleteOptionArgs:
         ```
         ...
         // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the cluster
+        // delete SLB resources created by the Nginx Ingress Service
         delete_options {
         delete_mode = "delete"
         resource_type = "SLB"
@@ -2894,7 +2895,8 @@ class ServerlessKubernetesAddonArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] config: The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
@@ -2902,7 +2904,7 @@ class ServerlessKubernetesAddonArgs:
                The following example is the definition of addons block, The type of this field is list:
                
                ```
-               # install nginx ingress, conflict with SLB ingress
+               # install nginx ingress, conflict with ALB ingress
                addons {
                name = "nginx-ingress-controller"
                # use internet
@@ -2910,7 +2912,7 @@ class ServerlessKubernetesAddonArgs:
                # if use intranet, detail below.
                # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
                }
-               # install SLB ingress, conflict with nginx ingress
+               # install ALB ingress, conflict with nginx ingress
                addons {
                name = "alb-ingress-controller"
                }
@@ -2925,11 +2927,10 @@ class ServerlessKubernetesAddonArgs:
                # install prometheus
                addons {
                name = "arms-prometheus"
-               # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
-               # name = "managed-arms-prometheus"
                }
                ```
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] version: It specifies the version of the component.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -2937,6 +2938,8 @@ class ServerlessKubernetesAddonArgs:
             pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -2959,7 +2962,7 @@ class ServerlessKubernetesAddonArgs:
         The following example is the definition of addons block, The type of this field is list:
 
         ```
-        # install nginx ingress, conflict with SLB ingress
+        # install nginx ingress, conflict with ALB ingress
         addons {
         name = "nginx-ingress-controller"
         # use internet
@@ -2967,7 +2970,7 @@ class ServerlessKubernetesAddonArgs:
         # if use intranet, detail below.
         # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
         }
-        # install SLB ingress, conflict with nginx ingress
+        # install ALB ingress, conflict with nginx ingress
         addons {
         name = "alb-ingress-controller"
         }
@@ -2982,8 +2985,6 @@ class ServerlessKubernetesAddonArgs:
         # install prometheus
         addons {
         name = "arms-prometheus"
-        # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
-        # name = "managed-arms-prometheus"
         }
         ```
         """
@@ -3004,6 +3005,125 @@ class ServerlessKubernetesAddonArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        It specifies the version of the component.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ServerlessKubernetesDeleteOptionArgs:
+    def __init__(__self__, *,
+                 delete_mode: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delete_mode: The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        :param pulumi.Input[str] resource_type: The type of resources that are created by cluster. Valid values:
+               - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+               - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+               - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+               - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+               - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+               ```
+               ...
+               // Specify delete_options as below when deleting cluster
+               // delete SLB resources created by the Nginx Ingress Service
+               delete_options {
+               delete_mode = "delete"
+               resource_type = "SLB"
+               }
+               // delete ALB resources created by the ALB Ingress Controller
+               delete_options {
+               delete_mode = "delete"
+               resource_type = "ALB"
+               }
+               // delete SLS Project used by the cluster logging feature
+               delete_options {
+               delete_mode = "delete"
+               resource_type = "SLS_Data"
+               }
+               // delete SLS Project used for the managed cluster control plane logs
+               delete_options {
+               delete_mode = "delete"
+               resource_type = "SLS_ControlPlane"
+               }
+               // delete PrivateZone resources created by the cluster
+               delete_options {
+               delete_mode = "delete"
+               resource_type = "PrivateZone"
+               }
+               ```
+        """
+        if delete_mode is not None:
+            pulumi.set(__self__, "delete_mode", delete_mode)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="deleteMode")
+    def delete_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        """
+        return pulumi.get(self, "delete_mode")
+
+    @delete_mode.setter
+    def delete_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_mode", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of resources that are created by cluster. Valid values:
+        - `SLB`: SLB resources created by the Nginx Ingress Service, default behavior is to delete, option to retain is available.
+        - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+        - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+        - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
+        - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
+        ```
+        ...
+        // Specify delete_options as below when deleting cluster
+        // delete SLB resources created by the Nginx Ingress Service
+        delete_options {
+        delete_mode = "delete"
+        resource_type = "SLB"
+        }
+        // delete ALB resources created by the ALB Ingress Controller
+        delete_options {
+        delete_mode = "delete"
+        resource_type = "ALB"
+        }
+        // delete SLS Project used by the cluster logging feature
+        delete_options {
+        delete_mode = "delete"
+        resource_type = "SLS_Data"
+        }
+        // delete SLS Project used for the managed cluster control plane logs
+        delete_options {
+        delete_mode = "delete"
+        resource_type = "SLS_ControlPlane"
+        }
+        // delete PrivateZone resources created by the cluster
+        delete_options {
+        delete_mode = "delete"
+        resource_type = "PrivateZone"
+        }
+        ```
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 
 @pulumi.input_type

@@ -17,14 +17,14 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
     public static final RegistryEnterpriseNamespaceState Empty = new RegistryEnterpriseNamespaceState();
 
     /**
-     * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="autoCreate")
     private @Nullable Output<Boolean> autoCreate;
 
     /**
-     * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+     * @return Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> autoCreate() {
@@ -32,14 +32,18 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
     }
 
     /**
-     * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
     @Import(name="defaultVisibility")
     private @Nullable Output<String> defaultVisibility;
 
     /**
-     * @return `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+     * @return The default type of the repository that is automatically created. Valid values:
+     * - `PUBLIC`: A public repository.
+     * - `PRIVATE`: A private repository.
      * 
      */
     public Optional<Output<String>> defaultVisibility() {
@@ -47,14 +51,14 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
     }
 
     /**
-     * ID of Container Registry Enterprise Edition instance.
+     * The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition instance.
+     * @return The ID of the Container Registry Enterprise Edition instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -62,14 +66,14 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
     }
 
     /**
-     * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+     * @return The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -104,7 +108,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param autoCreate Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+         * @param autoCreate Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -115,7 +119,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param autoCreate Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+         * @param autoCreate Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -125,7 +129,9 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param defaultVisibility `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+         * @param defaultVisibility The default type of the repository that is automatically created. Valid values:
+         * - `PUBLIC`: A public repository.
+         * - `PRIVATE`: A private repository.
          * 
          * @return builder
          * 
@@ -136,7 +142,9 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param defaultVisibility `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+         * @param defaultVisibility The default type of the repository that is automatically created. Valid values:
+         * - `PUBLIC`: A public repository.
+         * - `PRIVATE`: A private repository.
          * 
          * @return builder
          * 
@@ -146,7 +154,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -157,7 +165,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param instanceId ID of Container Registry Enterprise Edition instance.
+         * @param instanceId The ID of the Container Registry Enterprise Edition instance.
          * 
          * @return builder
          * 
@@ -167,7 +175,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+         * @param name The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
          * 
          * @return builder
          * 
@@ -178,7 +186,7 @@ public final class RegistryEnterpriseNamespaceState extends com.pulumi.resources
         }
 
         /**
-         * @param name Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
+         * @param name The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
          * 
          * @return builder
          * 

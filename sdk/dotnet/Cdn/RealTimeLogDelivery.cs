@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
-    ///         ProjectName = defaultProject.Name,
+    ///         ProjectName = defaultProject.ProjectName,
     ///         LogstoreName = "example-store",
     ///         ShardCount = 3,
     ///         AutoSplit = true,

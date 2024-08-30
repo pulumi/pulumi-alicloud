@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Brain
         /// <summary>
         /// This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +52,9 @@ namespace Pulumi.AliCloud.Brain
         /// <summary>
         /// This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
+        /// 
+        /// &gt; **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
         /// 
         /// ## Example Usage
         /// 
@@ -171,7 +175,13 @@ namespace Pulumi.AliCloud.Brain
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Pid Organization names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIndustrialPidOrganizationsOrganizationResult> Organizations;
         public readonly string? OutputFile;
         public readonly string? ParentOrganizationId;

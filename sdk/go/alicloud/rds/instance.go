@@ -353,6 +353,17 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
+	if args.ClientCaCert != nil {
+		args.ClientCaCert = pulumi.ToSecret(args.ClientCaCert).(pulumi.StringPtrInput)
+	}
+	if args.ServerCert != nil {
+		args.ServerCert = pulumi.ToSecret(args.ServerCert).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientCaCert",
+		"serverCert",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:rds/instance:Instance", name, args, &resource, opts...)

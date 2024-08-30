@@ -51,6 +51,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
+        """
+        A list of Ehpc Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @property
@@ -79,6 +82,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Cluster names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,6 +95,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -117,7 +126,7 @@ def get_clusters(enable_details: Optional[bool] = None,
     """
     This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0.
 
     ## Example Usage
 
@@ -170,7 +179,7 @@ def get_clusters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     """
     This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0.
 
     ## Example Usage
 

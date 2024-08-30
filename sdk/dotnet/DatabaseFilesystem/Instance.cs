@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///         Category = "standard",
     ///         ZoneId = "cn-hangzhou-i",
     ///         PerformanceLevel = "PL1",
-    ///         InstanceName = name,
+    ///         FsName = name,
     ///         Size = 100,
     ///     });
     /// 

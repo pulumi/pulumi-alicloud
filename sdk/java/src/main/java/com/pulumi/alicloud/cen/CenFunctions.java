@@ -5502,36 +5502,276 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", TypeShape.of(GetTransitRouterRouteTablePropagationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterRouteTableDescription("desp")
+     *             .transitRouterRouteTableName(name)
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTablesResult> getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs args) {
         return getTransitRouterRouteTables(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterRouteTableDescription("desp")
+     *             .transitRouterRouteTableName(name)
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablesResult> getTransitRouterRouteTablesPlain(GetTransitRouterRouteTablesPlainArgs args) {
         return getTransitRouterRouteTablesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterRouteTableDescription("desp")
+     *             .transitRouterRouteTableName(name)
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTablesResult> getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", TypeShape.of(GetTransitRouterRouteTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouterroutetables)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+     * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterRouteTableDescription("desp")
+     *             .transitRouterRouteTableName(name)
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterRouteTables(GetTransitRouterRouteTablesArgs.builder()
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablesResult> getTransitRouterRouteTablesPlain(GetTransitRouterRouteTablesPlainArgs args, InvokeOptions options) {

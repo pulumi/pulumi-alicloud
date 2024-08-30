@@ -637,7 +637,7 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
-            policy_name=default_policy.name,
+            policy_name=default_policy.policy_name,
             policy_type="Custom")
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
@@ -1137,7 +1137,7 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
-            policy_name=default_policy.name,
+            policy_name=default_policy.policy_name,
             policy_type="Custom")
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.

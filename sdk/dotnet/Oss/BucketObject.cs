@@ -34,6 +34,11 @@ namespace Pulumi.AliCloud.Oss
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = $"terraform-example-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultBucketAcl = new AliCloud.Oss.BucketAcl("default", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
     ///         Acl = "private",
     ///     });
     /// 
@@ -67,6 +72,11 @@ namespace Pulumi.AliCloud.Oss
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = $"terraform-example-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultBucketAcl = new AliCloud.Oss.BucketAcl("default", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
     ///         Acl = "private",
     ///     });
     /// 

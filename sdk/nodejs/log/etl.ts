@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -40,8 +40,8 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const example2 = new alicloud.log.Store("example2", {
- *     project: example.name,
- *     name: "example-store2",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store2",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -49,8 +49,8 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const example3 = new alicloud.log.Store("example3", {
- *     project: example.name,
- *     name: "example-store3",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store3",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -59,29 +59,29 @@ import * as utilities from "../utilities";
  * });
  * const exampleEtl = new alicloud.log.Etl("example", {
  *     etlName: "terraform-example",
- *     project: example.name,
+ *     project: example.projectName,
  *     displayName: "terraform-example",
  *     description: "terraform-example",
  *     accessKeyId: "access_key_id",
  *     accessKeySecret: "access_key_secret",
  *     script: "e_set('new','key')",
- *     logstore: exampleStore.name,
+ *     logstore: exampleStore.logstoreName,
  *     etlSinks: [
  *         {
  *             name: "target_name",
  *             accessKeyId: "example2_access_key_id",
  *             accessKeySecret: "example2_access_key_secret",
  *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: example.name,
- *             logstore: example2.name,
+ *             project: example.projectName,
+ *             logstore: example2.logstoreName,
  *         },
  *         {
  *             name: "target_name2",
  *             accessKeyId: "example3_access_key_id",
  *             accessKeySecret: "example3_access_key_secret",
  *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: example.name,
- *             logstore: example3.name,
+ *             project: example.projectName,
+ *             logstore: example3.logstoreName,
  *         },
  *     ],
  * });

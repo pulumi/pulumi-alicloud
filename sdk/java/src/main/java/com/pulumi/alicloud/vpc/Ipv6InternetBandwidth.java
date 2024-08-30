@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  *         var vsw = new Switch("vsw", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
- *             .availabilityZone(default_.zones()[0].id())
- *             .name(name)
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
  *             .ipv6CidrBlockMask("22")
  *             .build());
  * 

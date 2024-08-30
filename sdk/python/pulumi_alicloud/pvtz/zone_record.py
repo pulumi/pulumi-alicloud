@@ -426,7 +426,7 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone", name="foo.test.com")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.test.com")
         foo = alicloud.pvtz.ZoneRecord("foo",
             zone_id=zone.id,
             rr="www",
@@ -473,7 +473,7 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone", name="foo.test.com")
+        zone = alicloud.pvtz.Zone("zone", zone_name="foo.test.com")
         foo = alicloud.pvtz.ZoneRecord("foo",
             zone_id=zone.id,
             rr="www",

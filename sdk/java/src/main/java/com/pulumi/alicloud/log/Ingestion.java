@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Project("example", ProjectArgs.builder()
- *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .projectName(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
- *             .project(example.name())
- *             .name("example-store")
+ *             .projectName(example.projectName())
+ *             .logstoreName("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -79,8 +79,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleIngestion = new Ingestion("exampleIngestion", IngestionArgs.builder()
- *             .project(example.name())
- *             .logstore(exampleStore.name())
+ *             .project(example.projectName())
+ *             .logstore(exampleStore.logstoreName())
  *             .ingestionName("terraform-example")
  *             .displayName("terraform-example")
  *             .description("terraform-example")

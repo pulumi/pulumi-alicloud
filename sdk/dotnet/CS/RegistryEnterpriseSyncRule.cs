@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manager Container Registry Enterprise Edition sync rules.
+    /// Provides a Container Registry Enterprise Edition Sync Rule resource.
     /// 
-    /// For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+    /// For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
     /// 
     /// &gt; **NOTE:** Available since v1.90.0.
     /// 
@@ -27,11 +27,23 @@ namespace Pulumi.AliCloud.CS
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var source = new AliCloud.CR.RegistryEnterpriseInstance("source", new()
     ///     {
     ///         PaymentType = "Subscription",
@@ -39,7 +51,7 @@ namespace Pulumi.AliCloud.CS
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = $"{name}-source",
+    ///         InstanceName = $"{name}-source-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var target = new AliCloud.CR.RegistryEnterpriseInstance("target", new()
@@ -49,7 +61,7 @@ namespace Pulumi.AliCloud.CS
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = $"{name}-target",
+    ///         InstanceName = $"{name}-target-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("source", new()
@@ -75,7 +87,6 @@ namespace Pulumi.AliCloud.CS
     ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
-    ///         Detail = "this is a public repo",
     ///     });
     /// 
     ///     var targetRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("target", new()
@@ -85,12 +96,6 @@ namespace Pulumi.AliCloud.CS
     ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
-    ///         Detail = "this is a public repo",
-    ///     });
-    /// 
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
     ///     });
     /// 
     ///     var defaultRegistryEnterpriseSyncRule = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new()
@@ -98,9 +103,9 @@ namespace Pulumi.AliCloud.CS
     ///         InstanceId = source.Id,
     ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
     ///         Name = name,
-    ///         TargetRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         TargetInstanceId = target.Id,
     ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
+    ///         TargetRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         TagFilter = ".*",
     ///         RepoName = sourceRegistryEnterpriseRepo.Name,
     ///         TargetRepoName = targetRegistryEnterpriseRepo.Name,
@@ -111,83 +116,83 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+    /// Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+    /// $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;rule_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")]
     public partial class RegistryEnterpriseSyncRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of Container Registry Enterprise Edition source instance.
+        /// The ID of the Container Registry Enterprise Edition source instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition sync rule.
+        /// The name of the sync rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        /// The namespace name of the source instance.
         /// </summary>
         [Output("namespaceName")]
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        /// The image repository name of the source instance.
         /// </summary>
         [Output("repoName")]
         public Output<string?> RepoName { get; private set; } = null!;
 
         /// <summary>
-        /// The uuid of Container Registry Enterprise Edition sync rule.
+        /// The ID of the sync rule.
         /// </summary>
         [Output("ruleId")]
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        /// The synchronization direction.
         /// </summary>
         [Output("syncDirection")]
         public Output<string> SyncDirection { get; private set; } = null!;
 
         /// <summary>
-        /// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        /// The synchronization scope.
         /// </summary>
         [Output("syncScope")]
         public Output<string> SyncScope { get; private set; } = null!;
 
         /// <summary>
-        /// The regular expression used to filter image tags for synchronization in the source repository.
+        /// The regular expression used to filter image tags.
         /// </summary>
         [Output("tagFilter")]
         public Output<string> TagFilter { get; private set; } = null!;
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition target instance to be synchronized.
+        /// The ID of the destination instance.
         /// </summary>
         [Output("targetInstanceId")]
         public Output<string> TargetInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        /// The namespace name of the destination instance.
         /// </summary>
         [Output("targetNamespaceName")]
         public Output<string> TargetNamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The target region to be synchronized.
+        /// The region ID of the destination instance.
         /// </summary>
         [Output("targetRegionId")]
         public Output<string> TargetRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the target repository.
+        /// The image repository name of the destination instance.
         /// </summary>
         [Output("targetRepoName")]
         public Output<string?> TargetRepoName { get; private set; } = null!;
@@ -239,55 +244,55 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseSyncRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of Container Registry Enterprise Edition source instance.
+        /// The ID of the Container Registry Enterprise Edition source instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition sync rule.
+        /// The name of the sync rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        /// The namespace name of the source instance.
         /// </summary>
         [Input("namespaceName", required: true)]
         public Input<string> NamespaceName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        /// The image repository name of the source instance.
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// The regular expression used to filter image tags for synchronization in the source repository.
+        /// The regular expression used to filter image tags.
         /// </summary>
         [Input("tagFilter", required: true)]
         public Input<string> TagFilter { get; set; } = null!;
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition target instance to be synchronized.
+        /// The ID of the destination instance.
         /// </summary>
         [Input("targetInstanceId", required: true)]
         public Input<string> TargetInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        /// The namespace name of the destination instance.
         /// </summary>
         [Input("targetNamespaceName", required: true)]
         public Input<string> TargetNamespaceName { get; set; } = null!;
 
         /// <summary>
-        /// The target region to be synchronized.
+        /// The region ID of the destination instance.
         /// </summary>
         [Input("targetRegionId", required: true)]
         public Input<string> TargetRegionId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the target repository.
+        /// The image repository name of the destination instance.
         /// </summary>
         [Input("targetRepoName")]
         public Input<string>? TargetRepoName { get; set; }
@@ -301,73 +306,73 @@ namespace Pulumi.AliCloud.CS
     public sealed class RegistryEnterpriseSyncRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of Container Registry Enterprise Edition source instance.
+        /// The ID of the Container Registry Enterprise Edition source instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition sync rule.
+        /// The name of the sync rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+        /// The namespace name of the source instance.
         /// </summary>
         [Input("namespaceName")]
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
-        /// Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+        /// The image repository name of the source instance.
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// The uuid of Container Registry Enterprise Edition sync rule.
+        /// The ID of the sync rule.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+        /// The synchronization direction.
         /// </summary>
         [Input("syncDirection")]
         public Input<string>? SyncDirection { get; set; }
 
         /// <summary>
-        /// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+        /// The synchronization scope.
         /// </summary>
         [Input("syncScope")]
         public Input<string>? SyncScope { get; set; }
 
         /// <summary>
-        /// The regular expression used to filter image tags for synchronization in the source repository.
+        /// The regular expression used to filter image tags.
         /// </summary>
         [Input("tagFilter")]
         public Input<string>? TagFilter { get; set; }
 
         /// <summary>
-        /// ID of Container Registry Enterprise Edition target instance to be synchronized.
+        /// The ID of the destination instance.
         /// </summary>
         [Input("targetInstanceId")]
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+        /// The namespace name of the destination instance.
         /// </summary>
         [Input("targetNamespaceName")]
         public Input<string>? TargetNamespaceName { get; set; }
 
         /// <summary>
-        /// The target region to be synchronized.
+        /// The region ID of the destination instance.
         /// </summary>
         [Input("targetRegionId")]
         public Input<string>? TargetRegionId { get; set; }
 
         /// <summary>
-        /// Name of the target repository.
+        /// The image repository name of the destination instance.
         /// </summary>
         [Input("targetRepoName")]
         public Input<string>? TargetRepoName { get; set; }

@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     description: "terraform-example",
  * });
  * const defaultStore = new alicloud.log.Store("default", {
- *     projectName: defaultProject.name,
+ *     projectName: defaultProject.projectName,
  *     logstoreName: "example-store",
  *     shardCount: 3,
  *     autoSplit: true,

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .scheduler("Wrr")
  *             .protocol("TCP")
- *             .connectionDrain(true)
+ *             .connectionDrainEnabled(true)
  *             .connectionDrainTimeout(60)
  *             .addressIpVersion("Ipv4")
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()

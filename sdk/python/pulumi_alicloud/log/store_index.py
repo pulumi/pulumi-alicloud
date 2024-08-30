@@ -182,18 +182,18 @@ class StoreIndex(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example.name,
-            name="example-store",
+            project_name=example.project_name,
+            logstore_name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example_store_index = alicloud.log.StoreIndex("example",
-            project=example.name,
-            logstore=example_store.name,
+            project=example.project_name,
+            logstore=example_store.logstore_name,
             full_text={
                 "case_sensitive": True,
                 "token": \"\"\" #$^*\\x0d
@@ -251,18 +251,18 @@ class StoreIndex(pulumi.CustomResource):
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
-            name=f"terraform-example-{default['result']}",
+            project_name=f"terraform-example-{default['result']}",
             description="terraform-example")
         example_store = alicloud.log.Store("example",
-            project=example.name,
-            name="example-store",
+            project_name=example.project_name,
+            logstore_name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example_store_index = alicloud.log.StoreIndex("example",
-            project=example.name,
-            logstore=example_store.name,
+            project=example.project_name,
+            logstore=example_store.logstore_name,
             full_text={
                 "case_sensitive": True,
                 "token": \"\"\" #$^*\\x0d

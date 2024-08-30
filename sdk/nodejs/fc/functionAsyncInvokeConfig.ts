@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {
  *     roleName: defaultRole.name,
- *     policyName: defaultPolicy.name,
+ *     policyName: defaultPolicy.policyName,
  *     policyType: "Custom",
  * });
  * const defaultService = new alicloud.fc.Service("default", {

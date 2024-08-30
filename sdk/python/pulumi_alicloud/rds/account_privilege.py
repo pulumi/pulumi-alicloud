@@ -233,7 +233,7 @@ class AccountPrivilege(pulumi.CustomResource):
             account_description="from terraform")
         privilege = alicloud.rds.AccountPrivilege("privilege",
             instance_id=instance.id,
-            account_name=account.name,
+            account_name=account.account_name,
             privilege="ReadOnly",
             db_names=[__item.name for __item in db])
         ```
@@ -312,7 +312,7 @@ class AccountPrivilege(pulumi.CustomResource):
             account_description="from terraform")
         privilege = alicloud.rds.AccountPrivilege("privilege",
             instance_id=instance.id,
-            account_name=account.name,
+            account_name=account.account_name,
             privilege="ReadOnly",
             db_names=[__item.name for __item in db])
         ```

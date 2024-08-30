@@ -23,10 +23,7 @@ class ServiceCertificateArgs:
         The set of arguments for constructing a ServiceCertificate resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
-        :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-               Suffix .sh and .tel are not supported.
+        :param pulumi.Input[str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] lang: The lang.
         :param pulumi.Input[str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
@@ -71,10 +68,7 @@ class ServiceCertificateArgs:
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        Suffix .sh and .tel are not supported.
+        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
         return pulumi.get(self, "certificate_name")
@@ -120,10 +114,7 @@ class _ServiceCertificateState:
         """
         Input properties used for looking up and filtering ServiceCertificate resources.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-               Suffix .sh and .tel are not supported.
+        :param pulumi.Input[str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
@@ -159,10 +150,7 @@ class _ServiceCertificateState:
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        Suffix .sh and .tel are not supported.
+        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
         return pulumi.get(self, "certificate_name")
@@ -240,7 +228,7 @@ class ServiceCertificate(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_service_certificate = alicloud.cas.ServiceCertificate("default",
-            certificate_name=f"tf-example-{default['result']}",
+            certificate_name=f"terraform-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -305,10 +293,7 @@ class ServiceCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-               Suffix .sh and .tel are not supported.
+        :param pulumi.Input[str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
@@ -340,7 +325,7 @@ class ServiceCertificate(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_service_certificate = alicloud.cas.ServiceCertificate("default",
-            certificate_name=f"tf-example-{default['result']}",
+            certificate_name=f"terraform-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -463,10 +448,7 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
-        :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-               Suffix .sh and .tel are not supported.
+        :param pulumi.Input[str] certificate_name: Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
@@ -495,10 +477,7 @@ class ServiceCertificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> pulumi.Output[str]:
         """
-        Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
-        Suffix .sh and .tel are not supported.
+        Name of the Certificate. `certificate_name` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
         return pulumi.get(self, "certificate_name")

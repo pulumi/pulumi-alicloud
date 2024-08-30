@@ -14,7 +14,9 @@ import (
 
 // Provides a Brain Industrial Pid Loop resource.
 //
-// > **NOTE:** Available in v1.117.0+.
+// > **NOTE:** Available since v1.117.0.
+//
+// > **DEPRECATED:**  This resource has been deprecated from version `1.229.1`.
 //
 // ## Example Usage
 //

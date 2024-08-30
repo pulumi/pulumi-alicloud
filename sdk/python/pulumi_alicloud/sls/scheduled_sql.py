@@ -253,13 +253,13 @@ class ScheduledSql(pulumi.CustomResource):
             max=99999)
         default_k_ie4_kv = alicloud.log.Project("defaultKIe4KV",
             description=f"{name}-{default['result']}",
-            name=f"{name}-{default['result']}")
+            project_name=f"{name}-{default['result']}")
         default1_li9we = alicloud.log.Store("default1LI9we",
             hot_ttl=8,
             retention_period=30,
             shard_count=2,
-            project=default_k_ie4_kv.name,
-            name=f"{name}-{default['result']}")
+            project_name=default_k_ie4_kv.project_name,
+            logstore_name=f"{name}-{default['result']}")
         default_scheduled_sql = alicloud.sls.ScheduledSql("default",
             description="example-tf-scheduled-sql-0006",
             schedule={
@@ -274,7 +274,7 @@ class ScheduledSql(pulumi.CustomResource):
                 "sql_type": "searchQuery",
                 "dest_endpoint": "ap-northeast-1.log.aliyuncs.com",
                 "dest_project": "job-e2e-project-jj78kur-ap-southeast-1",
-                "source_logstore": default1_li9we.name,
+                "source_logstore": default1_li9we.logstore_name,
                 "dest_logstore": "example-open-api02",
                 "role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
                 "dest_role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
@@ -288,7 +288,7 @@ class ScheduledSql(pulumi.CustomResource):
                 "data_format": "log2log",
             },
             scheduled_sql_name=name,
-            project=default_k_ie4_kv.name)
+            project=default_k_ie4_kv.project_name)
         ```
 
         ## Import
@@ -339,13 +339,13 @@ class ScheduledSql(pulumi.CustomResource):
             max=99999)
         default_k_ie4_kv = alicloud.log.Project("defaultKIe4KV",
             description=f"{name}-{default['result']}",
-            name=f"{name}-{default['result']}")
+            project_name=f"{name}-{default['result']}")
         default1_li9we = alicloud.log.Store("default1LI9we",
             hot_ttl=8,
             retention_period=30,
             shard_count=2,
-            project=default_k_ie4_kv.name,
-            name=f"{name}-{default['result']}")
+            project_name=default_k_ie4_kv.project_name,
+            logstore_name=f"{name}-{default['result']}")
         default_scheduled_sql = alicloud.sls.ScheduledSql("default",
             description="example-tf-scheduled-sql-0006",
             schedule={
@@ -360,7 +360,7 @@ class ScheduledSql(pulumi.CustomResource):
                 "sql_type": "searchQuery",
                 "dest_endpoint": "ap-northeast-1.log.aliyuncs.com",
                 "dest_project": "job-e2e-project-jj78kur-ap-southeast-1",
-                "source_logstore": default1_li9we.name,
+                "source_logstore": default1_li9we.logstore_name,
                 "dest_logstore": "example-open-api02",
                 "role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
                 "dest_role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
@@ -374,7 +374,7 @@ class ScheduledSql(pulumi.CustomResource):
                 "data_format": "log2log",
             },
             scheduled_sql_name=name,
-            project=default_k_ie4_kv.name)
+            project=default_k_ie4_kv.project_name)
         ```
 
         ## Import

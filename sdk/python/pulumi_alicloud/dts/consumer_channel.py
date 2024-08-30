@@ -239,7 +239,7 @@ class ConsumerChannel(pulumi.CustomResource):
             name=name)
         example_account_privilege = alicloud.rds.AccountPrivilege("example",
             instance_id=example_instance.id,
-            account_name=example_rds_account.name,
+            account_name=example_rds_account.account_name,
             privilege="ReadWrite",
             db_names=[example_database.name])
         example_subscription_job = alicloud.dts.SubscriptionJob("example",
@@ -351,7 +351,7 @@ class ConsumerChannel(pulumi.CustomResource):
             name=name)
         example_account_privilege = alicloud.rds.AccountPrivilege("example",
             instance_id=example_instance.id,
-            account_name=example_rds_account.name,
+            account_name=example_rds_account.account_name,
             privilege="ReadWrite",
             db_names=[example_database.name])
         example_subscription_job = alicloud.dts.SubscriptionJob("example",

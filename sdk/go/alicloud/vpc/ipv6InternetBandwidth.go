@@ -56,8 +56,8 @@ import (
 // vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/21"),
-// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// Name: pulumi.String(name),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// VswitchName: pulumi.String(name),
 // Ipv6CidrBlockMask: pulumi.Int(22),
 // })
 // if err != nil {

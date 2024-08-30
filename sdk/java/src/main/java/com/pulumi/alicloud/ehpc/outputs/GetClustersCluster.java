@@ -20,6 +20,10 @@ public final class GetClustersCluster {
      * 
      */
     private String accountType;
+    /**
+     * @return A list of clustered applications.
+     * 
+     */
     private List<GetClustersClusterApplication> applications;
     /**
      * @return The version number of the client used by the cluster.
@@ -96,6 +100,10 @@ public final class GetClustersCluster {
      * 
      */
     private String loginInstanceType;
+    /**
+     * @return The number of control nodes.
+     * 
+     */
     private Integer managerCount;
     /**
      * @return The instance type of manager nodes.
@@ -107,6 +115,10 @@ public final class GetClustersCluster {
      * 
      */
     private String osTag;
+    /**
+     * @return List of post-installation scripts.
+     * 
+     */
     private List<GetClustersClusterPostInstallScript> postInstallScripts;
     /**
      * @return Mount the remote directory of the shared storage.
@@ -129,7 +141,7 @@ public final class GetClustersCluster {
      */
     private String securityGroupId;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values:
      * 
      */
     private String status;
@@ -163,6 +175,10 @@ public final class GetClustersCluster {
      * 
      */
     private String vswitchId;
+    /**
+     * @return The available zone ID.
+     * 
+     */
     private String zoneId;
 
     private GetClustersCluster() {}
@@ -173,6 +189,10 @@ public final class GetClustersCluster {
     public String accountType() {
         return this.accountType;
     }
+    /**
+     * @return A list of clustered applications.
+     * 
+     */
     public List<GetClustersClusterApplication> applications() {
         return this.applications;
     }
@@ -279,6 +299,10 @@ public final class GetClustersCluster {
     public String loginInstanceType() {
         return this.loginInstanceType;
     }
+    /**
+     * @return The number of control nodes.
+     * 
+     */
     public Integer managerCount() {
         return this.managerCount;
     }
@@ -296,6 +320,10 @@ public final class GetClustersCluster {
     public String osTag() {
         return this.osTag;
     }
+    /**
+     * @return List of post-installation scripts.
+     * 
+     */
     public List<GetClustersClusterPostInstallScript> postInstallScripts() {
         return this.postInstallScripts;
     }
@@ -328,7 +356,7 @@ public final class GetClustersCluster {
         return this.securityGroupId;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values:
      * 
      */
     public String status() {
@@ -376,6 +404,10 @@ public final class GetClustersCluster {
     public String vswitchId() {
         return this.vswitchId;
     }
+    /**
+     * @return The available zone ID.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

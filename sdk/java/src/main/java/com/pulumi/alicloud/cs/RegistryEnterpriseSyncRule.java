@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource will help you to manager Container Registry Enterprise Edition sync rules.
+ * Provides a Container Registry Enterprise Edition Sync Rule resource.
  * 
- * For information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposynctaskbyrule)
+ * For information about Container Registry Enterprise Edition Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
  * 
  * &gt; **NOTE:** Available since v1.90.0.
  * 
@@ -35,14 +35,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRule;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseSyncRuleArgs;
  * import java.util.List;
@@ -59,14 +61,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var source = new RegistryEnterpriseInstance("source", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-source", name))
+ *             .instanceName(String.format("%s-source-%s", name,defaultInteger.result()))
  *             .build());
  * 
  *         var target = new RegistryEnterpriseInstance("target", RegistryEnterpriseInstanceArgs.builder()
@@ -75,7 +86,7 @@ import javax.annotation.Nullable;
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(String.format("%s-target", name))
+ *             .instanceName(String.format("%s-target-%s", name,defaultInteger.result()))
  *             .build());
  * 
  *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
@@ -98,7 +109,6 @@ import javax.annotation.Nullable;
  *             .name(name)
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
- *             .detail("this is a public repo")
  *             .build());
  * 
  *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
@@ -107,20 +117,15 @@ import javax.annotation.Nullable;
  *             .name(name)
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
- *             .detail("this is a public repo")
- *             .build());
- * 
- *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
- *             .current(true)
  *             .build());
  * 
  *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
  *             .name(name)
- *             .targetRegionId(default_.regions()[0].id())
  *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
+ *             .targetRegionId(default_.regions()[0].id())
  *             .tagFilter(".*")
  *             .repoName(sourceRegistryEnterpriseRepo.name())
  *             .targetRepoName(targetRegistryEnterpriseRepo.name())
@@ -134,178 +139,178 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Container Registry Enterprise Edition sync rule can be imported using the id. Format to `{instance_id}:{namespace_name}:{rule_id}`, e.g.
+ * Container Registry Enterprise Edition Sync Rule can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule default `cri-xxx:my-namespace:crsr-yyy`
+ * $ pulumi import alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule example &lt;instance_id&gt;:&lt;namespace_name&gt;:&lt;rule_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule")
 public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResource {
     /**
-     * ID of Container Registry Enterprise Edition source instance.
+     * The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition source instance.
+     * @return The ID of the Container Registry Enterprise Edition source instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * Name of Container Registry Enterprise Edition sync rule.
+     * The name of the sync rule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of Container Registry Enterprise Edition sync rule.
+     * @return The name of the sync rule.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * The namespace name of the source instance.
      * 
      */
     @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
+     * @return The namespace name of the source instance.
      * 
      */
     public Output<String> namespaceName() {
         return this.namespaceName;
     }
     /**
-     * Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * The image repository name of the source instance.
      * 
      */
     @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoName;
 
     /**
-     * @return Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
+     * @return The image repository name of the source instance.
      * 
      */
     public Output<Optional<String>> repoName() {
         return Codegen.optional(this.repoName);
     }
     /**
-     * The uuid of Container Registry Enterprise Edition sync rule.
+     * The ID of the sync rule.
      * 
      */
     @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
-     * @return The uuid of Container Registry Enterprise Edition sync rule.
+     * @return The ID of the sync rule.
      * 
      */
     public Output<String> ruleId() {
         return this.ruleId;
     }
     /**
-     * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * The synchronization direction.
      * 
      */
     @Export(name="syncDirection", refs={String.class}, tree="[0]")
     private Output<String> syncDirection;
 
     /**
-     * @return `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
+     * @return The synchronization direction.
      * 
      */
     public Output<String> syncDirection() {
         return this.syncDirection;
     }
     /**
-     * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * The synchronization scope.
      * 
      */
     @Export(name="syncScope", refs={String.class}, tree="[0]")
     private Output<String> syncScope;
 
     /**
-     * @return `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+     * @return The synchronization scope.
      * 
      */
     public Output<String> syncScope() {
         return this.syncScope;
     }
     /**
-     * The regular expression used to filter image tags for synchronization in the source repository.
+     * The regular expression used to filter image tags.
      * 
      */
     @Export(name="tagFilter", refs={String.class}, tree="[0]")
     private Output<String> tagFilter;
 
     /**
-     * @return The regular expression used to filter image tags for synchronization in the source repository.
+     * @return The regular expression used to filter image tags.
      * 
      */
     public Output<String> tagFilter() {
         return this.tagFilter;
     }
     /**
-     * ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * The ID of the destination instance.
      * 
      */
     @Export(name="targetInstanceId", refs={String.class}, tree="[0]")
     private Output<String> targetInstanceId;
 
     /**
-     * @return ID of Container Registry Enterprise Edition target instance to be synchronized.
+     * @return The ID of the destination instance.
      * 
      */
     public Output<String> targetInstanceId() {
         return this.targetInstanceId;
     }
     /**
-     * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * The namespace name of the destination instance.
      * 
      */
     @Export(name="targetNamespaceName", refs={String.class}, tree="[0]")
     private Output<String> targetNamespaceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
+     * @return The namespace name of the destination instance.
      * 
      */
     public Output<String> targetNamespaceName() {
         return this.targetNamespaceName;
     }
     /**
-     * The target region to be synchronized.
+     * The region ID of the destination instance.
      * 
      */
     @Export(name="targetRegionId", refs={String.class}, tree="[0]")
     private Output<String> targetRegionId;
 
     /**
-     * @return The target region to be synchronized.
+     * @return The region ID of the destination instance.
      * 
      */
     public Output<String> targetRegionId() {
         return this.targetRegionId;
     }
     /**
-     * Name of the target repository.
+     * The image repository name of the destination instance.
      * 
      */
     @Export(name="targetRepoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetRepoName;
 
     /**
-     * @return Name of the target repository.
+     * @return The image repository name of the destination instance.
      * 
      */
     public Output<Optional<String>> targetRepoName() {

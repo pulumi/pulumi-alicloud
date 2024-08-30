@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("example", {
  *     instanceId: exampleInstance.id,
- *     accountName: exampleRdsAccount.name,
+ *     accountName: exampleRdsAccount.accountName,
  *     privilege: "ReadWrite",
  *     dbNames: [exampleDatabase.name],
  * });

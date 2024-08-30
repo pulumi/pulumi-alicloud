@@ -287,7 +287,7 @@ class HAVipAttachment(pulumi.CustomResource):
             instance_name=name,
             user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
         example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("example",
-            havip_id=example_ha_vip.id,
+            ha_vip_id=example_ha_vip.id,
             instance_id=example_instance.id)
         ```
 
@@ -364,7 +364,7 @@ class HAVipAttachment(pulumi.CustomResource):
             instance_name=name,
             user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
         example_ha_vip_attachment = alicloud.vpc.HAVipAttachment("example",
-            havip_id=example_ha_vip.id,
+            ha_vip_id=example_ha_vip.id,
             instance_id=example_instance.id)
         ```
 

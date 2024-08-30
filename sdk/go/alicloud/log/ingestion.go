@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
@@ -55,8 +55,8 @@ import (
 //				return err
 //			}
 //			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
-//				Project:            example.Name,
-//				Name:               pulumi.String("example-store"),
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -67,8 +67,8 @@ import (
 //				return err
 //			}
 //			_, err = log.NewIngestion(ctx, "example", &log.IngestionArgs{
-//				Project:        example.Name,
-//				Logstore:       exampleStore.Name,
+//				Project:        example.ProjectName,
+//				Logstore:       exampleStore.LogstoreName,
 //				IngestionName:  pulumi.String("terraform-example"),
 //				DisplayName:    pulumi.String("terraform-example"),
 //				Description:    pulumi.String("terraform-example"),

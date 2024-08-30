@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
  *
+ * > **NOTE:** From version 1.229.1, support to migrate basic serverless cluster to professional serverless cluster.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -36,18 +38,18 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "ask-example";
+ * const name = config.get("name") || "ask-example-pro";
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
- *     cidrBlock: "10.1.0.0/21",
+ *     cidrBlock: "10.2.0.0/21",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.1.1.0/24",
+ *     cidrBlock: "10.2.1.0/24",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const serverless = new alicloud.cs.ServerlessKubernetes("serverless", {
@@ -76,6 +78,9 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             name: "knative",
+ *         },
+ *         {
+ *             name: "arms-prometheus",
  *         },
  *     ],
  * });
@@ -118,9 +123,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
      */
-    public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[]>;
+    public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[] | undefined>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
@@ -140,11 +145,16 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
-     * whether to create a v2 version cluster.
+     * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      *
      * *Removed params*
      */
-    public readonly createV2Cluster!: pulumi.Output<boolean>;
+    public readonly customSan!: pulumi.Output<string | undefined>;
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    public readonly deleteOptions!: pulumi.Output<outputs.cs.ServerlessKubernetesDeleteOption[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
@@ -156,13 +166,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false.
      */
     public readonly endpointPublicAccessEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     /**
      * The path of kube config, like `~/.kube/config`.
      *
@@ -171,10 +177,14 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
      * Enable log service, Valid value `SLS`.
+     *
+     * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     public readonly loggingType!: pulumi.Output<string | undefined>;
     /**
@@ -198,9 +208,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+     * Nested attribute containing RRSA related data for your cluster.
      */
-    public readonly rrsaMetadata!: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
+    public /*out*/ readonly rrsaMetadata!: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
@@ -210,11 +220,13 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     /**
-     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
     public readonly serviceDiscoveryTypes!: pulumi.Output<string[] | undefined>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`.
+     *
+     * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
     public readonly slsProjectName!: pulumi.Output<string>;
     /**
@@ -230,15 +242,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly version!: pulumi.Output<string>;
     /**
-     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
     public readonly vpcId!: pulumi.Output<string>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     *
-     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-     */
-    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
@@ -255,7 +261,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ServerlessKubernetesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ServerlessKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerlessKubernetesArgs | ServerlessKubernetesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -266,11 +272,11 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["clientKey"] = state ? state.clientKey : undefined;
             resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
             resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
-            resourceInputs["createV2Cluster"] = state ? state.createV2Cluster : undefined;
+            resourceInputs["customSan"] = state ? state.customSan : undefined;
+            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             resourceInputs["loggingType"] = state ? state.loggingType : undefined;
@@ -289,24 +295,20 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["timeZone"] = state ? state.timeZone : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpcId'");
-            }
             resourceInputs["addons"] = args ? args.addons : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
-            resourceInputs["createV2Cluster"] = args ? args.createV2Cluster : undefined;
+            resourceInputs["customSan"] = args ? args.customSan : undefined;
+            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
             resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             resourceInputs["loggingType"] = args ? args.loggingType : undefined;
@@ -316,7 +318,6 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["privateZone"] = args ? args.privateZone : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
-            resourceInputs["rrsaMetadata"] = args ? args.rrsaMetadata : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             resourceInputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
@@ -325,9 +326,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["rrsaMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerlessKubernetes.__pulumiType, name, resourceInputs, opts);
@@ -339,7 +340,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  */
 export interface ServerlessKubernetesState {
     /**
-     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
@@ -361,11 +362,16 @@ export interface ServerlessKubernetesState {
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * whether to create a v2 version cluster.
+     * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      *
      * *Removed params*
      */
-    createV2Cluster?: pulumi.Input<boolean>;
+    customSan?: pulumi.Input<string>;
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[]>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
@@ -377,13 +383,9 @@ export interface ServerlessKubernetesState {
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false.
      */
     endpointPublicAccessEnabled?: pulumi.Input<boolean>;
-    /**
-     * Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
      *
@@ -392,10 +394,14 @@ export interface ServerlessKubernetesState {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable log service, Valid value `SLS`.
+     *
+     * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     loggingType?: pulumi.Input<string>;
     /**
@@ -419,7 +425,7 @@ export interface ServerlessKubernetesState {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
+     * Nested attribute containing RRSA related data for your cluster.
      */
     rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
@@ -431,11 +437,13 @@ export interface ServerlessKubernetesState {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
     serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`.
+     *
+     * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
     slsProjectName?: pulumi.Input<string>;
     /**
@@ -451,15 +459,9 @@ export interface ServerlessKubernetesState {
      */
     version?: pulumi.Input<string>;
     /**
-     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
     vpcId?: pulumi.Input<string>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     *
-     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-     */
-    vswitchId?: pulumi.Input<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
@@ -475,7 +477,7 @@ export interface ServerlessKubernetesState {
  */
 export interface ServerlessKubernetesArgs {
     /**
-     * You can specific network plugin,log component,ingress component and so on. See `addons` below.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
@@ -497,11 +499,16 @@ export interface ServerlessKubernetesArgs {
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * whether to create a v2 version cluster.
+     * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      *
      * *Removed params*
      */
-    createV2Cluster?: pulumi.Input<boolean>;
+    customSan?: pulumi.Input<string>;
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[]>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
@@ -513,13 +520,9 @@ export interface ServerlessKubernetesArgs {
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false.
      */
     endpointPublicAccessEnabled?: pulumi.Input<boolean>;
-    /**
-     * Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
-     */
-    forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
      *
@@ -528,10 +531,14 @@ export interface ServerlessKubernetesArgs {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable log service, Valid value `SLS`.
+     *
+     * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     loggingType?: pulumi.Input<string>;
     /**
@@ -555,10 +562,6 @@ export interface ServerlessKubernetesArgs {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Nested attribute containing RRSA related data for your cluster. See `rrsaMetadata` below.
-     */
-    rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
-    /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -567,11 +570,13 @@ export interface ServerlessKubernetesArgs {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
+     * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
     serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`.
+     *
+     * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
     slsProjectName?: pulumi.Input<string>;
     /**
@@ -587,15 +592,9 @@ export interface ServerlessKubernetesArgs {
      */
     version?: pulumi.Input<string>;
     /**
-     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
+     * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
-    vpcId: pulumi.Input<string>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     *
-     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-     */
-    vswitchId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */

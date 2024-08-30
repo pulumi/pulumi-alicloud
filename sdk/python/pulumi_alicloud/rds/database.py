@@ -34,7 +34,13 @@ class DatabaseArgs:
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        :param pulumi.Input[str] name: The name of the database. 
+               * > **NOTE:**
+               The name must be 2 to 64 characters in length.
+               The name must start with a lowercase letter and end with a lowercase letter or digit.
+               The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+               The name must be unique within the instance.
+               For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if character_set is not None:
@@ -95,7 +101,13 @@ class DatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        The name of the database. 
+        * > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         return pulumi.get(self, "name")
 
@@ -127,7 +139,13 @@ class _DatabaseState:
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        :param pulumi.Input[str] name: The name of the database. 
+               * > **NOTE:**
+               The name must be 2 to 64 characters in length.
+               The name must start with a lowercase letter and end with a lowercase letter or digit.
+               The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+               The name must be unique within the instance.
+               For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
@@ -189,7 +207,13 @@ class _DatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        The name of the database. 
+        * > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         return pulumi.get(self, "name")
 
@@ -269,7 +293,13 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        :param pulumi.Input[str] name: The name of the database. 
+               * > **NOTE:**
+               The name must be 2 to 64 characters in length.
+               The name must start with a lowercase letter and end with a lowercase letter or digit.
+               The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+               The name must be unique within the instance.
+               For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         ...
     @overload
@@ -391,7 +421,13 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        :param pulumi.Input[str] name: The name of the database. 
+               * > **NOTE:**
+               The name must be 2 to 64 characters in length.
+               The name must start with a lowercase letter and end with a lowercase letter or digit.
+               The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+               The name must be unique within the instance.
+               For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,7 +478,13 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
+        The name of the database. 
+        * > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         """
         return pulumi.get(self, "name")
 

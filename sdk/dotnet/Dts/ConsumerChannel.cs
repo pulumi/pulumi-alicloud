@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Dts
     ///     var exampleAccountPrivilege = new AliCloud.Rds.AccountPrivilege("example", new()
     ///     {
     ///         InstanceId = exampleInstance.Id,
-    ///         AccountName = exampleRdsAccount.Name,
+    ///         AccountName = exampleRdsAccount.AccountName,
     ///         Privilege = "ReadWrite",
     ///         DbNames = new[]
     ///         {

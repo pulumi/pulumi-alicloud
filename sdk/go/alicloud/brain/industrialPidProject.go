@@ -14,9 +14,9 @@ import (
 
 // Provides a Brain Industrial Pid Project resource.
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
-// > **DEPRECATED:**  This resource has been from version `1.222.0`.
+// > **DEPRECATED:**  This resource has been deprecated from version `1.222.0`.
 //
 // ## Example Usage
 //

@@ -133,14 +133,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         Version = "2.0",
     ///         Type = "default",
-    ///         ProjectName = example.Name,
+    ///         ProjectName = example.ProjectName,
     ///         AlertName = "example-alert",
     ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
@@ -160,7 +160,6 @@ namespace Pulumi.AliCloud.Log
     ///         NoDataSeverity = 8,
     ///         SendResolved = true,
     ///         AutoAnnotation = true,
-    ///         Dashboard = "example-dashboard",
     ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
     ///         {
     ///             Type = "FixedRate",
@@ -174,27 +173,29 @@ namespace Pulumi.AliCloud.Log
     ///         {
     ///             new AliCloud.Log.Inputs.AlertQueryListArgs
     ///             {
-    ///                 Store = exampleStore.Name,
+    ///                 Store = exampleStore.LogstoreName,
     ///                 StoreType = "log",
-    ///                 Project = example.Name,
+    ///                 Project = example.ProjectName,
     ///                 Region = "cn-heyuan",
     ///                 ChartTitle = "chart_title",
     ///                 Start = "-60s",
     ///                 End = "20s",
     ///                 Query = "* AND aliyun | select count(1) as cnt",
     ///                 PowerSqlMode = "auto",
+    ///                 DashboardId = "example-dashboard",
     ///             },
     ///             new AliCloud.Log.Inputs.AlertQueryListArgs
     ///             {
-    ///                 Store = exampleStore.Name,
+    ///                 Store = exampleStore.LogstoreName,
     ///                 StoreType = "log",
-    ///                 Project = example.Name,
+    ///                 Project = example.ProjectName,
     ///                 Region = "cn-heyuan",
     ///                 ChartTitle = "chart_title",
     ///                 Start = "-60s",
     ///                 End = "20s",
     ///                 Query = "error | select count(1) as error_cnt",
     ///                 PowerSqlMode = "enable",
+    ///                 DashboardId = "example-dashboard",
     ///             },
     ///         },
     ///         Labels = new[]
@@ -299,14 +300,14 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Name = $"terraform-example-{@default.Result}",
+    ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = example.Name,
-    ///         Name = "example-store",
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -318,7 +319,7 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         Version = "2.0",
     ///         Type = "tpl",
-    ///         ProjectName = example.Name,
+    ///         ProjectName = example.ProjectName,
     ///         AlertName = "example-alert",
     ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
@@ -343,7 +344,7 @@ namespace Pulumi.AliCloud.Log
     ///                 { "default.action_policy", "sls.app.ack.builtin" },
     ///                 { "default.severity", "6" },
     ///                 { "sendResolved", "false" },
-    ///                 { "default.project", example.Name },
+    ///                 { "default.project", example.ProjectName },
     ///                 { "default.logstore", "k8s-event" },
     ///                 { "default.repeatInterval", "4h" },
     ///                 { "trigger_threshold", "1" },

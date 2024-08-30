@@ -49,6 +49,7 @@ import (
 // ```
 //
 // create a subscription instance
+//
 // ```go
 // package main
 //

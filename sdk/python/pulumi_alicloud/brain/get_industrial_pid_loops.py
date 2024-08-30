@@ -75,6 +75,9 @@ class GetIndustrialPidLoopsResult:
     @property
     @pulumi.getter
     def loops(self) -> Sequence['outputs.GetIndustrialPidLoopsLoopResult']:
+        """
+        A list of Brain Industrial Pid Loops. Each element contains the following attributes:
+        """
         return pulumi.get(self, "loops")
 
     @property
@@ -85,6 +88,9 @@ class GetIndustrialPidLoopsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Pid Loop names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -95,6 +101,9 @@ class GetIndustrialPidLoopsResult:
     @property
     @pulumi.getter(name="pidLoopName")
     def pid_loop_name(self) -> Optional[str]:
+        """
+        The name of Pid Loop.
+        """
         return pulumi.get(self, "pid_loop_name")
 
     @property
@@ -105,6 +114,9 @@ class GetIndustrialPidLoopsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of Pid Loop.
+        """
         return pulumi.get(self, "status")
 
 
@@ -137,7 +149,9 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
     """
     This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 
@@ -197,7 +211,9 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
     """
     This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
+
+    > **DEPRECATED:**  This data source has been deprecated from version `1.229.1`.
 
     ## Example Usage
 

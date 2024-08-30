@@ -19,17 +19,21 @@ class BackupPolicyArgs:
                  archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
                  archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_interval: Optional[pulumi.Input[str]] = None,
+                 backup_method: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_priority: Optional[pulumi.Input[int]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  compress_type: Optional[pulumi.Input[str]] = None,
                  enable_backup_log: Optional[pulumi.Input[bool]] = None,
+                 enable_increment_data_backup: Optional[pulumi.Input[bool]] = None,
                  high_space_usage_protection: Optional[pulumi.Input[str]] = None,
                  local_log_retention_hours: Optional[pulumi.Input[int]] = None,
                  local_log_retention_space: Optional[pulumi.Input[int]] = None,
                  log_backup: Optional[pulumi.Input[bool]] = None,
                  log_backup_frequency: Optional[pulumi.Input[str]] = None,
+                 log_backup_local_retention_number: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -51,20 +55,34 @@ class BackupPolicyArgs:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+        :param pulumi.Input[str] backup_method: The backup method of the instance. Valid values:
+               - Physical: physical backup
+               - Snapshot: snapshot backup
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
+               - 1: secondary instance preferred
+               - 2: primary instance preferred
+               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
-        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        :param pulumi.Input[bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
+               - false (default): disables the feature.
+               - true: enables the feature.
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        :param pulumi.Input[int] log_backup_local_retention_number: The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+               ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
@@ -84,11 +102,15 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "archive_backup_retention_period", archive_backup_retention_period)
         if backup_interval is not None:
             pulumi.set(__self__, "backup_interval", backup_interval)
+        if backup_method is not None:
+            pulumi.set(__self__, "backup_method", backup_method)
         if backup_periods is not None:
             warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_priority is not None:
+            pulumi.set(__self__, "backup_priority", backup_priority)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_time is not None:
@@ -102,6 +124,8 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "compress_type", compress_type)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+        if enable_increment_data_backup is not None:
+            pulumi.set(__self__, "enable_increment_data_backup", enable_increment_data_backup)
         if high_space_usage_protection is not None:
             pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
         if local_log_retention_hours is not None:
@@ -115,6 +139,8 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "log_backup", log_backup)
         if log_backup_frequency is not None:
             pulumi.set(__self__, "log_backup_frequency", log_backup_frequency)
+        if log_backup_local_retention_number is not None:
+            pulumi.set(__self__, "log_backup_local_retention_number", log_backup_local_retention_number)
         if log_backup_retention_period is not None:
             pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if log_retention_period is not None:
@@ -195,14 +221,29 @@ class BackupPolicyArgs:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
-
-        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
     def backup_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_interval", value)
+
+    @property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup method of the instance. Valid values:
+        - Physical: physical backup
+        - Snapshot: snapshot backup
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+
+        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+        """
+        return pulumi.get(self, "backup_method")
+
+    @backup_method.setter
+    def backup_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_method", value)
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -216,6 +257,21 @@ class BackupPolicyArgs:
     @backup_periods.setter
     def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupPriority")
+    def backup_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether the backup settings of a secondary instance are configured. Valid values:
+        - 1: secondary instance preferred
+        - 2: primary instance preferred
+        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+        """
+        return pulumi.get(self, "backup_priority")
+
+    @backup_priority.setter
+    def backup_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_priority", value)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -246,7 +302,7 @@ class BackupPolicyArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
         > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         """
         return pulumi.get(self, "category")
@@ -278,6 +334,21 @@ class BackupPolicyArgs:
     @enable_backup_log.setter
     def enable_backup_log(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_backup_log", value)
+
+    @property
+    @pulumi.getter(name="enableIncrementDataBackup")
+    def enable_increment_data_backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable incremental backup. Valid values:
+        - false (default): disables the feature.
+        - true: enables the feature.
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_increment_data_backup")
+
+    @enable_increment_data_backup.setter
+    def enable_increment_data_backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_increment_data_backup", value)
 
     @property
     @pulumi.getter(name="highSpaceUsageProtection")
@@ -339,6 +410,19 @@ class BackupPolicyArgs:
     @log_backup_frequency.setter
     def log_backup_frequency(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_backup_frequency", value)
+
+    @property
+    @pulumi.getter(name="logBackupLocalRetentionNumber")
+    def log_backup_local_retention_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+        ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
+        """
+        return pulumi.get(self, "log_backup_local_retention_number")
+
+    @log_backup_local_retention_number.setter
+    def log_backup_local_retention_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_backup_local_retention_number", value)
 
     @property
     @pulumi.getter(name="logBackupRetentionPeriod")
@@ -425,18 +509,22 @@ class _BackupPolicyState:
                  archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
                  archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_interval: Optional[pulumi.Input[str]] = None,
+                 backup_method: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_priority: Optional[pulumi.Input[int]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  compress_type: Optional[pulumi.Input[str]] = None,
                  enable_backup_log: Optional[pulumi.Input[bool]] = None,
+                 enable_increment_data_backup: Optional[pulumi.Input[bool]] = None,
                  high_space_usage_protection: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  local_log_retention_hours: Optional[pulumi.Input[int]] = None,
                  local_log_retention_space: Optional[pulumi.Input[int]] = None,
                  log_backup: Optional[pulumi.Input[bool]] = None,
                  log_backup_frequency: Optional[pulumi.Input[str]] = None,
+                 log_backup_local_retention_number: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -457,21 +545,35 @@ class _BackupPolicyState:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+        :param pulumi.Input[str] backup_method: The backup method of the instance. Valid values:
+               - Physical: physical backup
+               - Snapshot: snapshot backup
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
+               - 1: secondary instance preferred
+               - 2: primary instance preferred
+               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
-        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        :param pulumi.Input[bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
+               - false (default): disables the feature.
+               - true: enables the feature.
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        :param pulumi.Input[int] log_backup_local_retention_number: The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+               ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
@@ -490,11 +592,15 @@ class _BackupPolicyState:
             pulumi.set(__self__, "archive_backup_retention_period", archive_backup_retention_period)
         if backup_interval is not None:
             pulumi.set(__self__, "backup_interval", backup_interval)
+        if backup_method is not None:
+            pulumi.set(__self__, "backup_method", backup_method)
         if backup_periods is not None:
             warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_priority is not None:
+            pulumi.set(__self__, "backup_priority", backup_priority)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_time is not None:
@@ -508,6 +614,8 @@ class _BackupPolicyState:
             pulumi.set(__self__, "compress_type", compress_type)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+        if enable_increment_data_backup is not None:
+            pulumi.set(__self__, "enable_increment_data_backup", enable_increment_data_backup)
         if high_space_usage_protection is not None:
             pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
         if instance_id is not None:
@@ -523,6 +631,8 @@ class _BackupPolicyState:
             pulumi.set(__self__, "log_backup", log_backup)
         if log_backup_frequency is not None:
             pulumi.set(__self__, "log_backup_frequency", log_backup_frequency)
+        if log_backup_local_retention_number is not None:
+            pulumi.set(__self__, "log_backup_local_retention_number", log_backup_local_retention_number)
         if log_backup_retention_period is not None:
             pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if log_retention_period is not None:
@@ -591,14 +701,29 @@ class _BackupPolicyState:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
-
-        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
     def backup_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_interval", value)
+
+    @property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup method of the instance. Valid values:
+        - Physical: physical backup
+        - Snapshot: snapshot backup
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+
+        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+        """
+        return pulumi.get(self, "backup_method")
+
+    @backup_method.setter
+    def backup_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_method", value)
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -612,6 +737,21 @@ class _BackupPolicyState:
     @backup_periods.setter
     def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupPriority")
+    def backup_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether the backup settings of a secondary instance are configured. Valid values:
+        - 1: secondary instance preferred
+        - 2: primary instance preferred
+        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+        """
+        return pulumi.get(self, "backup_priority")
+
+    @backup_priority.setter
+    def backup_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_priority", value)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -642,7 +782,7 @@ class _BackupPolicyState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
         > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         """
         return pulumi.get(self, "category")
@@ -674,6 +814,21 @@ class _BackupPolicyState:
     @enable_backup_log.setter
     def enable_backup_log(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_backup_log", value)
+
+    @property
+    @pulumi.getter(name="enableIncrementDataBackup")
+    def enable_increment_data_backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable incremental backup. Valid values:
+        - false (default): disables the feature.
+        - true: enables the feature.
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_increment_data_backup")
+
+    @enable_increment_data_backup.setter
+    def enable_increment_data_backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_increment_data_backup", value)
 
     @property
     @pulumi.getter(name="highSpaceUsageProtection")
@@ -747,6 +902,19 @@ class _BackupPolicyState:
     @log_backup_frequency.setter
     def log_backup_frequency(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_backup_frequency", value)
+
+    @property
+    @pulumi.getter(name="logBackupLocalRetentionNumber")
+    def log_backup_local_retention_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+        ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
+        """
+        return pulumi.get(self, "log_backup_local_retention_number")
+
+    @log_backup_local_retention_number.setter
+    def log_backup_local_retention_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_backup_local_retention_number", value)
 
     @property
     @pulumi.getter(name="logBackupRetentionPeriod")
@@ -835,18 +1003,22 @@ class BackupPolicy(pulumi.CustomResource):
                  archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
                  archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_interval: Optional[pulumi.Input[str]] = None,
+                 backup_method: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_priority: Optional[pulumi.Input[int]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  compress_type: Optional[pulumi.Input[str]] = None,
                  enable_backup_log: Optional[pulumi.Input[bool]] = None,
+                 enable_increment_data_backup: Optional[pulumi.Input[bool]] = None,
                  high_space_usage_protection: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  local_log_retention_hours: Optional[pulumi.Input[int]] = None,
                  local_log_retention_space: Optional[pulumi.Input[int]] = None,
                  log_backup: Optional[pulumi.Input[bool]] = None,
                  log_backup_frequency: Optional[pulumi.Input[str]] = None,
+                 log_backup_local_retention_number: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -913,21 +1085,35 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+        :param pulumi.Input[str] backup_method: The backup method of the instance. Valid values:
+               - Physical: physical backup
+               - Snapshot: snapshot backup
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
+               - 1: secondary instance preferred
+               - 2: primary instance preferred
+               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
-        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        :param pulumi.Input[bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
+               - false (default): disables the feature.
+               - true: enables the feature.
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        :param pulumi.Input[int] log_backup_local_retention_number: The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+               ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
@@ -1008,18 +1194,22 @@ class BackupPolicy(pulumi.CustomResource):
                  archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
                  archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_interval: Optional[pulumi.Input[str]] = None,
+                 backup_method: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_priority: Optional[pulumi.Input[int]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  compress_type: Optional[pulumi.Input[str]] = None,
                  enable_backup_log: Optional[pulumi.Input[bool]] = None,
+                 enable_increment_data_backup: Optional[pulumi.Input[bool]] = None,
                  high_space_usage_protection: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  local_log_retention_hours: Optional[pulumi.Input[int]] = None,
                  local_log_retention_space: Optional[pulumi.Input[int]] = None,
                  log_backup: Optional[pulumi.Input[bool]] = None,
                  log_backup_frequency: Optional[pulumi.Input[str]] = None,
+                 log_backup_local_retention_number: Optional[pulumi.Input[int]] = None,
                  log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1039,12 +1229,15 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["archive_backup_keep_policy"] = archive_backup_keep_policy
             __props__.__dict__["archive_backup_retention_period"] = archive_backup_retention_period
             __props__.__dict__["backup_interval"] = backup_interval
+            __props__.__dict__["backup_method"] = backup_method
             __props__.__dict__["backup_periods"] = backup_periods
+            __props__.__dict__["backup_priority"] = backup_priority
             __props__.__dict__["backup_retention_period"] = backup_retention_period
             __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["category"] = category
             __props__.__dict__["compress_type"] = compress_type
             __props__.__dict__["enable_backup_log"] = enable_backup_log
+            __props__.__dict__["enable_increment_data_backup"] = enable_increment_data_backup
             __props__.__dict__["high_space_usage_protection"] = high_space_usage_protection
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -1053,6 +1246,7 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["local_log_retention_space"] = local_log_retention_space
             __props__.__dict__["log_backup"] = log_backup
             __props__.__dict__["log_backup_frequency"] = log_backup_frequency
+            __props__.__dict__["log_backup_local_retention_number"] = log_backup_local_retention_number
             __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
             __props__.__dict__["log_retention_period"] = log_retention_period
             __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
@@ -1073,18 +1267,22 @@ class BackupPolicy(pulumi.CustomResource):
             archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
             archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
             backup_interval: Optional[pulumi.Input[str]] = None,
+            backup_method: Optional[pulumi.Input[str]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            backup_priority: Optional[pulumi.Input[int]] = None,
             backup_retention_period: Optional[pulumi.Input[int]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
             compress_type: Optional[pulumi.Input[str]] = None,
             enable_backup_log: Optional[pulumi.Input[bool]] = None,
+            enable_increment_data_backup: Optional[pulumi.Input[bool]] = None,
             high_space_usage_protection: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             local_log_retention_hours: Optional[pulumi.Input[int]] = None,
             local_log_retention_space: Optional[pulumi.Input[int]] = None,
             log_backup: Optional[pulumi.Input[bool]] = None,
             log_backup_frequency: Optional[pulumi.Input[str]] = None,
+            log_backup_local_retention_number: Optional[pulumi.Input[int]] = None,
             log_backup_retention_period: Optional[pulumi.Input[int]] = None,
             log_retention_period: Optional[pulumi.Input[int]] = None,
             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1110,21 +1308,35 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+        :param pulumi.Input[str] backup_method: The backup method of the instance. Valid values:
+               - Physical: physical backup
+               - Snapshot: snapshot backup
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
+               - 1: secondary instance preferred
+               - 2: primary instance preferred
+               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
-        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
         :param pulumi.Input[bool] enable_backup_log: Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        :param pulumi.Input[bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
+               - false (default): disables the feature.
+               - true: enables the feature.
+               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        :param pulumi.Input[int] log_backup_local_retention_number: The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+               ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
@@ -1143,18 +1355,22 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["archive_backup_keep_policy"] = archive_backup_keep_policy
         __props__.__dict__["archive_backup_retention_period"] = archive_backup_retention_period
         __props__.__dict__["backup_interval"] = backup_interval
+        __props__.__dict__["backup_method"] = backup_method
         __props__.__dict__["backup_periods"] = backup_periods
+        __props__.__dict__["backup_priority"] = backup_priority
         __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["category"] = category
         __props__.__dict__["compress_type"] = compress_type
         __props__.__dict__["enable_backup_log"] = enable_backup_log
+        __props__.__dict__["enable_increment_data_backup"] = enable_increment_data_backup
         __props__.__dict__["high_space_usage_protection"] = high_space_usage_protection
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["local_log_retention_hours"] = local_log_retention_hours
         __props__.__dict__["local_log_retention_space"] = local_log_retention_space
         __props__.__dict__["log_backup"] = log_backup
         __props__.__dict__["log_backup_frequency"] = log_backup_frequency
+        __props__.__dict__["log_backup_local_retention_number"] = log_backup_local_retention_number
         __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
         __props__.__dict__["log_retention_period"] = log_retention_period
         __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
@@ -1200,10 +1416,21 @@ class BackupPolicy(pulumi.CustomResource):
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+        """
+        return pulumi.get(self, "backup_interval")
+
+    @property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> pulumi.Output[str]:
+        """
+        The backup method of the instance. Valid values:
+        - Physical: physical backup
+        - Snapshot: snapshot backup
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
 
         > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
-        return pulumi.get(self, "backup_interval")
+        return pulumi.get(self, "backup_method")
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -1213,6 +1440,17 @@ class BackupPolicy(pulumi.CustomResource):
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         return pulumi.get(self, "backup_periods")
+
+    @property
+    @pulumi.getter(name="backupPriority")
+    def backup_priority(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies whether the backup settings of a secondary instance are configured. Valid values:
+        - 1: secondary instance preferred
+        - 2: primary instance preferred
+        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+        """
+        return pulumi.get(self, "backup_priority")
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -1235,7 +1473,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         """
-        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+        Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
         > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         """
         return pulumi.get(self, "category")
@@ -1255,6 +1493,17 @@ class BackupPolicy(pulumi.CustomResource):
         Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         """
         return pulumi.get(self, "enable_backup_log")
+
+    @property
+    @pulumi.getter(name="enableIncrementDataBackup")
+    def enable_increment_data_backup(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable incremental backup. Valid values:
+        - false (default): disables the feature.
+        - true: enables the feature.
+        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_increment_data_backup")
 
     @property
     @pulumi.getter(name="highSpaceUsageProtection")
@@ -1304,6 +1553,15 @@ class BackupPolicy(pulumi.CustomResource):
         Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         """
         return pulumi.get(self, "log_backup_frequency")
+
+    @property
+    @pulumi.getter(name="logBackupLocalRetentionNumber")
+    def log_backup_local_retention_number(self) -> pulumi.Output[int]:
+        """
+        The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
+        ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
+        """
+        return pulumi.get(self, "log_backup_local_retention_number")
 
     @property
     @pulumi.getter(name="logBackupRetentionPeriod")

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
- *     name: `terraform-example-${_default.result}`,
+ *     projectName: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  *     tags: {
  *         Created: "TF",
@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const exampleStore = new alicloud.log.Store("example", {
- *     project: example.name,
- *     name: "example-store",
+ *     projectName: example.projectName,
+ *     logstoreName: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -43,8 +43,8 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const exampleOssExport = new alicloud.log.OssExport("example", {
- *     projectName: example.name,
- *     logstoreName: exampleStore.name,
+ *     projectName: example.projectName,
+ *     logstoreName: exampleStore.logstoreName,
  *     exportName: "terraform-example",
  *     displayName: "terraform-example",
  *     bucket: "example-bucket",
