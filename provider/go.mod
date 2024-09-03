@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-alicloud/provider/v3
 
-go 1.21.12
+go 1.22
+
+toolchain go1.22.6
 
 replace (
 	// We depend on the latest v1 for compatibility.
@@ -24,8 +26,8 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 require (
 	github.com/aliyun/terraform-provider-alicloud v1.229.1
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
-	github.com/pulumi/pulumi/sdk/v3 v3.129.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.2-0.20240903170302-5a498cc99569
+	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 )
 
 require (
@@ -239,6 +241,7 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
+	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.1-0.20220228012449-10b1cf09e00b // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
@@ -256,7 +259,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.14.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.129.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.130.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -297,6 +300,7 @@ require (
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
+	github.com/yuin/goldmark-meta v1.1.0 // indirect
 	github.com/zclconf/go-cty v1.14.4 // indirect
 	github.com/zclconf/go-cty-yaml v1.0.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
