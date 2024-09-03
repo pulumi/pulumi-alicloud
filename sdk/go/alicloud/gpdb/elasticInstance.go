@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
-// For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
+// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
 //
 // > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
 //
@@ -110,11 +109,9 @@ type ElasticInstance struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringOutput `pulumi:"instanceSpec"`
-	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDuration pulumi.IntPtrOutput `pulumi:"paymentDuration"`
-	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDurationUnit pulumi.StringPtrOutput `pulumi:"paymentDurationUnit"`
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
@@ -209,11 +206,9 @@ type elasticInstanceState struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDuration *int `pulumi:"paymentDuration"`
-	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDurationUnit *string `pulumi:"paymentDurationUnit"`
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -258,11 +253,9 @@ type ElasticInstanceState struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringPtrInput
-	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDuration pulumi.IntPtrInput
-	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDurationUnit pulumi.StringPtrInput
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -309,11 +302,9 @@ type elasticInstanceArgs struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec string `pulumi:"instanceSpec"`
-	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDuration *int `pulumi:"paymentDuration"`
-	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDurationUnit *string `pulumi:"paymentDurationUnit"`
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -353,11 +344,9 @@ type ElasticInstanceArgs struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringInput
-	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDuration pulumi.IntPtrInput
-	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-	// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+	// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 	PaymentDurationUnit pulumi.StringPtrInput
 	// Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -511,14 +500,12 @@ func (o ElasticInstanceOutput) InstanceSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticInstance) pulumi.StringOutput { return v.InstanceSpec }).(pulumi.StringOutput)
 }
 
-// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
-// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 func (o ElasticInstanceOutput) PaymentDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElasticInstance) pulumi.IntPtrOutput { return v.PaymentDuration }).(pulumi.IntPtrOutput)
 }
 
-// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.\
-// **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
 func (o ElasticInstanceOutput) PaymentDurationUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticInstance) pulumi.StringPtrOutput { return v.PaymentDurationUnit }).(pulumi.StringPtrOutput)
 }

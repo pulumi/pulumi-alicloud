@@ -113,7 +113,7 @@ type Plugin struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData pulumi.StringOutput `pulumi:"pluginData"`
-	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 	PluginName pulumi.StringOutput `pulumi:"pluginName"`
 	// The type of the plug-in. Valid values:
 	// - "trafficControl"
@@ -180,7 +180,7 @@ type pluginState struct {
 	Description *string `pulumi:"description"`
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData *string `pulumi:"pluginData"`
-	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 	PluginName *string `pulumi:"pluginName"`
 	// The type of the plug-in. Valid values:
 	// - "trafficControl"
@@ -209,7 +209,7 @@ type PluginState struct {
 	Description pulumi.StringPtrInput
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData pulumi.StringPtrInput
-	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 	PluginName pulumi.StringPtrInput
 	// The type of the plug-in. Valid values:
 	// - "trafficControl"
@@ -240,7 +240,7 @@ type pluginArgs struct {
 	Description *string `pulumi:"description"`
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData string `pulumi:"pluginData"`
-	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 	PluginName string `pulumi:"pluginName"`
 	// The type of the plug-in. Valid values:
 	// - "trafficControl"
@@ -268,7 +268,7 @@ type PluginArgs struct {
 	Description pulumi.StringPtrInput
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData pulumi.StringInput
-	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 	PluginName pulumi.StringInput
 	// The type of the plug-in. Valid values:
 	// - "trafficControl"
@@ -392,7 +392,7 @@ func (o PluginOutput) PluginData() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.PluginData }).(pulumi.StringOutput)
 }
 
-// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
 func (o PluginOutput) PluginName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.PluginName }).(pulumi.StringOutput)
 }

@@ -77,23 +77,6 @@ import * as utilities from "../utilities";
  * });
  * export const eni0Name = defaultGetNetworkInterfaces.apply(defaultGetNetworkInterfaces => defaultGetNetworkInterfaces.interfaces?.[0]?.name);
  * ```
- *
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `ids` - (Optional)  A list of ENI IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
- * * `vpcId` - (Optional) The VPC ID linked to ENIs.
- * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
- * * `privateIp` - (Optional) The primary private IP address of the ENI.
- * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
- * * `name` - (Optional) The name of the ENIs.
- * * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
- * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
- * * `tags` - (Optional) A map of tags assigned to ENIs.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
- * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
  */
 export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
@@ -123,31 +106,43 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
  * A collection of arguments for invoking getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesArgs {
+    /**
+     * A list of ENI IDs.
+     */
     ids?: string[];
     /**
-     * ID of the instance that the ENI is attached to.
+     * The ECS instance ID that the ENI is attached to.
      */
     instanceId?: string;
     /**
-     * Name of the ENI.
+     * The name of the ENIs.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     name?: string;
+    /**
+     * A regex string to filter results by ENI name.
+     */
     nameRegex?: string;
     networkInterfaceName?: string;
+    /**
+     * The name of output file that saves the filter results.
+     */
     outputFile?: string;
     primaryIpAddress?: string;
     /**
-     * Primary private IP of the ENI.
+     * The primary private IP address of the ENI.
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     privateIp?: string;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the network interface belongs.
      */
     resourceGroupId?: string;
+    /**
+     * The security group ID linked to ENIs.
+     */
     securityGroupId?: string;
     serviceManaged?: boolean;
     /**
@@ -155,16 +150,19 @@ export interface GetNetworkInterfacesArgs {
      */
     status?: string;
     /**
-     * A map of tags assigned to the ENI.
+     * A map of tags assigned to ENIs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The type of ENIs, Only support for "Primary" or "Secondary".
+     */
     type?: string;
     /**
-     * ID of the VPC that the ENI belongs to.
+     * The VPC ID linked to ENIs.
      */
     vpcId?: string;
     /**
-     * ID of the vSwitch that the ENI is linked to.
+     * The vSwitch ID linked to ENIs.
      */
     vswitchId?: string;
 }
@@ -298,23 +296,6 @@ export interface GetNetworkInterfacesResult {
  * });
  * export const eni0Name = defaultGetNetworkInterfaces.apply(defaultGetNetworkInterfaces => defaultGetNetworkInterfaces.interfaces?.[0]?.name);
  * ```
- *
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `ids` - (Optional)  A list of ENI IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
- * * `vpcId` - (Optional) The VPC ID linked to ENIs.
- * * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
- * * `privateIp` - (Optional) The primary private IP address of the ENI.
- * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
- * * `name` - (Optional) The name of the ENIs.
- * * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
- * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
- * * `tags` - (Optional) A map of tags assigned to ENIs.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
- * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
  */
 export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getNetworkInterfaces(a, opts))
@@ -324,31 +305,43 @@ export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs
  * A collection of arguments for invoking getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesOutputArgs {
+    /**
+     * A list of ENI IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of the instance that the ENI is attached to.
+     * The ECS instance ID that the ENI is attached to.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Name of the ENI.
+     * The name of the ENIs.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by ENI name.
+     */
     nameRegex?: pulumi.Input<string>;
     networkInterfaceName?: pulumi.Input<string>;
+    /**
+     * The name of output file that saves the filter results.
+     */
     outputFile?: pulumi.Input<string>;
     primaryIpAddress?: pulumi.Input<string>;
     /**
-     * Primary private IP of the ENI.
+     * The primary private IP address of the ENI.
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     privateIp?: pulumi.Input<string>;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the network interface belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The security group ID linked to ENIs.
+     */
     securityGroupId?: pulumi.Input<string>;
     serviceManaged?: pulumi.Input<boolean>;
     /**
@@ -356,16 +349,19 @@ export interface GetNetworkInterfacesOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the ENI.
+     * A map of tags assigned to ENIs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of ENIs, Only support for "Primary" or "Secondary".
+     */
     type?: pulumi.Input<string>;
     /**
-     * ID of the VPC that the ENI belongs to.
+     * The VPC ID linked to ENIs.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * ID of the vSwitch that the ENI is linked to.
+     * The vSwitch ID linked to ENIs.
      */
     vswitchId?: pulumi.Input<string>;
 }

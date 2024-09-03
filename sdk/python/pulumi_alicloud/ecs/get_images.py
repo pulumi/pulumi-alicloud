@@ -295,7 +295,7 @@ def get_images(action_type: Optional[str] = None,
     ```
 
 
-    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
            * `CreateEcs`: instance creation.
            * `ChangeOS`: replacement of the system disk or operating system.
     :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
@@ -316,7 +316,7 @@ def get_images(action_type: Optional[str] = None,
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.
-    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
            * `Creating`: The image is being created.
            * `Waiting`: The image is waiting to be processed.
            * `Available`: The image is available.
@@ -414,7 +414,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
            * `CreateEcs`: instance creation.
            * `ChangeOS`: replacement of the system disk or operating system.
     :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
@@ -435,7 +435,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.
-    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
            * `Creating`: The image is being created.
            * `Waiting`: The image is waiting to be processed.
            * `Available`: The image is available.

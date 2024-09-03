@@ -271,7 +271,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts. 
+        /// The structure of volumeMounts.
         /// See `volume_mounts` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs> VolumeMounts

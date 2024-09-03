@@ -539,7 +539,7 @@ class NestServiceInstance(pulumi.CustomResource):
               "ALIYUN::ECS::INSTANCE": [
                 "{id}"
                 ]
-              }} 
+              }}
             }}
         \"\"\"),
             },
@@ -640,7 +640,7 @@ class NestServiceInstance(pulumi.CustomResource):
               "ALIYUN::ECS::INSTANCE": [
                 "{id}"
                 ]
-              }} 
+              }}
             }}
         \"\"\"),
             },

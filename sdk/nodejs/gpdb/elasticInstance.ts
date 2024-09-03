@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
- * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
+ * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  *
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
  *
@@ -116,19 +115,17 @@ export class ElasticInstance extends pulumi.CustomResource {
      */
     public readonly instanceNetworkType!: pulumi.Output<string | undefined>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
     public readonly instanceSpec!: pulumi.Output<string>;
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     public readonly paymentDuration!: pulumi.Output<number | undefined>;
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     public readonly paymentDurationUnit!: pulumi.Output<string | undefined>;
     /**
@@ -293,19 +290,17 @@ export interface ElasticInstanceState {
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
     instanceSpec?: pulumi.Input<string>;
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     paymentDuration?: pulumi.Input<number>;
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     paymentDurationUnit?: pulumi.Input<string>;
     /**
@@ -383,19 +378,17 @@ export interface ElasticInstanceArgs {
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
     instanceSpec: pulumi.Input<string>;
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     paymentDuration?: pulumi.Input<number>;
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
-     * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.**NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
     paymentDurationUnit?: pulumi.Input<string>;
     /**

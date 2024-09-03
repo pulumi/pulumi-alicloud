@@ -1654,7 +1654,7 @@ export namespace arms {
          */
         key: pulumi.Input<string>;
         /**
-         * The operator used in the dispatch rule. Valid values: 
+         * The operator used in the dispatch rule. Valid values:
          * * eq: equals to.
          * * re: matches a regular expression.
          */
@@ -1964,7 +1964,7 @@ export namespace arms {
          */
         verifyWay?: pulumi.Input<number>;
         /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         whiteList?: pulumi.Input<string>;
     }
@@ -2097,7 +2097,7 @@ export namespace arms {
          */
         targetUrl?: pulumi.Input<string>;
         /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         whiteList?: pulumi.Input<string>;
     }
@@ -2131,7 +2131,7 @@ export namespace arms {
          */
         disableCompression?: pulumi.Input<number>;
         /**
-         * When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         dnsHijackWhitelist?: pulumi.Input<string>;
         /**
@@ -2159,7 +2159,7 @@ export namespace arms {
          */
         monitorTimeout?: pulumi.Input<number>;
         /**
-         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
          */
         pageTamper?: pulumi.Input<string>;
         /**
@@ -4164,7 +4164,7 @@ export namespace cs {
          */
         config?: pulumi.Input<string>;
         /**
-         * It specifies whether to disable automatic installation. 
+         * It specifies whether to disable automatic installation.
          *
          * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          *
@@ -6872,8 +6872,8 @@ export namespace ecs {
         /**
          * The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
          * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * * For other disks, the valid values range from 20 to 32768, and the default value is 20.
          * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          */
         size?: pulumi.Input<number>;
@@ -8201,7 +8201,7 @@ export namespace ess {
          */
         securityContextRunAsUser?: pulumi.Input<number>;
         /**
-         * The structure of volumeMounts. 
+         * The structure of volumeMounts.
          * See `volumeMounts` below for details.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerVolumeMount>[]>;
@@ -8271,7 +8271,7 @@ export namespace ess {
          */
         cpu?: pulumi.Input<number>;
         /**
-         * The structure of environmentVars. 
+         * The structure of environmentVars.
          * See `environmentVars` below for details.
          */
         environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerEnvironmentVar>[]>;
@@ -8531,7 +8531,6 @@ export namespace ess {
         instanceType?: pulumi.Input<string>;
         /**
          * The maximum bid price of instance type in launchTemplateOverride.
-         *
          *
          * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
          *
@@ -9012,7 +9011,7 @@ export namespace fc {
 
     export interface ServiceTracingConfig {
         /**
-         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
          */
         params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -9862,7 +9861,7 @@ export namespace gpdb {
 
     export interface InstanceIpWhitelist {
         /**
-         * The value of this parameter is empty by default. The attribute of the whitelist group. 
+         * The value of this parameter is empty by default. The attribute of the whitelist group.
          * If the value contains `hidden`, this white list item will not output.
          */
         ipGroupAttribute?: pulumi.Input<string>;
@@ -10738,7 +10737,7 @@ export namespace maxcompute {
          */
         usingAcl?: pulumi.Input<boolean>;
         /**
-         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy?: pulumi.Input<boolean>;
     }
@@ -11213,7 +11212,7 @@ export namespace opensearch {
          */
         qps?: pulumi.Input<number>;
         /**
-         * Specification. Valid values: 
+         * Specification. Valid values:
          * * `opensearch.share.junior`: Entry-level.
          * * `opensearch.share.common`: Shared universal.
          * * `opensearch.share.compute`: Shared computing.
@@ -13377,7 +13376,7 @@ export namespace scdn {
          */
         certName?: pulumi.Input<string>;
         /**
-         * Certificate Type. Value Range: 
+         * Certificate Type. Value Range:
          * * upload: Certificate
          * * cas: Certificate Authority Certificate.
          * * free: Free Certificate.
@@ -13426,7 +13425,7 @@ export namespace scdn {
          */
         priority: pulumi.Input<string>;
         /**
-         * The Origin Server Type. Valid Values: 
+         * The Origin Server Type. Valid Values:
          * * ipaddr: IP Source Station
          * * domain: the Domain Name
          * * oss: OSS Bucket as a Source Station.
@@ -15203,7 +15202,7 @@ export namespace wafv3 {
          */
         readTimeout?: pulumi.Input<number>;
         /**
-         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
          * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
          * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
          * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
@@ -15234,11 +15233,11 @@ export namespace wafv3 {
 
     export interface DomainRedirectRequestHeader {
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         key?: pulumi.Input<string>;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         value?: pulumi.Input<string>;
     }

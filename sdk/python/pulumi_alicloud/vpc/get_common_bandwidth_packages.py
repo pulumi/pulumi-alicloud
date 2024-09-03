@@ -183,11 +183,11 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
 
     ## Public ip addresses Block
 
-      The public ip addresses mapping supports the following:
+    The public ip addresses mapping supports the following:
 
-      * `ip_address`   - The address of the EIP.
-      * `allocation_id` - The ID of the EIP instance.
-      * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+    * `ip_address`   - The address of the EIP.
+    * `allocation_id` - The ID of the EIP instance.
+    * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
 
 
     :param str bandwidth_package_name: The name of bandwidth package.
@@ -256,11 +256,11 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
 
     ## Public ip addresses Block
 
-      The public ip addresses mapping supports the following:
+    The public ip addresses mapping supports the following:
 
-      * `ip_address`   - The address of the EIP.
-      * `allocation_id` - The ID of the EIP instance.
-      * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+    * `ip_address`   - The address of the EIP.
+    * `allocation_id` - The ID of the EIP instance.
+    * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
 
 
     :param str bandwidth_package_name: The name of bandwidth package.

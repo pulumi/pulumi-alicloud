@@ -1236,6 +1236,42 @@ public final class OssFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
@@ -1250,6 +1286,42 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
@@ -1266,6 +1338,42 @@ public final class OssFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
@@ -1280,6 +1388,42 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables

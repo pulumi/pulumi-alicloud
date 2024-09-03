@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetNotifications
     {
         /// <summary>
-        /// This data source provides available notification resources. 
+        /// This data source provides available notification resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available notification resources. 
+        /// This data source provides available notification resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 

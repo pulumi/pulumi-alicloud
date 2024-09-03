@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 type GetBindingsBinding struct {
 	// X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument string `pulumi:"argument"`
-	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). If You Include the Hash (.
 	BindingKey string `pulumi:"bindingKey"`
 	// The Target Binding Types.
 	BindingType string `pulumi:"bindingType"`
@@ -46,7 +46,7 @@ type GetBindingsBindingInput interface {
 type GetBindingsBindingArgs struct {
 	// X-match Attributes. Valid Values: All: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match. Any: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match. This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument pulumi.StringInput `pulumi:"argument"`
-	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+	// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). If You Include the Hash (.
 	BindingKey pulumi.StringInput `pulumi:"bindingKey"`
 	// The Target Binding Types.
 	BindingType pulumi.StringInput `pulumi:"bindingType"`
@@ -118,7 +118,7 @@ func (o GetBindingsBindingOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBindingsBinding) string { return v.Argument }).(pulumi.StringOutput)
 }
 
-// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+// The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). If You Include the Hash (.
 func (o GetBindingsBindingOutput) BindingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBindingsBinding) string { return v.BindingKey }).(pulumi.StringOutput)
 }

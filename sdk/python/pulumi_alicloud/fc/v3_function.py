@@ -51,7 +51,7 @@ class V3FunctionArgs:
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
-        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
@@ -234,7 +234,7 @@ class V3FunctionArgs:
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         """
         return pulumi.get(self, "function_name")
 
@@ -425,7 +425,7 @@ class _V3FunctionState:
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
-        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
@@ -602,7 +602,7 @@ class _V3FunctionState:
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         """
         return pulumi.get(self, "function_name")
 
@@ -910,7 +910,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
-        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
@@ -1151,7 +1151,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
-        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
@@ -1273,7 +1273,7 @@ class V3Function(pulumi.CustomResource):
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
         """
-        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
         """
         return pulumi.get(self, "function_name")
 

@@ -124,7 +124,7 @@ export class StackInstance extends pulumi.CustomResource {
      */
     public readonly stackInstanceRegionId!: pulumi.Output<string>;
     /**
-     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
      * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
      * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -224,7 +224,7 @@ export interface StackInstanceState {
      */
     stackInstanceRegionId?: pulumi.Input<string>;
     /**
-     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
      * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
      * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.

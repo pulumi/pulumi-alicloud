@@ -934,8 +934,8 @@ class ImageDiskDeviceMapping(dict):
         :param int remain_time: For an image being replicated, return the remaining time of the replication task, in seconds.
         :param int size: The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
                - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-               *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-               *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+               * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+               * For other disks, the valid values range from 20 to 32768, and the default value is 20.
                - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         :param str snapshot_id: The ID of snapshot N to use to create the custom image. .
         """
@@ -1024,8 +1024,8 @@ class ImageDiskDeviceMapping(dict):
         """
         The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
         - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-        *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-        *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+        * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+        * For other disks, the valid values range from 20 to 32768, and the default value is 20.
         - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         """
         return pulumi.get(self, "size")
@@ -8241,7 +8241,7 @@ class GetImagesImageResult(dict):
         :param str product_code: Product code of the image on the image market.
         :param str progress: Progress of image creation, presented in percentages.
         :param int size: Size of the created disk.
-        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
                * `Creating`: The image is being created.
                * `Waiting`: The image is waiting to be processed.
                * `Available`: The image is available.
@@ -8434,7 +8434,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         * `Creating`: The image is being created.
         * `Waiting`: The image is waiting to be processed.
         * `Available`: The image is available.
@@ -9547,17 +9547,18 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str creation_time: Creation time of the ENI.
         :param str description: Description of the ENI.
         :param str id: ID of the ENI.
-        :param str instance_id: ID of the instance that the ENI is attached to.
+        :param str instance_id: The ECS instance ID that the ENI is attached to.
         :param str mac: MAC address of the ENI.
-        :param str name: Name of the ENI.
-        :param str private_ip: Primary private IP of the ENI.
+        :param str name: The name of the ENIs.
+        :param str private_ip: The primary private IP address of the ENI.
         :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
-        :param str resource_group_id: The Id of resource group.
+        :param str resource_group_id: The Id of resource group which the network interface belongs.
         :param Sequence[str] security_groups: A list of security group that the ENI belongs to.
         :param str status: Current status of the ENI.
-        :param Mapping[str, str] tags: A map of tags assigned to the ENI.
-        :param str vpc_id: ID of the VPC that the ENI belongs to.
-        :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
+        :param Mapping[str, str] tags: A map of tags assigned to ENIs.
+        :param str type: The type of ENIs, Only support for "Primary" or "Secondary".
+        :param str vpc_id: The VPC ID linked to ENIs.
+        :param str vswitch_id: The vSwitch ID linked to ENIs.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
         """
         pulumi.set(__self__, "associated_public_ips", associated_public_ips)
@@ -9622,7 +9623,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        ID of the instance that the ENI is attached to.
+        The ECS instance ID that the ENI is attached to.
         """
         return pulumi.get(self, "instance_id")
 
@@ -9643,7 +9644,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the ENI.
+        The name of the ENIs.
         """
         return pulumi.get(self, "name")
 
@@ -9676,7 +9677,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
         """
-        Primary private IP of the ENI.
+        The primary private IP address of the ENI.
         """
         return pulumi.get(self, "private_ip")
 
@@ -9702,7 +9703,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        The Id of resource group.
+        The Id of resource group which the network interface belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -9741,20 +9742,23 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        A map of tags assigned to the ENI.
+        A map of tags assigned to ENIs.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of ENIs, Only support for "Primary" or "Secondary".
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        ID of the VPC that the ENI belongs to.
+        The VPC ID linked to ENIs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -9762,7 +9766,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the vSwitch that the ENI is linked to.
+        The vSwitch ID linked to ENIs.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -10094,7 +10098,8 @@ class GetSnapshotsSnapshotResult(dict):
         """
         :param str creation_time: Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
         :param str description: Description of the snapshot.
-        :param bool encrypted: Whether the snapshot is encrypted or not.
+        :param str disk_id: The specified disk ID.
+        :param bool encrypted: Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
         :param str id: ID of the snapshot.
         :param str name: Name of the snapshot.
         :param str product_code: Product code on the image market place.
@@ -10103,10 +10108,24 @@ class GetSnapshotsSnapshotResult(dict):
         :param int retention_days: The number of days that an automatic snapshot retains in the console for your instance.
         :param str source_disk_id: Source disk ID, which is retained after the source disk of the snapshot is deleted.
         :param str source_disk_size: Size of the source disk, measured in GB.
-        :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
-        :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-        :param Mapping[str, str] tags: A map of tags assigned to the snapshot.
-        :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        :param str source_disk_type: The type of source disk:
+               * System: The snapshots are created for system disks.
+               * Data: The snapshots are created for data disks.
+        :param str status: The specified snapshot status. Default value: `all`. Optional values:
+               * progressing: The snapshots are being created.
+               * accomplished: The snapshots are ready to use.
+               * failed: The snapshot creation failed.
+               * all: All status.
+        :param Mapping[str, str] tags: A map of tags assigned to snapshots.
+        :param str type: The snapshot category. Default value: `all`. Optional values:
+               * auto: Auto snapshots.
+               * user: Manual snapshots.
+               * all: Auto and manual snapshots.
+        :param str usage: The usage of the snapshot:
+               * image: The snapshots are used to create custom images.
+               * disk: The snapshots are used to CreateDisk.
+               * mage_disk: The snapshots are used to create custom images and data disks.
+               * none: The snapshots are not used yet.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -10159,13 +10178,16 @@ class GetSnapshotsSnapshotResult(dict):
     @property
     @pulumi.getter(name="diskId")
     def disk_id(self) -> str:
+        """
+        The specified disk ID.
+        """
         return pulumi.get(self, "disk_id")
 
     @property
     @pulumi.getter
     def encrypted(self) -> bool:
         """
-        Whether the snapshot is encrypted or not.
+        Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -10272,7 +10294,9 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceDiskType")
     def source_disk_type(self) -> str:
         """
-        Source disk attribute. Value range: `System`,`Data`.
+        The type of source disk:
+        * System: The snapshots are created for system disks.
+        * Data: The snapshots are created for data disks.
         """
         return pulumi.get(self, "source_disk_type")
 
@@ -10285,7 +10309,11 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        The specified snapshot status. Default value: `all`. Optional values:
+        * progressing: The snapshots are being created.
+        * accomplished: The snapshots are ready to use.
+        * failed: The snapshot creation failed.
+        * all: All status.
         """
         return pulumi.get(self, "status")
 
@@ -10293,20 +10321,30 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        A map of tags assigned to the snapshot.
+        A map of tags assigned to snapshots.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The snapshot category. Default value: `all`. Optional values:
+        * auto: Auto snapshots.
+        * user: Manual snapshots.
+        * all: Auto and manual snapshots.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def usage(self) -> str:
         """
-        Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        The usage of the snapshot:
+        * image: The snapshots are used to create custom images.
+        * disk: The snapshots are used to CreateDisk.
+        * mage_disk: The snapshots are used to create custom images and data disks.
+        * none: The snapshots are not used yet.
         """
         return pulumi.get(self, "usage")
 

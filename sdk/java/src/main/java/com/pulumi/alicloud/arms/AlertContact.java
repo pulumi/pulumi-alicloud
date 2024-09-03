@@ -88,14 +88,14 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alertContactName);
     }
     /**
-     * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+     * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
     @Export(name="dingRobotWebhookUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dingRobotWebhookUrl;
 
     /**
-     * @return The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+     * @return The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
     public Output<Optional<String>> dingRobotWebhookUrl() {

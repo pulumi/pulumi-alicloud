@@ -23,7 +23,7 @@ class AccountPrivilegeArgs:
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -77,7 +77,7 @@ class AccountPrivilegeArgs:
     @pulumi.getter
     def privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -104,7 +104,7 @@ class _AccountPrivilegeState:
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -161,7 +161,7 @@ class _AccountPrivilegeState:
     @pulumi.getter
     def privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -251,7 +251,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -387,7 +387,7 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -433,7 +433,7 @@ class AccountPrivilege(pulumi.CustomResource):
     @pulumi.getter
     def privilege(self) -> pulumi.Output[Optional[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB

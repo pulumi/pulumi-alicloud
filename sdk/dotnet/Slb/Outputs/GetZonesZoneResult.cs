@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string SlaveZoneId;
         /// <summary>
-        /// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+        /// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
         /// It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         /// </summary>
         public readonly ImmutableArray<string> SlbSlaveZoneIds;

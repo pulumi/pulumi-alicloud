@@ -51,7 +51,7 @@ class ServerGroupArgs:
                - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
                - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
                - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
@@ -242,7 +242,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values: 
+        The type of the server group. Valid values:
         - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         - `Ip`: allows you to specify IP addresses.
         """
@@ -301,7 +301,7 @@ class _ServerGroupState:
                - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
                - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
@@ -486,7 +486,7 @@ class _ServerGroupState:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values: 
+        The type of the server group. Valid values:
         - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         - `Ip`: allows you to specify IP addresses.
         """
@@ -635,7 +635,7 @@ class ServerGroup(pulumi.CustomResource):
                - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
                - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Label.
@@ -816,7 +816,7 @@ class ServerGroup(pulumi.CustomResource):
                - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
                - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
                - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
                - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
@@ -944,7 +944,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> pulumi.Output[str]:
         """
-        The type of the server group. Valid values: 
+        The type of the server group. Valid values:
         - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         - `Ip`: allows you to specify IP addresses.
         """

@@ -115,7 +115,7 @@ export interface GetDedicatedHostsArgs {
      */
     outputFile?: string;
     /**
-     * The state of the host. Valid values: 
+     * The state of the host. Valid values:
      * * `0:` The host is being created.
      */
     status?: string;
@@ -245,7 +245,7 @@ export interface GetDedicatedHostsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The state of the host. Valid values: 
+     * The state of the host. Valid values:
      * * `0:` The host is being created.
      */
     status?: pulumi.Input<string>;

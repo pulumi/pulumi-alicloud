@@ -188,8 +188,7 @@ class Policy(pulumi.CustomResource):
                  policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Resource Manager Policy resource.\\
-        For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
+        Provides a Resource Manager Policy resource.For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
         > **NOTE:** Available since v1.83.0.
 
@@ -240,8 +239,7 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Resource Manager Policy resource.\\
-        For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
+        Provides a Resource Manager Policy resource.For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
 
         > **NOTE:** Available since v1.83.0.
 

@@ -787,7 +787,7 @@ type ProjectSecurityProperties struct {
 	ProjectProtection *ProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl *bool `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy *bool `pulumi:"usingPolicy"`
 }
 
@@ -815,7 +815,7 @@ type ProjectSecurityPropertiesArgs struct {
 	ProjectProtection ProjectSecurityPropertiesProjectProtectionPtrInput `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolPtrInput `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy pulumi.BoolPtrInput `pulumi:"usingPolicy"`
 }
 
@@ -928,7 +928,7 @@ func (o ProjectSecurityPropertiesOutput) UsingAcl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.UsingAcl }).(pulumi.BoolPtrOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o ProjectSecurityPropertiesOutput) UsingPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.UsingPolicy }).(pulumi.BoolPtrOutput)
 }
@@ -1017,7 +1017,7 @@ func (o ProjectSecurityPropertiesPtrOutput) UsingAcl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o ProjectSecurityPropertiesPtrOutput) UsingPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityProperties) *bool {
 		if v == nil {
@@ -1692,7 +1692,7 @@ type GetProjectsProjectSecurityProperties struct {
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl bool `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy bool `pulumi:"usingPolicy"`
 }
 
@@ -1720,7 +1720,7 @@ type GetProjectsProjectSecurityPropertiesArgs struct {
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtectionInput `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolInput `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy pulumi.BoolInput `pulumi:"usingPolicy"`
 }
 
@@ -1782,7 +1782,7 @@ func (o GetProjectsProjectSecurityPropertiesOutput) UsingAcl() pulumi.BoolOutput
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingAcl }).(pulumi.BoolOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o GetProjectsProjectSecurityPropertiesOutput) UsingPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingPolicy }).(pulumi.BoolOutput)
 }

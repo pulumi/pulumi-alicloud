@@ -36,7 +36,7 @@ class QueueArgs:
                * false: The Auto Delete attribute is not configured.
         :param pulumi.Input[str] auto_expire_state: The validity period after which the queue is automatically deleted.
                If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
                If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
                Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         :param pulumi.Input[str] dead_letter_routing_key: The dead letter routing key.
@@ -140,7 +140,7 @@ class QueueArgs:
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> Optional[pulumi.Input[str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         """
@@ -239,7 +239,7 @@ class _QueueState:
                * false: The Auto Delete attribute is not configured.
         :param pulumi.Input[str] auto_expire_state: The validity period after which the queue is automatically deleted.
                If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
                If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
                Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         :param pulumi.Input[str] dead_letter_routing_key: The dead letter routing key.
@@ -313,7 +313,7 @@ class _QueueState:
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> Optional[pulumi.Input[str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         """
@@ -500,7 +500,7 @@ class Queue(pulumi.CustomResource):
                * false: The Auto Delete attribute is not configured.
         :param pulumi.Input[str] auto_expire_state: The validity period after which the queue is automatically deleted.
                If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
                If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
                Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         :param pulumi.Input[str] dead_letter_routing_key: The dead letter routing key.
@@ -659,7 +659,7 @@ class Queue(pulumi.CustomResource):
                * false: The Auto Delete attribute is not configured.
         :param pulumi.Input[str] auto_expire_state: The validity period after which the queue is automatically deleted.
                If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        :param pulumi.Input[str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
                If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
                Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         :param pulumi.Input[str] dead_letter_routing_key: The dead letter routing key.
@@ -719,7 +719,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> pulumi.Output[Optional[str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         """

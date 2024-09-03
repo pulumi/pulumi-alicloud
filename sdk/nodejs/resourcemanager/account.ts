@@ -77,7 +77,7 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * The IDs of the check items that you can choose to ignore for the member deletion.
      * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
      * to get check ids and set them.
      */
@@ -182,7 +182,7 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * The IDs of the check items that you can choose to ignore for the member deletion.
      * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
      * to get check ids and set them.
      */
@@ -240,7 +240,7 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The IDs of the check items that you can choose to ignore for the member deletion. 
+     * The IDs of the check items that you can choose to ignore for the member deletion.
      * If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
      * to get check ids and set them.
      */

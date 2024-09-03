@@ -14,7 +14,6 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
         /// ## Example Usage
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
-        /// 
         /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 

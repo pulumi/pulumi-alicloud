@@ -24,7 +24,7 @@ class ServiceSubscriptionArgs:
         """
         The set of arguments for constructing a ServiceSubscription resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
+               - `HTTP Format`: <http://xxx.com/xxx>
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
                - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
@@ -52,7 +52,7 @@ class ServiceSubscriptionArgs:
     def endpoint(self) -> pulumi.Input[str]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
+        - `HTTP Format`: <http://xxx.com/xxx>
         - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
         - `Email Format`: mail:directmail:{MailAddress}
         """
@@ -150,7 +150,7 @@ class _ServiceSubscriptionState:
         """
         Input properties used for looking up and filtering ServiceSubscription resources.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
+               - `HTTP Format`: <http://xxx.com/xxx>
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
                - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
@@ -182,7 +182,7 @@ class _ServiceSubscriptionState:
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
+        - `HTTP Format`: <http://xxx.com/xxx>
         - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
         - `Email Format`: mail:directmail:{MailAddress}
         """
@@ -324,7 +324,7 @@ class ServiceSubscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
+               - `HTTP Format`: <http://xxx.com/xxx>
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
                - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
@@ -454,7 +454,7 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - `HTTP Format`: http://xxx.com/xxx
+               - `HTTP Format`: <http://xxx.com/xxx>
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
                - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
@@ -484,7 +484,7 @@ class ServiceSubscription(pulumi.CustomResource):
     def endpoint(self) -> pulumi.Output[str]:
         """
         The endpoint has three format. Available values format:
-        - `HTTP Format`: http://xxx.com/xxx
+        - `HTTP Format`: <http://xxx.com/xxx>
         - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
         - `Email Format`: mail:directmail:{MailAddress}
         """

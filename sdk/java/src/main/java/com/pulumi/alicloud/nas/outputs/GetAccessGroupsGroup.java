@@ -27,7 +27,7 @@ public final class GetAccessGroupsGroup {
      */
     private String description;
     /**
-     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
+     * @return This ID of this AccessGroup. It is formatted to `&lt;access_group_id&gt;:&lt;file_system_type&gt;`. Before version 1.95.0, the value is `access_group_name`.
      * 
      */
     private String id;
@@ -70,7 +70,7 @@ public final class GetAccessGroupsGroup {
         return this.description;
     }
     /**
-     * @return This ID of this AccessGroup. It is formatted to ``&lt;access_group_id&gt;:&lt;file_system_type&gt;``. Before version 1.95.0, the value is `access_group_name`.
+     * @return This ID of this AccessGroup. It is formatted to `&lt;access_group_id&gt;:&lt;file_system_type&gt;`. Before version 1.95.0, the value is `access_group_name`.
      * 
      */
     public String id() {

@@ -2865,7 +2865,7 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone. It is same as `master_zone_id`.
         :param str master_zone_id: The primary zone.
         :param str slave_zone_id: The secondary zone.
-        :param Sequence[str] slb_slave_zone_ids: (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+        :param Sequence[str] slb_slave_zone_ids: (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
                It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         :param Sequence['GetZonesZoneSupportedResourceArgs'] supported_resources: (Available in 1.154.0+)A list of available resource which the slb master zone supported.
         """
@@ -2904,7 +2904,7 @@ class GetZonesZoneResult(dict):
     @_utilities.deprecated("""the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.""")
     def slb_slave_zone_ids(self) -> Sequence[str]:
         """
-        (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+        (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
         It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         """
         return pulumi.get(self, "slb_slave_zone_ids")

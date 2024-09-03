@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.91.0+.
         /// 
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.91.0+.
         /// 
         /// ## Example Usage

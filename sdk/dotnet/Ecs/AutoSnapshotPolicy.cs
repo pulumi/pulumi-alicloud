@@ -63,8 +63,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The retention period of the snapshot copied across regions.
         /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         /// </summary>
         [Output("copiedSnapshotsRetentionDays")]
         public Output<int?> CopiedSnapshotsRetentionDays { get; private set; } = null!;
@@ -173,8 +172,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The retention period of the snapshot copied across regions.
         /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
@@ -263,8 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The retention period of the snapshot copied across regions.
         /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }

@@ -121,7 +121,7 @@ class DdrInstanceArgs:
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -137,7 +137,7 @@ class DdrInstanceArgs:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -594,7 +594,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -654,7 +654,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -1360,7 +1360,7 @@ class _DdrInstanceState:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -1376,7 +1376,7 @@ class _DdrInstanceState:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -1810,7 +1810,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -1870,7 +1870,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -2697,7 +2697,7 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -2713,7 +2713,7 @@ class DdrInstance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -3140,7 +3140,7 @@ class DdrInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -3156,7 +3156,7 @@ class DdrInstance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -3477,7 +3477,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> pulumi.Output[str]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -3521,7 +3521,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[bool]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 

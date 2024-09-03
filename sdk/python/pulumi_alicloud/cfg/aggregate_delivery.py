@@ -28,7 +28,7 @@ class AggregateDeliveryArgs:
         """
         The set of arguments for constructing a AggregateDelivery resource.
         :param pulumi.Input[str] aggregator_id: Aggregator ID.
-        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.  
+        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
                - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
                - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -36,13 +36,13 @@ class AggregateDeliveryArgs:
                - OSS: Object Storage Service (OSS)
                - MNS: Message Service (MNS)
                - SLS: Log Service
-        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
                - true: The specified destination receives resource change logs.
                - false: The specified destination does not receive resource change logs.
-        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
                - true: The specified destination receives scheduled resource snapshots.
                - false: The specified destination does not receive scheduled resource snapshots.
-        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.   
+        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.
                
                This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
                
@@ -55,11 +55,11 @@ class AggregateDeliveryArgs:
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
                - true: The specified destination receives resource non-compliance events.
                - false: The specified destination does not receive resource non-compliance events.
         :param pulumi.Input[str] oversized_data_oss_target_arn: The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
-        :param pulumi.Input[int] status: The status of the delivery method. Valid values:   
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values:
                - 0: The delivery method is disabled.
                - 1: The delivery destination is enabled. This is the default value.
         """
@@ -99,7 +99,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter(name="deliveryChannelTargetArn")
     def delivery_channel_target_arn(self) -> pulumi.Input[str]:
         """
-        The ARN of the delivery destination.  
+        The ARN of the delivery destination.
         - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -129,7 +129,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter(name="configurationItemChangeNotification")
     def configuration_item_change_notification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         - true: The specified destination receives resource change logs.
         - false: The specified destination does not receive resource change logs.
         """
@@ -143,7 +143,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter(name="configurationSnapshot")
     def configuration_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         - true: The specified destination receives scheduled resource snapshots.
         - false: The specified destination does not receive scheduled resource snapshots.
         """
@@ -157,7 +157,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter(name="deliveryChannelCondition")
     def delivery_channel_condition(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule that is attached to the delivery channel.   
+        The rule that is attached to the delivery channel.
 
         This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
 
@@ -203,7 +203,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter(name="nonCompliantNotification")
     def non_compliant_notification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         - true: The specified destination receives resource non-compliance events.
         - false: The specified destination does not receive resource non-compliance events.
         """
@@ -229,7 +229,7 @@ class AggregateDeliveryArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        The status of the delivery method. Valid values:   
+        The status of the delivery method. Valid values:
         - 0: The delivery method is disabled.
         - 1: The delivery destination is enabled. This is the default value.
         """
@@ -258,13 +258,13 @@ class _AggregateDeliveryState:
         """
         Input properties used for looking up and filtering AggregateDelivery resources.
         :param pulumi.Input[str] aggregator_id: Aggregator ID.
-        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
                - true: The specified destination receives resource change logs.
                - false: The specified destination does not receive resource change logs.
-        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
                - true: The specified destination receives scheduled resource snapshots.
                - false: The specified destination does not receive scheduled resource snapshots.
-        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.   
+        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.
                
                This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
                
@@ -277,7 +277,7 @@ class _AggregateDeliveryState:
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
         :param pulumi.Input[str] delivery_channel_id: The ID of the delivery method. This parameter is required when you modify a delivery method.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
-        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.  
+        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
                - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
                - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -286,11 +286,11 @@ class _AggregateDeliveryState:
                - MNS: Message Service (MNS)
                - SLS: Log Service
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
                - true: The specified destination receives resource non-compliance events.
                - false: The specified destination does not receive resource non-compliance events.
         :param pulumi.Input[str] oversized_data_oss_target_arn: The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
-        :param pulumi.Input[int] status: The status of the delivery method. Valid values:   
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values:
                - 0: The delivery method is disabled.
                - 1: The delivery destination is enabled. This is the default value.
         """
@@ -335,7 +335,7 @@ class _AggregateDeliveryState:
     @pulumi.getter(name="configurationItemChangeNotification")
     def configuration_item_change_notification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         - true: The specified destination receives resource change logs.
         - false: The specified destination does not receive resource change logs.
         """
@@ -349,7 +349,7 @@ class _AggregateDeliveryState:
     @pulumi.getter(name="configurationSnapshot")
     def configuration_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         - true: The specified destination receives scheduled resource snapshots.
         - false: The specified destination does not receive scheduled resource snapshots.
         """
@@ -363,7 +363,7 @@ class _AggregateDeliveryState:
     @pulumi.getter(name="deliveryChannelCondition")
     def delivery_channel_condition(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule that is attached to the delivery channel.   
+        The rule that is attached to the delivery channel.
 
         This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
 
@@ -409,7 +409,7 @@ class _AggregateDeliveryState:
     @pulumi.getter(name="deliveryChannelTargetArn")
     def delivery_channel_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The ARN of the delivery destination.  
+        The ARN of the delivery destination.
         - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -451,7 +451,7 @@ class _AggregateDeliveryState:
     @pulumi.getter(name="nonCompliantNotification")
     def non_compliant_notification(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         - true: The specified destination receives resource non-compliance events.
         - false: The specified destination does not receive resource non-compliance events.
         """
@@ -477,7 +477,7 @@ class _AggregateDeliveryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        The status of the delivery method. Valid values:   
+        The status of the delivery method. Valid values:
         - 0: The delivery method is disabled.
         - 1: The delivery destination is enabled. This is the default value.
         """
@@ -525,13 +525,13 @@ class AggregateDelivery(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregator_id: Aggregator ID.
-        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
                - true: The specified destination receives resource change logs.
                - false: The specified destination does not receive resource change logs.
-        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
                - true: The specified destination receives scheduled resource snapshots.
                - false: The specified destination does not receive scheduled resource snapshots.
-        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.   
+        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.
                
                This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
                
@@ -543,7 +543,7 @@ class AggregateDelivery(pulumi.CustomResource):
                
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
-        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.  
+        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
                - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
                - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -552,11 +552,11 @@ class AggregateDelivery(pulumi.CustomResource):
                - MNS: Message Service (MNS)
                - SLS: Log Service
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
                - true: The specified destination receives resource non-compliance events.
                - false: The specified destination does not receive resource non-compliance events.
         :param pulumi.Input[str] oversized_data_oss_target_arn: The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
-        :param pulumi.Input[int] status: The status of the delivery method. Valid values:   
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values:
                - 0: The delivery method is disabled.
                - 1: The delivery destination is enabled. This is the default value.
         """
@@ -666,13 +666,13 @@ class AggregateDelivery(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aggregator_id: Aggregator ID.
-        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        :param pulumi.Input[bool] configuration_item_change_notification: Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
                - true: The specified destination receives resource change logs.
                - false: The specified destination does not receive resource change logs.
-        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        :param pulumi.Input[bool] configuration_snapshot: Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
                - true: The specified destination receives scheduled resource snapshots.
                - false: The specified destination does not receive scheduled resource snapshots.
-        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.   
+        :param pulumi.Input[str] delivery_channel_condition: The rule that is attached to the delivery channel.
                
                This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
                
@@ -685,7 +685,7 @@ class AggregateDelivery(pulumi.CustomResource):
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
         :param pulumi.Input[str] delivery_channel_id: The ID of the delivery method. This parameter is required when you modify a delivery method.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
-        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.  
+        :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
                - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
                - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -694,11 +694,11 @@ class AggregateDelivery(pulumi.CustomResource):
                - MNS: Message Service (MNS)
                - SLS: Log Service
         :param pulumi.Input[str] description: The description of the delivery method.
-        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        :param pulumi.Input[bool] non_compliant_notification: Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
                - true: The specified destination receives resource non-compliance events.
                - false: The specified destination does not receive resource non-compliance events.
         :param pulumi.Input[str] oversized_data_oss_target_arn: The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
-        :param pulumi.Input[int] status: The status of the delivery method. Valid values:   
+        :param pulumi.Input[int] status: The status of the delivery method. Valid values:
                - 0: The delivery method is disabled.
                - 1: The delivery destination is enabled. This is the default value.
         """
@@ -732,7 +732,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter(name="configurationItemChangeNotification")
     def configuration_item_change_notification(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         - true: The specified destination receives resource change logs.
         - false: The specified destination does not receive resource change logs.
         """
@@ -742,7 +742,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter(name="configurationSnapshot")
     def configuration_snapshot(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         - true: The specified destination receives scheduled resource snapshots.
         - false: The specified destination does not receive scheduled resource snapshots.
         """
@@ -752,7 +752,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter(name="deliveryChannelCondition")
     def delivery_channel_condition(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule that is attached to the delivery channel.   
+        The rule that is attached to the delivery channel.
 
         This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
 
@@ -786,7 +786,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter(name="deliveryChannelTargetArn")
     def delivery_channel_target_arn(self) -> pulumi.Output[str]:
         """
-        The ARN of the delivery destination.  
+        The ARN of the delivery destination.
         - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -816,7 +816,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter(name="nonCompliantNotification")
     def non_compliant_notification(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         - true: The specified destination receives resource non-compliance events.
         - false: The specified destination does not receive resource non-compliance events.
         """
@@ -834,7 +834,7 @@ class AggregateDelivery(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
         """
-        The status of the delivery method. Valid values:   
+        The status of the delivery method. Valid values:
         - 0: The delivery method is disabled.
         - 1: The delivery destination is enabled. This is the default value.
         """

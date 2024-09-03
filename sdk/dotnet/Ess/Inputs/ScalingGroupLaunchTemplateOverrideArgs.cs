@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         /// <summary>
         /// The maximum bid price of instance type in launchTemplateOverride.
         /// 
-        /// 
         /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
         /// 
         /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.

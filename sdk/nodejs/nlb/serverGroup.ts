@@ -148,7 +148,7 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly serverGroupName!: pulumi.Output<string>;
     /**
-     * The type of the server group. Valid values: 
+     * The type of the server group. Valid values:
      * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
      * - `Ip`: allows you to specify IP addresses.
      */
@@ -281,7 +281,7 @@ export interface ServerGroupState {
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values: 
+     * The type of the server group. Valid values:
      * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
      * - `Ip`: allows you to specify IP addresses.
      */
@@ -358,7 +358,7 @@ export interface ServerGroupArgs {
      */
     serverGroupName: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values: 
+     * The type of the server group. Valid values:
      * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
      * - `Ip`: allows you to specify IP addresses.
      */

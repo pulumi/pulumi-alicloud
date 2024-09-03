@@ -19,16 +19,26 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// ``` terraform
-        /// data "alicloud_ots_tables" "tables_ds" {
-        ///   instance_name = "sample-instance"
-        ///   name_regex    = "sample-table"
-        ///   output_file   = "tables.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_table_id" {
-        ///   value = "${data.alicloud_ots_tables.tables_ds.tables.0.id}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-table",
+        ///         OutputFile = "tables.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
@@ -41,16 +51,26 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// ``` terraform
-        /// data "alicloud_ots_tables" "tables_ds" {
-        ///   instance_name = "sample-instance"
-        ///   name_regex    = "sample-table"
-        ///   output_file   = "tables.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_table_id" {
-        ///   value = "${data.alicloud_ots_tables.tables_ds.tables.0.id}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "sample-table",
+        ///         OutputFile = "tables.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)

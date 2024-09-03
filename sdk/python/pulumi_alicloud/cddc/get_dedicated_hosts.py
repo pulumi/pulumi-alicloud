@@ -212,7 +212,7 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
     :param Sequence[str] ids: A list of Dedicated Host IDs.
     :param str order_id: The ID of the order.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The state of the host. Valid values: 
+    :param str status: The state of the host. Valid values:
            * `0:` The host is being created.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The ID of the zone.
@@ -315,7 +315,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     :param Sequence[str] ids: A list of Dedicated Host IDs.
     :param str order_id: The ID of the order.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The state of the host. Valid values: 
+    :param str status: The state of the host. Valid values:
            * `0:` The host is being created.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The ID of the zone.

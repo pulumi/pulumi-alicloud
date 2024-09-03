@@ -128,9 +128,9 @@ import javax.annotation.Nullable;
  * 1. You cannot delete active clients that have received heartbeat packets within one hour.
  * 2. You can make the client inactive by change the status of client to `STOPPED`.
  * 3. The resources bound to the client will be deleted in cascade, including:
- *     - Backup plan
- *     - Backup task (Running in the background)
- *     - Snapshot
+ *    - Backup plan
+ *    - Backup task (Running in the background)
+ *    - Snapshot
  * 
  * ## Import
  * 

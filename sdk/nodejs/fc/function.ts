@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
+ * For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
  *
  * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
  *

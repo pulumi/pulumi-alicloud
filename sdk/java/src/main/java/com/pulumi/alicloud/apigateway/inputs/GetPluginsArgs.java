@@ -78,14 +78,14 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+     * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
      * 
      */
     @Import(name="pluginName")
     private @Nullable Output<String> pluginName;
 
     /**
-     * @return The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+     * @return The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
      * 
      */
     public Optional<Output<String>> pluginName() {
@@ -245,7 +245,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
-        /// The structure of environmentVars. 
+        /// The structure of environmentVars.
         /// See `environment_vars` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationInitContainerEnvironmentVar> EnvironmentVars;

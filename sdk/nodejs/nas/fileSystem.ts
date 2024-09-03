@@ -123,12 +123,12 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
      */
     public readonly encryptType!: pulumi.Output<number | undefined>;
     /**
-     * the type of the file system. 
+     * the type of the file system.
      * Valid values:
      * `standard` (Default),
      * `extreme`,
@@ -148,7 +148,7 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
      * * `Performance` (Available when the `fileSystemType` is `standard`)
      * * `Capacity` (Available when the `fileSystemType` is `standard`)
@@ -234,12 +234,12 @@ export interface FileSystemState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
      */
     encryptType?: pulumi.Input<number>;
     /**
-     * the type of the file system. 
+     * the type of the file system.
      * Valid values:
      * `standard` (Default),
      * `extreme`,
@@ -259,7 +259,7 @@ export interface FileSystemState {
      */
     protocolType?: pulumi.Input<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
      * * `Performance` (Available when the `fileSystemType` is `standard`)
      * * `Capacity` (Available when the `fileSystemType` is `standard`)
@@ -297,12 +297,12 @@ export interface FileSystemArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
      */
     encryptType?: pulumi.Input<number>;
     /**
-     * the type of the file system. 
+     * the type of the file system.
      * Valid values:
      * `standard` (Default),
      * `extreme`,
@@ -322,7 +322,7 @@ export interface FileSystemArgs {
      */
     protocolType: pulumi.Input<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
      * * `Performance` (Available when the `fileSystemType` is `standard`)
      * * `Capacity` (Available when the `fileSystemType` is `standard`)

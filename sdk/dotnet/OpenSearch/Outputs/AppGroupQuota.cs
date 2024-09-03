@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly int? Qps;
         /// <summary>
-        /// Specification. Valid values: 
+        /// Specification. Valid values:
         /// * `opensearch.share.junior`: Entry-level.
         /// * `opensearch.share.common`: Shared universal.
         /// * `opensearch.share.compute`: Shared computing.

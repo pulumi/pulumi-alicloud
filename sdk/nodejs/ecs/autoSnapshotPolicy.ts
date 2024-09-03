@@ -74,8 +74,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
     /**
      * The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     * Default value: -1.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
      */
     public readonly copiedSnapshotsRetentionDays!: pulumi.Output<number | undefined>;
     /**
@@ -173,8 +172,7 @@ export interface AutoSnapshotPolicyState {
     /**
      * The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     * Default value: -1.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
      */
     copiedSnapshotsRetentionDays?: pulumi.Input<number>;
     /**
@@ -225,8 +223,7 @@ export interface AutoSnapshotPolicyArgs {
     /**
      * The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     * Default value: -1.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
      */
     copiedSnapshotsRetentionDays?: pulumi.Input<number>;
     /**

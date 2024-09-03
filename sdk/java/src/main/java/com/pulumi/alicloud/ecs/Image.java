@@ -166,11 +166,11 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * The new boot mode of the image. Valid values:
      * 
-     * *   BIOS: Basic Input/Output System (BIOS)
+     * * BIOS: Basic Input/Output System (BIOS)
      * 
-     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * * UEFI: Unified Extensible Firmware Interface (UEFI)
      * 
-     * *   UEFI-Preferred: BIOS and UEFI
+     * * UEFI-Preferred: BIOS and UEFI
      * 
      * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
      * 
@@ -183,11 +183,11 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * @return The new boot mode of the image. Valid values:
      * 
-     * *   BIOS: Basic Input/Output System (BIOS)
+     * * BIOS: Basic Input/Output System (BIOS)
      * 
-     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * * UEFI: Unified Extensible Firmware Interface (UEFI)
      * 
-     * *   UEFI-Preferred: BIOS and UEFI
+     * * UEFI-Preferred: BIOS and UEFI
      * 
      * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
      * 

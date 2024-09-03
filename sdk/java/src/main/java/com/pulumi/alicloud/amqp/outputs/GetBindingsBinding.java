@@ -16,7 +16,7 @@ public final class GetBindingsBinding {
      */
     private String argument;
     /**
-     * @return The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign ({@literal @}). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign ({@literal @}). If You Include the Hash (.
+     * @return The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign ({@literal @}). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign ({@literal @}). If You Include the Hash (.
      * 
      */
     private String bindingKey;
@@ -60,7 +60,7 @@ public final class GetBindingsBinding {
         return this.argument;
     }
     /**
-     * @return The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign ({@literal @}). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign ({@literal @}). If You Include the Hash (.
+     * @return The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign ({@literal @}). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign ({@literal @}). If You Include the Hash (.
      * 
      */
     public String bindingKey() {

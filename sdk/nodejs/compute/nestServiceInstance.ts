@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *       "ALIYUN::ECS::INSTANCE": [
  *         "${defaultInstance.id}"
  *         ]
- *       } 
+ *       }
  *     }
  * `,
  *     },

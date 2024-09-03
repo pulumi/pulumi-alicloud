@@ -12,6 +12,19 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getAlidnsRecords({
+ *     domainName: "xiaozhu.top",
+ *     ids: ["1978593525779****"],
+ *     type: "A",
+ *     outputFile: "records.txt",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
  */
 export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsRecordsResult> {
 
@@ -162,6 +175,19 @@ export interface GetAlidnsRecordsResult {
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.dns.getAlidnsRecords({
+ *     domainName: "xiaozhu.top",
+ *     ids: ["1978593525779****"],
+ *     type: "A",
+ *     outputFile: "records.txt",
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
+ * ```
  */
 export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
     return pulumi.output(args).apply((a: any) => getAlidnsRecords(a, opts))

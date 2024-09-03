@@ -54,7 +54,7 @@ class DomainCertInfo(dict):
                  ssl_pub: Optional[str] = None):
         """
         :param str cert_name: If You Enable HTTPS Here Certificate Name.
-        :param str cert_type: Certificate Type. Value Range: 
+        :param str cert_type: Certificate Type. Value Range:
                * upload: Certificate
                * cas: Certificate Authority Certificate.
                * free: Free Certificate.
@@ -85,7 +85,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[str]:
         """
-        Certificate Type. Value Range: 
+        Certificate Type. Value Range:
         * upload: Certificate
         * cas: Certificate Authority Certificate.
         * free: Free Certificate.
@@ -177,7 +177,7 @@ class DomainSource(dict):
         :param str content: The Back-to-Source Address.
         :param int port: Port.
         :param str priority: Priority.
-        :param str type: The Origin Server Type. Valid Values: 
+        :param str type: The Origin Server Type. Valid Values:
                * ipaddr: IP Source Station
                * domain: the Domain Name
                * oss: OSS Bucket as a Source Station.
@@ -218,7 +218,7 @@ class DomainSource(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The Origin Server Type. Valid Values: 
+        The Origin Server Type. Valid Values:
         * ipaddr: IP Source Station
         * domain: the Domain Name
         * oss: OSS Bucket as a Source Station.

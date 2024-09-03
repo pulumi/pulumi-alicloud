@@ -60,7 +60,7 @@ type AlertContact struct {
 
 	// The name of the alert contact.
 	AlertContactName pulumi.StringPtrOutput `pulumi:"alertContactName"`
-	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	DingRobotWebhookUrl pulumi.StringPtrOutput `pulumi:"dingRobotWebhookUrl"`
 	// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
@@ -102,7 +102,7 @@ func GetAlertContact(ctx *pulumi.Context,
 type alertContactState struct {
 	// The name of the alert contact.
 	AlertContactName *string `pulumi:"alertContactName"`
-	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	DingRobotWebhookUrl *string `pulumi:"dingRobotWebhookUrl"`
 	// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	Email *string `pulumi:"email"`
@@ -115,7 +115,7 @@ type alertContactState struct {
 type AlertContactState struct {
 	// The name of the alert contact.
 	AlertContactName pulumi.StringPtrInput
-	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	DingRobotWebhookUrl pulumi.StringPtrInput
 	// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	Email pulumi.StringPtrInput
@@ -132,7 +132,7 @@ func (AlertContactState) ElementType() reflect.Type {
 type alertContactArgs struct {
 	// The name of the alert contact.
 	AlertContactName *string `pulumi:"alertContactName"`
-	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	DingRobotWebhookUrl *string `pulumi:"dingRobotWebhookUrl"`
 	// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	Email *string `pulumi:"email"`
@@ -146,7 +146,7 @@ type alertContactArgs struct {
 type AlertContactArgs struct {
 	// The name of the alert contact.
 	AlertContactName pulumi.StringPtrInput
-	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+	// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	DingRobotWebhookUrl pulumi.StringPtrInput
 	// The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 	Email pulumi.StringPtrInput
@@ -248,7 +248,7 @@ func (o AlertContactOutput) AlertContactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.AlertContactName }).(pulumi.StringPtrOutput)
 }
 
-// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
 func (o AlertContactOutput) DingRobotWebhookUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertContact) pulumi.StringPtrOutput { return v.DingRobotWebhookUrl }).(pulumi.StringPtrOutput)
 }

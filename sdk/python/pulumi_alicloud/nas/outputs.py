@@ -166,7 +166,7 @@ class GetAccessGroupsGroupResult(dict):
         :param str access_group_name: The name of access group.
         :param str access_group_type: Filter results by a specific AccessGroupType.
         :param str description: Filter results by a specific Description.
-        :param str id: This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
+        :param str id: This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `access_group_name`.
         :param int mount_target_count: MountTargetCount block of the AccessGroup
         :param int rule_count: RuleCount of the AccessGroup.
         :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
@@ -207,7 +207,7 @@ class GetAccessGroupsGroupResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `access_group_name`.
+        This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `access_group_name`.
         """
         return pulumi.get(self, "id")
 
@@ -573,7 +573,7 @@ class GetFileSystemsSystemResult(dict):
         :param int capacity: (Optional, Available in v1.140.0+) The capacity of the file system.
         :param str create_time: Time of creation.
         :param str description: Description of the FileSystem.
-        :param int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        :param int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted.
                * Valid values:
         :param str file_system_type: The type of the file system.
                Valid values:
@@ -634,7 +634,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> int:
         """
-        (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        (Optional, Available in v1.121.2+) Whether the file system is encrypted.
         * Valid values:
         """
         return pulumi.get(self, "encrypt_type")

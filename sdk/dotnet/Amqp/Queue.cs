@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> AutoExpireState { get; private set; } = null!;
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         /// </summary>
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? AutoExpireState { get; set; }
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         /// </summary>
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? AutoExpireState { get; set; }
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
+        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
         /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
         /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
         /// </summary>

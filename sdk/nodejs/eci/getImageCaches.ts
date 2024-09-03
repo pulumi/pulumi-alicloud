@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.eci.getImageCaches({
- *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
+ *     ids: ["imc-bp1ef0dyp7ldhb1d****"],
  * });
  * export const imageCache = example.then(example => example.caches?.[0]?.id);
  * ```
@@ -120,7 +120,7 @@ export interface GetImageCachesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.eci.getImageCaches({
- *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
+ *     ids: ["imc-bp1ef0dyp7ldhb1d****"],
  * });
  * export const imageCache = example.then(example => example.caches?.[0]?.id);
  * ```

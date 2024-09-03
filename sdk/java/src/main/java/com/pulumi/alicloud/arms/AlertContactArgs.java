@@ -32,14 +32,14 @@ public final class AlertContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+     * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
     @Import(name="dingRobotWebhookUrl")
     private @Nullable Output<String> dingRobotWebhookUrl;
 
     /**
-     * @return The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+     * @return The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
     public Optional<Output<String>> dingRobotWebhookUrl() {
@@ -141,7 +141,7 @@ public final class AlertContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dingRobotWebhookUrl The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+         * @param dingRobotWebhookUrl The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AlertContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dingRobotWebhookUrl The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+         * @param dingRobotWebhookUrl The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
          * 
          * @return builder
          * 

@@ -36,8 +36,7 @@ class AutoSnapshotPolicyArgs:
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
                - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
+               - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param pulumi.Input[str] name: The snapshot policy name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -106,8 +105,7 @@ class AutoSnapshotPolicyArgs:
         """
         The retention period of the snapshot copied across regions.
         - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
@@ -180,8 +178,7 @@ class _AutoSnapshotPolicyState:
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
         :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
                - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
+               - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param pulumi.Input[str] name: The snapshot policy name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
@@ -223,8 +220,7 @@ class _AutoSnapshotPolicyState:
         """
         The retention period of the snapshot copied across regions.
         - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
@@ -392,8 +388,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
                - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
+               - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param pulumi.Input[str] name: The snapshot policy name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
@@ -528,8 +523,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
                - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
+               - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
         :param pulumi.Input[str] name: The snapshot policy name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
@@ -567,8 +561,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         """
         The retention period of the snapshot copied across regions.
         - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
 

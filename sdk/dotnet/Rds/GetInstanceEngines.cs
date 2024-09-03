@@ -18,17 +18,27 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "alicloud_db_instance_engines" "resources" {
-        ///   instance_charge_type = "PostPaid"
-        ///   engine               = "MySQL"
-        ///   engine_version       = "5.6"
-        ///   output_file          = "./engines.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_db_category" {
-        ///   value = "${data.alicloud_db_instance_engines.resources.instance_engines.0.category}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceEngines.Invoke(new()
+        ///     {
+        ///         InstanceChargeType = "PostPaid",
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "5.6",
+        ///         OutputFile = "./engines.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbCategory"] = resources.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Category),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs? args = null, InvokeOptions? options = null)
@@ -41,17 +51,27 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "alicloud_db_instance_engines" "resources" {
-        ///   instance_charge_type = "PostPaid"
-        ///   engine               = "MySQL"
-        ///   engine_version       = "5.6"
-        ///   output_file          = "./engines.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_db_category" {
-        ///   value = "${data.alicloud_db_instance_engines.resources.instance_engines.0.category}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceEngines.Invoke(new()
+        ///     {
+        ///         InstanceChargeType = "PostPaid",
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "5.6",
+        ///         OutputFile = "./engines.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbCategory"] = resources.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Category),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs? args = null, InvokeOptions? options = null)

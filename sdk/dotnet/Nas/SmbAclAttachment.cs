@@ -92,8 +92,7 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The home directory of each user. Each user-specific home directory must meet the following requirements:    
-        /// Each segment starts with a forward slash (/) or a backslash (\).
+        /// The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
         /// Each segment does not contain the following special characters: &lt;&gt;":?*.
         /// Each segment is 0 to 255 characters in length.
         /// The total length is 0 to 32,767 characters.
@@ -200,8 +199,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
-        /// The home directory of each user. Each user-specific home directory must meet the following requirements:    
-        /// Each segment starts with a forward slash (/) or a backslash (\).
+        /// The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
         /// Each segment does not contain the following special characters: &lt;&gt;":?*.
         /// Each segment is 0 to 255 characters in length.
         /// The total length is 0 to 32,767 characters.
@@ -284,8 +282,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// The home directory of each user. Each user-specific home directory must meet the following requirements:    
-        /// Each segment starts with a forward slash (/) or a backslash (\).
+        /// The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
         /// Each segment does not contain the following special characters: &lt;&gt;":?*.
         /// Each segment is 0 to 255 characters in length.
         /// The total length is 0 to 32,767 characters.

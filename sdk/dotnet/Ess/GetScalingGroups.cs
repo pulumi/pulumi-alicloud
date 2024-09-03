@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetScalingGroups
     {
         /// <summary>
-        /// This data source provides available scaling group resources. 
+        /// This data source provides available scaling group resources.
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? new GetScalingGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available scaling group resources. 
+        /// This data source provides available scaling group resources.
         /// 
         /// ## Example Usage
         /// 

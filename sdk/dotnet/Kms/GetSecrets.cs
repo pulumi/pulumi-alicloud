@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Kms
     {
         /// <summary>
         /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.86.0+.
         /// 
         /// ## Example Usage
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.86.0+.
         /// 
         /// ## Example Usage
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Kms
         public bool? FetchTags { get; set; }
 
         /// <summary>
-        /// The secret filter. The filter consists of one or more key-value pairs. 
+        /// The secret filter. The filter consists of one or more key-value pairs.
         /// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
         /// </summary>
         [Input("filters")]
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<bool>? FetchTags { get; set; }
 
         /// <summary>
-        /// The secret filter. The filter consists of one or more key-value pairs. 
+        /// The secret filter. The filter consists of one or more key-value pairs.
         /// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
         /// </summary>
         [Input("filters")]

@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Cms
 {
     /// <summary>
     /// This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-    /// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+    /// Details at &lt;https://www.alibabacloud.com/help/doc-detail/67907.htm&gt;
     /// 
     /// &gt; **NOTE:** Available since v1.72.0.
     /// 

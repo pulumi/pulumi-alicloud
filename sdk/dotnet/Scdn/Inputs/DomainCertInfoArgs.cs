@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// Certificate Type. Value Range: 
+        /// Certificate Type. Value Range:
         /// * upload: Certificate
         /// * cas: Certificate Authority Certificate.
         /// * free: Free Certificate.

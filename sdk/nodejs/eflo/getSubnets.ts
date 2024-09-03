@@ -78,7 +78,7 @@ export interface GetSubnetsArgs {
      */
     subnetName?: string;
     /**
-     * Eflo subnet usage type, optional value: 
+     * Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
@@ -200,7 +200,7 @@ export interface GetSubnetsOutputArgs {
      */
     subnetName?: pulumi.Input<string>;
     /**
-     * Eflo subnet usage type, optional value: 
+     * Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type

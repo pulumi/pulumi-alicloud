@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Emr
     public static class GetDiskTypes
     {
         /// <summary>
-        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and
         /// system disk types available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Emr
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and
         /// system disk types available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+

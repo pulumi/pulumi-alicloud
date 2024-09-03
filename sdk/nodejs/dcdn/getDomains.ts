@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *    ids: ["example.com"],
+ *     ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```
@@ -138,7 +138,7 @@ export interface GetDomainsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *    ids: ["example.com"],
+ *     ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```

@@ -120,7 +120,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -265,7 +265,7 @@ export interface CommonBandwithPackageState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -343,7 +343,7 @@ export interface CommonBandwithPackageArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

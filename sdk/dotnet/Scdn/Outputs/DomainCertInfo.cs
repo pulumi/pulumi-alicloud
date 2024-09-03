@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly string? CertName;
         /// <summary>
-        /// Certificate Type. Value Range: 
+        /// Certificate Type. Value Range:
         /// * upload: Certificate
         /// * cas: Certificate Authority Certificate.
         /// * free: Free Certificate.

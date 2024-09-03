@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string SubnetName;
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type

@@ -2538,7 +2538,7 @@ type SyntheticTaskMonitorConfFileDownload struct {
 	// - 1: Validation string
 	// - 2:MD5 validation.
 	VerifyWay *int `pulumi:"verifyWay"`
-	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	WhiteList *string `pulumi:"whiteList"`
 }
 
@@ -2598,7 +2598,7 @@ type SyntheticTaskMonitorConfFileDownloadArgs struct {
 	// - 1: Validation string
 	// - 2:MD5 validation.
 	VerifyWay pulumi.IntPtrInput `pulumi:"verifyWay"`
-	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	WhiteList pulumi.StringPtrInput `pulumi:"whiteList"`
 }
 
@@ -2774,7 +2774,7 @@ func (o SyntheticTaskMonitorConfFileDownloadOutput) VerifyWay() pulumi.IntPtrOut
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.VerifyWay }).(pulumi.IntPtrOutput)
 }
 
-// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *string { return v.WhiteList }).(pulumi.StringPtrOutput)
 }
@@ -2983,7 +2983,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) VerifyWay() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *string {
 		if v == nil {
@@ -3783,7 +3783,7 @@ type SyntheticTaskMonitorConfStream struct {
 	StreamType *int `pulumi:"streamType"`
 	// The target URL.
 	TargetUrl *string `pulumi:"targetUrl"`
-	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	WhiteList *string `pulumi:"whiteList"`
 }
 
@@ -3815,7 +3815,7 @@ type SyntheticTaskMonitorConfStreamArgs struct {
 	StreamType pulumi.IntPtrInput `pulumi:"streamType"`
 	// The target URL.
 	TargetUrl pulumi.StringPtrInput `pulumi:"targetUrl"`
-	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	WhiteList pulumi.StringPtrInput `pulumi:"whiteList"`
 }
 
@@ -3930,7 +3930,7 @@ func (o SyntheticTaskMonitorConfStreamOutput) TargetUrl() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *string { return v.TargetUrl }).(pulumi.StringPtrOutput)
 }
 
-// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfStreamOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *string { return v.WhiteList }).(pulumi.StringPtrOutput)
 }
@@ -4023,7 +4023,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) TargetUrl() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *string {
 		if v == nil {
@@ -4051,7 +4051,7 @@ type SyntheticTaskMonitorConfWebsite struct {
 	DisableCache *int `pulumi:"disableCache"`
 	// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
 	DisableCompression *int `pulumi:"disableCompression"`
-	// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	DnsHijackWhitelist *string `pulumi:"dnsHijackWhitelist"`
 	// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
 	ElementBlacklist *string `pulumi:"elementBlacklist"`
@@ -4065,7 +4065,7 @@ type SyntheticTaskMonitorConfWebsite struct {
 	IgnoreCertificateError *int `pulumi:"ignoreCertificateError"`
 	// Monitoring timeout, in ms. Not required, 20000 by default.
 	MonitorTimeout *int `pulumi:"monitorTimeout"`
-	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 	PageTamper *string `pulumi:"pageTamper"`
 	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 	Redirection *int `pulumi:"redirection"`
@@ -4110,7 +4110,7 @@ type SyntheticTaskMonitorConfWebsiteArgs struct {
 	DisableCache pulumi.IntPtrInput `pulumi:"disableCache"`
 	// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
 	DisableCompression pulumi.IntPtrInput `pulumi:"disableCompression"`
-	// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	// When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 	DnsHijackWhitelist pulumi.StringPtrInput `pulumi:"dnsHijackWhitelist"`
 	// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
 	ElementBlacklist pulumi.StringPtrInput `pulumi:"elementBlacklist"`
@@ -4124,7 +4124,7 @@ type SyntheticTaskMonitorConfWebsiteArgs struct {
 	IgnoreCertificateError pulumi.IntPtrInput `pulumi:"ignoreCertificateError"`
 	// Monitoring timeout, in ms. Not required, 20000 by default.
 	MonitorTimeout pulumi.IntPtrInput `pulumi:"monitorTimeout"`
-	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 	PageTamper pulumi.StringPtrInput `pulumi:"pageTamper"`
 	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 	Redirection pulumi.IntPtrInput `pulumi:"redirection"`
@@ -4249,7 +4249,7 @@ func (o SyntheticTaskMonitorConfWebsiteOutput) DisableCompression() pulumi.IntPt
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.DisableCompression }).(pulumi.IntPtrOutput)
 }
 
-// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfWebsiteOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.DnsHijackWhitelist }).(pulumi.StringPtrOutput)
 }
@@ -4284,7 +4284,7 @@ func (o SyntheticTaskMonitorConfWebsiteOutput) MonitorTimeout() pulumi.IntPtrOut
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.MonitorTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 func (o SyntheticTaskMonitorConfWebsiteOutput) PageTamper() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.PageTamper }).(pulumi.StringPtrOutput)
 }
@@ -4400,7 +4400,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) DisableCompression() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+// When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -4470,7 +4470,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) MonitorTimeout() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) PageTamper() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {

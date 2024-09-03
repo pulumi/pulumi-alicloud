@@ -37,8 +37,7 @@ class ClusterEndpointArgs:
         :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         :param pulumi.Input[str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-               For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         :param pulumi.Input[str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
@@ -176,8 +175,7 @@ class ClusterEndpointArgs:
     def ssl_auto_rotate(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         """
         return pulumi.get(self, "ssl_auto_rotate")
 
@@ -231,8 +229,7 @@ class _ClusterEndpointState:
         :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         :param pulumi.Input[str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-               For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         :param pulumi.Input[str] ssl_certificate_url: The specifies SSL certificate download link.
         :param pulumi.Input[str] ssl_connection_string: The SSL connection string.
         :param pulumi.Input[str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
@@ -408,8 +405,7 @@ class _ClusterEndpointState:
     def ssl_auto_rotate(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         """
         return pulumi.get(self, "ssl_auto_rotate")
 
@@ -538,8 +534,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         :param pulumi.Input[str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-               For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         :param pulumi.Input[str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
         ...
@@ -689,8 +684,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         :param pulumi.Input[str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-               For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+               **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         :param pulumi.Input[str] ssl_certificate_url: The specifies SSL certificate download link.
         :param pulumi.Input[str] ssl_connection_string: The SSL connection string.
         :param pulumi.Input[str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
@@ -811,8 +805,7 @@ class ClusterEndpoint(pulumi.CustomResource):
     def ssl_auto_rotate(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         """
         return pulumi.get(self, "ssl_auto_rotate")
 

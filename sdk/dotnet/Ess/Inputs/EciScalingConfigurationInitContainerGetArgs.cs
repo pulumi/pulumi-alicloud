@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationInitContainerEnvironmentVarGetArgs>? _environmentVars;
 
         /// <summary>
-        /// The structure of environmentVars. 
+        /// The structure of environmentVars.
         /// See `environment_vars` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerEnvironmentVarGetArgs> EnvironmentVars

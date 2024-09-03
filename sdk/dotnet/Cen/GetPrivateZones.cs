@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`. 
+        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
         /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`. 
+        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
         /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>

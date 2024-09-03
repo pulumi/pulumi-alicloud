@@ -287,14 +287,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.environmentVariables);
     }
     /**
-     * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+     * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
      * 
      */
     @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     /**
-     * @return The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+     * @return The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
      * 
      */
     public Output<String> functionName() {

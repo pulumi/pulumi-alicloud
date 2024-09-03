@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Cms
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// File name where to save data source results (after running `pulumi preview`). 
+        /// File name where to save data source results (after running `pulumi preview`).
         /// 
         /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
         /// </summary>
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// File name where to save data source results (after running `pulumi preview`). 
+        /// File name where to save data source results (after running `pulumi preview`).
         /// 
         /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
         /// </summary>

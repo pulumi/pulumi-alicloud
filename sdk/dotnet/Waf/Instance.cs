@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Waf
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal status of WAF service. Valid values: 
+        /// Renewal status of WAF service. Valid values:
         /// * AutoRenewal: The service time of WAF is renewed automatically.
         /// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         /// </summary>
@@ -296,7 +296,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal status of WAF service. Valid values: 
+        /// Renewal status of WAF service. Valid values:
         /// * AutoRenewal: The service time of WAF is renewed automatically.
         /// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         /// </summary>
@@ -406,7 +406,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal status of WAF service. Valid values: 
+        /// Renewal status of WAF service. Valid values:
         /// * AutoRenewal: The service time of WAF is renewed automatically.
         /// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         /// </summary>

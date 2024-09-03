@@ -22,9 +22,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Description of the snapshot.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The specified disk ID.
+        /// </summary>
         public readonly string DiskId;
         /// <summary>
-        /// Whether the snapshot is encrypted or not.
+        /// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
@@ -67,21 +70,37 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SourceDiskSize;
         /// <summary>
-        /// Source disk attribute. Value range: `System`,`Data`.
+        /// The type of source disk:
+        /// * System: The snapshots are created for system disks.
+        /// * Data: The snapshots are created for data disks.
         /// </summary>
         public readonly string SourceDiskType;
         public readonly string SourceStorageType;
         /// <summary>
-        /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        /// The specified snapshot status. Default value: `all`. Optional values:
+        /// * progressing: The snapshots are being created.
+        /// * accomplished: The snapshots are ready to use.
+        /// * failed: The snapshot creation failed.
+        /// * all: All status.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the snapshot.
+        /// A map of tags assigned to snapshots.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The snapshot category. Default value: `all`. Optional values:
+        /// * auto: Auto snapshots.
+        /// * user: Manual snapshots.
+        /// * all: Auto and manual snapshots.
+        /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        /// The usage of the snapshot:
+        /// * image: The snapshots are used to create custom images.
+        /// * disk: The snapshots are used to CreateDisk.
+        /// * mage_disk: The snapshots are used to create custom images and data disks.
+        /// * none: The snapshots are not used yet.
         /// </summary>
         public readonly string Usage;
 

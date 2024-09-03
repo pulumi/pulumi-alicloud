@@ -12,6 +12,30 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.53.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
+ * const _default = new alicloud.rocketmq.Instance("default", {
+ *     instanceName: name,
+ *     remark: "default_ons_instance_remark",
+ * });
+ * const defaultGroup = new alicloud.rocketmq.Group("default", {
+ *     groupName: groupName,
+ *     instanceId: _default.id,
+ *     remark: "dafault_ons_group_remark",
+ * });
+ * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
+ *     instanceId: instanceId,
+ *     nameRegex: groupId,
+ *     outputFile: "groups.txt",
+ * }));
+ * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
+ * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
 
@@ -94,6 +118,30 @@ export interface GetGroupsResult {
  * > **NOTE:** Available in 1.53.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const groupName = config.get("groupName") || "GID-onsGroupDatasourceName";
+ * const _default = new alicloud.rocketmq.Instance("default", {
+ *     instanceName: name,
+ *     remark: "default_ons_instance_remark",
+ * });
+ * const defaultGroup = new alicloud.rocketmq.Group("default", {
+ *     groupName: groupName,
+ *     instanceId: _default.id,
+ *     remark: "dafault_ons_group_remark",
+ * });
+ * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
+ *     instanceId: instanceId,
+ *     nameRegex: groupId,
+ *     outputFile: "groups.txt",
+ * }));
+ * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
+ * ```
  */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

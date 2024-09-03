@@ -252,7 +252,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -301,7 +301,6 @@ class InstanceArgs:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -1259,7 +1258,7 @@ class InstanceArgs:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -1441,7 +1440,6 @@ class InstanceArgs:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The VPC ID of the instance.
-
 
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """
@@ -1754,7 +1752,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -1805,7 +1803,6 @@ class _InstanceState:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -2813,7 +2810,7 @@ class _InstanceState:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -3019,7 +3016,6 @@ class _InstanceState:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The VPC ID of the instance.
-
 
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """
@@ -3336,7 +3332,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -3385,7 +3381,6 @@ class Instance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -3861,7 +3856,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -3912,7 +3907,6 @@ class Instance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -4600,7 +4594,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Output[str]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -4750,7 +4744,6 @@ class Instance(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC ID of the instance.
-
 
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """

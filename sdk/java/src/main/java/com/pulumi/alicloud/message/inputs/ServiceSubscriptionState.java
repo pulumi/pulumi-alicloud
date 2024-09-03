@@ -17,7 +17,7 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
 
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
+     * - `HTTP Format`: &lt;http://xxx.com/xxx&gt;
      * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - `Email Format`: mail:directmail:{MailAddress}
      * 
@@ -27,7 +27,7 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
 
     /**
      * @return The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
+     * - `HTTP Format`: &lt;http://xxx.com/xxx&gt;
      * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - `Email Format`: mail:directmail:{MailAddress}
      * 
@@ -162,7 +162,7 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
+         * - `HTTP Format`: &lt;http://xxx.com/xxx&gt;
          * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
          * - `Email Format`: mail:directmail:{MailAddress}
          * 
@@ -176,7 +176,7 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
+         * - `HTTP Format`: &lt;http://xxx.com/xxx&gt;
          * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
          * - `Email Format`: mail:directmail:{MailAddress}
          * 

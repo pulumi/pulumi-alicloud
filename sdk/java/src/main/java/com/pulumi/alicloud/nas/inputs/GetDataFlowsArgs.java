@@ -63,14 +63,14 @@ public final class GetDataFlowsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+     * The status of the Data flow.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+     * @return The status of the Data flow.
      * 
      */
     public Optional<Output<String>> status() {
@@ -178,7 +178,7 @@ public final class GetDataFlowsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+         * @param status The status of the Data flow.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GetDataFlowsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+         * @param status The status of the Data flow.
          * 
          * @return builder
          * 

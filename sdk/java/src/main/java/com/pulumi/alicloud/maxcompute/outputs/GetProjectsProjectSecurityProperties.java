@@ -42,7 +42,7 @@ public final class GetProjectsProjectSecurityProperties {
      */
     private Boolean usingAcl;
     /**
-     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+     * @return Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     private Boolean usingPolicy;
@@ -91,7 +91,7 @@ public final class GetProjectsProjectSecurityProperties {
         return this.usingAcl;
     }
     /**
-     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+     * @return Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Boolean usingPolicy() {

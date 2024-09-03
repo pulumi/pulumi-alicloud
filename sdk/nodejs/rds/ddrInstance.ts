@@ -106,7 +106,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     public readonly connectionStringPrefix!: pulumi.Output<string>;
@@ -134,7 +134,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -672,7 +672,7 @@ export interface DdrInstanceState {
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
@@ -700,7 +700,7 @@ export interface DdrInstanceState {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -1052,7 +1052,7 @@ export interface DdrInstanceArgs {
      */
     clientCrlEnabled?: pulumi.Input<number>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
@@ -1080,7 +1080,7 @@ export interface DdrInstanceArgs {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *

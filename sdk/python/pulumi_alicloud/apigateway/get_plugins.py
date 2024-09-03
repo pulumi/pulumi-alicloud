@@ -167,7 +167,7 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Plugin IDs.
     :param str name_regex: A regex string to filter results by Plugin name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+    :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
     :param str plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
@@ -230,7 +230,7 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     :param Sequence[str] ids: A list of Plugin IDs.
     :param str name_regex: A regex string to filter results by Plugin name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+    :param str plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
     :param str plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """

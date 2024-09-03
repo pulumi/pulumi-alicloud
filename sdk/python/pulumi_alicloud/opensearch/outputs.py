@@ -108,7 +108,7 @@ class AppGroupQuota(dict):
         """
         :param int compute_resource: Computing resources. Unit: LCU.
         :param int doc_size: Storage Size. Unit: GB.
-        :param str spec: Specification. Valid values: 
+        :param str spec: Specification. Valid values:
                * `opensearch.share.junior`: Entry-level.
                * `opensearch.share.common`: Shared universal.
                * `opensearch.share.compute`: Shared computing.
@@ -144,7 +144,7 @@ class AppGroupQuota(dict):
     @pulumi.getter
     def spec(self) -> str:
         """
-        Specification. Valid values: 
+        Specification. Valid values:
         * `opensearch.share.junior`: Entry-level.
         * `opensearch.share.common`: Shared universal.
         * `opensearch.share.compute`: Shared computing.

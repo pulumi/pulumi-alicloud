@@ -26,7 +26,7 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
                - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
                - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -80,7 +80,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[str]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
         - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -240,7 +240,7 @@ class _InstanceState:
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
                - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
                - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -356,7 +356,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
         - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -512,7 +512,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
                - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
                - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -674,7 +674,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
                - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
                - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -764,7 +764,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[str]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
         - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
         - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;

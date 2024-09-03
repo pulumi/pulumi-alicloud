@@ -59,14 +59,48 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               <table>
+               <thead>
+               <tr>
+               <th>io_max</th>
+               <th>disk_size(min-max:lag)</th>
+               <th style="text-align:center">topic_quota(min-max:lag)</th>
+               <th style="text-align:center">eip_max(min-max:lag)</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>20</td>
+               <td>500-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-160:1</td>
+               </tr>
+               <tr>
+               <td>30</td>
+               <td>800-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-240:1</td>
+               </tr>
+               <tr>
+               <td>60</td>
+               <td>1400-6100:100</td>
+               <td style="text-align:center">80-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>90</td>
+               <td>2100-6100:100</td>
+               <td style="text-align:center">100-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>120</td>
+               <td>2700-6100:100</td>
+               <td style="text-align:center">150-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               </tbody>
+               </table>
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -299,14 +333,48 @@ class InstanceArgs:
         The zones among which you want to deploy the instance.
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        <table>
+        <thead>
+        <tr>
+        <th>io_max</th>
+        <th>disk_size(min-max:lag)</th>
+        <th style="text-align:center">topic_quota(min-max:lag)</th>
+        <th style="text-align:center">eip_max(min-max:lag)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>20</td>
+        <td>500-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-160:1</td>
+        </tr>
+        <tr>
+        <td>30</td>
+        <td>800-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-240:1</td>
+        </tr>
+        <tr>
+        <td>60</td>
+        <td>1400-6100:100</td>
+        <td style="text-align:center">80-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>90</td>
+        <td>2100-6100:100</td>
+        <td style="text-align:center">100-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>120</td>
+        <td>2700-6100:100</td>
+        <td style="text-align:center">150-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        </tbody>
+        </table>
         """
         return pulumi.get(self, "selected_zones")
 
@@ -454,14 +522,48 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               <table>
+               <thead>
+               <tr>
+               <th>io_max</th>
+               <th>disk_size(min-max:lag)</th>
+               <th style="text-align:center">topic_quota(min-max:lag)</th>
+               <th style="text-align:center">eip_max(min-max:lag)</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>20</td>
+               <td>500-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-160:1</td>
+               </tr>
+               <tr>
+               <td>30</td>
+               <td>800-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-240:1</td>
+               </tr>
+               <tr>
+               <td>60</td>
+               <td>1400-6100:100</td>
+               <td style="text-align:center">80-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>90</td>
+               <td>2100-6100:100</td>
+               <td style="text-align:center">100-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>120</td>
+               <td>2700-6100:100</td>
+               <td style="text-align:center">150-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               </tbody>
+               </table>
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance.
@@ -783,14 +885,48 @@ class _InstanceState:
         The zones among which you want to deploy the instance.
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        <table>
+        <thead>
+        <tr>
+        <th>io_max</th>
+        <th>disk_size(min-max:lag)</th>
+        <th style="text-align:center">topic_quota(min-max:lag)</th>
+        <th style="text-align:center">eip_max(min-max:lag)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>20</td>
+        <td>500-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-160:1</td>
+        </tr>
+        <tr>
+        <td>30</td>
+        <td>800-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-240:1</td>
+        </tr>
+        <tr>
+        <td>60</td>
+        <td>1400-6100:100</td>
+        <td style="text-align:center">80-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>90</td>
+        <td>2100-6100:100</td>
+        <td style="text-align:center">100-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>120</td>
+        <td>2700-6100:100</td>
+        <td style="text-align:center">150-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        </tbody>
+        </table>
         """
         return pulumi.get(self, "selected_zones")
 
@@ -994,14 +1130,48 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               <table>
+               <thead>
+               <tr>
+               <th>io_max</th>
+               <th>disk_size(min-max:lag)</th>
+               <th style="text-align:center">topic_quota(min-max:lag)</th>
+               <th style="text-align:center">eip_max(min-max:lag)</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>20</td>
+               <td>500-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-160:1</td>
+               </tr>
+               <tr>
+               <td>30</td>
+               <td>800-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-240:1</td>
+               </tr>
+               <tr>
+               <td>60</td>
+               <td>1400-6100:100</td>
+               <td style="text-align:center">80-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>90</td>
+               <td>2100-6100:100</td>
+               <td style="text-align:center">100-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>120</td>
+               <td>2700-6100:100</td>
+               <td style="text-align:center">150-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               </tbody>
+               </table>
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -1187,14 +1357,48 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-               
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               <table>
+               <thead>
+               <tr>
+               <th>io_max</th>
+               <th>disk_size(min-max:lag)</th>
+               <th style="text-align:center">topic_quota(min-max:lag)</th>
+               <th style="text-align:center">eip_max(min-max:lag)</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>20</td>
+               <td>500-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-160:1</td>
+               </tr>
+               <tr>
+               <td>30</td>
+               <td>800-6100:100</td>
+               <td style="text-align:center">50-450:1</td>
+               <td style="text-align:center">1-240:1</td>
+               </tr>
+               <tr>
+               <td>60</td>
+               <td>1400-6100:100</td>
+               <td style="text-align:center">80-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>90</td>
+               <td>2100-6100:100</td>
+               <td style="text-align:center">100-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               <tr>
+               <td>120</td>
+               <td>2700-6100:100</td>
+               <td style="text-align:center">150-450:1</td>
+               <td style="text-align:center">1-500:1</td>
+               </tr>
+               </tbody>
+               </table>
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance.
@@ -1411,14 +1615,48 @@ class Instance(pulumi.CustomResource):
         The zones among which you want to deploy the instance.
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        <table>
+        <thead>
+        <tr>
+        <th>io_max</th>
+        <th>disk_size(min-max:lag)</th>
+        <th style="text-align:center">topic_quota(min-max:lag)</th>
+        <th style="text-align:center">eip_max(min-max:lag)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>20</td>
+        <td>500-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-160:1</td>
+        </tr>
+        <tr>
+        <td>30</td>
+        <td>800-6100:100</td>
+        <td style="text-align:center">50-450:1</td>
+        <td style="text-align:center">1-240:1</td>
+        </tr>
+        <tr>
+        <td>60</td>
+        <td>1400-6100:100</td>
+        <td style="text-align:center">80-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>90</td>
+        <td>2100-6100:100</td>
+        <td style="text-align:center">100-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        <tr>
+        <td>120</td>
+        <td>2700-6100:100</td>
+        <td style="text-align:center">150-450:1</td>
+        <td style="text-align:center">1-500:1</td>
+        </tr>
+        </tbody>
+        </table>
         """
         return pulumi.get(self, "selected_zones")
 

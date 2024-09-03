@@ -217,7 +217,7 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
     :param str opposite_interface_id: ID of the peer router interface.
     :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+    :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
            `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
     :param str router_id: ID of the VRouter located in the local region.
     :param str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
@@ -289,7 +289,7 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str opposite_interface_id: ID of the peer router interface.
     :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+    :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
            `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
     :param str router_id: ID of the VRouter located in the local region.
     :param str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).

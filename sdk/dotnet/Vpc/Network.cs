@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -573,7 +573,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

@@ -71,7 +71,7 @@ class KubernetesArgs:
         The set of arguments for constructing a Kubernetes resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
                
                *Network params*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -262,7 +262,7 @@ class KubernetesArgs:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]]:
         """
-        The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
 
         *Network params*
         """
@@ -918,7 +918,7 @@ class _KubernetesState:
                  worker_ram_role_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
                
                *Network params*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -1116,7 +1116,7 @@ class _KubernetesState:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]]:
         """
-        The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
 
         *Network params*
         """
@@ -1941,7 +1941,7 @@ class Kubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
                
                *Network params*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -2269,7 +2269,7 @@ class Kubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAddonArgs', 'KubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
                
                *Network params*
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
@@ -2409,7 +2409,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def addons(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesAddon']]]:
         """
-        The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
 
         *Network params*
         """

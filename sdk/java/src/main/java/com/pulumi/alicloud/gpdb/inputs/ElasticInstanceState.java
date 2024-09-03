@@ -158,16 +158,14 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Import(name="paymentDuration")
     private @Nullable Output<Integer> paymentDuration;
 
     /**
-     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Optional<Output<Integer>> paymentDuration() {
@@ -175,16 +173,14 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Import(name="paymentDurationUnit")
     private @Nullable Output<String> paymentDurationUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Optional<Output<String>> paymentDurationUnit() {
@@ -579,8 +575,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -591,8 +586,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDuration The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -602,8 +596,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 
@@ -614,8 +607,7 @@ public final class ElasticInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-         * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+         * @param paymentDurationUnit The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
          * 
          * @return builder
          * 

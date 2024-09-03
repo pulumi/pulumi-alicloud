@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### 1. Create A Cluster
+ * #### 1. Create A Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### 2. Scale Up
+ * #### 2. Scale Up
  * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
  * 
  * In the case of scaling up cluster, we should add the node_count of some host group.
@@ -388,7 +388,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### 3. Scale Down
+ * #### 3. Scale Down
  * 
  * In the case of scaling down a cluster, we need to specified the host group and the instance list.
  * 
@@ -568,7 +568,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### 4. Create a emr gateway cluster
+ * #### 4. Create a emr gateway cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

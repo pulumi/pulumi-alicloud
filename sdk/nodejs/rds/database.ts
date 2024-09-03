@@ -105,7 +105,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The name of the database. 
+     * The name of the database.
      * * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -175,7 +175,7 @@ export interface DatabaseState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The name of the database. 
+     * The name of the database.
      * * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -214,7 +214,7 @@ export interface DatabaseArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The name of the database. 
+     * The name of the database.
      * * > **NOTE:**
      * The name must be 2 to 64 characters in length.
      * The name must start with a lowercase letter and end with a lowercase letter or digit.

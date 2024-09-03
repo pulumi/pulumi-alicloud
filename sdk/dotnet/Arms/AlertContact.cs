@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> AlertContactName { get; private set; } = null!;
 
         /// <summary>
-        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         /// </summary>
         [Output("dingRobotWebhookUrl")]
         public Output<string?> DingRobotWebhookUrl { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? AlertContactName { get; set; }
 
         /// <summary>
-        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         /// </summary>
         [Input("dingRobotWebhookUrl")]
         public Input<string>? DingRobotWebhookUrl { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? AlertContactName { get; set; }
 
         /// <summary>
-        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        /// The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: &lt;https://www.alibabacloud.com/help/en/doc-detail/106247.htm&gt;. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         /// </summary>
         [Input("dingRobotWebhookUrl")]
         public Input<string>? DingRobotWebhookUrl { get; set; }

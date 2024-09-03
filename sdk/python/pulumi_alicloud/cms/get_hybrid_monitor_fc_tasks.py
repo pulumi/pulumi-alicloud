@@ -124,7 +124,7 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.
-    :param str namespace: The name of the namespace.
+    :param str namespace: The index warehouse where the host belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -172,7 +172,7 @@ def get_hybrid_monitor_fc_tasks_output(ids: Optional[pulumi.Input[Optional[Seque
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Fc Task IDs.
-    :param str namespace: The name of the namespace.
+    :param str namespace: The index warehouse where the host belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

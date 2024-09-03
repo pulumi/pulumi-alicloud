@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
- * Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+ * Details at <https://www.alibabacloud.com/help/doc-detail/67907.htm>
  *
  * > **NOTE:** Available since v1.72.0.
  *

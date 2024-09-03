@@ -46,7 +46,7 @@ class RuleArgs:
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
-               - Standard domain name: www.test.com
+               - Standard domain name: <http://www.test.com>
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
@@ -184,7 +184,7 @@ class RuleArgs:
         """
         Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         and wildcard characters. The following two domain name formats are supported:
-        - Standard domain name: www.test.com
+        - Standard domain name: <http://www.test.com>
         - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         """
         return pulumi.get(self, "domain")
@@ -406,7 +406,7 @@ class _RuleState:
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
-               - Standard domain name: www.test.com
+               - Standard domain name: <http://www.test.com>
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
@@ -514,7 +514,7 @@ class _RuleState:
         """
         Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         and wildcard characters. The following two domain name formats are supported:
-        - Standard domain name: www.test.com
+        - Standard domain name: <http://www.test.com>
         - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         """
         return pulumi.get(self, "domain")
@@ -881,7 +881,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
-               - Standard domain name: www.test.com
+               - Standard domain name: <http://www.test.com>
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
@@ -1132,7 +1132,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
-               - Standard domain name: www.test.com
+               - Standard domain name: <http://www.test.com>
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
@@ -1211,7 +1211,7 @@ class Rule(pulumi.CustomResource):
         """
         Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         and wildcard characters. The following two domain name formats are supported:
-        - Standard domain name: www.test.com
+        - Standard domain name: <http://www.test.com>
         - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         """
         return pulumi.get(self, "domain")

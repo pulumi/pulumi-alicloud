@@ -50,7 +50,7 @@ export interface GetPrivateZonesArgs {
      */
     hostRegionId?: string;
     /**
-     * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+     * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
      * * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */
@@ -132,7 +132,7 @@ export interface GetPrivateZonesOutputArgs {
      */
     hostRegionId?: pulumi.Input<string>;
     /**
-     * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+     * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
      * * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
     public sealed class InstanceIpWhitelistGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of this parameter is empty by default. The attribute of the whitelist group. 
+        /// The value of this parameter is empty by default. The attribute of the whitelist group.
         /// If the value contains `hidden`, this white list item will not output.
         /// </summary>
         [Input("ipGroupAttribute")]

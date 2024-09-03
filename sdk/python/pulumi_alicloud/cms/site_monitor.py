@@ -313,7 +313,7 @@ class SiteMonitor(pulumi.CustomResource):
                  __props__=None):
         """
         This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+        Details at <https://www.alibabacloud.com/help/doc-detail/67907.htm>
 
         > **NOTE:** Available since v1.72.0.
 
@@ -378,7 +378,7 @@ class SiteMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+        Details at <https://www.alibabacloud.com/help/doc-detail/67907.htm>
 
         > **NOTE:** Available since v1.72.0.
 

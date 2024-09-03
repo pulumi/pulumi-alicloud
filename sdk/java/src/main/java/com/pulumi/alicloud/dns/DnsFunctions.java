@@ -1314,6 +1314,43 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .ids("1978593525779****")
+     *             .type("A")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args) {
         return getAlidnsRecords(args, InvokeOptions.Empty);
@@ -1324,6 +1361,43 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .ids("1978593525779****")
+     *             .type("A")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args) {
@@ -1336,6 +1410,43 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .ids("1978593525779****")
+     *             .type("A")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", TypeShape.of(GetAlidnsRecordsResult.class), args, Utilities.withVersion(options));
@@ -1346,6 +1457,43 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dns.DnsFunctions;
+     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
+     *             .domainName("xiaozhu.top")
+     *             .ids("1978593525779****")
+     *             .type("A")
+     *             .outputFile("records.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getAlidnsRecordsResult -> getAlidnsRecordsResult.records()[0].recordId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args, InvokeOptions options) {

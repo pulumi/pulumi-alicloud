@@ -1377,6 +1377,42 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
+     *             .commodityCode("bards")
+     *             .orderType("BUY")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args) {
         return getInstanceClassInfos(args, InvokeOptions.Empty);
@@ -1387,6 +1423,42 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
+     *             .commodityCode("bards")
+     *             .orderType("BUY")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassInfosResult> getInstanceClassInfosPlain(GetInstanceClassInfosPlainArgs args) {
@@ -1399,6 +1471,42 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
+     *             .commodityCode("bards")
+     *             .orderType("BUY")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceClassInfosResult> getInstanceClassInfos(GetInstanceClassInfosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", TypeShape.of(GetInstanceClassInfosResult.class), args, Utilities.withVersion(options));
@@ -1409,6 +1517,42 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClassInfos(GetInstanceClassInfosArgs.builder()
+     *             .commodityCode("bards")
+     *             .orderType("BUY")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassInfosResult> getInstanceClassInfosPlain(GetInstanceClassInfosPlainArgs args, InvokeOptions options) {
@@ -1421,6 +1565,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses() {
         return getInstanceClasses(GetInstanceClassesArgs.Empty, InvokeOptions.Empty);
@@ -1431,6 +1612,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain() {
@@ -1443,6 +1661,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args) {
         return getInstanceClasses(args, InvokeOptions.Empty);
@@ -1453,6 +1708,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args) {
@@ -1465,6 +1757,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceClassesResult> getInstanceClasses(GetInstanceClassesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
@@ -1475,6 +1804,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./classes.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceClassesResult> getInstanceClassesPlain(GetInstanceClassesPlainArgs args, InvokeOptions options) {
@@ -1487,6 +1853,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines() {
         return getInstanceEngines(GetInstanceEnginesArgs.Empty, InvokeOptions.Empty);
@@ -1497,6 +1900,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain() {
@@ -1509,6 +1949,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args) {
         return getInstanceEngines(args, InvokeOptions.Empty);
@@ -1519,6 +1996,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args) {
@@ -1531,6 +2045,43 @@ public final class RdsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceEnginesResult> getInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
@@ -1541,6 +2092,43 @@ public final class RdsFunctions {
      * &gt; **NOTE:** Available in v1.46.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = RdsFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .instanceChargeType("PostPaid")
+     *             .engine("MySQL")
+     *             .engineVersion("5.6")
+     *             .outputFile("./engines.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceEnginesResult> getInstanceEnginesPlain(GetInstanceEnginesPlainArgs args, InvokeOptions options) {

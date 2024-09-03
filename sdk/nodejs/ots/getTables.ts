@@ -12,6 +12,18 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.40.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tablesDs = alicloud.ots.getTables({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-table",
+ *     outputFile: "tables.txt",
+ * });
+ * export const firstTableId = tablesDs.then(tablesDs => tablesDs.tables?.[0]?.id);
+ * ```
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
 
@@ -79,6 +91,18 @@ export interface GetTablesResult {
  * > **NOTE:** Available in v1.40.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const tablesDs = alicloud.ots.getTables({
+ *     instanceName: "sample-instance",
+ *     nameRegex: "sample-table",
+ *     outputFile: "tables.txt",
+ * });
+ * export const firstTableId = tablesDs.then(tablesDs => tablesDs.tables?.[0]?.id);
+ * ```
  */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
     return pulumi.output(args).apply((a: any) => getTables(a, opts))

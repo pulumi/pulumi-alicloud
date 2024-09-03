@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;

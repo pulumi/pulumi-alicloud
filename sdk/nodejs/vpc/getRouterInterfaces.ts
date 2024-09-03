@@ -68,7 +68,7 @@ export interface GetRouterInterfacesArgs {
      */
     outputFile?: string;
     /**
-     * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+     * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
      * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      */
     role?: string;
@@ -189,7 +189,7 @@ export interface GetRouterInterfacesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+     * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
      * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      */
     role?: pulumi.Input<string>;

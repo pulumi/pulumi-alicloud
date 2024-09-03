@@ -231,7 +231,7 @@ class CustomDomain(pulumi.CustomResource):
                  __props__=None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
+        For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
 
@@ -348,7 +348,7 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
+        For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 
         > **NOTE:** Available since v1.98.0.
 

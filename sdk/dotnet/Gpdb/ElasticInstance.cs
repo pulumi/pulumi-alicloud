@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
-    /// For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
+    /// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
     /// 
     /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
     /// 
@@ -125,7 +124,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> InstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
@@ -133,15 +132,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Output("paymentDuration")]
         public Output<int?> PaymentDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Output("paymentDurationUnit")]
         public Output<string?> PaymentDurationUnit { get; private set; } = null!;
@@ -295,7 +292,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
@@ -303,15 +300,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string> InstanceSpec { get; set; } = null!;
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }
@@ -433,7 +428,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
@@ -441,15 +436,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceSpec { get; set; }
 
         /// <summary>
-        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
-        /// **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+        /// The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         /// </summary>
         [Input("paymentDurationUnit")]
         public Input<string>? PaymentDurationUnit { get; set; }

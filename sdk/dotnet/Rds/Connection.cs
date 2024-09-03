@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Rds
     /// Provides an RDS connection resource to allocate an Internet connection string for RDS instance, see [What is DB Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocateinstancepublicconnection).
     /// 
     /// &gt; **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
-    ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+    /// To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
     /// 
     /// &gt; **NOTE:** Available since v1.5.0.
     /// 

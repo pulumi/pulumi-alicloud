@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
+ * ## Example Usage
  *
- * > **NOTE:** Available since v1.150.0.
- *
- * > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+ * Basic Usage
  *
  * ## Import
  *

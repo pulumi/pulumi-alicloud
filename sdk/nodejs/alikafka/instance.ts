@@ -126,14 +126,48 @@ export class Instance extends pulumi.CustomResource {
      * The zones among which you want to deploy the instance.
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * <table>
+     * <thead>
+     * <tr>
+     * <th>io_max</th>
+     * <th>disk_size(min-max:lag)</th>
+     * <th style="text-align:center">topic_quota(min-max:lag)</th>
+     * <th style="text-align:center">eip_max(min-max:lag)</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>20</td>
+     * <td>500-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-160:1</td>
+     * </tr>
+     * <tr>
+     * <td>30</td>
+     * <td>800-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-240:1</td>
+     * </tr>
+     * <tr>
+     * <td>60</td>
+     * <td>1400-6100:100</td>
+     * <td style="text-align:center">80-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>90</td>
+     * <td>2100-6100:100</td>
+     * <td style="text-align:center">100-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>120</td>
+     * <td>2700-6100:100</td>
+     * <td style="text-align:center">150-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * </tbody>
+     * </table>
      */
     public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
@@ -370,14 +404,48 @@ export interface InstanceState {
      * The zones among which you want to deploy the instance.
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * <table>
+     * <thead>
+     * <tr>
+     * <th>io_max</th>
+     * <th>disk_size(min-max:lag)</th>
+     * <th style="text-align:center">topic_quota(min-max:lag)</th>
+     * <th style="text-align:center">eip_max(min-max:lag)</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>20</td>
+     * <td>500-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-160:1</td>
+     * </tr>
+     * <tr>
+     * <td>30</td>
+     * <td>800-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-240:1</td>
+     * </tr>
+     * <tr>
+     * <td>60</td>
+     * <td>1400-6100:100</td>
+     * <td style="text-align:center">80-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>90</td>
+     * <td>2100-6100:100</td>
+     * <td style="text-align:center">100-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>120</td>
+     * <td>2700-6100:100</td>
+     * <td style="text-align:center">150-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * </tbody>
+     * </table>
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -496,14 +564,48 @@ export interface InstanceArgs {
      * The zones among which you want to deploy the instance.
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
-     *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * <table>
+     * <thead>
+     * <tr>
+     * <th>io_max</th>
+     * <th>disk_size(min-max:lag)</th>
+     * <th style="text-align:center">topic_quota(min-max:lag)</th>
+     * <th style="text-align:center">eip_max(min-max:lag)</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>20</td>
+     * <td>500-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-160:1</td>
+     * </tr>
+     * <tr>
+     * <td>30</td>
+     * <td>800-6100:100</td>
+     * <td style="text-align:center">50-450:1</td>
+     * <td style="text-align:center">1-240:1</td>
+     * </tr>
+     * <tr>
+     * <td>60</td>
+     * <td>1400-6100:100</td>
+     * <td style="text-align:center">80-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>90</td>
+     * <td>2100-6100:100</td>
+     * <td style="text-align:center">100-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * <tr>
+     * <td>120</td>
+     * <td>2700-6100:100</td>
+     * <td style="text-align:center">150-450:1</td>
+     * <td style="text-align:center">1-500:1</td>
+     * </tr>
+     * </tbody>
+     * </table>
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**

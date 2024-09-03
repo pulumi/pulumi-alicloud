@@ -128,23 +128,6 @@ import (
 // })
 // }
 // ```
-//
-// ## Argument Reference
-//
-// The following arguments are supported:
-//
-// * `ids` - (Optional)  A list of ENI IDs.
-// * `nameRegex` - (Optional) A regex string to filter results by ENI name.
-// * `vpcId` - (Optional) The VPC ID linked to ENIs.
-// * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
-// * `privateIp` - (Optional) The primary private IP address of the ENI.
-// * `securityGroupId` - (Optional) The security group ID linked to ENIs.
-// * `name` - (Optional) The name of the ENIs.
-// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-// * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
-// * `tags` - (Optional) A map of tags assigned to ENIs.
-// * `outputFile` - (Optional) The name of output file that saves the filter results.
-// * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkInterfacesResult
@@ -157,33 +140,38 @@ func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, o
 
 // A collection of arguments for invoking getNetworkInterfaces.
 type GetNetworkInterfacesArgs struct {
+	// A list of ENI IDs.
 	Ids []string `pulumi:"ids"`
-	// ID of the instance that the ENI is attached to.
+	// The ECS instance ID that the ENI is attached to.
 	InstanceId *string `pulumi:"instanceId"`
-	// Name of the ENI.
+	// The name of the ENIs.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// A regex string to filter results by ENI name.
 	NameRegex            *string `pulumi:"nameRegex"`
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
-	OutputFile           *string `pulumi:"outputFile"`
-	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
+	// The name of output file that saves the filter results.
+	OutputFile       *string `pulumi:"outputFile"`
+	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp *string `pulumi:"privateIp"`
-	// The Id of resource group.
+	// The Id of resource group which the network interface belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The security group ID linked to ENIs.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	ServiceManaged  *bool   `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags map[string]string `pulumi:"tags"`
-	Type *string           `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The type of ENIs, Only support for "Primary" or "Secondary".
+	Type *string `pulumi:"type"`
+	// The VPC ID linked to ENIs.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -239,33 +227,38 @@ func GetNetworkInterfacesOutput(ctx *pulumi.Context, args GetNetworkInterfacesOu
 
 // A collection of arguments for invoking getNetworkInterfaces.
 type GetNetworkInterfacesOutputArgs struct {
+	// A list of ENI IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// ID of the instance that the ENI is attached to.
+	// The ECS instance ID that the ENI is attached to.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Name of the ENI.
+	// The name of the ENIs.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to filter results by ENI name.
 	NameRegex            pulumi.StringPtrInput `pulumi:"nameRegex"`
 	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
-	OutputFile           pulumi.StringPtrInput `pulumi:"outputFile"`
-	PrimaryIpAddress     pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
+	// The name of output file that saves the filter results.
+	OutputFile       pulumi.StringPtrInput `pulumi:"outputFile"`
+	PrimaryIpAddress pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	// The Id of resource group.
+	// The Id of resource group which the network interface belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The security group ID linked to ENIs.
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
 	ServiceManaged  pulumi.BoolPtrInput   `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The type of ENIs, Only support for "Primary" or "Secondary".
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The VPC ID linked to ENIs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 

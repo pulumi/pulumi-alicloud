@@ -144,14 +144,48 @@ namespace Pulumi.AliCloud.AliKafka
         /// The zones among which you want to deploy the instance.
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// &lt;table&gt;
+        /// &lt;thead&gt;
+        /// &lt;tr&gt;
+        /// &lt;th&gt;io_max&lt;/th&gt;
+        /// &lt;th&gt;disk_size(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;topic_quota(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;eip_max(min-max:lag)&lt;/th&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/thead&gt;
+        /// &lt;tbody&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;20&lt;/td&gt;
+        /// &lt;td&gt;500-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-160:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;30&lt;/td&gt;
+        /// &lt;td&gt;800-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-240:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;60&lt;/td&gt;
+        /// &lt;td&gt;1400-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;80-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;90&lt;/td&gt;
+        /// &lt;td&gt;2100-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;100-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;120&lt;/td&gt;
+        /// &lt;td&gt;2700-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;150-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/tbody&gt;
+        /// &lt;/table&gt;
         /// </summary>
         [Output("selectedZones")]
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
@@ -361,14 +395,48 @@ namespace Pulumi.AliCloud.AliKafka
         /// The zones among which you want to deploy the instance.
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// &lt;table&gt;
+        /// &lt;thead&gt;
+        /// &lt;tr&gt;
+        /// &lt;th&gt;io_max&lt;/th&gt;
+        /// &lt;th&gt;disk_size(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;topic_quota(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;eip_max(min-max:lag)&lt;/th&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/thead&gt;
+        /// &lt;tbody&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;20&lt;/td&gt;
+        /// &lt;td&gt;500-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-160:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;30&lt;/td&gt;
+        /// &lt;td&gt;800-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-240:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;60&lt;/td&gt;
+        /// &lt;td&gt;1400-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;80-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;90&lt;/td&gt;
+        /// &lt;td&gt;2100-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;100-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;120&lt;/td&gt;
+        /// &lt;td&gt;2700-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;150-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/tbody&gt;
+        /// &lt;/table&gt;
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -561,14 +629,48 @@ namespace Pulumi.AliCloud.AliKafka
         /// The zones among which you want to deploy the instance.
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
-        /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// &lt;table&gt;
+        /// &lt;thead&gt;
+        /// &lt;tr&gt;
+        /// &lt;th&gt;io_max&lt;/th&gt;
+        /// &lt;th&gt;disk_size(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;topic_quota(min-max:lag)&lt;/th&gt;
+        /// &lt;th style="text-align:center"&gt;eip_max(min-max:lag)&lt;/th&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/thead&gt;
+        /// &lt;tbody&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;20&lt;/td&gt;
+        /// &lt;td&gt;500-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-160:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;30&lt;/td&gt;
+        /// &lt;td&gt;800-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;50-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-240:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;60&lt;/td&gt;
+        /// &lt;td&gt;1400-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;80-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;90&lt;/td&gt;
+        /// &lt;td&gt;2100-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;100-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;tr&gt;
+        /// &lt;td&gt;120&lt;/td&gt;
+        /// &lt;td&gt;2700-6100:100&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;150-450:1&lt;/td&gt;
+        /// &lt;td style="text-align:center"&gt;1-500:1&lt;/td&gt;
+        /// &lt;/tr&gt;
+        /// &lt;/tbody&gt;
+        /// &lt;/table&gt;
         /// </summary>
         public InputList<string> SelectedZones
         {

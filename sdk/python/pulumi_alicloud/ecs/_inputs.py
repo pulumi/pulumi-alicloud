@@ -872,8 +872,8 @@ class ImageDiskDeviceMappingArgs:
         :param pulumi.Input[int] remain_time: For an image being replicated, return the remaining time of the replication task, in seconds.
         :param pulumi.Input[int] size: The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
                - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-               *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-               *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+               * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+               * For other disks, the valid values range from 20 to 32768, and the default value is 20.
                - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of snapshot N to use to create the custom image. .
         """
@@ -990,8 +990,8 @@ class ImageDiskDeviceMappingArgs:
         """
         The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
         - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-        *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-        *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+        * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+        * For other disks, the valid values range from 20 to 32768, and the default value is 20.
         - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         """
         return pulumi.get(self, "size")
