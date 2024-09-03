@@ -109,18 +109,14 @@ public final class GetAccessStrategiesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The type of the access policy. Valid values:
-     * - `GEO`: based on geographic location.
-     * - `LATENCY`: Based on delay.
+     * The type of the access policy.
      * 
      */
     @Import(name="strategyMode", required=true)
     private Output<String> strategyMode;
 
     /**
-     * @return The type of the access policy. Valid values:
-     * - `GEO`: based on geographic location.
-     * - `LATENCY`: Based on delay.
+     * @return The type of the access policy.
      * 
      */
     public Output<String> strategyMode() {
@@ -294,9 +290,7 @@ public final class GetAccessStrategiesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param strategyMode The type of the access policy. Valid values:
-         * - `GEO`: based on geographic location.
-         * - `LATENCY`: Based on delay.
+         * @param strategyMode The type of the access policy.
          * 
          * @return builder
          * 
@@ -307,9 +301,7 @@ public final class GetAccessStrategiesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param strategyMode The type of the access policy. Valid values:
-         * - `GEO`: based on geographic location.
-         * - `LATENCY`: Based on delay.
+         * @param strategyMode The type of the access policy.
          * 
          * @return builder
          * 

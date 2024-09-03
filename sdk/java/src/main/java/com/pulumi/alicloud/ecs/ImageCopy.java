@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  * 
  * ## Attributes Reference0
  * 
- *  The following attributes are exported:
+ * The following attributes are exported:
  * 
  * * `id` - ID of the image.
  * 

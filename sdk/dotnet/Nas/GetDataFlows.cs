@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+        /// The status of the Data flow.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+        /// The status of the Data flow.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

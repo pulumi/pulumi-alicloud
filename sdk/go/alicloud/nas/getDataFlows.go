@@ -73,7 +73,7 @@ type GetDataFlowsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+	// The status of the Data flow.
 	Status *string `pulumi:"status"`
 }
 
@@ -109,7 +109,7 @@ type GetDataFlowsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
+	// The status of the Data flow.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

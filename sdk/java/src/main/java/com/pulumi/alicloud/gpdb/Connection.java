@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.48.0.
  * 
  * &gt; **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
- *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+ * To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
  * ## Example Usage
  * 

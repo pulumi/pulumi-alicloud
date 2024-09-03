@@ -145,8 +145,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Output("sslAutoRotate")]
         public Output<string?> SslAutoRotate { get; private set; } = null!;
@@ -289,8 +288,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Input("sslAutoRotate")]
         public Input<string>? SslAutoRotate { get; set; }
@@ -389,8 +387,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Input("sslAutoRotate")]
         public Input<string>? SslAutoRotate { get; set; }

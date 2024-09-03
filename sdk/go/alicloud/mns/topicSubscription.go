@@ -64,7 +64,7 @@ type TopicSubscription struct {
 	pulumi.CustomResourceState
 
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
+	// - `HTTP Format`: <http://xxx.com/xxx>
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -117,7 +117,7 @@ func GetTopicSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TopicSubscription resources.
 type topicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
+	// - `HTTP Format`: <http://xxx.com/xxx>
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint *string `pulumi:"endpoint"`
@@ -135,7 +135,7 @@ type topicSubscriptionState struct {
 
 type TopicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
+	// - `HTTP Format`: <http://xxx.com/xxx>
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringPtrInput
@@ -157,7 +157,7 @@ func (TopicSubscriptionState) ElementType() reflect.Type {
 
 type topicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
+	// - `HTTP Format`: <http://xxx.com/xxx>
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint string `pulumi:"endpoint"`
@@ -176,7 +176,7 @@ type topicSubscriptionArgs struct {
 // The set of arguments for constructing a TopicSubscription resource.
 type TopicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
+	// - `HTTP Format`: <http://xxx.com/xxx>
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringInput
@@ -280,7 +280,7 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx contex
 }
 
 // The endpoint has three format. Available values format:
-// - `HTTP Format`: http://xxx.com/xxx
+// - `HTTP Format`: <http://xxx.com/xxx>
 // - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 // - `Email Format`: mail:directmail:{MailAddress}
 func (o TopicSubscriptionOutput) Endpoint() pulumi.StringOutput {

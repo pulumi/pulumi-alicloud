@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
+ * For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
  *
  * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
  *
@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  *         "targetConfig": null,
  *         "enable": true
  *     }
- *   
+ *
  * `,
  * });
  * ```

@@ -22,8 +22,7 @@ public final class AutoSnapshotPolicyState extends com.pulumi.resources.Resource
     /**
      * The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     *   Default value: -1.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
      * 
      */
     @Import(name="copiedSnapshotsRetentionDays")
@@ -32,8 +31,7 @@ public final class AutoSnapshotPolicyState extends com.pulumi.resources.Resource
     /**
      * @return The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     *   Default value: -1.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
      * 
      */
     public Optional<Output<Integer>> copiedSnapshotsRetentionDays() {
@@ -209,8 +207,7 @@ public final class AutoSnapshotPolicyState extends com.pulumi.resources.Resource
         /**
          * @param copiedSnapshotsRetentionDays The retention period of the snapshot copied across regions.
          * - -1: The snapshot is permanently retained.
-         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-         *   Default value: -1.
+         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
          * 
          * @return builder
          * 
@@ -223,8 +220,7 @@ public final class AutoSnapshotPolicyState extends com.pulumi.resources.Resource
         /**
          * @param copiedSnapshotsRetentionDays The retention period of the snapshot copied across regions.
          * - -1: The snapshot is permanently retained.
-         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-         *   Default value: -1.
+         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.  Default value: -1.
          * 
          * @return builder
          * 

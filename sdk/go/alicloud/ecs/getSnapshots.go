@@ -47,39 +47,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Argument Reference
-//
-// The following arguments are supported:
-//
-// * `instanceId` - (Optional) The specified instance ID.
-// * `diskId` - (Optional) The specified disk ID.
-// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
-// * `ids` - (Optional)  A list of snapshot IDs.
-// * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
-// * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
-//   - progressing: The snapshots are being created.
-//   - accomplished: The snapshots are ready to use.
-//   - failed: The snapshot creation failed.
-//   - all: All status.
-//
-// * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
-//   - auto: Auto snapshots.
-//   - user: Manual snapshots.
-//   - all: Auto and manual snapshots.
-//
-// * `sourceDiskType` - (Optional) The type of source disk:
-//   - System: The snapshots are created for system disks.
-//   - Data: The snapshots are created for data disks.
-//
-// * `usage` - (Optional) The usage of the snapshot:
-//   - image: The snapshots are used to create custom images.
-//   - disk: The snapshots are used to CreateDisk.
-//   - mage_disk: The snapshots are used to create custom images and data disks.
-//   - none: The snapshots are not used yet.
-//
-// * `tags` - (Optional) A map of tags assigned to snapshots.
-// * `outputFile` - (Optional) The name of output file that saves the filter results.
 func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotsResult
@@ -94,25 +61,41 @@ func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.In
 type GetSnapshotsArgs struct {
 	Category *string `pulumi:"category"`
 	DryRun   *bool   `pulumi:"dryRun"`
-	// Whether the snapshot is encrypted or not.
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// A list of snapshot IDs.
-	Ids             []string `pulumi:"ids"`
-	KmsKeyId        *string  `pulumi:"kmsKeyId"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
-	SnapshotLinkId  *string  `pulumi:"snapshotLinkId"`
-	SnapshotName    *string  `pulumi:"snapshotName"`
-	SnapshotType    *string  `pulumi:"snapshotType"`
-	// Source disk attribute. Value range: `System`,`Data`.
+	Ids      []string `pulumi:"ids"`
+	KmsKeyId *string  `pulumi:"kmsKeyId"`
+	// A regex string to filter results by snapshot name.
+	NameRegex *string `pulumi:"nameRegex"`
+	// The name of output file that saves the filter results.
+	OutputFile      *string `pulumi:"outputFile"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SnapshotLinkId  *string `pulumi:"snapshotLinkId"`
+	SnapshotName    *string `pulumi:"snapshotName"`
+	SnapshotType    *string `pulumi:"snapshotType"`
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
 	SourceDiskType *string `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags map[string]string `pulumi:"tags"`
-	Type *string           `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
+	Type *string `pulumi:"type"`
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage *string `pulumi:"usage"`
 }
 
@@ -165,25 +148,41 @@ func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts .
 type GetSnapshotsOutputArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	DryRun   pulumi.BoolPtrInput   `pulumi:"dryRun"`
-	// Whether the snapshot is encrypted or not.
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// A list of snapshot IDs.
-	Ids             pulumi.StringArrayInput `pulumi:"ids"`
-	KmsKeyId        pulumi.StringPtrInput   `pulumi:"kmsKeyId"`
-	NameRegex       pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
-	ResourceGroupId pulumi.StringPtrInput   `pulumi:"resourceGroupId"`
-	SnapshotLinkId  pulumi.StringPtrInput   `pulumi:"snapshotLinkId"`
-	SnapshotName    pulumi.StringPtrInput   `pulumi:"snapshotName"`
-	SnapshotType    pulumi.StringPtrInput   `pulumi:"snapshotType"`
-	// Source disk attribute. Value range: `System`,`Data`.
+	Ids      pulumi.StringArrayInput `pulumi:"ids"`
+	KmsKeyId pulumi.StringPtrInput   `pulumi:"kmsKeyId"`
+	// A regex string to filter results by snapshot name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of output file that saves the filter results.
+	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	SnapshotLinkId  pulumi.StringPtrInput `pulumi:"snapshotLinkId"`
+	SnapshotName    pulumi.StringPtrInput `pulumi:"snapshotName"`
+	SnapshotType    pulumi.StringPtrInput `pulumi:"snapshotType"`
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
 	SourceDiskType pulumi.StringPtrInput `pulumi:"sourceDiskType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
 }
 

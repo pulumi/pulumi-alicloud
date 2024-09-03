@@ -88,14 +88,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// The db_node_class of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC)&gt;.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].&gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Output("dbNodeCount")]
         public Output<int> DbNodeCount { get; private set; } = null!;
@@ -151,7 +150,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Output("encryptNewTables")]
@@ -437,7 +436,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> TdeRegion { get; private set; } = null!;
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Output("tdeStatus")]
@@ -575,14 +574,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// The db_node_class of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC)&gt;.
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].&gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
@@ -632,7 +630,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
@@ -922,7 +920,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TargetDbRevisionVersionCode { get; set; }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]
@@ -1034,14 +1032,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// The db_node_class of cluster node.
         /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
         /// From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
-        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
+        /// From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `db_node_class` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC)&gt;.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
-        /// &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        /// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].&gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
@@ -1103,7 +1100,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+        /// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
         /// &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         /// </summary>
         [Input("encryptNewTables")]
@@ -1413,7 +1410,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TdeRegion { get; set; }
 
         /// <summary>
-        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+        /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
         /// &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         /// </summary>
         [Input("tdeStatus")]

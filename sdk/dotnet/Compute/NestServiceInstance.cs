@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Compute
     ///       ""ALIYUN::ECS::INSTANCE"": [
     ///         ""{id}""
     ///         ]
-    ///       }} 
+    ///       }}
     ///     }}
     /// "),
     ///         },

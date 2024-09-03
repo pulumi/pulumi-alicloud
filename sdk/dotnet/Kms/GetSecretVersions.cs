@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Kms
     {
         /// <summary>
         /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
         /// 
         /// ## Example Usage
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
         /// 
         /// ## Example Usage

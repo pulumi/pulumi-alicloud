@@ -4,15 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * AliKafka instance can be imported using the id, e.g.
- *
- * ```sh
- * $ pulumi import alicloud:alikafka/instance:Instance instance <id>
- * ```
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -64,17 +55,8 @@ export class Instance extends pulumi.CustomResource {
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     public readonly eipMax!: pulumi.Output<number>;
-    /**
-     * The EndPoint to access the kafka instance.
-     */
     public /*out*/ readonly endPoint!: pulumi.Output<string>;
-    /**
-     * (Available since v1.214.1) The number of available groups.
-     */
     public /*out*/ readonly groupLeft!: pulumi.Output<number>;
-    /**
-     * (Available since v1.214.1) The number of used groups.
-     */
     public /*out*/ readonly groupUsed!: pulumi.Output<number>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
@@ -86,9 +68,6 @@ export class Instance extends pulumi.CustomResource {
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
     public readonly ioMaxSpec!: pulumi.Output<string>;
-    /**
-     * (Available since v1.214.1) The method that you use to purchase partitions.
-     */
     public /*out*/ readonly isPartitionBuy!: pulumi.Output<number>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -102,17 +81,11 @@ export class Instance extends pulumi.CustomResource {
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
      */
     public readonly paidType!: pulumi.Output<string | undefined>;
-    /**
-     * (Available since v1.214.1) The number of available partitions.
-     */
     public /*out*/ readonly partitionLeft!: pulumi.Output<number>;
     /**
      * The number of partitions.
      */
     public readonly partitionNum!: pulumi.Output<number | undefined>;
-    /**
-     * (Available since v1.214.1) The number of used partitions.
-     */
     public /*out*/ readonly partitionUsed!: pulumi.Output<number>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -127,13 +100,13 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      */
     public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
@@ -144,21 +117,12 @@ export class Instance extends pulumi.CustomResource {
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     public readonly specType!: pulumi.Output<string | undefined>;
-    /**
-     * The status of the instance.
-     */
     public /*out*/ readonly status!: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * (Available since v1.214.1) The number of available topics.
-     */
     public /*out*/ readonly topicLeft!: pulumi.Output<number>;
-    /**
-     * (Available since v1.214.1) The number of purchased topics.
-     */
     public /*out*/ readonly topicNumOfBuy!: pulumi.Output<number>;
     /**
      * The max num of topic can be creation of the instance.
@@ -169,9 +133,6 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
     public readonly topicQuota!: pulumi.Output<number>;
-    /**
-     * (Available since v1.214.1) The number of used topics.
-     */
     public /*out*/ readonly topicUsed!: pulumi.Output<number>;
     /**
      * The VPC ID of the instance.
@@ -308,17 +269,8 @@ export interface InstanceState {
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     eipMax?: pulumi.Input<number>;
-    /**
-     * The EndPoint to access the kafka instance.
-     */
     endPoint?: pulumi.Input<string>;
-    /**
-     * (Available since v1.214.1) The number of available groups.
-     */
     groupLeft?: pulumi.Input<number>;
-    /**
-     * (Available since v1.214.1) The number of used groups.
-     */
     groupUsed?: pulumi.Input<number>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
@@ -330,9 +282,6 @@ export interface InstanceState {
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
     ioMaxSpec?: pulumi.Input<string>;
-    /**
-     * (Available since v1.214.1) The method that you use to purchase partitions.
-     */
     isPartitionBuy?: pulumi.Input<number>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -346,17 +295,11 @@ export interface InstanceState {
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
      */
     paidType?: pulumi.Input<string>;
-    /**
-     * (Available since v1.214.1) The number of available partitions.
-     */
     partitionLeft?: pulumi.Input<number>;
     /**
      * The number of partitions.
      */
     partitionNum?: pulumi.Input<number>;
-    /**
-     * (Available since v1.214.1) The number of used partitions.
-     */
     partitionUsed?: pulumi.Input<number>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
@@ -371,13 +314,13 @@ export interface InstanceState {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -388,21 +331,12 @@ export interface InstanceState {
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     specType?: pulumi.Input<string>;
-    /**
-     * The status of the instance.
-     */
     status?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * (Available since v1.214.1) The number of available topics.
-     */
     topicLeft?: pulumi.Input<number>;
-    /**
-     * (Available since v1.214.1) The number of purchased topics.
-     */
     topicNumOfBuy?: pulumi.Input<number>;
     /**
      * The max num of topic can be creation of the instance.
@@ -413,9 +347,6 @@ export interface InstanceState {
      * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
     topicQuota?: pulumi.Input<number>;
-    /**
-     * (Available since v1.214.1) The number of used topics.
-     */
     topicUsed?: pulumi.Input<number>;
     /**
      * The VPC ID of the instance.
@@ -497,13 +428,13 @@ export interface InstanceArgs {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**

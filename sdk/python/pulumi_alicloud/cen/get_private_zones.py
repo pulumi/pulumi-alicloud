@@ -141,7 +141,7 @@ def get_private_zones(cen_id: Optional[str] = None,
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
            **NOTE:** Before 1.162.0, each element same as `access_region_id`.
            * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -193,7 +193,7 @@ def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
            **NOTE:** Before 1.162.0, each element same as `access_region_id`.
            * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
  *
  * > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
- *   - All member accounts must be removed from the resource directory.
- *   - All folders except the root folder must be deleted from the resource directory.
+ * - All member accounts must be removed from the resource directory.
+ * - All folders except the root folder must be deleted from the resource directory.
  *
  * ## Example Usage
  *

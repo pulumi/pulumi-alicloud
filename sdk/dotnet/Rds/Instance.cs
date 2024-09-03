@@ -485,7 +485,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -606,7 +606,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
@@ -1197,7 +1196,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -1312,7 +1311,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
@@ -1878,7 +1876,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions. Valid values: 
+        /// Actions performed on SSL functions. Valid values:
         /// `Open`: turn on SSL encryption;
         /// `Close`: turn off SSL encryption;
         /// `Update`: update SSL certificate.
@@ -2005,7 +2003,6 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
-        /// 
         /// 
         /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>

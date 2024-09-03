@@ -108,7 +108,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
@@ -203,7 +203,7 @@ export interface AccountState {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
@@ -252,7 +252,7 @@ export interface AccountArgs {
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */

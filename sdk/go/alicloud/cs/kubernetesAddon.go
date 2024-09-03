@@ -12,11 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
+// ## Example Usage
 //
-// > **NOTE:** Available since v1.150.0.
-//
-// > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+// # Basic Usage
 //
 // ## Import
 //

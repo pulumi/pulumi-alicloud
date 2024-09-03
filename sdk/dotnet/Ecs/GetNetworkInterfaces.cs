@@ -117,23 +117,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// 
-        /// ##  Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `ids` - (Optional)  A list of ENI IDs.
-        /// * `name_regex` - (Optional) A regex string to filter results by ENI name.
-        /// * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-        /// * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-        /// * `private_ip` - (Optional) The primary private IP address of the ENI.
-        /// * `security_group_id` - (Optional) The security group ID linked to ENIs.
-        /// * `name` - (Optional) The name of the ENIs.
-        /// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-        /// * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
-        /// * `tags` - (Optional) A map of tags assigned to ENIs.
-        /// * `output_file` - (Optional) The name of output file that saves the filter results.
-        /// * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         /// </summary>
         public static Task<GetNetworkInterfacesResult> InvokeAsync(GetNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesArgs(), options.WithDefaults());
@@ -244,23 +227,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// 
-        /// ##  Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `ids` - (Optional)  A list of ENI IDs.
-        /// * `name_regex` - (Optional) A regex string to filter results by ENI name.
-        /// * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-        /// * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-        /// * `private_ip` - (Optional) The primary private IP address of the ENI.
-        /// * `security_group_id` - (Optional) The security group ID linked to ENIs.
-        /// * `name` - (Optional) The name of the ENIs.
-        /// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-        /// * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
-        /// * `tags` - (Optional) A map of tags assigned to ENIs.
-        /// * `output_file` - (Optional) The name of output file that saves the filter results.
-        /// * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         /// </summary>
         public static Output<GetNetworkInterfacesResult> Invoke(GetNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesInvokeArgs(), options.WithDefaults());
@@ -271,6 +237,10 @@ namespace Pulumi.AliCloud.Ecs
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ENI IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -278,23 +248,29 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// ID of the instance that the ENI is attached to.
+        /// The ECS instance ID that the ENI is attached to.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of the ENI.
+        /// The name of the ENIs.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by ENI name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         [Input("networkInterfaceName")]
         public string? NetworkInterfaceName { get; set; }
 
+        /// <summary>
+        /// The name of output file that saves the filter results.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -302,17 +278,20 @@ namespace Pulumi.AliCloud.Ecs
         public string? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Primary private IP of the ENI.
+        /// The primary private IP address of the ENI.
         /// </summary>
         [Input("privateIp")]
         public string? PrivateIp { get; set; }
 
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The security group ID linked to ENIs.
+        /// </summary>
         [Input("securityGroupId")]
         public string? SecurityGroupId { get; set; }
 
@@ -329,7 +308,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the ENI.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -337,17 +316,20 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type of ENIs, Only support for "Primary" or "Secondary".
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// ID of the VPC that the ENI belongs to.
+        /// The VPC ID linked to ENIs.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the vSwitch that the ENI is linked to.
+        /// The vSwitch ID linked to ENIs.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -362,6 +344,10 @@ namespace Pulumi.AliCloud.Ecs
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ENI IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -369,23 +355,29 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// ID of the instance that the ENI is attached to.
+        /// The ECS instance ID that the ENI is attached to.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Name of the ENI.
+        /// The name of the ENIs.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by ENI name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
 
+        /// <summary>
+        /// The name of output file that saves the filter results.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -393,17 +385,20 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// Primary private IP of the ENI.
+        /// The primary private IP address of the ENI.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The security group ID linked to ENIs.
+        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
@@ -420,7 +415,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the ENI.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -428,17 +423,20 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The type of ENIs, Only support for "Primary" or "Secondary".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// ID of the VPC that the ENI belongs to.
+        /// The VPC ID linked to ENIs.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the vSwitch that the ENI is linked to.
+        /// The vSwitch ID linked to ENIs.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  *
  * ## Public ip addresses Block
  *
- *   The public ip addresses mapping supports the following:
+ * The public ip addresses mapping supports the following:
  *
- *   * `ipAddress`   - The address of the EIP.
- *   * `allocationId` - The ID of the EIP instance.
- *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
+ * * `ipAddress`   - The address of the EIP.
+ * * `allocationId` - The ID of the EIP instance.
+ * * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
@@ -151,11 +151,11 @@ export interface GetCommonBandwidthPackagesResult {
  *
  * ## Public ip addresses Block
  *
- *   The public ip addresses mapping supports the following:
+ * The public ip addresses mapping supports the following:
  *
- *   * `ipAddress`   - The address of the EIP.
- *   * `allocationId` - The ID of the EIP instance.
- *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
+ * * `ipAddress`   - The address of the EIP.
+ * * `allocationId` - The ID of the EIP instance.
+ * * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
     return pulumi.output(args).apply((a: any) => getCommonBandwidthPackages(a, opts))

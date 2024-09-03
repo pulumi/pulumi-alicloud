@@ -22,7 +22,7 @@ class PluginArgs:
         """
         The set of arguments for constructing a Plugin resource.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
-        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
                - "trafficControl"
                - "ipControl"
@@ -65,7 +65,7 @@ class PluginArgs:
     @pulumi.getter(name="pluginName")
     def plugin_name(self) -> pulumi.Input[str]:
         """
-        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         """
         return pulumi.get(self, "plugin_name")
 
@@ -138,7 +138,7 @@ class _PluginState:
         :param pulumi.Input[str] create_time: Create time.
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
-        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
                - "trafficControl"
                - "ipControl"
@@ -209,7 +209,7 @@ class _PluginState:
     @pulumi.getter(name="pluginName")
     def plugin_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         """
         return pulumi.get(self, "plugin_name")
 
@@ -339,7 +339,7 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
-        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
                - "trafficControl"
                - "ipControl"
@@ -498,7 +498,7 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Create time.
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
-        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
                - "trafficControl"
                - "ipControl"
@@ -556,7 +556,7 @@ class Plugin(pulumi.CustomResource):
     @pulumi.getter(name="pluginName")
     def plugin_name(self) -> pulumi.Output[str]:
         """
-        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
+        The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (*). It must be 4 to 50 characters in length and cannot start with an underscore (*).
         """
         return pulumi.get(self, "plugin_name")
 

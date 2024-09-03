@@ -77,7 +77,7 @@ export interface GetZonesArgs {
      */
     resourceGroupId?: string;
     /**
-     * Search mode. Value: 
+     * Search mode. Value:
      * - LIKE: fuzzy search.
      * - EXACT: precise search. It is not filled in by default.
      */
@@ -174,7 +174,7 @@ export interface GetZonesOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Search mode. Value: 
+     * Search mode. Value:
      * - LIKE: fuzzy search.
      * - EXACT: precise search. It is not filled in by default.
      */

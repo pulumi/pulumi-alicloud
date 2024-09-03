@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetAlarms
     {
         /// <summary>
-        /// This data source provides available alarm resources. 
+        /// This data source provides available alarm resources.
         /// 
         /// &gt; **NOTE** Available in 1.72.0+
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available alarm resources. 
+        /// This data source provides available alarm resources.
         /// 
         /// &gt; **NOTE** Available in 1.72.0+
         /// </summary>

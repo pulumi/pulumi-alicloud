@@ -20,12 +20,12 @@ class AuditLogConfigArgs:
         """
         The set of arguments for constructing a AuditLogConfig resource.
         :param pulumi.Input[str] instance_id: Instance ID, Call the Describeinstances Get.
-        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
+        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value:
                * true: Default Value, Open.
                * false: Closed.
                
                Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
-        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365. 
+        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365.
                
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """
@@ -51,7 +51,7 @@ class AuditLogConfigArgs:
     @pulumi.getter(name="dbAudit")
     def db_audit(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates Whether to Enable the Audit Log.  Valid value: 
+        Indicates Whether to Enable the Audit Log.  Valid value:
         * true: Default Value, Open.
         * false: Closed.
 
@@ -67,7 +67,7 @@ class AuditLogConfigArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[int]]:
         """
-        Audit Log Retention Period Value: 1~365. 
+        Audit Log Retention Period Value: 1~365.
 
         > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """
@@ -89,13 +89,13 @@ class _AuditLogConfigState:
         """
         Input properties used for looking up and filtering AuditLogConfig resources.
         :param pulumi.Input[str] create_time: Instance Creation Time.
-        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
+        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value:
                * true: Default Value, Open.
                * false: Closed.
                
                Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         :param pulumi.Input[str] instance_id: Instance ID, Call the Describeinstances Get.
-        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365. 
+        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365.
                
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         :param pulumi.Input[str] status: The status of the resource.
@@ -127,7 +127,7 @@ class _AuditLogConfigState:
     @pulumi.getter(name="dbAudit")
     def db_audit(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates Whether to Enable the Audit Log.  Valid value: 
+        Indicates Whether to Enable the Audit Log.  Valid value:
         * true: Default Value, Open.
         * false: Closed.
 
@@ -155,7 +155,7 @@ class _AuditLogConfigState:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[int]]:
         """
-        Audit Log Retention Period Value: 1~365. 
+        Audit Log Retention Period Value: 1~365.
 
         > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """
@@ -247,13 +247,13 @@ class AuditLogConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
+        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value:
                * true: Default Value, Open.
                * false: Closed.
                
                Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         :param pulumi.Input[str] instance_id: Instance ID, Call the Describeinstances Get.
-        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365. 
+        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365.
                
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """
@@ -378,13 +378,13 @@ class AuditLogConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Instance Creation Time.
-        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value: 
+        :param pulumi.Input[bool] db_audit: Indicates Whether to Enable the Audit Log.  Valid value:
                * true: Default Value, Open.
                * false: Closed.
                
                Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         :param pulumi.Input[str] instance_id: Instance ID, Call the Describeinstances Get.
-        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365. 
+        :param pulumi.Input[int] retention: Audit Log Retention Period Value: 1~365.
                
                > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         :param pulumi.Input[str] status: The status of the resource.
@@ -412,7 +412,7 @@ class AuditLogConfig(pulumi.CustomResource):
     @pulumi.getter(name="dbAudit")
     def db_audit(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates Whether to Enable the Audit Log.  Valid value: 
+        Indicates Whether to Enable the Audit Log.  Valid value:
         * true: Default Value, Open.
         * false: Closed.
 
@@ -432,7 +432,7 @@ class AuditLogConfig(pulumi.CustomResource):
     @pulumi.getter
     def retention(self) -> pulumi.Output[Optional[int]]:
         """
-        Audit Log Retention Period Value: 1~365. 
+        Audit Log Retention Period Value: 1~365.
 
         > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         """

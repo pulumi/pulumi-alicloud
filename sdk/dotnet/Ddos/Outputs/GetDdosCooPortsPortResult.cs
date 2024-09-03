@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string FrontendPort;
         /// <summary>
-        /// The forwarding protocol. Valid values `tcp` and `udp`.
+        /// The forwarding protocol.
         /// </summary>
         public readonly string FrontendProtocol;
         /// <summary>

@@ -111,14 +111,6 @@ import * as utilities from "../utilities";
  *
  * You can use to the existing autoscaling-rule module
  * to create alarm task, different type rules and scheduled task one-click.
- *
- * ## Import
- *
- * Ess alarm can be imported using the id, e.g.
- *
- * ```sh
- * $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
- * ```
  */
 export class Alarm extends pulumi.CustomResource {
     /**

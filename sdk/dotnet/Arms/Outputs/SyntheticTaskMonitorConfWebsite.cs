@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly int? DisableCompression;
         /// <summary>
-        /// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+        /// When a domain name (such as &lt;http://www.aliyun.com&gt;) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, &lt;http://www.aliyun.com&gt;:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the &lt;http://www.aliyun.com&gt; domain except 203.0.3.55 and 203.3.44.67 are hijacked.
         /// </summary>
         public readonly string? DnsHijackWhitelist;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly int? MonitorTimeout;
         /// <summary>
-        /// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+        /// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, &lt;http://www.aliyun.com&gt;:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the &lt;http://www.aliyun.com&gt; domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
         /// </summary>
         public readonly string? PageTamper;
         /// <summary>

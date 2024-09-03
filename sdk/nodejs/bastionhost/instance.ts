@@ -98,7 +98,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * security group IDs configured to Bastionhost. 
+     * security group IDs configured to Bastionhost.
      * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
      * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
@@ -252,7 +252,7 @@ export interface InstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * security group IDs configured to Bastionhost. 
+     * security group IDs configured to Bastionhost.
      * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
      * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
@@ -331,7 +331,7 @@ export interface InstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * security group IDs configured to Bastionhost. 
+     * security group IDs configured to Bastionhost.
      * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
      * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.

@@ -32,7 +32,7 @@ public final class GetNetworkInterfacesInterface {
      */
     private String id;
     /**
-     * @return ID of the instance that the ENI is attached to.
+     * @return The ECS instance ID that the ENI is attached to.
      * 
      */
     private String instanceId;
@@ -43,7 +43,7 @@ public final class GetNetworkInterfacesInterface {
      */
     private String mac;
     /**
-     * @return Name of the ENI.
+     * @return The name of the ENIs.
      * 
      */
     private String name;
@@ -53,7 +53,7 @@ public final class GetNetworkInterfacesInterface {
     private String ownerId;
     private String primaryIpAddress;
     /**
-     * @return Primary private IP of the ENI.
+     * @return The primary private IP address of the ENI.
      * 
      */
     private String privateIp;
@@ -65,7 +65,7 @@ public final class GetNetworkInterfacesInterface {
     private List<String> privateIps;
     private Integer queueNumber;
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the network interface belongs.
      * 
      */
     private String resourceGroupId;
@@ -83,18 +83,22 @@ public final class GetNetworkInterfacesInterface {
      */
     private String status;
     /**
-     * @return A map of tags assigned to the ENI.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     private String type;
     /**
-     * @return ID of the VPC that the ENI belongs to.
+     * @return The VPC ID linked to ENIs.
      * 
      */
     private String vpcId;
     /**
-     * @return ID of the vSwitch that the ENI is linked to.
+     * @return The vSwitch ID linked to ENIs.
      * 
      */
     private String vswitchId;
@@ -130,7 +134,7 @@ public final class GetNetworkInterfacesInterface {
         return this.id;
     }
     /**
-     * @return ID of the instance that the ENI is attached to.
+     * @return The ECS instance ID that the ENI is attached to.
      * 
      */
     public String instanceId() {
@@ -147,7 +151,7 @@ public final class GetNetworkInterfacesInterface {
         return this.mac;
     }
     /**
-     * @return Name of the ENI.
+     * @return The name of the ENIs.
      * 
      */
     public String name() {
@@ -169,7 +173,7 @@ public final class GetNetworkInterfacesInterface {
         return this.primaryIpAddress;
     }
     /**
-     * @return Primary private IP of the ENI.
+     * @return The primary private IP address of the ENI.
      * 
      */
     public String privateIp() {
@@ -189,7 +193,7 @@ public final class GetNetworkInterfacesInterface {
         return this.queueNumber;
     }
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the network interface belongs.
      * 
      */
     public String resourceGroupId() {
@@ -219,24 +223,28 @@ public final class GetNetworkInterfacesInterface {
         return this.status;
     }
     /**
-     * @return A map of tags assigned to the ENI.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }
     /**
-     * @return ID of the VPC that the ENI belongs to.
+     * @return The VPC ID linked to ENIs.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return ID of the vSwitch that the ENI is linked to.
+     * @return The vSwitch ID linked to ENIs.
      * 
      */
     public String vswitchId() {

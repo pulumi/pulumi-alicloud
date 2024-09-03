@@ -9,15 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.AliKafka
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// AliKafka instance can be imported using the id, e.g.
-    /// 
-    /// ```sh
-    /// $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
@@ -54,21 +45,12 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("eipMax")]
         public Output<int> EipMax { get; private set; } = null!;
 
-        /// <summary>
-        /// The EndPoint to access the kafka instance.
-        /// </summary>
         [Output("endPoint")]
         public Output<string> EndPoint { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available groups.
-        /// </summary>
         [Output("groupLeft")]
         public Output<int> GroupLeft { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used groups.
-        /// </summary>
         [Output("groupUsed")]
         public Output<int> GroupUsed { get; private set; } = null!;
 
@@ -86,9 +68,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("ioMaxSpec")]
         public Output<string> IoMaxSpec { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The method that you use to purchase partitions.
-        /// </summary>
         [Output("isPartitionBuy")]
         public Output<int> IsPartitionBuy { get; private set; } = null!;
 
@@ -110,9 +89,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("paidType")]
         public Output<string?> PaidType { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available partitions.
-        /// </summary>
         [Output("partitionLeft")]
         public Output<int> PartitionLeft { get; private set; } = null!;
 
@@ -122,9 +98,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("partitionNum")]
         public Output<int?> PartitionNum { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used partitions.
-        /// </summary>
         [Output("partitionUsed")]
         public Output<int> PartitionUsed { get; private set; } = null!;
 
@@ -145,13 +118,13 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// | io_ |     disk_     |  topic_   |  eip_   |
+        /// |-----|---------------|-----------|---------|
+        /// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        /// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        /// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        /// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        /// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         /// </summary>
         [Output("selectedZones")]
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
@@ -168,9 +141,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("specType")]
         public Output<string?> SpecType { get; private set; } = null!;
 
-        /// <summary>
-        /// The status of the instance.
-        /// </summary>
         [Output("status")]
         public Output<int> Status { get; private set; } = null!;
 
@@ -180,15 +150,9 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available topics.
-        /// </summary>
         [Output("topicLeft")]
         public Output<int> TopicLeft { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of purchased topics.
-        /// </summary>
         [Output("topicNumOfBuy")]
         public Output<int> TopicNumOfBuy { get; private set; } = null!;
 
@@ -201,9 +165,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Output("topicQuota")]
         public Output<int> TopicQuota { get; private set; } = null!;
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used topics.
-        /// </summary>
         [Output("topicUsed")]
         public Output<int> TopicUsed { get; private set; } = null!;
 
@@ -362,13 +323,13 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// | io_ |     disk_     |  topic_   |  eip_   |
+        /// |-----|---------------|-----------|---------|
+        /// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        /// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        /// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        /// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        /// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -468,21 +429,12 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
 
-        /// <summary>
-        /// The EndPoint to access the kafka instance.
-        /// </summary>
         [Input("endPoint")]
         public Input<string>? EndPoint { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available groups.
-        /// </summary>
         [Input("groupLeft")]
         public Input<int>? GroupLeft { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used groups.
-        /// </summary>
         [Input("groupUsed")]
         public Input<int>? GroupUsed { get; set; }
 
@@ -500,9 +452,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("ioMaxSpec")]
         public Input<string>? IoMaxSpec { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The method that you use to purchase partitions.
-        /// </summary>
         [Input("isPartitionBuy")]
         public Input<int>? IsPartitionBuy { get; set; }
 
@@ -524,9 +473,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("paidType")]
         public Input<string>? PaidType { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available partitions.
-        /// </summary>
         [Input("partitionLeft")]
         public Input<int>? PartitionLeft { get; set; }
 
@@ -536,9 +482,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("partitionNum")]
         public Input<int>? PartitionNum { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used partitions.
-        /// </summary>
         [Input("partitionUsed")]
         public Input<int>? PartitionUsed { get; set; }
 
@@ -562,13 +505,13 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        /// |------|-------------|:----:|:-----:|
-        /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        /// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        /// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        /// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        /// | io_ |     disk_     |  topic_   |  eip_   |
+        /// |-----|---------------|-----------|---------|
+        /// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        /// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        /// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        /// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        /// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -588,9 +531,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("specType")]
         public Input<string>? SpecType { get; set; }
 
-        /// <summary>
-        /// The status of the instance.
-        /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
@@ -606,15 +546,9 @@ namespace Pulumi.AliCloud.AliKafka
             set => _tags = value;
         }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of available topics.
-        /// </summary>
         [Input("topicLeft")]
         public Input<int>? TopicLeft { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of purchased topics.
-        /// </summary>
         [Input("topicNumOfBuy")]
         public Input<int>? TopicNumOfBuy { get; set; }
 
@@ -627,9 +561,6 @@ namespace Pulumi.AliCloud.AliKafka
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }
 
-        /// <summary>
-        /// (Available since v1.214.1) The number of used topics.
-        /// </summary>
         [Input("topicUsed")]
         public Input<int>? TopicUsed { get; set; }
 

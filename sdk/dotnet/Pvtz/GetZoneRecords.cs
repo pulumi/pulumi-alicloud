@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Pvtz
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
+        /// Search mode. Value:
         /// - LIKE: fuzzy search.
         /// - EXACT: precise search. It is not filled in by default.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Search mode. Value: 
+        /// Search mode. Value:
         /// - LIKE: fuzzy search.
         /// - EXACT: precise search. It is not filled in by default.
         /// </summary>

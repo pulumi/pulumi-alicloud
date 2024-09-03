@@ -22,7 +22,7 @@ public final class GetDdosCooPortsPort {
      */
     private String frontendPort;
     /**
-     * @return The forwarding protocol. Valid values `tcp` and `udp`.
+     * @return The forwarding protocol.
      * 
      */
     private String frontendProtocol;
@@ -58,7 +58,7 @@ public final class GetDdosCooPortsPort {
         return this.frontendPort;
     }
     /**
-     * @return The forwarding protocol. Valid values `tcp` and `udp`.
+     * @return The forwarding protocol.
      * 
      */
     public String frontendProtocol() {

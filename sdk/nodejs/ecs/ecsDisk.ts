@@ -102,7 +102,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -282,7 +282,7 @@ export interface EcsDiskState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -392,7 +392,7 @@ export interface EcsDiskArgs {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+     * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
      * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
      * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.

@@ -676,14 +676,6 @@ class Alarm(pulumi.CustomResource):
         You can use to the existing autoscaling-rule module
         to create alarm task, different type rules and scheduled task one-click.
 
-        ## Import
-
-        Ess alarm can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -801,14 +793,6 @@ class Alarm(pulumi.CustomResource):
 
         You can use to the existing autoscaling-rule module
         to create alarm task, different type rules and scheduled task one-click.
-
-        ## Import
-
-        Ess alarm can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:ess/alarm:Alarm example asg-2ze500_045efffe-4d05
-        ```
 
         :param str resource_name: The name of the resource.
         :param AlarmArgs args: The arguments to use to populate this resource's properties.

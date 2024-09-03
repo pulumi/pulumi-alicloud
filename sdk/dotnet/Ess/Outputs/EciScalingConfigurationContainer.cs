@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? SecurityContextRunAsUser;
         /// <summary>
-        /// The structure of volumeMounts. 
+        /// The structure of volumeMounts.
         /// See `volume_mounts` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationContainerVolumeMount> VolumeMounts;

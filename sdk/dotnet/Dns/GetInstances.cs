@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     public static class GetInstances
     {
         /// <summary>
-        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0. 
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
         /// 
         /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Dns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0. 
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
         /// 
         /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
         /// 

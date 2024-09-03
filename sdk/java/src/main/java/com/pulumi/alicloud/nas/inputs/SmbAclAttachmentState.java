@@ -104,8 +104,7 @@ public final class SmbAclAttachmentState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The home directory of each user. Each user-specific home directory must meet the following requirements:\
-     * Each segment starts with a forward slash (/) or a backslash (\).
+     * The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
      * Each segment does not contain the following special characters: &lt;&gt;&#34;:?*.
      * Each segment is 0 to 255 characters in length.
      * The total length is 0 to 32,767 characters.
@@ -116,8 +115,7 @@ public final class SmbAclAttachmentState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> homeDirPath;
 
     /**
-     * @return The home directory of each user. Each user-specific home directory must meet the following requirements:\
-     * Each segment starts with a forward slash (/) or a backslash (\).
+     * @return The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
      * Each segment does not contain the following special characters: &lt;&gt;&#34;:?*.
      * Each segment is 0 to 255 characters in length.
      * The total length is 0 to 32,767 characters.
@@ -349,8 +347,7 @@ public final class SmbAclAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param homeDirPath The home directory of each user. Each user-specific home directory must meet the following requirements:\
-         * Each segment starts with a forward slash (/) or a backslash (\).
+         * @param homeDirPath The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
          * Each segment does not contain the following special characters: &lt;&gt;&#34;:?*.
          * Each segment is 0 to 255 characters in length.
          * The total length is 0 to 32,767 characters.
@@ -365,8 +362,7 @@ public final class SmbAclAttachmentState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param homeDirPath The home directory of each user. Each user-specific home directory must meet the following requirements:\
-         * Each segment starts with a forward slash (/) or a backslash (\).
+         * @param homeDirPath The home directory of each user. Each user-specific home directory must meet the following requirements: Each segment starts with a forward slash (/) or a backslash (\).
          * Each segment does not contain the following special characters: &lt;&gt;&#34;:?*.
          * Each segment is 0 to 255 characters in length.
          * The total length is 0 to 32,767 characters.

@@ -32,14 +32,14 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Whether the snapshot is encrypted or not.
+     * Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Boolean encrypted;
 
     /**
-     * @return Whether the snapshot is encrypted or not.
+     * @return Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     public Optional<Boolean> encrypted() {
@@ -68,16 +68,32 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.kmsKeyId);
     }
 
+    /**
+     * A regex string to filter results by snapshot name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by snapshot name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The name of output file that saves the filter results.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return The name of output file that saves the filter results.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -111,14 +127,18 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Source disk attribute. Value range: `System`,`Data`.
+     * The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     @Import(name="sourceDiskType")
     private @Nullable String sourceDiskType;
 
     /**
-     * @return Source disk attribute. Value range: `System`,`Data`.
+     * @return The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     public Optional<String> sourceDiskType() {
@@ -126,14 +146,22 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * @return The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     public Optional<String> status() {
@@ -141,36 +169,58 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * A map of tags assigned to the snapshot.
+     * A map of tags assigned to snapshots.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
     /**
-     * @return A map of tags assigned to the snapshot.
+     * @return A map of tags assigned to snapshots.
      * 
      */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     @Import(name="type")
     private @Nullable String type;
 
+    /**
+     * @return The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
 
     /**
-     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     @Import(name="usage")
     private @Nullable String usage;
 
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+     * @return The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     public Optional<String> usage() {
@@ -227,7 +277,7 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted or not.
+         * @param encrypted Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
          * 
          * @return builder
          * 
@@ -263,11 +313,23 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by snapshot name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param outputFile The name of output file that saves the filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;
@@ -294,7 +356,9 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param sourceDiskType Source disk attribute. Value range: `System`,`Data`.
+         * @param sourceDiskType The type of source disk:
+         * * System: The snapshots are created for system disks.
+         * * Data: The snapshots are created for data disks.
          * 
          * @return builder
          * 
@@ -305,7 +369,11 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+         * @param status The specified snapshot status. Default value: `all`. Optional values:
+         * * progressing: The snapshots are being created.
+         * * accomplished: The snapshots are ready to use.
+         * * failed: The snapshot creation failed.
+         * * all: All status.
          * 
          * @return builder
          * 
@@ -316,7 +384,7 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param tags A map of tags assigned to the snapshot.
+         * @param tags A map of tags assigned to snapshots.
          * 
          * @return builder
          * 
@@ -326,13 +394,26 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param type The snapshot category. Default value: `all`. Optional values:
+         * * auto: Auto snapshots.
+         * * user: Manual snapshots.
+         * * all: Auto and manual snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable String type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param usage Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+         * @param usage The usage of the snapshot:
+         * * image: The snapshots are used to create custom images.
+         * * disk: The snapshots are used to CreateDisk.
+         * * mage_disk: The snapshots are used to create custom images and data disks.
+         * * none: The snapshots are not used yet.
          * 
          * @return builder
          * 

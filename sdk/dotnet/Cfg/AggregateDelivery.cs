@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> AggregatorId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         /// - true: The specified destination receives resource change logs.
         /// - false: The specified destination does not receive resource change logs.
         /// </summary>
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<bool?> ConfigurationItemChangeNotification { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         /// - true: The specified destination receives scheduled resource snapshots.
         /// - false: The specified destination does not receive scheduled resource snapshots.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<bool?> ConfigurationSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// The rule that is attached to the delivery channel.   
+        /// The rule that is attached to the delivery channel.
         /// 
         /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> DeliveryChannelName { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN of the delivery destination.  
+        /// The ARN of the delivery destination.
         /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         /// - true: The specified destination receives resource non-compliance events.
         /// - false: The specified destination does not receive resource non-compliance events.
         /// </summary>
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> OversizedDataOssTargetArn { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the delivery method. Valid values:   
+        /// The status of the delivery method. Valid values:
         /// - 0: The delivery method is disabled.
         /// - 1: The delivery destination is enabled. This is the default value.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> AggregatorId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         /// - true: The specified destination receives resource change logs.
         /// - false: The specified destination does not receive resource change logs.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? ConfigurationItemChangeNotification { get; set; }
 
         /// <summary>
-        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         /// - true: The specified destination receives scheduled resource snapshots.
         /// - false: The specified destination does not receive scheduled resource snapshots.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? ConfigurationSnapshot { get; set; }
 
         /// <summary>
-        /// The rule that is attached to the delivery channel.   
+        /// The rule that is attached to the delivery channel.
         /// 
         /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
         /// 
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? DeliveryChannelName { get; set; }
 
         /// <summary>
-        /// The ARN of the delivery destination.  
+        /// The ARN of the delivery destination.
         /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         /// - true: The specified destination receives resource non-compliance events.
         /// - false: The specified destination does not receive resource non-compliance events.
         /// </summary>
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OversizedDataOssTargetArn { get; set; }
 
         /// <summary>
-        /// The status of the delivery method. Valid values:   
+        /// The status of the delivery method. Valid values:
         /// - 0: The delivery method is disabled.
         /// - 1: The delivery destination is enabled. This is the default value.
         /// </summary>
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? AggregatorId { get; set; }
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+        /// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
         /// - true: The specified destination receives resource change logs.
         /// - false: The specified destination does not receive resource change logs.
         /// </summary>
@@ -284,7 +284,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? ConfigurationItemChangeNotification { get; set; }
 
         /// <summary>
-        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+        /// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
         /// - true: The specified destination receives scheduled resource snapshots.
         /// - false: The specified destination does not receive scheduled resource snapshots.
         /// </summary>
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? ConfigurationSnapshot { get; set; }
 
         /// <summary>
-        /// The rule that is attached to the delivery channel.   
+        /// The rule that is attached to the delivery channel.
         /// 
         /// This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
         /// 
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? DeliveryChannelName { get; set; }
 
         /// <summary>
-        /// The ARN of the delivery destination.  
+        /// The ARN of the delivery destination.
         /// - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
         /// - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
         /// - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
@@ -344,7 +344,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+        /// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
         /// - true: The specified destination receives resource non-compliance events.
         /// - false: The specified destination does not receive resource non-compliance events.
         /// </summary>
@@ -358,7 +358,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OversizedDataOssTargetArn { get; set; }
 
         /// <summary>
-        /// The status of the delivery method. Valid values:   
+        /// The status of the delivery method. Valid values:
         /// - 0: The delivery method is disabled.
         /// - 1: The delivery destination is enabled. This is the default value.
         /// </summary>

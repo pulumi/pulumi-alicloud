@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// The IDs of the check items that you can choose to ignore for the member deletion.
         /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
         /// to get check ids and set them.
         /// </summary>
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _abandonAbleCheckIds;
 
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// The IDs of the check items that you can choose to ignore for the member deletion.
         /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
         /// to get check ids and set them.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _abandonAbleCheckIds;
 
         /// <summary>
-        /// The IDs of the check items that you can choose to ignore for the member deletion. 
+        /// The IDs of the check items that you can choose to ignore for the member deletion.
         /// If you want to delete the account, please use datasource `alicloud.resourcemanager.getAccountDeletionCheckTask`
         /// to get check ids and set them.
         /// </summary>

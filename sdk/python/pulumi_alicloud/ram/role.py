@@ -376,7 +376,7 @@ class Role(pulumi.CustomResource):
                 "Effect": "Allow",
                 "Principal": {
                   "Service": [
-                    "apigateway.aliyuncs.com", 
+                    "apigateway.aliyuncs.com",
                     "ecs.aliyuncs.com"
                   ]
                 }
@@ -436,7 +436,7 @@ class Role(pulumi.CustomResource):
                 "Effect": "Allow",
                 "Principal": {
                   "Service": [
-                    "apigateway.aliyuncs.com", 
+                    "apigateway.aliyuncs.com",
                     "ecs.aliyuncs.com"
                   ]
                 }

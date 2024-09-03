@@ -62,7 +62,7 @@ class _K8sClusterState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering K8sCluster resources.
-        :param pulumi.Input[int] cluster_import_status: The import status of cluster: 
+        :param pulumi.Input[int] cluster_import_status: The import status of cluster:
                `1`: success.
                `2`: failed.
                `3`: importing.
@@ -93,7 +93,7 @@ class _K8sClusterState:
     @pulumi.getter(name="clusterImportStatus")
     def cluster_import_status(self) -> Optional[pulumi.Input[int]]:
         """
-        The import status of cluster: 
+        The import status of cluster:
         `1`: success.
         `2`: failed.
         `3`: importing.
@@ -282,7 +282,7 @@ class K8sCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] cluster_import_status: The import status of cluster: 
+        :param pulumi.Input[int] cluster_import_status: The import status of cluster:
                `1`: success.
                `2`: failed.
                `3`: importing.
@@ -311,7 +311,7 @@ class K8sCluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterImportStatus")
     def cluster_import_status(self) -> pulumi.Output[int]:
         """
-        The import status of cluster: 
+        The import status of cluster:
         `1`: success.
         `2`: failed.
         `3`: importing.

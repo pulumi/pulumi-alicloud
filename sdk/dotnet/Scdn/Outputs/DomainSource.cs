@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// The Origin Server Type. Valid Values: 
+        /// The Origin Server Type. Valid Values:
         /// * ipaddr: IP Source Station
         /// * domain: the Domain Name
         /// * oss: OSS Bucket as a Source Station.

@@ -34,7 +34,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[str] name: The name of the database. 
+        :param pulumi.Input[str] name: The name of the database.
                * > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -101,7 +101,7 @@ class DatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database. 
+        The name of the database.
         * > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -139,7 +139,7 @@ class _DatabaseState:
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: The name of the database. 
+        :param pulumi.Input[str] name: The name of the database.
                * > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -207,7 +207,7 @@ class _DatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the database. 
+        The name of the database.
         * > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -293,7 +293,7 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: The name of the database. 
+        :param pulumi.Input[str] name: The name of the database.
                * > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -421,7 +421,7 @@ class Database(pulumi.CustomResource):
                
                > **NOTE:** The value of "name" or "character_set"  does not support modification.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[str] name: The name of the database. 
+        :param pulumi.Input[str] name: The name of the database.
                * > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -478,7 +478,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the database. 
+        The name of the database.
         * > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.

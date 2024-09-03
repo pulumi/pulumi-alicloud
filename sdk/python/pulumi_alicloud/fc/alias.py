@@ -199,7 +199,7 @@ class Alias(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
+        For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
 
@@ -250,7 +250,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
+        For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createalias).
 
         > **NOTE:** Available since v1.104.0.
 

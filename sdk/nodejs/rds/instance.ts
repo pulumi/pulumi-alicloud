@@ -389,7 +389,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sqlCollectorStatus!: pulumi.Output<string>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -484,7 +484,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly upgradeTime!: pulumi.Output<string | undefined>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
@@ -1056,7 +1055,7 @@ export interface InstanceState {
      */
     sqlCollectorStatus?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -1151,7 +1150,6 @@ export interface InstanceState {
     upgradeTime?: pulumi.Input<string>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
@@ -1519,7 +1517,7 @@ export interface InstanceArgs {
      */
     sqlCollectorStatus?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -1606,7 +1604,6 @@ export interface InstanceArgs {
     upgradeTime?: pulumi.Input<string>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */

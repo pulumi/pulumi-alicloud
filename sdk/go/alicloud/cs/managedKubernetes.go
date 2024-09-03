@@ -54,7 +54,7 @@ import (
 type ManagedKubernetes struct {
 	pulumi.CustomResourceState
 
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons ManagedKubernetesAddonArrayOutput `pulumi:"addons"`
@@ -189,7 +189,7 @@ func GetManagedKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedKubernetes resources.
 type managedKubernetesState struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
@@ -292,7 +292,7 @@ type managedKubernetesState struct {
 }
 
 type ManagedKubernetesState struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons ManagedKubernetesAddonArrayInput
@@ -399,7 +399,7 @@ func (ManagedKubernetesState) ElementType() reflect.Type {
 }
 
 type managedKubernetesArgs struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
@@ -485,7 +485,7 @@ type managedKubernetesArgs struct {
 
 // The set of arguments for constructing a ManagedKubernetes resource.
 type ManagedKubernetesArgs struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons ManagedKubernetesAddonArrayInput
@@ -656,7 +656,7 @@ func (o ManagedKubernetesOutput) ToManagedKubernetesOutputWithContext(ctx contex
 	return o
 }
 
-// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 //
 // *Network params*
 func (o ManagedKubernetesOutput) Addons() ManagedKubernetesAddonArrayOutput {

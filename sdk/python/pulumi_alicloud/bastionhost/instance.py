@@ -41,7 +41,7 @@ class InstanceArgs:
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
@@ -142,7 +142,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        security group IDs configured to Bastionhost. 
+        security group IDs configured to Bastionhost.
         **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
         So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
         and you can use tolist to convert it to a list.
@@ -337,7 +337,7 @@ class _InstanceState:
                - `Y`: years.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
@@ -542,7 +542,7 @@ class _InstanceState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        security group IDs configured to Bastionhost. 
+        security group IDs configured to Bastionhost.
         **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
         So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
         and you can use tolist to convert it to a list.
@@ -641,7 +641,7 @@ class Instance(pulumi.CustomResource):
                - `Y`: years.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
@@ -787,7 +787,7 @@ class Instance(pulumi.CustomResource):
                - `Y`: years.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
@@ -928,7 +928,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        security group IDs configured to Bastionhost. 
+        security group IDs configured to Bastionhost.
         **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
         So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
         and you can use tolist to convert it to a list.

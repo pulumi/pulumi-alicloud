@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// This data source can query the public IP of the specified KVStore DBInstance.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
         /// ## Example Usage
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// This data source can query the public IP of the specified KVStore DBInstance.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
         /// ## Example Usage

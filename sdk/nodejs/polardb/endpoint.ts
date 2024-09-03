@@ -132,9 +132,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly sslAutoRotate!: pulumi.Output<string | undefined>;
     /**
-     * Specifies SSL certificate download link.  
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * Specifies SSL certificate download link.**NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
     public /*out*/ readonly sslCertificateUrl!: pulumi.Output<string>;
     /**
@@ -259,9 +257,7 @@ export interface EndpointState {
      */
     sslAutoRotate?: pulumi.Input<string>;
     /**
-     * Specifies SSL certificate download link.  
-     * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-     * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+     * Specifies SSL certificate download link.**NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
     sslCertificateUrl?: pulumi.Input<string>;
     /**

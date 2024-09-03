@@ -153,6 +153,30 @@ def get_groups(group_id_regex: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceName"
+    group_name = config.get("groupName")
+    if group_name is None:
+        group_name = "GID-onsGroupDatasourceName"
+    default = alicloud.rocketmq.Instance("default",
+        instance_name=name,
+        remark="default_ons_instance_remark")
+    default_group = alicloud.rocketmq.Group("default",
+        group_name=group_name,
+        instance_id=default.id,
+        remark="dafault_ons_group_remark")
+    groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
+        name_regex=group_id,
+        output_file="groups.txt"))
+    pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
+    ```
+
 
     :param str group_id_regex: A regex string to filter results by the group name.
     :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
@@ -200,6 +224,30 @@ def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = No
     > **NOTE:** Available in 1.53.0+
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceName"
+    group_name = config.get("groupName")
+    if group_name is None:
+        group_name = "GID-onsGroupDatasourceName"
+    default = alicloud.rocketmq.Instance("default",
+        instance_name=name,
+        remark="default_ons_instance_remark")
+    default_group = alicloud.rocketmq.Group("default",
+        group_name=group_name,
+        instance_id=default.id,
+        remark="dafault_ons_group_remark")
+    groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
+        name_regex=group_id,
+        output_file="groups.txt"))
+    pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
+    ```
 
 
     :param str group_id_regex: A regex string to filter results by the group name.

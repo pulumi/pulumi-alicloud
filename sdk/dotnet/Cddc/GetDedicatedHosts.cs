@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Cddc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The state of the host. Valid values: 
+        /// The state of the host. Valid values:
         /// * `0:` The host is being created.
         /// </summary>
         [Input("status")]
@@ -315,7 +315,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The state of the host. Valid values: 
+        /// The state of the host. Valid values:
         /// * `0:` The host is being created.
         /// </summary>
         [Input("status")]

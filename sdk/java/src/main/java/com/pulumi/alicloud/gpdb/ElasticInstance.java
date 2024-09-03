@@ -18,8 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
- * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
+ * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
  * 
  * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
  * 
@@ -235,32 +234,28 @@ public class ElasticInstance extends com.pulumi.resources.CustomResource {
         return this.instanceSpec;
     }
     /**
-     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Export(name="paymentDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
-     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Output<Optional<Integer>> paymentDuration() {
         return Codegen.optional(this.paymentDuration);
     }
     /**
-     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     @Export(name="paymentDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\
-     * **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
+     * @return The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.**NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      * 
      */
     public Output<Optional<String>> paymentDurationUnit() {

@@ -17,16 +17,6 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * ## Import
- * 
- * AliKafka instance can be imported using the id, e.g.
- * 
- * ```sh
- * $ pulumi import alicloud:alikafka/instance:Instance instance &lt;id&gt;
- * ```
- * 
- */
 @ResourceType(type="alicloud:alikafka/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
@@ -105,45 +95,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Integer> eipMax() {
         return this.eipMax;
     }
-    /**
-     * The EndPoint to access the kafka instance.
-     * 
-     */
     @Export(name="endPoint", refs={String.class}, tree="[0]")
     private Output<String> endPoint;
 
-    /**
-     * @return The EndPoint to access the kafka instance.
-     * 
-     */
     public Output<String> endPoint() {
         return this.endPoint;
     }
-    /**
-     * (Available since v1.214.1) The number of available groups.
-     * 
-     */
     @Export(name="groupLeft", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available groups.
-     * 
-     */
     public Output<Integer> groupLeft() {
         return this.groupLeft;
     }
-    /**
-     * (Available since v1.214.1) The number of used groups.
-     * 
-     */
     @Export(name="groupUsed", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used groups.
-     * 
-     */
     public Output<Integer> groupUsed() {
         return this.groupUsed;
     }
@@ -179,17 +145,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> ioMaxSpec() {
         return this.ioMaxSpec;
     }
-    /**
-     * (Available since v1.214.1) The method that you use to purchase partitions.
-     * 
-     */
     @Export(name="isPartitionBuy", refs={Integer.class}, tree="[0]")
     private Output<Integer> isPartitionBuy;
 
-    /**
-     * @return (Available since v1.214.1) The method that you use to purchase partitions.
-     * 
-     */
     public Output<Integer> isPartitionBuy() {
         return this.isPartitionBuy;
     }
@@ -235,17 +193,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> paidType() {
         return Codegen.optional(this.paidType);
     }
-    /**
-     * (Available since v1.214.1) The number of available partitions.
-     * 
-     */
     @Export(name="partitionLeft", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitionLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available partitions.
-     * 
-     */
     public Output<Integer> partitionLeft() {
         return this.partitionLeft;
     }
@@ -263,17 +213,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> partitionNum() {
         return Codegen.optional(this.partitionNum);
     }
-    /**
-     * (Available since v1.214.1) The number of used partitions.
-     * 
-     */
     @Export(name="partitionUsed", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitionUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used partitions.
-     * 
-     */
     public Output<Integer> partitionUsed() {
         return this.partitionUsed;
     }
@@ -310,13 +252,13 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
      * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      * 
      */
     @Export(name="selectedZones", refs={List.class,String.class}, tree="[0,1]")
@@ -327,13 +269,13 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
      * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      * 
      */
     public Output<Optional<List<String>>> selectedZones() {
@@ -367,17 +309,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> specType() {
         return Codegen.optional(this.specType);
     }
-    /**
-     * The status of the instance.
-     * 
-     */
     @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
-    /**
-     * @return The status of the instance.
-     * 
-     */
     public Output<Integer> status() {
         return this.status;
     }
@@ -395,31 +329,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * (Available since v1.214.1) The number of available topics.
-     * 
-     */
     @Export(name="topicLeft", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available topics.
-     * 
-     */
     public Output<Integer> topicLeft() {
         return this.topicLeft;
     }
-    /**
-     * (Available since v1.214.1) The number of purchased topics.
-     * 
-     */
     @Export(name="topicNumOfBuy", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicNumOfBuy;
 
-    /**
-     * @return (Available since v1.214.1) The number of purchased topics.
-     * 
-     */
     public Output<Integer> topicNumOfBuy() {
         return this.topicNumOfBuy;
     }
@@ -447,17 +365,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Integer> topicQuota() {
         return this.topicQuota;
     }
-    /**
-     * (Available since v1.214.1) The number of used topics.
-     * 
-     */
     @Export(name="topicUsed", refs={Integer.class}, tree="[0]")
     private Output<Integer> topicUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used topics.
-     * 
-     */
     public Output<Integer> topicUsed() {
         return this.topicUsed;
     }

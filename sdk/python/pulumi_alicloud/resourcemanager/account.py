@@ -23,7 +23,7 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion.
                If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
                to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
@@ -61,7 +61,7 @@ class AccountArgs:
     @pulumi.getter(name="abandonAbleCheckIds")
     def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
+        The IDs of the check items that you can choose to ignore for the member deletion.
         If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
         to get check ids and set them.
         """
@@ -139,7 +139,7 @@ class _AccountState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion.
                If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
                to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
@@ -185,7 +185,7 @@ class _AccountState:
     @pulumi.getter(name="abandonAbleCheckIds")
     def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
+        The IDs of the check items that you can choose to ignore for the member deletion.
         If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
         to get check ids and set them.
         """
@@ -390,7 +390,7 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion.
                If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
                to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
@@ -526,7 +526,7 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] abandon_able_check_ids: The IDs of the check items that you can choose to ignore for the member deletion.
                If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
                to get check ids and set them.
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
@@ -565,7 +565,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="abandonAbleCheckIds")
     def abandon_able_check_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The IDs of the check items that you can choose to ignore for the member deletion. 
+        The IDs of the check items that you can choose to ignore for the member deletion.
         If you want to delete the account, please use datasource `resourcemanager_get_account_deletion_check_task`
         to get check ids and set them.
         """

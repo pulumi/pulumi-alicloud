@@ -24,7 +24,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     public static final KubernetesArgs Empty = new KubernetesArgs();
 
     /**
-     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -33,7 +33,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<KubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -881,7 +881,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -894,7 +894,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -906,7 +906,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 

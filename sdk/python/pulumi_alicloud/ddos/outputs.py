@@ -1606,7 +1606,7 @@ class GetDdosCooPortsPortResult(dict):
         """
         :param str backend_port: The source station port.
         :param str frontend_port: The forwarding port.
-        :param str frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
+        :param str frontend_protocol: The forwarding protocol.
         :param str id: The ID of the Port.
         :param str instance_id: The Ddoscoo instance ID.
         :param Sequence[str] real_servers: List of source IP addresses.
@@ -1638,7 +1638,7 @@ class GetDdosCooPortsPortResult(dict):
     @pulumi.getter(name="frontendProtocol")
     def frontend_protocol(self) -> str:
         """
-        The forwarding protocol. Valid values `tcp` and `udp`.
+        The forwarding protocol.
         """
         return pulumi.get(self, "frontend_protocol")
 

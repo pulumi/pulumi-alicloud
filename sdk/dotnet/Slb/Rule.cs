@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         /// and wildcard characters. The following two domain name formats are supported:
-        /// - Standard domain name: www.test.com
+        /// - Standard domain name: &lt;http://www.test.com&gt;
         /// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         /// </summary>
         [Output("domain")]
@@ -362,7 +362,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         /// and wildcard characters. The following two domain name formats are supported:
-        /// - Standard domain name: www.test.com
+        /// - Standard domain name: &lt;http://www.test.com&gt;
         /// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         /// </summary>
         [Input("domain")]
@@ -505,7 +505,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         /// and wildcard characters. The following two domain name formats are supported:
-        /// - Standard domain name: www.test.com
+        /// - Standard domain name: &lt;http://www.test.com&gt;
         /// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
         /// </summary>
         [Input("domain")]

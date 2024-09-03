@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         "Effect": "Allow",
  *         "Principal": {
  *           "Service": [
- *             "apigateway.aliyuncs.com", 
+ *             "apigateway.aliyuncs.com",
  *             "ecs.aliyuncs.com"
  *           ]
  *         }

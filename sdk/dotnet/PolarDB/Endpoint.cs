@@ -151,9 +151,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> SslAutoRotate { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies SSL certificate download link.  
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// Specifies SSL certificate download link.**NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Output("sslCertificateUrl")]
         public Output<string> SslCertificateUrl { get; private set; } = null!;
@@ -399,9 +397,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SslAutoRotate { get; set; }
 
         /// <summary>
-        /// Specifies SSL certificate download link.  
-        /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
-        /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        /// Specifies SSL certificate download link.**NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
         /// </summary>
         [Input("sslCertificateUrl")]
         public Input<string>? SslCertificateUrl { get; set; }

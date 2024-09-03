@@ -51,11 +51,11 @@ import (
 //
 // ## Public ip addresses Block
 //
-//	The public ip addresses mapping supports the following:
+// The public ip addresses mapping supports the following:
 //
-//	* `ipAddress`   - The address of the EIP.
-//	* `allocationId` - The ID of the EIP instance.
-//	* `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
+// * `ipAddress`   - The address of the EIP.
+// * `allocationId` - The ID of the EIP instance.
+// * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCommonBandwidthPackagesResult

@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  *       "ALIYUN::ECS::INSTANCE": [
  *         "%s"
  *         ]
- *       } 
+ *       }
  *     }
  * ", id)))
  *                 .build())

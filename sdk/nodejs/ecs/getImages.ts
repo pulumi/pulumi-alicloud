@@ -56,7 +56,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
      * * `CreateEcs`: instance creation.
      * * `ChangeOS`: replacement of the system disk or operating system.
      */
@@ -128,7 +128,7 @@ export interface GetImagesArgs {
      */
     snapshotId?: string;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
      * * `Creating`: The image is being created.
      * * `Waiting`: The image is waiting to be processed.
      * * `Available`: The image is available.
@@ -219,7 +219,7 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
      * * `CreateEcs`: instance creation.
      * * `ChangeOS`: replacement of the system disk or operating system.
      */
@@ -291,7 +291,7 @@ export interface GetImagesOutputArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
      * * `Creating`: The image is being created.
      * * `Waiting`: The image is waiting to be processed.
      * * `Available`: The image is available.

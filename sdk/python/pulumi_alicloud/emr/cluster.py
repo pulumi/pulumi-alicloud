@@ -932,7 +932,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### 1. Create A Cluster
+        #### 1. Create A Cluster
 
         ```python
         import pulumi
@@ -1047,7 +1047,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 2. Scale Up
+        #### 2. Scale Up
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
 
         In the case of scaling up cluster, we should add the node_count of some host group.
@@ -1170,7 +1170,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 3. Scale Down
+        #### 3. Scale Down
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
 
@@ -1291,7 +1291,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 4. Create a emr gateway cluster
+        #### 4. Create a emr gateway cluster
 
         ```python
         import pulumi
@@ -1432,7 +1432,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### 1. Create A Cluster
+        #### 1. Create A Cluster
 
         ```python
         import pulumi
@@ -1547,7 +1547,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 2. Scale Up
+        #### 2. Scale Up
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
 
         In the case of scaling up cluster, we should add the node_count of some host group.
@@ -1670,7 +1670,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 3. Scale Down
+        #### 3. Scale Down
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
 
@@ -1791,7 +1791,7 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!")
         ```
 
-        ### 4. Create a emr gateway cluster
+        #### 4. Create a emr gateway cluster
 
         ```python
         import pulumi

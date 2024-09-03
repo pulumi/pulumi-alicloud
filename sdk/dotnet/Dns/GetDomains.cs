@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     public static class GetDomains
     {
         /// <summary>
-        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0. 
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
         /// 
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0. 
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
         /// 
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 

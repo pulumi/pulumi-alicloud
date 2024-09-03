@@ -294,14 +294,14 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
     }
 
     /**
-     * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, &lt;http://www.aliyun.com&gt;:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the &lt;http://www.aliyun.com&gt; domain except 203.0.3.55 and 203.3.44.67 are hijacked.
      * 
      */
     @Import(name="whiteList")
     private @Nullable Output<String> whiteList;
 
     /**
-     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, &lt;http://www.aliyun.com&gt;:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the &lt;http://www.aliyun.com&gt; domain except 203.0.3.55 and 203.3.44.67 are hijacked.
      * 
      */
     public Optional<Output<String>> whiteList() {
@@ -727,7 +727,7 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
         }
 
         /**
-         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, &lt;http://www.aliyun.com&gt;:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the &lt;http://www.aliyun.com&gt; domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
         }
 
         /**
-         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, &lt;http://www.aliyun.com&gt;:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the &lt;http://www.aliyun.com&gt; domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          * 
          * @return builder
          * 

@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: 
+        /// The privilege of one account access database. Valid values:
         /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: 
+        /// The privilege of one account access database. Valid values:
         /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The privilege of one account access database. Valid values: 
+        /// The privilege of one account access database. Valid values:
         /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB

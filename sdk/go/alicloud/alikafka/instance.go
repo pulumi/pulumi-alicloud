@@ -12,13 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// AliKafka instance can be imported using the id, e.g.
-//
-// ```sh
-// $ pulumi import alicloud:alikafka/instance:Instance instance <id>
-// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -34,33 +27,27 @@ type Instance struct {
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntOutput `pulumi:"diskType"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
-	EipMax pulumi.IntOutput `pulumi:"eipMax"`
-	// The EndPoint to access the kafka instance.
-	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
-	// (Available since v1.214.1) The number of available groups.
-	GroupLeft pulumi.IntOutput `pulumi:"groupLeft"`
-	// (Available since v1.214.1) The number of used groups.
-	GroupUsed pulumi.IntOutput `pulumi:"groupUsed"`
+	EipMax    pulumi.IntOutput    `pulumi:"eipMax"`
+	EndPoint  pulumi.StringOutput `pulumi:"endPoint"`
+	GroupLeft pulumi.IntOutput    `pulumi:"groupLeft"`
+	GroupUsed pulumi.IntOutput    `pulumi:"groupUsed"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-	IoMaxSpec pulumi.StringOutput `pulumi:"ioMaxSpec"`
-	// (Available since v1.214.1) The method that you use to purchase partitions.
-	IsPartitionBuy pulumi.IntOutput `pulumi:"isPartitionBuy"`
+	IoMaxSpec      pulumi.StringOutput `pulumi:"ioMaxSpec"`
+	IsPartitionBuy pulumi.IntOutput    `pulumi:"isPartitionBuy"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
-	// (Available since v1.214.1) The number of available partitions.
-	PartitionLeft pulumi.IntOutput `pulumi:"partitionLeft"`
+	PaidType      pulumi.StringPtrOutput `pulumi:"paidType"`
+	PartitionLeft pulumi.IntOutput       `pulumi:"partitionLeft"`
 	// The number of partitions.
-	PartitionNum pulumi.IntPtrOutput `pulumi:"partitionNum"`
-	// (Available since v1.214.1) The number of used partitions.
-	PartitionUsed pulumi.IntOutput `pulumi:"partitionUsed"`
+	PartitionNum  pulumi.IntPtrOutput `pulumi:"partitionNum"`
+	PartitionUsed pulumi.IntOutput    `pulumi:"partitionUsed"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -69,26 +56,23 @@ type Instance struct {
 	//
 	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+	// | io_ |     disk_     |  topic_   |  eip_   |
+	// |-----|---------------|-----------|---------|
+	// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+	// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+	// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+	// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+	// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
-	// The status of the instance.
-	Status pulumi.IntOutput `pulumi:"status"`
+	Status   pulumi.IntOutput       `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// (Available since v1.214.1) The number of available topics.
-	TopicLeft pulumi.IntOutput `pulumi:"topicLeft"`
-	// (Available since v1.214.1) The number of purchased topics.
-	TopicNumOfBuy pulumi.IntOutput `pulumi:"topicNumOfBuy"`
+	Tags          pulumi.StringMapOutput `pulumi:"tags"`
+	TopicLeft     pulumi.IntOutput       `pulumi:"topicLeft"`
+	TopicNumOfBuy pulumi.IntOutput       `pulumi:"topicNumOfBuy"`
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
@@ -96,8 +80,7 @@ type Instance struct {
 	//
 	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
-	// (Available since v1.214.1) The number of used topics.
-	TopicUsed pulumi.IntOutput `pulumi:"topicUsed"`
+	TopicUsed  pulumi.IntOutput `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -160,32 +143,26 @@ type instanceState struct {
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType *int `pulumi:"diskType"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
-	EipMax *int `pulumi:"eipMax"`
-	// The EndPoint to access the kafka instance.
-	EndPoint *string `pulumi:"endPoint"`
-	// (Available since v1.214.1) The number of available groups.
-	GroupLeft *int `pulumi:"groupLeft"`
-	// (Available since v1.214.1) The number of used groups.
-	GroupUsed *int `pulumi:"groupUsed"`
+	EipMax    *int    `pulumi:"eipMax"`
+	EndPoint  *string `pulumi:"endPoint"`
+	GroupLeft *int    `pulumi:"groupLeft"`
+	GroupUsed *int    `pulumi:"groupUsed"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-	IoMaxSpec *string `pulumi:"ioMaxSpec"`
-	// (Available since v1.214.1) The method that you use to purchase partitions.
-	IsPartitionBuy *int `pulumi:"isPartitionBuy"`
+	IoMaxSpec      *string `pulumi:"ioMaxSpec"`
+	IsPartitionBuy *int    `pulumi:"isPartitionBuy"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-	PaidType *string `pulumi:"paidType"`
-	// (Available since v1.214.1) The number of available partitions.
-	PartitionLeft *int `pulumi:"partitionLeft"`
+	PaidType      *string `pulumi:"paidType"`
+	PartitionLeft *int    `pulumi:"partitionLeft"`
 	// The number of partitions.
-	PartitionNum *int `pulumi:"partitionNum"`
-	// (Available since v1.214.1) The number of used partitions.
+	PartitionNum  *int `pulumi:"partitionNum"`
 	PartitionUsed *int `pulumi:"partitionUsed"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -195,26 +172,23 @@ type instanceState struct {
 	//
 	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+	// | io_ |     disk_     |  topic_   |  eip_   |
+	// |-----|---------------|-----------|---------|
+	// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+	// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+	// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+	// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+	// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
-	// The status of the instance.
-	Status *int `pulumi:"status"`
+	Status   *int    `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]string `pulumi:"tags"`
-	// (Available since v1.214.1) The number of available topics.
-	TopicLeft *int `pulumi:"topicLeft"`
-	// (Available since v1.214.1) The number of purchased topics.
-	TopicNumOfBuy *int `pulumi:"topicNumOfBuy"`
+	Tags          map[string]string `pulumi:"tags"`
+	TopicLeft     *int              `pulumi:"topicLeft"`
+	TopicNumOfBuy *int              `pulumi:"topicNumOfBuy"`
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
@@ -222,8 +196,7 @@ type instanceState struct {
 	//
 	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota *int `pulumi:"topicQuota"`
-	// (Available since v1.214.1) The number of used topics.
-	TopicUsed *int `pulumi:"topicUsed"`
+	TopicUsed  *int `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -245,32 +218,26 @@ type InstanceState struct {
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntPtrInput
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
-	EipMax pulumi.IntPtrInput
-	// The EndPoint to access the kafka instance.
-	EndPoint pulumi.StringPtrInput
-	// (Available since v1.214.1) The number of available groups.
+	EipMax    pulumi.IntPtrInput
+	EndPoint  pulumi.StringPtrInput
 	GroupLeft pulumi.IntPtrInput
-	// (Available since v1.214.1) The number of used groups.
 	GroupUsed pulumi.IntPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
 	// The traffic specification of the instance. We recommend that you configure this parameter.
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-	IoMaxSpec pulumi.StringPtrInput
-	// (Available since v1.214.1) The method that you use to purchase partitions.
+	IoMaxSpec      pulumi.StringPtrInput
 	IsPartitionBuy pulumi.IntPtrInput
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
 	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-	PaidType pulumi.StringPtrInput
-	// (Available since v1.214.1) The number of available partitions.
+	PaidType      pulumi.StringPtrInput
 	PartitionLeft pulumi.IntPtrInput
 	// The number of partitions.
-	PartitionNum pulumi.IntPtrInput
-	// (Available since v1.214.1) The number of used partitions.
+	PartitionNum  pulumi.IntPtrInput
 	PartitionUsed pulumi.IntPtrInput
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
@@ -280,25 +247,22 @@ type InstanceState struct {
 	//
 	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+	// | io_ |     disk_     |  topic_   |  eip_   |
+	// |-----|---------------|-----------|---------|
+	// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+	// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+	// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+	// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+	// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 	SelectedZones pulumi.StringArrayInput
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
-	// The status of the instance.
-	Status pulumi.IntPtrInput
+	Status   pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.StringMapInput
-	// (Available since v1.214.1) The number of available topics.
-	TopicLeft pulumi.IntPtrInput
-	// (Available since v1.214.1) The number of purchased topics.
+	Tags          pulumi.StringMapInput
+	TopicLeft     pulumi.IntPtrInput
 	TopicNumOfBuy pulumi.IntPtrInput
 	// The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
@@ -307,8 +271,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota pulumi.IntPtrInput
-	// (Available since v1.214.1) The number of used topics.
-	TopicUsed pulumi.IntPtrInput
+	TopicUsed  pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
@@ -357,13 +320,13 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+	// | io_ |     disk_     |  topic_   |  eip_   |
+	// |-----|---------------|-----------|---------|
+	// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+	// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+	// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+	// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+	// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion *string `pulumi:"serviceVersion"`
@@ -423,13 +386,13 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 	//
-	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-	// |------|-------------|:----:|:-----:|
-	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+	// | io_ |     disk_     |  topic_   |  eip_   |
+	// |-----|---------------|-----------|---------|
+	// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+	// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+	// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+	// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+	// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 	SelectedZones pulumi.StringArrayInput
 	// The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
 	ServiceVersion pulumi.StringPtrInput
@@ -567,17 +530,14 @@ func (o InstanceOutput) EipMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.EipMax }).(pulumi.IntOutput)
 }
 
-// The EndPoint to access the kafka instance.
 func (o InstanceOutput) EndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndPoint }).(pulumi.StringOutput)
 }
 
-// (Available since v1.214.1) The number of available groups.
 func (o InstanceOutput) GroupLeft() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.GroupLeft }).(pulumi.IntOutput)
 }
 
-// (Available since v1.214.1) The number of used groups.
 func (o InstanceOutput) GroupUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.GroupUsed }).(pulumi.IntOutput)
 }
@@ -594,7 +554,6 @@ func (o InstanceOutput) IoMaxSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IoMaxSpec }).(pulumi.StringOutput)
 }
 
-// (Available since v1.214.1) The method that you use to purchase partitions.
 func (o InstanceOutput) IsPartitionBuy() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IsPartitionBuy }).(pulumi.IntOutput)
 }
@@ -614,7 +573,6 @@ func (o InstanceOutput) PaidType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PaidType }).(pulumi.StringPtrOutput)
 }
 
-// (Available since v1.214.1) The number of available partitions.
 func (o InstanceOutput) PartitionLeft() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionLeft }).(pulumi.IntOutput)
 }
@@ -624,7 +582,6 @@ func (o InstanceOutput) PartitionNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.PartitionNum }).(pulumi.IntPtrOutput)
 }
 
-// (Available since v1.214.1) The number of used partitions.
 func (o InstanceOutput) PartitionUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionUsed }).(pulumi.IntOutput)
 }
@@ -643,13 +600,13 @@ func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 //
 // > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
 //
-// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-// |------|-------------|:----:|:-----:|
-// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+// | io_ |     disk_     |  topic_   |  eip_   |
+// |-----|---------------|-----------|---------|
+// |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+// |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+// |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+// |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+// | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
 func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
@@ -664,7 +621,6 @@ func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
 }
 
-// The status of the instance.
 func (o InstanceOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
@@ -674,12 +630,10 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// (Available since v1.214.1) The number of available topics.
 func (o InstanceOutput) TopicLeft() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicLeft }).(pulumi.IntOutput)
 }
 
-// (Available since v1.214.1) The number of purchased topics.
 func (o InstanceOutput) TopicNumOfBuy() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicNumOfBuy }).(pulumi.IntOutput)
 }
@@ -694,7 +648,6 @@ func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
 }
 
-// (Available since v1.214.1) The number of used topics.
 func (o InstanceOutput) TopicUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicUsed }).(pulumi.IntOutput)
 }

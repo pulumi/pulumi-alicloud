@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly bool? UsingAcl;
         /// <summary>
-        /// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        /// Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         /// </summary>
         public readonly bool? UsingPolicy;
 

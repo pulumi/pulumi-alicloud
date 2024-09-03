@@ -39,11 +39,11 @@ class ImageArgs:
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         :param pulumi.Input[str] boot_mode: The new boot mode of the image. Valid values:
                
-               *   BIOS: Basic Input/Output System (BIOS)
+               * BIOS: Basic Input/Output System (BIOS)
                
-               *   UEFI: Unified Extensible Firmware Interface (UEFI)
+               * UEFI: Unified Extensible Firmware Interface (UEFI)
                
-               *   UEFI-Preferred: BIOS and UEFI
+               * UEFI-Preferred: BIOS and UEFI
                
                > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
                
@@ -135,11 +135,11 @@ class ImageArgs:
         """
         The new boot mode of the image. Valid values:
 
-        *   BIOS: Basic Input/Output System (BIOS)
+        * BIOS: Basic Input/Output System (BIOS)
 
-        *   UEFI: Unified Extensible Firmware Interface (UEFI)
+        * UEFI: Unified Extensible Firmware Interface (UEFI)
 
-        *   UEFI-Preferred: BIOS and UEFI
+        * UEFI-Preferred: BIOS and UEFI
 
         > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
 
@@ -385,11 +385,11 @@ class _ImageState:
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         :param pulumi.Input[str] boot_mode: The new boot mode of the image. Valid values:
                
-               *   BIOS: Basic Input/Output System (BIOS)
+               * BIOS: Basic Input/Output System (BIOS)
                
-               *   UEFI: Unified Extensible Firmware Interface (UEFI)
+               * UEFI: Unified Extensible Firmware Interface (UEFI)
                
-               *   UEFI-Preferred: BIOS and UEFI
+               * UEFI-Preferred: BIOS and UEFI
                
                > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
                
@@ -487,11 +487,11 @@ class _ImageState:
         """
         The new boot mode of the image. Valid values:
 
-        *   BIOS: Basic Input/Output System (BIOS)
+        * BIOS: Basic Input/Output System (BIOS)
 
-        *   UEFI: Unified Extensible Firmware Interface (UEFI)
+        * UEFI: Unified Extensible Firmware Interface (UEFI)
 
-        *   UEFI-Preferred: BIOS and UEFI
+        * UEFI-Preferred: BIOS and UEFI
 
         > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
 
@@ -830,11 +830,11 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         :param pulumi.Input[str] boot_mode: The new boot mode of the image. Valid values:
                
-               *   BIOS: Basic Input/Output System (BIOS)
+               * BIOS: Basic Input/Output System (BIOS)
                
-               *   UEFI: Unified Extensible Firmware Interface (UEFI)
+               * UEFI: Unified Extensible Firmware Interface (UEFI)
                
-               *   UEFI-Preferred: BIOS and UEFI
+               * UEFI-Preferred: BIOS and UEFI
                
                > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
                
@@ -1044,11 +1044,11 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         :param pulumi.Input[str] boot_mode: The new boot mode of the image. Valid values:
                
-               *   BIOS: Basic Input/Output System (BIOS)
+               * BIOS: Basic Input/Output System (BIOS)
                
-               *   UEFI: Unified Extensible Firmware Interface (UEFI)
+               * UEFI: Unified Extensible Firmware Interface (UEFI)
                
-               *   UEFI-Preferred: BIOS and UEFI
+               * UEFI-Preferred: BIOS and UEFI
                
                > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
                
@@ -1124,11 +1124,11 @@ class Image(pulumi.CustomResource):
         """
         The new boot mode of the image. Valid values:
 
-        *   BIOS: Basic Input/Output System (BIOS)
+        * BIOS: Basic Input/Output System (BIOS)
 
-        *   UEFI: Unified Extensible Firmware Interface (UEFI)
+        * UEFI: Unified Extensible Firmware Interface (UEFI)
 
-        *   UEFI-Preferred: BIOS and UEFI
+        * UEFI-Preferred: BIOS and UEFI
 
         > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
 

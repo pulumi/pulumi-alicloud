@@ -312,7 +312,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -357,7 +357,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -402,7 +402,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -447,7 +447,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -492,7 +492,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -537,7 +537,7 @@ public final class EciFunctions {
      * 
      * ## Example Usage
      * 
-     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;

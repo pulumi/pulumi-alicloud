@@ -57,7 +57,7 @@ export interface GetSecretsArgs {
      */
     fetchTags?: boolean;
     /**
-     * The secret filter. The filter consists of one or more key-value pairs. 
+     * The secret filter. The filter consists of one or more key-value pairs.
      * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
      */
     filters?: string;
@@ -149,7 +149,7 @@ export interface GetSecretsOutputArgs {
      */
     fetchTags?: pulumi.Input<boolean>;
     /**
-     * The secret filter. The filter consists of one or more key-value pairs. 
+     * The secret filter. The filter consists of one or more key-value pairs.
      * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
      */
     filters?: pulumi.Input<string>;

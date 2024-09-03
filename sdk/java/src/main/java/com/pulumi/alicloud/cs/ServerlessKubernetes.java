@@ -145,14 +145,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      */
     @Export(name="addons", refs={List.class,ServerlessKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerlessKubernetesAddon>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      */
     public Output<Optional<List<ServerlessKubernetesAddon>>> addons() {

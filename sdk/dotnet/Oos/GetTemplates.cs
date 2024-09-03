@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oos
     {
         /// <summary>
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.92.0+.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Oos
 
         /// <summary>
         /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.92.0+.
         /// 
         /// ## Example Usage

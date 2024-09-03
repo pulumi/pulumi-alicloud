@@ -317,32 +317,20 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
     pulumi.export("eni0Name", default_get_network_interfaces.interfaces[0].name)
     ```
 
-    ## Argument Reference
 
-    The following arguments are supported:
-
-    * `ids` - (Optional)  A list of ENI IDs.
-    * `name_regex` - (Optional) A regex string to filter results by ENI name.
-    * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-    * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-    * `private_ip` - (Optional) The primary private IP address of the ENI.
-    * `security_group_id` - (Optional) The security group ID linked to ENIs.
-    * `name` - (Optional) The name of the ENIs.
-    * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-    * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
-    * `tags` - (Optional) A map of tags assigned to ENIs.
-    * `output_file` - (Optional) The name of output file that saves the filter results.
-    * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-
-
-    :param str instance_id: ID of the instance that the ENI is attached to.
-    :param str name: Name of the ENI.
-    :param str private_ip: Primary private IP of the ENI.
-    :param str resource_group_id: The Id of resource group.
+    :param Sequence[str] ids: A list of ENI IDs.
+    :param str instance_id: The ECS instance ID that the ENI is attached to.
+    :param str name: The name of the ENIs.
+    :param str name_regex: A regex string to filter results by ENI name.
+    :param str output_file: The name of output file that saves the filter results.
+    :param str private_ip: The primary private IP address of the ENI.
+    :param str resource_group_id: The Id of resource group which the network interface belongs.
+    :param str security_group_id: The security group ID linked to ENIs.
     :param str status: Current status of the ENI.
-    :param Mapping[str, str] tags: A map of tags assigned to the ENI.
-    :param str vpc_id: ID of the VPC that the ENI belongs to.
-    :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
+    :param Mapping[str, str] tags: A map of tags assigned to ENIs.
+    :param str type: The type of ENIs, Only support for "Primary" or "Secondary".
+    :param str vpc_id: The VPC ID linked to ENIs.
+    :param str vswitch_id: The vSwitch ID linked to ENIs.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -468,31 +456,19 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     pulumi.export("eni0Name", default_get_network_interfaces.interfaces[0].name)
     ```
 
-    ## Argument Reference
 
-    The following arguments are supported:
-
-    * `ids` - (Optional)  A list of ENI IDs.
-    * `name_regex` - (Optional) A regex string to filter results by ENI name.
-    * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-    * `vswitch_id` - (Optional) The vSwitch ID linked to ENIs.
-    * `private_ip` - (Optional) The primary private IP address of the ENI.
-    * `security_group_id` - (Optional) The security group ID linked to ENIs.
-    * `name` - (Optional) The name of the ENIs.
-    * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-    * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
-    * `tags` - (Optional) A map of tags assigned to ENIs.
-    * `output_file` - (Optional) The name of output file that saves the filter results.
-    * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-
-
-    :param str instance_id: ID of the instance that the ENI is attached to.
-    :param str name: Name of the ENI.
-    :param str private_ip: Primary private IP of the ENI.
-    :param str resource_group_id: The Id of resource group.
+    :param Sequence[str] ids: A list of ENI IDs.
+    :param str instance_id: The ECS instance ID that the ENI is attached to.
+    :param str name: The name of the ENIs.
+    :param str name_regex: A regex string to filter results by ENI name.
+    :param str output_file: The name of output file that saves the filter results.
+    :param str private_ip: The primary private IP address of the ENI.
+    :param str resource_group_id: The Id of resource group which the network interface belongs.
+    :param str security_group_id: The security group ID linked to ENIs.
     :param str status: Current status of the ENI.
-    :param Mapping[str, str] tags: A map of tags assigned to the ENI.
-    :param str vpc_id: ID of the VPC that the ENI belongs to.
-    :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
+    :param Mapping[str, str] tags: A map of tags assigned to ENIs.
+    :param str type: The type of ENIs, Only support for "Primary" or "Secondary".
+    :param str vpc_id: The VPC ID linked to ENIs.
+    :param str vswitch_id: The vSwitch ID linked to ENIs.
     """
     ...

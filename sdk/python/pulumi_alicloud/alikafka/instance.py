@@ -60,13 +60,13 @@ class InstanceArgs:
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               | io_ |     disk_     |  topic_   |  eip_   |
+               |-----|---------------|-----------|---------|
+               |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+               |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+               |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+               |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+               | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -300,13 +300,13 @@ class InstanceArgs:
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        | io_ |     disk_     |  topic_   |  eip_   |
+        |-----|---------------|-----------|---------|
+        |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -435,44 +435,34 @@ class _InstanceState:
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
-        :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
-        :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-        :param pulumi.Input[int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
-        :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               | io_ |     disk_     |  topic_   |  eip_   |
+               |-----|---------------|-----------|---------|
+               |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+               |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+               |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+               |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+               | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
-        :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
-        :param pulumi.Input[int] topic_num_of_buy: (Available since v1.214.1) The number of purchased topics.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
-        :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -609,9 +599,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="endPoint")
     def end_point(self) -> Optional[pulumi.Input[str]]:
-        """
-        The EndPoint to access the kafka instance.
-        """
         return pulumi.get(self, "end_point")
 
     @end_point.setter
@@ -621,9 +608,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="groupLeft")
     def group_left(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of available groups.
-        """
         return pulumi.get(self, "group_left")
 
     @group_left.setter
@@ -633,9 +617,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="groupUsed")
     def group_used(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of used groups.
-        """
         return pulumi.get(self, "group_used")
 
     @group_used.setter
@@ -671,9 +652,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="isPartitionBuy")
     def is_partition_buy(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The method that you use to purchase partitions.
-        """
         return pulumi.get(self, "is_partition_buy")
 
     @is_partition_buy.setter
@@ -719,9 +697,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="partitionLeft")
     def partition_left(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of available partitions.
-        """
         return pulumi.get(self, "partition_left")
 
     @partition_left.setter
@@ -743,9 +718,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="partitionUsed")
     def partition_used(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of used partitions.
-        """
         return pulumi.get(self, "partition_used")
 
     @partition_used.setter
@@ -784,13 +756,13 @@ class _InstanceState:
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        | io_ |     disk_     |  topic_   |  eip_   |
+        |-----|---------------|-----------|---------|
+        |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -825,9 +797,6 @@ class _InstanceState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status of the instance.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -849,9 +818,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="topicLeft")
     def topic_left(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of available topics.
-        """
         return pulumi.get(self, "topic_left")
 
     @topic_left.setter
@@ -861,9 +827,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="topicNumOfBuy")
     def topic_num_of_buy(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of purchased topics.
-        """
         return pulumi.get(self, "topic_num_of_buy")
 
     @topic_num_of_buy.setter
@@ -889,9 +852,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="topicUsed")
     def topic_used(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Available since v1.214.1) The number of used topics.
-        """
         return pulumi.get(self, "topic_used")
 
     @topic_used.setter
@@ -963,14 +923,7 @@ class Instance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Import
-
-        AliKafka instance can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
-        ```
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
@@ -995,13 +948,13 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               | io_ |     disk_     |  topic_   |  eip_   |
+               |-----|---------------|-----------|---------|
+               |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+               |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+               |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+               |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+               | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -1020,14 +973,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        AliKafka instance can be imported using the id, e.g.
-
-        ```sh
-        $ pulumi import alicloud:alikafka/instance:Instance instance <id>
-        ```
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1168,44 +1114,34 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
-        :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
-        :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
-        :param pulumi.Input[int] group_used: (Available since v1.214.1) The number of used groups.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-        :param pulumi.Input[int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
-        :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
-        :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-               |------|-------------|:----:|:-----:|
-               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+               | io_ |     disk_     |  topic_   |  eip_   |
+               |-----|---------------|-----------|---------|
+               |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+               |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+               |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+               |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+               | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
-        :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
-        :param pulumi.Input[int] topic_num_of_buy: (Available since v1.214.1) The number of purchased topics.
         :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
-        :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
@@ -1293,25 +1229,16 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endPoint")
     def end_point(self) -> pulumi.Output[str]:
-        """
-        The EndPoint to access the kafka instance.
-        """
         return pulumi.get(self, "end_point")
 
     @property
     @pulumi.getter(name="groupLeft")
     def group_left(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of available groups.
-        """
         return pulumi.get(self, "group_left")
 
     @property
     @pulumi.getter(name="groupUsed")
     def group_used(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of used groups.
-        """
         return pulumi.get(self, "group_used")
 
     @property
@@ -1335,9 +1262,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isPartitionBuy")
     def is_partition_buy(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The method that you use to purchase partitions.
-        """
         return pulumi.get(self, "is_partition_buy")
 
     @property
@@ -1367,9 +1291,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="partitionLeft")
     def partition_left(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of available partitions.
-        """
         return pulumi.get(self, "partition_left")
 
     @property
@@ -1383,9 +1304,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="partitionUsed")
     def partition_used(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of used partitions.
-        """
         return pulumi.get(self, "partition_used")
 
     @property
@@ -1412,13 +1330,13 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-        |------|-------------|:----:|:-----:|
-        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+        | io_ |     disk_     |  topic_   |  eip_   |
+        |-----|---------------|-----------|---------|
+        |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+        |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+        |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+        |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+        | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -1441,9 +1359,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
-        """
-        The status of the instance.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -1457,17 +1372,11 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="topicLeft")
     def topic_left(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of available topics.
-        """
         return pulumi.get(self, "topic_left")
 
     @property
     @pulumi.getter(name="topicNumOfBuy")
     def topic_num_of_buy(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of purchased topics.
-        """
         return pulumi.get(self, "topic_num_of_buy")
 
     @property
@@ -1485,9 +1394,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="topicUsed")
     def topic_used(self) -> pulumi.Output[int]:
-        """
-        (Available since v1.214.1) The number of used topics.
-        """
         return pulumi.get(self, "topic_used")
 
     @property

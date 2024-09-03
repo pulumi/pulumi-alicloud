@@ -150,7 +150,7 @@ class Connection(pulumi.CustomResource):
         Provides an ADB connection resource to allocate an Internet connection string for ADB cluster.
 
         > **NOTE:** Each ADB instance will allocate a intranet connnection string automatically and its prifix is ADB instance ID.
-         To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+        To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         > **NOTE:** Available since v1.81.0.
 
@@ -203,7 +203,7 @@ class Connection(pulumi.CustomResource):
         Provides an ADB connection resource to allocate an Internet connection string for ADB cluster.
 
         > **NOTE:** Each ADB instance will allocate a intranet connnection string automatically and its prifix is ADB instance ID.
-         To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+        To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
         > **NOTE:** Available since v1.81.0.
 

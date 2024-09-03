@@ -107,7 +107,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly httpPorts!: pulumi.Output<string[] | undefined>;
     /**
-     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     public readonly httpToUserIp!: pulumi.Output<string | undefined>;
@@ -252,7 +252,7 @@ export interface DomainState {
      */
     httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     httpToUserIp?: pulumi.Input<string>;
@@ -331,7 +331,7 @@ export interface DomainArgs {
      */
     httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+     * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
     httpToUserIp?: pulumi.Input<string>;

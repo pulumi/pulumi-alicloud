@@ -28,18 +28,18 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
-//	           Ids: []string{
-//	               "imc-bp1ef0dyp7ldhb1d****",
-//	           },
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       ctx.Export("imageCache", example.Caches[0].Id)
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
+//				Ids: []string{
+//					"imc-bp1ef0dyp7ldhb1d****",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("imageCache", example.Caches[0].Id)
+//			return nil
+//		})
 //	}
 //
 // ```

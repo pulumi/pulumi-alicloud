@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oos
     {
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.93.0+.
         /// 
         /// ## Example Usage
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Oos
 
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
-        ///  
+        /// 
         /// &gt; **NOTE:** Available in v1.93.0+.
         /// 
         /// ## Example Usage

@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a EIP Association resource.
  *
  * > **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
- *  pre-existing or distributed to customers or users and therefore cannot be changed.
+ * pre-existing or distributed to customers or users and therefore cannot be changed.
  *
  * > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
  *

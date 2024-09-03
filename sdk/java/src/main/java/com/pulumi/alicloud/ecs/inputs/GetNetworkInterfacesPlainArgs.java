@@ -17,22 +17,30 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
 
     public static final GetNetworkInterfacesPlainArgs Empty = new GetNetworkInterfacesPlainArgs();
 
+    /**
+     * A list of ENI IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of ENI IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
     /**
-     * ID of the instance that the ENI is attached to.
+     * The ECS instance ID that the ENI is attached to.
      * 
      */
     @Import(name="instanceId")
     private @Nullable String instanceId;
 
     /**
-     * @return ID of the instance that the ENI is attached to.
+     * @return The ECS instance ID that the ENI is attached to.
      * 
      */
     public Optional<String> instanceId() {
@@ -40,7 +48,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Name of the ENI.
+     * The name of the ENIs.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -51,7 +59,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     private @Nullable String name;
 
     /**
-     * @return Name of the ENI.
+     * @return The name of the ENIs.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -62,9 +70,17 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * A regex string to filter results by ENI name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by ENI name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -76,9 +92,17 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.networkInterfaceName);
     }
 
+    /**
+     * The name of output file that saves the filter results.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return The name of output file that saves the filter results.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -91,7 +115,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Primary private IP of the ENI.
+     * The primary private IP address of the ENI.
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -102,7 +126,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     private @Nullable String privateIp;
 
     /**
-     * @return Primary private IP of the ENI.
+     * @return The primary private IP address of the ENI.
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -114,23 +138,31 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The Id of resource group.
+     * The Id of resource group which the network interface belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the network interface belongs.
      * 
      */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The security group ID linked to ENIs.
+     * 
+     */
     @Import(name="securityGroupId")
     private @Nullable String securityGroupId;
 
+    /**
+     * @return The security group ID linked to ENIs.
+     * 
+     */
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
@@ -158,36 +190,44 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * A map of tags assigned to the ENI.
+     * A map of tags assigned to ENIs.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
     /**
-     * @return A map of tags assigned to the ENI.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     @Import(name="type")
     private @Nullable String type;
 
+    /**
+     * @return The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
 
     /**
-     * ID of the VPC that the ENI belongs to.
+     * The VPC ID linked to ENIs.
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return ID of the VPC that the ENI belongs to.
+     * @return The VPC ID linked to ENIs.
      * 
      */
     public Optional<String> vpcId() {
@@ -195,14 +235,14 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * ID of the vSwitch that the ENI is linked to.
+     * The vSwitch ID linked to ENIs.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return ID of the vSwitch that the ENI is linked to.
+     * @return The vSwitch ID linked to ENIs.
      * 
      */
     public Optional<String> vswitchId() {
@@ -248,17 +288,29 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
             $ = new GetNetworkInterfacesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of ENI IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of ENI IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
         /**
-         * @param instanceId ID of the instance that the ENI is attached to.
+         * @param instanceId The ECS instance ID that the ENI is attached to.
          * 
          * @return builder
          * 
@@ -269,7 +321,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param name Name of the ENI.
+         * @param name The name of the ENIs.
          * 
          * @return builder
          * 
@@ -283,6 +335,12 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by ENI name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -293,6 +351,12 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param outputFile The name of output file that saves the filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;
@@ -304,7 +368,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param privateIp Primary private IP of the ENI.
+         * @param privateIp The primary private IP address of the ENI.
          * 
          * @return builder
          * 
@@ -319,7 +383,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param resourceGroupId The Id of resource group.
+         * @param resourceGroupId The Id of resource group which the network interface belongs.
          * 
          * @return builder
          * 
@@ -329,6 +393,12 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param securityGroupId The security group ID linked to ENIs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupId(@Nullable String securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
@@ -351,7 +421,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param tags A map of tags assigned to the ENI.
+         * @param tags A map of tags assigned to ENIs.
          * 
          * @return builder
          * 
@@ -361,13 +431,19 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param type The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable String type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param vpcId ID of the VPC that the ENI belongs to.
+         * @param vpcId The VPC ID linked to ENIs.
          * 
          * @return builder
          * 
@@ -378,7 +454,7 @@ public final class GetNetworkInterfacesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param vswitchId ID of the vSwitch that the ENI is linked to.
+         * @param vswitchId The vSwitch ID linked to ENIs.
          * 
          * @return builder
          * 

@@ -1510,8 +1510,8 @@ type ImageDiskDeviceMapping struct {
 	RemainTime *int `pulumi:"remainTime"`
 	// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
 	// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-	// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-	// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+	// * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+	// * For other disks, the valid values range from 20 to 32768, and the default value is 20.
 	// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 	Size *int `pulumi:"size"`
 	// The ID of snapshot N to use to create the custom image. .
@@ -1550,8 +1550,8 @@ type ImageDiskDeviceMappingArgs struct {
 	RemainTime pulumi.IntPtrInput `pulumi:"remainTime"`
 	// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
 	// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-	// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-	// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+	// * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+	// * For other disks, the valid values range from 20 to 32768, and the default value is 20.
 	// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The ID of snapshot N to use to create the custom image. .
@@ -1650,8 +1650,8 @@ func (o ImageDiskDeviceMappingOutput) RemainTime() pulumi.IntPtrOutput {
 
 // The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
 // - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+// * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+// * For other disks, the valid values range from 20 to 32768, and the default value is 20.
 // - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 func (o ImageDiskDeviceMappingOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageDiskDeviceMapping) *int { return v.Size }).(pulumi.IntPtrOutput)
@@ -14696,25 +14696,25 @@ type GetNetworkInterfacesInterface struct {
 	Description string `pulumi:"description"`
 	// ID of the ENI.
 	Id string `pulumi:"id"`
-	// ID of the instance that the ENI is attached to.
+	// The ECS instance ID that the ENI is attached to.
 	InstanceId string   `pulumi:"instanceId"`
 	Ipv6Sets   []string `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
-	// Name of the ENI.
+	// The name of the ENIs.
 	Name                        string `pulumi:"name"`
 	NetworkInterfaceId          string `pulumi:"networkInterfaceId"`
 	NetworkInterfaceName        string `pulumi:"networkInterfaceName"`
 	NetworkInterfaceTrafficMode string `pulumi:"networkInterfaceTrafficMode"`
 	OwnerId                     string `pulumi:"ownerId"`
 	PrimaryIpAddress            string `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
+	// The primary private IP address of the ENI.
 	PrivateIp          string   `pulumi:"privateIp"`
 	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIps  []string `pulumi:"privateIps"`
 	QueueNumber int      `pulumi:"queueNumber"`
-	// The Id of resource group.
+	// The Id of resource group which the network interface belongs.
 	ResourceGroupId  string   `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
@@ -14723,12 +14723,13 @@ type GetNetworkInterfacesInterface struct {
 	ServiceManaged bool     `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status string `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags map[string]string `pulumi:"tags"`
-	Type string            `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The type of ENIs, Only support for "Primary" or "Secondary".
+	Type string `pulumi:"type"`
+	// The VPC ID linked to ENIs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId string `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId string `pulumi:"zoneId"`
@@ -14753,25 +14754,25 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the ENI.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the instance that the ENI is attached to.
+	// The ECS instance ID that the ENI is attached to.
 	InstanceId pulumi.StringInput      `pulumi:"instanceId"`
 	Ipv6Sets   pulumi.StringArrayInput `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
-	// Name of the ENI.
+	// The name of the ENIs.
 	Name                        pulumi.StringInput `pulumi:"name"`
 	NetworkInterfaceId          pulumi.StringInput `pulumi:"networkInterfaceId"`
 	NetworkInterfaceName        pulumi.StringInput `pulumi:"networkInterfaceName"`
 	NetworkInterfaceTrafficMode pulumi.StringInput `pulumi:"networkInterfaceTrafficMode"`
 	OwnerId                     pulumi.StringInput `pulumi:"ownerId"`
 	PrimaryIpAddress            pulumi.StringInput `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
+	// The primary private IP address of the ENI.
 	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
 	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIps  pulumi.StringArrayInput `pulumi:"privateIps"`
 	QueueNumber pulumi.IntInput         `pulumi:"queueNumber"`
-	// The Id of resource group.
+	// The Id of resource group which the network interface belongs.
 	ResourceGroupId  pulumi.StringInput      `pulumi:"resourceGroupId"`
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
@@ -14780,12 +14781,13 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	ServiceManaged pulumi.BoolInput        `pulumi:"serviceManaged"`
 	// Current status of the ENI.
 	Status pulumi.StringInput `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	Type pulumi.StringInput    `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The type of ENIs, Only support for "Primary" or "Secondary".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The VPC ID linked to ENIs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -14863,7 +14865,7 @@ func (o GetNetworkInterfacesInterfaceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the instance that the ENI is attached to.
+// The ECS instance ID that the ENI is attached to.
 func (o GetNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -14877,7 +14879,7 @@ func (o GetNetworkInterfacesInterfaceOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// Name of the ENI.
+// The name of the ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -14902,7 +14904,7 @@ func (o GetNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOut
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
 }
 
-// Primary private IP of the ENI.
+// The primary private IP address of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
@@ -14920,7 +14922,7 @@ func (o GetNetworkInterfacesInterfaceOutput) QueueNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.QueueNumber }).(pulumi.IntOutput)
 }
 
-// The Id of resource group.
+// The Id of resource group which the network interface belongs.
 func (o GetNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -14947,21 +14949,22 @@ func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A map of tags assigned to the ENI.
+// A map of tags assigned to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of ENIs, Only support for "Primary" or "Secondary".
 func (o GetNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// ID of the VPC that the ENI belongs to.
+// The VPC ID linked to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the vSwitch that the ENI is linked to.
+// The vSwitch ID linked to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -15537,8 +15540,9 @@ type GetSnapshotsSnapshot struct {
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description string `pulumi:"description"`
-	DiskId      string `pulumi:"diskId"`
-	// Whether the snapshot is encrypted or not.
+	// The specified disk ID.
+	DiskId string `pulumi:"diskId"`
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted bool `pulumi:"encrypted"`
 	// ID of the snapshot.
 	Id                         string `pulumi:"id"`
@@ -15563,15 +15567,29 @@ type GetSnapshotsSnapshot struct {
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize string `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range: `System`,`Data`.
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
 	SourceDiskType    string `pulumi:"sourceDiskType"`
 	SourceStorageType string `pulumi:"sourceStorageType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status string `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags map[string]string `pulumi:"tags"`
-	Type string            `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
+	Type string `pulumi:"type"`
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage string `pulumi:"usage"`
 }
 
@@ -15592,8 +15610,9 @@ type GetSnapshotsSnapshotArgs struct {
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description pulumi.StringInput `pulumi:"description"`
-	DiskId      pulumi.StringInput `pulumi:"diskId"`
-	// Whether the snapshot is encrypted or not.
+	// The specified disk ID.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
 	// ID of the snapshot.
 	Id                         pulumi.StringInput `pulumi:"id"`
@@ -15618,15 +15637,29 @@ type GetSnapshotsSnapshotArgs struct {
 	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range: `System`,`Data`.
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
 	SourceDiskType    pulumi.StringInput `pulumi:"sourceDiskType"`
 	SourceStorageType pulumi.StringInput `pulumi:"sourceStorageType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	Type pulumi.StringInput    `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -15695,11 +15728,12 @@ func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The specified disk ID.
 func (o GetSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
-// Whether the snapshot is encrypted or not.
+// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 func (o GetSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
@@ -15772,7 +15806,9 @@ func (o GetSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
 }
 
-// Source disk attribute. Value range: `System`,`Data`.
+// The type of source disk:
+// * System: The snapshots are created for system disks.
+// * Data: The snapshots are created for data disks.
 func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
@@ -15781,21 +15817,33 @@ func (o GetSnapshotsSnapshotOutput) SourceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceStorageType }).(pulumi.StringOutput)
 }
 
-// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+// The specified snapshot status. Default value: `all`. Optional values:
+// * progressing: The snapshots are being created.
+// * accomplished: The snapshots are ready to use.
+// * failed: The snapshot creation failed.
+// * all: All status.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A map of tags assigned to the snapshot.
+// A map of tags assigned to snapshots.
 func (o GetSnapshotsSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The snapshot category. Default value: `all`. Optional values:
+// * auto: Auto snapshots.
+// * user: Manual snapshots.
+// * all: Auto and manual snapshots.
 func (o GetSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+// The usage of the snapshot:
+// * image: The snapshots are used to create custom images.
+// * disk: The snapshots are used to CreateDisk.
+// * mage_disk: The snapshots are used to create custom images and data disks.
+// * none: The snapshots are not used yet.
 func (o GetSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
 }

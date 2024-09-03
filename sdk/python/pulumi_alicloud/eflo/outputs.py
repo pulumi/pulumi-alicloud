@@ -39,7 +39,7 @@ class GetSubnetsSubnetResult(dict):
         :param str status: The status of the resource.
         :param str subnet_id: Primary key ID.
         :param str subnet_name: The Subnet name.
-        :param str type: Eflo subnet usage type, optional value: 
+        :param str type: Eflo subnet usage type, optional value:
                - General type is not filled in
                - OOB:OOB type
                - LB: LB type
@@ -135,7 +135,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Eflo subnet usage type, optional value: 
+        Eflo subnet usage type, optional value:
         - General type is not filled in
         - OOB:OOB type
         - LB: LB type

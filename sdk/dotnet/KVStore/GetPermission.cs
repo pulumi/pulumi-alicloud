@@ -14,8 +14,8 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Assigns a RAM role to ApsaraDB for Redis.
         /// 
-        /// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm). 
-        /// To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. 
+        /// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+        /// To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
         /// For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.128.0
@@ -44,8 +44,8 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Assigns a RAM role to ApsaraDB for Redis.
         /// 
-        /// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm). 
-        /// To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. 
+        /// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+        /// To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
         /// For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.128.0

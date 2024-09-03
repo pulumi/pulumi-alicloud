@@ -260,7 +260,7 @@ def get_instances(connection_mode: Optional[str] = None,
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the instance.
-    :param Mapping[str, str] tags: A map of tags assigned to the DB instances. 
+    :param Mapping[str, str] tags: A map of tags assigned to the DB instances.
            Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\\"key1\\":\\"value1\\"}"`
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
@@ -347,7 +347,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the instance.
-    :param Mapping[str, str] tags: A map of tags assigned to the DB instances. 
+    :param Mapping[str, str] tags: A map of tags assigned to the DB instances.
            Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\\"key1\\":\\"value1\\"}"`
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetScalingRules
     {
         /// <summary>
-        /// This data source provides available scaling rule resources. 
+        /// This data source provides available scaling rule resources.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? new GetScalingRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available scaling rule resources. 
+        /// This data source provides available scaling rule resources.
         /// 
         /// ## Example Usage
         /// 

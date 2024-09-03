@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        /// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
         /// * Valid values:
         /// </summary>
         public readonly int EncryptType;

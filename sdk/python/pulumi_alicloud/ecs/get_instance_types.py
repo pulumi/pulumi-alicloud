@@ -345,7 +345,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     __args__ = dict()
@@ -493,7 +493,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     ...

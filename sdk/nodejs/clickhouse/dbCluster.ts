@@ -138,7 +138,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
-     * The zone IDs and 
+     * The zone IDs and
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
     public readonly multiZoneVswitchLists!: pulumi.Output<outputs.clickhouse.DbClusterMultiZoneVswitchList[] | undefined>;
@@ -329,7 +329,7 @@ export interface DbClusterState {
      */
     maintainTime?: pulumi.Input<string>;
     /**
-     * The zone IDs and 
+     * The zone IDs and
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
     multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;
@@ -426,7 +426,7 @@ export interface DbClusterArgs {
      */
     maintainTime?: pulumi.Input<string>;
     /**
-     * The zone IDs and 
+     * The zone IDs and
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
     multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;

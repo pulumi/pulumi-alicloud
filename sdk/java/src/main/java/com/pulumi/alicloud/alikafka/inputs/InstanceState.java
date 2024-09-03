@@ -99,47 +99,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.eipMax);
     }
 
-    /**
-     * The EndPoint to access the kafka instance.
-     * 
-     */
     @Import(name="endPoint")
     private @Nullable Output<String> endPoint;
 
-    /**
-     * @return The EndPoint to access the kafka instance.
-     * 
-     */
     public Optional<Output<String>> endPoint() {
         return Optional.ofNullable(this.endPoint);
     }
 
-    /**
-     * (Available since v1.214.1) The number of available groups.
-     * 
-     */
     @Import(name="groupLeft")
     private @Nullable Output<Integer> groupLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available groups.
-     * 
-     */
     public Optional<Output<Integer>> groupLeft() {
         return Optional.ofNullable(this.groupLeft);
     }
 
-    /**
-     * (Available since v1.214.1) The number of used groups.
-     * 
-     */
     @Import(name="groupUsed")
     private @Nullable Output<Integer> groupUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used groups.
-     * 
-     */
     public Optional<Output<Integer>> groupUsed() {
         return Optional.ofNullable(this.groupUsed);
     }
@@ -178,17 +154,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ioMaxSpec);
     }
 
-    /**
-     * (Available since v1.214.1) The method that you use to purchase partitions.
-     * 
-     */
     @Import(name="isPartitionBuy")
     private @Nullable Output<Integer> isPartitionBuy;
 
-    /**
-     * @return (Available since v1.214.1) The method that you use to purchase partitions.
-     * 
-     */
     public Optional<Output<Integer>> isPartitionBuy() {
         return Optional.ofNullable(this.isPartitionBuy);
     }
@@ -238,17 +206,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.paidType);
     }
 
-    /**
-     * (Available since v1.214.1) The number of available partitions.
-     * 
-     */
     @Import(name="partitionLeft")
     private @Nullable Output<Integer> partitionLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available partitions.
-     * 
-     */
     public Optional<Output<Integer>> partitionLeft() {
         return Optional.ofNullable(this.partitionLeft);
     }
@@ -268,17 +228,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.partitionNum);
     }
 
-    /**
-     * (Available since v1.214.1) The number of used partitions.
-     * 
-     */
     @Import(name="partitionUsed")
     private @Nullable Output<Integer> partitionUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used partitions.
-     * 
-     */
     public Optional<Output<Integer>> partitionUsed() {
         return Optional.ofNullable(this.partitionUsed);
     }
@@ -318,13 +270,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
      * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      * 
      */
     @Import(name="selectedZones")
@@ -335,13 +287,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
      * 
-     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-     * |------|-------------|:----:|:-----:|
-     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * | io_ |     disk_     |  topic_   |  eip_   |
+     * |-----|---------------|-----------|---------|
+     * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+     * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+     * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+     * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+     * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
      * 
      */
     public Optional<Output<List<String>>> selectedZones() {
@@ -378,17 +330,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.specType);
     }
 
-    /**
-     * The status of the instance.
-     * 
-     */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
-    /**
-     * @return The status of the instance.
-     * 
-     */
     public Optional<Output<Integer>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -408,32 +352,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * (Available since v1.214.1) The number of available topics.
-     * 
-     */
     @Import(name="topicLeft")
     private @Nullable Output<Integer> topicLeft;
 
-    /**
-     * @return (Available since v1.214.1) The number of available topics.
-     * 
-     */
     public Optional<Output<Integer>> topicLeft() {
         return Optional.ofNullable(this.topicLeft);
     }
 
-    /**
-     * (Available since v1.214.1) The number of purchased topics.
-     * 
-     */
     @Import(name="topicNumOfBuy")
     private @Nullable Output<Integer> topicNumOfBuy;
 
-    /**
-     * @return (Available since v1.214.1) The number of purchased topics.
-     * 
-     */
     public Optional<Output<Integer>> topicNumOfBuy() {
         return Optional.ofNullable(this.topicNumOfBuy);
     }
@@ -467,17 +395,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.topicQuota);
     }
 
-    /**
-     * (Available since v1.214.1) The number of used topics.
-     * 
-     */
     @Import(name="topicUsed")
     private @Nullable Output<Integer> topicUsed;
 
-    /**
-     * @return (Available since v1.214.1) The number of used topics.
-     * 
-     */
     public Optional<Output<Integer>> topicUsed() {
         return Optional.ofNullable(this.topicUsed);
     }
@@ -692,65 +612,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return eipMax(Output.of(eipMax));
         }
 
-        /**
-         * @param endPoint The EndPoint to access the kafka instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endPoint(@Nullable Output<String> endPoint) {
             $.endPoint = endPoint;
             return this;
         }
 
-        /**
-         * @param endPoint The EndPoint to access the kafka instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endPoint(String endPoint) {
             return endPoint(Output.of(endPoint));
         }
 
-        /**
-         * @param groupLeft (Available since v1.214.1) The number of available groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupLeft(@Nullable Output<Integer> groupLeft) {
             $.groupLeft = groupLeft;
             return this;
         }
 
-        /**
-         * @param groupLeft (Available since v1.214.1) The number of available groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupLeft(Integer groupLeft) {
             return groupLeft(Output.of(groupLeft));
         }
 
-        /**
-         * @param groupUsed (Available since v1.214.1) The number of used groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupUsed(@Nullable Output<Integer> groupUsed) {
             $.groupUsed = groupUsed;
             return this;
         }
 
-        /**
-         * @param groupUsed (Available since v1.214.1) The number of used groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupUsed(Integer groupUsed) {
             return groupUsed(Output.of(groupUsed));
         }
@@ -801,23 +685,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return ioMaxSpec(Output.of(ioMaxSpec));
         }
 
-        /**
-         * @param isPartitionBuy (Available since v1.214.1) The method that you use to purchase partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPartitionBuy(@Nullable Output<Integer> isPartitionBuy) {
             $.isPartitionBuy = isPartitionBuy;
             return this;
         }
 
-        /**
-         * @param isPartitionBuy (Available since v1.214.1) The method that you use to purchase partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPartitionBuy(Integer isPartitionBuy) {
             return isPartitionBuy(Output.of(isPartitionBuy));
         }
@@ -885,23 +757,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return paidType(Output.of(paidType));
         }
 
-        /**
-         * @param partitionLeft (Available since v1.214.1) The number of available partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionLeft(@Nullable Output<Integer> partitionLeft) {
             $.partitionLeft = partitionLeft;
             return this;
         }
 
-        /**
-         * @param partitionLeft (Available since v1.214.1) The number of available partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionLeft(Integer partitionLeft) {
             return partitionLeft(Output.of(partitionLeft));
         }
@@ -927,23 +787,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return partitionNum(Output.of(partitionNum));
         }
 
-        /**
-         * @param partitionUsed (Available since v1.214.1) The number of used partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionUsed(@Nullable Output<Integer> partitionUsed) {
             $.partitionUsed = partitionUsed;
             return this;
         }
 
-        /**
-         * @param partitionUsed (Available since v1.214.1) The number of used partitions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionUsed(Integer partitionUsed) {
             return partitionUsed(Output.of(partitionUsed));
         }
@@ -995,13 +843,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
          * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+         * | io_ |     disk_     |  topic_   |  eip_   |
+         * |-----|---------------|-----------|---------|
+         * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+         * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+         * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+         * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+         * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
          * 
          * @return builder
          * 
@@ -1016,13 +864,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
          * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+         * | io_ |     disk_     |  topic_   |  eip_   |
+         * |-----|---------------|-----------|---------|
+         * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+         * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+         * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+         * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+         * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
          * 
          * @return builder
          * 
@@ -1036,13 +884,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
          * 
-         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
-         * |------|-------------|:----:|:-----:|
-         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
-         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
-         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
-         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
-         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+         * | io_ |     disk_     |  topic_   |  eip_   |
+         * |-----|---------------|-----------|---------|
+         * |  20 | 500-6100:100  | 50-450:1  | 1-160:1 |
+         * |  30 | 800-6100:100  | 50-450:1  | 1-240:1 |
+         * |  60 | 1400-6100:100 | 80-450:1  | 1-500:1 |
+         * |  90 | 2100-6100:100 | 100-450:1 | 1-500:1 |
+         * | 120 | 2700-6100:100 | 150-450:1 | 1-500:1 |
          * 
          * @return builder
          * 
@@ -1093,23 +941,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return specType(Output.of(specType));
         }
 
-        /**
-         * @param status The status of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(@Nullable Output<Integer> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status The status of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(Integer status) {
             return status(Output.of(status));
         }
@@ -1135,44 +971,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param topicLeft (Available since v1.214.1) The number of available topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicLeft(@Nullable Output<Integer> topicLeft) {
             $.topicLeft = topicLeft;
             return this;
         }
 
-        /**
-         * @param topicLeft (Available since v1.214.1) The number of available topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicLeft(Integer topicLeft) {
             return topicLeft(Output.of(topicLeft));
         }
 
-        /**
-         * @param topicNumOfBuy (Available since v1.214.1) The number of purchased topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicNumOfBuy(@Nullable Output<Integer> topicNumOfBuy) {
             $.topicNumOfBuy = topicNumOfBuy;
             return this;
         }
 
-        /**
-         * @param topicNumOfBuy (Available since v1.214.1) The number of purchased topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicNumOfBuy(Integer topicNumOfBuy) {
             return topicNumOfBuy(Output.of(topicNumOfBuy));
         }
@@ -1212,23 +1024,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return topicQuota(Output.of(topicQuota));
         }
 
-        /**
-         * @param topicUsed (Available since v1.214.1) The number of used topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicUsed(@Nullable Output<Integer> topicUsed) {
             $.topicUsed = topicUsed;
             return this;
         }
 
-        /**
-         * @param topicUsed (Available since v1.214.1) The number of used topics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder topicUsed(Integer topicUsed) {
             return topicUsed(Output.of(topicUsed));
         }

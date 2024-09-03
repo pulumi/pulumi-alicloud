@@ -2882,7 +2882,7 @@ export namespace amqp {
          */
         argument: string;
         /**
-         * The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (_), English Periods (.) and the at Sign (@). If You Include the Hash (.
+         * The Binding Key. The Source of the Binding Exchange Non-Topic Type: Can Only Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). Length from 1 to 255 Characters. The Source of the Binding Exchange Topic Type: Can Contain Letters, Lowercase Letters, Numbers, and the Dash (-), the Underscore Character (*), English Periods (.) and the at Sign (@). If You Include the Hash (.
          */
         bindingKey: string;
         /**
@@ -3643,7 +3643,7 @@ export namespace arms {
          */
         key: string;
         /**
-         * The operator used in the dispatch rule. Valid values: 
+         * The operator used in the dispatch rule. Valid values:
          * * eq: equals to.
          * * re: matches a regular expression.
          */
@@ -4450,7 +4450,7 @@ export namespace arms {
          */
         verifyWay?: number;
         /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         whiteList?: string;
     }
@@ -4583,7 +4583,7 @@ export namespace arms {
          */
         targetUrl?: string;
         /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         whiteList?: string;
     }
@@ -4617,7 +4617,7 @@ export namespace arms {
          */
         disableCompression?: number;
         /**
-         * When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+         * When a domain name (such as <http://www.aliyun.com>) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, <http://www.aliyun.com>:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the <http://www.aliyun.com> domain except 203.0.3.55 and 203.3.44.67 are hijacked.
          */
         dnsHijackWhitelist?: string;
         /**
@@ -4645,7 +4645,7 @@ export namespace arms {
          */
         monitorTimeout?: number;
         /**
-         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, <http://www.aliyun.com>:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the <http://www.aliyun.com> domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
          */
         pageTamper?: string;
         /**
@@ -14141,7 +14141,7 @@ export namespace cs {
          */
         config?: string;
         /**
-         * It specifies whether to disable automatic installation. 
+         * It specifies whether to disable automatic installation.
          *
          * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          *
@@ -16784,7 +16784,7 @@ export namespace ddos {
          */
         frontendPort: string;
         /**
-         * The forwarding protocol. Valid values `tcp` and `udp`.
+         * The forwarding protocol.
          */
         frontendProtocol: string;
         /**
@@ -23148,7 +23148,7 @@ export namespace ecs {
         size: number;
         state: string;
         /**
-         * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+         * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
          * * `Creating`: The image is being created.
          * * `Waiting`: The image is waiting to be processed.
          * * `Available`: The image is available.
@@ -23549,7 +23549,7 @@ export namespace ecs {
          */
         id: string;
         /**
-         * ID of the instance that the ENI is attached to.
+         * The ECS instance ID that the ENI is attached to.
          */
         instanceId: string;
         ipv6Sets: string[];
@@ -23558,7 +23558,7 @@ export namespace ecs {
          */
         mac: string;
         /**
-         * Name of the ENI.
+         * The name of the ENIs.
          */
         name: string;
         networkInterfaceId: string;
@@ -23567,7 +23567,7 @@ export namespace ecs {
         ownerId: string;
         primaryIpAddress: string;
         /**
-         * Primary private IP of the ENI.
+         * The primary private IP address of the ENI.
          */
         privateIp: string;
         privateIpAddresses: string[];
@@ -23577,7 +23577,7 @@ export namespace ecs {
         privateIps: string[];
         queueNumber: number;
         /**
-         * The Id of resource group.
+         * The Id of resource group which the network interface belongs.
          */
         resourceGroupId: string;
         securityGroupIds: string[];
@@ -23592,16 +23592,19 @@ export namespace ecs {
          */
         status: string;
         /**
-         * A map of tags assigned to the ENI.
+         * A map of tags assigned to ENIs.
          */
         tags: {[key: string]: string};
+        /**
+         * The type of ENIs, Only support for "Primary" or "Secondary".
+         */
         type: string;
         /**
-         * ID of the VPC that the ENI belongs to.
+         * The VPC ID linked to ENIs.
          */
         vpcId: string;
         /**
-         * ID of the vSwitch that the ENI is linked to.
+         * The vSwitch ID linked to ENIs.
          */
         vswitchId: string;
         /**
@@ -23729,9 +23732,12 @@ export namespace ecs {
          * Description of the snapshot.
          */
         description: string;
+        /**
+         * The specified disk ID.
+         */
         diskId: string;
         /**
-         * Whether the snapshot is encrypted or not.
+         * Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
          */
         encrypted: boolean;
         /**
@@ -23774,21 +23780,37 @@ export namespace ecs {
          */
         sourceDiskSize: string;
         /**
-         * Source disk attribute. Value range: `System`,`Data`.
+         * The type of source disk:
+         * * System: The snapshots are created for system disks.
+         * * Data: The snapshots are created for data disks.
          */
         sourceDiskType: string;
         sourceStorageType: string;
         /**
-         * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+         * The specified snapshot status. Default value: `all`. Optional values:
+         * * progressing: The snapshots are being created.
+         * * accomplished: The snapshots are ready to use.
+         * * failed: The snapshot creation failed.
+         * * all: All status.
          */
         status: string;
         /**
-         * A map of tags assigned to the snapshot.
+         * A map of tags assigned to snapshots.
          */
         tags: {[key: string]: string};
+        /**
+         * The snapshot category. Default value: `all`. Optional values:
+         * * auto: Auto snapshots.
+         * * user: Manual snapshots.
+         * * all: Auto and manual snapshots.
+         */
         type: string;
         /**
-         * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+         * The usage of the snapshot:
+         * * image: The snapshots are used to create custom images.
+         * * disk: The snapshots are used to CreateDisk.
+         * * mage_disk: The snapshots are used to create custom images and data disks.
+         * * none: The snapshots are not used yet.
          */
         usage: string;
     }
@@ -23829,8 +23851,8 @@ export namespace ecs {
         /**
          * The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
          * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
-         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
-         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * * For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * * For other disks, the valid values range from 20 to 32768, and the default value is 20.
          * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          */
         size: number;
@@ -25622,7 +25644,7 @@ export namespace eflo {
          */
         subnetName: string;
         /**
-         * Eflo subnet usage type, optional value: 
+         * Eflo subnet usage type, optional value:
          * - General type is not filled in
          * - OOB:OOB type
          * - LB: LB type
@@ -27496,7 +27518,7 @@ export namespace ess {
          */
         securityContextRunAsUser?: number;
         /**
-         * The structure of volumeMounts. 
+         * The structure of volumeMounts.
          * See `volumeMounts` below for details.
          */
         volumeMounts?: outputs.ess.EciScalingConfigurationContainerVolumeMount[];
@@ -27566,7 +27588,7 @@ export namespace ess {
          */
         cpu?: number;
         /**
-         * The structure of environmentVars. 
+         * The structure of environmentVars.
          * See `environmentVars` below for details.
          */
         environmentVars?: outputs.ess.EciScalingConfigurationInitContainerEnvironmentVar[];
@@ -28260,7 +28282,6 @@ export namespace ess {
         instanceType?: string;
         /**
          * The maximum bid price of instance type in launchTemplateOverride.
-         *
          *
          * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
          *
@@ -29759,7 +29780,7 @@ export namespace fc {
 
     export interface ServiceTracingConfig {
         /**
-         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+         * Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: <http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces>.
          */
         params: {[key: string]: string};
         /**
@@ -31964,7 +31985,7 @@ export namespace gpdb {
 
     export interface InstanceIpWhitelist {
         /**
-         * The value of this parameter is empty by default. The attribute of the whitelist group. 
+         * The value of this parameter is empty by default. The attribute of the whitelist group.
          * If the value contains `hidden`, this white list item will not output.
          */
         ipGroupAttribute: string;
@@ -35269,7 +35290,7 @@ export namespace maxcompute {
          */
         usingAcl: boolean;
         /**
-         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy: boolean;
     }
@@ -35384,7 +35405,7 @@ export namespace maxcompute {
          */
         usingAcl?: boolean;
         /**
-         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy?: boolean;
     }
@@ -36649,7 +36670,7 @@ export namespace nas {
          */
         description: string;
         /**
-         * This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
+         * This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `accessGroupName`.
          */
         id: string;
         /**
@@ -36797,7 +36818,7 @@ export namespace nas {
          */
         description: string;
         /**
-         * (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+         * (Optional, Available in v1.121.2+) Whether the file system is encrypted.
          * * Valid values:
          */
         encryptType: number;
@@ -38117,7 +38138,7 @@ export namespace opensearch {
          */
         qps?: number;
         /**
-         * Specification. Valid values: 
+         * Specification. Valid values:
          * * `opensearch.share.junior`: Entry-level.
          * * `opensearch.share.common`: Shared universal.
          * * `opensearch.share.compute`: Shared computing.
@@ -43157,7 +43178,7 @@ export namespace ros {
          */
         stackInstanceRegionId: string;
         /**
-         * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+         * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
          * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
          * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
          * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -44821,7 +44842,7 @@ export namespace scdn {
          */
         certName?: string;
         /**
-         * Certificate Type. Value Range: 
+         * Certificate Type. Value Range:
          * * upload: Certificate
          * * cas: Certificate Authority Certificate.
          * * free: Free Certificate.
@@ -44870,7 +44891,7 @@ export namespace scdn {
          */
         priority: string;
         /**
-         * The Origin Server Type. Valid Values: 
+         * The Origin Server Type. Valid Values:
          * * ipaddr: IP Source Station
          * * domain: the Domain Name
          * * oss: OSS Bucket as a Source Station.
@@ -47896,7 +47917,7 @@ export namespace slb {
          */
         slaveZoneId: string;
         /**
-         * (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+         * (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
          * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
          *
          * @deprecated the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
@@ -50599,7 +50620,7 @@ export namespace vpc {
          */
         oppositeRouterType: string;
         /**
-         * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+         * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
          * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
          */
         role: string;
@@ -52365,6 +52386,7 @@ export namespace waf {
         /**
          * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
          * ```
+         * ```
          */
         writeTime: number;
     }
@@ -52532,7 +52554,7 @@ export namespace wafv3 {
          */
         readTimeout?: number;
         /**
-         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
          * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
          * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
          * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
@@ -52563,11 +52585,11 @@ export namespace wafv3 {
 
     export interface DomainRedirectRequestHeader {
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         key?: string;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         value?: string;
     }
@@ -52692,7 +52714,7 @@ export namespace wafv3 {
          */
         readTimeout: number;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         requestHeaders: outputs.wafv3.GetDomainsDomainRedirectRequestHeader[];
         /**
@@ -52715,11 +52737,11 @@ export namespace wafv3 {
 
     export interface GetDomainsDomainRedirectRequestHeader {
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         key: string;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
          */
         value: string;
     }

@@ -313,7 +313,7 @@ class DomainRedirectArgs:
         :param pulumi.Input[int] keepalive_requests: Number of long connections,  default: `60`. range :60-1000.
         :param pulumi.Input[int] keepalive_timeout: Long connection over time, default: `15`. Range: 1-60.
         :param pulumi.Input[int] read_timeout: Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+        :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
                It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
                and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
                when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
@@ -459,7 +459,7 @@ class DomainRedirectArgs:
     @pulumi.getter(name="requestHeaders")
     def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]]]:
         """
-        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
         It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
         and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
         when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
@@ -530,8 +530,8 @@ class DomainRedirectRequestHeaderArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
-        :param pulumi.Input[str] value: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        :param pulumi.Input[str] key: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        :param pulumi.Input[str] value: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -542,7 +542,7 @@ class DomainRedirectRequestHeaderArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         """
         return pulumi.get(self, "key")
 
@@ -554,7 +554,7 @@ class DomainRedirectRequestHeaderArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"*key*"," v ":"*value*"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         """
         return pulumi.get(self, "value")
 

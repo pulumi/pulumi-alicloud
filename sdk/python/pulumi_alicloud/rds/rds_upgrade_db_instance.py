@@ -143,7 +143,7 @@ class RdsUpgradeDbInstanceArgs:
                * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
-        :param pulumi.Input[str] password: The password of the certificate. 
+        :param pulumi.Input[str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
@@ -706,7 +706,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
@@ -1121,7 +1121,7 @@ class _RdsUpgradeDbInstanceState:
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
-        :param pulumi.Input[str] password: The password of the certificate. 
+        :param pulumi.Input[str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
@@ -1663,7 +1663,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
@@ -2203,7 +2203,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RdsUpgradeDbInstanceParameterArgs', 'RdsUpgradeDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
-        :param pulumi.Input[str] password: The password of the certificate. 
+        :param pulumi.Input[str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
@@ -2618,7 +2618,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RdsUpgradeDbInstanceParameterArgs', 'RdsUpgradeDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
-        :param pulumi.Input[str] password: The password of the certificate. 
+        :param pulumi.Input[str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
@@ -2998,7 +2998,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """

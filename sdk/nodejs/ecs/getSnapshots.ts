@@ -26,35 +26,6 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-testAcc-snapshot",
  * });
  * ```
- *
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `instanceId` - (Optional) The specified instance ID.
- * * `diskId` - (Optional) The specified disk ID.
- * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
- * * `ids` - (Optional)  A list of snapshot IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
- * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
- *   * progressing: The snapshots are being created.
- *   * accomplished: The snapshots are ready to use.
- *   * failed: The snapshot creation failed.
- *   * all: All status.
- * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
- *   * auto: Auto snapshots.
- *   * user: Manual snapshots.
- *   * all: Auto and manual snapshots.
- * * `sourceDiskType` - (Optional) The type of source disk:
- *   * System: The snapshots are created for system disks.
- *   * Data: The snapshots are created for data disks.
- * * `usage` - (Optional) The usage of the snapshot:
- *   * image: The snapshots are used to create custom images.
- *   * disk: The snapshots are used to CreateDisk.
- *   * mage_disk: The snapshots are used to create custom images and data disks.
- *   * none: The snapshots are not used yet.
- * * `tags` - (Optional) A map of tags assigned to snapshots.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
@@ -87,7 +58,7 @@ export interface GetSnapshotsArgs {
     category?: string;
     dryRun?: boolean;
     /**
-     * Whether the snapshot is encrypted or not.
+     * Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      */
     encrypted?: boolean;
     /**
@@ -95,27 +66,49 @@ export interface GetSnapshotsArgs {
      */
     ids?: string[];
     kmsKeyId?: string;
+    /**
+     * A regex string to filter results by snapshot name.
+     */
     nameRegex?: string;
+    /**
+     * The name of output file that saves the filter results.
+     */
     outputFile?: string;
     resourceGroupId?: string;
     snapshotLinkId?: string;
     snapshotName?: string;
     snapshotType?: string;
     /**
-     * Source disk attribute. Value range: `System`,`Data`.
+     * The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      */
     sourceDiskType?: string;
     /**
-     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      */
     status?: string;
     /**
-     * A map of tags assigned to the snapshot.
+     * A map of tags assigned to snapshots.
      */
     tags?: {[key: string]: string};
+    /**
+     * The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     */
     type?: string;
     /**
-     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      */
     usage?: string;
 }
@@ -191,35 +184,6 @@ export interface GetSnapshotsResult {
  *     nameRegex: "tf-testAcc-snapshot",
  * });
  * ```
- *
- * ## Argument Reference
- *
- * The following arguments are supported:
- *
- * * `instanceId` - (Optional) The specified instance ID.
- * * `diskId` - (Optional) The specified disk ID.
- * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
- * * `ids` - (Optional)  A list of snapshot IDs.
- * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
- * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
- *   * progressing: The snapshots are being created.
- *   * accomplished: The snapshots are ready to use.
- *   * failed: The snapshot creation failed.
- *   * all: All status.
- * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
- *   * auto: Auto snapshots.
- *   * user: Manual snapshots.
- *   * all: Auto and manual snapshots.
- * * `sourceDiskType` - (Optional) The type of source disk:
- *   * System: The snapshots are created for system disks.
- *   * Data: The snapshots are created for data disks.
- * * `usage` - (Optional) The usage of the snapshot:
- *   * image: The snapshots are used to create custom images.
- *   * disk: The snapshots are used to CreateDisk.
- *   * mage_disk: The snapshots are used to create custom images and data disks.
- *   * none: The snapshots are not used yet.
- * * `tags` - (Optional) A map of tags assigned to snapshots.
- * * `outputFile` - (Optional) The name of output file that saves the filter results.
  */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
@@ -232,7 +196,7 @@ export interface GetSnapshotsOutputArgs {
     category?: pulumi.Input<string>;
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the snapshot is encrypted or not.
+     * Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      */
     encrypted?: pulumi.Input<boolean>;
     /**
@@ -240,27 +204,49 @@ export interface GetSnapshotsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     kmsKeyId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by snapshot name.
+     */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of output file that saves the filter results.
+     */
     outputFile?: pulumi.Input<string>;
     resourceGroupId?: pulumi.Input<string>;
     snapshotLinkId?: pulumi.Input<string>;
     snapshotName?: pulumi.Input<string>;
     snapshotType?: pulumi.Input<string>;
     /**
-     * Source disk attribute. Value range: `System`,`Data`.
+     * The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      */
     sourceDiskType?: pulumi.Input<string>;
     /**
-     * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the snapshot.
+     * A map of tags assigned to snapshots.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     */
     type?: pulumi.Input<string>;
     /**
-     * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      */
     usage?: pulumi.Input<string>;
 }

@@ -130,7 +130,7 @@ class Folder(pulumi.CustomResource):
         Resource Manager Folder can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
+        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
         ```
 
         :param str resource_name: The name of the resource.
@@ -176,7 +176,7 @@ class Folder(pulumi.CustomResource):
         Resource Manager Folder can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
+        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
         ```
 
         :param str resource_name: The name of the resource.

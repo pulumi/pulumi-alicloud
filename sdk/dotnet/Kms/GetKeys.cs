@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Kms
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// The CMK filter. The filter consists of one or more key-value pairs. 
+        /// The CMK filter. The filter consists of one or more key-value pairs.
         /// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
         /// </summary>
         [Input("filters")]
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// The CMK filter. The filter consists of one or more key-value pairs. 
+        /// The CMK filter. The filter consists of one or more key-value pairs.
         /// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
         /// </summary>
         [Input("filters")]

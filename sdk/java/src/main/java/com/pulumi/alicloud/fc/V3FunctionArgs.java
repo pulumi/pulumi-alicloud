@@ -152,14 +152,14 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+     * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
      * 
      */
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
     /**
-     * @return The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+     * @return The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
      * 
      */
     public Optional<Output<String>> functionName() {
@@ -591,7 +591,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionName The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+         * @param functionName The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param functionName The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+         * @param functionName The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (*), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (*). Case sensitive. The length is 1~128 characters.
          * 
          * @return builder
          * 

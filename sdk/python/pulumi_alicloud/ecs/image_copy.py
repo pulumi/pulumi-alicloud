@@ -30,7 +30,7 @@ class ImageCopyArgs:
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[bool] encrypted: Indicates whether to encrypt the image.
-        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
+        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`.
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
@@ -120,7 +120,7 @@ class ImageCopyArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether to force delete the custom image, Default is `false`. 
+        Indicates whether to force delete the custom image, Default is `false`.
         - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         """
@@ -194,7 +194,7 @@ class _ImageCopyState:
         Input properties used for looking up and filtering ImageCopy resources.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[bool] encrypted: Indicates whether to encrypt the image.
-        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
+        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`.
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
@@ -264,7 +264,7 @@ class _ImageCopyState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether to force delete the custom image, Default is `false`. 
+        Indicates whether to force delete the custom image, Default is `false`.
         - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         """
@@ -417,7 +417,7 @@ class ImageCopy(pulumi.CustomResource):
 
         ## Attributes Reference0
 
-         The following attributes are exported:
+        The following attributes are exported:
 
         * `id` - ID of the image.
 
@@ -433,7 +433,7 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[bool] encrypted: Indicates whether to encrypt the image.
-        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
+        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`.
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
@@ -504,7 +504,7 @@ class ImageCopy(pulumi.CustomResource):
 
         ## Attributes Reference0
 
-         The following attributes are exported:
+        The following attributes are exported:
 
         * `id` - ID of the image.
 
@@ -593,7 +593,7 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
         :param pulumi.Input[bool] encrypted: Indicates whether to encrypt the image.
-        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
+        :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`.
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
@@ -643,7 +643,7 @@ class ImageCopy(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates whether to force delete the custom image, Default is `false`. 
+        Indicates whether to force delete the custom image, Default is `false`.
         - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
         - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         """

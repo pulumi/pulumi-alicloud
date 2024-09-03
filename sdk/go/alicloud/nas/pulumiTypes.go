@@ -370,7 +370,7 @@ type GetAccessGroupsGroup struct {
 	AccessGroupType string `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description string `pulumi:"description"`
-	// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
+	// This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `accessGroupName`.
 	Id string `pulumi:"id"`
 	// MountTargetCount block of the AccessGroup
 	MountTargetCount int `pulumi:"mountTargetCount"`
@@ -398,7 +398,7 @@ type GetAccessGroupsGroupArgs struct {
 	AccessGroupType pulumi.StringInput `pulumi:"accessGroupType"`
 	// Filter results by a specific Description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// This ID of this AccessGroup. It is formatted to ``<access_group_id>:<file_system_type>``. Before version 1.95.0, the value is `accessGroupName`.
+	// This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `accessGroupName`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// MountTargetCount block of the AccessGroup
 	MountTargetCount pulumi.IntInput `pulumi:"mountTargetCount"`
@@ -474,7 +474,7 @@ func (o GetAccessGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// This ID of this AccessGroup. It is formatted to “<access_group_id>:<file_system_type>“. Before version 1.95.0, the value is `accessGroupName`.
+// This ID of this AccessGroup. It is formatted to `<access_group_id>:<file_system_type>`. Before version 1.95.0, the value is `accessGroupName`.
 func (o GetAccessGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -250,6 +250,17 @@ def get_alidns_records(direction: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
+        ids=["1978593525779****"],
+        type="A",
+        output_file="records.txt")
+    pulumi.export("firstRecordId", records_ds.records[0].record_id)
+    ```
+
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
     :param str domain_name: The domain name associated to the records.
@@ -337,6 +348,17 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     > **NOTE:**  Available in 1.86.0+.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
+        ids=["1978593525779****"],
+        type="A",
+        output_file="records.txt")
+    pulumi.export("firstRecordId", records_ds.records[0].record_id)
+    ```
 
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.

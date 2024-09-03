@@ -47,7 +47,7 @@ export interface GetHybridMonitorFcTasksArgs {
      */
     ids?: string[];
     /**
-     * The name of the namespace.
+     * The index warehouse where the host belongs.
      */
     namespace?: string;
     /**
@@ -105,7 +105,7 @@ export interface GetHybridMonitorFcTasksOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the namespace.
+     * The index warehouse where the host belongs.
      */
     namespace?: pulumi.Input<string>;
     /**

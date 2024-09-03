@@ -533,8 +533,6 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args) {
         return getSecondaryIndexes(args, InvokeOptions.Empty);
@@ -545,8 +543,6 @@ public final class OtsFunctions {
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args) {
@@ -559,8 +555,6 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
@@ -571,8 +565,6 @@ public final class OtsFunctions {
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args, InvokeOptions options) {
@@ -861,6 +853,42 @@ public final class OtsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args) {
         return getTables(args, InvokeOptions.Empty);
@@ -871,6 +899,42 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args) {
@@ -883,6 +947,42 @@ public final class OtsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
@@ -893,6 +993,42 @@ public final class OtsFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.applyValue(getTablesResult -> getTablesResult.tables()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args, InvokeOptions options) {

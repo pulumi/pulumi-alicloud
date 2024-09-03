@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *
  * ## Attributes Reference0
  *
- *  The following attributes are exported:
+ * The following attributes are exported:
  *
  * * `id` - ID of the image. It formats as `<image_id>:<account_id>`
  *

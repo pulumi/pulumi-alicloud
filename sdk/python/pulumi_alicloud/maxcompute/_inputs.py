@@ -305,7 +305,7 @@ class ProjectSecurityPropertiesArgs:
         :param pulumi.Input[bool] object_creator_has_grant_permission: The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         :param pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs'] project_protection: Project protection. See `project_protection` below.
         :param pulumi.Input[bool] using_acl: Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-        :param pulumi.Input[bool] using_policy: Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        :param pulumi.Input[bool] using_policy: Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         if enable_download_privilege is not None:
             pulumi.set(__self__, "enable_download_privilege", enable_download_privilege)
@@ -398,7 +398,7 @@ class ProjectSecurityPropertiesArgs:
     @pulumi.getter(name="usingPolicy")
     def using_policy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        Set whether to use the Policy permission control function (<https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)>, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     public static class GetScheduledTasks
     {
         /// <summary>
-        /// This data source provides available scheduled task resources. 
+        /// This data source provides available scheduled task resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ess
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? new GetScheduledTasksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides available scheduled task resources. 
+        /// This data source provides available scheduled task resources.
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 

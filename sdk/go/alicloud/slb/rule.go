@@ -193,7 +193,7 @@ type Rule struct {
 	DeleteProtectionValidation pulumi.BoolPtrOutput `pulumi:"deleteProtectionValidation"`
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
-	// - Standard domain name: www.test.com
+	// - Standard domain name: <http://www.test.com>
 	// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
@@ -281,7 +281,7 @@ type ruleState struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
-	// - Standard domain name: www.test.com
+	// - Standard domain name: <http://www.test.com>
 	// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 	Domain *string `pulumi:"domain"`
 	// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
@@ -331,7 +331,7 @@ type RuleState struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
-	// - Standard domain name: www.test.com
+	// - Standard domain name: <http://www.test.com>
 	// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 	Domain pulumi.StringPtrInput
 	// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
@@ -385,7 +385,7 @@ type ruleArgs struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
-	// - Standard domain name: www.test.com
+	// - Standard domain name: <http://www.test.com>
 	// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 	Domain *string `pulumi:"domain"`
 	// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
@@ -436,7 +436,7 @@ type RuleArgs struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
-	// - Standard domain name: www.test.com
+	// - Standard domain name: <http://www.test.com>
 	// - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 	Domain pulumi.StringPtrInput
 	// The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
@@ -581,7 +581,7 @@ func (o RuleOutput) DeleteProtectionValidation() pulumi.BoolPtrOutput {
 
 // Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 // and wildcard characters. The following two domain name formats are supported:
-// - Standard domain name: www.test.com
+// - Standard domain name: <http://www.test.com>
 // - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
 func (o RuleOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)

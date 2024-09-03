@@ -4864,7 +4864,7 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param str opposite_region_id: Peer router region ID.
         :param str opposite_router_id: Peer router ID.
         :param str opposite_router_type: Router type in the peer region. Possible values: `VRouter` and `VBR`.
-        :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+        :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
                `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
         :param str router_id: ID of the VRouter located in the local region.
         :param str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
@@ -4991,7 +4991,7 @@ class GetRouterInterfacesInterfaceResult(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+        Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
         `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
         """
         return pulumi.get(self, "role")

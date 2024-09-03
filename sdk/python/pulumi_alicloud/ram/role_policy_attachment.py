@@ -151,7 +151,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
                   "Effect": "Allow",
                   "Principal": {
                     "Service": [
-                      "apigateway.aliyuncs.com", 
+                      "apigateway.aliyuncs.com",
                       "ecs.aliyuncs.com"
                     ]
                   }
@@ -232,7 +232,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
                   "Effect": "Allow",
                   "Principal": {
                     "Service": [
-                      "apigateway.aliyuncs.com", 
+                      "apigateway.aliyuncs.com",
                       "ecs.aliyuncs.com"
                     ]
                   }

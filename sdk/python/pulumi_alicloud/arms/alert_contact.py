@@ -22,7 +22,7 @@ class AlertContactArgs:
         """
         The set of arguments for constructing a AlertContact resource.
         :param pulumi.Input[str] alert_contact_name: The name of the alert contact.
-        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
@@ -54,7 +54,7 @@ class AlertContactArgs:
     @pulumi.getter(name="dingRobotWebhookUrl")
     def ding_robot_webhook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "ding_robot_webhook_url")
 
@@ -110,7 +110,7 @@ class _AlertContactState:
         """
         Input properties used for looking up and filtering AlertContact resources.
         :param pulumi.Input[str] alert_contact_name: The name of the alert contact.
-        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
@@ -142,7 +142,7 @@ class _AlertContactState:
     @pulumi.getter(name="dingRobotWebhookUrl")
     def ding_robot_webhook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "ding_robot_webhook_url")
 
@@ -231,7 +231,7 @@ class AlertContact(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_contact_name: The name of the alert contact.
-        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
@@ -329,7 +329,7 @@ class AlertContact(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_contact_name: The name of the alert contact.
-        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        :param pulumi.Input[str] ding_robot_webhook_url: The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] email: The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[str] phone_num: The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         :param pulumi.Input[bool] system_noc: Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
@@ -357,7 +357,7 @@ class AlertContact(pulumi.CustomResource):
     @pulumi.getter(name="dingRobotWebhookUrl")
     def ding_robot_webhook_url(self) -> pulumi.Output[Optional[str]]:
         """
-        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: <https://www.alibabacloud.com/help/en/doc-detail/106247.htm>. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "ding_robot_webhook_url")
 

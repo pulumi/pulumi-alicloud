@@ -165,7 +165,7 @@ export class Rule extends pulumi.CustomResource {
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
-     * - Standard domain name: www.test.com
+     * - Standard domain name: <http://www.test.com>
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
     public readonly domain!: pulumi.Output<string | undefined>;
@@ -335,7 +335,7 @@ export interface RuleState {
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
-     * - Standard domain name: www.test.com
+     * - Standard domain name: <http://www.test.com>
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
     domain?: pulumi.Input<string>;
@@ -432,7 +432,7 @@ export interface RuleArgs {
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
-     * - Standard domain name: www.test.com
+     * - Standard domain name: <http://www.test.com>
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
     domain?: pulumi.Input<string>;

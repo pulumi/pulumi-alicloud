@@ -54,7 +54,7 @@ class DbClusterArgs:
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]] multi_zone_vswitch_lists: The zone IDs and 
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
@@ -261,7 +261,7 @@ class DbClusterArgs:
     @pulumi.getter(name="multiZoneVswitchLists")
     def multi_zone_vswitch_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]]]:
         """
-        The zone IDs and 
+        The zone IDs and
         corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         """
         return pulumi.get(self, "multi_zone_vswitch_lists")
@@ -397,7 +397,7 @@ class _DbClusterState:
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]] multi_zone_vswitch_lists: The zone IDs and 
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
@@ -607,7 +607,7 @@ class _DbClusterState:
     @pulumi.getter(name="multiZoneVswitchLists")
     def multi_zone_vswitch_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]]]:
         """
-        The zone IDs and 
+        The zone IDs and
         corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         """
         return pulumi.get(self, "multi_zone_vswitch_lists")
@@ -831,7 +831,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
@@ -1039,7 +1039,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterMultiZoneVswitchListArgs', 'DbClusterMultiZoneVswitchListArgsDict']]]] multi_zone_vswitch_lists: The zone IDs and
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
@@ -1183,7 +1183,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="multiZoneVswitchLists")
     def multi_zone_vswitch_lists(self) -> pulumi.Output[Optional[Sequence['outputs.DbClusterMultiZoneVswitchList']]]:
         """
-        The zone IDs and 
+        The zone IDs and
         corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         """
         return pulumi.get(self, "multi_zone_vswitch_lists")

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
+ * For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-createfunction).
  * 
  * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
  * 

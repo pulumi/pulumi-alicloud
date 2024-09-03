@@ -49,7 +49,7 @@ class DiskArgs:
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -282,7 +282,7 @@ class DiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -418,7 +418,7 @@ class _DiskState:
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -654,7 +654,7 @@ class _DiskState:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -839,7 +839,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -1014,7 +1014,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -1164,7 +1164,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Output[str]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+        Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.

@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
+    /// ## Example Usage
     /// 
-    /// &gt; **NOTE:** Available since v1.150.0.
-    /// 
-    /// &gt; **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+    /// Basic Usage
     /// 
     /// ## Import
     /// 

@@ -107,14 +107,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+     * Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     @Import(name="usingPolicy")
     private @Nullable Output<Boolean> usingPolicy;
 
     /**
-     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+     * @return Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Optional<Output<Boolean>> usingPolicy() {
@@ -278,7 +278,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingPolicy Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * @param usingPolicy Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingPolicy Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+         * @param usingPolicy Set whether to use the Policy permission control function (&lt;https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)&gt;, that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 

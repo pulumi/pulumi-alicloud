@@ -184,7 +184,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly userCidrs!: pulumi.Output<string[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -368,7 +368,7 @@ export interface NetworkState {
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -460,7 +460,7 @@ export interface NetworkArgs {
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

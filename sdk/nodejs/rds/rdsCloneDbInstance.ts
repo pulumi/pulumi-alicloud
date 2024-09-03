@@ -268,7 +268,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.rds.RdsCloneDbInstanceParameter[]>;
     /**
-     * The password of the certificate. 
+     * The password of the certificate.
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
@@ -744,7 +744,7 @@ export interface RdsCloneDbInstanceState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
     /**
-     * The password of the certificate. 
+     * The password of the certificate.
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
@@ -1063,7 +1063,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
     /**
-     * The password of the certificate. 
+     * The password of the certificate.
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */

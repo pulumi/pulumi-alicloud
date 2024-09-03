@@ -364,7 +364,7 @@ class EciScalingConfigurationContainer(dict):
                - NET_RAW: Allow raw sockets.
         :param bool security_context_read_only_root_file_system: Mounts the container's root filesystem as read-only.
         :param int security_context_run_as_user: Specifies user ID  under which all processes run.
-        :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. 
+        :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
                See `volume_mounts` below for details.
         :param str working_dir: The working directory of the container.
         """
@@ -720,7 +720,7 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']]:
         """
-        The structure of volumeMounts. 
+        The structure of volumeMounts.
         See `volume_mounts` below for details.
         """
         return pulumi.get(self, "volume_mounts")
@@ -980,7 +980,7 @@ class EciScalingConfigurationInitContainer(dict):
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
         :param float cpu: The amount of CPU resources allocated to the container.
-        :param Sequence['EciScalingConfigurationInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars. 
+        :param Sequence['EciScalingConfigurationInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
                See `environment_vars` below for details.
         :param int gpu: The number GPUs.
         :param str image: The image of the container.
@@ -1055,7 +1055,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerEnvironmentVar']]:
         """
-        The structure of environmentVars. 
+        The structure of environmentVars.
         See `environment_vars` below for details.
         """
         return pulumi.get(self, "environment_vars")
@@ -1963,7 +1963,6 @@ class ScalingGroupLaunchTemplateOverride(dict):
         :param str instance_type: The instance type in launchTemplateOverride.
         :param float spot_price_limit: The maximum bid price of instance type in launchTemplateOverride.
                
-               
                > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
                
                > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
@@ -1991,7 +1990,6 @@ class ScalingGroupLaunchTemplateOverride(dict):
     def spot_price_limit(self) -> Optional[float]:
         """
         The maximum bid price of instance type in launchTemplateOverride.
-
 
         > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
 

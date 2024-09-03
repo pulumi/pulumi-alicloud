@@ -57,7 +57,7 @@ class CommonBandwithPackageArgs:
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
-        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -255,7 +255,7 @@ class CommonBandwithPackageArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -318,7 +318,7 @@ class _CommonBandwithPackageState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance. Default value: `Available`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
-        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -559,7 +559,7 @@ class _CommonBandwithPackageState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -628,7 +628,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
-        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -766,7 +766,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance. Default value: `Available`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
-        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        :param pulumi.Input[str] zone: The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -933,7 +933,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

@@ -63,7 +63,7 @@ class NetworkArgs:
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
-        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -318,7 +318,7 @@ class NetworkArgs:
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -391,7 +391,7 @@ class _NetworkState:
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
-        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -734,7 +734,7 @@ class _NetworkState:
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -842,7 +842,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
-        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1034,7 +1034,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] system_route_table_name: The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
-        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        :param pulumi.Input[str] vpc_name: The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1262,7 +1262,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> pulumi.Output[str]:
         """
-        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
+        The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

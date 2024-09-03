@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values: 
+        /// The type of the server group. Valid values:
         /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         /// - `Ip`: allows you to specify IP addresses.
         /// </summary>
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values: 
+        /// The type of the server group. Valid values:
         /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         /// - `Ip`: allows you to specify IP addresses.
         /// </summary>
@@ -411,7 +411,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The type of the server group. Valid values: 
+        /// The type of the server group. Valid values:
         /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
         /// - `Ip`: allows you to specify IP addresses.
         /// </summary>

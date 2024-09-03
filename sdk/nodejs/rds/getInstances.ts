@@ -89,7 +89,7 @@ export interface GetInstancesArgs {
      */
     status?: string;
     /**
-     * A map of tags assigned to the DB instances. 
+     * A map of tags assigned to the DB instances.
      * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
     tags?: {[key: string]: string};
@@ -221,7 +221,7 @@ export interface GetInstancesOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the DB instances. 
+     * A map of tags assigned to the DB instances.
      * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database. 
+        /// The name of the database.
         /// * &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the database. 
+        /// The name of the database.
         /// * &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The name of the database. 
+        /// The name of the database.
         /// * &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
