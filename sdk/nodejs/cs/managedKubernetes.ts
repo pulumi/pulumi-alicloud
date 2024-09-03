@@ -76,7 +76,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      *
      * *Network params*
      */
@@ -381,7 +381,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
  */
 export interface ManagedKubernetesState {
     /**
-     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      *
      * *Network params*
      */
@@ -573,7 +573,7 @@ export interface ManagedKubernetesState {
  */
 export interface ManagedKubernetesArgs {
     /**
-     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      *
      * *Network params*
      */

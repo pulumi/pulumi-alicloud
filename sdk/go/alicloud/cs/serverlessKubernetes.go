@@ -134,7 +134,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
-	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -241,7 +241,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -319,7 +319,7 @@ type serverlessKubernetesState struct {
 }
 
 type ServerlessKubernetesState struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -401,7 +401,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -478,7 +478,7 @@ type serverlessKubernetesArgs struct {
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	Addons ServerlessKubernetesAddonArrayInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -640,7 +640,7 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
-// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
 }
