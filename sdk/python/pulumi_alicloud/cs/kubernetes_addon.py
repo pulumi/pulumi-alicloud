@@ -246,11 +246,9 @@ class KubernetesAddon(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
+        ## Example Usage
 
-        > **NOTE:** Available since v1.150.0.
-
-        > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+        Basic Usage
 
         ## Import
 
@@ -275,11 +273,9 @@ class KubernetesAddon(pulumi.CustomResource):
                  args: KubernetesAddonInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
+        ## Example Usage
 
-        > **NOTE:** Available since v1.150.0.
-
-        > **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
+        Basic Usage
 
         ## Import
 

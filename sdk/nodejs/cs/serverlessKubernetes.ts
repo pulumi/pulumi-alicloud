@@ -123,7 +123,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     }
 
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
     public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[] | undefined>;
     /**
@@ -340,7 +340,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  */
 export interface ServerlessKubernetesState {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
@@ -477,7 +477,7 @@ export interface ServerlessKubernetesState {
  */
 export interface ServerlessKubernetesArgs {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**

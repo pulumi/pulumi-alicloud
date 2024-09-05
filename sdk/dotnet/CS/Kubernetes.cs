@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.CS
     public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// 
         /// *Network params*
         /// </summary>
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// 
         /// *Network params*
         /// </summary>
@@ -862,7 +862,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+        /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// 
         /// *Network params*
         /// </summary>

@@ -56,7 +56,7 @@ import (
 type Kubernetes struct {
 	pulumi.CustomResourceState
 
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons KubernetesAddonTypeArrayOutput `pulumi:"addons"`
@@ -231,7 +231,7 @@ func GetKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Kubernetes resources.
 type kubernetesState struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons []KubernetesAddonType `pulumi:"addons"`
@@ -364,7 +364,7 @@ type kubernetesState struct {
 }
 
 type KubernetesState struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons KubernetesAddonTypeArrayInput
@@ -501,7 +501,7 @@ func (KubernetesState) ElementType() reflect.Type {
 }
 
 type kubernetesArgs struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons []KubernetesAddonType `pulumi:"addons"`
@@ -617,7 +617,7 @@ type kubernetesArgs struct {
 
 // The set of arguments for constructing a Kubernetes resource.
 type KubernetesArgs struct {
-	// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+	// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 	//
 	// *Network params*
 	Addons KubernetesAddonTypeArrayInput
@@ -818,7 +818,7 @@ func (o KubernetesOutput) ToKubernetesOutputWithContext(ctx context.Context) Kub
 	return o
 }
 
-// The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
 //
 // *Network params*
 func (o KubernetesOutput) Addons() KubernetesAddonTypeArrayOutput {
