@@ -47,7 +47,7 @@ class ServerlessKubernetesArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServerlessKubernetes resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -160,7 +160,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         """
         return pulumi.get(self, "addons")
 
@@ -546,7 +546,7 @@ class _ServerlessKubernetesState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerlessKubernetes resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -662,7 +662,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         """
         return pulumi.get(self, "addons")
 
@@ -1147,7 +1147,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -1403,7 +1403,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -1479,7 +1479,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def addons(self) -> pulumi.Output[Optional[Sequence['outputs.ServerlessKubernetesAddon']]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         """
         return pulumi.get(self, "addons")
 

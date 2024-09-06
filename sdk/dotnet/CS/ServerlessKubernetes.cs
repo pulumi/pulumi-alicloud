@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.CS
     public partial class ServerlessKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ServerlessKubernetesAddon>> Addons { get; private set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonArgs> Addons
         {
@@ -574,7 +574,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
 
         /// <summary>
-        /// You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+        /// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         /// </summary>
         public InputList<Inputs.ServerlessKubernetesAddonGetArgs> Addons
         {

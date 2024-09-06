@@ -26,7 +26,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     public static final ManagedKubernetesState Empty = new ManagedKubernetesState();
 
     /**
-     * The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -35,7 +35,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<ManagedKubernetesAddonArgs>> addons;
 
     /**
-     * @return The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+     * @return The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      * *Network params*
      * 
@@ -777,7 +777,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -790,7 +790,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 
@@ -802,7 +802,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param addons The addon you want to install in cluster. See `addons` to manage addons if cluster is created.
+         * @param addons The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * *Network params*
          * 

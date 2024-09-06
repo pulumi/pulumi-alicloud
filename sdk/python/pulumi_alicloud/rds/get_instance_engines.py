@@ -166,6 +166,17 @@ def get_instance_engines(category: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_engines(instance_charge_type="PostPaid",
+        engine="MySQL",
+        engine_version="5.6",
+        output_file="./engines.txt")
+    pulumi.export("firstDbCategory", resources.instance_engines[0].category)
+    ```
+
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
@@ -218,6 +229,17 @@ def get_instance_engines_output(category: Optional[pulumi.Input[Optional[str]]] 
     > **NOTE:** Available in v1.46.0+
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_engines(instance_charge_type="PostPaid",
+        engine="MySQL",
+        engine_version="5.6",
+        output_file="./engines.txt")
+    pulumi.export("firstDbCategory", resources.instance_engines[0].category)
+    ```
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).

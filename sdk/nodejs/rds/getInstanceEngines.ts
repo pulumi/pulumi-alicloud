@@ -12,6 +12,19 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.46.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceEngines({
+ *     instanceChargeType: "PostPaid",
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     outputFile: "./engines.txt",
+ * });
+ * export const firstDbCategory = resources.then(resources => resources.instanceEngines?.[0]?.category);
+ * ```
  */
 export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     args = args || {};
@@ -107,6 +120,19 @@ export interface GetInstanceEnginesResult {
  * > **NOTE:** Available in v1.46.0+
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceEngines({
+ *     instanceChargeType: "PostPaid",
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     outputFile: "./engines.txt",
+ * });
+ * export const firstDbCategory = resources.then(resources => resources.instanceEngines?.[0]?.category);
+ * ```
  */
 export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceEngines(a, opts))
