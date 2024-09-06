@@ -2833,6 +2833,9 @@
             "alicloud_ddoscoo_port": {
                 "current": "alicloud:ddos/port:Port",
                 "fields": {
+                    "config": {
+                        "maxItemsOne": true
+                    },
                     "real_servers": {
                         "maxItemsOne": false
                     }
@@ -3922,7 +3925,12 @@
                 "current": "alicloud:ens/keyPair:KeyPair"
             },
             "alicloud_ens_load_balancer": {
-                "current": "alicloud:ens/loadBalancer:LoadBalancer"
+                "current": "alicloud:ens/loadBalancer:LoadBalancer",
+                "fields": {
+                    "backend_servers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_ens_nat_gateway": {
                 "current": "alicloud:ens/natGateway:NatGateway"
@@ -4676,8 +4684,33 @@
             "alicloud_fcv3_function_version": {
                 "current": "alicloud:fc/v3FunctionVersion:V3FunctionVersion"
             },
+            "alicloud_fcv3_layer_version": {
+                "current": "alicloud:fc/v3LayerVersion:V3LayerVersion",
+                "fields": {
+                    "code": {
+                        "maxItemsOne": true
+                    },
+                    "compatible_runtime": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_fcv3_provision_config": {
+                "current": "alicloud:fc/v3ProvisionConfig:V3ProvisionConfig",
+                "fields": {
+                    "scheduled_actions": {
+                        "maxItemsOne": false
+                    },
+                    "target_tracking_policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_fcv3_trigger": {
                 "current": "alicloud:fc/v3Trigger:V3Trigger"
+            },
+            "alicloud_fcv3_vpc_binding": {
+                "current": "alicloud:fc/v3VpcBinding:V3VpcBinding"
             },
             "alicloud_fnf_execution": {
                 "current": "alicloud:fnf/execution:Execution"
@@ -4901,7 +4934,12 @@
                 }
             },
             "alicloud_gpdb_db_resource_group": {
-                "current": "alicloud:gpdb/dbResourceGroup:DbResourceGroup"
+                "current": "alicloud:gpdb/dbResourceGroup:DbResourceGroup",
+                "fields": {
+                    "role_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_gpdb_elastic_instance": {
                 "current": "alicloud:gpdb/elasticInstance:ElasticInstance",
@@ -4914,6 +4952,9 @@
             "alicloud_gpdb_external_data_service": {
                 "current": "alicloud:gpdb/externalDataService:ExternalDataService"
             },
+            "alicloud_gpdb_hadoop_data_source": {
+                "current": "alicloud:gpdb/hadoopDataSource:HadoopDataSource"
+            },
             "alicloud_gpdb_instance": {
                 "current": "alicloud:gpdb/instance:Instance",
                 "fields": {
@@ -4924,6 +4965,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_gpdb_jdbc_data_source": {
+                "current": "alicloud:gpdb/jdbcDataSource:JdbcDataSource"
             },
             "alicloud_gpdb_remote_adb_data_source": {
                 "current": "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource"
@@ -6429,6 +6473,9 @@
                     }
                 }
             },
+            "alicloud_quotas_template_service": {
+                "current": "alicloud:quotas/templateService:TemplateService"
+            },
             "alicloud_ram_access_key": {
                 "current": "alicloud:ram/accessKey:AccessKey"
             },
@@ -7164,6 +7211,18 @@
             },
             "alicloud_service_catalog_portfolio": {
                 "current": "alicloud:servicecatalog/portfolio:Portfolio"
+            },
+            "alicloud_service_catalog_principal_portfolio_association": {
+                "current": "alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation"
+            },
+            "alicloud_service_catalog_product": {
+                "current": "alicloud:servicecatalog/product:Product"
+            },
+            "alicloud_service_catalog_product_portfolio_association": {
+                "current": "alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation"
+            },
+            "alicloud_service_catalog_product_version": {
+                "current": "alicloud:servicecatalog/productVersion:ProductVersion"
             },
             "alicloud_service_catalog_provisioned_product": {
                 "current": "alicloud:servicecatalog/provisionedProduct:ProvisionedProduct",
