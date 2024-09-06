@@ -22,14 +22,14 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
     public static final ServerlessKubernetesState Empty = new ServerlessKubernetesState();
 
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ServerlessKubernetesAddonArgs>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
      * 
      */
     public Optional<Output<List<ServerlessKubernetesAddonArgs>>> addons() {
@@ -563,7 +563,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ServerlessKubernetesState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
          * 
          * @return builder
          * 

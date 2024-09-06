@@ -18,16 +18,26 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "alicloud_db_instance_class_infos" "resources" {
-        ///   commodity_code = "bards"
-        ///   order_type     = "BUY"
-        ///   output_file    = "./classes.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_db_instance_class" {
-        ///   value = "${data.alicloud_db_instance_class_infos.resources.infos.0}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceClassInfos.Invoke(new()
+        ///     {
+        ///         CommodityCode = "bards",
+        ///         OrderType = "BUY",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassInfosResult =&gt; getInstanceClassInfosResult.Infos[0]),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceClassInfosResult> InvokeAsync(GetInstanceClassInfosArgs args, InvokeOptions? options = null)
@@ -40,16 +50,26 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "alicloud_db_instance_class_infos" "resources" {
-        ///   commodity_code = "bards"
-        ///   order_type     = "BUY"
-        ///   output_file    = "./classes.txt"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// output "first_db_instance_class" {
-        ///   value = "${data.alicloud_db_instance_class_infos.resources.infos.0}"
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var resources = AliCloud.Rds.GetInstanceClassInfos.Invoke(new()
+        ///     {
+        ///         CommodityCode = "bards",
+        ///         OrderType = "BUY",
+        ///         OutputFile = "./classes.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassInfosResult =&gt; getInstanceClassInfosResult.Infos[0]),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceClassInfosResult> Invoke(GetInstanceClassInfosInvokeArgs args, InvokeOptions? options = null)
