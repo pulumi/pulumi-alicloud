@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterSubscriptionConfig
     {
         /// <summary>
-        /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         /// </summary>
         public readonly bool? AutoPayOrder;
         /// <summary>

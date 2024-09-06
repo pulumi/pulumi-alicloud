@@ -16,6 +16,21 @@ public final class GetEndpointGroupIpAddressCidrBlocksPlainArgs extends com.pulu
     public static final GetEndpointGroupIpAddressCidrBlocksPlainArgs Empty = new GetEndpointGroupIpAddressCidrBlocksPlainArgs();
 
     /**
+     * The ID of the Global Accelerator (GA) instance.
+     * 
+     */
+    @Import(name="acceleratorId")
+    private @Nullable String acceleratorId;
+
+    /**
+     * @return The ID of the Global Accelerator (GA) instance.
+     * 
+     */
+    public Optional<String> acceleratorId() {
+        return Optional.ofNullable(this.acceleratorId);
+    }
+
+    /**
      * The region ID of the endpoint group.
      * 
      */
@@ -48,6 +63,7 @@ public final class GetEndpointGroupIpAddressCidrBlocksPlainArgs extends com.pulu
     private GetEndpointGroupIpAddressCidrBlocksPlainArgs() {}
 
     private GetEndpointGroupIpAddressCidrBlocksPlainArgs(GetEndpointGroupIpAddressCidrBlocksPlainArgs $) {
+        this.acceleratorId = $.acceleratorId;
         this.endpointGroupRegion = $.endpointGroupRegion;
         this.outputFile = $.outputFile;
     }
@@ -68,6 +84,17 @@ public final class GetEndpointGroupIpAddressCidrBlocksPlainArgs extends com.pulu
 
         public Builder(GetEndpointGroupIpAddressCidrBlocksPlainArgs defaults) {
             $ = new GetEndpointGroupIpAddressCidrBlocksPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratorId The ID of the Global Accelerator (GA) instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorId(@Nullable String acceleratorId) {
+            $.acceleratorId = acceleratorId;
+            return this;
         }
 
         /**

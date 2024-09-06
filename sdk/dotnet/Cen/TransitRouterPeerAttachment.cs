@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN Transit Router Peer Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")]
@@ -155,13 +155,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to association route table. System default is `false`.
+        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to propagation route table. System default is `false`.
+        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of transit router attachment id.
+        /// The ID of transit router attachment.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
@@ -305,13 +305,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to association route table. System default is `false`.
+        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to propagation route table. System default is `false`.
+        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -411,13 +411,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to association route table. System default is `false`.
+        /// Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to propagation route table. System default is `false`.
+        /// Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The ID of transit router attachment id.
+        /// The ID of transit router attachment.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }

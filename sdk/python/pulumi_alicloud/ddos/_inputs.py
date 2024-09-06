@@ -18,6 +18,7 @@ __all__ = [
     'BgpPolicyContentSourceBlockListArgs',
     'BgpPolicyContentSourceLimitArgs',
     'DomainResourceProxyTypeArgs',
+    'PortConfigArgs',
     'SchedulerRuleRuleArgs',
 ]
 
@@ -925,6 +926,29 @@ class DomainResourceProxyTypeArgs:
     @proxy_type.setter
     def proxy_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "proxy_type", value)
+
+
+@pulumi.input_type
+class PortConfigArgs:
+    def __init__(__self__, *,
+                 persistence_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] persistence_timeout: The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+        """
+        if persistence_timeout is not None:
+            pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+
+    @property
+    @pulumi.getter(name="persistenceTimeout")
+    def persistence_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+        """
+        return pulumi.get(self, "persistence_timeout")
+
+    @persistence_timeout.setter
+    def persistence_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "persistence_timeout", value)
 
 
 @pulumi.input_type

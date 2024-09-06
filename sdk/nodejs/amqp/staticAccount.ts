@@ -80,7 +80,7 @@ export class StaticAccount extends pulumi.CustomResource {
      */
     public readonly accessKey!: pulumi.Output<string>;
     /**
-     * Create time stamp. Unix timestamp, to millisecond level.
+     * The timestamp that indicates when the pair of static username and password was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<number>;
     /**
@@ -92,7 +92,7 @@ export class StaticAccount extends pulumi.CustomResource {
      */
     public /*out*/ readonly masterUid!: pulumi.Output<string>;
     /**
-     * Static password.
+     * The static password.
      */
     public /*out*/ readonly password!: pulumi.Output<string>;
     /**
@@ -100,7 +100,7 @@ export class StaticAccount extends pulumi.CustomResource {
      */
     public readonly secretKey!: pulumi.Output<string>;
     /**
-     * Static user name.
+     * The static username.
      */
     public /*out*/ readonly userName!: pulumi.Output<string>;
 
@@ -159,7 +159,7 @@ export interface StaticAccountState {
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * Create time stamp. Unix timestamp, to millisecond level.
+     * The timestamp that indicates when the pair of static username and password was created.
      */
     createTime?: pulumi.Input<number>;
     /**
@@ -171,7 +171,7 @@ export interface StaticAccountState {
      */
     masterUid?: pulumi.Input<string>;
     /**
-     * Static password.
+     * The static password.
      */
     password?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface StaticAccountState {
      */
     secretKey?: pulumi.Input<string>;
     /**
-     * Static user name.
+     * The static username.
      */
     userName?: pulumi.Input<string>;
 }

@@ -261,6 +261,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> elasticIoResourceSize() {
         return this.elasticIoResourceSize;
     }
+    @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableSsl;
+
+    public Output<Optional<Boolean>> enableSsl() {
+        return Codegen.optional(this.enableSsl);
+    }
     @Export(name="kmsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsId;
 

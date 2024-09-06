@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The name of the emr cluster.
+        /// The cluster name.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string ReleaseVersion;
         /// <summary>
-        /// The resource group id of the resource.
+        /// The Resource Group ID.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>

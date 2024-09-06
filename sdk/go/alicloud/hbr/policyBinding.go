@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a HBR Policy Binding resource. A policy binding relationship consists of a data source, a policy, and binding options.
+// Provides a HBR Policy Binding resource.
 //
 // For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
 //
@@ -108,32 +108,38 @@ import (
 type PolicyBinding struct {
 	pulumi.CustomResourceState
 
-	// Backup Advanced Options. See `advancedOptions` below.
+	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions PolicyBindingAdvancedOptionsOutput `pulumi:"advancedOptions"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
+	// Cross-account type, supported
+	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
 	// The data source ID.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Whether the policy is effective for the data source.
 	// - true: Pause
-	// - false: not paused.
+	// - false: not paused
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
-	// Resource Description.
+	// Resource Description
 	PolicyBindingDescription pulumi.StringPtrOutput `pulumi:"policyBindingDescription"`
 	// The policy ID.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Data source type, value range:
-	// - **UDM_ECS**: indicates the ECS instance backup.
-	// - **OSS**: indicates an OSS backup.
-	// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-	// - **ECS_FILE**: indicates that the ECS file is backed up.
-	// - **File**: indicates a local File backup.
+	// - `UDM_ECS`: indicates the ECS instance backup.
+	// - `OSS`: indicates an OSS backup.
+	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+	// - `ECS_FILE`: indicates that the ECS file is backed up.
+	// - `File`: indicates a local File backup.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
@@ -169,64 +175,76 @@ func GetPolicyBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolicyBinding resources.
 type policyBindingState struct {
-	// Backup Advanced Options. See `advancedOptions` below.
+	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions *PolicyBindingAdvancedOptions `pulumi:"advancedOptions"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// Cross-account type, supported
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// The data source ID.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether the policy is effective for the data source.
 	// - true: Pause
-	// - false: not paused.
+	// - false: not paused
 	Disabled *bool `pulumi:"disabled"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
 	Exclude *string `pulumi:"exclude"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
 	Include *string `pulumi:"include"`
-	// Resource Description.
+	// Resource Description
 	PolicyBindingDescription *string `pulumi:"policyBindingDescription"`
 	// The policy ID.
 	PolicyId *string `pulumi:"policyId"`
 	// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
 	Source *string `pulumi:"source"`
 	// Data source type, value range:
-	// - **UDM_ECS**: indicates the ECS instance backup.
-	// - **OSS**: indicates an OSS backup.
-	// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-	// - **ECS_FILE**: indicates that the ECS file is backed up.
-	// - **File**: indicates a local File backup.
+	// - `UDM_ECS`: indicates the ECS instance backup.
+	// - `OSS`: indicates an OSS backup.
+	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+	// - `ECS_FILE`: indicates that the ECS file is backed up.
+	// - `File`: indicates a local File backup.
 	SourceType *string `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit *string `pulumi:"speedLimit"`
 }
 
 type PolicyBindingState struct {
-	// Backup Advanced Options. See `advancedOptions` below.
+	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions PolicyBindingAdvancedOptionsPtrInput
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// Cross-account type, supported
+	CrossAccountType pulumi.StringPtrInput
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+	CrossAccountUserId pulumi.IntPtrInput
 	// The data source ID.
 	DataSourceId pulumi.StringPtrInput
 	// Whether the policy is effective for the data source.
 	// - true: Pause
-	// - false: not paused.
+	// - false: not paused
 	Disabled pulumi.BoolPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
 	Exclude pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
 	Include pulumi.StringPtrInput
-	// Resource Description.
+	// Resource Description
 	PolicyBindingDescription pulumi.StringPtrInput
 	// The policy ID.
 	PolicyId pulumi.StringPtrInput
 	// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
 	Source pulumi.StringPtrInput
 	// Data source type, value range:
-	// - **UDM_ECS**: indicates the ECS instance backup.
-	// - **OSS**: indicates an OSS backup.
-	// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-	// - **ECS_FILE**: indicates that the ECS file is backed up.
-	// - **File**: indicates a local File backup.
+	// - `UDM_ECS`: indicates the ECS instance backup.
+	// - `OSS`: indicates an OSS backup.
+	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+	// - `ECS_FILE`: indicates that the ECS file is backed up.
+	// - `File`: indicates a local File backup.
 	SourceType pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrInput
@@ -237,30 +255,36 @@ func (PolicyBindingState) ElementType() reflect.Type {
 }
 
 type policyBindingArgs struct {
-	// Backup Advanced Options. See `advancedOptions` below.
+	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions *PolicyBindingAdvancedOptions `pulumi:"advancedOptions"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// Cross-account type, supported
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// The data source ID.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether the policy is effective for the data source.
 	// - true: Pause
-	// - false: not paused.
+	// - false: not paused
 	Disabled *bool `pulumi:"disabled"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
 	Exclude *string `pulumi:"exclude"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
 	Include *string `pulumi:"include"`
-	// Resource Description.
+	// Resource Description
 	PolicyBindingDescription *string `pulumi:"policyBindingDescription"`
 	// The policy ID.
 	PolicyId *string `pulumi:"policyId"`
 	// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
 	Source *string `pulumi:"source"`
 	// Data source type, value range:
-	// - **UDM_ECS**: indicates the ECS instance backup.
-	// - **OSS**: indicates an OSS backup.
-	// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-	// - **ECS_FILE**: indicates that the ECS file is backed up.
-	// - **File**: indicates a local File backup.
+	// - `UDM_ECS`: indicates the ECS instance backup.
+	// - `OSS`: indicates an OSS backup.
+	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+	// - `ECS_FILE`: indicates that the ECS file is backed up.
+	// - `File`: indicates a local File backup.
 	SourceType *string `pulumi:"sourceType"`
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit *string `pulumi:"speedLimit"`
@@ -268,30 +292,36 @@ type policyBindingArgs struct {
 
 // The set of arguments for constructing a PolicyBinding resource.
 type PolicyBindingArgs struct {
-	// Backup Advanced Options. See `advancedOptions` below.
+	// Backup Advanced Options See `advancedOptions` below.
 	AdvancedOptions PolicyBindingAdvancedOptionsPtrInput
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// Cross-account type, supported
+	CrossAccountType pulumi.StringPtrInput
+	// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+	CrossAccountUserId pulumi.IntPtrInput
 	// The data source ID.
 	DataSourceId pulumi.StringPtrInput
 	// Whether the policy is effective for the data source.
 	// - true: Pause
-	// - false: not paused.
+	// - false: not paused
 	Disabled pulumi.BoolPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
 	Exclude pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
 	Include pulumi.StringPtrInput
-	// Resource Description.
+	// Resource Description
 	PolicyBindingDescription pulumi.StringPtrInput
 	// The policy ID.
 	PolicyId pulumi.StringPtrInput
 	// When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
 	Source pulumi.StringPtrInput
 	// Data source type, value range:
-	// - **UDM_ECS**: indicates the ECS instance backup.
-	// - **OSS**: indicates an OSS backup.
-	// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-	// - **ECS_FILE**: indicates that the ECS file is backed up.
-	// - **File**: indicates a local File backup.
+	// - `UDM_ECS`: indicates the ECS instance backup.
+	// - `OSS`: indicates an OSS backup.
+	// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+	// - `ECS_FILE`: indicates that the ECS file is backed up.
+	// - `File`: indicates a local File backup.
 	SourceType pulumi.StringPtrInput
 	// This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
 	SpeedLimit pulumi.StringPtrInput
@@ -384,14 +414,29 @@ func (o PolicyBindingOutput) ToPolicyBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Backup Advanced Options. See `advancedOptions` below.
+// Backup Advanced Options See `advancedOptions` below.
 func (o PolicyBindingOutput) AdvancedOptions() PolicyBindingAdvancedOptionsOutput {
 	return o.ApplyT(func(v *PolicyBinding) PolicyBindingAdvancedOptionsOutput { return v.AdvancedOptions }).(PolicyBindingAdvancedOptionsOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o PolicyBindingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+func (o PolicyBindingOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBinding) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
+}
+
+// Cross-account type, supported
+func (o PolicyBindingOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyBinding) pulumi.StringOutput { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+func (o PolicyBindingOutput) CrossAccountUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PolicyBinding) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
 }
 
 // The data source ID.
@@ -401,7 +446,7 @@ func (o PolicyBindingOutput) DataSourceId() pulumi.StringOutput {
 
 // Whether the policy is effective for the data source.
 // - true: Pause
-// - false: not paused.
+// - false: not paused
 func (o PolicyBindingOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -416,7 +461,7 @@ func (o PolicyBindingOutput) Include() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringPtrOutput { return v.Include }).(pulumi.StringPtrOutput)
 }
 
-// Resource Description.
+// Resource Description
 func (o PolicyBindingOutput) PolicyBindingDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringPtrOutput { return v.PolicyBindingDescription }).(pulumi.StringPtrOutput)
 }
@@ -432,11 +477,11 @@ func (o PolicyBindingOutput) Source() pulumi.StringPtrOutput {
 }
 
 // Data source type, value range:
-// - **UDM_ECS**: indicates the ECS instance backup.
-// - **OSS**: indicates an OSS backup.
-// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-// - **ECS_FILE**: indicates that the ECS file is backed up.
-// - **File**: indicates a local File backup.
+// - `UDM_ECS`: indicates the ECS instance backup.
+// - `OSS`: indicates an OSS backup.
+// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+// - `ECS_FILE`: indicates that the ECS file is backed up.
+// - `File`: indicates a local File backup.
 func (o PolicyBindingOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyBinding) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
 }

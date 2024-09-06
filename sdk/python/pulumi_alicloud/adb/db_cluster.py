@@ -28,6 +28,7 @@ class DBClusterArgs:
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
                - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
@@ -107,6 +109,8 @@ class DBClusterArgs:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -309,6 +313,18 @@ class DBClusterArgs:
         pulumi.set(self, "elastic_io_resource_size", value)
 
     @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -488,6 +504,7 @@ class _DBClusterState:
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -522,6 +539,7 @@ class _DBClusterState:
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
                - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -575,6 +593,8 @@ class _DBClusterState:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -781,6 +801,18 @@ class _DBClusterState:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
 
     @property
     @pulumi.getter(name="kmsId")
@@ -999,6 +1031,7 @@ class DBCluster(pulumi.CustomResource):
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1040,6 +1073,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
                - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -1103,6 +1137,7 @@ class DBCluster(pulumi.CustomResource):
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1141,6 +1176,7 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["disk_performance_level"] = disk_performance_level
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+            __props__.__dict__["enable_ssl"] = enable_ssl
             __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
@@ -1184,6 +1220,7 @@ class DBCluster(pulumi.CustomResource):
             disk_performance_level: Optional[pulumi.Input[str]] = None,
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+            enable_ssl: Optional[pulumi.Input[bool]] = None,
             kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
@@ -1223,6 +1260,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
                - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
                - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -1263,6 +1301,7 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["disk_performance_level"] = disk_performance_level
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+        __props__.__dict__["enable_ssl"] = enable_ssl
         __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
@@ -1395,6 +1434,14 @@ class DBCluster(pulumi.CustomResource):
         - `12Core96GB`: If you set `elastic_io_resource_size` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
         """
         return pulumi.get(self, "elastic_io_resource_size")
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
 
     @property
     @pulumi.getter(name="kmsId")

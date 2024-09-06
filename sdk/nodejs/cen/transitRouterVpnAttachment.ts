@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     transitRouterName: name,
  * });
  * const exampleCustomerGateway = new alicloud.vpn.CustomerGateway("example", {
- *     name: name,
+ *     customerGatewayName: name,
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
  *     description: name,

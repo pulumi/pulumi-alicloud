@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Create time stamp. Unix timestamp, to millisecond level.
+        /// The timestamp that indicates when the pair of static username and password was created.
         /// </summary>
         [Output("createTime")]
         public Output<int> CreateTime { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> MasterUid { get; private set; } = null!;
 
         /// <summary>
-        /// Static password.
+        /// The static password.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> SecretKey { get; private set; } = null!;
 
         /// <summary>
-        /// Static user name.
+        /// The static username.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// Create time stamp. Unix timestamp, to millisecond level.
+        /// The timestamp that indicates when the pair of static username and password was created.
         /// </summary>
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? MasterUid { get; set; }
 
         /// <summary>
-        /// Static password.
+        /// The static password.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Amqp
         }
 
         /// <summary>
-        /// Static user name.
+        /// The static username.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

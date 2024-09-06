@@ -16,16 +16,20 @@ class DbResourceGroupArgs:
     def __init__(__self__, *,
                  db_instance_id: pulumi.Input[str],
                  resource_group_config: pulumi.Input[str],
-                 resource_group_name: pulumi.Input[str]):
+                 resource_group_name: pulumi.Input[str],
+                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DbResourceGroup resource.
         :param pulumi.Input[str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[str] resource_group_config: Resource group configuration.
         :param pulumi.Input[str] resource_group_name: Resource group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_lists: Role List
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         pulumi.set(__self__, "resource_group_config", resource_group_config)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if role_lists is not None:
+            pulumi.set(__self__, "role_lists", role_lists)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -63,18 +67,32 @@ class DbResourceGroupArgs:
     def resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_group_name", value)
 
+    @property
+    @pulumi.getter(name="roleLists")
+    def role_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Role List
+        """
+        return pulumi.get(self, "role_lists")
+
+    @role_lists.setter
+    def role_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_lists", value)
+
 
 @pulumi.input_type
 class _DbResourceGroupState:
     def __init__(__self__, *,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  resource_group_config: Optional[pulumi.Input[str]] = None,
-                 resource_group_name: Optional[pulumi.Input[str]] = None):
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DbResourceGroup resources.
         :param pulumi.Input[str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[str] resource_group_config: Resource group configuration.
         :param pulumi.Input[str] resource_group_name: Resource group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_lists: Role List
         """
         if db_instance_id is not None:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
@@ -82,6 +100,8 @@ class _DbResourceGroupState:
             pulumi.set(__self__, "resource_group_config", resource_group_config)
         if resource_group_name is not None:
             pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if role_lists is not None:
+            pulumi.set(__self__, "role_lists", role_lists)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -119,6 +139,18 @@ class _DbResourceGroupState:
     def resource_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_name", value)
 
+    @property
+    @pulumi.getter(name="roleLists")
+    def role_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Role List
+        """
+        return pulumi.get(self, "role_lists")
+
+    @role_lists.setter
+    def role_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_lists", value)
+
 
 class DbResourceGroup(pulumi.CustomResource):
     @overload
@@ -128,9 +160,10 @@ class DbResourceGroup(pulumi.CustomResource):
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  resource_group_config: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Gpdb Db Resource Group resource.
+        Provides a GPDB Db Resource Group resource.
 
         For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
 
@@ -162,7 +195,6 @@ class DbResourceGroup(pulumi.CustomResource):
             instance_network_type="VPC",
             db_instance_category="Basic",
             engine="gpdb",
-            resource_management_mode="resourceGroup",
             payment_type="PayAsYouGo",
             ssl_enabled=0,
             engine_version="6.0",
@@ -187,7 +219,7 @@ class DbResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Gpdb Db Resource Group can be imported using the id, e.g.
+        GPDB Db Resource Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
@@ -198,6 +230,7 @@ class DbResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[str] resource_group_config: Resource group configuration.
         :param pulumi.Input[str] resource_group_name: Resource group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_lists: Role List
         """
         ...
     @overload
@@ -206,7 +239,7 @@ class DbResourceGroup(pulumi.CustomResource):
                  args: DbResourceGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Gpdb Db Resource Group resource.
+        Provides a GPDB Db Resource Group resource.
 
         For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
 
@@ -238,7 +271,6 @@ class DbResourceGroup(pulumi.CustomResource):
             instance_network_type="VPC",
             db_instance_category="Basic",
             engine="gpdb",
-            resource_management_mode="resourceGroup",
             payment_type="PayAsYouGo",
             ssl_enabled=0,
             engine_version="6.0",
@@ -263,7 +295,7 @@ class DbResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Gpdb Db Resource Group can be imported using the id, e.g.
+        GPDB Db Resource Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
@@ -287,6 +319,7 @@ class DbResourceGroup(pulumi.CustomResource):
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  resource_group_config: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,6 +338,7 @@ class DbResourceGroup(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
+            __props__.__dict__["role_lists"] = role_lists
         super(DbResourceGroup, __self__).__init__(
             'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
             resource_name,
@@ -317,7 +351,8 @@ class DbResourceGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
             resource_group_config: Optional[pulumi.Input[str]] = None,
-            resource_group_name: Optional[pulumi.Input[str]] = None) -> 'DbResourceGroup':
+            resource_group_name: Optional[pulumi.Input[str]] = None,
+            role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'DbResourceGroup':
         """
         Get an existing DbResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -328,6 +363,7 @@ class DbResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_id: The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         :param pulumi.Input[str] resource_group_config: Resource group configuration.
         :param pulumi.Input[str] resource_group_name: Resource group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_lists: Role List
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,6 +372,7 @@ class DbResourceGroup(pulumi.CustomResource):
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["resource_group_config"] = resource_group_config
         __props__.__dict__["resource_group_name"] = resource_group_name
+        __props__.__dict__["role_lists"] = role_lists
         return DbResourceGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -361,4 +398,12 @@ class DbResourceGroup(pulumi.CustomResource):
         Resource group name.
         """
         return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="roleLists")
+    def role_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Role List
+        """
+        return pulumi.get(self, "role_lists")
 

@@ -40,6 +40,26 @@ export type Portfolio = import("./portfolio").Portfolio;
 export const Portfolio: typeof import("./portfolio").Portfolio = null as any;
 utilities.lazyLoad(exports, ["Portfolio"], () => require("./portfolio"));
 
+export { PrincipalPortfolioAssociationArgs, PrincipalPortfolioAssociationState } from "./principalPortfolioAssociation";
+export type PrincipalPortfolioAssociation = import("./principalPortfolioAssociation").PrincipalPortfolioAssociation;
+export const PrincipalPortfolioAssociation: typeof import("./principalPortfolioAssociation").PrincipalPortfolioAssociation = null as any;
+utilities.lazyLoad(exports, ["PrincipalPortfolioAssociation"], () => require("./principalPortfolioAssociation"));
+
+export { ProductArgs, ProductState } from "./product";
+export type Product = import("./product").Product;
+export const Product: typeof import("./product").Product = null as any;
+utilities.lazyLoad(exports, ["Product"], () => require("./product"));
+
+export { ProductPortfolioAssociationArgs, ProductPortfolioAssociationState } from "./productPortfolioAssociation";
+export type ProductPortfolioAssociation = import("./productPortfolioAssociation").ProductPortfolioAssociation;
+export const ProductPortfolioAssociation: typeof import("./productPortfolioAssociation").ProductPortfolioAssociation = null as any;
+utilities.lazyLoad(exports, ["ProductPortfolioAssociation"], () => require("./productPortfolioAssociation"));
+
+export { ProductVersionArgs, ProductVersionState } from "./productVersion";
+export type ProductVersion = import("./productVersion").ProductVersion;
+export const ProductVersion: typeof import("./productVersion").ProductVersion = null as any;
+utilities.lazyLoad(exports, ["ProductVersion"], () => require("./productVersion"));
+
 export { ProvisionedProductArgs, ProvisionedProductState } from "./provisionedProduct";
 export type ProvisionedProduct = import("./provisionedProduct").ProvisionedProduct;
 export const ProvisionedProduct: typeof import("./provisionedProduct").ProvisionedProduct = null as any;
@@ -52,6 +72,14 @@ const _module = {
         switch (type) {
             case "alicloud:servicecatalog/portfolio:Portfolio":
                 return new Portfolio(name, <any>undefined, { urn })
+            case "alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation":
+                return new PrincipalPortfolioAssociation(name, <any>undefined, { urn })
+            case "alicloud:servicecatalog/product:Product":
+                return new Product(name, <any>undefined, { urn })
+            case "alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation":
+                return new ProductPortfolioAssociation(name, <any>undefined, { urn })
+            case "alicloud:servicecatalog/productVersion:ProductVersion":
+                return new ProductVersion(name, <any>undefined, { urn })
             case "alicloud:servicecatalog/provisionedProduct:ProvisionedProduct":
                 return new ProvisionedProduct(name, <any>undefined, { urn })
             default:
@@ -60,4 +88,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/portfolio", _module)
+pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/principalPortfolioAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/product", _module)
+pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/productPortfolioAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/productVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/provisionedProduct", _module)

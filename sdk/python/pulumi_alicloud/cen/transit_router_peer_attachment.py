@@ -43,8 +43,8 @@ class TransitRouterPeerAttachmentArgs:
         :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
+        :param pulumi.Input[bool] route_table_association_enabled: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        :param pulumi.Input[bool] route_table_propagation_enabled: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
@@ -67,7 +67,13 @@ class TransitRouterPeerAttachmentArgs:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
+        if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+        if route_table_propagation_enabled is not None:
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if transit_router_attachment_description is not None:
@@ -201,9 +207,10 @@ class TransitRouterPeerAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to association route table. System default is `false`.
+        Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -213,9 +220,10 @@ class TransitRouterPeerAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to propagation route table. System default is `false`.
+        Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -296,11 +304,11 @@ class _TransitRouterPeerAttachmentState:
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
+        :param pulumi.Input[bool] route_table_association_enabled: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        :param pulumi.Input[bool] route_table_propagation_enabled: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment id.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
         """
@@ -327,7 +335,13 @@ class _TransitRouterPeerAttachmentState:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
+        if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+        if route_table_propagation_enabled is not None:
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
@@ -477,9 +491,10 @@ class _TransitRouterPeerAttachmentState:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to association route table. System default is `false`.
+        Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -489,9 +504,10 @@ class _TransitRouterPeerAttachmentState:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to propagation route table. System default is `false`.
+        Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -527,7 +543,7 @@ class _TransitRouterPeerAttachmentState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of transit router attachment id.
+        The ID of transit router attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -633,7 +649,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         CEN Transit Router Peer Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -650,8 +666,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
+        :param pulumi.Input[bool] route_table_association_enabled: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        :param pulumi.Input[bool] route_table_propagation_enabled: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
@@ -714,7 +730,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         CEN Transit Router Peer Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -828,11 +844,11 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
+        :param pulumi.Input[bool] route_table_association_enabled: Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+        :param pulumi.Input[bool] route_table_propagation_enabled: Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment id.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
         """
@@ -952,17 +968,19 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_association_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to association route table. System default is `false`.
+        Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
     def route_table_propagation_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to propagation route table. System default is `false`.
+        Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -986,7 +1004,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
         """
-        The ID of transit router attachment id.
+        The ID of transit router attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 

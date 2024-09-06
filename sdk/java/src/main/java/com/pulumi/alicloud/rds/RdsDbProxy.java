@@ -284,6 +284,24 @@ public class RdsDbProxy extends com.pulumi.resources.CustomResource {
         return this.dbProxyInstanceNum;
     }
     /**
+     * The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     * 
+     */
+    @Export(name="dbProxyInstanceType", refs={String.class}, tree="[0]")
+    private Output<String> dbProxyInstanceType;
+
+    /**
+     * @return The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     * 
+     */
+    public Output<String> dbProxyInstanceType() {
+        return this.dbProxyInstanceType;
+    }
+    /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
      * - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.

@@ -28,6 +28,7 @@ class ClusterArgs:
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,8 @@ class ClusterArgs:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -272,6 +275,15 @@ class ClusterArgs:
         pulumi.set(self, "elastic_io_resource_size", value)
 
     @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kms_id")
@@ -438,6 +450,7 @@ class _ClusterState:
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -510,6 +523,8 @@ class _ClusterState:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if kms_id is not None:
             pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
@@ -696,6 +711,15 @@ class _ClusterState:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
 
     @property
     @pulumi.getter(name="kmsId")
@@ -895,6 +919,7 @@ class Cluster(pulumi.CustomResource):
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1071,6 +1096,7 @@ class Cluster(pulumi.CustomResource):
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -1109,6 +1135,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["disk_performance_level"] = disk_performance_level
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+            __props__.__dict__["enable_ssl"] = enable_ssl
             __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
@@ -1152,6 +1179,7 @@ class Cluster(pulumi.CustomResource):
             disk_performance_level: Optional[pulumi.Input[str]] = None,
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+            enable_ssl: Optional[pulumi.Input[bool]] = None,
             kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
@@ -1216,6 +1244,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["disk_performance_level"] = disk_performance_level
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+        __props__.__dict__["enable_ssl"] = enable_ssl
         __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
@@ -1328,6 +1357,11 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="elasticIoResourceSize")
     def elastic_io_resource_size(self) -> pulumi.Output[str]:
         return pulumi.get(self, "elastic_io_resource_size")
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enable_ssl")
 
     @property
     @pulumi.getter(name="kmsId")

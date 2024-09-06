@@ -59,8 +59,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
+ *             .min(10000000)
+ *             .max(99999999)
  *             .build());
  * 
  *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()

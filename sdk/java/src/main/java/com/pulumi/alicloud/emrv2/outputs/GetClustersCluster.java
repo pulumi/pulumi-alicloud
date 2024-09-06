@@ -19,7 +19,7 @@ public final class GetClustersCluster {
      */
     private String clusterId;
     /**
-     * @return The name of the emr cluster.
+     * @return The cluster name.
      * 
      */
     private String clusterName;
@@ -69,7 +69,7 @@ public final class GetClustersCluster {
      */
     private String releaseVersion;
     /**
-     * @return The resource group id of the resource.
+     * @return The Resource Group ID.
      * 
      */
     private String resourceGroupId;
@@ -93,7 +93,7 @@ public final class GetClustersCluster {
         return this.clusterId;
     }
     /**
-     * @return The name of the emr cluster.
+     * @return The cluster name.
      * 
      */
     public String clusterName() {
@@ -163,7 +163,7 @@ public final class GetClustersCluster {
         return this.releaseVersion;
     }
     /**
-     * @return The resource group id of the resource.
+     * @return The Resource Group ID.
      * 
      */
     public String resourceGroupId() {

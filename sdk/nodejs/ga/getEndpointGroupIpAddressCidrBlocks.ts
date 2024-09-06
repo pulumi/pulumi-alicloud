@@ -29,6 +29,7 @@ export function getEndpointGroupIpAddressCidrBlocks(args: GetEndpointGroupIpAddr
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", {
+        "acceleratorId": args.acceleratorId,
         "endpointGroupRegion": args.endpointGroupRegion,
         "outputFile": args.outputFile,
     }, opts);
@@ -38,6 +39,10 @@ export function getEndpointGroupIpAddressCidrBlocks(args: GetEndpointGroupIpAddr
  * A collection of arguments for invoking getEndpointGroupIpAddressCidrBlocks.
  */
 export interface GetEndpointGroupIpAddressCidrBlocksArgs {
+    /**
+     * The ID of the Global Accelerator (GA) instance.
+     */
+    acceleratorId?: string;
     /**
      * The region ID of the endpoint group.
      */
@@ -52,6 +57,7 @@ export interface GetEndpointGroupIpAddressCidrBlocksArgs {
  * A collection of values returned by getEndpointGroupIpAddressCidrBlocks.
  */
 export interface GetEndpointGroupIpAddressCidrBlocksResult {
+    readonly acceleratorId?: string;
     /**
      * A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:
      */
@@ -93,6 +99,10 @@ export function getEndpointGroupIpAddressCidrBlocksOutput(args: GetEndpointGroup
  * A collection of arguments for invoking getEndpointGroupIpAddressCidrBlocks.
  */
 export interface GetEndpointGroupIpAddressCidrBlocksOutputArgs {
+    /**
+     * The ID of the Global Accelerator (GA) instance.
+     */
+    acceleratorId?: pulumi.Input<string>;
     /**
      * The region ID of the endpoint group.
      */

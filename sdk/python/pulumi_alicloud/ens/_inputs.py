@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'InstanceDataDiskArgs',
     'InstanceSystemDiskArgs',
+    'LoadBalancerBackendServerArgs',
 ]
 
 @pulumi.input_type
@@ -106,5 +107,91 @@ class InstanceSystemDiskArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+
+@pulumi.input_type
+class LoadBalancerBackendServerArgs:
+    def __init__(__self__, *,
+                 server_id: pulumi.Input[str],
+                 ip: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] server_id: Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+        :param pulumi.Input[str] ip: IP address of the backend server  Example value: 192.168.0.5.
+        :param pulumi.Input[int] port: Port used by the backend server.
+        :param pulumi.Input[str] type: Backend server type  Example value: ens.
+        :param pulumi.Input[int] weight: Weight of the backend server  Example value: 100.
+        """
+        pulumi.set(__self__, "server_id", server_id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> pulumi.Input[str]:
+        """
+        Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+        """
+        return pulumi.get(self, "server_id")
+
+    @server_id.setter
+    def server_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_id", value)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the backend server  Example value: 192.168.0.5.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port used by the backend server.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backend server type  Example value: ens.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Weight of the backend server  Example value: 100.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
 
 

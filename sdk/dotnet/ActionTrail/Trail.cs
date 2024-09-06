@@ -59,12 +59,12 @@ namespace Pulumi.AliCloud.ActionTrail
     ///     {
     ///         TrailName = name,
     ///         SlsWriteRoleArn = exampleGetRoles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Arn),
-    ///         SlsProjectArn = Output.Tuple(example, exampleGetAccount, exampleProject.Name).Apply(values =&gt;
+    ///         SlsProjectArn = Output.Tuple(example, exampleGetAccount, exampleProject.ProjectName).Apply(values =&gt;
     ///         {
     ///             var example = values.Item1;
     ///             var exampleGetAccount = values.Item2;
-    ///             var name = values.Item3;
-    ///             return $"acs:log:{example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///             var projectName = values.Item3;
+    ///             return $"acs:log:{example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{projectName}";
     ///         }),
     ///     });
     /// 

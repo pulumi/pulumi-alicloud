@@ -167,6 +167,10 @@ type RdsDbProxy struct {
 	DbProxyFeatures pulumi.StringOutput `pulumi:"dbProxyFeatures"`
 	// The number of proxy instances that are enabled. Valid values: 1 to 60.
 	DbProxyInstanceNum pulumi.IntOutput `pulumi:"dbProxyInstanceNum"`
+	// The database proxy type. Valid values:
+	// - common: universal proxy.
+	// - exclusive: Exclusive proxy (default).
+	DbProxyInstanceType pulumi.StringOutput `pulumi:"dbProxyInstanceType"`
 	// The SSL configuration setting that you want to apply on the instance. Valid values:
 	// - Close: disables SSL encryption.
 	// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -289,6 +293,10 @@ type rdsDbProxyState struct {
 	DbProxyFeatures *string `pulumi:"dbProxyFeatures"`
 	// The number of proxy instances that are enabled. Valid values: 1 to 60.
 	DbProxyInstanceNum *int `pulumi:"dbProxyInstanceNum"`
+	// The database proxy type. Valid values:
+	// - common: universal proxy.
+	// - exclusive: Exclusive proxy (default).
+	DbProxyInstanceType *string `pulumi:"dbProxyInstanceType"`
 	// The SSL configuration setting that you want to apply on the instance. Valid values:
 	// - Close: disables SSL encryption.
 	// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -367,6 +375,10 @@ type RdsDbProxyState struct {
 	DbProxyFeatures pulumi.StringPtrInput
 	// The number of proxy instances that are enabled. Valid values: 1 to 60.
 	DbProxyInstanceNum pulumi.IntPtrInput
+	// The database proxy type. Valid values:
+	// - common: universal proxy.
+	// - exclusive: Exclusive proxy (default).
+	DbProxyInstanceType pulumi.StringPtrInput
 	// The SSL configuration setting that you want to apply on the instance. Valid values:
 	// - Close: disables SSL encryption.
 	// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -443,6 +455,10 @@ type rdsDbProxyArgs struct {
 	DbProxyFeatures *string `pulumi:"dbProxyFeatures"`
 	// The number of proxy instances that are enabled. Valid values: 1 to 60.
 	DbProxyInstanceNum int `pulumi:"dbProxyInstanceNum"`
+	// The database proxy type. Valid values:
+	// - common: universal proxy.
+	// - exclusive: Exclusive proxy (default).
+	DbProxyInstanceType *string `pulumi:"dbProxyInstanceType"`
 	// The SSL configuration setting that you want to apply on the instance. Valid values:
 	// - Close: disables SSL encryption.
 	// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -512,6 +528,10 @@ type RdsDbProxyArgs struct {
 	DbProxyFeatures pulumi.StringPtrInput
 	// The number of proxy instances that are enabled. Valid values: 1 to 60.
 	DbProxyInstanceNum pulumi.IntInput
+	// The database proxy type. Valid values:
+	// - common: universal proxy.
+	// - exclusive: Exclusive proxy (default).
+	DbProxyInstanceType pulumi.StringPtrInput
 	// The SSL configuration setting that you want to apply on the instance. Valid values:
 	// - Close: disables SSL encryption.
 	// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -694,6 +714,13 @@ func (o RdsDbProxyOutput) DbProxyFeatures() pulumi.StringOutput {
 // The number of proxy instances that are enabled. Valid values: 1 to 60.
 func (o RdsDbProxyOutput) DbProxyInstanceNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *RdsDbProxy) pulumi.IntOutput { return v.DbProxyInstanceNum }).(pulumi.IntOutput)
+}
+
+// The database proxy type. Valid values:
+// - common: universal proxy.
+// - exclusive: Exclusive proxy (default).
+func (o RdsDbProxyOutput) DbProxyInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsDbProxy) pulumi.StringOutput { return v.DbProxyInstanceType }).(pulumi.StringOutput)
 }
 
 // The SSL configuration setting that you want to apply on the instance. Valid values:

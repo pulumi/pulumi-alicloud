@@ -43,7 +43,7 @@ public final class GetRouteTablesTable {
      */
     private String routeTableName;
     /**
-     * @return The type of route table.
+     * @return The route table type.
      * 
      */
     private String routeTableType;
@@ -122,7 +122,7 @@ public final class GetRouteTablesTable {
         return this.routeTableName;
     }
     /**
-     * @return The type of route table.
+     * @return The route table type.
      * 
      */
     public String routeTableType() {

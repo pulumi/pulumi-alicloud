@@ -2322,7 +2322,7 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) SpotInstancePools() pulumi
 }
 
 type ClusterNodeGroupDataDisk struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 	Category string `pulumi:"category"`
 	// The count of a data disk.
 	Count *int `pulumi:"count"`
@@ -2344,7 +2344,7 @@ type ClusterNodeGroupDataDiskInput interface {
 }
 
 type ClusterNodeGroupDataDiskArgs struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The count of a data disk.
 	Count pulumi.IntPtrInput `pulumi:"count"`
@@ -2405,7 +2405,7 @@ func (o ClusterNodeGroupDataDiskOutput) ToClusterNodeGroupDataDiskOutputWithCont
 	return o
 }
 
-// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 func (o ClusterNodeGroupDataDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -2552,7 +2552,7 @@ func (o ClusterNodeGroupSpotBidPriceArrayOutput) Index(i pulumi.IntInput) Cluste
 }
 
 type ClusterNodeGroupSubscriptionConfig struct {
-	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 	AutoPayOrder *bool `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -2578,7 +2578,7 @@ type ClusterNodeGroupSubscriptionConfigInput interface {
 }
 
 type ClusterNodeGroupSubscriptionConfigArgs struct {
-	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 	AutoPayOrder pulumi.BoolPtrInput `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
@@ -2669,7 +2669,7 @@ func (o ClusterNodeGroupSubscriptionConfigOutput) ToClusterNodeGroupSubscription
 	}).(ClusterNodeGroupSubscriptionConfigPtrOutput)
 }
 
-// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 func (o ClusterNodeGroupSubscriptionConfigOutput) AutoPayOrder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSubscriptionConfig) *bool { return v.AutoPayOrder }).(pulumi.BoolPtrOutput)
 }
@@ -2723,7 +2723,7 @@ func (o ClusterNodeGroupSubscriptionConfigPtrOutput) Elem() ClusterNodeGroupSubs
 	}).(ClusterNodeGroupSubscriptionConfigOutput)
 }
 
-// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 func (o ClusterNodeGroupSubscriptionConfigPtrOutput) AutoPayOrder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupSubscriptionConfig) *bool {
 		if v == nil {
@@ -2784,7 +2784,7 @@ func (o ClusterNodeGroupSubscriptionConfigPtrOutput) PaymentDurationUnit() pulum
 }
 
 type ClusterNodeGroupSystemDisk struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 	Category string `pulumi:"category"`
 	// The count of a data disk.
 	Count *int `pulumi:"count"`
@@ -2806,7 +2806,7 @@ type ClusterNodeGroupSystemDiskInput interface {
 }
 
 type ClusterNodeGroupSystemDiskArgs struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The count of a data disk.
 	Count pulumi.IntPtrInput `pulumi:"count"`
@@ -2842,7 +2842,7 @@ func (o ClusterNodeGroupSystemDiskOutput) ToClusterNodeGroupSystemDiskOutputWith
 	return o
 }
 
-// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+// The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
 func (o ClusterNodeGroupSystemDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -2863,7 +2863,7 @@ func (o ClusterNodeGroupSystemDiskOutput) Size() pulumi.IntOutput {
 }
 
 type ClusterSubscriptionConfig struct {
-	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 	AutoPayOrder *bool `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -2889,7 +2889,7 @@ type ClusterSubscriptionConfigInput interface {
 }
 
 type ClusterSubscriptionConfigArgs struct {
-	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 	AutoPayOrder pulumi.BoolPtrInput `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
@@ -2980,7 +2980,7 @@ func (o ClusterSubscriptionConfigOutput) ToClusterSubscriptionConfigPtrOutputWit
 	}).(ClusterSubscriptionConfigPtrOutput)
 }
 
-// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 func (o ClusterSubscriptionConfigOutput) AutoPayOrder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterSubscriptionConfig) *bool { return v.AutoPayOrder }).(pulumi.BoolPtrOutput)
 }
@@ -3034,7 +3034,7 @@ func (o ClusterSubscriptionConfigPtrOutput) Elem() ClusterSubscriptionConfigOutp
 	}).(ClusterSubscriptionConfigOutput)
 }
 
-// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
 func (o ClusterSubscriptionConfigPtrOutput) AutoPayOrder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterSubscriptionConfig) *bool {
 		if v == nil {
@@ -3097,7 +3097,7 @@ func (o ClusterSubscriptionConfigPtrOutput) PaymentDurationUnit() pulumi.StringP
 type GetClustersCluster struct {
 	// The first ID of the resource.
 	ClusterId string `pulumi:"clusterId"`
-	// The name of the emr cluster.
+	// The cluster name.
 	ClusterName string `pulumi:"clusterName"`
 	// The state of the emr cluster.
 	ClusterState string `pulumi:"clusterState"`
@@ -3117,7 +3117,7 @@ type GetClustersCluster struct {
 	ReadyTime string `pulumi:"readyTime"`
 	// The release version of the resource.
 	ReleaseVersion string `pulumi:"releaseVersion"`
-	// The resource group id of the resource.
+	// The Resource Group ID.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The cluster state change reason.
 	StateChangeReason map[string]string `pulumi:"stateChangeReason"`
@@ -3139,7 +3139,7 @@ type GetClustersClusterInput interface {
 type GetClustersClusterArgs struct {
 	// The first ID of the resource.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The name of the emr cluster.
+	// The cluster name.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The state of the emr cluster.
 	ClusterState pulumi.StringInput `pulumi:"clusterState"`
@@ -3159,7 +3159,7 @@ type GetClustersClusterArgs struct {
 	ReadyTime pulumi.StringInput `pulumi:"readyTime"`
 	// The release version of the resource.
 	ReleaseVersion pulumi.StringInput `pulumi:"releaseVersion"`
-	// The resource group id of the resource.
+	// The Resource Group ID.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The cluster state change reason.
 	StateChangeReason pulumi.StringMapInput `pulumi:"stateChangeReason"`
@@ -3223,7 +3223,7 @@ func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The name of the emr cluster.
+// The cluster name.
 func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -3273,7 +3273,7 @@ func (o GetClustersClusterOutput) ReleaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ReleaseVersion }).(pulumi.StringOutput)
 }
 
-// The resource group id of the resource.
+// The Resource Group ID.
 func (o GetClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

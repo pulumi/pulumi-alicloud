@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const exampleTrail = new alicloud.actiontrail.Trail("example", {
  *     trailName: name,
  *     slsWriteRoleArn: exampleGetRoles.then(exampleGetRoles => exampleGetRoles.roles?.[0]?.arn),
- *     slsProjectArn: pulumi.all([example, exampleGetAccount, exampleProject.name]).apply(([example, exampleGetAccount, name]) => `acs:log:${example.regions?.[0]?.id}:${exampleGetAccount.id}:project/${name}`),
+ *     slsProjectArn: pulumi.all([example, exampleGetAccount, exampleProject.projectName]).apply(([example, exampleGetAccount, projectName]) => `acs:log:${example.regions?.[0]?.id}:${exampleGetAccount.id}:project/${projectName}`),
  * });
  * ```
  *

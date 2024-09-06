@@ -559,23 +559,23 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pul
 }
 
 type PolicyRule struct {
-	// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
 	ArchiveDays *int `pulumi:"archiveDays"`
-	// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
 	BackupType *string `pulumi:"backupType"`
-	// This parameter is required only when **RuleType** is set to **BACKUP**.
+	// This parameter is required only when `RuleType` is set to `BACKUP`.
 	KeepLatestSnapshots *int `pulumi:"keepLatestSnapshots"`
-	// Only when the **RuleType** value is.
+	// Only when the `RuleType` value is.
 	ReplicationRegionId *string `pulumi:"replicationRegionId"`
 	// Retention time, in days.
 	Retention *int `pulumi:"retention"`
-	// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+	// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
 	RetentionRules []PolicyRuleRetentionRule `pulumi:"retentionRules"`
 	// Rule ID.
 	RuleId *string `pulumi:"ruleId"`
 	// Rule Type.
 	RuleType string `pulumi:"ruleType"`
-	// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule *string `pulumi:"schedule"`
 	// Vault ID.
 	VaultId *string `pulumi:"vaultId"`
@@ -593,23 +593,23 @@ type PolicyRuleInput interface {
 }
 
 type PolicyRuleArgs struct {
-	// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
 	ArchiveDays pulumi.IntPtrInput `pulumi:"archiveDays"`
-	// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+	// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// This parameter is required only when **RuleType** is set to **BACKUP**.
+	// This parameter is required only when `RuleType` is set to `BACKUP`.
 	KeepLatestSnapshots pulumi.IntPtrInput `pulumi:"keepLatestSnapshots"`
-	// Only when the **RuleType** value is.
+	// Only when the `RuleType` value is.
 	ReplicationRegionId pulumi.StringPtrInput `pulumi:"replicationRegionId"`
 	// Retention time, in days.
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
-	// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+	// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
 	RetentionRules PolicyRuleRetentionRuleArrayInput `pulumi:"retentionRules"`
 	// Rule ID.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
 	// Rule Type.
 	RuleType pulumi.StringInput `pulumi:"ruleType"`
-	// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 	// Vault ID.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
@@ -666,22 +666,22 @@ func (o PolicyRuleOutput) ToPolicyRuleOutputWithContext(ctx context.Context) Pol
 	return o
 }
 
-// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+// This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
 func (o PolicyRuleOutput) ArchiveDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.ArchiveDays }).(pulumi.IntPtrOutput)
 }
 
-// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+// This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
 func (o PolicyRuleOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// This parameter is required only when **RuleType** is set to **BACKUP**.
+// This parameter is required only when `RuleType` is set to `BACKUP`.
 func (o PolicyRuleOutput) KeepLatestSnapshots() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.KeepLatestSnapshots }).(pulumi.IntPtrOutput)
 }
 
-// Only when the **RuleType** value is.
+// Only when the `RuleType` value is.
 func (o PolicyRuleOutput) ReplicationRegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.ReplicationRegionId }).(pulumi.StringPtrOutput)
 }
@@ -691,7 +691,7 @@ func (o PolicyRuleOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
 }
 
-// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+// This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
 func (o PolicyRuleOutput) RetentionRules() PolicyRuleRetentionRuleArrayOutput {
 	return o.ApplyT(func(v PolicyRule) []PolicyRuleRetentionRule { return v.RetentionRules }).(PolicyRuleRetentionRuleArrayOutput)
 }
@@ -706,7 +706,7 @@ func (o PolicyRuleOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyRule) string { return v.RuleType }).(pulumi.StringOutput)
 }
 
-// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+// This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
 func (o PolicyRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -737,7 +737,7 @@ func (o PolicyRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleOutput {
 }
 
 type PolicyRuleRetentionRule struct {
-	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+	// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
 	AdvancedRetentionType *string `pulumi:"advancedRetentionType"`
 	// Retention time, in days.
 	Retention *int `pulumi:"retention"`
@@ -755,7 +755,7 @@ type PolicyRuleRetentionRuleInput interface {
 }
 
 type PolicyRuleRetentionRuleArgs struct {
-	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+	// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
 	AdvancedRetentionType pulumi.StringPtrInput `pulumi:"advancedRetentionType"`
 	// Retention time, in days.
 	Retention pulumi.IntPtrInput `pulumi:"retention"`
@@ -812,7 +812,7 @@ func (o PolicyRuleRetentionRuleOutput) ToPolicyRuleRetentionRuleOutputWithContex
 	return o
 }
 
-// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+// Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
 func (o PolicyRuleRetentionRuleOutput) AdvancedRetentionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRuleRetentionRule) *string { return v.AdvancedRetentionType }).(pulumi.StringPtrOutput)
 }

@@ -227,14 +227,14 @@ class PolicyRuleArgs:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] rule_type: Rule Type.
-        :param pulumi.Input[int] archive_days: This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
-        :param pulumi.Input[str] backup_type: This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
-        :param pulumi.Input[int] keep_latest_snapshots: This parameter is required only when **RuleType** is set to **BACKUP**.
-        :param pulumi.Input[str] replication_region_id: Only when the **RuleType** value is.
+        :param pulumi.Input[int] archive_days: This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        :param pulumi.Input[str] backup_type: This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
+        :param pulumi.Input[int] keep_latest_snapshots: This parameter is required only when `RuleType` is set to `BACKUP`.
+        :param pulumi.Input[str] replication_region_id: Only when the `RuleType` value is.
         :param pulumi.Input[int] retention: Retention time, in days.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]] retention_rules: This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]] retention_rules: This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
         :param pulumi.Input[str] rule_id: Rule ID.
-        :param pulumi.Input[str] schedule: This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        :param pulumi.Input[str] schedule: This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
         :param pulumi.Input[str] vault_id: Vault ID.
         """
         pulumi.set(__self__, "rule_type", rule_type)
@@ -273,7 +273,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="archiveDays")
     def archive_days(self) -> Optional[pulumi.Input[int]]:
         """
-        This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
         """
         return pulumi.get(self, "archive_days")
 
@@ -285,7 +285,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+        This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
         """
         return pulumi.get(self, "backup_type")
 
@@ -297,7 +297,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="keepLatestSnapshots")
     def keep_latest_snapshots(self) -> Optional[pulumi.Input[int]]:
         """
-        This parameter is required only when **RuleType** is set to **BACKUP**.
+        This parameter is required only when `RuleType` is set to `BACKUP`.
         """
         return pulumi.get(self, "keep_latest_snapshots")
 
@@ -309,7 +309,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="replicationRegionId")
     def replication_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Only when the **RuleType** value is.
+        Only when the `RuleType` value is.
         """
         return pulumi.get(self, "replication_region_id")
 
@@ -333,7 +333,7 @@ class PolicyRuleArgs:
     @pulumi.getter(name="retentionRules")
     def retention_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]:
         """
-        This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
         """
         return pulumi.get(self, "retention_rules")
 
@@ -357,7 +357,7 @@ class PolicyRuleArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
         """
         return pulumi.get(self, "schedule")
 
@@ -384,7 +384,7 @@ class PolicyRuleRetentionRuleArgs:
                  advanced_retention_type: Optional[pulumi.Input[str]] = None,
                  retention: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] advanced_retention_type: Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        :param pulumi.Input[str] advanced_retention_type: Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
         :param pulumi.Input[int] retention: Retention time, in days.
         """
         if advanced_retention_type is not None:
@@ -396,7 +396,7 @@ class PolicyRuleRetentionRuleArgs:
     @pulumi.getter(name="advancedRetentionType")
     def advanced_retention_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
         """
         return pulumi.get(self, "advanced_retention_type")
 

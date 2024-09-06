@@ -7,6 +7,7 @@ import com.pulumi.alicloud.hbr.inputs.PolicyBindingAdvancedOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,18 +19,63 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyBindingArgs Empty = new PolicyBindingArgs();
 
     /**
-     * Backup Advanced Options. See `advanced_options` below.
+     * Backup Advanced Options See `advanced_options` below.
      * 
      */
     @Import(name="advancedOptions")
     private @Nullable Output<PolicyBindingAdvancedOptionsArgs> advancedOptions;
 
     /**
-     * @return Backup Advanced Options. See `advanced_options` below.
+     * @return Backup Advanced Options See `advanced_options` below.
      * 
      */
     public Optional<Output<PolicyBindingAdvancedOptionsArgs>> advancedOptions() {
         return Optional.ofNullable(this.advancedOptions);
+    }
+
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+     * 
+     */
+    @Import(name="crossAccountRoleName")
+    private @Nullable Output<String> crossAccountRoleName;
+
+    /**
+     * @return Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+     * 
+     */
+    public Optional<Output<String>> crossAccountRoleName() {
+        return Optional.ofNullable(this.crossAccountRoleName);
+    }
+
+    /**
+     * Cross-account type, supported
+     * 
+     */
+    @Import(name="crossAccountType")
+    private @Nullable Output<String> crossAccountType;
+
+    /**
+     * @return Cross-account type, supported
+     * 
+     */
+    public Optional<Output<String>> crossAccountType() {
+        return Optional.ofNullable(this.crossAccountType);
+    }
+
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+     * 
+     */
+    @Import(name="crossAccountUserId")
+    private @Nullable Output<Integer> crossAccountUserId;
+
+    /**
+     * @return Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+     * 
+     */
+    public Optional<Output<Integer>> crossAccountUserId() {
+        return Optional.ofNullable(this.crossAccountUserId);
     }
 
     /**
@@ -50,7 +96,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
-     * - false: not paused.
+     * - false: not paused
      * 
      */
     @Import(name="disabled")
@@ -59,7 +105,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether the policy is effective for the data source.
      * - true: Pause
-     * - false: not paused.
+     * - false: not paused
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -97,14 +143,14 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource Description.
+     * Resource Description
      * 
      */
     @Import(name="policyBindingDescription")
     private @Nullable Output<String> policyBindingDescription;
 
     /**
-     * @return Resource Description.
+     * @return Resource Description
      * 
      */
     public Optional<Output<String>> policyBindingDescription() {
@@ -143,11 +189,11 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Data source type, value range:
-     * - **UDM_ECS**: indicates the ECS instance backup.
-     * - **OSS**: indicates an OSS backup.
-     * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-     * - **ECS_FILE**: indicates that the ECS file is backed up.
-     * - **File**: indicates a local File backup.
+     * - `UDM_ECS`: indicates the ECS instance backup.
+     * - `OSS`: indicates an OSS backup.
+     * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+     * - `ECS_FILE`: indicates that the ECS file is backed up.
+     * - `File`: indicates a local File backup.
      * 
      */
     @Import(name="sourceType")
@@ -155,11 +201,11 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Data source type, value range:
-     * - **UDM_ECS**: indicates the ECS instance backup.
-     * - **OSS**: indicates an OSS backup.
-     * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-     * - **ECS_FILE**: indicates that the ECS file is backed up.
-     * - **File**: indicates a local File backup.
+     * - `UDM_ECS`: indicates the ECS instance backup.
+     * - `OSS`: indicates an OSS backup.
+     * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+     * - `ECS_FILE`: indicates that the ECS file is backed up.
+     * - `File`: indicates a local File backup.
      * 
      */
     public Optional<Output<String>> sourceType() {
@@ -185,6 +231,9 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
     private PolicyBindingArgs(PolicyBindingArgs $) {
         this.advancedOptions = $.advancedOptions;
+        this.crossAccountRoleName = $.crossAccountRoleName;
+        this.crossAccountType = $.crossAccountType;
+        this.crossAccountUserId = $.crossAccountUserId;
         this.dataSourceId = $.dataSourceId;
         this.disabled = $.disabled;
         this.exclude = $.exclude;
@@ -215,7 +264,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options. See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
          * 
          * @return builder
          * 
@@ -226,13 +275,76 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param advancedOptions Backup Advanced Options. See `advanced_options` below.
+         * @param advancedOptions Backup Advanced Options See `advanced_options` below.
          * 
          * @return builder
          * 
          */
         public Builder advancedOptions(PolicyBindingAdvancedOptionsArgs advancedOptions) {
             return advancedOptions(Output.of(advancedOptions));
+        }
+
+        /**
+         * @param crossAccountRoleName Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(@Nullable Output<String> crossAccountRoleName) {
+            $.crossAccountRoleName = crossAccountRoleName;
+            return this;
+        }
+
+        /**
+         * @param crossAccountRoleName Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            return crossAccountRoleName(Output.of(crossAccountRoleName));
+        }
+
+        /**
+         * @param crossAccountType Cross-account type, supported
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(@Nullable Output<String> crossAccountType) {
+            $.crossAccountType = crossAccountType;
+            return this;
+        }
+
+        /**
+         * @param crossAccountType Cross-account type, supported
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(String crossAccountType) {
+            return crossAccountType(Output.of(crossAccountType));
+        }
+
+        /**
+         * @param crossAccountUserId Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(@Nullable Output<Integer> crossAccountUserId) {
+            $.crossAccountUserId = crossAccountUserId;
+            return this;
+        }
+
+        /**
+         * @param crossAccountUserId Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            return crossAccountUserId(Output.of(crossAccountUserId));
         }
 
         /**
@@ -259,7 +371,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled Whether the policy is effective for the data source.
          * - true: Pause
-         * - false: not paused.
+         * - false: not paused
          * 
          * @return builder
          * 
@@ -272,7 +384,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled Whether the policy is effective for the data source.
          * - true: Pause
-         * - false: not paused.
+         * - false: not paused
          * 
          * @return builder
          * 
@@ -324,7 +436,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyBindingDescription Resource Description.
+         * @param policyBindingDescription Resource Description
          * 
          * @return builder
          * 
@@ -335,7 +447,7 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyBindingDescription Resource Description.
+         * @param policyBindingDescription Resource Description
          * 
          * @return builder
          * 
@@ -388,11 +500,11 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceType Data source type, value range:
-         * - **UDM_ECS**: indicates the ECS instance backup.
-         * - **OSS**: indicates an OSS backup.
-         * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-         * - **ECS_FILE**: indicates that the ECS file is backed up.
-         * - **File**: indicates a local File backup.
+         * - `UDM_ECS`: indicates the ECS instance backup.
+         * - `OSS`: indicates an OSS backup.
+         * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+         * - `ECS_FILE`: indicates that the ECS file is backed up.
+         * - `File`: indicates a local File backup.
          * 
          * @return builder
          * 
@@ -404,11 +516,11 @@ public final class PolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceType Data source type, value range:
-         * - **UDM_ECS**: indicates the ECS instance backup.
-         * - **OSS**: indicates an OSS backup.
-         * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-         * - **ECS_FILE**: indicates that the ECS file is backed up.
-         * - **File**: indicates a local File backup.
+         * - `UDM_ECS`: indicates the ECS instance backup.
+         * - `OSS`: indicates an OSS backup.
+         * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+         * - `ECS_FILE`: indicates that the ECS file is backed up.
+         * - `File`: indicates a local File backup.
          * 
          * @return builder
          * 

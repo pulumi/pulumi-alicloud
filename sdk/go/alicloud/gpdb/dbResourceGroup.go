@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Gpdb Db Resource Group resource.
+// Provides a GPDB Db Resource Group resource.
 //
 // For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
 //
@@ -65,23 +65,22 @@ import (
 //				return err
 //			}
 //			defaultJXWSlW, err := gpdb.NewInstance(ctx, "defaultJXWSlW", &gpdb.InstanceArgs{
-//				InstanceSpec:           pulumi.String("2C8G"),
-//				SegNodeNum:             pulumi.Int(2),
-//				SegStorageType:         pulumi.String("cloud_essd"),
-//				InstanceNetworkType:    pulumi.String("VPC"),
-//				DbInstanceCategory:     pulumi.String("Basic"),
-//				Engine:                 pulumi.String("gpdb"),
-//				ResourceManagementMode: pulumi.String("resourceGroup"),
-//				PaymentType:            pulumi.String("PayAsYouGo"),
-//				SslEnabled:             pulumi.Int(0),
-//				EngineVersion:          pulumi.String("6.0"),
-//				ZoneId:                 pulumi.String(_default.Zones[0].Id),
-//				VswitchId:              defaultRv5UXt.ID(),
-//				StorageSize:            pulumi.Int(50),
-//				MasterCu:               pulumi.Int(4),
-//				VpcId:                  defaultZc8RD9.ID(),
-//				DbInstanceMode:         pulumi.String("StorageElastic"),
-//				Description:            pulumi.String(name),
+//				InstanceSpec:        pulumi.String("2C8G"),
+//				SegNodeNum:          pulumi.Int(2),
+//				SegStorageType:      pulumi.String("cloud_essd"),
+//				InstanceNetworkType: pulumi.String("VPC"),
+//				DbInstanceCategory:  pulumi.String("Basic"),
+//				Engine:              pulumi.String("gpdb"),
+//				PaymentType:         pulumi.String("PayAsYouGo"),
+//				SslEnabled:          pulumi.Int(0),
+//				EngineVersion:       pulumi.String("6.0"),
+//				ZoneId:              pulumi.String(_default.Zones[0].Id),
+//				VswitchId:           defaultRv5UXt.ID(),
+//				StorageSize:         pulumi.Int(50),
+//				MasterCu:            pulumi.Int(4),
+//				VpcId:               defaultZc8RD9.ID(),
+//				DbInstanceMode:      pulumi.String("StorageElastic"),
+//				Description:         pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +112,7 @@ import (
 //
 // ## Import
 //
-// Gpdb Db Resource Group can be imported using the id, e.g.
+// GPDB Db Resource Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
@@ -127,6 +126,8 @@ type DbResourceGroup struct {
 	ResourceGroupConfig pulumi.StringOutput `pulumi:"resourceGroupConfig"`
 	// Resource group name.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
+	// Role List
+	RoleLists pulumi.StringArrayOutput `pulumi:"roleLists"`
 }
 
 // NewDbResourceGroup registers a new resource with the given unique name, arguments, and options.
@@ -174,6 +175,8 @@ type dbResourceGroupState struct {
 	ResourceGroupConfig *string `pulumi:"resourceGroupConfig"`
 	// Resource group name.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// Role List
+	RoleLists []string `pulumi:"roleLists"`
 }
 
 type DbResourceGroupState struct {
@@ -183,6 +186,8 @@ type DbResourceGroupState struct {
 	ResourceGroupConfig pulumi.StringPtrInput
 	// Resource group name.
 	ResourceGroupName pulumi.StringPtrInput
+	// Role List
+	RoleLists pulumi.StringArrayInput
 }
 
 func (DbResourceGroupState) ElementType() reflect.Type {
@@ -196,6 +201,8 @@ type dbResourceGroupArgs struct {
 	ResourceGroupConfig string `pulumi:"resourceGroupConfig"`
 	// Resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Role List
+	RoleLists []string `pulumi:"roleLists"`
 }
 
 // The set of arguments for constructing a DbResourceGroup resource.
@@ -206,6 +213,8 @@ type DbResourceGroupArgs struct {
 	ResourceGroupConfig pulumi.StringInput
 	// Resource group name.
 	ResourceGroupName pulumi.StringInput
+	// Role List
+	RoleLists pulumi.StringArrayInput
 }
 
 func (DbResourceGroupArgs) ElementType() reflect.Type {
@@ -308,6 +317,11 @@ func (o DbResourceGroupOutput) ResourceGroupConfig() pulumi.StringOutput {
 // Resource group name.
 func (o DbResourceGroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbResourceGroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Role List
+func (o DbResourceGroupOutput) RoleLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DbResourceGroup) pulumi.StringArrayOutput { return v.RoleLists }).(pulumi.StringArrayOutput)
 }
 
 type DbResourceGroupArrayOutput struct{ *pulumi.OutputState }

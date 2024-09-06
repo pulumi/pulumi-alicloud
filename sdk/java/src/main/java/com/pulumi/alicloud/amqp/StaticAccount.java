@@ -103,14 +103,14 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * Create time stamp. Unix timestamp, to millisecond level.
+     * The timestamp that indicates when the pair of static username and password was created.
      * 
      */
     @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
-     * @return Create time stamp. Unix timestamp, to millisecond level.
+     * @return The timestamp that indicates when the pair of static username and password was created.
      * 
      */
     public Output<Integer> createTime() {
@@ -145,14 +145,14 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
         return this.masterUid;
     }
     /**
-     * Static password.
+     * The static password.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return Static password.
+     * @return The static password.
      * 
      */
     public Output<String> password() {
@@ -173,14 +173,14 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
         return this.secretKey;
     }
     /**
-     * Static user name.
+     * The static username.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return Static user name.
+     * @return The static username.
      * 
      */
     public Output<String> userName() {

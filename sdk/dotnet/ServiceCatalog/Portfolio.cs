@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
     /// 
-    /// &gt; **NOTE:** Available since v1.204.0+.
+    /// &gt; **NOTE:** Available since v1.204.0.
     /// 
     /// ## Example Usage
     /// 
@@ -51,31 +51,31 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public partial class Portfolio : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the portfolio.
+        /// The creation time of the portfolio
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the portfolio. The value must be 1 to 128 characters in length.
+        /// The description of the portfolio
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN of the portfolio.
+        /// The ARN of the portfolio
         /// </summary>
         [Output("portfolioArn")]
         public Output<string> PortfolioArn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The name of the portfolio
         /// </summary>
         [Output("portfolioName")]
         public Output<string> PortfolioName { get; private set; } = null!;
 
         /// <summary>
-        /// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The provider name of the portfolio
         /// </summary>
         [Output("providerName")]
         public Output<string> ProviderName { get; private set; } = null!;
@@ -127,19 +127,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public sealed class PortfolioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the portfolio. The value must be 1 to 128 characters in length.
+        /// The description of the portfolio
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The name of the portfolio
         /// </summary>
         [Input("portfolioName", required: true)]
         public Input<string> PortfolioName { get; set; } = null!;
 
         /// <summary>
-        /// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The provider name of the portfolio
         /// </summary>
         [Input("providerName", required: true)]
         public Input<string> ProviderName { get; set; } = null!;
@@ -153,31 +153,31 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public sealed class PortfolioState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the portfolio.
+        /// The creation time of the portfolio
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the portfolio. The value must be 1 to 128 characters in length.
+        /// The description of the portfolio
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ARN of the portfolio.
+        /// The ARN of the portfolio
         /// </summary>
         [Input("portfolioArn")]
         public Input<string>? PortfolioArn { get; set; }
 
         /// <summary>
-        /// The name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The name of the portfolio
         /// </summary>
         [Input("portfolioName")]
         public Input<string>? PortfolioName { get; set; }
 
         /// <summary>
-        /// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        /// The provider name of the portfolio
         /// </summary>
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }

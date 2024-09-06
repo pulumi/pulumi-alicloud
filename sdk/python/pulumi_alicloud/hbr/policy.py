@@ -22,8 +22,8 @@ class PolicyArgs:
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[str] policy_description: The policy description.
-        :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if policy_description is not None:
             pulumi.set(__self__, "policy_description", policy_description)
@@ -48,7 +48,7 @@ class PolicyArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "policy_name")
 
@@ -60,7 +60,7 @@ class PolicyArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]]:
         """
-        A list of policy rules. See `rules` below.
+        A list of policy rules See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -78,10 +78,10 @@ class _PolicyState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input[str] create_time: Policy creation time.
+        :param pulumi.Input[str] create_time: Policy creation time
         :param pulumi.Input[str] policy_description: The policy description.
-        :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -96,7 +96,7 @@ class _PolicyState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy creation time.
+        Policy creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -120,7 +120,7 @@ class _PolicyState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "policy_name")
 
@@ -132,7 +132,7 @@ class _PolicyState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]]:
         """
-        A list of policy rules. See `rules` below.
+        A list of policy rules See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -200,8 +200,8 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_description: The policy description.
-        :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         ...
     @overload
@@ -308,10 +308,10 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Policy creation time.
+        :param pulumi.Input[str] create_time: Policy creation time
         :param pulumi.Input[str] policy_description: The policy description.
-        :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -327,7 +327,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Policy creation time.
+        Policy creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -343,7 +343,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "policy_name")
 
@@ -351,7 +351,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[Sequence['outputs.PolicyRule']]]:
         """
-        A list of policy rules. See `rules` below.
+        A list of policy rules See `rules` below.
         """
         return pulumi.get(self, "rules")
 

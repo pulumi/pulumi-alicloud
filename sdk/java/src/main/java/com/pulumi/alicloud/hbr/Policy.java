@@ -98,14 +98,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:hbr/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
     /**
-     * Policy creation time.
+     * Policy creation time
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Policy creation time.
+     * @return Policy creation time
      * 
      */
     public Output<String> createTime() {
@@ -126,28 +126,28 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policyDescription);
     }
     /**
-     * Policy Name.
+     * Policy Name
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyName;
 
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Output<Optional<String>> policyName() {
         return Codegen.optional(this.policyName);
     }
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      * 
      */
     @Export(name="rules", refs={List.class,PolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PolicyRule>> rules;
 
     /**
-     * @return A list of policy rules. See `rules` below.
+     * @return A list of policy rules See `rules` below.
      * 
      */
     public Output<Optional<List<PolicyRule>>> rules() {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterNodeGroupSystemDisk
     {
         /// <summary>
-        /// The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        /// The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         /// </summary>
         public readonly string Category;
         /// <summary>

@@ -18,14 +18,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     public static final PolicyState Empty = new PolicyState();
 
     /**
-     * Policy creation time.
+     * Policy creation time
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Policy creation time.
+     * @return Policy creation time
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -48,14 +48,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Policy Name.
+     * Policy Name
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -63,14 +63,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<PolicyRuleArgs>> rules;
 
     /**
-     * @return A list of policy rules. See `rules` below.
+     * @return A list of policy rules See `rules` below.
      * 
      */
     public Optional<Output<List<PolicyRuleArgs>>> rules() {
@@ -105,7 +105,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Policy creation time.
+         * @param createTime Policy creation time
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Policy creation time.
+         * @param createTime Policy creation time
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Policy Name.
+         * @param policyName Policy Name
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Policy Name.
+         * @param policyName Policy Name
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 

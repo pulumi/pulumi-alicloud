@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroupDataDisk {
     /**
-     * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * @return The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
      * 
      */
     private String category;
@@ -36,7 +36,7 @@ public final class ClusterNodeGroupDataDisk {
 
     private ClusterNodeGroupDataDisk() {}
     /**
-     * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * @return The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
      * 
      */
     public String category() {

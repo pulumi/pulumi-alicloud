@@ -83,17 +83,17 @@ type StaticAccount struct {
 
 	// Access key.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// Create time stamp. Unix timestamp, to millisecond level.
+	// The timestamp that indicates when the pair of static username and password was created.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// Amqp instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the user's primary account.
 	MasterUid pulumi.StringOutput `pulumi:"masterUid"`
-	// Static password.
+	// The static password.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Secret key.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
-	// Static user name.
+	// The static username.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -145,34 +145,34 @@ func GetStaticAccount(ctx *pulumi.Context,
 type staticAccountState struct {
 	// Access key.
 	AccessKey *string `pulumi:"accessKey"`
-	// Create time stamp. Unix timestamp, to millisecond level.
+	// The timestamp that indicates when the pair of static username and password was created.
 	CreateTime *int `pulumi:"createTime"`
 	// Amqp instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the user's primary account.
 	MasterUid *string `pulumi:"masterUid"`
-	// Static password.
+	// The static password.
 	Password *string `pulumi:"password"`
 	// Secret key.
 	SecretKey *string `pulumi:"secretKey"`
-	// Static user name.
+	// The static username.
 	UserName *string `pulumi:"userName"`
 }
 
 type StaticAccountState struct {
 	// Access key.
 	AccessKey pulumi.StringPtrInput
-	// Create time stamp. Unix timestamp, to millisecond level.
+	// The timestamp that indicates when the pair of static username and password was created.
 	CreateTime pulumi.IntPtrInput
 	// Amqp instance ID.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the user's primary account.
 	MasterUid pulumi.StringPtrInput
-	// Static password.
+	// The static password.
 	Password pulumi.StringPtrInput
 	// Secret key.
 	SecretKey pulumi.StringPtrInput
-	// Static user name.
+	// The static username.
 	UserName pulumi.StringPtrInput
 }
 
@@ -291,7 +291,7 @@ func (o StaticAccountOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// Create time stamp. Unix timestamp, to millisecond level.
+// The timestamp that indicates when the pair of static username and password was created.
 func (o StaticAccountOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
@@ -306,7 +306,7 @@ func (o StaticAccountOutput) MasterUid() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.MasterUid }).(pulumi.StringOutput)
 }
 
-// Static password.
+// The static password.
 func (o StaticAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -316,7 +316,7 @@ func (o StaticAccountOutput) SecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
 }
 
-// Static user name.
+// The static username.
 func (o StaticAccountOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticAccount) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

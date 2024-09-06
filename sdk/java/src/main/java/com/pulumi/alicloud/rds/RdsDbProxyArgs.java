@@ -119,6 +119,25 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     * 
+     */
+    @Import(name="dbProxyInstanceType")
+    private @Nullable Output<String> dbProxyInstanceType;
+
+    /**
+     * @return The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     * 
+     */
+    public Optional<Output<String>> dbProxyInstanceType() {
+        return Optional.ofNullable(this.dbProxyInstanceType);
+    }
+
+    /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
      * - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -355,6 +374,7 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
         this.dbProxyEndpointReadWriteMode = $.dbProxyEndpointReadWriteMode;
         this.dbProxyFeatures = $.dbProxyFeatures;
         this.dbProxyInstanceNum = $.dbProxyInstanceNum;
+        this.dbProxyInstanceType = $.dbProxyInstanceType;
         this.dbProxySslEnabled = $.dbProxySslEnabled;
         this.effectiveSpecificTime = $.effectiveSpecificTime;
         this.effectiveTime = $.effectiveTime;
@@ -515,6 +535,31 @@ public final class RdsDbProxyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbProxyInstanceNum(Integer dbProxyInstanceNum) {
             return dbProxyInstanceNum(Output.of(dbProxyInstanceNum));
+        }
+
+        /**
+         * @param dbProxyInstanceType The database proxy type. Valid values:
+         * - common: universal proxy.
+         * - exclusive: Exclusive proxy (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbProxyInstanceType(@Nullable Output<String> dbProxyInstanceType) {
+            $.dbProxyInstanceType = dbProxyInstanceType;
+            return this;
+        }
+
+        /**
+         * @param dbProxyInstanceType The database proxy type. Valid values:
+         * - common: universal proxy.
+         * - exclusive: Exclusive proxy (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbProxyInstanceType(String dbProxyInstanceType) {
+            return dbProxyInstanceType(Output.of(dbProxyInstanceType));
         }
 
         /**

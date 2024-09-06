@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointGroupIpAddressCidrBlocksResult {
+    private @Nullable String acceleratorId;
     /**
      * @return A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:
      * 
@@ -32,6 +33,9 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
     private @Nullable String outputFile;
 
     private GetEndpointGroupIpAddressCidrBlocksResult() {}
+    public Optional<String> acceleratorId() {
+        return Optional.ofNullable(this.acceleratorId);
+    }
     /**
      * @return A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:
      * 
@@ -66,6 +70,7 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String acceleratorId;
         private List<GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock> endpointGroupIpAddressCidrBlocks;
         private String endpointGroupRegion;
         private String id;
@@ -73,12 +78,19 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
         public Builder() {}
         public Builder(GetEndpointGroupIpAddressCidrBlocksResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratorId = defaults.acceleratorId;
     	      this.endpointGroupIpAddressCidrBlocks = defaults.endpointGroupIpAddressCidrBlocks;
     	      this.endpointGroupRegion = defaults.endpointGroupRegion;
     	      this.id = defaults.id;
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
+        public Builder acceleratorId(@Nullable String acceleratorId) {
+
+            this.acceleratorId = acceleratorId;
+            return this;
+        }
         @CustomType.Setter
         public Builder endpointGroupIpAddressCidrBlocks(List<GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock> endpointGroupIpAddressCidrBlocks) {
             if (endpointGroupIpAddressCidrBlocks == null) {
@@ -114,6 +126,7 @@ public final class GetEndpointGroupIpAddressCidrBlocksResult {
         }
         public GetEndpointGroupIpAddressCidrBlocksResult build() {
             final var _resultValue = new GetEndpointGroupIpAddressCidrBlocksResult();
+            _resultValue.acceleratorId = acceleratorId;
             _resultValue.endpointGroupIpAddressCidrBlocks = endpointGroupIpAddressCidrBlocks;
             _resultValue.endpointGroupRegion = endpointGroupRegion;
             _resultValue.id = id;

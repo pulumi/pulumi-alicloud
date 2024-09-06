@@ -303,6 +303,139 @@ func (o InstanceSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type LoadBalancerBackendServer struct {
+	// IP address of the backend server  Example value: 192.168.0.5.
+	Ip *string `pulumi:"ip"`
+	// Port used by the backend server.
+	Port *int `pulumi:"port"`
+	// Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+	ServerId string `pulumi:"serverId"`
+	// Backend server type  Example value: ens.
+	Type *string `pulumi:"type"`
+	// Weight of the backend server  Example value: 100.
+	Weight *int `pulumi:"weight"`
+}
+
+// LoadBalancerBackendServerInput is an input type that accepts LoadBalancerBackendServerArgs and LoadBalancerBackendServerOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendServerInput` via:
+//
+//	LoadBalancerBackendServerArgs{...}
+type LoadBalancerBackendServerInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendServerOutput() LoadBalancerBackendServerOutput
+	ToLoadBalancerBackendServerOutputWithContext(context.Context) LoadBalancerBackendServerOutput
+}
+
+type LoadBalancerBackendServerArgs struct {
+	// IP address of the backend server  Example value: 192.168.0.5.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// Port used by the backend server.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+	ServerId pulumi.StringInput `pulumi:"serverId"`
+	// Backend server type  Example value: ens.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight of the backend server  Example value: 100.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (LoadBalancerBackendServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendServer)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendServerArgs) ToLoadBalancerBackendServerOutput() LoadBalancerBackendServerOutput {
+	return i.ToLoadBalancerBackendServerOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendServerArgs) ToLoadBalancerBackendServerOutputWithContext(ctx context.Context) LoadBalancerBackendServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendServerOutput)
+}
+
+// LoadBalancerBackendServerArrayInput is an input type that accepts LoadBalancerBackendServerArray and LoadBalancerBackendServerArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendServerArrayInput` via:
+//
+//	LoadBalancerBackendServerArray{ LoadBalancerBackendServerArgs{...} }
+type LoadBalancerBackendServerArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendServerArrayOutput() LoadBalancerBackendServerArrayOutput
+	ToLoadBalancerBackendServerArrayOutputWithContext(context.Context) LoadBalancerBackendServerArrayOutput
+}
+
+type LoadBalancerBackendServerArray []LoadBalancerBackendServerInput
+
+func (LoadBalancerBackendServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendServer)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendServerArray) ToLoadBalancerBackendServerArrayOutput() LoadBalancerBackendServerArrayOutput {
+	return i.ToLoadBalancerBackendServerArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendServerArray) ToLoadBalancerBackendServerArrayOutputWithContext(ctx context.Context) LoadBalancerBackendServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendServerArrayOutput)
+}
+
+type LoadBalancerBackendServerOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendServer)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendServerOutput) ToLoadBalancerBackendServerOutput() LoadBalancerBackendServerOutput {
+	return o
+}
+
+func (o LoadBalancerBackendServerOutput) ToLoadBalancerBackendServerOutputWithContext(ctx context.Context) LoadBalancerBackendServerOutput {
+	return o
+}
+
+// IP address of the backend server  Example value: 192.168.0.5.
+func (o LoadBalancerBackendServerOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendServer) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// Port used by the backend server.
+func (o LoadBalancerBackendServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+func (o LoadBalancerBackendServerOutput) ServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
+}
+
+// Backend server type  Example value: ens.
+func (o LoadBalancerBackendServerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendServer) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Weight of the backend server  Example value: 100.
+func (o LoadBalancerBackendServerOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerBackendServerArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendServer)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendServerArrayOutput) ToLoadBalancerBackendServerArrayOutput() LoadBalancerBackendServerArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendServerArrayOutput) ToLoadBalancerBackendServerArrayOutputWithContext(ctx context.Context) LoadBalancerBackendServerArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendServerArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendServer {
+		return vs[0].([]LoadBalancerBackendServer)[vs[1].(int)]
+	}).(LoadBalancerBackendServerOutput)
+}
+
 type GetKeyPairsPair struct {
 	// The creation time of the key pair. The date format is in accordance with ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
 	CreateTime string `pulumi:"createTime"`
@@ -441,12 +574,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSystemDiskInput)(nil)).Elem(), InstanceSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSystemDiskPtrInput)(nil)).Elem(), InstanceSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendServerInput)(nil)).Elem(), LoadBalancerBackendServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerBackendServerArrayInput)(nil)).Elem(), LoadBalancerBackendServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceSystemDiskOutput{})
 	pulumi.RegisterOutputType(InstanceSystemDiskPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendServerOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendServerArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
 }

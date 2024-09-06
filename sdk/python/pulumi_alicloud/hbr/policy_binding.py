@@ -17,6 +17,9 @@ __all__ = ['PolicyBindingArgs', 'PolicyBinding']
 class PolicyBindingArgs:
     def __init__(__self__, *,
                  advanced_options: Optional[pulumi.Input['PolicyBindingAdvancedOptionsArgs']] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -28,26 +31,35 @@ class PolicyBindingArgs:
                  speed_limit: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PolicyBinding resource.
-        :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options. See `advanced_options` below.
+        :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        :param pulumi.Input[str] cross_account_type: Cross-account type, supported
+        :param pulumi.Input[int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.
                - true: Pause
-               - false: not paused.
+               - false: not paused
         :param pulumi.Input[str] exclude: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
         :param pulumi.Input[str] include: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
-        :param pulumi.Input[str] policy_binding_description: Resource Description.
+        :param pulumi.Input[str] policy_binding_description: Resource Description
         :param pulumi.Input[str] policy_id: The policy ID.
         :param pulumi.Input[str] source: When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
         :param pulumi.Input[str] source_type: Data source type, value range:
-               - **UDM_ECS**: indicates the ECS instance backup.
-               - **OSS**: indicates an OSS backup.
-               - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-               - **ECS_FILE**: indicates that the ECS file is backed up.
-               - **File**: indicates a local File backup.
+               - `UDM_ECS`: indicates the ECS instance backup.
+               - `OSS`: indicates an OSS backup.
+               - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+               - `ECS_FILE`: indicates that the ECS file is backed up.
+               - `File`: indicates a local File backup.
         :param pulumi.Input[str] speed_limit: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
         """
         if advanced_options is not None:
             pulumi.set(__self__, "advanced_options", advanced_options)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
         if disabled is not None:
@@ -71,13 +83,49 @@ class PolicyBindingArgs:
     @pulumi.getter(name="advancedOptions")
     def advanced_options(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsArgs']]:
         """
-        Backup Advanced Options. See `advanced_options` below.
+        Backup Advanced Options See `advanced_options` below.
         """
         return pulumi.get(self, "advanced_options")
 
     @advanced_options.setter
     def advanced_options(self, value: Optional[pulumi.Input['PolicyBindingAdvancedOptionsArgs']]):
         pulumi.set(self, "advanced_options", value)
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cross-account type, supported
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -97,7 +145,7 @@ class PolicyBindingArgs:
         """
         Whether the policy is effective for the data source.
         - true: Pause
-        - false: not paused.
+        - false: not paused
         """
         return pulumi.get(self, "disabled")
 
@@ -133,7 +181,7 @@ class PolicyBindingArgs:
     @pulumi.getter(name="policyBindingDescription")
     def policy_binding_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource Description.
+        Resource Description
         """
         return pulumi.get(self, "policy_binding_description")
 
@@ -170,11 +218,11 @@ class PolicyBindingArgs:
     def source_type(self) -> Optional[pulumi.Input[str]]:
         """
         Data source type, value range:
-        - **UDM_ECS**: indicates the ECS instance backup.
-        - **OSS**: indicates an OSS backup.
-        - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        - **ECS_FILE**: indicates that the ECS file is backed up.
-        - **File**: indicates a local File backup.
+        - `UDM_ECS`: indicates the ECS instance backup.
+        - `OSS`: indicates an OSS backup.
+        - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        - `ECS_FILE`: indicates that the ECS file is backed up.
+        - `File`: indicates a local File backup.
         """
         return pulumi.get(self, "source_type")
 
@@ -200,6 +248,9 @@ class _PolicyBindingState:
     def __init__(__self__, *,
                  advanced_options: Optional[pulumi.Input['PolicyBindingAdvancedOptionsArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -211,29 +262,38 @@ class _PolicyBindingState:
                  speed_limit: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PolicyBinding resources.
-        :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options. See `advanced_options` below.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input['PolicyBindingAdvancedOptionsArgs'] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        :param pulumi.Input[str] cross_account_type: Cross-account type, supported
+        :param pulumi.Input[int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.
                - true: Pause
-               - false: not paused.
+               - false: not paused
         :param pulumi.Input[str] exclude: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
         :param pulumi.Input[str] include: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
-        :param pulumi.Input[str] policy_binding_description: Resource Description.
+        :param pulumi.Input[str] policy_binding_description: Resource Description
         :param pulumi.Input[str] policy_id: The policy ID.
         :param pulumi.Input[str] source: When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
         :param pulumi.Input[str] source_type: Data source type, value range:
-               - **UDM_ECS**: indicates the ECS instance backup.
-               - **OSS**: indicates an OSS backup.
-               - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-               - **ECS_FILE**: indicates that the ECS file is backed up.
-               - **File**: indicates a local File backup.
+               - `UDM_ECS`: indicates the ECS instance backup.
+               - `OSS`: indicates an OSS backup.
+               - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+               - `ECS_FILE`: indicates that the ECS file is backed up.
+               - `File`: indicates a local File backup.
         :param pulumi.Input[str] speed_limit: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
         """
         if advanced_options is not None:
             pulumi.set(__self__, "advanced_options", advanced_options)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
         if disabled is not None:
@@ -257,7 +317,7 @@ class _PolicyBindingState:
     @pulumi.getter(name="advancedOptions")
     def advanced_options(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsArgs']]:
         """
-        Backup Advanced Options. See `advanced_options` below.
+        Backup Advanced Options See `advanced_options` below.
         """
         return pulumi.get(self, "advanced_options")
 
@@ -269,13 +329,49 @@ class _PolicyBindingState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cross-account type, supported
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -295,7 +391,7 @@ class _PolicyBindingState:
         """
         Whether the policy is effective for the data source.
         - true: Pause
-        - false: not paused.
+        - false: not paused
         """
         return pulumi.get(self, "disabled")
 
@@ -331,7 +427,7 @@ class _PolicyBindingState:
     @pulumi.getter(name="policyBindingDescription")
     def policy_binding_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource Description.
+        Resource Description
         """
         return pulumi.get(self, "policy_binding_description")
 
@@ -368,11 +464,11 @@ class _PolicyBindingState:
     def source_type(self) -> Optional[pulumi.Input[str]]:
         """
         Data source type, value range:
-        - **UDM_ECS**: indicates the ECS instance backup.
-        - **OSS**: indicates an OSS backup.
-        - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        - **ECS_FILE**: indicates that the ECS file is backed up.
-        - **File**: indicates a local File backup.
+        - `UDM_ECS`: indicates the ECS instance backup.
+        - `OSS`: indicates an OSS backup.
+        - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        - `ECS_FILE`: indicates that the ECS file is backed up.
+        - `File`: indicates a local File backup.
         """
         return pulumi.get(self, "source_type")
 
@@ -399,6 +495,9 @@ class PolicyBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -410,7 +509,7 @@ class PolicyBinding(pulumi.CustomResource):
                  speed_limit: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a HBR Policy Binding resource. A policy binding relationship consists of a data source, a policy, and binding options.
+        Provides a HBR Policy Binding resource.
 
         For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
 
@@ -468,22 +567,25 @@ class PolicyBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options. See `advanced_options` below.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        :param pulumi.Input[str] cross_account_type: Cross-account type, supported
+        :param pulumi.Input[int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.
                - true: Pause
-               - false: not paused.
+               - false: not paused
         :param pulumi.Input[str] exclude: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
         :param pulumi.Input[str] include: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
-        :param pulumi.Input[str] policy_binding_description: Resource Description.
+        :param pulumi.Input[str] policy_binding_description: Resource Description
         :param pulumi.Input[str] policy_id: The policy ID.
         :param pulumi.Input[str] source: When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
         :param pulumi.Input[str] source_type: Data source type, value range:
-               - **UDM_ECS**: indicates the ECS instance backup.
-               - **OSS**: indicates an OSS backup.
-               - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-               - **ECS_FILE**: indicates that the ECS file is backed up.
-               - **File**: indicates a local File backup.
+               - `UDM_ECS`: indicates the ECS instance backup.
+               - `OSS`: indicates an OSS backup.
+               - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+               - `ECS_FILE`: indicates that the ECS file is backed up.
+               - `File`: indicates a local File backup.
         :param pulumi.Input[str] speed_limit: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
         """
         ...
@@ -493,7 +595,7 @@ class PolicyBinding(pulumi.CustomResource):
                  args: Optional[PolicyBindingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a HBR Policy Binding resource. A policy binding relationship consists of a data source, a policy, and binding options.
+        Provides a HBR Policy Binding resource.
 
         For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
 
@@ -565,6 +667,9 @@ class PolicyBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -584,6 +689,9 @@ class PolicyBinding(pulumi.CustomResource):
             __props__ = PolicyBindingArgs.__new__(PolicyBindingArgs)
 
             __props__.__dict__["advanced_options"] = advanced_options
+            __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+            __props__.__dict__["cross_account_type"] = cross_account_type
+            __props__.__dict__["cross_account_user_id"] = cross_account_user_id
             __props__.__dict__["data_source_id"] = data_source_id
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["exclude"] = exclude
@@ -606,6 +714,9 @@ class PolicyBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            cross_account_role_name: Optional[pulumi.Input[str]] = None,
+            cross_account_type: Optional[pulumi.Input[str]] = None,
+            cross_account_user_id: Optional[pulumi.Input[int]] = None,
             data_source_id: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             exclude: Optional[pulumi.Input[str]] = None,
@@ -622,23 +733,26 @@ class PolicyBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options. See `advanced_options` below.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options See `advanced_options` below.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] cross_account_role_name: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        :param pulumi.Input[str] cross_account_type: Cross-account type, supported
+        :param pulumi.Input[int] cross_account_user_id: Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.
                - true: Pause
-               - false: not paused.
+               - false: not paused
         :param pulumi.Input[str] exclude: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
         :param pulumi.Input[str] include: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
-        :param pulumi.Input[str] policy_binding_description: Resource Description.
+        :param pulumi.Input[str] policy_binding_description: Resource Description
         :param pulumi.Input[str] policy_id: The policy ID.
         :param pulumi.Input[str] source: When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
         :param pulumi.Input[str] source_type: Data source type, value range:
-               - **UDM_ECS**: indicates the ECS instance backup.
-               - **OSS**: indicates an OSS backup.
-               - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-               - **ECS_FILE**: indicates that the ECS file is backed up.
-               - **File**: indicates a local File backup.
+               - `UDM_ECS`: indicates the ECS instance backup.
+               - `OSS`: indicates an OSS backup.
+               - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+               - `ECS_FILE`: indicates that the ECS file is backed up.
+               - `File`: indicates a local File backup.
         :param pulumi.Input[str] speed_limit: This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -647,6 +761,9 @@ class PolicyBinding(pulumi.CustomResource):
 
         __props__.__dict__["advanced_options"] = advanced_options
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+        __props__.__dict__["cross_account_type"] = cross_account_type
+        __props__.__dict__["cross_account_user_id"] = cross_account_user_id
         __props__.__dict__["data_source_id"] = data_source_id
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["exclude"] = exclude
@@ -662,7 +779,7 @@ class PolicyBinding(pulumi.CustomResource):
     @pulumi.getter(name="advancedOptions")
     def advanced_options(self) -> pulumi.Output['outputs.PolicyBindingAdvancedOptions']:
         """
-        Backup Advanced Options. See `advanced_options` below.
+        Backup Advanced Options See `advanced_options` below.
         """
         return pulumi.get(self, "advanced_options")
 
@@ -670,9 +787,33 @@ class PolicyBinding(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> pulumi.Output[str]:
+        """
+        Cross-account type, supported
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -688,7 +829,7 @@ class PolicyBinding(pulumi.CustomResource):
         """
         Whether the policy is effective for the data source.
         - true: Pause
-        - false: not paused.
+        - false: not paused
         """
         return pulumi.get(self, "disabled")
 
@@ -712,7 +853,7 @@ class PolicyBinding(pulumi.CustomResource):
     @pulumi.getter(name="policyBindingDescription")
     def policy_binding_description(self) -> pulumi.Output[Optional[str]]:
         """
-        Resource Description.
+        Resource Description
         """
         return pulumi.get(self, "policy_binding_description")
 
@@ -737,11 +878,11 @@ class PolicyBinding(pulumi.CustomResource):
     def source_type(self) -> pulumi.Output[str]:
         """
         Data source type, value range:
-        - **UDM_ECS**: indicates the ECS instance backup.
-        - **OSS**: indicates an OSS backup.
-        - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        - **ECS_FILE**: indicates that the ECS file is backed up.
-        - **File**: indicates a local File backup.
+        - `UDM_ECS`: indicates the ECS instance backup.
+        - `OSS`: indicates an OSS backup.
+        - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        - `ECS_FILE`: indicates that the ECS file is backed up.
+        - `File`: indicates a local File backup.
         """
         return pulumi.get(self, "source_type")
 

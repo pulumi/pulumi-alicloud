@@ -16,7 +16,7 @@ import (
 //
 // For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 //
-// > **NOTE:** Available since v1.204.0+.
+// > **NOTE:** Available since v1.204.0.
 //
 // ## Example Usage
 //
@@ -63,15 +63,15 @@ import (
 type Portfolio struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the portfolio.
+	// The creation time of the portfolio
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the portfolio. The value must be 1 to 128 characters in length.
+	// The description of the portfolio
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ARN of the portfolio.
+	// The ARN of the portfolio
 	PortfolioArn pulumi.StringOutput `pulumi:"portfolioArn"`
-	// The name of the portfolio. The value must be 1 to 128 characters in length.
+	// The name of the portfolio
 	PortfolioName pulumi.StringOutput `pulumi:"portfolioName"`
-	// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+	// The provider name of the portfolio
 	ProviderName pulumi.StringOutput `pulumi:"providerName"`
 }
 
@@ -111,28 +111,28 @@ func GetPortfolio(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Portfolio resources.
 type portfolioState struct {
-	// The creation time of the portfolio.
+	// The creation time of the portfolio
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the portfolio. The value must be 1 to 128 characters in length.
+	// The description of the portfolio
 	Description *string `pulumi:"description"`
-	// The ARN of the portfolio.
+	// The ARN of the portfolio
 	PortfolioArn *string `pulumi:"portfolioArn"`
-	// The name of the portfolio. The value must be 1 to 128 characters in length.
+	// The name of the portfolio
 	PortfolioName *string `pulumi:"portfolioName"`
-	// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+	// The provider name of the portfolio
 	ProviderName *string `pulumi:"providerName"`
 }
 
 type PortfolioState struct {
-	// The creation time of the portfolio.
+	// The creation time of the portfolio
 	CreateTime pulumi.StringPtrInput
-	// The description of the portfolio. The value must be 1 to 128 characters in length.
+	// The description of the portfolio
 	Description pulumi.StringPtrInput
-	// The ARN of the portfolio.
+	// The ARN of the portfolio
 	PortfolioArn pulumi.StringPtrInput
-	// The name of the portfolio. The value must be 1 to 128 characters in length.
+	// The name of the portfolio
 	PortfolioName pulumi.StringPtrInput
-	// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+	// The provider name of the portfolio
 	ProviderName pulumi.StringPtrInput
 }
 
@@ -141,21 +141,21 @@ func (PortfolioState) ElementType() reflect.Type {
 }
 
 type portfolioArgs struct {
-	// The description of the portfolio. The value must be 1 to 128 characters in length.
+	// The description of the portfolio
 	Description *string `pulumi:"description"`
-	// The name of the portfolio. The value must be 1 to 128 characters in length.
+	// The name of the portfolio
 	PortfolioName string `pulumi:"portfolioName"`
-	// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+	// The provider name of the portfolio
 	ProviderName string `pulumi:"providerName"`
 }
 
 // The set of arguments for constructing a Portfolio resource.
 type PortfolioArgs struct {
-	// The description of the portfolio. The value must be 1 to 128 characters in length.
+	// The description of the portfolio
 	Description pulumi.StringPtrInput
-	// The name of the portfolio. The value must be 1 to 128 characters in length.
+	// The name of the portfolio
 	PortfolioName pulumi.StringInput
-	// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+	// The provider name of the portfolio
 	ProviderName pulumi.StringInput
 }
 
@@ -246,27 +246,27 @@ func (o PortfolioOutput) ToPortfolioOutputWithContext(ctx context.Context) Portf
 	return o
 }
 
-// The creation time of the portfolio.
+// The creation time of the portfolio
 func (o PortfolioOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Portfolio) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the portfolio. The value must be 1 to 128 characters in length.
+// The description of the portfolio
 func (o PortfolioOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Portfolio) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the portfolio.
+// The ARN of the portfolio
 func (o PortfolioOutput) PortfolioArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Portfolio) pulumi.StringOutput { return v.PortfolioArn }).(pulumi.StringOutput)
 }
 
-// The name of the portfolio. The value must be 1 to 128 characters in length.
+// The name of the portfolio
 func (o PortfolioOutput) PortfolioName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Portfolio) pulumi.StringOutput { return v.PortfolioName }).(pulumi.StringOutput)
 }
 
-// The provider name of the portfolio. The value must be 1 to 128 characters in length.
+// The provider name of the portfolio
 func (o PortfolioOutput) ProviderName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Portfolio) pulumi.StringOutput { return v.ProviderName }).(pulumi.StringOutput)
 }

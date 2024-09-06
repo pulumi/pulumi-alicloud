@@ -93,38 +93,49 @@ namespace Pulumi.AliCloud.Gpdb
     {
         /// <summary>
         /// The description of the account.
-        /// * Starts with a letter.
-        /// * Does not start with `http://` or `https://`.
-        /// * Contains letters, underscores (_), hyphens (-), or digits.
-        /// * Be 2 to 256 characters in length.
         /// </summary>
         [Output("accountDescription")]
         public Output<string?> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the account. The account name must be unique and meet the following requirements:
-        /// * Starts with a letter.
-        /// * Contains only lowercase letters, digits, or underscores (_).
-        /// * Be up to 16 characters in length.
-        /// * Contains no reserved keywords.
+        /// The account name.
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
+        /// AccountPassword
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// Account type. The value range is as follows:
+        /// 
+        /// Normal: Normal account number.
+        /// 
+        /// Super: a high-privilege account.
+        /// </summary>
+        [Output("accountType")]
+        public Output<string> AccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// Database name, with the following restrictions:
+        /// - Can only contain letters, numbers and underscores.
+        /// - Must start with a letter.
+        /// - Length cannot exceed 63 characters.
+        /// </summary>
+        [Output("databaseName")]
+        public Output<string?> DatabaseName { get; private set; } = null!;
+
+        /// <summary>
+        /// The Adb pg instance ID.
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -152,6 +163,10 @@ namespace Pulumi.AliCloud.Gpdb
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -177,32 +192,53 @@ namespace Pulumi.AliCloud.Gpdb
     {
         /// <summary>
         /// The description of the account.
-        /// * Starts with a letter.
-        /// * Does not start with `http://` or `https://`.
-        /// * Contains letters, underscores (_), hyphens (-), or digits.
-        /// * Be 2 to 256 characters in length.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The name of the account. The account name must be unique and meet the following requirements:
-        /// * Starts with a letter.
-        /// * Contains only lowercase letters, digits, or underscores (_).
-        /// * Be up to 16 characters in length.
-        /// * Contains no reserved keywords.
+        /// The account name.
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
-        /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
-        /// </summary>
         [Input("accountPassword", required: true)]
-        public Input<string> AccountPassword { get; set; } = null!;
+        private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The ID of the instance.
+        /// AccountPassword
+        /// </summary>
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Account type. The value range is as follows:
+        /// 
+        /// Normal: Normal account number.
+        /// 
+        /// Super: a high-privilege account.
+        /// </summary>
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        /// <summary>
+        /// Database name, with the following restrictions:
+        /// - Can only contain letters, numbers and underscores.
+        /// - Must start with a letter.
+        /// - Length cannot exceed 63 characters.
+        /// </summary>
+        [Input("databaseName")]
+        public Input<string>? DatabaseName { get; set; }
+
+        /// <summary>
+        /// The Adb pg instance ID.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
@@ -217,38 +253,59 @@ namespace Pulumi.AliCloud.Gpdb
     {
         /// <summary>
         /// The description of the account.
-        /// * Starts with a letter.
-        /// * Does not start with `http://` or `https://`.
-        /// * Contains letters, underscores (_), hyphens (-), or digits.
-        /// * Be 2 to 256 characters in length.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The name of the account. The account name must be unique and meet the following requirements:
-        /// * Starts with a letter.
-        /// * Contains only lowercase letters, digits, or underscores (_).
-        /// * Be up to 16 characters in length.
-        /// * Contains no reserved keywords.
+        /// The account name.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
-        /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
-        /// </summary>
         [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The ID of the instance.
+        /// AccountPassword
+        /// </summary>
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Account type. The value range is as follows:
+        /// 
+        /// Normal: Normal account number.
+        /// 
+        /// Super: a high-privilege account.
+        /// </summary>
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        /// <summary>
+        /// Database name, with the following restrictions:
+        /// - Can only contain letters, numbers and underscores.
+        /// - Must start with a letter.
+        /// - Length cannot exceed 63 characters.
+        /// </summary>
+        [Input("databaseName")]
+        public Input<string>? DatabaseName { get; set; }
+
+        /// <summary>
+        /// The Adb pg instance ID.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Emr Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.199.0+.
+ * > **NOTE:** Available since v1.199.0.
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
@@ -47,7 +47,7 @@ export interface GetClustersArgs {
      */
     clusterTypes?: string[];
     /**
-     * A list of Cluster IDS.
+     * A list of Cluster IDs.
      */
     ids?: string[];
     /**
@@ -84,29 +84,50 @@ export interface GetClustersArgs {
  * A collection of values returned by getClusters.
  */
 export interface GetClustersResult {
+    /**
+     * The name of the emr cluster.
+     */
     readonly clusterName?: string;
     readonly clusterStates?: string[];
     readonly clusterTypes?: string[];
+    /**
+     * A list of Emr Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.emrv2.GetClustersCluster[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Cluster IDS.
+     */
     readonly ids: string[];
     readonly maxResults?: number;
     readonly nameRegex?: string;
+    /**
+     * A list of Cluster names.
+     */
     readonly names: string[];
     readonly nextToken?: string;
     readonly outputFile?: string;
     readonly paymentTypes?: string[];
+    /**
+     * The resource group id of the resource.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The total count of list clusters.
+     */
     readonly totalCount: number;
 }
 /**
  * This data source provides the Emr Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.199.0+.
+ * > **NOTE:** Available since v1.199.0.
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
     return pulumi.output(args).apply((a: any) => getClusters(a, opts))
@@ -129,7 +150,7 @@ export interface GetClustersOutputArgs {
      */
     clusterTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Cluster IDS.
+     * A list of Cluster IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

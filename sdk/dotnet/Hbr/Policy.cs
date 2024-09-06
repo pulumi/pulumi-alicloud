@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy creation time.
+        /// Policy creation time
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -88,13 +88,13 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> PolicyDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         [Output("policyName")]
         public Output<string?> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// A list of policy rules. See `rules` below.
+        /// A list of policy rules See `rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.PolicyRule>> Rules { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? PolicyDescription { get; set; }
 
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.PolicyRuleArgs>? _rules;
 
         /// <summary>
-        /// A list of policy rules. See `rules` below.
+        /// A list of policy rules See `rules` below.
         /// </summary>
         public InputList<Inputs.PolicyRuleArgs> Rules
         {
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy creation time.
+        /// Policy creation time
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? PolicyDescription { get; set; }
 
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.PolicyRuleGetArgs>? _rules;
 
         /// <summary>
-        /// A list of policy rules. See `rules` below.
+        /// A list of policy rules See `rules` below.
         /// </summary>
         public InputList<Inputs.PolicyRuleGetArgs> Rules
         {

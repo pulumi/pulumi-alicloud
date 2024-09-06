@@ -102,6 +102,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly elasticIoResourceSize!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
     public readonly kmsId!: pulumi.Output<string | undefined>;
@@ -200,6 +204,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
+            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
             resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
@@ -237,6 +242,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
+            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
             resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
@@ -324,6 +330,10 @@ export interface DBClusterState {
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
      */
     elasticIoResourceSize?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
@@ -457,6 +467,10 @@ export interface DBClusterArgs {
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
      */
     elasticIoResourceSize?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */

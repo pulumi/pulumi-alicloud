@@ -1432,7 +1432,7 @@ class ClusterNodeGroupDataDiskArgs:
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
         :param pulumi.Input[int] count: The count of a data disk.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
@@ -1448,7 +1448,7 @@ class ClusterNodeGroupDataDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
         """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         """
         return pulumi.get(self, "category")
 
@@ -1542,7 +1542,7 @@ class ClusterNodeGroupSubscriptionConfigArgs:
         """
         :param pulumi.Input[int] payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        :param pulumi.Input[bool] auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        :param pulumi.Input[bool] auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[int] auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -1586,7 +1586,7 @@ class ClusterNodeGroupSubscriptionConfigArgs:
     @pulumi.getter(name="autoPayOrder")
     def auto_pay_order(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 
@@ -1639,7 +1639,7 @@ class ClusterNodeGroupSystemDiskArgs:
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
         :param pulumi.Input[int] count: The count of a data disk.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
@@ -1655,7 +1655,7 @@ class ClusterNodeGroupSystemDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
         """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         """
         return pulumi.get(self, "category")
 
@@ -1712,7 +1712,7 @@ class ClusterSubscriptionConfigArgs:
         """
         :param pulumi.Input[int] payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        :param pulumi.Input[bool] auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        :param pulumi.Input[bool] auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[int] auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -1756,7 +1756,7 @@ class ClusterSubscriptionConfigArgs:
     @pulumi.getter(name="autoPayOrder")
     def auto_pay_order(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 

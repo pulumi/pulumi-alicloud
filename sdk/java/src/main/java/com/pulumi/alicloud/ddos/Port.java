@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ddos;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ddos.PortArgs;
 import com.pulumi.alicloud.ddos.inputs.PortState;
+import com.pulumi.alicloud.ddos.outputs.PortConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Anti-DDoS Pro Port resource.
+ * Provides a Ddos Coo Port resource.
  * 
  * For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
  * 
@@ -82,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Anti-DDoS Pro Port can be imported using the id, e.g.
+ * Ddos Coo Port can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ddos/port:Port example &lt;instance_id&gt;:&lt;frontend_port&gt;:&lt;frontend_protocol&gt;
@@ -92,70 +93,90 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ddos/port:Port")
 public class Port extends com.pulumi.resources.CustomResource {
     /**
-     * The port of the origin server. Valid values: [1~65535].
+     * The port of the origin server. Valid values: `0` to `65535`.
      * 
      */
     @Export(name="backendPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backendPort;
 
     /**
-     * @return The port of the origin server. Valid values: [1~65535].
+     * @return The port of the origin server. Valid values: `0` to `65535`.
      * 
      */
     public Output<Optional<String>> backendPort() {
         return Codegen.optional(this.backendPort);
     }
     /**
-     * The forwarding port. Valid values: [1~65535].
+     * Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+     * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+     * 
+     */
+    @Export(name="config", refs={PortConfig.class}, tree="[0]")
+    private Output<PortConfig> config;
+
+    /**
+     * @return Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+     * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+     * 
+     */
+    public Output<PortConfig> config() {
+        return this.config;
+    }
+    /**
+     * The forwarding port to query. Valid values: `0` to `65535`.
      * 
      */
     @Export(name="frontendPort", refs={String.class}, tree="[0]")
     private Output<String> frontendPort;
 
     /**
-     * @return The forwarding port. Valid values: [1~65535].
+     * @return The forwarding port to query. Valid values: `0` to `65535`.
      * 
      */
     public Output<String> frontendPort() {
         return this.frontendPort;
     }
     /**
-     * The forwarding protocol. Valid values `tcp` and `udp`.
+     * The type of the forwarding protocol to query. Valid values:
      * 
      */
     @Export(name="frontendProtocol", refs={String.class}, tree="[0]")
     private Output<String> frontendProtocol;
 
     /**
-     * @return The forwarding protocol. Valid values `tcp` and `udp`.
+     * @return The type of the forwarding protocol to query. Valid values:
      * 
      */
     public Output<String> frontendProtocol() {
         return this.frontendProtocol;
     }
     /**
-     * The ID of Ddoscoo instance.
+     * The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of Ddoscoo instance.
+     * @return The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * List of source IP addresses.
+     * List of source IP addresses
      * 
      */
     @Export(name="realServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> realServers;
 
     /**
-     * @return List of source IP addresses.
+     * @return List of source IP addresses
      * 
      */
     public Output<List<String>> realServers() {

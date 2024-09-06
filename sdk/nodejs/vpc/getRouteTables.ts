@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.36.0+.
+ * > **NOTE:** Available since v1.36.0.
  *
  * ## Example Usage
  *
@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const foo = alicloud.vpc.getRouteTablesOutput({
  *     ids: [fooRouteTable.id],
+ *     routeTableType: "Custom",
  * });
  * export const routeTableIds = foo.apply(foo => foo.ids);
  * ```
@@ -46,6 +47,7 @@ export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOp
         "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "routeTableName": args.routeTableName,
+        "routeTableType": args.routeTableType,
         "routerId": args.routerId,
         "routerType": args.routerType,
         "status": args.status,
@@ -80,6 +82,10 @@ export interface GetRouteTablesArgs {
      * The route table name.
      */
     routeTableName?: string;
+    /**
+     * The route table type.
+     */
+    routeTableType?: string;
     /**
      * The router ID.
      */
@@ -131,6 +137,10 @@ export interface GetRouteTablesResult {
      */
     readonly routeTableName?: string;
     /**
+     * The type of route table.
+     */
+    readonly routeTableType?: string;
+    /**
      * Router Id of the route table.
      */
     readonly routerId?: string;
@@ -146,6 +156,9 @@ export interface GetRouteTablesResult {
      * A list of Route Tables. Each element contains the following attributes:
      */
     readonly tables: outputs.vpc.GetRouteTablesTable[];
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
     readonly totalCount: number;
     /**
@@ -156,7 +169,7 @@ export interface GetRouteTablesResult {
 /**
  * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.36.0+.
+ * > **NOTE:** Available since v1.36.0.
  *
  * ## Example Usage
  *
@@ -177,6 +190,7 @@ export interface GetRouteTablesResult {
  * });
  * const foo = alicloud.vpc.getRouteTablesOutput({
  *     ids: [fooRouteTable.id],
+ *     routeTableType: "Custom",
  * });
  * export const routeTableIds = foo.apply(foo => foo.ids);
  * ```
@@ -211,6 +225,10 @@ export interface GetRouteTablesOutputArgs {
      * The route table name.
      */
     routeTableName?: pulumi.Input<string>;
+    /**
+     * The route table type.
+     */
+    routeTableType?: pulumi.Input<string>;
     /**
      * The router ID.
      */

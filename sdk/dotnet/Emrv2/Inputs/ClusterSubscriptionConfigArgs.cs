@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
     public sealed class ClusterSubscriptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         /// </summary>
         [Input("autoPayOrder")]
         public Input<bool>? AutoPayOrder { get; set; }

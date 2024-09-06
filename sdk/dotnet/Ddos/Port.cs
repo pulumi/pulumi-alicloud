@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// Provides a Anti-DDoS Pro Port resource.
+    /// Provides a Ddos Coo Port resource.
     /// 
     /// For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// Anti-DDoS Pro Port can be imported using the id, e.g.
+    /// Ddos Coo Port can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ddos/port:Port example &lt;instance_id&gt;:&lt;frontend_port&gt;:&lt;frontend_protocol&gt;
@@ -70,31 +70,40 @@ namespace Pulumi.AliCloud.Ddos
     public partial class Port : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The port of the origin server. Valid values: [1~65535].
+        /// The port of the origin server. Valid values: `0` to `65535`.
         /// </summary>
         [Output("backendPort")]
         public Output<string?> BackendPort { get; private set; } = null!;
 
         /// <summary>
-        /// The forwarding port. Valid values: [1~65535].
+        /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.PortConfig> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The forwarding port to query. Valid values: `0` to `65535`.
         /// </summary>
         [Output("frontendPort")]
         public Output<string> FrontendPort { get; private set; } = null!;
 
         /// <summary>
-        /// The forwarding protocol. Valid values `tcp` and `udp`.
+        /// The type of the forwarding protocol to query. Valid values:
         /// </summary>
         [Output("frontendProtocol")]
         public Output<string> FrontendProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of Ddoscoo instance.
+        /// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// List of source IP addresses.
+        /// List of source IP addresses
         /// </summary>
         [Output("realServers")]
         public Output<ImmutableArray<string>> RealServers { get; private set; } = null!;
@@ -146,25 +155,34 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class PortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port of the origin server. Valid values: [1~65535].
+        /// The port of the origin server. Valid values: `0` to `65535`.
         /// </summary>
         [Input("backendPort")]
         public Input<string>? BackendPort { get; set; }
 
         /// <summary>
-        /// The forwarding port. Valid values: [1~65535].
+        /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.PortConfigArgs>? Config { get; set; }
+
+        /// <summary>
+        /// The forwarding port to query. Valid values: `0` to `65535`.
         /// </summary>
         [Input("frontendPort", required: true)]
         public Input<string> FrontendPort { get; set; } = null!;
 
         /// <summary>
-        /// The forwarding protocol. Valid values `tcp` and `udp`.
+        /// The type of the forwarding protocol to query. Valid values:
         /// </summary>
         [Input("frontendProtocol", required: true)]
         public Input<string> FrontendProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The ID of Ddoscoo instance.
+        /// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -173,7 +191,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _realServers;
 
         /// <summary>
-        /// List of source IP addresses.
+        /// List of source IP addresses
         /// </summary>
         public InputList<string> RealServers
         {
@@ -190,25 +208,34 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class PortState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port of the origin server. Valid values: [1~65535].
+        /// The port of the origin server. Valid values: `0` to `65535`.
         /// </summary>
         [Input("backendPort")]
         public Input<string>? BackendPort { get; set; }
 
         /// <summary>
-        /// The forwarding port. Valid values: [1~65535].
+        /// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        /// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        /// </summary>
+        [Input("config")]
+        public Input<Inputs.PortConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// The forwarding port to query. Valid values: `0` to `65535`.
         /// </summary>
         [Input("frontendPort")]
         public Input<string>? FrontendPort { get; set; }
 
         /// <summary>
-        /// The forwarding protocol. Valid values `tcp` and `udp`.
+        /// The type of the forwarding protocol to query. Valid values:
         /// </summary>
         [Input("frontendProtocol")]
         public Input<string>? FrontendProtocol { get; set; }
 
         /// <summary>
-        /// The ID of Ddoscoo instance.
+        /// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -217,7 +244,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _realServers;
 
         /// <summary>
-        /// List of source IP addresses.
+        /// List of source IP addresses
         /// </summary>
         public InputList<string> RealServers
         {

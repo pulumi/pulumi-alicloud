@@ -105,7 +105,7 @@ import (
 // CEN Transit Router Peer Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
+// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
 // ```
 type TransitRouterPeerAttachment struct {
 	pulumi.CustomResourceState
@@ -134,15 +134,19 @@ type TransitRouterPeerAttachment struct {
 	PeerTransitRouterRegionId pulumi.StringOutput `pulumi:"peerTransitRouterRegionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
-	// Whether to association route table. System default is `false`.
+	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
-	// Whether to propagation route table. System default is `false`.
+	// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrOutput `pulumi:"routeTablePropagationEnabled"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
-	// The ID of transit router attachment id.
+	// The ID of transit router attachment.
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
 	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
 	TransitRouterAttachmentName pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentName"`
@@ -213,15 +217,19 @@ type transitRouterPeerAttachmentState struct {
 	PeerTransitRouterRegionId *string `pulumi:"peerTransitRouterRegionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
 	ResourceType *string `pulumi:"resourceType"`
-	// Whether to association route table. System default is `false`.
+	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
-	// Whether to propagation route table. System default is `false`.
+	// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The ID of transit router attachment id.
+	// The ID of transit router attachment.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
 	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
@@ -254,15 +262,19 @@ type TransitRouterPeerAttachmentState struct {
 	PeerTransitRouterRegionId pulumi.StringPtrInput
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
 	ResourceType pulumi.StringPtrInput
-	// Whether to association route table. System default is `false`.
+	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
-	// Whether to propagation route table. System default is `false`.
+	// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The ID of transit router attachment id.
+	// The ID of transit router attachment.
 	TransitRouterAttachmentId pulumi.StringPtrInput
 	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
 	TransitRouterAttachmentName pulumi.StringPtrInput
@@ -297,9 +309,13 @@ type transitRouterPeerAttachmentArgs struct {
 	PeerTransitRouterRegionId string `pulumi:"peerTransitRouterRegionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
 	ResourceType *string `pulumi:"resourceType"`
-	// Whether to association route table. System default is `false`.
+	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
-	// Whether to propagation route table. System default is `false`.
+	// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
@@ -333,9 +349,13 @@ type TransitRouterPeerAttachmentArgs struct {
 	PeerTransitRouterRegionId pulumi.StringInput
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
 	ResourceType pulumi.StringPtrInput
-	// Whether to association route table. System default is `false`.
+	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
-	// Whether to propagation route table. System default is `false`.
+	// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
@@ -489,12 +509,16 @@ func (o TransitRouterPeerAttachmentOutput) ResourceType() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to association route table. System default is `false`.
+// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+//
+// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 func (o TransitRouterPeerAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to propagation route table. System default is `false`.
+// Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+//
+// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 func (o TransitRouterPeerAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -511,7 +535,7 @@ func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentDescription() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of transit router attachment id.
+// The ID of transit router attachment.
 func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }

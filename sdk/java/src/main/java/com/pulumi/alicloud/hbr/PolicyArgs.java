@@ -33,14 +33,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Policy Name.
+     * Policy Name
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -48,14 +48,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<PolicyRuleArgs>> rules;
 
     /**
-     * @return A list of policy rules. See `rules` below.
+     * @return A list of policy rules See `rules` below.
      * 
      */
     public Optional<Output<List<PolicyRuleArgs>>> rules() {
@@ -110,7 +110,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Policy Name.
+         * @param policyName Policy Name
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Policy Name.
+         * @param policyName Policy Name
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules A list of policy rules. See `rules` below.
+         * @param rules A list of policy rules See `rules` below.
          * 
          * @return builder
          * 

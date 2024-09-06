@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ddos;
 
+import com.pulumi.alicloud.ddos.inputs.PortConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,14 +19,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     public static final PortArgs Empty = new PortArgs();
 
     /**
-     * The port of the origin server. Valid values: [1~65535].
+     * The port of the origin server. Valid values: `0` to `65535`.
      * 
      */
     @Import(name="backendPort")
     private @Nullable Output<String> backendPort;
 
     /**
-     * @return The port of the origin server. Valid values: [1~65535].
+     * @return The port of the origin server. Valid values: `0` to `65535`.
      * 
      */
     public Optional<Output<String>> backendPort() {
@@ -33,14 +34,31 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The forwarding port. Valid values: [1~65535].
+     * Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+     * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+     * 
+     */
+    @Import(name="config")
+    private @Nullable Output<PortConfigArgs> config;
+
+    /**
+     * @return Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+     * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+     * 
+     */
+    public Optional<Output<PortConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
+    }
+
+    /**
+     * The forwarding port to query. Valid values: `0` to `65535`.
      * 
      */
     @Import(name="frontendPort", required=true)
     private Output<String> frontendPort;
 
     /**
-     * @return The forwarding port. Valid values: [1~65535].
+     * @return The forwarding port to query. Valid values: `0` to `65535`.
      * 
      */
     public Output<String> frontendPort() {
@@ -48,14 +66,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The forwarding protocol. Valid values `tcp` and `udp`.
+     * The type of the forwarding protocol to query. Valid values:
      * 
      */
     @Import(name="frontendProtocol", required=true)
     private Output<String> frontendProtocol;
 
     /**
-     * @return The forwarding protocol. Valid values `tcp` and `udp`.
+     * @return The type of the forwarding protocol to query. Valid values:
      * 
      */
     public Output<String> frontendProtocol() {
@@ -63,14 +81,18 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of Ddoscoo instance.
+     * The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of Ddoscoo instance.
+     * @return The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      * 
      */
     public Output<String> instanceId() {
@@ -78,14 +100,14 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of source IP addresses.
+     * List of source IP addresses
      * 
      */
     @Import(name="realServers", required=true)
     private Output<List<String>> realServers;
 
     /**
-     * @return List of source IP addresses.
+     * @return List of source IP addresses
      * 
      */
     public Output<List<String>> realServers() {
@@ -96,6 +118,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
 
     private PortArgs(PortArgs $) {
         this.backendPort = $.backendPort;
+        this.config = $.config;
         this.frontendPort = $.frontendPort;
         this.frontendProtocol = $.frontendProtocol;
         this.instanceId = $.instanceId;
@@ -121,7 +144,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendPort The port of the origin server. Valid values: [1~65535].
+         * @param backendPort The port of the origin server. Valid values: `0` to `65535`.
          * 
          * @return builder
          * 
@@ -132,7 +155,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendPort The port of the origin server. Valid values: [1~65535].
+         * @param backendPort The port of the origin server. Valid values: `0` to `65535`.
          * 
          * @return builder
          * 
@@ -142,7 +165,30 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendPort The forwarding port. Valid values: [1~65535].
+         * @param config Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+         * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder config(@Nullable Output<PortConfigArgs> config) {
+            $.config = config;
+            return this;
+        }
+
+        /**
+         * @param config Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+         * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder config(PortConfigArgs config) {
+            return config(Output.of(config));
+        }
+
+        /**
+         * @param frontendPort The forwarding port to query. Valid values: `0` to `65535`.
          * 
          * @return builder
          * 
@@ -153,7 +199,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendPort The forwarding port. Valid values: [1~65535].
+         * @param frontendPort The forwarding port to query. Valid values: `0` to `65535`.
          * 
          * @return builder
          * 
@@ -163,7 +209,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendProtocol The forwarding protocol. Valid values `tcp` and `udp`.
+         * @param frontendProtocol The type of the forwarding protocol to query. Valid values:
          * 
          * @return builder
          * 
@@ -174,7 +220,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendProtocol The forwarding protocol. Valid values `tcp` and `udp`.
+         * @param frontendProtocol The type of the forwarding protocol to query. Valid values:
          * 
          * @return builder
          * 
@@ -184,7 +230,9 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of Ddoscoo instance.
+         * @param instanceId The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+         * 
+         * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
          * 
          * @return builder
          * 
@@ -195,7 +243,9 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of Ddoscoo instance.
+         * @param instanceId The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+         * 
+         * &gt; **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
          * 
          * @return builder
          * 
@@ -205,7 +255,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realServers List of source IP addresses.
+         * @param realServers List of source IP addresses
          * 
          * @return builder
          * 
@@ -216,7 +266,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realServers List of source IP addresses.
+         * @param realServers List of source IP addresses
          * 
          * @return builder
          * 
@@ -226,7 +276,7 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realServers List of source IP addresses.
+         * @param realServers List of source IP addresses
          * 
          * @return builder
          * 

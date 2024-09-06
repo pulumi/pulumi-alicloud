@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBR Policy Binding resource. A policy binding relationship consists of a data source, a policy, and binding options.
+ * Provides a HBR Policy Binding resource.
  *
  * For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
  *
@@ -95,13 +95,25 @@ export class PolicyBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Backup Advanced Options. See `advancedOptions` below.
+     * Backup Advanced Options See `advancedOptions` below.
      */
     public readonly advancedOptions!: pulumi.Output<outputs.hbr.PolicyBindingAdvancedOptions>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * Cross-account type, supported
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
     /**
      * The data source ID.
      */
@@ -109,7 +121,7 @@ export class PolicyBinding extends pulumi.CustomResource {
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
-     * - false: not paused.
+     * - false: not paused
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -121,7 +133,7 @@ export class PolicyBinding extends pulumi.CustomResource {
      */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
-     * Resource Description.
+     * Resource Description
      */
     public readonly policyBindingDescription!: pulumi.Output<string | undefined>;
     /**
@@ -134,11 +146,11 @@ export class PolicyBinding extends pulumi.CustomResource {
     public readonly source!: pulumi.Output<string | undefined>;
     /**
      * Data source type, value range:
-     * - **UDM_ECS**: indicates the ECS instance backup.
-     * - **OSS**: indicates an OSS backup.
-     * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-     * - **ECS_FILE**: indicates that the ECS file is backed up.
-     * - **File**: indicates a local File backup.
+     * - `UDM_ECS`: indicates the ECS instance backup.
+     * - `OSS`: indicates an OSS backup.
+     * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+     * - `ECS_FILE`: indicates that the ECS file is backed up.
+     * - `File`: indicates a local File backup.
      */
     public readonly sourceType!: pulumi.Output<string>;
     /**
@@ -161,6 +173,9 @@ export class PolicyBinding extends pulumi.CustomResource {
             const state = argsOrState as PolicyBindingState | undefined;
             resourceInputs["advancedOptions"] = state ? state.advancedOptions : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["exclude"] = state ? state.exclude : undefined;
@@ -173,6 +188,9 @@ export class PolicyBinding extends pulumi.CustomResource {
         } else {
             const args = argsOrState as PolicyBindingArgs | undefined;
             resourceInputs["advancedOptions"] = args ? args.advancedOptions : undefined;
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["exclude"] = args ? args.exclude : undefined;
@@ -194,13 +212,25 @@ export class PolicyBinding extends pulumi.CustomResource {
  */
 export interface PolicyBindingState {
     /**
-     * Backup Advanced Options. See `advancedOptions` below.
+     * Backup Advanced Options See `advancedOptions` below.
      */
     advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * Cross-account type, supported
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * The data source ID.
      */
@@ -208,7 +238,7 @@ export interface PolicyBindingState {
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
-     * - false: not paused.
+     * - false: not paused
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -220,7 +250,7 @@ export interface PolicyBindingState {
      */
     include?: pulumi.Input<string>;
     /**
-     * Resource Description.
+     * Resource Description
      */
     policyBindingDescription?: pulumi.Input<string>;
     /**
@@ -233,11 +263,11 @@ export interface PolicyBindingState {
     source?: pulumi.Input<string>;
     /**
      * Data source type, value range:
-     * - **UDM_ECS**: indicates the ECS instance backup.
-     * - **OSS**: indicates an OSS backup.
-     * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-     * - **ECS_FILE**: indicates that the ECS file is backed up.
-     * - **File**: indicates a local File backup.
+     * - `UDM_ECS`: indicates the ECS instance backup.
+     * - `OSS`: indicates an OSS backup.
+     * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+     * - `ECS_FILE`: indicates that the ECS file is backed up.
+     * - `File`: indicates a local File backup.
      */
     sourceType?: pulumi.Input<string>;
     /**
@@ -251,9 +281,21 @@ export interface PolicyBindingState {
  */
 export interface PolicyBindingArgs {
     /**
-     * Backup Advanced Options. See `advancedOptions` below.
+     * Backup Advanced Options See `advancedOptions` below.
      */
     advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * Cross-account type, supported
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * The data source ID.
      */
@@ -261,7 +303,7 @@ export interface PolicyBindingArgs {
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
-     * - false: not paused.
+     * - false: not paused
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -273,7 +315,7 @@ export interface PolicyBindingArgs {
      */
     include?: pulumi.Input<string>;
     /**
-     * Resource Description.
+     * Resource Description
      */
     policyBindingDescription?: pulumi.Input<string>;
     /**
@@ -286,11 +328,11 @@ export interface PolicyBindingArgs {
     source?: pulumi.Input<string>;
     /**
      * Data source type, value range:
-     * - **UDM_ECS**: indicates the ECS instance backup.
-     * - **OSS**: indicates an OSS backup.
-     * - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-     * - **ECS_FILE**: indicates that the ECS file is backed up.
-     * - **File**: indicates a local File backup.
+     * - `UDM_ECS`: indicates the ECS instance backup.
+     * - `OSS`: indicates an OSS backup.
+     * - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+     * - `ECS_FILE`: indicates that the ECS file is backed up.
+     * - `File`: indicates a local File backup.
      */
     sourceType?: pulumi.Input<string>;
     /**
