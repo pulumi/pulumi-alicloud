@@ -49,8 +49,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &V3Function{}
 	case "alicloud:fc/v3FunctionVersion:V3FunctionVersion":
 		r = &V3FunctionVersion{}
+	case "alicloud:fc/v3LayerVersion:V3LayerVersion":
+		r = &V3LayerVersion{}
+	case "alicloud:fc/v3ProvisionConfig:V3ProvisionConfig":
+		r = &V3ProvisionConfig{}
 	case "alicloud:fc/v3Trigger:V3Trigger":
 		r = &V3Trigger{}
+	case "alicloud:fc/v3VpcBinding:V3VpcBinding":
+		r = &V3VpcBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -136,7 +142,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"fc/v3LayerVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3ProvisionConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"fc/v3Trigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3VpcBinding",
 		&module{version},
 	)
 }

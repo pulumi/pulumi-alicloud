@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Gpdb Db Resource Group resource.
+ * Provides a GPDB Db Resource Group resource.
  *
  * For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
  *
@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  *     instanceNetworkType: "VPC",
  *     dbInstanceCategory: "Basic",
  *     engine: "gpdb",
- *     resourceManagementMode: "resourceGroup",
  *     paymentType: "PayAsYouGo",
  *     sslEnabled: 0,
  *     engineVersion: "6.0",
@@ -64,7 +63,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Gpdb Db Resource Group can be imported using the id, e.g.
+ * GPDB Db Resource Group can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
@@ -110,6 +109,10 @@ export class DbResourceGroup extends pulumi.CustomResource {
      * Resource group name.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
+    /**
+     * Role List
+     */
+    public readonly roleLists!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DbResourceGroup resource with the given unique name, arguments, and options.
@@ -127,6 +130,7 @@ export class DbResourceGroup extends pulumi.CustomResource {
             resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
             resourceInputs["resourceGroupConfig"] = state ? state.resourceGroupConfig : undefined;
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["roleLists"] = state ? state.roleLists : undefined;
         } else {
             const args = argsOrState as DbResourceGroupArgs | undefined;
             if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
@@ -141,6 +145,7 @@ export class DbResourceGroup extends pulumi.CustomResource {
             resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
             resourceInputs["resourceGroupConfig"] = args ? args.resourceGroupConfig : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["roleLists"] = args ? args.roleLists : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbResourceGroup.__pulumiType, name, resourceInputs, opts);
@@ -163,6 +168,10 @@ export interface DbResourceGroupState {
      * Resource group name.
      */
     resourceGroupName?: pulumi.Input<string>;
+    /**
+     * Role List
+     */
+    roleLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -181,4 +190,8 @@ export interface DbResourceGroupArgs {
      * Resource group name.
      */
     resourceGroupName: pulumi.Input<string>;
+    /**
+     * Role List
+     */
+    roleLists?: pulumi.Input<pulumi.Input<string>[]>;
 }

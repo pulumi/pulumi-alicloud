@@ -6,16 +6,18 @@ package com.pulumi.alicloud.ens;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ens.LoadBalancerArgs;
 import com.pulumi.alicloud.ens.inputs.LoadBalancerState;
+import com.pulumi.alicloud.ens.outputs.LoadBalancerBackendServer;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a Ens Load Balancer resource.
  * 
  * For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
  * 
@@ -86,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ENS Load Balancer can be imported using the id, e.g.
+ * Ens Load Balancer can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example &lt;id&gt;
@@ -95,6 +97,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ens/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
+    /**
+     * The list of backend servers. See `backend_servers` below.
+     * 
+     */
+    @Export(name="backendServers", refs={List.class,LoadBalancerBackendServer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<LoadBalancerBackendServer>> backendServers;
+
+    /**
+     * @return The list of backend servers. See `backend_servers` below.
+     * 
+     */
+    public Output<Optional<List<LoadBalancerBackendServer>>> backendServers() {
+        return Codegen.optional(this.backendServers);
+    }
     /**
      * The creation Time (UTC) of the load balancing instance.
      * 
@@ -124,28 +140,28 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.ensRegionId;
     }
     /**
-     * Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      * 
      */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerName;
 
     /**
-     * @return Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * @return Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      * 
      */
     public Output<Optional<String>> loadBalancerName() {
         return Codegen.optional(this.loadBalancerName);
     }
     /**
-     * Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      * 
      */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
     /**
-     * @return Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * @return Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      * 
      */
     public Output<String> loadBalancerSpec() {
@@ -166,14 +182,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.networkId;
     }
     /**
-     * Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * @return Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      * 
      */
     public Output<String> paymentType() {

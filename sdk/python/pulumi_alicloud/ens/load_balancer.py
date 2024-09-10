@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 
@@ -19,21 +21,25 @@ class LoadBalancerArgs:
                  network_id: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
         :param pulumi.Input[str] ens_region_id: The ID of the ENS node.
-        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         :param pulumi.Input[str] network_id: The network ID of the created edge load balancing (ELB) instance.
-        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the VPC instance belongs.
-        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]] backend_servers: The list of backend servers. See `backend_servers` below.
+        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         pulumi.set(__self__, "ens_region_id", ens_region_id)
         pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if backend_servers is not None:
+            pulumi.set(__self__, "backend_servers", backend_servers)
         if load_balancer_name is not None:
             pulumi.set(__self__, "load_balancer_name", load_balancer_name)
 
@@ -53,7 +59,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> pulumi.Input[str]:
         """
-        Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -77,7 +83,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         """
         return pulumi.get(self, "payment_type")
 
@@ -98,10 +104,22 @@ class LoadBalancerArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
+        """
+        The list of backend servers. See `backend_servers` below.
+        """
+        return pulumi.get(self, "backend_servers")
+
+    @backend_servers.setter
+    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
+        pulumi.set(self, "backend_servers", value)
+
+    @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -113,6 +131,7 @@ class LoadBalancerArgs:
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
@@ -123,15 +142,18 @@ class _LoadBalancerState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]] backend_servers: The list of backend servers. See `backend_servers` below.
         :param pulumi.Input[str] create_time: The creation Time (UTC) of the load balancing instance.
         :param pulumi.Input[str] ens_region_id: The ID of the ENS node.
-        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
-        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
+        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         :param pulumi.Input[str] network_id: The network ID of the created edge load balancing (ELB) instance.
-        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         :param pulumi.Input[str] status: The status of the SLB instance.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the VPC instance belongs.
         """
+        if backend_servers is not None:
+            pulumi.set(__self__, "backend_servers", backend_servers)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if ens_region_id is not None:
@@ -148,6 +170,18 @@ class _LoadBalancerState:
             pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
+        """
+        The list of backend servers. See `backend_servers` below.
+        """
+        return pulumi.get(self, "backend_servers")
+
+    @backend_servers.setter
+    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
+        pulumi.set(self, "backend_servers", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -177,7 +211,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -189,7 +223,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -213,7 +247,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         """
         return pulumi.get(self, "payment_type")
 
@@ -251,6 +285,7 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
@@ -259,7 +294,7 @@ class LoadBalancer(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+        Provides a Ens Load Balancer resource.
 
         For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
 
@@ -299,7 +334,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        ENS Load Balancer can be imported using the id, e.g.
+        Ens Load Balancer can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
@@ -307,11 +342,12 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]] backend_servers: The list of backend servers. See `backend_servers` below.
         :param pulumi.Input[str] ens_region_id: The ID of the ENS node.
-        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
-        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
+        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         :param pulumi.Input[str] network_id: The network ID of the created edge load balancing (ELB) instance.
-        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the VPC instance belongs.
         """
         ...
@@ -321,7 +357,7 @@ class LoadBalancer(pulumi.CustomResource):
                  args: LoadBalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+        Provides a Ens Load Balancer resource.
 
         For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
 
@@ -361,7 +397,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        ENS Load Balancer can be imported using the id, e.g.
+        Ens Load Balancer can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
@@ -382,6 +418,7 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
                  ens_region_id: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
@@ -397,6 +434,7 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
+            __props__.__dict__["backend_servers"] = backend_servers
             if ens_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ens_region_id'")
             __props__.__dict__["ens_region_id"] = ens_region_id
@@ -425,6 +463,7 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             ens_region_id: Optional[pulumi.Input[str]] = None,
             load_balancer_name: Optional[pulumi.Input[str]] = None,
@@ -440,12 +479,13 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]] backend_servers: The list of backend servers. See `backend_servers` below.
         :param pulumi.Input[str] create_time: The creation Time (UTC) of the load balancing instance.
         :param pulumi.Input[str] ens_region_id: The ID of the ENS node.
-        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
-        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        :param pulumi.Input[str] load_balancer_name: Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
+        :param pulumi.Input[str] load_balancer_spec: Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         :param pulumi.Input[str] network_id: The network ID of the created edge load balancing (ELB) instance.
-        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        :param pulumi.Input[str] payment_type: Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         :param pulumi.Input[str] status: The status of the SLB instance.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the VPC instance belongs.
         """
@@ -453,6 +493,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
+        __props__.__dict__["backend_servers"] = backend_servers
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["ens_region_id"] = ens_region_id
         __props__.__dict__["load_balancer_name"] = load_balancer_name
@@ -462,6 +503,14 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["vswitch_id"] = vswitch_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backendServers")
+    def backend_servers(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerBackendServer']]]:
+        """
+        The list of backend servers. See `backend_servers` below.
+        """
+        return pulumi.get(self, "backend_servers")
 
     @property
     @pulumi.getter(name="createTime")
@@ -483,7 +532,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -491,7 +540,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> pulumi.Output[str]:
         """
-        Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -507,7 +556,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         """
         return pulumi.get(self, "payment_type")
 

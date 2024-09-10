@@ -164,6 +164,12 @@ export class RdsDbProxy extends pulumi.CustomResource {
      */
     public readonly dbProxyInstanceNum!: pulumi.Output<number>;
     /**
+     * The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     */
+    public readonly dbProxyInstanceType!: pulumi.Output<string>;
+    /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
      * - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -262,6 +268,7 @@ export class RdsDbProxy extends pulumi.CustomResource {
             resourceInputs["dbProxyEndpointReadWriteMode"] = state ? state.dbProxyEndpointReadWriteMode : undefined;
             resourceInputs["dbProxyFeatures"] = state ? state.dbProxyFeatures : undefined;
             resourceInputs["dbProxyInstanceNum"] = state ? state.dbProxyInstanceNum : undefined;
+            resourceInputs["dbProxyInstanceType"] = state ? state.dbProxyInstanceType : undefined;
             resourceInputs["dbProxySslEnabled"] = state ? state.dbProxySslEnabled : undefined;
             resourceInputs["effectiveSpecificTime"] = state ? state.effectiveSpecificTime : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
@@ -299,6 +306,7 @@ export class RdsDbProxy extends pulumi.CustomResource {
             resourceInputs["dbProxyEndpointReadWriteMode"] = args ? args.dbProxyEndpointReadWriteMode : undefined;
             resourceInputs["dbProxyFeatures"] = args ? args.dbProxyFeatures : undefined;
             resourceInputs["dbProxyInstanceNum"] = args ? args.dbProxyInstanceNum : undefined;
+            resourceInputs["dbProxyInstanceType"] = args ? args.dbProxyInstanceType : undefined;
             resourceInputs["dbProxySslEnabled"] = args ? args.dbProxySslEnabled : undefined;
             resourceInputs["effectiveSpecificTime"] = args ? args.effectiveSpecificTime : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
@@ -371,6 +379,12 @@ export interface RdsDbProxyState {
      * The number of proxy instances that are enabled. Valid values: 1 to 60.
      */
     dbProxyInstanceNum?: pulumi.Input<number>;
+    /**
+     * The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     */
+    dbProxyInstanceType?: pulumi.Input<string>;
     /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
@@ -486,6 +500,12 @@ export interface RdsDbProxyArgs {
      * The number of proxy instances that are enabled. Valid values: 1 to 60.
      */
     dbProxyInstanceNum: pulumi.Input<number>;
+    /**
+     * The database proxy type. Valid values:
+     * - common: universal proxy.
+     * - exclusive: Exclusive proxy (default).
+     */
+    dbProxyInstanceType?: pulumi.Input<string>;
     /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.

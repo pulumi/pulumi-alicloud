@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PortArgs', 'Port']
 
@@ -18,14 +20,19 @@ class PortArgs:
                  frontend_protocol: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  real_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 backend_port: Optional[pulumi.Input[str]] = None):
+                 backend_port: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input['PortConfigArgs']] = None):
         """
         The set of arguments for constructing a Port resource.
-        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
-        :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
-        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
+        :param pulumi.Input[str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+               
+               > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
+        :param pulumi.Input['PortConfigArgs'] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+               - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "frontend_protocol", frontend_protocol)
@@ -33,12 +40,14 @@ class PortArgs:
         pulumi.set(__self__, "real_servers", real_servers)
         if backend_port is not None:
             pulumi.set(__self__, "backend_port", backend_port)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
 
     @property
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Input[str]:
         """
-        The forwarding port. Valid values: [1~65535].
+        The forwarding port to query. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -50,7 +59,7 @@ class PortArgs:
     @pulumi.getter(name="frontendProtocol")
     def frontend_protocol(self) -> pulumi.Input[str]:
         """
-        The forwarding protocol. Valid values `tcp` and `udp`.
+        The type of the forwarding protocol to query. Valid values:
         """
         return pulumi.get(self, "frontend_protocol")
 
@@ -62,7 +71,9 @@ class PortArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The ID of Ddoscoo instance.
+        The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+
+        > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         """
         return pulumi.get(self, "instance_id")
 
@@ -74,7 +85,7 @@ class PortArgs:
     @pulumi.getter(name="realServers")
     def real_servers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of source IP addresses.
+        List of source IP addresses
         """
         return pulumi.get(self, "real_servers")
 
@@ -86,7 +97,7 @@ class PortArgs:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the origin server. Valid values: [1~65535].
+        The port of the origin server. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "backend_port")
 
@@ -94,25 +105,45 @@ class PortArgs:
     def backend_port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backend_port", value)
 
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['PortConfigArgs']]:
+        """
+        Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['PortConfigArgs']]):
+        pulumi.set(self, "config", value)
+
 
 @pulumi.input_type
 class _PortState:
     def __init__(__self__, *,
                  backend_port: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input['PortConfigArgs']] = None,
                  frontend_port: Optional[pulumi.Input[str]] = None,
                  frontend_protocol: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
-        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
-        :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
+        :param pulumi.Input['PortConfigArgs'] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+               - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        :param pulumi.Input[str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+               
+               > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses
         """
         if backend_port is not None:
             pulumi.set(__self__, "backend_port", backend_port)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if frontend_port is not None:
             pulumi.set(__self__, "frontend_port", frontend_port)
         if frontend_protocol is not None:
@@ -126,7 +157,7 @@ class _PortState:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the origin server. Valid values: [1~65535].
+        The port of the origin server. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "backend_port")
 
@@ -135,10 +166,23 @@ class _PortState:
         pulumi.set(self, "backend_port", value)
 
     @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['PortConfigArgs']]:
+        """
+        Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['PortConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The forwarding port. Valid values: [1~65535].
+        The forwarding port to query. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -150,7 +194,7 @@ class _PortState:
     @pulumi.getter(name="frontendProtocol")
     def frontend_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The forwarding protocol. Valid values `tcp` and `udp`.
+        The type of the forwarding protocol to query. Valid values:
         """
         return pulumi.get(self, "frontend_protocol")
 
@@ -162,7 +206,9 @@ class _PortState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of Ddoscoo instance.
+        The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+
+        > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         """
         return pulumi.get(self, "instance_id")
 
@@ -174,7 +220,7 @@ class _PortState:
     @pulumi.getter(name="realServers")
     def real_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of source IP addresses.
+        List of source IP addresses
         """
         return pulumi.get(self, "real_servers")
 
@@ -189,13 +235,14 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
                  frontend_port: Optional[pulumi.Input[str]] = None,
                  frontend_protocol: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Anti-DDoS Pro Port resource.
+        Provides a Ddos Coo Port resource.
 
         For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 
@@ -235,7 +282,7 @@ class Port(pulumi.CustomResource):
 
         ## Import
 
-        Anti-DDoS Pro Port can be imported using the id, e.g.
+        Ddos Coo Port can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
@@ -243,11 +290,15 @@ class Port(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
-        :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
+        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+               - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        :param pulumi.Input[str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+               
+               > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses
         """
         ...
     @overload
@@ -256,7 +307,7 @@ class Port(pulumi.CustomResource):
                  args: PortArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Anti-DDoS Pro Port resource.
+        Provides a Ddos Coo Port resource.
 
         For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 
@@ -296,7 +347,7 @@ class Port(pulumi.CustomResource):
 
         ## Import
 
-        Anti-DDoS Pro Port can be imported using the id, e.g.
+        Ddos Coo Port can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
@@ -318,6 +369,7 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_port: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
                  frontend_port: Optional[pulumi.Input[str]] = None,
                  frontend_protocol: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -332,6 +384,7 @@ class Port(pulumi.CustomResource):
             __props__ = PortArgs.__new__(PortArgs)
 
             __props__.__dict__["backend_port"] = backend_port
+            __props__.__dict__["config"] = config
             if frontend_port is None and not opts.urn:
                 raise TypeError("Missing required property 'frontend_port'")
             __props__.__dict__["frontend_port"] = frontend_port
@@ -355,6 +408,7 @@ class Port(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backend_port: Optional[pulumi.Input[str]] = None,
+            config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
             frontend_port: Optional[pulumi.Input[str]] = None,
             frontend_protocol: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -366,17 +420,22 @@ class Port(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
-        :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
-        :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: `0` to `65535`.
+        :param pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']] config: Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+               - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        :param pulumi.Input[str] frontend_port: The forwarding port to query. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] frontend_protocol: The type of the forwarding protocol to query. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+               
+               > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PortState.__new__(_PortState)
 
         __props__.__dict__["backend_port"] = backend_port
+        __props__.__dict__["config"] = config
         __props__.__dict__["frontend_port"] = frontend_port
         __props__.__dict__["frontend_protocol"] = frontend_protocol
         __props__.__dict__["instance_id"] = instance_id
@@ -387,15 +446,24 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> pulumi.Output[Optional[str]]:
         """
-        The port of the origin server. Valid values: [1~65535].
+        The port of the origin server. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "backend_port")
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output['outputs.PortConfig']:
+        """
+        Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+        - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+        """
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Output[str]:
         """
-        The forwarding port. Valid values: [1~65535].
+        The forwarding port to query. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -403,7 +471,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="frontendProtocol")
     def frontend_protocol(self) -> pulumi.Output[str]:
         """
-        The forwarding protocol. Valid values `tcp` and `udp`.
+        The type of the forwarding protocol to query. Valid values:
         """
         return pulumi.get(self, "frontend_protocol")
 
@@ -411,7 +479,9 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of Ddoscoo instance.
+        The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+
+        > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
         """
         return pulumi.get(self, "instance_id")
 
@@ -419,7 +489,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="realServers")
     def real_servers(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of source IP addresses.
+        List of source IP addresses
         """
         return pulumi.get(self, "real_servers")
 

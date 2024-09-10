@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string RouteTableName;
         /// <summary>
-        /// The type of route table.
+        /// The route table type.
         /// </summary>
         public readonly string RouteTableType;
         /// <summary>

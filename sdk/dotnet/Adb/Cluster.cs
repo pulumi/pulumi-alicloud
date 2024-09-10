@@ -144,6 +144,9 @@ namespace Pulumi.AliCloud.Adb
         [Output("elasticIoResourceSize")]
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
+        [Output("enableSsl")]
+        public Output<bool?> EnableSsl { get; private set; } = null!;
+
         [Output("kmsId")]
         public Output<string?> KmsId { get; private set; } = null!;
 
@@ -332,6 +335,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
 
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
+
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
@@ -490,6 +496,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
 
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }

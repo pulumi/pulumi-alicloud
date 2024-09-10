@@ -35,8 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ElasticInstance{}
 	case "alicloud:gpdb/externalDataService:ExternalDataService":
 		r = &ExternalDataService{}
+	case "alicloud:gpdb/hadoopDataSource:HadoopDataSource":
+		r = &HadoopDataSource{}
 	case "alicloud:gpdb/instance:Instance":
 		r = &Instance{}
+	case "alicloud:gpdb/jdbcDataSource:JdbcDataSource":
+		r = &JdbcDataSource{}
 	case "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource":
 		r = &RemoteAdbDataSource{}
 	case "alicloud:gpdb/streamingDataService:StreamingDataService":
@@ -93,7 +97,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"gpdb/hadoopDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"gpdb/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/jdbcDataSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

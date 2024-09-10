@@ -173,31 +173,47 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether to association route table. System default is `false`.
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to association route table. System default is `false`.
+     * @return Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
 
     /**
-     * Whether to propagation route table. System default is `false`.
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to propagation route table. System default is `false`.
+     * @return Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -500,43 +516,59 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to association route table. System default is `false`.
+         * @param routeTableAssociationEnabled Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+         * 
          */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to association route table. System default is `false`.
+         * @param routeTableAssociationEnabled Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+         * 
          */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to propagation route table. System default is `false`.
+         * @param routeTablePropagationEnabled Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+         * 
          */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to propagation route table. System default is `false`.
+         * @param routeTablePropagationEnabled Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+         * 
          */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }

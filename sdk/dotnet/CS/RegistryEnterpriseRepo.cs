@@ -35,8 +35,8 @@ namespace Pulumi.AliCloud.CS
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
+    ///         Min = 10000000,
+    ///         Max = 99999999,
     ///     });
     /// 
     ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()

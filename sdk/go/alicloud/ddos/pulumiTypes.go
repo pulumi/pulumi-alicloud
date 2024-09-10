@@ -1454,6 +1454,143 @@ func (o DomainResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) DomainResou
 	}).(DomainResourceProxyTypeOutput)
 }
 
+type PortConfig struct {
+	// The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
+}
+
+// PortConfigInput is an input type that accepts PortConfigArgs and PortConfigOutput values.
+// You can construct a concrete instance of `PortConfigInput` via:
+//
+//	PortConfigArgs{...}
+type PortConfigInput interface {
+	pulumi.Input
+
+	ToPortConfigOutput() PortConfigOutput
+	ToPortConfigOutputWithContext(context.Context) PortConfigOutput
+}
+
+type PortConfigArgs struct {
+	// The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+	PersistenceTimeout pulumi.IntPtrInput `pulumi:"persistenceTimeout"`
+}
+
+func (PortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortConfig)(nil)).Elem()
+}
+
+func (i PortConfigArgs) ToPortConfigOutput() PortConfigOutput {
+	return i.ToPortConfigOutputWithContext(context.Background())
+}
+
+func (i PortConfigArgs) ToPortConfigOutputWithContext(ctx context.Context) PortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConfigOutput)
+}
+
+func (i PortConfigArgs) ToPortConfigPtrOutput() PortConfigPtrOutput {
+	return i.ToPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PortConfigArgs) ToPortConfigPtrOutputWithContext(ctx context.Context) PortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConfigOutput).ToPortConfigPtrOutputWithContext(ctx)
+}
+
+// PortConfigPtrInput is an input type that accepts PortConfigArgs, PortConfigPtr and PortConfigPtrOutput values.
+// You can construct a concrete instance of `PortConfigPtrInput` via:
+//
+//	        PortConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PortConfigPtrInput interface {
+	pulumi.Input
+
+	ToPortConfigPtrOutput() PortConfigPtrOutput
+	ToPortConfigPtrOutputWithContext(context.Context) PortConfigPtrOutput
+}
+
+type portConfigPtrType PortConfigArgs
+
+func PortConfigPtr(v *PortConfigArgs) PortConfigPtrInput {
+	return (*portConfigPtrType)(v)
+}
+
+func (*portConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortConfig)(nil)).Elem()
+}
+
+func (i *portConfigPtrType) ToPortConfigPtrOutput() PortConfigPtrOutput {
+	return i.ToPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *portConfigPtrType) ToPortConfigPtrOutputWithContext(ctx context.Context) PortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortConfigPtrOutput)
+}
+
+type PortConfigOutput struct{ *pulumi.OutputState }
+
+func (PortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PortConfig)(nil)).Elem()
+}
+
+func (o PortConfigOutput) ToPortConfigOutput() PortConfigOutput {
+	return o
+}
+
+func (o PortConfigOutput) ToPortConfigOutputWithContext(ctx context.Context) PortConfigOutput {
+	return o
+}
+
+func (o PortConfigOutput) ToPortConfigPtrOutput() PortConfigPtrOutput {
+	return o.ToPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PortConfigOutput) ToPortConfigPtrOutputWithContext(ctx context.Context) PortConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortConfig) *PortConfig {
+		return &v
+	}).(PortConfigPtrOutput)
+}
+
+// The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+func (o PortConfigOutput) PersistenceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PortConfig) *int { return v.PersistenceTimeout }).(pulumi.IntPtrOutput)
+}
+
+type PortConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PortConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PortConfig)(nil)).Elem()
+}
+
+func (o PortConfigPtrOutput) ToPortConfigPtrOutput() PortConfigPtrOutput {
+	return o
+}
+
+func (o PortConfigPtrOutput) ToPortConfigPtrOutputWithContext(ctx context.Context) PortConfigPtrOutput {
+	return o
+}
+
+func (o PortConfigPtrOutput) Elem() PortConfigOutput {
+	return o.ApplyT(func(v *PortConfig) PortConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PortConfig
+		return ret
+	}).(PortConfigOutput)
+}
+
+// The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+func (o PortConfigPtrOutput) PersistenceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PortConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PersistenceTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
 type SchedulerRuleRule struct {
 	// The priority of the rule.
 	Priority *int `pulumi:"priority"`
@@ -2665,6 +2802,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceLimitPtrInput)(nil)).Elem(), BgpPolicyContentSourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeInput)(nil)).Elem(), DomainResourceProxyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeArrayInput)(nil)).Elem(), DomainResourceProxyTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortConfigInput)(nil)).Elem(), PortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PortConfigPtrInput)(nil)).Elem(), PortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleInput)(nil)).Elem(), SchedulerRuleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleArrayInput)(nil)).Elem(), SchedulerRuleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpInstancesInstanceInput)(nil)).Elem(), GetDdosBgpInstancesInstanceArgs{})
@@ -2695,6 +2834,8 @@ func init() {
 	pulumi.RegisterOutputType(BgpPolicyContentSourceLimitPtrOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeArrayOutput{})
+	pulumi.RegisterOutputType(PortConfigOutput{})
+	pulumi.RegisterOutputType(PortConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceOutput{})

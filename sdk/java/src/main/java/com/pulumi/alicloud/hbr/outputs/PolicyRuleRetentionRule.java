@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyRuleRetentionRule {
     /**
-     * @return Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+     * @return Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
      * 
      */
     private @Nullable String advancedRetentionType;
@@ -25,7 +25,7 @@ public final class PolicyRuleRetentionRule {
 
     private PolicyRuleRetentionRule() {}
     /**
-     * @return Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+     * @return Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
      * 
      */
     public Optional<String> advancedRetentionType() {

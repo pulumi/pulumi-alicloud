@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.ens;
 
+import com.pulumi.alicloud.ens.inputs.LoadBalancerBackendServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
+
+    /**
+     * The list of backend servers. See `backend_servers` below.
+     * 
+     */
+    @Import(name="backendServers")
+    private @Nullable Output<List<LoadBalancerBackendServerArgs>> backendServers;
+
+    /**
+     * @return The list of backend servers. See `backend_servers` below.
+     * 
+     */
+    public Optional<Output<List<LoadBalancerBackendServerArgs>>> backendServers() {
+        return Optional.ofNullable(this.backendServers);
+    }
 
     /**
      * The ID of the ENS node.
@@ -32,14 +49,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      * 
      */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
     /**
-     * @return Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * @return Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -47,14 +64,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      * 
      */
     @Import(name="loadBalancerSpec", required=true)
     private Output<String> loadBalancerSpec;
 
     /**
-     * @return Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * @return Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      * 
      */
     public Output<String> loadBalancerSpec() {
@@ -77,14 +94,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * @return Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      * 
      */
     public Output<String> paymentType() {
@@ -109,6 +126,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     private LoadBalancerArgs() {}
 
     private LoadBalancerArgs(LoadBalancerArgs $) {
+        this.backendServers = $.backendServers;
         this.ensRegionId = $.ensRegionId;
         this.loadBalancerName = $.loadBalancerName;
         this.loadBalancerSpec = $.loadBalancerSpec;
@@ -136,6 +154,37 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendServers(@Nullable Output<List<LoadBalancerBackendServerArgs>> backendServers) {
+            $.backendServers = backendServers;
+            return this;
+        }
+
+        /**
+         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendServers(List<LoadBalancerBackendServerArgs> backendServers) {
+            return backendServers(Output.of(backendServers));
+        }
+
+        /**
+         * @param backendServers The list of backend servers. See `backend_servers` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendServers(LoadBalancerBackendServerArgs... backendServers) {
+            return backendServers(List.of(backendServers));
+        }
+
+        /**
          * @param ensRegionId The ID of the ENS node.
          * 
          * @return builder
@@ -157,7 +206,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+         * @param loadBalancerName Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
          * 
          * @return builder
          * 
@@ -168,7 +217,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+         * @param loadBalancerName Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
          * 
          * @return builder
          * 
@@ -178,7 +227,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerSpec Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+         * @param loadBalancerSpec Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
          * 
          * @return builder
          * 
@@ -189,7 +238,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerSpec Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+         * @param loadBalancerSpec Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
          * 
          * @return builder
          * 
@@ -220,7 +269,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+         * @param paymentType Server Load Balancer Instance Payment Type. Value:PayAsYouGo
          * 
          * @return builder
          * 
@@ -231,7 +280,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+         * @param paymentType Server Load Balancer Instance Payment Type. Value:PayAsYouGo
          * 
          * @return builder
          * 

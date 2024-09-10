@@ -17,14 +17,14 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
     public static final PolicyRuleRetentionRuleArgs Empty = new PolicyRuleRetentionRuleArgs();
 
     /**
-     * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+     * Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
      * 
      */
     @Import(name="advancedRetentionType")
     private @Nullable Output<String> advancedRetentionType;
 
     /**
-     * @return Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+     * @return Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
      * 
      */
     public Optional<Output<String>> advancedRetentionType() {
@@ -72,7 +72,7 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param advancedRetentionType Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+         * @param advancedRetentionType Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param advancedRetentionType Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+         * @param advancedRetentionType Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
          * 
          * @return builder
          * 

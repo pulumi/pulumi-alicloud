@@ -20,14 +20,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyRuleArgs Empty = new PolicyRuleArgs();
 
     /**
-     * This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
      * 
      */
     @Import(name="archiveDays")
     private @Nullable Output<Integer> archiveDays;
 
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
      * 
      */
     public Optional<Output<Integer>> archiveDays() {
@@ -35,14 +35,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+     * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
      * 
      */
     @Import(name="backupType")
     private @Nullable Output<String> backupType;
 
     /**
-     * @return This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
      * 
      */
     public Optional<Output<String>> backupType() {
@@ -50,14 +50,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when **RuleType** is set to **BACKUP**.
+     * This parameter is required only when `RuleType` is set to `BACKUP`.
      * 
      */
     @Import(name="keepLatestSnapshots")
     private @Nullable Output<Integer> keepLatestSnapshots;
 
     /**
-     * @return This parameter is required only when **RuleType** is set to **BACKUP**.
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
      * 
      */
     public Optional<Output<Integer>> keepLatestSnapshots() {
@@ -65,14 +65,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only when the **RuleType** value is.
+     * Only when the `RuleType` value is.
      * 
      */
     @Import(name="replicationRegionId")
     private @Nullable Output<String> replicationRegionId;
 
     /**
-     * @return Only when the **RuleType** value is.
+     * @return Only when the `RuleType` value is.
      * 
      */
     public Optional<Output<String>> replicationRegionId() {
@@ -95,14 +95,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+     * This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
      * 
      */
     @Import(name="retentionRules")
     private @Nullable Output<List<PolicyRuleRetentionRuleArgs>> retentionRules;
 
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
      * 
      */
     public Optional<Output<List<PolicyRuleRetentionRuleArgs>>> retentionRules() {
@@ -140,14 +140,14 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+     * This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
     /**
-     * @return This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+     * @return This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -203,7 +203,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveDays This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveDays This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * @param archiveDays This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+         * @param backupType This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepLatestSnapshots This parameter is required only when **RuleType** is set to **BACKUP**.
+         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepLatestSnapshots This parameter is required only when **RuleType** is set to **BACKUP**.
+         * @param keepLatestSnapshots This parameter is required only when `RuleType` is set to `BACKUP`.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationRegionId Only when the **RuleType** value is.
+         * @param replicationRegionId Only when the `RuleType` value is.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationRegionId Only when the **RuleType** value is.
+         * @param replicationRegionId Only when the `RuleType` value is.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionRules This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+         * @param retentionRules This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+         * @param schedule This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class PolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+         * @param schedule This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
          * 
          * @return builder
          * 

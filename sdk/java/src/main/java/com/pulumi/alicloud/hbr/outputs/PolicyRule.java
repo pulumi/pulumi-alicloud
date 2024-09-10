@@ -16,22 +16,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyRule {
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
      * 
      */
     private @Nullable Integer archiveDays;
     /**
-     * @return This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
      * 
      */
     private @Nullable String backupType;
     /**
-     * @return This parameter is required only when **RuleType** is set to **BACKUP**.
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
      * 
      */
     private @Nullable Integer keepLatestSnapshots;
     /**
-     * @return Only when the **RuleType** value is.
+     * @return Only when the `RuleType` value is.
      * 
      */
     private @Nullable String replicationRegionId;
@@ -41,7 +41,7 @@ public final class PolicyRule {
      */
     private @Nullable Integer retention;
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
      * 
      */
     private @Nullable List<PolicyRuleRetentionRule> retentionRules;
@@ -56,7 +56,7 @@ public final class PolicyRule {
      */
     private String ruleType;
     /**
-     * @return This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+     * @return This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
      * 
      */
     private @Nullable String schedule;
@@ -68,28 +68,28 @@ public final class PolicyRule {
 
     private PolicyRule() {}
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+     * @return This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
      * 
      */
     public Optional<Integer> archiveDays() {
         return Optional.ofNullable(this.archiveDays);
     }
     /**
-     * @return This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+     * @return This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
      * 
      */
     public Optional<String> backupType() {
         return Optional.ofNullable(this.backupType);
     }
     /**
-     * @return This parameter is required only when **RuleType** is set to **BACKUP**.
+     * @return This parameter is required only when `RuleType` is set to `BACKUP`.
      * 
      */
     public Optional<Integer> keepLatestSnapshots() {
         return Optional.ofNullable(this.keepLatestSnapshots);
     }
     /**
-     * @return Only when the **RuleType** value is.
+     * @return Only when the `RuleType` value is.
      * 
      */
     public Optional<String> replicationRegionId() {
@@ -103,7 +103,7 @@ public final class PolicyRule {
         return Optional.ofNullable(this.retention);
     }
     /**
-     * @return This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+     * @return This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
      * 
      */
     public List<PolicyRuleRetentionRule> retentionRules() {
@@ -124,7 +124,7 @@ public final class PolicyRule {
         return this.ruleType;
     }
     /**
-     * @return This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+     * @return This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
      * 
      */
     public Optional<String> schedule() {

@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleCustomerGateway = new CustomerGateway("exampleCustomerGateway", CustomerGatewayArgs.builder()
- *             .name(name)
+ *             .customerGatewayName(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
  *             .description(name)

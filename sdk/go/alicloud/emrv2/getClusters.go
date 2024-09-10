@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Emr Clusters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.199.0+.
+// > **NOTE:** Available since v1.199.0.
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
@@ -32,7 +32,7 @@ type GetClustersArgs struct {
 	ClusterStates []string `pulumi:"clusterStates"`
 	// The cluster types.
 	ClusterTypes []string `pulumi:"clusterTypes"`
-	// A list of Cluster IDS.
+	// A list of Cluster IDs.
 	Ids []string `pulumi:"ids"`
 	// The max results is used to list clusters for next page.
 	MaxResults *int `pulumi:"maxResults"`
@@ -52,22 +52,29 @@ type GetClustersArgs struct {
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
-	ClusterName   *string              `pulumi:"clusterName"`
-	ClusterStates []string             `pulumi:"clusterStates"`
-	ClusterTypes  []string             `pulumi:"clusterTypes"`
-	Clusters      []GetClustersCluster `pulumi:"clusters"`
+	// The name of the emr cluster.
+	ClusterName   *string  `pulumi:"clusterName"`
+	ClusterStates []string `pulumi:"clusterStates"`
+	ClusterTypes  []string `pulumi:"clusterTypes"`
+	// A list of Emr Clusters. Each element contains the following attributes:
+	Clusters []GetClustersCluster `pulumi:"clusters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Ids             []string          `pulumi:"ids"`
-	MaxResults      *int              `pulumi:"maxResults"`
-	NameRegex       *string           `pulumi:"nameRegex"`
-	Names           []string          `pulumi:"names"`
-	NextToken       *string           `pulumi:"nextToken"`
-	OutputFile      *string           `pulumi:"outputFile"`
-	PaymentTypes    []string          `pulumi:"paymentTypes"`
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	Tags            map[string]string `pulumi:"tags"`
-	TotalCount      int               `pulumi:"totalCount"`
+	Id string `pulumi:"id"`
+	// A list of Cluster IDS.
+	Ids        []string `pulumi:"ids"`
+	MaxResults *int     `pulumi:"maxResults"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	// A list of Cluster names.
+	Names        []string `pulumi:"names"`
+	NextToken    *string  `pulumi:"nextToken"`
+	OutputFile   *string  `pulumi:"outputFile"`
+	PaymentTypes []string `pulumi:"paymentTypes"`
+	// The resource group id of the resource.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The total count of list clusters.
+	TotalCount int `pulumi:"totalCount"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -91,7 +98,7 @@ type GetClustersOutputArgs struct {
 	ClusterStates pulumi.StringArrayInput `pulumi:"clusterStates"`
 	// The cluster types.
 	ClusterTypes pulumi.StringArrayInput `pulumi:"clusterTypes"`
-	// A list of Cluster IDS.
+	// A list of Cluster IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The max results is used to list clusters for next page.
 	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
@@ -128,6 +135,7 @@ func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the emr cluster.
 func (o GetClustersResultOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -140,6 +148,7 @@ func (o GetClustersResultOutput) ClusterTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.ClusterTypes }).(pulumi.StringArrayOutput)
 }
 
+// A list of Emr Clusters. Each element contains the following attributes:
 func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
 }
@@ -149,6 +158,7 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Cluster IDS.
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -161,6 +171,7 @@ func (o GetClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cluster names.
 func (o GetClustersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -177,14 +188,17 @@ func (o GetClustersResultOutput) PaymentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.PaymentTypes }).(pulumi.StringArrayOutput)
 }
 
+// The resource group id of the resource.
 func (o GetClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetClustersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClustersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The total count of list clusters.
 func (o GetClustersResultOutput) TotalCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }

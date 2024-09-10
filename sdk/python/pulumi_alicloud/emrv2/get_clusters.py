@@ -72,6 +72,9 @@ class GetClustersResult:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
+        """
+        The name of the emr cluster.
+        """
         return pulumi.get(self, "cluster_name")
 
     @property
@@ -87,6 +90,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
+        """
+        A list of Emr Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @property
@@ -100,6 +106,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Cluster IDS.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -115,6 +124,9 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Cluster names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -135,16 +147,25 @@ class GetClustersResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The resource group id of the resource.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="totalCount")
     def total_count(self) -> int:
+        """
+        The total count of list clusters.
+        """
         return pulumi.get(self, "total_count")
 
 
@@ -186,13 +207,13 @@ def get_clusters(cluster_name: Optional[str] = None,
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.199.0+.
+    > **NOTE:** Available since v1.199.0.
 
 
     :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_states: The cluster states.
     :param Sequence[str] cluster_types: The cluster types.
-    :param Sequence[str] ids: A list of Cluster IDS.
+    :param Sequence[str] ids: A list of Cluster IDs.
     :param int max_results: The max results is used to list clusters for next page.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str next_token: The next token is used to list clusters for next page.
@@ -250,13 +271,13 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.199.0+.
+    > **NOTE:** Available since v1.199.0.
 
 
     :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_states: The cluster states.
     :param Sequence[str] cluster_types: The cluster types.
-    :param Sequence[str] ids: A list of Cluster IDS.
+    :param Sequence[str] ids: A list of Cluster IDs.
     :param int max_results: The max results is used to list clusters for next page.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str next_token: The next token is used to list clusters for next page.

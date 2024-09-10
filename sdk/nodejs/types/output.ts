@@ -16801,6 +16801,13 @@ export namespace ddos {
         realServers: string[];
     }
 
+    export interface PortConfig {
+        /**
+         * The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+         */
+        persistenceTimeout?: number;
+    }
+
     export interface SchedulerRuleRule {
         /**
          * The priority of the rule.
@@ -27085,7 +27092,7 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroupDataDisk {
         /**
-         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         * The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
          */
         category: string;
         /**
@@ -27115,7 +27122,7 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroupSubscriptionConfig {
         /**
-         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
          */
         autoPayOrder?: boolean;
         /**
@@ -27142,7 +27149,7 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroupSystemDisk {
         /**
-         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         * The type of the data disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloud`, `localHddPro`, `localDisk`, `localSsdPro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `localHddPro`, `localDisk`, `localSsdPro` are available.
          */
         category: string;
         /**
@@ -27161,7 +27168,7 @@ export namespace emrv2 {
 
     export interface ClusterSubscriptionConfig {
         /**
-         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
          */
         autoPayOrder?: boolean;
         /**
@@ -27192,7 +27199,7 @@ export namespace emrv2 {
          */
         clusterId: string;
         /**
-         * The name of the emr cluster.
+         * The cluster name.
          */
         clusterName: string;
         /**
@@ -27232,7 +27239,7 @@ export namespace emrv2 {
          */
         releaseVersion: string;
         /**
-         * The resource group id of the resource.
+         * The Resource Group ID.
          */
         resourceGroupId: string;
         /**
@@ -27304,6 +27311,29 @@ export namespace ens {
          * System disk size, unit: GB.
          */
         size: number;
+    }
+
+    export interface LoadBalancerBackendServer {
+        /**
+         * IP address of the backend server  Example value: 192.168.0.5.
+         */
+        ip?: string;
+        /**
+         * Port used by the backend server.
+         */
+        port: number;
+        /**
+         * Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+         */
+        serverId: string;
+        /**
+         * Backend server type  Example value: ens.
+         */
+        type?: string;
+        /**
+         * Weight of the backend server  Example value: 100.
+         */
+        weight?: number;
     }
 
 }
@@ -30090,7 +30120,7 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfig {
         /**
-         * (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+         * Image Acceleration Information (Obsolete).
          *
          * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          */
@@ -30212,9 +30242,9 @@ export namespace fc {
         gpuMemorySize?: number;
         /**
          * GPU card architecture.
-         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+         * - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
          */
         gpuType?: string;
     }
@@ -30342,6 +30372,87 @@ export namespace fc {
          * Switch List.
          */
         vswitchIds?: string[];
+    }
+
+    export interface V3LayerVersionCode {
+        /**
+         * The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+         */
+        checksum?: string;
+        /**
+         * Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+         */
+        ossBucketName?: string;
+        /**
+         * Name of the OSS Object where the user stores the Layer Code ZIP package.
+         */
+        ossObjectName?: string;
+        /**
+         * Base 64 encoding of Layer Code ZIP package.
+         */
+        zipFile?: string;
+    }
+
+    export interface V3ProvisionConfigScheduledAction {
+        /**
+         * Policy expiration time.
+         */
+        endTime?: string;
+        /**
+         * Policy Name.
+         */
+        name?: string;
+        /**
+         * Timing Configuration.
+         */
+        scheduleExpression?: string;
+        /**
+         * Policy effective time.
+         */
+        startTime?: string;
+        /**
+         * Number of reserved target resources.
+         */
+        target?: number;
+        /**
+         * Time zone.
+         */
+        timeZone?: string;
+    }
+
+    export interface V3ProvisionConfigTargetTrackingPolicy {
+        /**
+         * Policy expiration time.
+         */
+        endTime?: string;
+        /**
+         * Maximum value of expansion.
+         */
+        maxCapacity?: number;
+        /**
+         * Tracking value of the indicator.
+         */
+        metricTarget?: number;
+        /**
+         * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+         */
+        metricType?: string;
+        /**
+         * Minimum Shrinkage.
+         */
+        minCapacity?: number;
+        /**
+         * Policy Name.
+         */
+        name?: string;
+        /**
+         * Policy Effective Time.
+         */
+        startTime?: string;
+        /**
+         * Time zone.
+         */
+        timeZone?: string;
     }
 
 }
@@ -33603,19 +33714,19 @@ export namespace hbr {
 
     export interface PolicyRule {
         /**
-         * This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         * This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
          */
         archiveDays: number;
         /**
-         * This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+         * This parameter is required only when the `RuleType` value is **BACKUP. Backup Type.
          */
         backupType?: string;
         /**
-         * This parameter is required only when **RuleType** is set to **BACKUP**.
+         * This parameter is required only when `RuleType` is set to `BACKUP`.
          */
         keepLatestSnapshots?: number;
         /**
-         * Only when the **RuleType** value is.
+         * Only when the `RuleType` value is.
          */
         replicationRegionId?: string;
         /**
@@ -33623,7 +33734,7 @@ export namespace hbr {
          */
         retention?: number;
         /**
-         * This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+         * This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retentionRules` below.
          */
         retentionRules?: outputs.hbr.PolicyRuleRetentionRule[];
         /**
@@ -33635,7 +33746,7 @@ export namespace hbr {
          */
         ruleType: string;
         /**
-         * This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+         * This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
          */
         schedule?: string;
         /**
@@ -33646,7 +33757,7 @@ export namespace hbr {
 
     export interface PolicyRuleRetentionRule {
         /**
-         * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+         * Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
          */
         advancedRetentionType?: string;
         /**
@@ -50520,7 +50631,7 @@ export namespace vpc {
          */
         routeTableName: string;
         /**
-         * The type of route table.
+         * The route table type.
          */
         routeTableType: string;
         /**

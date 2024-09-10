@@ -19,14 +19,14 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
     public static final ClusterSubscriptionConfigArgs Empty = new ClusterSubscriptionConfigArgs();
 
     /**
-     * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
      * 
      */
     @Import(name="autoPayOrder")
     private @Nullable Output<Boolean> autoPayOrder;
 
     /**
-     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
      * 
      */
     public Optional<Output<Boolean>> autoPayOrder() {
@@ -138,7 +138,7 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
          * 
          * @return builder
          * 

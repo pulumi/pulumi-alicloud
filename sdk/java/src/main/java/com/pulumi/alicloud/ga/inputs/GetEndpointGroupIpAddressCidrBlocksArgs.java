@@ -17,6 +17,21 @@ public final class GetEndpointGroupIpAddressCidrBlocksArgs extends com.pulumi.re
     public static final GetEndpointGroupIpAddressCidrBlocksArgs Empty = new GetEndpointGroupIpAddressCidrBlocksArgs();
 
     /**
+     * The ID of the Global Accelerator (GA) instance.
+     * 
+     */
+    @Import(name="acceleratorId")
+    private @Nullable Output<String> acceleratorId;
+
+    /**
+     * @return The ID of the Global Accelerator (GA) instance.
+     * 
+     */
+    public Optional<Output<String>> acceleratorId() {
+        return Optional.ofNullable(this.acceleratorId);
+    }
+
+    /**
      * The region ID of the endpoint group.
      * 
      */
@@ -49,6 +64,7 @@ public final class GetEndpointGroupIpAddressCidrBlocksArgs extends com.pulumi.re
     private GetEndpointGroupIpAddressCidrBlocksArgs() {}
 
     private GetEndpointGroupIpAddressCidrBlocksArgs(GetEndpointGroupIpAddressCidrBlocksArgs $) {
+        this.acceleratorId = $.acceleratorId;
         this.endpointGroupRegion = $.endpointGroupRegion;
         this.outputFile = $.outputFile;
     }
@@ -69,6 +85,27 @@ public final class GetEndpointGroupIpAddressCidrBlocksArgs extends com.pulumi.re
 
         public Builder(GetEndpointGroupIpAddressCidrBlocksArgs defaults) {
             $ = new GetEndpointGroupIpAddressCidrBlocksArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratorId The ID of the Global Accelerator (GA) instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorId(@Nullable Output<String> acceleratorId) {
+            $.acceleratorId = acceleratorId;
+            return this;
+        }
+
+        /**
+         * @param acceleratorId The ID of the Global Accelerator (GA) instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorId(String acceleratorId) {
+            return acceleratorId(Output.of(acceleratorId));
         }
 
         /**

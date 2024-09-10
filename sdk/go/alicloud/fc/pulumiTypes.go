@@ -5443,7 +5443,7 @@ func (o V3FunctionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
 }
 
 type V3FunctionCustomContainerConfig struct {
-	// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+	// Image Acceleration Information (Obsolete).
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo *V3FunctionCustomContainerConfigAccelerationInfo `pulumi:"accelerationInfo"`
@@ -5481,7 +5481,7 @@ type V3FunctionCustomContainerConfigInput interface {
 }
 
 type V3FunctionCustomContainerConfigArgs struct {
-	// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+	// Image Acceleration Information (Obsolete).
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo V3FunctionCustomContainerConfigAccelerationInfoPtrInput `pulumi:"accelerationInfo"`
@@ -5584,7 +5584,7 @@ func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfig
 	}).(V3FunctionCustomContainerConfigPtrOutput)
 }
 
-// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+// Image Acceleration Information (Obsolete).
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
@@ -5663,7 +5663,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) Elem() V3FunctionCustomContain
 	}).(V3FunctionCustomContainerConfigOutput)
 }
 
-// (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+// Image Acceleration Information (Obsolete).
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
@@ -6801,9 +6801,9 @@ type V3FunctionGpuConfig struct {
 	// GPU memory specification, unit: MB, multiple of 1024MB.
 	GpuMemorySize *int `pulumi:"gpuMemorySize"`
 	// GPU card architecture.
-	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+	// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
 	GpuType *string `pulumi:"gpuType"`
 }
 
@@ -6822,9 +6822,9 @@ type V3FunctionGpuConfigArgs struct {
 	// GPU memory specification, unit: MB, multiple of 1024MB.
 	GpuMemorySize pulumi.IntPtrInput `pulumi:"gpuMemorySize"`
 	// GPU card architecture.
-	// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-	// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-	// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+	// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+	// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+	// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
 	GpuType pulumi.StringPtrInput `pulumi:"gpuType"`
 }
 
@@ -6911,9 +6911,9 @@ func (o V3FunctionGpuConfigOutput) GpuMemorySize() pulumi.IntPtrOutput {
 }
 
 // GPU card architecture.
-// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
 func (o V3FunctionGpuConfigOutput) GpuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionGpuConfig) *string { return v.GpuType }).(pulumi.StringPtrOutput)
 }
@@ -6953,9 +6953,9 @@ func (o V3FunctionGpuConfigPtrOutput) GpuMemorySize() pulumi.IntPtrOutput {
 }
 
 // GPU card architecture.
-// - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-// - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-// - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+// - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+// - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+// - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
 func (o V3FunctionGpuConfigPtrOutput) GpuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3FunctionGpuConfig) *string {
 		if v == nil {
@@ -8375,6 +8375,502 @@ func (o V3FunctionVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 		}
 		return v.VswitchIds
 	}).(pulumi.StringArrayOutput)
+}
+
+type V3LayerVersionCode struct {
+	// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+	Checksum *string `pulumi:"checksum"`
+	// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+	OssBucketName *string `pulumi:"ossBucketName"`
+	// Name of the OSS Object where the user stores the Layer Code ZIP package.
+	OssObjectName *string `pulumi:"ossObjectName"`
+	// Base 64 encoding of Layer Code ZIP package.
+	ZipFile *string `pulumi:"zipFile"`
+}
+
+// V3LayerVersionCodeInput is an input type that accepts V3LayerVersionCodeArgs and V3LayerVersionCodeOutput values.
+// You can construct a concrete instance of `V3LayerVersionCodeInput` via:
+//
+//	V3LayerVersionCodeArgs{...}
+type V3LayerVersionCodeInput interface {
+	pulumi.Input
+
+	ToV3LayerVersionCodeOutput() V3LayerVersionCodeOutput
+	ToV3LayerVersionCodeOutputWithContext(context.Context) V3LayerVersionCodeOutput
+}
+
+type V3LayerVersionCodeArgs struct {
+	// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+	OssBucketName pulumi.StringPtrInput `pulumi:"ossBucketName"`
+	// Name of the OSS Object where the user stores the Layer Code ZIP package.
+	OssObjectName pulumi.StringPtrInput `pulumi:"ossObjectName"`
+	// Base 64 encoding of Layer Code ZIP package.
+	ZipFile pulumi.StringPtrInput `pulumi:"zipFile"`
+}
+
+func (V3LayerVersionCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3LayerVersionCode)(nil)).Elem()
+}
+
+func (i V3LayerVersionCodeArgs) ToV3LayerVersionCodeOutput() V3LayerVersionCodeOutput {
+	return i.ToV3LayerVersionCodeOutputWithContext(context.Background())
+}
+
+func (i V3LayerVersionCodeArgs) ToV3LayerVersionCodeOutputWithContext(ctx context.Context) V3LayerVersionCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3LayerVersionCodeOutput)
+}
+
+func (i V3LayerVersionCodeArgs) ToV3LayerVersionCodePtrOutput() V3LayerVersionCodePtrOutput {
+	return i.ToV3LayerVersionCodePtrOutputWithContext(context.Background())
+}
+
+func (i V3LayerVersionCodeArgs) ToV3LayerVersionCodePtrOutputWithContext(ctx context.Context) V3LayerVersionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3LayerVersionCodeOutput).ToV3LayerVersionCodePtrOutputWithContext(ctx)
+}
+
+// V3LayerVersionCodePtrInput is an input type that accepts V3LayerVersionCodeArgs, V3LayerVersionCodePtr and V3LayerVersionCodePtrOutput values.
+// You can construct a concrete instance of `V3LayerVersionCodePtrInput` via:
+//
+//	        V3LayerVersionCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3LayerVersionCodePtrInput interface {
+	pulumi.Input
+
+	ToV3LayerVersionCodePtrOutput() V3LayerVersionCodePtrOutput
+	ToV3LayerVersionCodePtrOutputWithContext(context.Context) V3LayerVersionCodePtrOutput
+}
+
+type v3layerVersionCodePtrType V3LayerVersionCodeArgs
+
+func V3LayerVersionCodePtr(v *V3LayerVersionCodeArgs) V3LayerVersionCodePtrInput {
+	return (*v3layerVersionCodePtrType)(v)
+}
+
+func (*v3layerVersionCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3LayerVersionCode)(nil)).Elem()
+}
+
+func (i *v3layerVersionCodePtrType) ToV3LayerVersionCodePtrOutput() V3LayerVersionCodePtrOutput {
+	return i.ToV3LayerVersionCodePtrOutputWithContext(context.Background())
+}
+
+func (i *v3layerVersionCodePtrType) ToV3LayerVersionCodePtrOutputWithContext(ctx context.Context) V3LayerVersionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3LayerVersionCodePtrOutput)
+}
+
+type V3LayerVersionCodeOutput struct{ *pulumi.OutputState }
+
+func (V3LayerVersionCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3LayerVersionCode)(nil)).Elem()
+}
+
+func (o V3LayerVersionCodeOutput) ToV3LayerVersionCodeOutput() V3LayerVersionCodeOutput {
+	return o
+}
+
+func (o V3LayerVersionCodeOutput) ToV3LayerVersionCodeOutputWithContext(ctx context.Context) V3LayerVersionCodeOutput {
+	return o
+}
+
+func (o V3LayerVersionCodeOutput) ToV3LayerVersionCodePtrOutput() V3LayerVersionCodePtrOutput {
+	return o.ToV3LayerVersionCodePtrOutputWithContext(context.Background())
+}
+
+func (o V3LayerVersionCodeOutput) ToV3LayerVersionCodePtrOutputWithContext(ctx context.Context) V3LayerVersionCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3LayerVersionCode) *V3LayerVersionCode {
+		return &v
+	}).(V3LayerVersionCodePtrOutput)
+}
+
+// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+func (o V3LayerVersionCodeOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+func (o V3LayerVersionCodeOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.OssBucketName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the OSS Object where the user stores the Layer Code ZIP package.
+func (o V3LayerVersionCodeOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.OssObjectName }).(pulumi.StringPtrOutput)
+}
+
+// Base 64 encoding of Layer Code ZIP package.
+func (o V3LayerVersionCodeOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.ZipFile }).(pulumi.StringPtrOutput)
+}
+
+type V3LayerVersionCodePtrOutput struct{ *pulumi.OutputState }
+
+func (V3LayerVersionCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3LayerVersionCode)(nil)).Elem()
+}
+
+func (o V3LayerVersionCodePtrOutput) ToV3LayerVersionCodePtrOutput() V3LayerVersionCodePtrOutput {
+	return o
+}
+
+func (o V3LayerVersionCodePtrOutput) ToV3LayerVersionCodePtrOutputWithContext(ctx context.Context) V3LayerVersionCodePtrOutput {
+	return o
+}
+
+func (o V3LayerVersionCodePtrOutput) Elem() V3LayerVersionCodeOutput {
+	return o.ApplyT(func(v *V3LayerVersionCode) V3LayerVersionCode {
+		if v != nil {
+			return *v
+		}
+		var ret V3LayerVersionCode
+		return ret
+	}).(V3LayerVersionCodeOutput)
+}
+
+// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+func (o V3LayerVersionCodePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3LayerVersionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+func (o V3LayerVersionCodePtrOutput) OssBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3LayerVersionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssBucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the OSS Object where the user stores the Layer Code ZIP package.
+func (o V3LayerVersionCodePtrOutput) OssObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3LayerVersionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OssObjectName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base 64 encoding of Layer Code ZIP package.
+func (o V3LayerVersionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3LayerVersionCode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZipFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type V3ProvisionConfigScheduledAction struct {
+	// Policy expiration time.
+	EndTime *string `pulumi:"endTime"`
+	// Policy Name.
+	Name *string `pulumi:"name"`
+	// Timing Configuration.
+	ScheduleExpression *string `pulumi:"scheduleExpression"`
+	// Policy effective time.
+	StartTime *string `pulumi:"startTime"`
+	// Number of reserved target resources.
+	Target *int `pulumi:"target"`
+	// Time zone.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// V3ProvisionConfigScheduledActionInput is an input type that accepts V3ProvisionConfigScheduledActionArgs and V3ProvisionConfigScheduledActionOutput values.
+// You can construct a concrete instance of `V3ProvisionConfigScheduledActionInput` via:
+//
+//	V3ProvisionConfigScheduledActionArgs{...}
+type V3ProvisionConfigScheduledActionInput interface {
+	pulumi.Input
+
+	ToV3ProvisionConfigScheduledActionOutput() V3ProvisionConfigScheduledActionOutput
+	ToV3ProvisionConfigScheduledActionOutputWithContext(context.Context) V3ProvisionConfigScheduledActionOutput
+}
+
+type V3ProvisionConfigScheduledActionArgs struct {
+	// Policy expiration time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Policy Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Timing Configuration.
+	ScheduleExpression pulumi.StringPtrInput `pulumi:"scheduleExpression"`
+	// Policy effective time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Number of reserved target resources.
+	Target pulumi.IntPtrInput `pulumi:"target"`
+	// Time zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (V3ProvisionConfigScheduledActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3ProvisionConfigScheduledAction)(nil)).Elem()
+}
+
+func (i V3ProvisionConfigScheduledActionArgs) ToV3ProvisionConfigScheduledActionOutput() V3ProvisionConfigScheduledActionOutput {
+	return i.ToV3ProvisionConfigScheduledActionOutputWithContext(context.Background())
+}
+
+func (i V3ProvisionConfigScheduledActionArgs) ToV3ProvisionConfigScheduledActionOutputWithContext(ctx context.Context) V3ProvisionConfigScheduledActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3ProvisionConfigScheduledActionOutput)
+}
+
+// V3ProvisionConfigScheduledActionArrayInput is an input type that accepts V3ProvisionConfigScheduledActionArray and V3ProvisionConfigScheduledActionArrayOutput values.
+// You can construct a concrete instance of `V3ProvisionConfigScheduledActionArrayInput` via:
+//
+//	V3ProvisionConfigScheduledActionArray{ V3ProvisionConfigScheduledActionArgs{...} }
+type V3ProvisionConfigScheduledActionArrayInput interface {
+	pulumi.Input
+
+	ToV3ProvisionConfigScheduledActionArrayOutput() V3ProvisionConfigScheduledActionArrayOutput
+	ToV3ProvisionConfigScheduledActionArrayOutputWithContext(context.Context) V3ProvisionConfigScheduledActionArrayOutput
+}
+
+type V3ProvisionConfigScheduledActionArray []V3ProvisionConfigScheduledActionInput
+
+func (V3ProvisionConfigScheduledActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3ProvisionConfigScheduledAction)(nil)).Elem()
+}
+
+func (i V3ProvisionConfigScheduledActionArray) ToV3ProvisionConfigScheduledActionArrayOutput() V3ProvisionConfigScheduledActionArrayOutput {
+	return i.ToV3ProvisionConfigScheduledActionArrayOutputWithContext(context.Background())
+}
+
+func (i V3ProvisionConfigScheduledActionArray) ToV3ProvisionConfigScheduledActionArrayOutputWithContext(ctx context.Context) V3ProvisionConfigScheduledActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3ProvisionConfigScheduledActionArrayOutput)
+}
+
+type V3ProvisionConfigScheduledActionOutput struct{ *pulumi.OutputState }
+
+func (V3ProvisionConfigScheduledActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3ProvisionConfigScheduledAction)(nil)).Elem()
+}
+
+func (o V3ProvisionConfigScheduledActionOutput) ToV3ProvisionConfigScheduledActionOutput() V3ProvisionConfigScheduledActionOutput {
+	return o
+}
+
+func (o V3ProvisionConfigScheduledActionOutput) ToV3ProvisionConfigScheduledActionOutputWithContext(ctx context.Context) V3ProvisionConfigScheduledActionOutput {
+	return o
+}
+
+// Policy expiration time.
+func (o V3ProvisionConfigScheduledActionOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Policy Name.
+func (o V3ProvisionConfigScheduledActionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Timing Configuration.
+func (o V3ProvisionConfigScheduledActionOutput) ScheduleExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.ScheduleExpression }).(pulumi.StringPtrOutput)
+}
+
+// Policy effective time.
+func (o V3ProvisionConfigScheduledActionOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Number of reserved target resources.
+func (o V3ProvisionConfigScheduledActionOutput) Target() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *int { return v.Target }).(pulumi.IntPtrOutput)
+}
+
+// Time zone.
+func (o V3ProvisionConfigScheduledActionOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type V3ProvisionConfigScheduledActionArrayOutput struct{ *pulumi.OutputState }
+
+func (V3ProvisionConfigScheduledActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3ProvisionConfigScheduledAction)(nil)).Elem()
+}
+
+func (o V3ProvisionConfigScheduledActionArrayOutput) ToV3ProvisionConfigScheduledActionArrayOutput() V3ProvisionConfigScheduledActionArrayOutput {
+	return o
+}
+
+func (o V3ProvisionConfigScheduledActionArrayOutput) ToV3ProvisionConfigScheduledActionArrayOutputWithContext(ctx context.Context) V3ProvisionConfigScheduledActionArrayOutput {
+	return o
+}
+
+func (o V3ProvisionConfigScheduledActionArrayOutput) Index(i pulumi.IntInput) V3ProvisionConfigScheduledActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3ProvisionConfigScheduledAction {
+		return vs[0].([]V3ProvisionConfigScheduledAction)[vs[1].(int)]
+	}).(V3ProvisionConfigScheduledActionOutput)
+}
+
+type V3ProvisionConfigTargetTrackingPolicy struct {
+	// Policy expiration time.
+	EndTime *string `pulumi:"endTime"`
+	// Maximum value of expansion.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// Tracking value of the indicator.
+	MetricTarget *float64 `pulumi:"metricTarget"`
+	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+	MetricType *string `pulumi:"metricType"`
+	// Minimum Shrinkage.
+	MinCapacity *int `pulumi:"minCapacity"`
+	// Policy Name.
+	Name *string `pulumi:"name"`
+	// Policy Effective Time.
+	StartTime *string `pulumi:"startTime"`
+	// Time zone.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// V3ProvisionConfigTargetTrackingPolicyInput is an input type that accepts V3ProvisionConfigTargetTrackingPolicyArgs and V3ProvisionConfigTargetTrackingPolicyOutput values.
+// You can construct a concrete instance of `V3ProvisionConfigTargetTrackingPolicyInput` via:
+//
+//	V3ProvisionConfigTargetTrackingPolicyArgs{...}
+type V3ProvisionConfigTargetTrackingPolicyInput interface {
+	pulumi.Input
+
+	ToV3ProvisionConfigTargetTrackingPolicyOutput() V3ProvisionConfigTargetTrackingPolicyOutput
+	ToV3ProvisionConfigTargetTrackingPolicyOutputWithContext(context.Context) V3ProvisionConfigTargetTrackingPolicyOutput
+}
+
+type V3ProvisionConfigTargetTrackingPolicyArgs struct {
+	// Policy expiration time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Maximum value of expansion.
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// Tracking value of the indicator.
+	MetricTarget pulumi.Float64PtrInput `pulumi:"metricTarget"`
+	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
+	// Minimum Shrinkage.
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+	// Policy Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Policy Effective Time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Time zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (V3ProvisionConfigTargetTrackingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicy)(nil)).Elem()
+}
+
+func (i V3ProvisionConfigTargetTrackingPolicyArgs) ToV3ProvisionConfigTargetTrackingPolicyOutput() V3ProvisionConfigTargetTrackingPolicyOutput {
+	return i.ToV3ProvisionConfigTargetTrackingPolicyOutputWithContext(context.Background())
+}
+
+func (i V3ProvisionConfigTargetTrackingPolicyArgs) ToV3ProvisionConfigTargetTrackingPolicyOutputWithContext(ctx context.Context) V3ProvisionConfigTargetTrackingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3ProvisionConfigTargetTrackingPolicyOutput)
+}
+
+// V3ProvisionConfigTargetTrackingPolicyArrayInput is an input type that accepts V3ProvisionConfigTargetTrackingPolicyArray and V3ProvisionConfigTargetTrackingPolicyArrayOutput values.
+// You can construct a concrete instance of `V3ProvisionConfigTargetTrackingPolicyArrayInput` via:
+//
+//	V3ProvisionConfigTargetTrackingPolicyArray{ V3ProvisionConfigTargetTrackingPolicyArgs{...} }
+type V3ProvisionConfigTargetTrackingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToV3ProvisionConfigTargetTrackingPolicyArrayOutput() V3ProvisionConfigTargetTrackingPolicyArrayOutput
+	ToV3ProvisionConfigTargetTrackingPolicyArrayOutputWithContext(context.Context) V3ProvisionConfigTargetTrackingPolicyArrayOutput
+}
+
+type V3ProvisionConfigTargetTrackingPolicyArray []V3ProvisionConfigTargetTrackingPolicyInput
+
+func (V3ProvisionConfigTargetTrackingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3ProvisionConfigTargetTrackingPolicy)(nil)).Elem()
+}
+
+func (i V3ProvisionConfigTargetTrackingPolicyArray) ToV3ProvisionConfigTargetTrackingPolicyArrayOutput() V3ProvisionConfigTargetTrackingPolicyArrayOutput {
+	return i.ToV3ProvisionConfigTargetTrackingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i V3ProvisionConfigTargetTrackingPolicyArray) ToV3ProvisionConfigTargetTrackingPolicyArrayOutputWithContext(ctx context.Context) V3ProvisionConfigTargetTrackingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3ProvisionConfigTargetTrackingPolicyArrayOutput)
+}
+
+type V3ProvisionConfigTargetTrackingPolicyOutput struct{ *pulumi.OutputState }
+
+func (V3ProvisionConfigTargetTrackingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicy)(nil)).Elem()
+}
+
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) ToV3ProvisionConfigTargetTrackingPolicyOutput() V3ProvisionConfigTargetTrackingPolicyOutput {
+	return o
+}
+
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) ToV3ProvisionConfigTargetTrackingPolicyOutputWithContext(ctx context.Context) V3ProvisionConfigTargetTrackingPolicyOutput {
+	return o
+}
+
+// Policy expiration time.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Maximum value of expansion.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Tracking value of the indicator.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) MetricTarget() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *float64 { return v.MetricTarget }).(pulumi.Float64PtrOutput)
+}
+
+// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) MetricType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.MetricType }).(pulumi.StringPtrOutput)
+}
+
+// Minimum Shrinkage.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Policy Name.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Policy Effective Time.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Time zone.
+func (o V3ProvisionConfigTargetTrackingPolicyOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type V3ProvisionConfigTargetTrackingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (V3ProvisionConfigTargetTrackingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V3ProvisionConfigTargetTrackingPolicy)(nil)).Elem()
+}
+
+func (o V3ProvisionConfigTargetTrackingPolicyArrayOutput) ToV3ProvisionConfigTargetTrackingPolicyArrayOutput() V3ProvisionConfigTargetTrackingPolicyArrayOutput {
+	return o
+}
+
+func (o V3ProvisionConfigTargetTrackingPolicyArrayOutput) ToV3ProvisionConfigTargetTrackingPolicyArrayOutputWithContext(ctx context.Context) V3ProvisionConfigTargetTrackingPolicyArrayOutput {
+	return o
+}
+
+func (o V3ProvisionConfigTargetTrackingPolicyArrayOutput) Index(i pulumi.IntInput) V3ProvisionConfigTargetTrackingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3ProvisionConfigTargetTrackingPolicy {
+		return vs[0].([]V3ProvisionConfigTargetTrackingPolicy)[vs[1].(int)]
+	}).(V3ProvisionConfigTargetTrackingPolicyOutput)
 }
 
 type GetCustomDomainsDomain struct {
@@ -10014,6 +10510,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigMountPointArrayInput)(nil)).Elem(), V3FunctionOssMountConfigMountPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigPtrInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3LayerVersionCodeInput)(nil)).Elem(), V3LayerVersionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3LayerVersionCodePtrInput)(nil)).Elem(), V3LayerVersionCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigScheduledActionInput)(nil)).Elem(), V3ProvisionConfigScheduledActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigScheduledActionArrayInput)(nil)).Elem(), V3ProvisionConfigScheduledActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicyInput)(nil)).Elem(), V3ProvisionConfigTargetTrackingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicyArrayInput)(nil)).Elem(), V3ProvisionConfigTargetTrackingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainArrayInput)(nil)).Elem(), GetCustomDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainCertConfigInput)(nil)).Elem(), GetCustomDomainsDomainCertConfigArgs{})
@@ -10138,6 +10640,12 @@ func init() {
 	pulumi.RegisterOutputType(V3FunctionOssMountConfigMountPointArrayOutput{})
 	pulumi.RegisterOutputType(V3FunctionVpcConfigOutput{})
 	pulumi.RegisterOutputType(V3FunctionVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(V3LayerVersionCodeOutput{})
+	pulumi.RegisterOutputType(V3LayerVersionCodePtrOutput{})
+	pulumi.RegisterOutputType(V3ProvisionConfigScheduledActionOutput{})
+	pulumi.RegisterOutputType(V3ProvisionConfigScheduledActionArrayOutput{})
+	pulumi.RegisterOutputType(V3ProvisionConfigTargetTrackingPolicyOutput{})
+	pulumi.RegisterOutputType(V3ProvisionConfigTargetTrackingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainCertConfigOutput{})

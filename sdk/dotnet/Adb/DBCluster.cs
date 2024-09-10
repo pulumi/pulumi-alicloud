@@ -108,6 +108,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("enableSsl")]
+        public Output<bool?> EnableSsl { get; private set; } = null!;
+
+        /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         /// </summary>
         [Output("kmsId")]
@@ -335,6 +341,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
+
+        /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         /// </summary>
         [Input("kmsId")]
@@ -528,6 +540,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
         /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.

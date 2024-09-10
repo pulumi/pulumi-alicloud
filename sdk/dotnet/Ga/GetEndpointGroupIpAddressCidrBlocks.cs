@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetEndpointGroupIpAddressCidrBlocksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The ID of the Global Accelerator (GA) instance.
+        /// </summary>
+        [Input("acceleratorId")]
+        public string? AcceleratorId { get; set; }
+
+        /// <summary>
         /// The region ID of the endpoint group.
         /// </summary>
         [Input("endpointGroupRegion", required: true)]
@@ -99,6 +105,12 @@ namespace Pulumi.AliCloud.Ga
 
     public sealed class GetEndpointGroupIpAddressCidrBlocksInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the Global Accelerator (GA) instance.
+        /// </summary>
+        [Input("acceleratorId")]
+        public Input<string>? AcceleratorId { get; set; }
+
         /// <summary>
         /// The region ID of the endpoint group.
         /// </summary>
@@ -121,6 +133,7 @@ namespace Pulumi.AliCloud.Ga
     [OutputType]
     public sealed class GetEndpointGroupIpAddressCidrBlocksResult
     {
+        public readonly string? AcceleratorId;
         /// <summary>
         /// A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:
         /// </summary>
@@ -137,6 +150,8 @@ namespace Pulumi.AliCloud.Ga
 
         [OutputConstructor]
         private GetEndpointGroupIpAddressCidrBlocksResult(
+            string? acceleratorId,
+
             ImmutableArray<Outputs.GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlockResult> endpointGroupIpAddressCidrBlocks,
 
             string endpointGroupRegion,
@@ -145,6 +160,7 @@ namespace Pulumi.AliCloud.Ga
 
             string? outputFile)
         {
+            AcceleratorId = acceleratorId;
             EndpointGroupIpAddressCidrBlocks = endpointGroupIpAddressCidrBlocks;
             EndpointGroupRegion = endpointGroupRegion;
             Id = id;

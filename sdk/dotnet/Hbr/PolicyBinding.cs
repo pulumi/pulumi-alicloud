@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr
 {
     /// <summary>
-    /// Provides a HBR Policy Binding resource. A policy binding relationship consists of a data source, a policy, and binding options.
+    /// Provides a HBR Policy Binding resource.
     /// 
     /// For information about HBR Policy Binding and how to use it, see [What is Policy Binding](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicybindings).
     /// 
@@ -92,16 +92,34 @@ namespace Pulumi.AliCloud.Hbr
     public partial class PolicyBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup Advanced Options. See `advanced_options` below.
+        /// Backup Advanced Options See `advanced_options` below.
         /// </summary>
         [Output("advancedOptions")]
         public Output<Outputs.PolicyBindingAdvancedOptions> AdvancedOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// Cross-account type, supported
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
         /// The data source ID.
@@ -112,7 +130,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// Whether the policy is effective for the data source.
         /// - true: Pause
-        /// - false: not paused.
+        /// - false: not paused
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -130,7 +148,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Description.
+        /// Resource Description
         /// </summary>
         [Output("policyBindingDescription")]
         public Output<string?> PolicyBindingDescription { get; private set; } = null!;
@@ -149,11 +167,11 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Data source type, value range:
-        /// - **UDM_ECS**: indicates the ECS instance backup.
-        /// - **OSS**: indicates an OSS backup.
-        /// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        /// - **ECS_FILE**: indicates that the ECS file is backed up.
-        /// - **File**: indicates a local File backup.
+        /// - `UDM_ECS`: indicates the ECS instance backup.
+        /// - `OSS`: indicates an OSS backup.
+        /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        /// - `ECS_FILE`: indicates that the ECS file is backed up.
+        /// - `File`: indicates a local File backup.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -211,10 +229,28 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class PolicyBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Advanced Options. See `advanced_options` below.
+        /// Backup Advanced Options See `advanced_options` below.
         /// </summary>
         [Input("advancedOptions")]
         public Input<Inputs.PolicyBindingAdvancedOptionsArgs>? AdvancedOptions { get; set; }
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// Cross-account type, supported
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// The data source ID.
@@ -225,7 +261,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// Whether the policy is effective for the data source.
         /// - true: Pause
-        /// - false: not paused.
+        /// - false: not paused
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -243,7 +279,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Resource Description.
+        /// Resource Description
         /// </summary>
         [Input("policyBindingDescription")]
         public Input<string>? PolicyBindingDescription { get; set; }
@@ -262,11 +298,11 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Data source type, value range:
-        /// - **UDM_ECS**: indicates the ECS instance backup.
-        /// - **OSS**: indicates an OSS backup.
-        /// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        /// - **ECS_FILE**: indicates that the ECS file is backed up.
-        /// - **File**: indicates a local File backup.
+        /// - `UDM_ECS`: indicates the ECS instance backup.
+        /// - `OSS`: indicates an OSS backup.
+        /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        /// - `ECS_FILE`: indicates that the ECS file is backed up.
+        /// - `File`: indicates a local File backup.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
@@ -286,16 +322,34 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class PolicyBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup Advanced Options. See `advanced_options` below.
+        /// Backup Advanced Options See `advanced_options` below.
         /// </summary>
         [Input("advancedOptions")]
         public Input<Inputs.PolicyBindingAdvancedOptionsGetArgs>? AdvancedOptions { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// Cross-account type, supported
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// The data source ID.
@@ -306,7 +360,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// Whether the policy is effective for the data source.
         /// - true: Pause
-        /// - false: not paused.
+        /// - false: not paused
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -324,7 +378,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Resource Description.
+        /// Resource Description
         /// </summary>
         [Input("policyBindingDescription")]
         public Input<string>? PolicyBindingDescription { get; set; }
@@ -343,11 +397,11 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Data source type, value range:
-        /// - **UDM_ECS**: indicates the ECS instance backup.
-        /// - **OSS**: indicates an OSS backup.
-        /// - **NAS**: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
-        /// - **ECS_FILE**: indicates that the ECS file is backed up.
-        /// - **File**: indicates a local File backup.
+        /// - `UDM_ECS`: indicates the ECS instance backup.
+        /// - `OSS`: indicates an OSS backup.
+        /// - `NAS`: indicates an Alibaba Cloud NAS Backup. When you bind a file system to a policy, Cloud Backup automatically creates a mount point for the file system. If you no longer need the mount point, delete it manually.
+        /// - `ECS_FILE`: indicates that the ECS file is backed up.
+        /// - `File`: indicates a local File backup.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

@@ -77,12 +77,12 @@ class _StaticAccountState:
         """
         Input properties used for looking up and filtering StaticAccount resources.
         :param pulumi.Input[str] access_key: Access key.
-        :param pulumi.Input[int] create_time: Create time stamp. Unix timestamp, to millisecond level.
+        :param pulumi.Input[int] create_time: The timestamp that indicates when the pair of static username and password was created.
         :param pulumi.Input[str] instance_id: Amqp instance ID.
         :param pulumi.Input[str] master_uid: The ID of the user's primary account.
-        :param pulumi.Input[str] password: Static password.
+        :param pulumi.Input[str] password: The static password.
         :param pulumi.Input[str] secret_key: Secret key.
-        :param pulumi.Input[str] user_name: Static user name.
+        :param pulumi.Input[str] user_name: The static username.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -115,7 +115,7 @@ class _StaticAccountState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Create time stamp. Unix timestamp, to millisecond level.
+        The timestamp that indicates when the pair of static username and password was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -151,7 +151,7 @@ class _StaticAccountState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Static password.
+        The static password.
         """
         return pulumi.get(self, "password")
 
@@ -175,7 +175,7 @@ class _StaticAccountState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Static user name.
+        The static username.
         """
         return pulumi.get(self, "user_name")
 
@@ -362,12 +362,12 @@ class StaticAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: Access key.
-        :param pulumi.Input[int] create_time: Create time stamp. Unix timestamp, to millisecond level.
+        :param pulumi.Input[int] create_time: The timestamp that indicates when the pair of static username and password was created.
         :param pulumi.Input[str] instance_id: Amqp instance ID.
         :param pulumi.Input[str] master_uid: The ID of the user's primary account.
-        :param pulumi.Input[str] password: Static password.
+        :param pulumi.Input[str] password: The static password.
         :param pulumi.Input[str] secret_key: Secret key.
-        :param pulumi.Input[str] user_name: Static user name.
+        :param pulumi.Input[str] user_name: The static username.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -394,7 +394,7 @@ class StaticAccount(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[int]:
         """
-        Create time stamp. Unix timestamp, to millisecond level.
+        The timestamp that indicates when the pair of static username and password was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -418,7 +418,7 @@ class StaticAccount(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        Static password.
+        The static password.
         """
         return pulumi.get(self, "password")
 
@@ -434,7 +434,7 @@ class StaticAccount(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        Static user name.
+        The static username.
         """
         return pulumi.get(self, "user_name")
 

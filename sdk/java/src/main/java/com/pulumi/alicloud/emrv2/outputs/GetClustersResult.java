@@ -16,27 +16,59 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
+    /**
+     * @return The name of the emr cluster.
+     * 
+     */
     private @Nullable String clusterName;
     private @Nullable List<String> clusterStates;
     private @Nullable List<String> clusterTypes;
+    /**
+     * @return A list of Emr Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetClustersCluster> clusters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Cluster IDS.
+     * 
+     */
     private List<String> ids;
     private @Nullable Integer maxResults;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     private List<String> names;
     private @Nullable String nextToken;
     private @Nullable String outputFile;
     private @Nullable List<String> paymentTypes;
+    /**
+     * @return The resource group id of the resource.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The total count of list clusters.
+     * 
+     */
     private Integer totalCount;
 
     private GetClustersResult() {}
+    /**
+     * @return The name of the emr cluster.
+     * 
+     */
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
@@ -46,6 +78,10 @@ public final class GetClustersResult {
     public List<String> clusterTypes() {
         return this.clusterTypes == null ? List.of() : this.clusterTypes;
     }
+    /**
+     * @return A list of Emr Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetClustersCluster> clusters() {
         return this.clusters;
     }
@@ -56,6 +92,10 @@ public final class GetClustersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Cluster IDS.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -65,6 +105,10 @@ public final class GetClustersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -77,12 +121,24 @@ public final class GetClustersResult {
     public List<String> paymentTypes() {
         return this.paymentTypes == null ? List.of() : this.paymentTypes;
     }
+    /**
+     * @return The resource group id of the resource.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The total count of list clusters.
+     * 
+     */
     public Integer totalCount() {
         return this.totalCount;
     }

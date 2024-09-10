@@ -25,6 +25,9 @@ from .v3_concurrency_config import *
 from .v3_custom_domain import *
 from .v3_function import *
 from .v3_function_version import *
+from .v3_layer_version import *
+from .v3_provision_config import *
 from .v3_trigger import *
+from .v3_vpc_binding import *
 from ._inputs import *
 from . import outputs

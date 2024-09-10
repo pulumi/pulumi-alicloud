@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ens
 {
     /// <summary>
-    /// Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+    /// Provides a Ens Load Balancer resource.
     /// 
     /// For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
     /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Ens
     /// 
     /// ## Import
     /// 
-    /// ENS Load Balancer can be imported using the id, e.g.
+    /// Ens Load Balancer can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example &lt;id&gt;
@@ -71,6 +71,12 @@ namespace Pulumi.AliCloud.Ens
     [AliCloudResourceType("alicloud:ens/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The list of backend servers. See `backend_servers` below.
+        /// </summary>
+        [Output("backendServers")]
+        public Output<ImmutableArray<Outputs.LoadBalancerBackendServer>> BackendServers { get; private set; } = null!;
+
         /// <summary>
         /// The creation Time (UTC) of the load balancing instance.
         /// </summary>
@@ -84,13 +90,13 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        /// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         /// </summary>
         [Output("loadBalancerName")]
         public Output<string?> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        /// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
@@ -102,7 +108,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        /// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -165,6 +171,18 @@ namespace Pulumi.AliCloud.Ens
 
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
+        [Input("backendServers")]
+        private InputList<Inputs.LoadBalancerBackendServerArgs>? _backendServers;
+
+        /// <summary>
+        /// The list of backend servers. See `backend_servers` below.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerBackendServerArgs> BackendServers
+        {
+            get => _backendServers ?? (_backendServers = new InputList<Inputs.LoadBalancerBackendServerArgs>());
+            set => _backendServers = value;
+        }
+
         /// <summary>
         /// The ID of the ENS node.
         /// </summary>
@@ -172,13 +190,13 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> EnsRegionId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        /// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        /// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         /// </summary>
         [Input("loadBalancerSpec", required: true)]
         public Input<string> LoadBalancerSpec { get; set; } = null!;
@@ -190,7 +208,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
-        /// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        /// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -209,6 +227,18 @@ namespace Pulumi.AliCloud.Ens
 
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
+        [Input("backendServers")]
+        private InputList<Inputs.LoadBalancerBackendServerGetArgs>? _backendServers;
+
+        /// <summary>
+        /// The list of backend servers. See `backend_servers` below.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerBackendServerGetArgs> BackendServers
+        {
+            get => _backendServers ?? (_backendServers = new InputList<Inputs.LoadBalancerBackendServerGetArgs>());
+            set => _backendServers = value;
+        }
+
         /// <summary>
         /// The creation Time (UTC) of the load balancing instance.
         /// </summary>
@@ -222,13 +252,13 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+        /// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+        /// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -240,7 +270,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+        /// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

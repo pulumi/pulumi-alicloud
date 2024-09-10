@@ -122,6 +122,7 @@ type Cluster struct {
 	DiskPerformanceLevel  pulumi.StringOutput    `pulumi:"diskPerformanceLevel"`
 	ElasticIoResource     pulumi.IntOutput       `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize pulumi.StringOutput    `pulumi:"elasticIoResourceSize"`
+	EnableSsl             pulumi.BoolPtrOutput   `pulumi:"enableSsl"`
 	KmsId                 pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
@@ -215,6 +216,7 @@ type clusterState struct {
 	DiskPerformanceLevel  *string `pulumi:"diskPerformanceLevel"`
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	EnableSsl             *bool   `pulumi:"enableSsl"`
 	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -273,6 +275,7 @@ type ClusterState struct {
 	DiskPerformanceLevel  pulumi.StringPtrInput
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
+	EnableSsl             pulumi.BoolPtrInput
 	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -333,6 +336,7 @@ type clusterArgs struct {
 	DiskPerformanceLevel  *string `pulumi:"diskPerformanceLevel"`
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	EnableSsl             *bool   `pulumi:"enableSsl"`
 	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
@@ -387,6 +391,7 @@ type ClusterArgs struct {
 	DiskPerformanceLevel  pulumi.StringPtrInput
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
+	EnableSsl             pulumi.BoolPtrInput
 	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
@@ -568,6 +573,10 @@ func (o ClusterOutput) ElasticIoResource() pulumi.IntOutput {
 
 func (o ClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterOutput) KmsId() pulumi.StringPtrOutput {

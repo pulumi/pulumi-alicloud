@@ -4159,10 +4159,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "fc/v3LayerVersion",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3LayerVersion:V3LayerVersion": "V3LayerVersion"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3ProvisionConfig",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3ProvisionConfig:V3ProvisionConfig": "V3ProvisionConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "fc/v3Trigger",
   "fqn": "pulumi_alicloud.fc",
   "classes": {
    "alicloud:fc/v3Trigger:V3Trigger": "V3Trigger"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3VpcBinding",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3VpcBinding:V3VpcBinding": "V3VpcBinding"
   }
  },
  {
@@ -4455,10 +4479,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/hadoopDataSource",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/hadoopDataSource:HadoopDataSource": "HadoopDataSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/instance",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
    "alicloud:gpdb/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/jdbcDataSource",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/jdbcDataSource:JdbcDataSource": "JdbcDataSource"
   }
  },
  {
@@ -5799,6 +5839,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "quotas/templateService",
+  "fqn": "pulumi_alicloud.quotas",
+  "classes": {
+   "alicloud:quotas/templateService:TemplateService": "TemplateService"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ram/accessKey",
   "fqn": "pulumi_alicloud.ram",
   "classes": {
@@ -6571,6 +6619,38 @@ _utilities.register(
   "fqn": "pulumi_alicloud.servicecatalog",
   "classes": {
    "alicloud:servicecatalog/portfolio:Portfolio": "Portfolio"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "servicecatalog/principalPortfolioAssociation",
+  "fqn": "pulumi_alicloud.servicecatalog",
+  "classes": {
+   "alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation": "PrincipalPortfolioAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "servicecatalog/product",
+  "fqn": "pulumi_alicloud.servicecatalog",
+  "classes": {
+   "alicloud:servicecatalog/product:Product": "Product"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "servicecatalog/productPortfolioAssociation",
+  "fqn": "pulumi_alicloud.servicecatalog",
+  "classes": {
+   "alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation": "ProductPortfolioAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "servicecatalog/productVersion",
+  "fqn": "pulumi_alicloud.servicecatalog",
+  "classes": {
+   "alicloud:servicecatalog/productVersion:ProductVersion": "ProductVersion"
   }
  },
  {

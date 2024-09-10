@@ -1456,7 +1456,7 @@ class ClusterNodeGroupDataDisk(dict):
                  count: Optional[int] = None,
                  performance_level: Optional[str] = None):
         """
-        :param str category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param str category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param int size: The size of a data disk, at least 40. Unit: GiB.
         :param int count: The count of a data disk.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
@@ -1472,7 +1472,7 @@ class ClusterNodeGroupDataDisk(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         """
         return pulumi.get(self, "category")
 
@@ -1588,7 +1588,7 @@ class ClusterNodeGroupSubscriptionConfig(dict):
         """
         :param int payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         :param bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param int auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -1624,7 +1624,7 @@ class ClusterNodeGroupSubscriptionConfig(dict):
     @pulumi.getter(name="autoPayOrder")
     def auto_pay_order(self) -> Optional[bool]:
         """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 
@@ -1678,7 +1678,7 @@ class ClusterNodeGroupSystemDisk(dict):
                  count: Optional[int] = None,
                  performance_level: Optional[str] = None):
         """
-        :param str category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param str category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param int size: The size of a data disk, at least 40. Unit: GiB.
         :param int count: The count of a data disk.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
@@ -1694,7 +1694,7 @@ class ClusterNodeGroupSystemDisk(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         """
         return pulumi.get(self, "category")
 
@@ -1762,7 +1762,7 @@ class ClusterSubscriptionConfig(dict):
         """
         :param int payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
-        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         :param bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param int auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -1798,7 +1798,7 @@ class ClusterSubscriptionConfig(dict):
     @pulumi.getter(name="autoPayOrder")
     def auto_pay_order(self) -> Optional[bool]:
         """
-        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 
@@ -1846,7 +1846,7 @@ class GetClustersClusterResult(dict):
                  tags: Sequence['outputs.GetClustersClusterTagResult']):
         """
         :param str cluster_id: The first ID of the resource.
-        :param str cluster_name: The name of the emr cluster.
+        :param str cluster_name: The cluster name.
         :param str cluster_state: The state of the emr cluster.
         :param str cluster_type: The type of the emr cluster.
         :param str create_time: The creation time of the resource.
@@ -1856,7 +1856,7 @@ class GetClustersClusterResult(dict):
         :param str payment_type: The payment type of the emr cluster.
         :param str ready_time: The ready time of the resource.
         :param str release_version: The release version of the resource.
-        :param str resource_group_id: The resource group id of the resource.
+        :param str resource_group_id: The Resource Group ID.
         :param Mapping[str, str] state_change_reason: The cluster state change reason.
         :param Sequence['GetClustersClusterTagArgs'] tags: A mapping of tags to assign to the resource.
         """
@@ -1887,7 +1887,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        The name of the emr cluster.
+        The cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -1967,7 +1967,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        The resource group id of the resource.
+        The Resource Group ID.
         """
         return pulumi.get(self, "resource_group_id")
 

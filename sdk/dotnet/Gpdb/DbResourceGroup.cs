@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a Gpdb Db Resource Group resource.
+    /// Provides a GPDB Db Resource Group resource.
     /// 
     /// For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
     /// 
@@ -56,7 +56,6 @@ namespace Pulumi.AliCloud.Gpdb
     ///         InstanceNetworkType = "VPC",
     ///         DbInstanceCategory = "Basic",
     ///         Engine = "gpdb",
-    ///         ResourceManagementMode = "resourceGroup",
     ///         PaymentType = "PayAsYouGo",
     ///         SslEnabled = 0,
     ///         EngineVersion = "6.0",
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// Gpdb Db Resource Group can be imported using the id, e.g.
+    /// GPDB Db Resource Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example &lt;db_instance_id&gt;:&lt;resource_group_name&gt;
@@ -114,6 +113,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Role List
+        /// </summary>
+        [Output("roleLists")]
+        public Output<ImmutableArray<string>> RoleLists { get; private set; } = null!;
 
 
         /// <summary>
@@ -179,6 +184,18 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
+        [Input("roleLists")]
+        private InputList<string>? _roleLists;
+
+        /// <summary>
+        /// Role List
+        /// </summary>
+        public InputList<string> RoleLists
+        {
+            get => _roleLists ?? (_roleLists = new InputList<string>());
+            set => _roleLists = value;
+        }
+
         public DbResourceGroupArgs()
         {
         }
@@ -204,6 +221,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
+
+        [Input("roleLists")]
+        private InputList<string>? _roleLists;
+
+        /// <summary>
+        /// Role List
+        /// </summary>
+        public InputList<string> RoleLists
+        {
+            get => _roleLists ?? (_roleLists = new InputList<string>());
+            set => _roleLists = value;
+        }
 
         public DbResourceGroupState()
         {

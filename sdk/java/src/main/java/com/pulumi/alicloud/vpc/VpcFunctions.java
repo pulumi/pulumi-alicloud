@@ -8070,7 +8070,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8116,6 +8116,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
@@ -8132,7 +8133,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8178,6 +8179,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
@@ -8194,7 +8196,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8240,6 +8242,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
@@ -8256,7 +8259,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8302,6 +8305,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
@@ -8318,7 +8322,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8364,6 +8368,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
@@ -8380,7 +8385,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0.
      * 
      * ## Example Usage
      * 
@@ -8426,6 +8431,7 @@ public final class VpcFunctions {
      * 
      *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
+     *             .routeTableType("Custom")
      *             .build());
      * 
      *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));

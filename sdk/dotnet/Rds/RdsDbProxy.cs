@@ -180,6 +180,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> DbProxyInstanceNum { get; private set; } = null!;
 
         /// <summary>
+        /// The database proxy type. Valid values:
+        /// - common: universal proxy.
+        /// - exclusive: Exclusive proxy (default).
+        /// </summary>
+        [Output("dbProxyInstanceType")]
+        public Output<string> DbProxyInstanceType { get; private set; } = null!;
+
+        /// <summary>
         /// The SSL configuration setting that you want to apply on the instance. Valid values:
         /// - Close: disables SSL encryption.
         /// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -375,6 +383,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<int> DbProxyInstanceNum { get; set; } = null!;
 
         /// <summary>
+        /// The database proxy type. Valid values:
+        /// - common: universal proxy.
+        /// - exclusive: Exclusive proxy (default).
+        /// </summary>
+        [Input("dbProxyInstanceType")]
+        public Input<string>? DbProxyInstanceType { get; set; }
+
+        /// <summary>
         /// The SSL configuration setting that you want to apply on the instance. Valid values:
         /// - Close: disables SSL encryption.
         /// - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -542,6 +558,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbProxyInstanceNum")]
         public Input<int>? DbProxyInstanceNum { get; set; }
+
+        /// <summary>
+        /// The database proxy type. Valid values:
+        /// - common: universal proxy.
+        /// - exclusive: Exclusive proxy (default).
+        /// </summary>
+        [Input("dbProxyInstanceType")]
+        public Input<string>? DbProxyInstanceType { get; set; }
 
         /// <summary>
         /// The SSL configuration setting that you want to apply on the instance. Valid values:

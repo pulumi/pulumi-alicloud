@@ -60,10 +60,20 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { HadoopDataSourceArgs, HadoopDataSourceState } from "./hadoopDataSource";
+export type HadoopDataSource = import("./hadoopDataSource").HadoopDataSource;
+export const HadoopDataSource: typeof import("./hadoopDataSource").HadoopDataSource = null as any;
+utilities.lazyLoad(exports, ["HadoopDataSource"], () => require("./hadoopDataSource"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { JdbcDataSourceArgs, JdbcDataSourceState } from "./jdbcDataSource";
+export type JdbcDataSource = import("./jdbcDataSource").JdbcDataSource;
+export const JdbcDataSource: typeof import("./jdbcDataSource").JdbcDataSource = null as any;
+utilities.lazyLoad(exports, ["JdbcDataSource"], () => require("./jdbcDataSource"));
 
 export { RemoteAdbDataSourceArgs, RemoteAdbDataSourceState } from "./remoteAdbDataSource";
 export type RemoteAdbDataSource = import("./remoteAdbDataSource").RemoteAdbDataSource;
@@ -99,8 +109,12 @@ const _module = {
                 return new ElasticInstance(name, <any>undefined, { urn })
             case "alicloud:gpdb/externalDataService:ExternalDataService":
                 return new ExternalDataService(name, <any>undefined, { urn })
+            case "alicloud:gpdb/hadoopDataSource:HadoopDataSource":
+                return new HadoopDataSource(name, <any>undefined, { urn })
             case "alicloud:gpdb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:gpdb/jdbcDataSource:JdbcDataSource":
+                return new JdbcDataSource(name, <any>undefined, { urn })
             case "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource":
                 return new RemoteAdbDataSource(name, <any>undefined, { urn })
             case "alicloud:gpdb/streamingDataService:StreamingDataService":
@@ -119,7 +133,9 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/externalDataService", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/hadoopDataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/jdbcDataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/remoteAdbDataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataSource", _module)

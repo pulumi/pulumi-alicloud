@@ -109,22 +109,25 @@ type Account struct {
 	pulumi.CustomResourceState
 
 	// The description of the account.
-	// * Starts with a letter.
-	// * Does not start with `http://` or `https://`.
-	// * Contains letters, underscores (_), hyphens (-), or digits.
-	// * Be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
-	// The name of the account. The account name must be unique and meet the following requirements:
-	// * Starts with a letter.
-	// * Contains only lowercase letters, digits, or underscores (_).
-	// * Be up to 16 characters in length.
-	// * Contains no reserved keywords.
+	// The account name.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// AccountPassword
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
-	// The ID of the instance.
+	// Account type. The value range is as follows:
+	//
+	// Normal: Normal account number.
+	//
+	// Super: a high-privilege account.
+	AccountType pulumi.StringOutput `pulumi:"accountType"`
+	// Database name, with the following restrictions:
+	// - Can only contain letters, numbers and underscores.
+	// - Must start with a letter.
+	// - Length cannot exceed 63 characters.
+	DatabaseName pulumi.StringPtrOutput `pulumi:"databaseName"`
+	// The Adb pg instance ID.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
-	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -144,6 +147,13 @@ func NewAccount(ctx *pulumi.Context,
 	if args.DbInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'DbInstanceId'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
 	err := ctx.RegisterResource("alicloud:gpdb/account:Account", name, args, &resource, opts...)
@@ -168,43 +178,49 @@ func GetAccount(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
 	// The description of the account.
-	// * Starts with a letter.
-	// * Does not start with `http://` or `https://`.
-	// * Contains letters, underscores (_), hyphens (-), or digits.
-	// * Be 2 to 256 characters in length.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// The name of the account. The account name must be unique and meet the following requirements:
-	// * Starts with a letter.
-	// * Contains only lowercase letters, digits, or underscores (_).
-	// * Be up to 16 characters in length.
-	// * Contains no reserved keywords.
+	// The account name.
 	AccountName *string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// AccountPassword
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The ID of the instance.
+	// Account type. The value range is as follows:
+	//
+	// Normal: Normal account number.
+	//
+	// Super: a high-privilege account.
+	AccountType *string `pulumi:"accountType"`
+	// Database name, with the following restrictions:
+	// - Can only contain letters, numbers and underscores.
+	// - Must start with a letter.
+	// - Length cannot exceed 63 characters.
+	DatabaseName *string `pulumi:"databaseName"`
+	// The Adb pg instance ID.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 }
 
 type AccountState struct {
 	// The description of the account.
-	// * Starts with a letter.
-	// * Does not start with `http://` or `https://`.
-	// * Contains letters, underscores (_), hyphens (-), or digits.
-	// * Be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrInput
-	// The name of the account. The account name must be unique and meet the following requirements:
-	// * Starts with a letter.
-	// * Contains only lowercase letters, digits, or underscores (_).
-	// * Be up to 16 characters in length.
-	// * Contains no reserved keywords.
+	// The account name.
 	AccountName pulumi.StringPtrInput
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// AccountPassword
 	AccountPassword pulumi.StringPtrInput
-	// The ID of the instance.
+	// Account type. The value range is as follows:
+	//
+	// Normal: Normal account number.
+	//
+	// Super: a high-privilege account.
+	AccountType pulumi.StringPtrInput
+	// Database name, with the following restrictions:
+	// - Can only contain letters, numbers and underscores.
+	// - Must start with a letter.
+	// - Length cannot exceed 63 characters.
+	DatabaseName pulumi.StringPtrInput
+	// The Adb pg instance ID.
 	DbInstanceId pulumi.StringPtrInput
-	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 }
 
@@ -214,40 +230,46 @@ func (AccountState) ElementType() reflect.Type {
 
 type accountArgs struct {
 	// The description of the account.
-	// * Starts with a letter.
-	// * Does not start with `http://` or `https://`.
-	// * Contains letters, underscores (_), hyphens (-), or digits.
-	// * Be 2 to 256 characters in length.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// The name of the account. The account name must be unique and meet the following requirements:
-	// * Starts with a letter.
-	// * Contains only lowercase letters, digits, or underscores (_).
-	// * Be up to 16 characters in length.
-	// * Contains no reserved keywords.
+	// The account name.
 	AccountName string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// AccountPassword
 	AccountPassword string `pulumi:"accountPassword"`
-	// The ID of the instance.
+	// Account type. The value range is as follows:
+	//
+	// Normal: Normal account number.
+	//
+	// Super: a high-privilege account.
+	AccountType *string `pulumi:"accountType"`
+	// Database name, with the following restrictions:
+	// - Can only contain letters, numbers and underscores.
+	// - Must start with a letter.
+	// - Length cannot exceed 63 characters.
+	DatabaseName *string `pulumi:"databaseName"`
+	// The Adb pg instance ID.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
 	// The description of the account.
-	// * Starts with a letter.
-	// * Does not start with `http://` or `https://`.
-	// * Contains letters, underscores (_), hyphens (-), or digits.
-	// * Be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrInput
-	// The name of the account. The account name must be unique and meet the following requirements:
-	// * Starts with a letter.
-	// * Contains only lowercase letters, digits, or underscores (_).
-	// * Be up to 16 characters in length.
-	// * Contains no reserved keywords.
+	// The account name.
 	AccountName pulumi.StringInput
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// AccountPassword
 	AccountPassword pulumi.StringInput
-	// The ID of the instance.
+	// Account type. The value range is as follows:
+	//
+	// Normal: Normal account number.
+	//
+	// Super: a high-privilege account.
+	AccountType pulumi.StringPtrInput
+	// Database name, with the following restrictions:
+	// - Can only contain letters, numbers and underscores.
+	// - Must start with a letter.
+	// - Length cannot exceed 63 characters.
+	DatabaseName pulumi.StringPtrInput
+	// The Adb pg instance ID.
 	DbInstanceId pulumi.StringInput
 }
 
@@ -339,34 +361,43 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 }
 
 // The description of the account.
-// * Starts with a letter.
-// * Does not start with `http://` or `https://`.
-// * Contains letters, underscores (_), hyphens (-), or digits.
-// * Be 2 to 256 characters in length.
 func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the account. The account name must be unique and meet the following requirements:
-// * Starts with a letter.
-// * Contains only lowercase letters, digits, or underscores (_).
-// * Be up to 16 characters in length.
-// * Contains no reserved keywords.
+// The account name.
 func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+// AccountPassword
 func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }
 
-// The ID of the instance.
+// Account type. The value range is as follows:
+//
+// Normal: Normal account number.
+//
+// Super: a high-privilege account.
+func (o AccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// Database name, with the following restrictions:
+// - Can only contain letters, numbers and underscores.
+// - Must start with a letter.
+// - Length cannot exceed 63 characters.
+func (o AccountOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// The Adb pg instance ID.
 func (o AccountOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+// The status of the resource
 func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
