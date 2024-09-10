@@ -15,5 +15,6 @@ from .quota_alarm import *
 from .quota_application import *
 from .template_applications import *
 from .template_quota import *
+from .template_service import *
 from ._inputs import *
 from . import outputs

@@ -16,7 +16,9 @@ from .get_accounts import *
 from .get_db_instance_plans import *
 from .get_instances import *
 from .get_zones import *
+from .hadoop_data_source import *
 from .instance import *
+from .jdbc_data_source import *
 from .remote_adb_data_source import *
 from .streaming_data_service import *
 from .streaming_data_source import *

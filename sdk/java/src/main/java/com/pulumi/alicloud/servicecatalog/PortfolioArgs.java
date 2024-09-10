@@ -17,14 +17,14 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
     public static final PortfolioArgs Empty = new PortfolioArgs();
 
     /**
-     * The description of the portfolio. The value must be 1 to 128 characters in length.
+     * The description of the portfolio
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The description of the portfolio
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the portfolio. The value must be 1 to 128 characters in length.
+     * The name of the portfolio
      * 
      */
     @Import(name="portfolioName", required=true)
     private Output<String> portfolioName;
 
     /**
-     * @return The name of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The name of the portfolio
      * 
      */
     public Output<String> portfolioName() {
@@ -47,14 +47,14 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * The provider name of the portfolio
      * 
      */
     @Import(name="providerName", required=true)
     private Output<String> providerName;
 
     /**
-     * @return The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The provider name of the portfolio
      * 
      */
     public Output<String> providerName() {
@@ -88,7 +88,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the portfolio. The value must be 1 to 128 characters in length.
+         * @param description The description of the portfolio
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the portfolio. The value must be 1 to 128 characters in length.
+         * @param description The description of the portfolio
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portfolioName The name of the portfolio. The value must be 1 to 128 characters in length.
+         * @param portfolioName The name of the portfolio
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portfolioName The name of the portfolio. The value must be 1 to 128 characters in length.
+         * @param portfolioName The name of the portfolio
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerName The provider name of the portfolio. The value must be 1 to 128 characters in length.
+         * @param providerName The provider name of the portfolio
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PortfolioArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param providerName The provider name of the portfolio. The value must be 1 to 128 characters in length.
+         * @param providerName The provider name of the portfolio
          * 
          * @return builder
          * 

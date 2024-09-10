@@ -19,6 +19,7 @@ __all__ = [
     'BgpPolicyContentSourceBlockList',
     'BgpPolicyContentSourceLimit',
     'DomainResourceProxyType',
+    'PortConfig',
     'SchedulerRuleRule',
     'GetDdosBgpInstancesInstanceResult',
     'GetDdosBgpIpsIpResult',
@@ -897,6 +898,42 @@ class DomainResourceProxyType(dict):
         the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
         """
         return pulumi.get(self, "proxy_type")
+
+
+@pulumi.output_type
+class PortConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "persistenceTimeout":
+            suggest = "persistence_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PortConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PortConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PortConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 persistence_timeout: Optional[int] = None):
+        """
+        :param int persistence_timeout: The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+        """
+        if persistence_timeout is not None:
+            pulumi.set(__self__, "persistence_timeout", persistence_timeout)
+
+    @property
+    @pulumi.getter(name="persistenceTimeout")
+    def persistence_timeout(self) -> Optional[int]:
+        """
+        The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+        """
+        return pulumi.get(self, "persistence_timeout")
 
 
 @pulumi.output_type

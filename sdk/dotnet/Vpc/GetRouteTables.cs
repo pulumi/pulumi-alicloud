@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// &gt; **NOTE:** Available since v1.36.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         {
         ///             fooRouteTable.Id,
         ///         },
+        ///         RouteTableType = "Custom",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -62,7 +63,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// &gt; **NOTE:** Available since v1.36.0.
         /// 
         /// ## Example Usage
         /// 
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         {
         ///             fooRouteTable.Id,
         ///         },
+        ///         RouteTableType = "Custom",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -152,6 +154,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("routeTableName")]
         public string? RouteTableName { get; set; }
+
+        /// <summary>
+        /// The route table type.
+        /// </summary>
+        [Input("routeTableType")]
+        public string? RouteTableType { get; set; }
 
         /// <summary>
         /// The router ID.
@@ -240,6 +248,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableName { get; set; }
 
         /// <summary>
+        /// The route table type.
+        /// </summary>
+        [Input("routeTableType")]
+        public Input<string>? RouteTableType { get; set; }
+
+        /// <summary>
         /// The router ID.
         /// </summary>
         [Input("routerId")]
@@ -310,6 +324,10 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string? RouteTableName;
         /// <summary>
+        /// The type of route table.
+        /// </summary>
+        public readonly string? RouteTableType;
+        /// <summary>
         /// Router Id of the route table.
         /// </summary>
         public readonly string? RouterId;
@@ -325,6 +343,9 @@ namespace Pulumi.AliCloud.Vpc
         /// A list of Route Tables. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteTablesTableResult> Tables;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;
         /// <summary>
@@ -352,6 +373,8 @@ namespace Pulumi.AliCloud.Vpc
 
             string? routeTableName,
 
+            string? routeTableType,
+
             string? routerId,
 
             string? routerType,
@@ -375,6 +398,7 @@ namespace Pulumi.AliCloud.Vpc
             PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             RouteTableName = routeTableName;
+            RouteTableType = routeTableType;
             RouterId = routerId;
             RouterType = routerType;
             Status = status;

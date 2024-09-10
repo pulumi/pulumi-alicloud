@@ -22,7 +22,7 @@ class GetRouteTablesResult:
     """
     A collection of values returned by getRouteTables.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, route_table_name=None, router_id=None, router_type=None, status=None, tables=None, tags=None, total_count=None, vpc_id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, route_table_name=None, route_table_type=None, router_id=None, router_type=None, status=None, tables=None, tags=None, total_count=None, vpc_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -50,6 +50,9 @@ class GetRouteTablesResult:
         if route_table_name and not isinstance(route_table_name, str):
             raise TypeError("Expected argument 'route_table_name' to be a str")
         pulumi.set(__self__, "route_table_name", route_table_name)
+        if route_table_type and not isinstance(route_table_type, str):
+            raise TypeError("Expected argument 'route_table_type' to be a str")
+        pulumi.set(__self__, "route_table_type", route_table_type)
         if router_id and not isinstance(router_id, str):
             raise TypeError("Expected argument 'router_id' to be a str")
         pulumi.set(__self__, "router_id", router_id)
@@ -133,6 +136,14 @@ class GetRouteTablesResult:
         return pulumi.get(self, "route_table_name")
 
     @property
+    @pulumi.getter(name="routeTableType")
+    def route_table_type(self) -> Optional[str]:
+        """
+        The type of route table.
+        """
+        return pulumi.get(self, "route_table_type")
+
+    @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[str]:
         """
@@ -167,6 +178,9 @@ class GetRouteTablesResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -198,6 +212,7 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             page_size=self.page_size,
             resource_group_id=self.resource_group_id,
             route_table_name=self.route_table_name,
+            route_table_type=self.route_table_type,
             router_id=self.router_id,
             router_type=self.router_type,
             status=self.status,
@@ -214,6 +229,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
                      page_size: Optional[int] = None,
                      resource_group_id: Optional[str] = None,
                      route_table_name: Optional[str] = None,
+                     route_table_type: Optional[str] = None,
                      router_id: Optional[str] = None,
                      router_type: Optional[str] = None,
                      status: Optional[str] = None,
@@ -223,7 +239,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     """
     This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.36.0+.
+    > **NOTE:** Available since v1.36.0.
 
     ## Example Usage
 
@@ -242,7 +258,8 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         vpc_id=foo_network.id,
         route_table_name=name,
         description=name)
-    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
+    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id],
+        route_table_type="Custom")
     pulumi.export("routeTableIds", foo.ids)
     ```
 
@@ -252,6 +269,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param str route_table_name: The route table name.
+    :param str route_table_type: The route table type.
     :param str router_id: The router ID.
     :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
     :param str status: The status of resource. Valid values: `Available` and `Pending`.
@@ -266,6 +284,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['routeTableName'] = route_table_name
+    __args__['routeTableType'] = route_table_type
     __args__['routerId'] = router_id
     __args__['routerType'] = router_type
     __args__['status'] = status
@@ -284,6 +303,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         route_table_name=pulumi.get(__ret__, 'route_table_name'),
+        route_table_type=pulumi.get(__ret__, 'route_table_type'),
         router_id=pulumi.get(__ret__, 'router_id'),
         router_type=pulumi.get(__ret__, 'router_type'),
         status=pulumi.get(__ret__, 'status'),
@@ -301,6 +321,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             page_size: Optional[pulumi.Input[Optional[int]]] = None,
                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                             route_table_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            route_table_type: Optional[pulumi.Input[Optional[str]]] = None,
                             router_id: Optional[pulumi.Input[Optional[str]]] = None,
                             router_type: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -310,7 +331,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     """
     This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.36.0+.
+    > **NOTE:** Available since v1.36.0.
 
     ## Example Usage
 
@@ -329,7 +350,8 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         vpc_id=foo_network.id,
         route_table_name=name,
         description=name)
-    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
+    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id],
+        route_table_type="Custom")
     pulumi.export("routeTableIds", foo.ids)
     ```
 
@@ -339,6 +361,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param str route_table_name: The route table name.
+    :param str route_table_type: The route table type.
     :param str router_id: The router ID.
     :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
     :param str status: The status of resource. Valid values: `Available` and `Pending`.

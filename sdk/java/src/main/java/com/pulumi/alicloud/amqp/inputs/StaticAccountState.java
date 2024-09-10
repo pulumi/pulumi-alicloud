@@ -32,14 +32,14 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Create time stamp. Unix timestamp, to millisecond level.
+     * The timestamp that indicates when the pair of static username and password was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<Integer> createTime;
 
     /**
-     * @return Create time stamp. Unix timestamp, to millisecond level.
+     * @return The timestamp that indicates when the pair of static username and password was created.
      * 
      */
     public Optional<Output<Integer>> createTime() {
@@ -77,14 +77,14 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Static password.
+     * The static password.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Static password.
+     * @return The static password.
      * 
      */
     public Optional<Output<String>> password() {
@@ -107,14 +107,14 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Static user name.
+     * The static username.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return Static user name.
+     * @return The static username.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -173,7 +173,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime Create time stamp. Unix timestamp, to millisecond level.
+         * @param createTime The timestamp that indicates when the pair of static username and password was created.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime Create time stamp. Unix timestamp, to millisecond level.
+         * @param createTime The timestamp that indicates when the pair of static username and password was created.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param password Static password.
+         * @param password The static password.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param password Static password.
+         * @param password The static password.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param userName Static user name.
+         * @param userName The static username.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class StaticAccountState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param userName Static user name.
+         * @param userName The static username.
          * 
          * @return builder
          * 

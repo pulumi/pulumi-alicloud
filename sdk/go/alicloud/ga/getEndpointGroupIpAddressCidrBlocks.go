@@ -55,6 +55,8 @@ func GetEndpointGroupIpAddressCidrBlocks(ctx *pulumi.Context, args *GetEndpointG
 
 // A collection of arguments for invoking getEndpointGroupIpAddressCidrBlocks.
 type GetEndpointGroupIpAddressCidrBlocksArgs struct {
+	// The ID of the Global Accelerator (GA) instance.
+	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The region ID of the endpoint group.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -63,6 +65,7 @@ type GetEndpointGroupIpAddressCidrBlocksArgs struct {
 
 // A collection of values returned by getEndpointGroupIpAddressCidrBlocks.
 type GetEndpointGroupIpAddressCidrBlocksResult struct {
+	AcceleratorId *string `pulumi:"acceleratorId"`
 	// A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:
 	EndpointGroupIpAddressCidrBlocks []GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock `pulumi:"endpointGroupIpAddressCidrBlocks"`
 	// The region ID of the endpoint group.
@@ -87,6 +90,8 @@ func GetEndpointGroupIpAddressCidrBlocksOutput(ctx *pulumi.Context, args GetEndp
 
 // A collection of arguments for invoking getEndpointGroupIpAddressCidrBlocks.
 type GetEndpointGroupIpAddressCidrBlocksOutputArgs struct {
+	// The ID of the Global Accelerator (GA) instance.
+	AcceleratorId pulumi.StringPtrInput `pulumi:"acceleratorId"`
 	// The region ID of the endpoint group.
 	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -110,6 +115,10 @@ func (o GetEndpointGroupIpAddressCidrBlocksResultOutput) ToGetEndpointGroupIpAdd
 
 func (o GetEndpointGroupIpAddressCidrBlocksResultOutput) ToGetEndpointGroupIpAddressCidrBlocksResultOutputWithContext(ctx context.Context) GetEndpointGroupIpAddressCidrBlocksResultOutput {
 	return o
+}
+
+func (o GetEndpointGroupIpAddressCidrBlocksResultOutput) AcceleratorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupIpAddressCidrBlocksResult) *string { return v.AcceleratorId }).(pulumi.StringPtrOutput)
 }
 
 // A list of Endpoint Group Ip Address Cidr Blocks. Each element contains the following attributes:

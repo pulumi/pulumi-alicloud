@@ -78,8 +78,8 @@ import (
 //			_, err = actiontrail.NewTrail(ctx, "example", &actiontrail.TrailArgs{
 //				TrailName:       pulumi.String(name),
 //				SlsWriteRoleArn: pulumi.String(exampleGetRoles.Roles[0].Arn),
-//				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("acs:log:%v:%v:project/%v", example.Regions[0].Id, exampleGetAccount.Id, name), nil
+//				SlsProjectArn: exampleProject.ProjectName.ApplyT(func(projectName string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", example.Regions[0].Id, exampleGetAccount.Id, projectName), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {

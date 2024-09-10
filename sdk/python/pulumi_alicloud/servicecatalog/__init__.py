@@ -12,6 +12,10 @@ from .get_product_as_end_users import *
 from .get_product_versions import *
 from .get_provisioned_products import *
 from .portfolio import *
+from .principal_portfolio_association import *
+from .product import *
+from .product_portfolio_association import *
+from .product_version import *
 from .provisioned_product import *
 from ._inputs import *
 from . import outputs

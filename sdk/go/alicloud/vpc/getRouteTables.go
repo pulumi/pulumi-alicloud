@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 //
-// > **NOTE:** Available in 1.36.0+.
+// > **NOTE:** Available since v1.36.0.
 //
 // ## Example Usage
 //
@@ -53,6 +53,7 @@ import (
 // Ids: pulumi.StringArray{
 // fooRouteTable.ID(),
 // },
+// RouteTableType: pulumi.String("Custom"),
 // }, nil);
 // ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) (interface{}, error) {
 // return foo.Ids, nil
@@ -85,6 +86,8 @@ type GetRouteTablesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table name.
 	RouteTableName *string `pulumi:"routeTableName"`
+	// The route table type.
+	RouteTableType *string `pulumi:"routeTableType"`
 	// The router ID.
 	RouterId *string `pulumi:"routerId"`
 	// The route type of route table. Valid values: `VRouter` and `VBR`.
@@ -113,6 +116,8 @@ type GetRouteTablesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table name.
 	RouteTableName *string `pulumi:"routeTableName"`
+	// The type of route table.
+	RouteTableType *string `pulumi:"routeTableType"`
 	// Router Id of the route table.
 	RouterId *string `pulumi:"routerId"`
 	// The route type.
@@ -120,9 +125,10 @@ type GetRouteTablesResult struct {
 	// The status of route table.
 	Status *string `pulumi:"status"`
 	// A list of Route Tables. Each element contains the following attributes:
-	Tables     []GetRouteTablesTable `pulumi:"tables"`
-	Tags       map[string]string     `pulumi:"tags"`
-	TotalCount int                   `pulumi:"totalCount"`
+	Tables []GetRouteTablesTable `pulumi:"tables"`
+	// A mapping of tags to assign to the resource.
+	Tags       map[string]string `pulumi:"tags"`
+	TotalCount int               `pulumi:"totalCount"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -154,6 +160,8 @@ type GetRouteTablesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The route table name.
 	RouteTableName pulumi.StringPtrInput `pulumi:"routeTableName"`
+	// The route table type.
+	RouteTableType pulumi.StringPtrInput `pulumi:"routeTableType"`
 	// The router ID.
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
 	// The route type of route table. Valid values: `VRouter` and `VBR`.
@@ -226,6 +234,11 @@ func (o GetRouteTablesResultOutput) RouteTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouteTableName }).(pulumi.StringPtrOutput)
 }
 
+// The type of route table.
+func (o GetRouteTablesResultOutput) RouteTableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouteTableType }).(pulumi.StringPtrOutput)
+}
+
 // Router Id of the route table.
 func (o GetRouteTablesResultOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
@@ -246,6 +259,7 @@ func (o GetRouteTablesResultOutput) Tables() GetRouteTablesTableArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) []GetRouteTablesTable { return v.Tables }).(GetRouteTablesTableArrayOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetRouteTablesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

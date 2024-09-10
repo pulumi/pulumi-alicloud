@@ -63,14 +63,14 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A list of Cluster IDS.
+     * A list of Cluster IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of Cluster IDS.
+     * @return A list of Cluster IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -270,7 +270,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of Cluster IDS.
+         * @param ids A list of Cluster IDs.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of Cluster IDS.
+         * @param ids A list of Cluster IDs.
          * 
          * @return builder
          * 

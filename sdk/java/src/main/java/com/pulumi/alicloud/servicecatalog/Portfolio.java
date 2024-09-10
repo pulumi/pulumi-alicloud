@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
  * 
- * &gt; **NOTE:** Available since v1.204.0+.
+ * &gt; **NOTE:** Available since v1.204.0.
  * 
  * ## Example Usage
  * 
@@ -73,70 +73,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:servicecatalog/portfolio:Portfolio")
 public class Portfolio extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the portfolio.
+     * The creation time of the portfolio
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the portfolio.
+     * @return The creation time of the portfolio
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the portfolio. The value must be 1 to 128 characters in length.
+     * The description of the portfolio
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The description of the portfolio
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ARN of the portfolio.
+     * The ARN of the portfolio
      * 
      */
     @Export(name="portfolioArn", refs={String.class}, tree="[0]")
     private Output<String> portfolioArn;
 
     /**
-     * @return The ARN of the portfolio.
+     * @return The ARN of the portfolio
      * 
      */
     public Output<String> portfolioArn() {
         return this.portfolioArn;
     }
     /**
-     * The name of the portfolio. The value must be 1 to 128 characters in length.
+     * The name of the portfolio
      * 
      */
     @Export(name="portfolioName", refs={String.class}, tree="[0]")
     private Output<String> portfolioName;
 
     /**
-     * @return The name of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The name of the portfolio
      * 
      */
     public Output<String> portfolioName() {
         return this.portfolioName;
     }
     /**
-     * The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * The provider name of the portfolio
      * 
      */
     @Export(name="providerName", refs={String.class}, tree="[0]")
     private Output<String> providerName;
 
     /**
-     * @return The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * @return The provider name of the portfolio
      * 
      */
     public Output<String> providerName() {

@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * CEN Transit Router Peer Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
+ * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
  * ```
  */
 export class TransitRouterPeerAttachment extends pulumi.CustomResource {
@@ -132,11 +132,15 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     public readonly resourceType!: pulumi.Output<string | undefined>;
     /**
-     * Whether to association route table. System default is `false`.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
     public readonly routeTableAssociationEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to propagation route table. System default is `false`.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
     public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -148,7 +152,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
     /**
-     * The ID of transit router attachment id.
+     * The ID of transit router attachment.
      */
     public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
     /**
@@ -277,11 +281,15 @@ export interface TransitRouterPeerAttachmentState {
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * Whether to association route table. System default is `false`.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
     routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to propagation route table. System default is `false`.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
@@ -293,7 +301,7 @@ export interface TransitRouterPeerAttachmentState {
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * The ID of transit router attachment id.
+     * The ID of transit router attachment.
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
@@ -353,11 +361,15 @@ export interface TransitRouterPeerAttachmentArgs {
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * Whether to association route table. System default is `false`.
+     * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
     routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether to propagation route table. System default is `false`.
+     * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
+     *
+     * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**

@@ -18,14 +18,14 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
     public static final ClusterNodeGroupDataDiskArgs Empty = new ClusterNodeGroupDataDiskArgs();
 
     /**
-     * The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
      * 
      */
     @Import(name="category", required=true)
     private Output<String> category;
 
     /**
-     * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * @return The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
      * 
      */
     public Output<String> category() {
@@ -105,7 +105,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+         * @param category The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ClusterNodeGroupDataDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+         * @param category The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
          * 
          * @return builder
          * 

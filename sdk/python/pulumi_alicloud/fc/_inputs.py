@@ -62,6 +62,9 @@ __all__ = [
     'V3FunctionOssMountConfigArgs',
     'V3FunctionOssMountConfigMountPointArgs',
     'V3FunctionVpcConfigArgs',
+    'V3LayerVersionCodeArgs',
+    'V3ProvisionConfigScheduledActionArgs',
+    'V3ProvisionConfigTargetTrackingPolicyArgs',
 ]
 
 @pulumi.input_type
@@ -1726,7 +1729,7 @@ class V3FunctionCustomContainerConfigArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  resolved_image_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: Image Acceleration Information (Obsolete).
         :param pulumi.Input[str] acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
         :param pulumi.Input[str] acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Container startup parameters.
@@ -1769,7 +1772,7 @@ class V3FunctionCustomContainerConfigArgs:
     @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
     def acceleration_info(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']]:
         """
-        (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+        Image Acceleration Information (Obsolete).
         """
         return pulumi.get(self, "acceleration_info")
 
@@ -2230,9 +2233,9 @@ class V3FunctionGpuConfigArgs:
         """
         :param pulumi.Input[int] gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB.
         :param pulumi.Input[str] gpu_type: GPU card architecture.
-               - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-               - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-               - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+               - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+               - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+               - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         if gpu_memory_size is not None:
             pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
@@ -2256,9 +2259,9 @@ class V3FunctionGpuConfigArgs:
     def gpu_type(self) -> Optional[pulumi.Input[str]]:
         """
         GPU card architecture.
-        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
-        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
-        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+        - fc.gpu.tesla indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        - fc.gpu.ampere indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        - fc.gpu.ada Indicates the GPU instance Ada Lovelace architecture family card type.
         """
         return pulumi.get(self, "gpu_type")
 
@@ -2736,5 +2739,314 @@ class V3FunctionVpcConfigArgs:
     @vswitch_ids.setter
     def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "vswitch_ids", value)
+
+
+@pulumi.input_type
+class V3LayerVersionCodeArgs:
+    def __init__(__self__, *,
+                 checksum: Optional[pulumi.Input[str]] = None,
+                 oss_bucket_name: Optional[pulumi.Input[str]] = None,
+                 oss_object_name: Optional[pulumi.Input[str]] = None,
+                 zip_file: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] checksum: The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+        :param pulumi.Input[str] oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        :param pulumi.Input[str] oss_object_name: Name of the OSS Object where the user stores the Layer Code ZIP package.
+        :param pulumi.Input[str] zip_file: Base 64 encoding of Layer Code ZIP package.
+        """
+        if checksum is not None:
+            pulumi.set(__self__, "checksum", checksum)
+        if oss_bucket_name is not None:
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        if oss_object_name is not None:
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
+        if zip_file is not None:
+            pulumi.set(__self__, "zip_file", zip_file)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
+        """
+        return pulumi.get(self, "checksum")
+
+    @checksum.setter
+    def checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "checksum", value)
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @oss_bucket_name.setter
+    def oss_bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_bucket_name", value)
+
+    @property
+    @pulumi.getter(name="ossObjectName")
+    def oss_object_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the OSS Object where the user stores the Layer Code ZIP package.
+        """
+        return pulumi.get(self, "oss_object_name")
+
+    @oss_object_name.setter
+    def oss_object_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oss_object_name", value)
+
+    @property
+    @pulumi.getter(name="zipFile")
+    def zip_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base 64 encoding of Layer Code ZIP package.
+        """
+        return pulumi.get(self, "zip_file")
+
+    @zip_file.setter
+    def zip_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zip_file", value)
+
+
+@pulumi.input_type
+class V3ProvisionConfigScheduledActionArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 schedule_expression: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[int]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: Policy expiration time.
+        :param pulumi.Input[str] name: Policy Name.
+        :param pulumi.Input[str] schedule_expression: Timing Configuration.
+        :param pulumi.Input[str] start_time: Policy effective time.
+        :param pulumi.Input[int] target: Number of reserved target resources.
+        :param pulumi.Input[str] time_zone: Time zone.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schedule_expression is not None:
+            pulumi.set(__self__, "schedule_expression", schedule_expression)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy expiration time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="scheduleExpression")
+    def schedule_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timing Configuration.
+        """
+        return pulumi.get(self, "schedule_expression")
+
+    @schedule_expression.setter
+    def schedule_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_expression", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy effective time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of reserved target resources.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+@pulumi.input_type
+class V3ProvisionConfigTargetTrackingPolicyArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 max_capacity: Optional[pulumi.Input[int]] = None,
+                 metric_target: Optional[pulumi.Input[float]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
+                 min_capacity: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: Policy expiration time.
+        :param pulumi.Input[int] max_capacity: Maximum value of expansion.
+        :param pulumi.Input[float] metric_target: Tracking value of the indicator.
+        :param pulumi.Input[str] metric_type: Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        :param pulumi.Input[int] min_capacity: Minimum Shrinkage.
+        :param pulumi.Input[str] name: Policy Name.
+        :param pulumi.Input[str] start_time: Policy Effective Time.
+        :param pulumi.Input[str] time_zone: Time zone.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if max_capacity is not None:
+            pulumi.set(__self__, "max_capacity", max_capacity)
+        if metric_target is not None:
+            pulumi.set(__self__, "metric_target", metric_target)
+        if metric_type is not None:
+            pulumi.set(__self__, "metric_type", metric_type)
+        if min_capacity is not None:
+            pulumi.set(__self__, "min_capacity", min_capacity)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy expiration time.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="maxCapacity")
+    def max_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum value of expansion.
+        """
+        return pulumi.get(self, "max_capacity")
+
+    @max_capacity.setter
+    def max_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_capacity", value)
+
+    @property
+    @pulumi.getter(name="metricTarget")
+    def metric_target(self) -> Optional[pulumi.Input[float]]:
+        """
+        Tracking value of the indicator.
+        """
+        return pulumi.get(self, "metric_target")
+
+    @metric_target.setter
+    def metric_target(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "metric_target", value)
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        """
+        return pulumi.get(self, "metric_type")
+
+    @metric_type.setter
+    def metric_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_type", value)
+
+    @property
+    @pulumi.getter(name="minCapacity")
+    def min_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum Shrinkage.
+        """
+        return pulumi.get(self, "min_capacity")
+
+    @min_capacity.setter
+    def min_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_capacity", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy Effective Time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 

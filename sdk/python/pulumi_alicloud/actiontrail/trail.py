@@ -518,7 +518,7 @@ class Trail(pulumi.CustomResource):
         example_trail = alicloud.actiontrail.Trail("example",
             trail_name=name,
             sls_write_role_arn=example_get_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
+            sls_project_arn=example_project.project_name.apply(lambda project_name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{project_name}"))
         ```
 
         ## Import
@@ -583,7 +583,7 @@ class Trail(pulumi.CustomResource):
         example_trail = alicloud.actiontrail.Trail("example",
             trail_name=name,
             sls_write_role_arn=example_get_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
+            sls_project_arn=example_project.project_name.apply(lambda project_name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{project_name}"))
         ```
 
         ## Import

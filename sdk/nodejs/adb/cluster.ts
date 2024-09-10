@@ -126,6 +126,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly diskPerformanceLevel!: pulumi.Output<string>;
     public readonly elasticIoResource!: pulumi.Output<number>;
     public readonly elasticIoResourceSize!: pulumi.Output<string>;
+    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     public readonly kmsId!: pulumi.Output<string | undefined>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -206,6 +207,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
+            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
             resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
@@ -243,6 +245,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
+            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
             resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
@@ -311,6 +314,7 @@ export interface ClusterState {
     diskPerformanceLevel?: pulumi.Input<string>;
     elasticIoResource?: pulumi.Input<number>;
     elasticIoResourceSize?: pulumi.Input<string>;
+    enableSsl?: pulumi.Input<boolean>;
     kmsId?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -406,6 +410,7 @@ export interface ClusterArgs {
     diskPerformanceLevel?: pulumi.Input<string>;
     elasticIoResource?: pulumi.Input<number>;
     elasticIoResourceSize?: pulumi.Input<string>;
+    enableSsl?: pulumi.Input<boolean>;
     kmsId?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

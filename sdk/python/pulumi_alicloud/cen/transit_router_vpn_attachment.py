@@ -371,7 +371,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             transit_router_description=name,
             transit_router_name=name)
         example_customer_gateway = alicloud.vpn.CustomerGateway("example",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
@@ -485,7 +485,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             transit_router_description=name,
             transit_router_name=name)
         example_customer_gateway = alicloud.vpn.CustomerGateway("example",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)

@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()
  *             .trailName(name)
  *             .slsWriteRoleArn(exampleGetRoles.applyValue(getRolesResult -> getRolesResult.roles()[0].arn()))
- *             .slsProjectArn(exampleProject.name().applyValue(name -> String.format("acs:log:%s:%s:project/%s", example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -> getAccountResult.id()),name)))
+ *             .slsProjectArn(exampleProject.projectName().applyValue(projectName -> String.format("acs:log:%s:%s:project/%s", example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -> getAccountResult.id()),projectName)))
  *             .build());
  * 
  *     }

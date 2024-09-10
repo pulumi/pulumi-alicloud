@@ -47,8 +47,8 @@ import (
 //				name = param
 //			}
 //			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
+//				Min: 10000000,
+//				Max: 99999999,
 //			})
 //			if err != nil {
 //				return err

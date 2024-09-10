@@ -83,7 +83,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * Policy creation time.
+     * Policy creation time
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -91,11 +91,11 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly policyDescription!: pulumi.Output<string | undefined>;
     /**
-     * Policy Name.
+     * Policy Name
      */
     public readonly policyName!: pulumi.Output<string | undefined>;
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      */
     public readonly rules!: pulumi.Output<outputs.hbr.PolicyRule[] | undefined>;
 
@@ -133,7 +133,7 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * Policy creation time.
+     * Policy creation time
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -141,11 +141,11 @@ export interface PolicyState {
      */
     policyDescription?: pulumi.Input<string>;
     /**
-     * Policy Name.
+     * Policy Name
      */
     policyName?: pulumi.Input<string>;
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[]>;
 }
@@ -159,11 +159,11 @@ export interface PolicyArgs {
      */
     policyDescription?: pulumi.Input<string>;
     /**
-     * Policy Name.
+     * Policy Name
      */
     policyName?: pulumi.Input<string>;
     /**
-     * A list of policy rules. See `rules` below.
+     * A list of policy rules See `rules` below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[]>;
 }

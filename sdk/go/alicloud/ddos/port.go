@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Anti-DDoS Pro Port resource.
+// Provides a Ddos Coo Port resource.
 //
 // For information about Anti-DDoS Pro Port and how to use it, see [What is Port](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createport).
 //
@@ -74,7 +74,7 @@ import (
 //
 // ## Import
 //
-// Anti-DDoS Pro Port can be imported using the id, e.g.
+// Ddos Coo Port can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ddos/port:Port example <instance_id>:<frontend_port>:<frontend_protocol>
@@ -82,15 +82,20 @@ import (
 type Port struct {
 	pulumi.CustomResourceState
 
-	// The port of the origin server. Valid values: [1~65535].
+	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort pulumi.StringPtrOutput `pulumi:"backendPort"`
-	// The forwarding port. Valid values: [1~65535].
+	// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+	// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+	Config PortConfigOutput `pulumi:"config"`
+	// The forwarding port to query. Valid values: `0` to `65535`.
 	FrontendPort pulumi.StringOutput `pulumi:"frontendPort"`
-	// The forwarding protocol. Valid values `tcp` and `udp`.
+	// The type of the forwarding protocol to query. Valid values:
 	FrontendProtocol pulumi.StringOutput `pulumi:"frontendProtocol"`
-	// The ID of Ddoscoo instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	//
+	// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// List of source IP addresses.
+	// List of source IP addresses
 	RealServers pulumi.StringArrayOutput `pulumi:"realServers"`
 }
 
@@ -136,28 +141,38 @@ func GetPort(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Port resources.
 type portState struct {
-	// The port of the origin server. Valid values: [1~65535].
+	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort *string `pulumi:"backendPort"`
-	// The forwarding port. Valid values: [1~65535].
+	// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+	// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+	Config *PortConfig `pulumi:"config"`
+	// The forwarding port to query. Valid values: `0` to `65535`.
 	FrontendPort *string `pulumi:"frontendPort"`
-	// The forwarding protocol. Valid values `tcp` and `udp`.
+	// The type of the forwarding protocol to query. Valid values:
 	FrontendProtocol *string `pulumi:"frontendProtocol"`
-	// The ID of Ddoscoo instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	//
+	// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 	InstanceId *string `pulumi:"instanceId"`
-	// List of source IP addresses.
+	// List of source IP addresses
 	RealServers []string `pulumi:"realServers"`
 }
 
 type PortState struct {
-	// The port of the origin server. Valid values: [1~65535].
+	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort pulumi.StringPtrInput
-	// The forwarding port. Valid values: [1~65535].
+	// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+	// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+	Config PortConfigPtrInput
+	// The forwarding port to query. Valid values: `0` to `65535`.
 	FrontendPort pulumi.StringPtrInput
-	// The forwarding protocol. Valid values `tcp` and `udp`.
+	// The type of the forwarding protocol to query. Valid values:
 	FrontendProtocol pulumi.StringPtrInput
-	// The ID of Ddoscoo instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	//
+	// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 	InstanceId pulumi.StringPtrInput
-	// List of source IP addresses.
+	// List of source IP addresses
 	RealServers pulumi.StringArrayInput
 }
 
@@ -166,29 +181,39 @@ func (PortState) ElementType() reflect.Type {
 }
 
 type portArgs struct {
-	// The port of the origin server. Valid values: [1~65535].
+	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort *string `pulumi:"backendPort"`
-	// The forwarding port. Valid values: [1~65535].
+	// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+	// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+	Config *PortConfig `pulumi:"config"`
+	// The forwarding port to query. Valid values: `0` to `65535`.
 	FrontendPort string `pulumi:"frontendPort"`
-	// The forwarding protocol. Valid values `tcp` and `udp`.
+	// The type of the forwarding protocol to query. Valid values:
 	FrontendProtocol string `pulumi:"frontendProtocol"`
-	// The ID of Ddoscoo instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	//
+	// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 	InstanceId string `pulumi:"instanceId"`
-	// List of source IP addresses.
+	// List of source IP addresses
 	RealServers []string `pulumi:"realServers"`
 }
 
 // The set of arguments for constructing a Port resource.
 type PortArgs struct {
-	// The port of the origin server. Valid values: [1~65535].
+	// The port of the origin server. Valid values: `0` to `65535`.
 	BackendPort pulumi.StringPtrInput
-	// The forwarding port. Valid values: [1~65535].
+	// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+	// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+	Config PortConfigPtrInput
+	// The forwarding port to query. Valid values: `0` to `65535`.
 	FrontendPort pulumi.StringInput
-	// The forwarding protocol. Valid values `tcp` and `udp`.
+	// The type of the forwarding protocol to query. Valid values:
 	FrontendProtocol pulumi.StringInput
-	// The ID of Ddoscoo instance.
+	// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+	//
+	// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 	InstanceId pulumi.StringInput
-	// List of source IP addresses.
+	// List of source IP addresses
 	RealServers pulumi.StringArrayInput
 }
 
@@ -279,27 +304,35 @@ func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return o
 }
 
-// The port of the origin server. Valid values: [1~65535].
+// The port of the origin server. Valid values: `0` to `65535`.
 func (o PortOutput) BackendPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringPtrOutput { return v.BackendPort }).(pulumi.StringPtrOutput)
 }
 
-// The forwarding port. Valid values: [1~65535].
+// Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
+// - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
+func (o PortOutput) Config() PortConfigOutput {
+	return o.ApplyT(func(v *Port) PortConfigOutput { return v.Config }).(PortConfigOutput)
+}
+
+// The forwarding port to query. Valid values: `0` to `65535`.
 func (o PortOutput) FrontendPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.FrontendPort }).(pulumi.StringOutput)
 }
 
-// The forwarding protocol. Valid values `tcp` and `udp`.
+// The type of the forwarding protocol to query. Valid values:
 func (o PortOutput) FrontendProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.FrontendProtocol }).(pulumi.StringOutput)
 }
 
-// The ID of Ddoscoo instance.
+// The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+//
+// > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
 func (o PortOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// List of source IP addresses.
+// List of source IP addresses
 func (o PortOutput) RealServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.RealServers }).(pulumi.StringArrayOutput)
 }

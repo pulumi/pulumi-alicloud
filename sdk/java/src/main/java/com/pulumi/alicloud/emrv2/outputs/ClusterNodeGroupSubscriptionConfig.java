@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroupSubscriptionConfig {
     /**
-     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
      * 
      */
     private @Nullable Boolean autoPayOrder;
@@ -47,7 +47,7 @@ public final class ClusterNodeGroupSubscriptionConfig {
 
     private ClusterNodeGroupSubscriptionConfig() {}
     /**
-     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
      * 
      */
     public Optional<Boolean> autoPayOrder() {

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -116,10 +117,6 @@ import javax.annotation.Nullable;
 public class Account extends com.pulumi.resources.CustomResource {
     /**
      * The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
@@ -127,74 +124,104 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      * 
      */
     public Output<Optional<String>> accountDescription() {
         return Codegen.optional(this.accountDescription);
     }
     /**
-     * The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * The account name.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * @return The account name.
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * AccountPassword
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * @return AccountPassword
      * 
      */
     public Output<String> accountPassword() {
         return this.accountPassword;
     }
     /**
-     * The ID of the instance.
+     * Account type. The value range is as follows:
+     * 
+     * Normal: Normal account number.
+     * 
+     * Super: a high-privilege account.
+     * 
+     */
+    @Export(name="accountType", refs={String.class}, tree="[0]")
+    private Output<String> accountType;
+
+    /**
+     * @return Account type. The value range is as follows:
+     * 
+     * Normal: Normal account number.
+     * 
+     * Super: a high-privilege account.
+     * 
+     */
+    public Output<String> accountType() {
+        return this.accountType;
+    }
+    /**
+     * Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     * 
+     */
+    @Export(name="databaseName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> databaseName;
+
+    /**
+     * @return Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     * 
+     */
+    public Output<Optional<String>> databaseName() {
+        return Codegen.optional(this.databaseName);
+    }
+    /**
+     * The Adb pg instance ID.
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The Adb pg instance ID.
      * 
      */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
     /**
-     * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
@@ -240,6 +267,9 @@ public class Account extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "accountPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+// Provides a Ens Load Balancer resource.
 //
 // For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
 //
@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// ENS Load Balancer can be imported using the id, e.g.
+// Ens Load Balancer can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
@@ -86,17 +86,19 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
+	// The list of backend servers. See `backendServers` below.
+	BackendServers LoadBalancerBackendServerArrayOutput `pulumi:"backendServers"`
 	// The creation Time (UTC) of the load balancing instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the ENS node.
 	EnsRegionId pulumi.StringOutput `pulumi:"ensRegionId"`
-	// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+	// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 	LoadBalancerName pulumi.StringPtrOutput `pulumi:"loadBalancerName"`
-	// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+	// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// The network ID of the created edge load balancing (ELB) instance.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+	// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The status of the SLB instance.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -149,17 +151,19 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
+	// The list of backend servers. See `backendServers` below.
+	BackendServers []LoadBalancerBackendServer `pulumi:"backendServers"`
 	// The creation Time (UTC) of the load balancing instance.
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the ENS node.
 	EnsRegionId *string `pulumi:"ensRegionId"`
-	// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+	// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+	// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The network ID of the created edge load balancing (ELB) instance.
 	NetworkId *string `pulumi:"networkId"`
-	// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+	// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 	PaymentType *string `pulumi:"paymentType"`
 	// The status of the SLB instance.
 	Status *string `pulumi:"status"`
@@ -168,17 +172,19 @@ type loadBalancerState struct {
 }
 
 type LoadBalancerState struct {
+	// The list of backend servers. See `backendServers` below.
+	BackendServers LoadBalancerBackendServerArrayInput
 	// The creation Time (UTC) of the load balancing instance.
 	CreateTime pulumi.StringPtrInput
 	// The ID of the ENS node.
 	EnsRegionId pulumi.StringPtrInput
-	// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+	// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 	LoadBalancerName pulumi.StringPtrInput
-	// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+	// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The network ID of the created edge load balancing (ELB) instance.
 	NetworkId pulumi.StringPtrInput
-	// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+	// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 	PaymentType pulumi.StringPtrInput
 	// The status of the SLB instance.
 	Status pulumi.StringPtrInput
@@ -191,15 +197,17 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
+	// The list of backend servers. See `backendServers` below.
+	BackendServers []LoadBalancerBackendServer `pulumi:"backendServers"`
 	// The ID of the ENS node.
 	EnsRegionId string `pulumi:"ensRegionId"`
-	// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+	// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+	// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 	LoadBalancerSpec string `pulumi:"loadBalancerSpec"`
 	// The network ID of the created edge load balancing (ELB) instance.
 	NetworkId string `pulumi:"networkId"`
-	// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+	// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 	PaymentType string `pulumi:"paymentType"`
 	// The ID of the vSwitch to which the VPC instance belongs.
 	VswitchId string `pulumi:"vswitchId"`
@@ -207,15 +215,17 @@ type loadBalancerArgs struct {
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
+	// The list of backend servers. See `backendServers` below.
+	BackendServers LoadBalancerBackendServerArrayInput
 	// The ID of the ENS node.
 	EnsRegionId pulumi.StringInput
-	// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+	// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 	LoadBalancerName pulumi.StringPtrInput
-	// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+	// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 	LoadBalancerSpec pulumi.StringInput
 	// The network ID of the created edge load balancing (ELB) instance.
 	NetworkId pulumi.StringInput
-	// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+	// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 	PaymentType pulumi.StringInput
 	// The ID of the vSwitch to which the VPC instance belongs.
 	VswitchId pulumi.StringInput
@@ -308,6 +318,11 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The list of backend servers. See `backendServers` below.
+func (o LoadBalancerOutput) BackendServers() LoadBalancerBackendServerArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerBackendServerArrayOutput { return v.BackendServers }).(LoadBalancerBackendServerArrayOutput)
+}
+
 // The creation Time (UTC) of the load balancing instance.
 func (o LoadBalancerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -318,12 +333,12 @@ func (o LoadBalancerOutput) EnsRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.EnsRegionId }).(pulumi.StringOutput)
 }
 
-// Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
 func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
 }
 
-// Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
 func (o LoadBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
@@ -333,7 +348,7 @@ func (o LoadBalancerOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
 func (o LoadBalancerOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

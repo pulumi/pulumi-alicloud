@@ -4703,7 +4703,7 @@ class GetRouteTablesTableResult(dict):
         :param str resource_group_id: The Id of resource group which route tables belongs.
         :param str route_table_id: The route table id.
         :param str route_table_name: The route table name.
-        :param str route_table_type: The type of route table.
+        :param str route_table_type: The route table type.
         :param str router_id: The router ID.
         :param str router_type: The route type of route table. Valid values: `VRouter` and `VBR`.
         :param str status: The status of resource. Valid values: `Available` and `Pending`.
@@ -4777,7 +4777,7 @@ class GetRouteTablesTableResult(dict):
     @pulumi.getter(name="routeTableType")
     def route_table_type(self) -> str:
         """
-        The type of route table.
+        The route table type.
         """
         return pulumi.get(self, "route_table_type")
 

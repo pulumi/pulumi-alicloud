@@ -22,7 +22,10 @@ class GetEndpointGroupIpAddressCidrBlocksResult:
     """
     A collection of values returned by getEndpointGroupIpAddressCidrBlocks.
     """
-    def __init__(__self__, endpoint_group_ip_address_cidr_blocks=None, endpoint_group_region=None, id=None, output_file=None):
+    def __init__(__self__, accelerator_id=None, endpoint_group_ip_address_cidr_blocks=None, endpoint_group_region=None, id=None, output_file=None):
+        if accelerator_id and not isinstance(accelerator_id, str):
+            raise TypeError("Expected argument 'accelerator_id' to be a str")
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
         if endpoint_group_ip_address_cidr_blocks and not isinstance(endpoint_group_ip_address_cidr_blocks, list):
             raise TypeError("Expected argument 'endpoint_group_ip_address_cidr_blocks' to be a list")
         pulumi.set(__self__, "endpoint_group_ip_address_cidr_blocks", endpoint_group_ip_address_cidr_blocks)
@@ -35,6 +38,11 @@ class GetEndpointGroupIpAddressCidrBlocksResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> Optional[str]:
+        return pulumi.get(self, "accelerator_id")
 
     @property
     @pulumi.getter(name="endpointGroupIpAddressCidrBlocks")
@@ -72,13 +80,15 @@ class AwaitableGetEndpointGroupIpAddressCidrBlocksResult(GetEndpointGroupIpAddre
         if False:
             yield self
         return GetEndpointGroupIpAddressCidrBlocksResult(
+            accelerator_id=self.accelerator_id,
             endpoint_group_ip_address_cidr_blocks=self.endpoint_group_ip_address_cidr_blocks,
             endpoint_group_region=self.endpoint_group_region,
             id=self.id,
             output_file=self.output_file)
 
 
-def get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region: Optional[str] = None,
+def get_endpoint_group_ip_address_cidr_blocks(accelerator_id: Optional[str] = None,
+                                              endpoint_group_region: Optional[str] = None,
                                               output_file: Optional[str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointGroupIpAddressCidrBlocksResult:
     """
@@ -99,16 +109,19 @@ def get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region: Optional[st
     ```
 
 
+    :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
     :param str endpoint_group_region: The region ID of the endpoint group.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
+    __args__['acceleratorId'] = accelerator_id
     __args__['endpointGroupRegion'] = endpoint_group_region
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks', __args__, opts=opts, typ=GetEndpointGroupIpAddressCidrBlocksResult).value
 
     return AwaitableGetEndpointGroupIpAddressCidrBlocksResult(
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
         endpoint_group_ip_address_cidr_blocks=pulumi.get(__ret__, 'endpoint_group_ip_address_cidr_blocks'),
         endpoint_group_region=pulumi.get(__ret__, 'endpoint_group_region'),
         id=pulumi.get(__ret__, 'id'),
@@ -116,7 +129,8 @@ def get_endpoint_group_ip_address_cidr_blocks(endpoint_group_region: Optional[st
 
 
 @_utilities.lift_output_func(get_endpoint_group_ip_address_cidr_blocks)
-def get_endpoint_group_ip_address_cidr_blocks_output(endpoint_group_region: Optional[pulumi.Input[str]] = None,
+def get_endpoint_group_ip_address_cidr_blocks_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                                     endpoint_group_region: Optional[pulumi.Input[str]] = None,
                                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointGroupIpAddressCidrBlocksResult]:
     """
@@ -137,6 +151,7 @@ def get_endpoint_group_ip_address_cidr_blocks_output(endpoint_group_region: Opti
     ```
 
 
+    :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
     :param str endpoint_group_region: The region ID of the endpoint group.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """

@@ -17,7 +17,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -26,7 +26,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -35,7 +35,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -44,7 +44,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -53,7 +53,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -62,7 +62,7 @@ public final class Emrv2Functions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.199.0+.
+     * &gt; **NOTE:** Available since v1.199.0.
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {

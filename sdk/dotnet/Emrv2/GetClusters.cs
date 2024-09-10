@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emrv2
         /// <summary>
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.199.0+.
+        /// &gt; **NOTE:** Available since v1.199.0.
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Emrv2
         /// <summary>
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.199.0+.
+        /// &gt; **NOTE:** Available since v1.199.0.
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Emrv2
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Cluster IDS.
+        /// A list of Cluster IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Cluster IDS.
+        /// A list of Cluster IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -241,23 +241,44 @@ namespace Pulumi.AliCloud.Emrv2
     [OutputType]
     public sealed class GetClustersResult
     {
+        /// <summary>
+        /// The name of the emr cluster.
+        /// </summary>
         public readonly string? ClusterName;
         public readonly ImmutableArray<string> ClusterStates;
         public readonly ImmutableArray<string> ClusterTypes;
+        /// <summary>
+        /// A list of Emr Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Cluster IDS.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly int? MaxResults;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Cluster names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? NextToken;
         public readonly string? OutputFile;
         public readonly ImmutableArray<string> PaymentTypes;
+        /// <summary>
+        /// The resource group id of the resource.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The total count of list clusters.
+        /// </summary>
         public readonly int TotalCount;
 
         [OutputConstructor]

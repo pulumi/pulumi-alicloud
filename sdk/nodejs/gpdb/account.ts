@@ -95,30 +95,37 @@ export class Account extends pulumi.CustomResource {
 
     /**
      * The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      */
     public readonly accountDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * The account name.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+     * AccountPassword
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
-     * The ID of the instance.
+     * Account type. The value range is as follows:
+     *
+     * Normal: Normal account number.
+     *
+     * Super: a high-privilege account.
+     */
+    public readonly accountType!: pulumi.Output<string>;
+    /**
+     * Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     */
+    public readonly databaseName!: pulumi.Output<string | undefined>;
+    /**
+     * The Adb pg instance ID.
      */
     public readonly dbInstanceId!: pulumi.Output<string>;
     /**
-     * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -138,6 +145,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
             resourceInputs["accountName"] = state ? state.accountName : undefined;
             resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["accountType"] = state ? state.accountType : undefined;
+            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
             resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -153,11 +162,15 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["accountType"] = args ? args.accountType : undefined;
+            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
             resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -168,30 +181,37 @@ export class Account extends pulumi.CustomResource {
 export interface AccountState {
     /**
      * The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * The account name.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+     * AccountPassword
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * Account type. The value range is as follows:
+     *
+     * Normal: Normal account number.
+     *
+     * Super: a high-privilege account.
+     */
+    accountType?: pulumi.Input<string>;
+    /**
+     * Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     */
+    databaseName?: pulumi.Input<string>;
+    /**
+     * The Adb pg instance ID.
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
 }
@@ -202,26 +222,33 @@ export interface AccountState {
 export interface AccountArgs {
     /**
      * The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * The account name.
      */
     accountName: pulumi.Input<string>;
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+     * AccountPassword
      */
     accountPassword: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * Account type. The value range is as follows:
+     *
+     * Normal: Normal account number.
+     *
+     * Super: a high-privilege account.
+     */
+    accountType?: pulumi.Input<string>;
+    /**
+     * Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     */
+    databaseName?: pulumi.Input<string>;
+    /**
+     * The Adb pg instance ID.
      */
     dbInstanceId: pulumi.Input<string>;
 }

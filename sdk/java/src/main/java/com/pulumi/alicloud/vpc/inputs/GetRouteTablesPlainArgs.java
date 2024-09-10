@@ -107,6 +107,21 @@ public final class GetRouteTablesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * The route table type.
+     * 
+     */
+    @Import(name="routeTableType")
+    private @Nullable String routeTableType;
+
+    /**
+     * @return The route table type.
+     * 
+     */
+    public Optional<String> routeTableType() {
+        return Optional.ofNullable(this.routeTableType);
+    }
+
+    /**
      * The router ID.
      * 
      */
@@ -191,6 +206,7 @@ public final class GetRouteTablesPlainArgs extends com.pulumi.resources.InvokeAr
         this.pageSize = $.pageSize;
         this.resourceGroupId = $.resourceGroupId;
         this.routeTableName = $.routeTableName;
+        this.routeTableType = $.routeTableType;
         this.routerId = $.routerId;
         this.routerType = $.routerType;
         this.status = $.status;
@@ -288,6 +304,17 @@ public final class GetRouteTablesPlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder routeTableName(@Nullable String routeTableName) {
             $.routeTableName = routeTableName;
+            return this;
+        }
+
+        /**
+         * @param routeTableType The route table type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeTableType(@Nullable String routeTableType) {
+            $.routeTableType = routeTableType;
             return this;
         }
 

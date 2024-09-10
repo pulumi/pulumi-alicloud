@@ -274,8 +274,8 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = random.index.Integer("default",
-            min=10000,
-            max=99999)
+            min=10000000,
+            max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
@@ -345,8 +345,8 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = random.index.Integer("default",
-            min=10000,
-            max=99999)
+            min=10000000,
+            max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,

@@ -228,6 +228,21 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="enableSsl")
+    private @Nullable Output<Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSsl() {
+        return Optional.ofNullable(this.enableSsl);
+    }
+
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
      * 
      */
@@ -471,6 +486,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
+        this.enableSsl = $.enableSsl;
         this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
@@ -788,6 +804,27 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder elasticIoResourceSize(String elasticIoResourceSize) {
             return elasticIoResourceSize(Output.of(elasticIoResourceSize));
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(@Nullable Output<Boolean> enableSsl) {
+            $.enableSsl = enableSsl;
+            return this;
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(Boolean enableSsl) {
+            return enableSsl(Output.of(enableSsl));
         }
 
         /**

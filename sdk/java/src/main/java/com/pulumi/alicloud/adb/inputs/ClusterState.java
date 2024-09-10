@@ -193,6 +193,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.elasticIoResourceSize);
     }
 
+    @Import(name="enableSsl")
+    private @Nullable Output<Boolean> enableSsl;
+
+    public Optional<Output<Boolean>> enableSsl() {
+        return Optional.ofNullable(this.enableSsl);
+    }
+
     @Import(name="kmsId")
     private @Nullable Output<String> kmsId;
 
@@ -418,6 +425,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
+        this.enableSsl = $.enableSsl;
         this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
@@ -690,6 +698,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder elasticIoResourceSize(String elasticIoResourceSize) {
             return elasticIoResourceSize(Output.of(elasticIoResourceSize));
+        }
+
+        public Builder enableSsl(@Nullable Output<Boolean> enableSsl) {
+            $.enableSsl = enableSsl;
+            return this;
+        }
+
+        public Builder enableSsl(Boolean enableSsl) {
+            return enableSsl(Output.of(enableSsl));
         }
 
         public Builder kmsId(@Nullable Output<String> kmsId) {

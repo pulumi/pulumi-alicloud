@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var exampleCustomerGateway = new AliCloud.Vpn.CustomerGateway("example", new()
     ///     {
-    ///         Name = name,
+    ///         CustomerGatewayName = name,
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
     ///         Description = name,

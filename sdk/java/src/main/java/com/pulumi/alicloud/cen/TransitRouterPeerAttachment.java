@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * CEN Transit Router Peer Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;id&gt;
+ * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
@@ -272,28 +272,36 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.resourceType);
     }
     /**
-     * Whether to association route table. System default is `false`.
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.230.0. */
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to association route table. System default is `false`.
+     * @return Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Whether to propagation route table. System default is `false`.
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0. */
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to propagation route table. System default is `false`.
+     * @return Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
      * 
      */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
@@ -328,14 +336,14 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The ID of transit router attachment id.
+     * The ID of transit router attachment.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of transit router attachment id.
+     * @return The ID of transit router attachment.
      * 
      */
     public Output<String> transitRouterAttachmentId() {

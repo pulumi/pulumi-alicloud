@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'InstanceDataDisk',
     'InstanceSystemDisk',
+    'LoadBalancerBackendServer',
     'GetKeyPairsPairResult',
 ]
 
@@ -91,6 +92,89 @@ class InstanceSystemDisk(dict):
         System disk size, unit: GB.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class LoadBalancerBackendServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverId":
+            suggest = "server_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerBackendServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerBackendServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerBackendServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_id: str,
+                 ip: Optional[str] = None,
+                 port: Optional[int] = None,
+                 type: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str server_id: Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+        :param str ip: IP address of the backend server  Example value: 192.168.0.5.
+        :param int port: Port used by the backend server.
+        :param str type: Backend server type  Example value: ens.
+        :param int weight: Weight of the backend server  Example value: 100.
+        """
+        pulumi.set(__self__, "server_id", server_id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> str:
+        """
+        Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
+        """
+        return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        IP address of the backend server  Example value: 192.168.0.5.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port used by the backend server.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Backend server type  Example value: ens.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Weight of the backend server  Example value: 100.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

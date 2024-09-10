@@ -19,9 +19,9 @@ class PortfolioArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Portfolio resource.
-        :param pulumi.Input[str] portfolio_name: The name of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] description: The description of the portfolio. The value must be 1 to 128 characters in length.
+        :param pulumi.Input[str] portfolio_name: The name of the portfolio
+        :param pulumi.Input[str] provider_name: The provider name of the portfolio
+        :param pulumi.Input[str] description: The description of the portfolio
         """
         pulumi.set(__self__, "portfolio_name", portfolio_name)
         pulumi.set(__self__, "provider_name", provider_name)
@@ -32,7 +32,7 @@ class PortfolioArgs:
     @pulumi.getter(name="portfolioName")
     def portfolio_name(self) -> pulumi.Input[str]:
         """
-        The name of the portfolio. The value must be 1 to 128 characters in length.
+        The name of the portfolio
         """
         return pulumi.get(self, "portfolio_name")
 
@@ -44,7 +44,7 @@ class PortfolioArgs:
     @pulumi.getter(name="providerName")
     def provider_name(self) -> pulumi.Input[str]:
         """
-        The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        The provider name of the portfolio
         """
         return pulumi.get(self, "provider_name")
 
@@ -56,7 +56,7 @@ class PortfolioArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the portfolio. The value must be 1 to 128 characters in length.
+        The description of the portfolio
         """
         return pulumi.get(self, "description")
 
@@ -75,11 +75,11 @@ class _PortfolioState:
                  provider_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Portfolio resources.
-        :param pulumi.Input[str] create_time: The creation time of the portfolio.
-        :param pulumi.Input[str] description: The description of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] portfolio_arn: The ARN of the portfolio.
-        :param pulumi.Input[str] portfolio_name: The name of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        :param pulumi.Input[str] create_time: The creation time of the portfolio
+        :param pulumi.Input[str] description: The description of the portfolio
+        :param pulumi.Input[str] portfolio_arn: The ARN of the portfolio
+        :param pulumi.Input[str] portfolio_name: The name of the portfolio
+        :param pulumi.Input[str] provider_name: The provider name of the portfolio
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -96,7 +96,7 @@ class _PortfolioState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the portfolio.
+        The creation time of the portfolio
         """
         return pulumi.get(self, "create_time")
 
@@ -108,7 +108,7 @@ class _PortfolioState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the portfolio. The value must be 1 to 128 characters in length.
+        The description of the portfolio
         """
         return pulumi.get(self, "description")
 
@@ -120,7 +120,7 @@ class _PortfolioState:
     @pulumi.getter(name="portfolioArn")
     def portfolio_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The ARN of the portfolio.
+        The ARN of the portfolio
         """
         return pulumi.get(self, "portfolio_arn")
 
@@ -132,7 +132,7 @@ class _PortfolioState:
     @pulumi.getter(name="portfolioName")
     def portfolio_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the portfolio. The value must be 1 to 128 characters in length.
+        The name of the portfolio
         """
         return pulumi.get(self, "portfolio_name")
 
@@ -144,7 +144,7 @@ class _PortfolioState:
     @pulumi.getter(name="providerName")
     def provider_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        The provider name of the portfolio
         """
         return pulumi.get(self, "provider_name")
 
@@ -167,7 +167,7 @@ class Portfolio(pulumi.CustomResource):
 
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
-        > **NOTE:** Available since v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -196,9 +196,9 @@ class Portfolio(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] portfolio_name: The name of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        :param pulumi.Input[str] description: The description of the portfolio
+        :param pulumi.Input[str] portfolio_name: The name of the portfolio
+        :param pulumi.Input[str] provider_name: The provider name of the portfolio
         """
         ...
     @overload
@@ -211,7 +211,7 @@ class Portfolio(pulumi.CustomResource):
 
         For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
 
-        > **NOTE:** Available since v1.204.0+.
+        > **NOTE:** Available since v1.204.0.
 
         ## Example Usage
 
@@ -296,11 +296,11 @@ class Portfolio(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The creation time of the portfolio.
-        :param pulumi.Input[str] description: The description of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] portfolio_arn: The ARN of the portfolio.
-        :param pulumi.Input[str] portfolio_name: The name of the portfolio. The value must be 1 to 128 characters in length.
-        :param pulumi.Input[str] provider_name: The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        :param pulumi.Input[str] create_time: The creation time of the portfolio
+        :param pulumi.Input[str] description: The description of the portfolio
+        :param pulumi.Input[str] portfolio_arn: The ARN of the portfolio
+        :param pulumi.Input[str] portfolio_name: The name of the portfolio
+        :param pulumi.Input[str] provider_name: The provider name of the portfolio
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -317,7 +317,7 @@ class Portfolio(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the portfolio.
+        The creation time of the portfolio
         """
         return pulumi.get(self, "create_time")
 
@@ -325,7 +325,7 @@ class Portfolio(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the portfolio. The value must be 1 to 128 characters in length.
+        The description of the portfolio
         """
         return pulumi.get(self, "description")
 
@@ -333,7 +333,7 @@ class Portfolio(pulumi.CustomResource):
     @pulumi.getter(name="portfolioArn")
     def portfolio_arn(self) -> pulumi.Output[str]:
         """
-        The ARN of the portfolio.
+        The ARN of the portfolio
         """
         return pulumi.get(self, "portfolio_arn")
 
@@ -341,7 +341,7 @@ class Portfolio(pulumi.CustomResource):
     @pulumi.getter(name="portfolioName")
     def portfolio_name(self) -> pulumi.Output[str]:
         """
-        The name of the portfolio. The value must be 1 to 128 characters in length.
+        The name of the portfolio
         """
         return pulumi.get(self, "portfolio_name")
 
@@ -349,7 +349,7 @@ class Portfolio(pulumi.CustomResource):
     @pulumi.getter(name="providerName")
     def provider_name(self) -> pulumi.Output[str]:
         """
-        The provider name of the portfolio. The value must be 1 to 128 characters in length.
+        The provider name of the portfolio
         """
         return pulumi.get(self, "provider_name")
 

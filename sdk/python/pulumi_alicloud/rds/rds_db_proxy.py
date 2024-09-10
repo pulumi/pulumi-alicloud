@@ -25,6 +25,7 @@ class RdsDbProxyArgs:
                  db_proxy_connection_prefix: Optional[pulumi.Input[str]] = None,
                  db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
                  db_proxy_features: Optional[pulumi.Input[str]] = None,
+                 db_proxy_instance_type: Optional[pulumi.Input[str]] = None,
                  db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
                  effective_specific_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,9 @@ class RdsDbProxyArgs:
                - 0: disabled.
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
+        :param pulumi.Input[str] db_proxy_instance_type: The database proxy type. Valid values:
+               - common: universal proxy.
+               - exclusive: Exclusive proxy (default).
         :param pulumi.Input[str] db_proxy_ssl_enabled: The SSL configuration setting that you want to apply on the instance. Valid values:
                - Close: disables SSL encryption.
                - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -97,6 +101,8 @@ class RdsDbProxyArgs:
             pulumi.set(__self__, "db_proxy_endpoint_read_write_mode", db_proxy_endpoint_read_write_mode)
         if db_proxy_features is not None:
             pulumi.set(__self__, "db_proxy_features", db_proxy_features)
+        if db_proxy_instance_type is not None:
+            pulumi.set(__self__, "db_proxy_instance_type", db_proxy_instance_type)
         if db_proxy_ssl_enabled is not None:
             pulumi.set(__self__, "db_proxy_ssl_enabled", db_proxy_ssl_enabled)
         if effective_specific_time is not None:
@@ -237,6 +243,20 @@ class RdsDbProxyArgs:
         pulumi.set(self, "db_proxy_features", value)
 
     @property
+    @pulumi.getter(name="dbProxyInstanceType")
+    def db_proxy_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database proxy type. Valid values:
+        - common: universal proxy.
+        - exclusive: Exclusive proxy (default).
+        """
+        return pulumi.get(self, "db_proxy_instance_type")
+
+    @db_proxy_instance_type.setter
+    def db_proxy_instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_proxy_instance_type", value)
+
+    @property
     @pulumi.getter(name="dbProxySslEnabled")
     def db_proxy_ssl_enabled(self) -> Optional[pulumi.Input[str]]:
         """
@@ -373,6 +393,7 @@ class _RdsDbProxyState:
                  db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
                  db_proxy_features: Optional[pulumi.Input[str]] = None,
                  db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+                 db_proxy_instance_type: Optional[pulumi.Input[str]] = None,
                  db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
                  effective_specific_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
@@ -410,6 +431,9 @@ class _RdsDbProxyState:
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
+        :param pulumi.Input[str] db_proxy_instance_type: The database proxy type. Valid values:
+               - common: universal proxy.
+               - exclusive: Exclusive proxy (default).
         :param pulumi.Input[str] db_proxy_ssl_enabled: The SSL configuration setting that you want to apply on the instance. Valid values:
                - Close: disables SSL encryption.
                - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -459,6 +483,8 @@ class _RdsDbProxyState:
             pulumi.set(__self__, "db_proxy_features", db_proxy_features)
         if db_proxy_instance_num is not None:
             pulumi.set(__self__, "db_proxy_instance_num", db_proxy_instance_num)
+        if db_proxy_instance_type is not None:
+            pulumi.set(__self__, "db_proxy_instance_type", db_proxy_instance_type)
         if db_proxy_ssl_enabled is not None:
             pulumi.set(__self__, "db_proxy_ssl_enabled", db_proxy_ssl_enabled)
         if effective_specific_time is not None:
@@ -597,6 +623,20 @@ class _RdsDbProxyState:
     @db_proxy_instance_num.setter
     def db_proxy_instance_num(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "db_proxy_instance_num", value)
+
+    @property
+    @pulumi.getter(name="dbProxyInstanceType")
+    def db_proxy_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database proxy type. Valid values:
+        - common: universal proxy.
+        - exclusive: Exclusive proxy (default).
+        """
+        return pulumi.get(self, "db_proxy_instance_type")
+
+    @db_proxy_instance_type.setter
+    def db_proxy_instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_proxy_instance_type", value)
 
     @property
     @pulumi.getter(name="dbProxySslEnabled")
@@ -806,6 +846,7 @@ class RdsDbProxy(pulumi.CustomResource):
                  db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
                  db_proxy_features: Optional[pulumi.Input[str]] = None,
                  db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+                 db_proxy_instance_type: Optional[pulumi.Input[str]] = None,
                  db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
                  effective_specific_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
@@ -918,6 +959,9 @@ class RdsDbProxy(pulumi.CustomResource):
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
+        :param pulumi.Input[str] db_proxy_instance_type: The database proxy type. Valid values:
+               - common: universal proxy.
+               - exclusive: Exclusive proxy (default).
         :param pulumi.Input[str] db_proxy_ssl_enabled: The SSL configuration setting that you want to apply on the instance. Valid values:
                - Close: disables SSL encryption.
                - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -1054,6 +1098,7 @@ class RdsDbProxy(pulumi.CustomResource):
                  db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
                  db_proxy_features: Optional[pulumi.Input[str]] = None,
                  db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+                 db_proxy_instance_type: Optional[pulumi.Input[str]] = None,
                  db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
                  effective_specific_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
@@ -1083,6 +1128,7 @@ class RdsDbProxy(pulumi.CustomResource):
             if db_proxy_instance_num is None and not opts.urn:
                 raise TypeError("Missing required property 'db_proxy_instance_num'")
             __props__.__dict__["db_proxy_instance_num"] = db_proxy_instance_num
+            __props__.__dict__["db_proxy_instance_type"] = db_proxy_instance_type
             __props__.__dict__["db_proxy_ssl_enabled"] = db_proxy_ssl_enabled
             __props__.__dict__["effective_specific_time"] = effective_specific_time
             __props__.__dict__["effective_time"] = effective_time
@@ -1127,6 +1173,7 @@ class RdsDbProxy(pulumi.CustomResource):
             db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[str]] = None,
             db_proxy_features: Optional[pulumi.Input[str]] = None,
             db_proxy_instance_num: Optional[pulumi.Input[int]] = None,
+            db_proxy_instance_type: Optional[pulumi.Input[str]] = None,
             db_proxy_ssl_enabled: Optional[pulumi.Input[str]] = None,
             effective_specific_time: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
@@ -1169,6 +1216,9 @@ class RdsDbProxy(pulumi.CustomResource):
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
+        :param pulumi.Input[str] db_proxy_instance_type: The database proxy type. Valid values:
+               - common: universal proxy.
+               - exclusive: Exclusive proxy (default).
         :param pulumi.Input[str] db_proxy_ssl_enabled: The SSL configuration setting that you want to apply on the instance. Valid values:
                - Close: disables SSL encryption.
                - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
@@ -1214,6 +1264,7 @@ class RdsDbProxy(pulumi.CustomResource):
         __props__.__dict__["db_proxy_endpoint_read_write_mode"] = db_proxy_endpoint_read_write_mode
         __props__.__dict__["db_proxy_features"] = db_proxy_features
         __props__.__dict__["db_proxy_instance_num"] = db_proxy_instance_num
+        __props__.__dict__["db_proxy_instance_type"] = db_proxy_instance_type
         __props__.__dict__["db_proxy_ssl_enabled"] = db_proxy_ssl_enabled
         __props__.__dict__["effective_specific_time"] = effective_specific_time
         __props__.__dict__["effective_time"] = effective_time
@@ -1306,6 +1357,16 @@ class RdsDbProxy(pulumi.CustomResource):
         The number of proxy instances that are enabled. Valid values: 1 to 60.
         """
         return pulumi.get(self, "db_proxy_instance_num")
+
+    @property
+    @pulumi.getter(name="dbProxyInstanceType")
+    def db_proxy_instance_type(self) -> pulumi.Output[str]:
+        """
+        The database proxy type. Valid values:
+        - common: universal proxy.
+        - exclusive: Exclusive proxy (default).
+        """
+        return pulumi.get(self, "db_proxy_instance_type")
 
     @property
     @pulumi.getter(name="dbProxySslEnabled")

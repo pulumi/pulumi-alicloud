@@ -17,10 +17,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      * 
      */
     @Import(name="accountDescription")
@@ -28,10 +24,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The description of the account.
-     * * Starts with a letter.
-     * * Does not start with `http://` or `https://`.
-     * * Contains letters, underscores (_), hyphens (-), or digits.
-     * * Be 2 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> accountDescription() {
@@ -39,22 +31,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * The account name.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return The name of the account. The account name must be unique and meet the following requirements:
-     * * Starts with a letter.
-     * * Contains only lowercase letters, digits, or underscores (_).
-     * * Be up to 16 characters in length.
-     * * Contains no reserved keywords.
+     * @return The account name.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -62,14 +46,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * AccountPassword
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * @return AccountPassword
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -77,14 +61,58 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the instance.
+     * Account type. The value range is as follows:
+     * 
+     * Normal: Normal account number.
+     * 
+     * Super: a high-privilege account.
+     * 
+     */
+    @Import(name="accountType")
+    private @Nullable Output<String> accountType;
+
+    /**
+     * @return Account type. The value range is as follows:
+     * 
+     * Normal: Normal account number.
+     * 
+     * Super: a high-privilege account.
+     * 
+     */
+    public Optional<Output<String>> accountType() {
+        return Optional.ofNullable(this.accountType);
+    }
+
+    /**
+     * Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     * 
+     */
+    @Import(name="databaseName")
+    private @Nullable Output<String> databaseName;
+
+    /**
+     * @return Database name, with the following restrictions:
+     * - Can only contain letters, numbers and underscores.
+     * - Must start with a letter.
+     * - Length cannot exceed 63 characters.
+     * 
+     */
+    public Optional<Output<String>> databaseName() {
+        return Optional.ofNullable(this.databaseName);
+    }
+
+    /**
+     * The Adb pg instance ID.
      * 
      */
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The Adb pg instance ID.
      * 
      */
     public Optional<Output<String>> dbInstanceId() {
@@ -92,14 +120,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -112,6 +140,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountDescription = $.accountDescription;
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
+        this.accountType = $.accountType;
+        this.databaseName = $.databaseName;
         this.dbInstanceId = $.dbInstanceId;
         this.status = $.status;
     }
@@ -136,10 +166,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountDescription The description of the account.
-         * * Starts with a letter.
-         * * Does not start with `http://` or `https://`.
-         * * Contains letters, underscores (_), hyphens (-), or digits.
-         * * Be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -151,10 +177,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountDescription The description of the account.
-         * * Starts with a letter.
-         * * Does not start with `http://` or `https://`.
-         * * Contains letters, underscores (_), hyphens (-), or digits.
-         * * Be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -164,11 +186,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The name of the account. The account name must be unique and meet the following requirements:
-         * * Starts with a letter.
-         * * Contains only lowercase letters, digits, or underscores (_).
-         * * Be up to 16 characters in length.
-         * * Contains no reserved keywords.
+         * @param accountName The account name.
          * 
          * @return builder
          * 
@@ -179,11 +197,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The name of the account. The account name must be unique and meet the following requirements:
-         * * Starts with a letter.
-         * * Contains only lowercase letters, digits, or underscores (_).
-         * * Be up to 16 characters in length.
-         * * Contains no reserved keywords.
+         * @param accountName The account name.
          * 
          * @return builder
          * 
@@ -193,7 +207,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+         * @param accountPassword AccountPassword
          * 
          * @return builder
          * 
@@ -204,7 +218,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+         * @param accountPassword AccountPassword
          * 
          * @return builder
          * 
@@ -214,7 +228,63 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The ID of the instance.
+         * @param accountType Account type. The value range is as follows:
+         * 
+         * Normal: Normal account number.
+         * 
+         * Super: a high-privilege account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountType(@Nullable Output<String> accountType) {
+            $.accountType = accountType;
+            return this;
+        }
+
+        /**
+         * @param accountType Account type. The value range is as follows:
+         * 
+         * Normal: Normal account number.
+         * 
+         * Super: a high-privilege account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountType(String accountType) {
+            return accountType(Output.of(accountType));
+        }
+
+        /**
+         * @param databaseName Database name, with the following restrictions:
+         * - Can only contain letters, numbers and underscores.
+         * - Must start with a letter.
+         * - Length cannot exceed 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseName(@Nullable Output<String> databaseName) {
+            $.databaseName = databaseName;
+            return this;
+        }
+
+        /**
+         * @param databaseName Database name, with the following restrictions:
+         * - Can only contain letters, numbers and underscores.
+         * - Must start with a letter.
+         * - Length cannot exceed 63 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseName(String databaseName) {
+            return databaseName(Output.of(databaseName));
+        }
+
+        /**
+         * @param dbInstanceId The Adb pg instance ID.
          * 
          * @return builder
          * 
@@ -225,7 +295,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The ID of the instance.
+         * @param dbInstanceId The Adb pg instance ID.
          * 
          * @return builder
          * 
@@ -235,7 +305,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -246,7 +316,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

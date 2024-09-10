@@ -54,6 +54,8 @@ type DBCluster struct {
 	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
 	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -163,6 +165,8 @@ type dbclusterState struct {
 	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
 	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -237,6 +241,8 @@ type DBClusterState struct {
 	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
 	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringPtrInput
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -313,6 +319,8 @@ type dbclusterArgs struct {
 	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
 	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -382,6 +390,8 @@ type DBClusterArgs struct {
 	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
 	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringPtrInput
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -578,6 +588,11 @@ func (o DBClusterOutput) ElasticIoResource() pulumi.IntOutput {
 // - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 func (o DBClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+func (o DBClusterOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
 // The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.

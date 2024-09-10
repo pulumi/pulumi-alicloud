@@ -7238,7 +7238,7 @@ type GetRouteTablesTable struct {
 	RouteTableId string `pulumi:"routeTableId"`
 	// The route table name.
 	RouteTableName string `pulumi:"routeTableName"`
-	// The type of route table.
+	// The route table type.
 	RouteTableType string `pulumi:"routeTableType"`
 	// The router ID.
 	RouterId string `pulumi:"routerId"`
@@ -7278,7 +7278,7 @@ type GetRouteTablesTableArgs struct {
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
 	// The route table name.
 	RouteTableName pulumi.StringInput `pulumi:"routeTableName"`
-	// The type of route table.
+	// The route table type.
 	RouteTableType pulumi.StringInput `pulumi:"routeTableType"`
 	// The router ID.
 	RouterId pulumi.StringInput `pulumi:"routerId"`
@@ -7375,7 +7375,7 @@ func (o GetRouteTablesTableOutput) RouteTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouteTableName }).(pulumi.StringOutput)
 }
 
-// The type of route table.
+// The route table type.
 func (o GetRouteTablesTableOutput) RouteTableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesTable) string { return v.RouteTableType }).(pulumi.StringOutput)
 }

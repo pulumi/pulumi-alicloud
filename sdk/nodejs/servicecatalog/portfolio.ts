@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Service Catalog Portfolio and how to use it, see [What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio).
  *
- * > **NOTE:** Available since v1.204.0+.
+ * > **NOTE:** Available since v1.204.0.
  *
  * ## Example Usage
  *
@@ -64,23 +64,23 @@ export class Portfolio extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the portfolio.
+     * The creation time of the portfolio
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the portfolio. The value must be 1 to 128 characters in length.
+     * The description of the portfolio
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The ARN of the portfolio.
+     * The ARN of the portfolio
      */
     public /*out*/ readonly portfolioArn!: pulumi.Output<string>;
     /**
-     * The name of the portfolio. The value must be 1 to 128 characters in length.
+     * The name of the portfolio
      */
     public readonly portfolioName!: pulumi.Output<string>;
     /**
-     * The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * The provider name of the portfolio
      */
     public readonly providerName!: pulumi.Output<string>;
 
@@ -126,23 +126,23 @@ export class Portfolio extends pulumi.CustomResource {
  */
 export interface PortfolioState {
     /**
-     * The creation time of the portfolio.
+     * The creation time of the portfolio
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the portfolio. The value must be 1 to 128 characters in length.
+     * The description of the portfolio
      */
     description?: pulumi.Input<string>;
     /**
-     * The ARN of the portfolio.
+     * The ARN of the portfolio
      */
     portfolioArn?: pulumi.Input<string>;
     /**
-     * The name of the portfolio. The value must be 1 to 128 characters in length.
+     * The name of the portfolio
      */
     portfolioName?: pulumi.Input<string>;
     /**
-     * The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * The provider name of the portfolio
      */
     providerName?: pulumi.Input<string>;
 }
@@ -152,15 +152,15 @@ export interface PortfolioState {
  */
 export interface PortfolioArgs {
     /**
-     * The description of the portfolio. The value must be 1 to 128 characters in length.
+     * The description of the portfolio
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the portfolio. The value must be 1 to 128 characters in length.
+     * The name of the portfolio
      */
     portfolioName: pulumi.Input<string>;
     /**
-     * The provider name of the portfolio. The value must be 1 to 128 characters in length.
+     * The provider name of the portfolio
      */
     providerName: pulumi.Input<string>;
 }

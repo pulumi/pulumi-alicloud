@@ -235,6 +235,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.elasticIoResourceSize;
     }
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> enableSsl() {
+        return Codegen.optional(this.enableSsl);
+    }
+    /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
      * 
      */

@@ -17,37 +17,40 @@ class AccountArgs:
                  account_name: pulumi.Input[str],
                  account_password: pulumi.Input[str],
                  db_instance_id: pulumi.Input[str],
-                 account_description: Optional[pulumi.Input[str]] = None):
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 database_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[str] account_name: The name of the account. The account name must be unique and meet the following requirements:
-               * Starts with a letter.
-               * Contains only lowercase letters, digits, or underscores (_).
-               * Be up to 16 characters in length.
-               * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
-        :param pulumi.Input[str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[str] account_name: The account name.
+        :param pulumi.Input[str] account_password: AccountPassword
+        :param pulumi.Input[str] db_instance_id: The Adb pg instance ID.
         :param pulumi.Input[str] account_description: The description of the account.
-               * Starts with a letter.
-               * Does not start with `http://` or `https://`.
-               * Contains letters, underscores (_), hyphens (-), or digits.
-               * Be 2 to 256 characters in length.
+        :param pulumi.Input[str] account_type: Account type. The value range is as follows:
+               
+               Normal: Normal account number.
+               
+               Super: a high-privilege account.
+        :param pulumi.Input[str] database_name: Database name, with the following restrictions:
+               - Can only contain letters, numbers and underscores.
+               - Must start with a letter.
+               - Length cannot exceed 63 characters.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[str]:
         """
-        The name of the account. The account name must be unique and meet the following requirements:
-        * Starts with a letter.
-        * Contains only lowercase letters, digits, or underscores (_).
-        * Be up to 16 characters in length.
-        * Contains no reserved keywords.
+        The account name.
         """
         return pulumi.get(self, "account_name")
 
@@ -59,7 +62,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[str]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+        AccountPassword
         """
         return pulumi.get(self, "account_password")
 
@@ -71,7 +74,7 @@ class AccountArgs:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[str]:
         """
-        The ID of the instance.
+        The Adb pg instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -84,16 +87,43 @@ class AccountArgs:
     def account_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the account.
-        * Starts with a letter.
-        * Does not start with `http://` or `https://`.
-        * Contains letters, underscores (_), hyphens (-), or digits.
-        * Be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
     def account_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_description", value)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account type. The value range is as follows:
+
+        Normal: Normal account number.
+
+        Super: a high-privilege account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_type", value)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database name, with the following restrictions:
+        - Can only contain letters, numbers and underscores.
+        - Must start with a letter.
+        - Length cannot exceed 63 characters.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_name", value)
 
 
 @pulumi.input_type
@@ -102,23 +132,26 @@ class _AccountState:
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[str] account_description: The description of the account.
-               * Starts with a letter.
-               * Does not start with `http://` or `https://`.
-               * Contains letters, underscores (_), hyphens (-), or digits.
-               * Be 2 to 256 characters in length.
-        :param pulumi.Input[str] account_name: The name of the account. The account name must be unique and meet the following requirements:
-               * Starts with a letter.
-               * Contains only lowercase letters, digits, or underscores (_).
-               * Be up to 16 characters in length.
-               * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
-        :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[str] status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        :param pulumi.Input[str] account_name: The account name.
+        :param pulumi.Input[str] account_password: AccountPassword
+        :param pulumi.Input[str] account_type: Account type. The value range is as follows:
+               
+               Normal: Normal account number.
+               
+               Super: a high-privilege account.
+        :param pulumi.Input[str] database_name: Database name, with the following restrictions:
+               - Can only contain letters, numbers and underscores.
+               - Must start with a letter.
+               - Length cannot exceed 63 characters.
+        :param pulumi.Input[str] db_instance_id: The Adb pg instance ID.
+        :param pulumi.Input[str] status: The status of the resource
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -126,6 +159,10 @@ class _AccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
         if db_instance_id is not None:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
         if status is not None:
@@ -136,10 +173,6 @@ class _AccountState:
     def account_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the account.
-        * Starts with a letter.
-        * Does not start with `http://` or `https://`.
-        * Contains letters, underscores (_), hyphens (-), or digits.
-        * Be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
@@ -151,11 +184,7 @@ class _AccountState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the account. The account name must be unique and meet the following requirements:
-        * Starts with a letter.
-        * Contains only lowercase letters, digits, or underscores (_).
-        * Be up to 16 characters in length.
-        * Contains no reserved keywords.
+        The account name.
         """
         return pulumi.get(self, "account_name")
 
@@ -167,7 +196,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+        AccountPassword
         """
         return pulumi.get(self, "account_password")
 
@@ -176,10 +205,41 @@ class _AccountState:
         pulumi.set(self, "account_password", value)
 
     @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account type. The value range is as follows:
+
+        Normal: Normal account number.
+
+        Super: a high-privilege account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_type", value)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database name, with the following restrictions:
+        - Can only contain letters, numbers and underscores.
+        - Must start with a letter.
+        - Length cannot exceed 63 characters.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_name", value)
+
+    @property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the instance.
+        The Adb pg instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -191,7 +251,7 @@ class _AccountState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -208,6 +268,8 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -270,17 +332,18 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: The description of the account.
-               * Starts with a letter.
-               * Does not start with `http://` or `https://`.
-               * Contains letters, underscores (_), hyphens (-), or digits.
-               * Be 2 to 256 characters in length.
-        :param pulumi.Input[str] account_name: The name of the account. The account name must be unique and meet the following requirements:
-               * Starts with a letter.
-               * Contains only lowercase letters, digits, or underscores (_).
-               * Be up to 16 characters in length.
-               * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
-        :param pulumi.Input[str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[str] account_name: The account name.
+        :param pulumi.Input[str] account_password: AccountPassword
+        :param pulumi.Input[str] account_type: Account type. The value range is as follows:
+               
+               Normal: Normal account number.
+               
+               Super: a high-privilege account.
+        :param pulumi.Input[str] database_name: Database name, with the following restrictions:
+               - Can only contain letters, numbers and underscores.
+               - Must start with a letter.
+               - Length cannot exceed 63 characters.
+        :param pulumi.Input[str] db_instance_id: The Adb pg instance ID.
         """
         ...
     @overload
@@ -363,6 +426,8 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 account_type: Optional[pulumi.Input[str]] = None,
+                 database_name: Optional[pulumi.Input[str]] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -379,11 +444,15 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
+            __props__.__dict__["account_type"] = account_type
+            __props__.__dict__["database_name"] = database_name
             if db_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_instance_id'")
             __props__.__dict__["db_instance_id"] = db_instance_id
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:gpdb/account:Account',
             resource_name,
@@ -397,6 +466,8 @@ class Account(pulumi.CustomResource):
             account_description: Optional[pulumi.Input[str]] = None,
             account_name: Optional[pulumi.Input[str]] = None,
             account_password: Optional[pulumi.Input[str]] = None,
+            account_type: Optional[pulumi.Input[str]] = None,
+            database_name: Optional[pulumi.Input[str]] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
@@ -407,18 +478,19 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: The description of the account.
-               * Starts with a letter.
-               * Does not start with `http://` or `https://`.
-               * Contains letters, underscores (_), hyphens (-), or digits.
-               * Be 2 to 256 characters in length.
-        :param pulumi.Input[str] account_name: The name of the account. The account name must be unique and meet the following requirements:
-               * Starts with a letter.
-               * Contains only lowercase letters, digits, or underscores (_).
-               * Be up to 16 characters in length.
-               * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
-        :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[str] status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        :param pulumi.Input[str] account_name: The account name.
+        :param pulumi.Input[str] account_password: AccountPassword
+        :param pulumi.Input[str] account_type: Account type. The value range is as follows:
+               
+               Normal: Normal account number.
+               
+               Super: a high-privilege account.
+        :param pulumi.Input[str] database_name: Database name, with the following restrictions:
+               - Can only contain letters, numbers and underscores.
+               - Must start with a letter.
+               - Length cannot exceed 63 characters.
+        :param pulumi.Input[str] db_instance_id: The Adb pg instance ID.
+        :param pulumi.Input[str] status: The status of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -427,6 +499,8 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_description"] = account_description
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["account_type"] = account_type
+        __props__.__dict__["database_name"] = database_name
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["status"] = status
         return Account(resource_name, opts=opts, __props__=__props__)
@@ -436,10 +510,6 @@ class Account(pulumi.CustomResource):
     def account_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the account.
-        * Starts with a letter.
-        * Does not start with `http://` or `https://`.
-        * Contains letters, underscores (_), hyphens (-), or digits.
-        * Be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
@@ -447,11 +517,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[str]:
         """
-        The name of the account. The account name must be unique and meet the following requirements:
-        * Starts with a letter.
-        * Contains only lowercase letters, digits, or underscores (_).
-        * Be up to 16 characters in length.
-        * Contains no reserved keywords.
+        The account name.
         """
         return pulumi.get(self, "account_name")
 
@@ -459,15 +525,38 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[str]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+        AccountPassword
         """
         return pulumi.get(self, "account_password")
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> pulumi.Output[str]:
+        """
+        Account type. The value range is as follows:
+
+        Normal: Normal account number.
+
+        Super: a high-privilege account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Database name, with the following restrictions:
+        - Can only contain letters, numbers and underscores.
+        - Must start with a letter.
+        - Length cannot exceed 63 characters.
+        """
+        return pulumi.get(self, "database_name")
 
     @property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of the instance.
+        The Adb pg instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -475,7 +564,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

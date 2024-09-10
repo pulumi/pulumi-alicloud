@@ -11,10 +11,12 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Gpdb Db Resource Group resource.
+ * Provides a GPDB Db Resource Group resource.
  * 
  * For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
  * 
@@ -79,7 +81,6 @@ import javax.annotation.Nullable;
  *             .instanceNetworkType("VPC")
  *             .dbInstanceCategory("Basic")
  *             .engine("gpdb")
- *             .resourceManagementMode("resourceGroup")
  *             .paymentType("PayAsYouGo")
  *             .sslEnabled("0")
  *             .engineVersion("6.0")
@@ -113,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Gpdb Db Resource Group can be imported using the id, e.g.
+ * GPDB Db Resource Group can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example &lt;db_instance_id&gt;:&lt;resource_group_name&gt;
@@ -163,6 +164,20 @@ public class DbResourceGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
+    }
+    /**
+     * Role List
+     * 
+     */
+    @Export(name="roleLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> roleLists;
+
+    /**
+     * @return Role List
+     * 
+     */
+    public Output<Optional<List<String>>> roleLists() {
+        return Codegen.optional(this.roleLists);
     }
 
     /**

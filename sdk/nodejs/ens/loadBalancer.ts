@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ENS Load Balancer resource. Load balancing. When you use it for the first time, please contact the product classmates to add a resource whitelist.
+ * Provides a Ens Load Balancer resource.
  *
  * For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
  *
@@ -46,7 +48,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ENS Load Balancer can be imported using the id, e.g.
+ * Ens Load Balancer can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>
@@ -81,6 +83,10 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
+     * The list of backend servers. See `backendServers` below.
+     */
+    public readonly backendServers!: pulumi.Output<outputs.ens.LoadBalancerBackendServer[] | undefined>;
+    /**
      * The creation Time (UTC) of the load balancing instance.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -89,11 +95,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly ensRegionId!: pulumi.Output<string>;
     /**
-     * Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
     public readonly loadBalancerName!: pulumi.Output<string | undefined>;
     /**
-     * Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
@@ -101,7 +107,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
-     * Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -126,6 +132,7 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
+            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
             resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
@@ -151,6 +158,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
             resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
             resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
             resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
@@ -170,6 +178,10 @@ export class LoadBalancer extends pulumi.CustomResource {
  */
 export interface LoadBalancerState {
     /**
+     * The list of backend servers. See `backendServers` below.
+     */
+    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[]>;
+    /**
      * The creation Time (UTC) of the load balancing instance.
      */
     createTime?: pulumi.Input<string>;
@@ -178,11 +190,11 @@ export interface LoadBalancerState {
      */
     ensRegionId?: pulumi.Input<string>;
     /**
-     * Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
     loadBalancerName?: pulumi.Input<string>;
     /**
-     * Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -190,7 +202,7 @@ export interface LoadBalancerState {
      */
     networkId?: pulumi.Input<string>;
     /**
-     * Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -208,15 +220,19 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
+     * The list of backend servers. See `backendServers` below.
+     */
+    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[]>;
+    /**
      * The ID of the ENS node.
      */
     ensRegionId: pulumi.Input<string>;
     /**
-     * Name of the Server Load Balancer instanceRules:The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance nameCannot start with `http://` and `https`.
+     * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
     loadBalancerName?: pulumi.Input<string>;
     /**
-     * Specifications of the Server Load Balancer instance. Valid values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
+     * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */
     loadBalancerSpec: pulumi.Input<string>;
     /**
@@ -224,7 +240,7 @@ export interface LoadBalancerArgs {
      */
     networkId: pulumi.Input<string>;
     /**
-     * Server Load Balancer Instance Payment Type. Valid value: PayAsYouGo.
+     * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      */
     paymentType: pulumi.Input<string>;
     /**

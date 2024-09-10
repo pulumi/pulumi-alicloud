@@ -89,13 +89,13 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// Policy creation time.
+	// Policy creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The policy description.
 	PolicyDescription pulumi.StringPtrOutput `pulumi:"policyDescription"`
-	// Policy Name.
+	// Policy Name
 	PolicyName pulumi.StringPtrOutput `pulumi:"policyName"`
-	// A list of policy rules. See `rules` below.
+	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -129,24 +129,24 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// Policy creation time.
+	// Policy creation time
 	CreateTime *string `pulumi:"createTime"`
 	// The policy description.
 	PolicyDescription *string `pulumi:"policyDescription"`
-	// Policy Name.
+	// Policy Name
 	PolicyName *string `pulumi:"policyName"`
-	// A list of policy rules. See `rules` below.
+	// A list of policy rules See `rules` below.
 	Rules []PolicyRule `pulumi:"rules"`
 }
 
 type PolicyState struct {
-	// Policy creation time.
+	// Policy creation time
 	CreateTime pulumi.StringPtrInput
 	// The policy description.
 	PolicyDescription pulumi.StringPtrInput
-	// Policy Name.
+	// Policy Name
 	PolicyName pulumi.StringPtrInput
-	// A list of policy rules. See `rules` below.
+	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayInput
 }
 
@@ -157,9 +157,9 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// The policy description.
 	PolicyDescription *string `pulumi:"policyDescription"`
-	// Policy Name.
+	// Policy Name
 	PolicyName *string `pulumi:"policyName"`
-	// A list of policy rules. See `rules` below.
+	// A list of policy rules See `rules` below.
 	Rules []PolicyRule `pulumi:"rules"`
 }
 
@@ -167,9 +167,9 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// The policy description.
 	PolicyDescription pulumi.StringPtrInput
-	// Policy Name.
+	// Policy Name
 	PolicyName pulumi.StringPtrInput
-	// A list of policy rules. See `rules` below.
+	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayInput
 }
 
@@ -260,7 +260,7 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-// Policy creation time.
+// Policy creation time
 func (o PolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -270,12 +270,12 @@ func (o PolicyOutput) PolicyDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.PolicyDescription }).(pulumi.StringPtrOutput)
 }
 
-// Policy Name.
+// Policy Name
 func (o PolicyOutput) PolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.PolicyName }).(pulumi.StringPtrOutput)
 }
 
-// A list of policy rules. See `rules` below.
+// A list of policy rules See `rules` below.
 func (o PolicyOutput) Rules() PolicyRuleArrayOutput {
 	return o.ApplyT(func(v *Policy) PolicyRuleArrayOutput { return v.Rules }).(PolicyRuleArrayOutput)
 }

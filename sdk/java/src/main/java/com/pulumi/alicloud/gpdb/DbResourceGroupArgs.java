@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DbResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
@@ -59,12 +62,28 @@ public final class DbResourceGroupArgs extends com.pulumi.resources.ResourceArgs
         return this.resourceGroupName;
     }
 
+    /**
+     * Role List
+     * 
+     */
+    @Import(name="roleLists")
+    private @Nullable Output<List<String>> roleLists;
+
+    /**
+     * @return Role List
+     * 
+     */
+    public Optional<Output<List<String>>> roleLists() {
+        return Optional.ofNullable(this.roleLists);
+    }
+
     private DbResourceGroupArgs() {}
 
     private DbResourceGroupArgs(DbResourceGroupArgs $) {
         this.dbInstanceId = $.dbInstanceId;
         this.resourceGroupConfig = $.resourceGroupConfig;
         this.resourceGroupName = $.resourceGroupName;
+        this.roleLists = $.roleLists;
     }
 
     public static Builder builder() {
@@ -146,6 +165,37 @@ public final class DbResourceGroupArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
+        }
+
+        /**
+         * @param roleLists Role List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleLists(@Nullable Output<List<String>> roleLists) {
+            $.roleLists = roleLists;
+            return this;
+        }
+
+        /**
+         * @param roleLists Role List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleLists(List<String> roleLists) {
+            return roleLists(Output.of(roleLists));
+        }
+
+        /**
+         * @param roleLists Role List
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleLists(String... roleLists) {
+            return roleLists(List.of(roleLists));
         }
 
         public DbResourceGroupArgs build() {

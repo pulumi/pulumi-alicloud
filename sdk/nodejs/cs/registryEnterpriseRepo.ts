@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
+ *     min: 10000000,
+ *     max: 99999999,
  * });
  * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",

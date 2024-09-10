@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:servicecatalog/portfolio:Portfolio":
 		r = &Portfolio{}
+	case "alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation":
+		r = &PrincipalPortfolioAssociation{}
+	case "alicloud:servicecatalog/product:Product":
+		r = &Product{}
+	case "alicloud:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation":
+		r = &ProductPortfolioAssociation{}
+	case "alicloud:servicecatalog/productVersion:ProductVersion":
+		r = &ProductVersion{}
 	case "alicloud:servicecatalog/provisionedProduct:ProvisionedProduct":
 		r = &ProvisionedProduct{}
 	default:
@@ -41,6 +49,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"servicecatalog/portfolio",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"servicecatalog/principalPortfolioAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"servicecatalog/product",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"servicecatalog/productPortfolioAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"servicecatalog/productVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

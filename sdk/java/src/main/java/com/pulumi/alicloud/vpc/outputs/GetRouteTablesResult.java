@@ -46,6 +46,11 @@ public final class GetRouteTablesResult {
      */
     private @Nullable String routeTableName;
     /**
+     * @return The type of route table.
+     * 
+     */
+    private @Nullable String routeTableType;
+    /**
      * @return Router Id of the route table.
      * 
      */
@@ -65,6 +70,10 @@ public final class GetRouteTablesResult {
      * 
      */
     private List<GetRouteTablesTable> tables;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     private Integer totalCount;
     /**
@@ -122,6 +131,13 @@ public final class GetRouteTablesResult {
         return Optional.ofNullable(this.routeTableName);
     }
     /**
+     * @return The type of route table.
+     * 
+     */
+    public Optional<String> routeTableType() {
+        return Optional.ofNullable(this.routeTableType);
+    }
+    /**
      * @return Router Id of the route table.
      * 
      */
@@ -149,6 +165,10 @@ public final class GetRouteTablesResult {
     public List<GetRouteTablesTable> tables() {
         return this.tables;
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
@@ -181,6 +201,7 @@ public final class GetRouteTablesResult {
         private @Nullable Integer pageSize;
         private @Nullable String resourceGroupId;
         private @Nullable String routeTableName;
+        private @Nullable String routeTableType;
         private @Nullable String routerId;
         private @Nullable String routerType;
         private @Nullable String status;
@@ -200,6 +221,7 @@ public final class GetRouteTablesResult {
     	      this.pageSize = defaults.pageSize;
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.routeTableName = defaults.routeTableName;
+    	      this.routeTableType = defaults.routeTableType;
     	      this.routerId = defaults.routerId;
     	      this.routerType = defaults.routerType;
     	      this.status = defaults.status;
@@ -276,6 +298,12 @@ public final class GetRouteTablesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder routeTableType(@Nullable String routeTableType) {
+
+            this.routeTableType = routeTableType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
 
             this.routerId = routerId;
@@ -335,6 +363,7 @@ public final class GetRouteTablesResult {
             _resultValue.pageSize = pageSize;
             _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.routeTableName = routeTableName;
+            _resultValue.routeTableType = routeTableType;
             _resultValue.routerId = routerId;
             _resultValue.routerType = routerType;
             _resultValue.status = status;

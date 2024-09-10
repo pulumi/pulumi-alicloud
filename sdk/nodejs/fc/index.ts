@@ -105,10 +105,25 @@ export type V3FunctionVersion = import("./v3functionVersion").V3FunctionVersion;
 export const V3FunctionVersion: typeof import("./v3functionVersion").V3FunctionVersion = null as any;
 utilities.lazyLoad(exports, ["V3FunctionVersion"], () => require("./v3functionVersion"));
 
+export { V3LayerVersionArgs, V3LayerVersionState } from "./v3layerVersion";
+export type V3LayerVersion = import("./v3layerVersion").V3LayerVersion;
+export const V3LayerVersion: typeof import("./v3layerVersion").V3LayerVersion = null as any;
+utilities.lazyLoad(exports, ["V3LayerVersion"], () => require("./v3layerVersion"));
+
+export { V3ProvisionConfigArgs, V3ProvisionConfigState } from "./v3provisionConfig";
+export type V3ProvisionConfig = import("./v3provisionConfig").V3ProvisionConfig;
+export const V3ProvisionConfig: typeof import("./v3provisionConfig").V3ProvisionConfig = null as any;
+utilities.lazyLoad(exports, ["V3ProvisionConfig"], () => require("./v3provisionConfig"));
+
 export { V3TriggerArgs, V3TriggerState } from "./v3trigger";
 export type V3Trigger = import("./v3trigger").V3Trigger;
 export const V3Trigger: typeof import("./v3trigger").V3Trigger = null as any;
 utilities.lazyLoad(exports, ["V3Trigger"], () => require("./v3trigger"));
+
+export { V3VpcBindingArgs, V3VpcBindingState } from "./v3vpcBinding";
+export type V3VpcBinding = import("./v3vpcBinding").V3VpcBinding;
+export const V3VpcBinding: typeof import("./v3vpcBinding").V3VpcBinding = null as any;
+utilities.lazyLoad(exports, ["V3VpcBinding"], () => require("./v3vpcBinding"));
 
 
 const _module = {
@@ -143,8 +158,14 @@ const _module = {
                 return new V3Function(name, <any>undefined, { urn })
             case "alicloud:fc/v3FunctionVersion:V3FunctionVersion":
                 return new V3FunctionVersion(name, <any>undefined, { urn })
+            case "alicloud:fc/v3LayerVersion:V3LayerVersion":
+                return new V3LayerVersion(name, <any>undefined, { urn })
+            case "alicloud:fc/v3ProvisionConfig:V3ProvisionConfig":
+                return new V3ProvisionConfig(name, <any>undefined, { urn })
             case "alicloud:fc/v3Trigger:V3Trigger":
                 return new V3Trigger(name, <any>undefined, { urn })
+            case "alicloud:fc/v3VpcBinding:V3VpcBinding":
+                return new V3VpcBinding(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -164,4 +185,7 @@ pulumi.runtime.registerResourceModule("alicloud", "fc/v3ConcurrencyConfig", _mod
 pulumi.runtime.registerResourceModule("alicloud", "fc/v3CustomDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/v3Function", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/v3FunctionVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3LayerVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3ProvisionConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fc/v3Trigger", _module)
+pulumi.runtime.registerResourceModule("alicloud", "fc/v3VpcBinding", _module)
