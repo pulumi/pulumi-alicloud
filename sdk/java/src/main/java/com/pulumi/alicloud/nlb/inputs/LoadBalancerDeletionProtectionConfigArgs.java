@@ -17,14 +17,14 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
     public static final LoadBalancerDeletionProtectionConfigArgs Empty = new LoadBalancerDeletionProtectionConfigArgs();
 
     /**
-     * Delete protection enable.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Delete protection enable.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Opening time.
+     * Opening time of the configuration read-only mode.
      * 
      */
     @Import(name="enabledTime")
     private @Nullable Output<String> enabledTime;
 
     /**
-     * @return Opening time.
+     * @return Opening time of the configuration read-only mode.
      * 
      */
     public Optional<Output<String>> enabledTime() {
@@ -47,14 +47,18 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Reason for opening.
+     * The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
      * 
      */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
     /**
-     * @return Reason for opening.
+     * @return The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -88,7 +92,7 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Delete protection enable.
+         * @param enabled Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -99,7 +103,7 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Delete protection enable.
+         * @param enabled Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -109,7 +113,7 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabledTime Opening time.
+         * @param enabledTime Opening time of the configuration read-only mode.
          * 
          * @return builder
          * 
@@ -120,7 +124,7 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabledTime Opening time.
+         * @param enabledTime Opening time of the configuration read-only mode.
          * 
          * @return builder
          * 
@@ -130,7 +134,9 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param reason Reason for opening.
+         * @param reason The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
          * 
          * @return builder
          * 
@@ -141,7 +147,9 @@ public final class LoadBalancerDeletionProtectionConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param reason Reason for opening.
+         * @param reason The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
          * 
          * @return builder
          * 

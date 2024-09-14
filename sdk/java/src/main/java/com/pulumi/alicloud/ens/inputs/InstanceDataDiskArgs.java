@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ens.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -40,6 +41,51 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Cloud Disk ID.
+     * 
+     */
+    @Import(name="diskId")
+    private @Nullable Output<String> diskId;
+
+    /**
+     * @return Cloud Disk ID.
+     * 
+     */
+    public Optional<Output<String>> diskId() {
+        return Optional.ofNullable(this.diskId);
+    }
+
+    /**
+     * The ID of the KMS key used by the cloud disk.
+     * 
+     */
+    @Import(name="encryptKeyId")
+    private @Nullable Output<String> encryptKeyId;
+
+    /**
+     * @return The ID of the KMS key used by the cloud disk.
+     * 
+     */
+    public Optional<Output<String>> encryptKeyId() {
+        return Optional.ofNullable(this.encryptKeyId);
+    }
+
+    /**
+     * Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+     * 
+     */
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    /**
+     * @return Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+     * 
+     */
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+
+    /**
      * Data disk size, unit: GB.
      * 
      */
@@ -58,6 +104,9 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     private InstanceDataDiskArgs(InstanceDataDiskArgs $) {
         this.category = $.category;
+        this.diskId = $.diskId;
+        this.encryptKeyId = $.encryptKeyId;
+        this.encrypted = $.encrypted;
         this.size = $.size;
     }
 
@@ -106,6 +155,69 @@ public final class InstanceDataDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder category(String category) {
             return category(Output.of(category));
+        }
+
+        /**
+         * @param diskId Cloud Disk ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskId(@Nullable Output<String> diskId) {
+            $.diskId = diskId;
+            return this;
+        }
+
+        /**
+         * @param diskId Cloud Disk ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskId(String diskId) {
+            return diskId(Output.of(diskId));
+        }
+
+        /**
+         * @param encryptKeyId The ID of the KMS key used by the cloud disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptKeyId(@Nullable Output<String> encryptKeyId) {
+            $.encryptKeyId = encryptKeyId;
+            return this;
+        }
+
+        /**
+         * @param encryptKeyId The ID of the KMS key used by the cloud disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptKeyId(String encryptKeyId) {
+            return encryptKeyId(Output.of(encryptKeyId));
+        }
+
+        /**
+         * @param encrypted Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        /**
+         * @param encrypted Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
         }
 
         /**

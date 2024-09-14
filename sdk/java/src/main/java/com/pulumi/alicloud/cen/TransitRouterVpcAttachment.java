@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -123,66 +124,96 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN Transit Router VPC Attachment can be imported using the id, e.g.
+ * CEN Transit Router Vpc Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
+ * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")
 public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * - **false:** (default)
      * 
      */
     @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * - **false:** (default)
      * 
      */
     public Output<Optional<Boolean>> autoPublishRouteEnabled() {
         return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
-    private Output<String> cenId;
+    private Output</* @Nullable */ String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    public Output<String> cenId() {
-        return this.cenId;
+    public Output<Optional<String>> cenId() {
+        return Codegen.optional(this.cenId);
     }
     /**
-     * The dry run.
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+     * Whether to forcibly delete the VPC connection. The value is:
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Whether to forcibly delete the VPC connection. The value is:
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
+    }
+    /**
+     * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+     * @return The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      * 
      */
     public Output<String> paymentType() {
@@ -239,42 +270,46 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
     /**
-     * The associating status of the network.
+     * Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return Status
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The description of the transit router vbr attachment.
+     * The description of the VPC connection.
+     * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the transit router vbr attachment.
+     * @return The description of the VPC connection.
+     * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentDescription() {
@@ -295,72 +330,110 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return this.transitRouterAttachmentId;
     }
     /**
-     * The name of the transit router vbr attachment.
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> transitRouterAttachmentName;
+    private Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the transit router vbr attachment.
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
-    public Output<Optional<String>> transitRouterAttachmentName() {
-        return Codegen.optional(this.transitRouterAttachmentName);
+    public Output<String> transitRouterAttachmentName() {
+        return this.transitRouterAttachmentName;
     }
     /**
-     * The ID of the transit router.
+     * The ID of the Enterprise Edition transit router.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the Enterprise Edition transit router.
      * 
      */
     public Output<String> transitRouterId() {
         return this.transitRouterId;
     }
     /**
-     * The ID of the VPC.
+     * The name of the VPC connection.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    @Export(name="transitRouterVpcAttachmentName", refs={String.class}, tree="[0]")
+    private Output<String> transitRouterVpcAttachmentName;
+
+    /**
+     * @return The name of the VPC connection.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    public Output<String> transitRouterVpcAttachmentName() {
+        return this.transitRouterVpcAttachmentName;
+    }
+    /**
+     * TransitRouterVpcAttachmentOptions
+     * 
+     */
+    @Export(name="transitRouterVpcAttachmentOptions", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> transitRouterVpcAttachmentOptions;
+
+    /**
+     * @return TransitRouterVpcAttachmentOptions
+     * 
+     */
+    public Output<Map<String,String>> transitRouterVpcAttachmentOptions() {
+        return this.transitRouterVpcAttachmentOptions;
+    }
+    /**
+     * The VPC ID.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return The VPC ID.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The owner id of vpc.
+     * VpcOwnerId
      * 
      */
-    @Export(name="vpcOwnerId", refs={String.class}, tree="[0]")
-    private Output<String> vpcOwnerId;
+    @Export(name="vpcOwnerId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> vpcOwnerId;
 
     /**
-     * @return The owner id of vpc.
+     * @return VpcOwnerId
      * 
      */
-    public Output<String> vpcOwnerId() {
+    public Output<Integer> vpcOwnerId() {
         return this.vpcOwnerId;
     }
     /**
-     * The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+     * ZoneMappingss See `zone_mappings` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="zoneMappings", refs={List.class,TransitRouterVpcAttachmentZoneMapping.class}, tree="[0,1]")
     private Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+     * @return ZoneMappingss See `zone_mappings` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings() {

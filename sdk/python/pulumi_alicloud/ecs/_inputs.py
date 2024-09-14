@@ -444,6 +444,7 @@ class EcsLaunchTemplateDataDiskArgs:
                  category: Optional[pulumi.Input[str]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
@@ -453,6 +454,7 @@ class EcsLaunchTemplateDataDiskArgs:
         :param pulumi.Input[str] category: The category of the disk.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the data disk is released with the instance.
         :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] device: The mount point of the data disk.
         :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the data disk.
@@ -465,6 +467,8 @@ class EcsLaunchTemplateDataDiskArgs:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
@@ -511,6 +515,18 @@ class EcsLaunchTemplateDataDiskArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point of the data disk.
+        """
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
 
     @property
     @pulumi.getter
@@ -1481,6 +1497,7 @@ class LaunchTemplateDataDiskArgs:
                  category: Optional[pulumi.Input[str]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
@@ -1517,6 +1534,8 @@ class LaunchTemplateDataDiskArgs:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if name is not None:
@@ -1572,6 +1591,15 @@ class LaunchTemplateDataDiskArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
 
     @property
     @pulumi.getter

@@ -29,17 +29,11 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
@@ -48,44 +42,45 @@ import (
 //				SupportEip:    pulumi.Bool(false),
 //				MaxEipTps:     pulumi.String("128"),
 //				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
 //				InstanceId:      _default.ID(),
-//				VirtualHostName: pulumi.String(name),
+//				VirtualHostName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultExchange, err := amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
-//				InstanceId:      _default.ID(),
-//				VirtualHostName: defaultVirtualHost.VirtualHostName,
-//				ExchangeName:    pulumi.String(name),
-//				ExchangeType:    pulumi.String("HEADERS"),
 //				AutoDeleteState: pulumi.Bool(false),
+//				ExchangeName:    pulumi.String("tf-example"),
+//				ExchangeType:    pulumi.String("HEADERS"),
+//				InstanceId:      _default.ID(),
 //				Internal:        pulumi.Bool(false),
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultQueue, err := amqp.NewQueue(ctx, "default", &amqp.QueueArgs{
 //				InstanceId:      _default.ID(),
+//				QueueName:       pulumi.String("tf-example"),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
-//				QueueName:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = amqp.NewBinding(ctx, "default", &amqp.BindingArgs{
-//				InstanceId:      _default.ID(),
-//				VirtualHostName: defaultVirtualHost.VirtualHostName,
-//				SourceExchange:  defaultExchange.ExchangeName,
-//				DestinationName: pulumi.String(name),
-//				BindingType:     pulumi.String("QUEUE"),
-//				BindingKey:      defaultQueue.QueueName,
 //				Argument:        pulumi.String("x-match:all"),
+//				BindingKey:      defaultQueue.QueueName,
+//				BindingType:     pulumi.String("QUEUE"),
+//				DestinationName: pulumi.String("tf-example"),
+//				InstanceId:      _default.ID(),
+//				SourceExchange:  defaultExchange.ExchangeName,
+//				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
 //			if err != nil {
 //				return err

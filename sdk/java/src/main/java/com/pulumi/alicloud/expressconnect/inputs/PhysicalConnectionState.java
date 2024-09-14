@@ -5,6 +5,7 @@ package com.pulumi.alicloud.expressconnect.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     public static final PhysicalConnectionState Empty = new PhysicalConnectionState();
 
     /**
-     * The Physical Leased Line Access Point ID.
+     * The access point ID of the Express Connect circuit.
      * 
      */
     @Import(name="accessPointId")
     private @Nullable Output<String> accessPointId;
 
     /**
-     * @return The Physical Leased Line Access Point ID.
+     * @return The access point ID of the Express Connect circuit.
      * 
      */
     public Optional<Output<String>> accessPointId() {
@@ -31,14 +32,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * On the Bandwidth of the ECC Service and Physical Connection.
+     * The maximum bandwidth of the hosted connection.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return On the Bandwidth of the ECC Service and Physical Connection.
+     * @return The maximum bandwidth of the hosted connection.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -46,14 +47,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Operators for Physical Connection Circuit Provided Coding.
+     * The circuit code of the Express Connect circuit.
      * 
      */
     @Import(name="circuitCode")
     private @Nullable Output<String> circuitCode;
 
     /**
-     * @return Operators for Physical Connection Circuit Provided Coding.
+     * @return The circuit code of the Express Connect circuit.
      * 
      */
     public Optional<Output<String>> circuitCode() {
@@ -61,14 +62,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Physical Connection to Which the Description.
+     * The description of the Express Connect circuit.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Physical Connection to Which the Description.
+     * @return The description of the Express Connect circuit.
      * 
      */
     public Optional<Output<String>> description() {
@@ -76,26 +77,26 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Provides Access to the Physical Line Operator. Valid values:
-     * * CT: China Telecom
-     * * CU: China Unicom
-     * * CM: china Mobile
-     * * CO: Other Chinese
-     * * Equinix: Equinix
-     * * Other: Other Overseas.
+     * The connectivity provider of the Express Connect circuit. Valid values:
+     * - `CT`: China Telecom.
+     * - `CU`: China Unicom.
+     * - `CM`: China Mobile.
+     * - `CO`: Other connectivity providers in the Chinese mainland.
+     * - `Equinix`: Equinix.
+     * - `Other`: Other connectivity providers outside the Chinese mainland.
      * 
      */
     @Import(name="lineOperator")
     private @Nullable Output<String> lineOperator;
 
     /**
-     * @return Provides Access to the Physical Line Operator. Valid values:
-     * * CT: China Telecom
-     * * CU: China Unicom
-     * * CM: china Mobile
-     * * CO: Other Chinese
-     * * Equinix: Equinix
-     * * Other: Other Overseas.
+     * @return The connectivity provider of the Express Connect circuit. Valid values:
+     * - `CT`: China Telecom.
+     * - `CU`: China Unicom.
+     * - `CM`: China Mobile.
+     * - `CO`: Other connectivity providers in the Chinese mainland.
+     * - `Equinix`: Equinix.
+     * - `Other`: Other connectivity providers outside the Chinese mainland.
      * 
      */
     public Optional<Output<String>> lineOperator() {
@@ -103,14 +104,29 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * and an on-Premises Data Center Location.
+     * The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * 
+     */
+    @Import(name="orderId")
+    private @Nullable Output<String> orderId;
+
+    /**
+     * @return The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * 
+     */
+    public Optional<Output<String>> orderId() {
+        return Optional.ofNullable(this.orderId);
+    }
+
+    /**
+     * The geographical location of the data center.
      * 
      */
     @Import(name="peerLocation")
     private @Nullable Output<String> peerLocation;
 
     /**
-     * @return and an on-Premises Data Center Location.
+     * @return The geographical location of the data center.
      * 
      */
     public Optional<Output<String>> peerLocation() {
@@ -118,14 +134,33 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * on Behalf of the Resource Name of the Resources-Attribute Field.
+     * The subscription duration. Valid values:
+     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * 
+     */
+    @Import(name="period")
+    private @Nullable Output<Integer> period;
+
+    /**
+     * @return The subscription duration. Valid values:
+     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * 
+     */
+    public Optional<Output<Integer>> period() {
+        return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * The name of the Express Connect circuit.
      * 
      */
     @Import(name="physicalConnectionName")
     private @Nullable Output<String> physicalConnectionName;
 
     /**
-     * @return on Behalf of the Resource Name of the Resources-Attribute Field.
+     * @return The name of the Express Connect circuit.
      * 
      */
     public Optional<Output<String>> physicalConnectionName() {
@@ -133,32 +168,30 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Physical Leased Line Access Port Type. Valid value:
-     * * 100Base-T: Fast Electrical Ports
-     * * 1000Base-T: gigabit Electrical Ports
-     * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-     * * 10GBase-T: Gigabit Electrical Port
-     * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-     * 
-     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+     * The port type of the Express Connect circuit. Valid values:
+     * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+     * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+     * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+     * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+     * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+     * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+     * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
      * 
      */
     @Import(name="portType")
     private @Nullable Output<String> portType;
 
     /**
-     * @return The Physical Leased Line Access Port Type. Valid value:
-     * * 100Base-T: Fast Electrical Ports
-     * * 1000Base-T: gigabit Electrical Ports
-     * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-     * * 10GBase-T: Gigabit Electrical Port
-     * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-     * 
-     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+     * @return The port type of the Express Connect circuit. Valid values:
+     * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+     * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+     * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+     * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+     * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+     * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+     * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
      * 
      */
     public Optional<Output<String>> portType() {
@@ -166,14 +199,31 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Redundant Physical Connection to Which the ID.
+     * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * 
+     */
+    @Import(name="pricingCycle")
+    private @Nullable Output<String> pricingCycle;
+
+    /**
+     * @return The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * 
+     */
+    public Optional<Output<String>> pricingCycle() {
+        return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
      * 
      */
     @Import(name="redundantPhysicalConnectionId")
     private @Nullable Output<String> redundantPhysicalConnectionId;
 
     /**
-     * @return Redundant Physical Connection to Which the ID.
+     * @return The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
      * 
      */
     public Optional<Output<String>> redundantPhysicalConnectionId() {
@@ -181,14 +231,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+     * The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+     * @return The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      * 
      */
     public Optional<Output<String>> status() {
@@ -196,14 +246,14 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Physical Private Line of Type. Default Value: VPC.
+     * The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Physical Private Line of Type. Default Value: VPC.
+     * @return The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -218,9 +268,12 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         this.circuitCode = $.circuitCode;
         this.description = $.description;
         this.lineOperator = $.lineOperator;
+        this.orderId = $.orderId;
         this.peerLocation = $.peerLocation;
+        this.period = $.period;
         this.physicalConnectionName = $.physicalConnectionName;
         this.portType = $.portType;
+        this.pricingCycle = $.pricingCycle;
         this.redundantPhysicalConnectionId = $.redundantPhysicalConnectionId;
         this.status = $.status;
         this.type = $.type;
@@ -245,7 +298,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessPointId The Physical Leased Line Access Point ID.
+         * @param accessPointId The access point ID of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -256,7 +309,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessPointId The Physical Leased Line Access Point ID.
+         * @param accessPointId The access point ID of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -266,7 +319,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bandwidth On the Bandwidth of the ECC Service and Physical Connection.
+         * @param bandwidth The maximum bandwidth of the hosted connection.
          * 
          * @return builder
          * 
@@ -277,7 +330,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bandwidth On the Bandwidth of the ECC Service and Physical Connection.
+         * @param bandwidth The maximum bandwidth of the hosted connection.
          * 
          * @return builder
          * 
@@ -287,7 +340,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param circuitCode Operators for Physical Connection Circuit Provided Coding.
+         * @param circuitCode The circuit code of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -298,7 +351,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param circuitCode Operators for Physical Connection Circuit Provided Coding.
+         * @param circuitCode The circuit code of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -308,7 +361,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The Physical Connection to Which the Description.
+         * @param description The description of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -319,7 +372,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The Physical Connection to Which the Description.
+         * @param description The description of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -329,13 +382,13 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lineOperator Provides Access to the Physical Line Operator. Valid values:
-         * * CT: China Telecom
-         * * CU: China Unicom
-         * * CM: china Mobile
-         * * CO: Other Chinese
-         * * Equinix: Equinix
-         * * Other: Other Overseas.
+         * @param lineOperator The connectivity provider of the Express Connect circuit. Valid values:
+         * - `CT`: China Telecom.
+         * - `CU`: China Unicom.
+         * - `CM`: China Mobile.
+         * - `CO`: Other connectivity providers in the Chinese mainland.
+         * - `Equinix`: Equinix.
+         * - `Other`: Other connectivity providers outside the Chinese mainland.
          * 
          * @return builder
          * 
@@ -346,13 +399,13 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lineOperator Provides Access to the Physical Line Operator. Valid values:
-         * * CT: China Telecom
-         * * CU: China Unicom
-         * * CM: china Mobile
-         * * CO: Other Chinese
-         * * Equinix: Equinix
-         * * Other: Other Overseas.
+         * @param lineOperator The connectivity provider of the Express Connect circuit. Valid values:
+         * - `CT`: China Telecom.
+         * - `CU`: China Unicom.
+         * - `CM`: China Mobile.
+         * - `CO`: Other connectivity providers in the Chinese mainland.
+         * - `Equinix`: Equinix.
+         * - `Other`: Other connectivity providers outside the Chinese mainland.
          * 
          * @return builder
          * 
@@ -362,7 +415,28 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerLocation and an on-Premises Data Center Location.
+         * @param orderId The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderId(@Nullable Output<String> orderId) {
+            $.orderId = orderId;
+            return this;
+        }
+
+        /**
+         * @param orderId The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderId(String orderId) {
+            return orderId(Output.of(orderId));
+        }
+
+        /**
+         * @param peerLocation The geographical location of the data center.
          * 
          * @return builder
          * 
@@ -373,7 +447,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerLocation and an on-Premises Data Center Location.
+         * @param peerLocation The geographical location of the data center.
          * 
          * @return builder
          * 
@@ -383,7 +457,32 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param physicalConnectionName on Behalf of the Resource Name of the Resources-Attribute Field.
+         * @param period The subscription duration. Valid values:
+         * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+         * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(@Nullable Output<Integer> period) {
+            $.period = period;
+            return this;
+        }
+
+        /**
+         * @param period The subscription duration. Valid values:
+         * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+         * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(Integer period) {
+            return period(Output.of(period));
+        }
+
+        /**
+         * @param physicalConnectionName The name of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -394,7 +493,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param physicalConnectionName on Behalf of the Resource Name of the Resources-Attribute Field.
+         * @param physicalConnectionName The name of the Express Connect circuit.
          * 
          * @return builder
          * 
@@ -404,16 +503,15 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param portType The Physical Leased Line Access Port Type. Valid value:
-         * * 100Base-T: Fast Electrical Ports
-         * * 1000Base-T: gigabit Electrical Ports
-         * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-         * * 10GBase-T: Gigabit Electrical Port
-         * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-         * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-         * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-         * 
-         * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+         * @param portType The port type of the Express Connect circuit. Valid values:
+         * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+         * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+         * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+         * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+         * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+         * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+         * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+         * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
          * 
          * @return builder
          * 
@@ -424,16 +522,15 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param portType The Physical Leased Line Access Port Type. Valid value:
-         * * 100Base-T: Fast Electrical Ports
-         * * 1000Base-T: gigabit Electrical Ports
-         * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-         * * 10GBase-T: Gigabit Electrical Port
-         * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-         * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-         * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-         * 
-         * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+         * @param portType The port type of the Express Connect circuit. Valid values:
+         * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+         * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+         * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+         * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+         * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+         * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+         * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+         * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
          * 
          * @return builder
          * 
@@ -443,7 +540,30 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redundantPhysicalConnectionId Redundant Physical Connection to Which the ID.
+         * @param pricingCycle The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+         * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
+            $.pricingCycle = pricingCycle;
+            return this;
+        }
+
+        /**
+         * @param pricingCycle The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+         * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(String pricingCycle) {
+            return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
          * 
          * @return builder
          * 
@@ -454,7 +574,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param redundantPhysicalConnectionId Redundant Physical Connection to Which the ID.
+         * @param redundantPhysicalConnectionId The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
          * 
          * @return builder
          * 
@@ -464,7 +584,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+         * @param status The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
          * 
          * @return builder
          * 
@@ -475,7 +595,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+         * @param status The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
          * 
          * @return builder
          * 
@@ -485,7 +605,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type Physical Private Line of Type. Default Value: VPC.
+         * @param type The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
          * 
          * @return builder
          * 
@@ -496,7 +616,7 @@ public final class PhysicalConnectionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type Physical Private Line of Type. Default Value: VPC.
+         * @param type The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
          * 
          * @return builder
          * 

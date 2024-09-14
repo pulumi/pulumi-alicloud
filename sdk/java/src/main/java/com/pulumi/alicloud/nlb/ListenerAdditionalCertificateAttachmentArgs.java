@@ -18,14 +18,14 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
     public static final ListenerAdditionalCertificateAttachmentArgs Empty = new ListenerAdditionalCertificateAttachmentArgs();
 
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      * 
      */
     @Import(name="certificateId", required=true)
     private Output<String> certificateId;
 
     /**
-     * @return Certificate ID. Currently, only server certificates are supported.
+     * @return The ID of additional certificates.
      * 
      */
     public Output<String> certificateId() {
@@ -33,14 +33,14 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
     }
 
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -48,14 +48,14 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
     }
 
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     @Import(name="listenerId", required=true)
     private Output<String> listenerId;
 
     /**
-     * @return The ID of the tcpssl listener.
+     * @return The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     public Output<String> listenerId() {
@@ -89,7 +89,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param certificateId Certificate ID. Currently, only server certificates are supported.
+         * @param certificateId The ID of additional certificates.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param certificateId Certificate ID. Currently, only server certificates are supported.
+         * @param certificateId The ID of additional certificates.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param listenerId The ID of the tcpssl listener.
+         * @param listenerId The listener ID. You must specify the ID of a listener that uses SSL over TCP.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ListenerAdditionalCertificateAttachmentArgs extends com.pulum
         }
 
         /**
-         * @param listenerId The ID of the tcpssl listener.
+         * @param listenerId The listener ID. You must specify the ID of a listener that uses SSL over TCP.
          * 
          * @return builder
          * 

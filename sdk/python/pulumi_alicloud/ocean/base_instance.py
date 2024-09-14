@@ -22,47 +22,60 @@ class BaseInstanceArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retain_mode: Optional[pulumi.Input[str]] = None,
+                 cpu_arch: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  node_num: Optional[pulumi.Input[str]] = None,
                  ob_version: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 resource_group_id: Optional[pulumi.Input[str]] = None):
+                 primary_instance: Optional[pulumi.Input[str]] = None,
+                 primary_region: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 upgrade_spec_native: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a BaseInstance resource.
         :param pulumi.Input[int] disk_size: The size of the storage space, in GB.
+               
                The limits of storage space vary according to the cluster specifications, as follows:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
+               
                The default value of each package is its minimum value.
-        :param pulumi.Input[str] instance_class: Cluster specification information.
-               Four packages are currently supported:
-               - 4C16GB：4cores 16GB
-               - 8C32GB：8cores 32GB
-               - 14C70GB：14cores 70GB
-               - 24C120GB：24cores 120GB
-               - 30C180GB：30cores 180GB
-               - 62C400GB：62cores 400GB
-               - 104C600GB：104cores 600GB
-               - 16C70GB：16cores 70GB
-               - 32C160GB：32cores 160GB
-               - 64C380GB：64cores 380GB
-               - 20C32GB：20cores 32GB
-               - 40C64GB：40cores 64GB
-               - 16C32GB：16cores 32GB
-               - 32C70GB：32cores 70GB
-               - 64C180GB：64cores 180GB
-               - 32C180GB：32cores 180GB
-               - 64C400GB：64cores 400GB.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+               
+               The x86 cluster architecture currently supports the following packages:
+               - 4C16G:4 core 16GB
+               - 8C32G:8 core 32GB
+               - 14C70G:14 core 70GB
+               - 24C120G:24 core 120GB
+               - 30C180G:30 core 180GB
+               - 62C400G:62 core 400GB
+               - 104C600G:104 core 600GB
+               - 16C70G:16 core 70GB
+               - 32C160G:32 core 160GB
+               - 64C380G:64 core 380GB
+               - 20C32G:20 core 32GB
+               - 40C64G:40 core 64GB
+               - 16C32G:16 core 32GB
+               - 32C70G:32 core 70GB
+               - 64C180G:64 core 180GB
+               - 32C180G:32 core 180GB
+               - 64C400G:64 core 400GB,
+               
+               The cluster architecture of arm currently supports the following packages:
+               - 8C32G:8 core 32GB
+               - 16C70G:16 core 70GB
+               - 32C180G:32 core 180GB
         :param pulumi.Input[str] payment_type: The payment method of the instance. Value range:
                - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
                - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         :param pulumi.Input[str] series: Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
         :param pulumi.Input[bool] auto_renew: Whether to automatically renew.
+               
                It takes effect when the parameter ChargeType is PrePaid. Value range:
                - true: automatic renewal.
                - false (default): no automatic renewal.
@@ -73,17 +86,33 @@ class BaseInstanceArgs:
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
+               
                > **NOTE:**   The default value is delete_all.
+        :param pulumi.Input[str] cpu_arch: Cpu architecture, x86, arm. If no, the default value is x86
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+               
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
                - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
-        :param pulumi.Input[str] instance_name: OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
-        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        :param pulumi.Input[str] instance_name: OceanBase cluster name.
+               
+               The length is 1 to 20 English or Chinese characters.
+               
+               If this parameter is not specified, the default value is the InstanceId of the cluster.
+        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         :param pulumi.Input[str] ob_version: The OceanBase Server version number.
         :param pulumi.Input[int] period: The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
-        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.
+               
+               Package year and Month value range: Month.
+               
+               Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] primary_instance: The ID of the primary instance.
+        :param pulumi.Input[str] primary_region: The primary instance Region.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance resides.
+        :param pulumi.Input[bool] upgrade_spec_native: Valid values:
+               - false: migration and configuration change.
+               - true: in-situ matching
         """
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "instance_class", instance_class)
@@ -96,6 +125,8 @@ class BaseInstanceArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if backup_retain_mode is not None:
             pulumi.set(__self__, "backup_retain_mode", backup_retain_mode)
+        if cpu_arch is not None:
+            pulumi.set(__self__, "cpu_arch", cpu_arch)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if instance_name is not None:
@@ -108,19 +139,27 @@ class BaseInstanceArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if primary_instance is not None:
+            pulumi.set(__self__, "primary_instance", primary_instance)
+        if primary_region is not None:
+            pulumi.set(__self__, "primary_region", primary_region)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if upgrade_spec_native is not None:
+            pulumi.set(__self__, "upgrade_spec_native", upgrade_spec_native)
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Input[int]:
         """
         The size of the storage space, in GB.
+
         The limits of storage space vary according to the cluster specifications, as follows:
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
+
         The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -133,25 +172,31 @@ class BaseInstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[str]:
         """
-        Cluster specification information.
-        Four packages are currently supported:
-        - 4C16GB：4cores 16GB
-        - 8C32GB：8cores 32GB
-        - 14C70GB：14cores 70GB
-        - 24C120GB：24cores 120GB
-        - 30C180GB：30cores 180GB
-        - 62C400GB：62cores 400GB
-        - 104C600GB：104cores 600GB
-        - 16C70GB：16cores 70GB
-        - 32C160GB：32cores 160GB
-        - 64C380GB：64cores 380GB
-        - 20C32GB：20cores 32GB
-        - 40C64GB：40cores 64GB
-        - 16C32GB：16cores 32GB
-        - 32C70GB：32cores 70GB
-        - 64C180GB：64cores 180GB
-        - 32C180GB：32cores 180GB
-        - 64C400GB：64cores 400GB.
+        Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+
+        The x86 cluster architecture currently supports the following packages:
+        - 4C16G:4 core 16GB
+        - 8C32G:8 core 32GB
+        - 14C70G:14 core 70GB
+        - 24C120G:24 core 120GB
+        - 30C180G:30 core 180GB
+        - 62C400G:62 core 400GB
+        - 104C600G:104 core 600GB
+        - 16C70G:16 core 70GB
+        - 32C160G:32 core 160GB
+        - 64C380G:64 core 380GB
+        - 20C32G:20 core 32GB
+        - 40C64G:40 core 64GB
+        - 16C32G:16 core 32GB
+        - 32C70G:32 core 70GB
+        - 64C180G:64 core 180GB
+        - 32C180G:32 core 180GB
+        - 64C400G:64 core 400GB,
+
+        The cluster architecture of arm currently supports the following packages:
+        - 8C32G:8 core 32GB
+        - 16C70G:16 core 70GB
+        - 32C180G:32 core 180GB
         """
         return pulumi.get(self, "instance_class")
 
@@ -202,6 +247,7 @@ class BaseInstanceArgs:
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to automatically renew.
+
         It takes effect when the parameter ChargeType is PrePaid. Value range:
         - true: automatic renewal.
         - false (default): no automatic renewal.
@@ -234,6 +280,7 @@ class BaseInstanceArgs:
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
+
         > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
@@ -243,10 +290,23 @@ class BaseInstanceArgs:
         pulumi.set(self, "backup_retain_mode", value)
 
     @property
+    @pulumi.getter(name="cpuArch")
+    def cpu_arch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cpu architecture, x86, arm. If no, the default value is x86
+        """
+        return pulumi.get(self, "cpu_arch")
+
+    @cpu_arch.setter
+    def cpu_arch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_arch", value)
+
+    @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+
         Two types are currently supported:
         - cloud_essd_pl1: cloud disk ESSD pl1.
         - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -261,7 +321,11 @@ class BaseInstanceArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        OceanBase cluster name.
+
+        The length is 1 to 20 English or Chinese characters.
+
+        If this parameter is not specified, the default value is the InstanceId of the cluster.
         """
         return pulumi.get(self, "instance_name")
 
@@ -273,7 +337,7 @@ class BaseInstanceArgs:
     @pulumi.getter(name="nodeNum")
     def node_num(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         """
         return pulumi.get(self, "node_num")
 
@@ -309,13 +373,41 @@ class BaseInstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        The duration of the purchase of resources.
+
+        Package year and Month value range: Month.
+
+        Default value: Month of the package, which is billed by volume. The default period is Hour.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
     def period_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "period_unit", value)
+
+    @property
+    @pulumi.getter(name="primaryInstance")
+    def primary_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the primary instance.
+        """
+        return pulumi.get(self, "primary_instance")
+
+    @primary_instance.setter
+    def primary_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_instance", value)
+
+    @property
+    @pulumi.getter(name="primaryRegion")
+    def primary_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary instance Region.
+        """
+        return pulumi.get(self, "primary_region")
+
+    @primary_region.setter
+    def primary_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_region", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -329,6 +421,20 @@ class BaseInstanceArgs:
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
 
+    @property
+    @pulumi.getter(name="upgradeSpecNative")
+    def upgrade_spec_native(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Valid values:
+        - false: migration and configuration change.
+        - true: in-situ matching
+        """
+        return pulumi.get(self, "upgrade_spec_native")
+
+    @upgrade_spec_native.setter
+    def upgrade_spec_native(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_spec_native", value)
+
 
 @pulumi.input_type
 class _BaseInstanceState:
@@ -338,6 +444,7 @@ class _BaseInstanceState:
                  backup_retain_mode: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
+                 cpu_arch: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
@@ -348,13 +455,17 @@ class _BaseInstanceState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 primary_instance: Optional[pulumi.Input[str]] = None,
+                 primary_region: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  series: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 upgrade_spec_native: Optional[pulumi.Input[bool]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering BaseInstance resources.
         :param pulumi.Input[bool] auto_renew: Whether to automatically renew.
+               
                It takes effect when the parameter ChargeType is PrePaid. Value range:
                - true: automatic renewal.
                - false (default): no automatic renewal.
@@ -365,51 +476,75 @@ class _BaseInstanceState:
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
+               
                > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[str] commodity_code: The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         :param pulumi.Input[int] cpu: The number of CPU cores of the cluster.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] cpu_arch: Cpu architecture, x86, arm. If no, the default value is x86
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[int] disk_size: The size of the storage space, in GB.
+               
                The limits of storage space vary according to the cluster specifications, as follows:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
+               
                The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+               
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
                - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
-        :param pulumi.Input[str] instance_class: Cluster specification information.
-               Four packages are currently supported:
-               - 4C16GB：4cores 16GB
-               - 8C32GB：8cores 32GB
-               - 14C70GB：14cores 70GB
-               - 24C120GB：24cores 120GB
-               - 30C180GB：30cores 180GB
-               - 62C400GB：62cores 400GB
-               - 104C600GB：104cores 600GB
-               - 16C70GB：16cores 70GB
-               - 32C160GB：32cores 160GB
-               - 64C380GB：64cores 380GB
-               - 20C32GB：20cores 32GB
-               - 40C64GB：40cores 64GB
-               - 16C32GB：16cores 32GB
-               - 32C70GB：32cores 70GB
-               - 64C180GB：64cores 180GB
-               - 32C180GB：32cores 180GB
-               - 64C400GB：64cores 400GB.
-        :param pulumi.Input[str] instance_name: OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
-        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+               
+               The x86 cluster architecture currently supports the following packages:
+               - 4C16G:4 core 16GB
+               - 8C32G:8 core 32GB
+               - 14C70G:14 core 70GB
+               - 24C120G:24 core 120GB
+               - 30C180G:30 core 180GB
+               - 62C400G:62 core 400GB
+               - 104C600G:104 core 600GB
+               - 16C70G:16 core 70GB
+               - 32C160G:32 core 160GB
+               - 64C380G:64 core 380GB
+               - 20C32G:20 core 32GB
+               - 40C64G:40 core 64GB
+               - 16C32G:16 core 32GB
+               - 32C70G:32 core 70GB
+               - 64C180G:64 core 180GB
+               - 32C180G:32 core 180GB
+               - 64C400G:64 core 400GB,
+               
+               The cluster architecture of arm currently supports the following packages:
+               - 8C32G:8 core 32GB
+               - 16C70G:16 core 70GB
+               - 32C180G:32 core 180GB
+        :param pulumi.Input[str] instance_name: OceanBase cluster name.
+               
+               The length is 1 to 20 English or Chinese characters.
+               
+               If this parameter is not specified, the default value is the InstanceId of the cluster.
+        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         :param pulumi.Input[str] ob_version: The OceanBase Server version number.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Value range:
                - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
                - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         :param pulumi.Input[int] period: The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
-        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.
+               
+               Package year and Month value range: Month.
+               
+               Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] primary_instance: The ID of the primary instance.
+        :param pulumi.Input[str] primary_region: The primary instance Region.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance resides.
         :param pulumi.Input[str] series: Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[bool] upgrade_spec_native: Valid values:
+               - false: migration and configuration change.
+               - true: in-situ matching
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
         """
         if auto_renew is not None:
@@ -422,6 +557,8 @@ class _BaseInstanceState:
             pulumi.set(__self__, "commodity_code", commodity_code)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if cpu_arch is not None:
+            pulumi.set(__self__, "cpu_arch", cpu_arch)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if disk_size is not None:
@@ -442,12 +579,18 @@ class _BaseInstanceState:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if primary_instance is not None:
+            pulumi.set(__self__, "primary_instance", primary_instance)
+        if primary_region is not None:
+            pulumi.set(__self__, "primary_region", primary_region)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if series is not None:
             pulumi.set(__self__, "series", series)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if upgrade_spec_native is not None:
+            pulumi.set(__self__, "upgrade_spec_native", upgrade_spec_native)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -456,6 +599,7 @@ class _BaseInstanceState:
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to automatically renew.
+
         It takes effect when the parameter ChargeType is PrePaid. Value range:
         - true: automatic renewal.
         - false (default): no automatic renewal.
@@ -488,6 +632,7 @@ class _BaseInstanceState:
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
+
         > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
@@ -521,10 +666,22 @@ class _BaseInstanceState:
         pulumi.set(self, "cpu", value)
 
     @property
+    @pulumi.getter(name="cpuArch")
+    def cpu_arch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cpu architecture, x86, arm. If no, the default value is x86
+        """
+        return pulumi.get(self, "cpu_arch")
+
+    @cpu_arch.setter
+    def cpu_arch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_arch", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -537,11 +694,13 @@ class _BaseInstanceState:
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the storage space, in GB.
+
         The limits of storage space vary according to the cluster specifications, as follows:
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
+
         The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -555,6 +714,7 @@ class _BaseInstanceState:
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+
         Two types are currently supported:
         - cloud_essd_pl1: cloud disk ESSD pl1.
         - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -569,25 +729,31 @@ class _BaseInstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster specification information.
-        Four packages are currently supported:
-        - 4C16GB：4cores 16GB
-        - 8C32GB：8cores 32GB
-        - 14C70GB：14cores 70GB
-        - 24C120GB：24cores 120GB
-        - 30C180GB：30cores 180GB
-        - 62C400GB：62cores 400GB
-        - 104C600GB：104cores 600GB
-        - 16C70GB：16cores 70GB
-        - 32C160GB：32cores 160GB
-        - 64C380GB：64cores 380GB
-        - 20C32GB：20cores 32GB
-        - 40C64GB：40cores 64GB
-        - 16C32GB：16cores 32GB
-        - 32C70GB：32cores 70GB
-        - 64C180GB：64cores 180GB
-        - 32C180GB：32cores 180GB
-        - 64C400GB：64cores 400GB.
+        Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+
+        The x86 cluster architecture currently supports the following packages:
+        - 4C16G:4 core 16GB
+        - 8C32G:8 core 32GB
+        - 14C70G:14 core 70GB
+        - 24C120G:24 core 120GB
+        - 30C180G:30 core 180GB
+        - 62C400G:62 core 400GB
+        - 104C600G:104 core 600GB
+        - 16C70G:16 core 70GB
+        - 32C160G:32 core 160GB
+        - 64C380G:64 core 380GB
+        - 20C32G:20 core 32GB
+        - 40C64G:40 core 64GB
+        - 16C32G:16 core 32GB
+        - 32C70G:32 core 70GB
+        - 64C180G:64 core 180GB
+        - 32C180G:32 core 180GB
+        - 64C400G:64 core 400GB,
+
+        The cluster architecture of arm currently supports the following packages:
+        - 8C32G:8 core 32GB
+        - 16C70G:16 core 70GB
+        - 32C180G:32 core 180GB
         """
         return pulumi.get(self, "instance_class")
 
@@ -599,7 +765,11 @@ class _BaseInstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        OceanBase cluster name.
+
+        The length is 1 to 20 English or Chinese characters.
+
+        If this parameter is not specified, the default value is the InstanceId of the cluster.
         """
         return pulumi.get(self, "instance_name")
 
@@ -611,7 +781,7 @@ class _BaseInstanceState:
     @pulumi.getter(name="nodeNum")
     def node_num(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         """
         return pulumi.get(self, "node_num")
 
@@ -661,13 +831,41 @@ class _BaseInstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        The duration of the purchase of resources.
+
+        Package year and Month value range: Month.
+
+        Default value: Month of the package, which is billed by volume. The default period is Hour.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
     def period_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "period_unit", value)
+
+    @property
+    @pulumi.getter(name="primaryInstance")
+    def primary_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the primary instance.
+        """
+        return pulumi.get(self, "primary_instance")
+
+    @primary_instance.setter
+    def primary_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_instance", value)
+
+    @property
+    @pulumi.getter(name="primaryRegion")
+    def primary_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary instance Region.
+        """
+        return pulumi.get(self, "primary_region")
+
+    @primary_region.setter
+    def primary_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_region", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -697,13 +895,27 @@ class _BaseInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="upgradeSpecNative")
+    def upgrade_spec_native(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Valid values:
+        - false: migration and configuration change.
+        - true: in-situ matching
+        """
+        return pulumi.get(self, "upgrade_spec_native")
+
+    @upgrade_spec_native.setter
+    def upgrade_spec_native(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upgrade_spec_native", value)
 
     @property
     @pulumi.getter
@@ -726,6 +938,7 @@ class BaseInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retain_mode: Optional[pulumi.Input[str]] = None,
+                 cpu_arch: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -735,8 +948,11 @@ class BaseInstance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 primary_instance: Optional[pulumi.Input[str]] = None,
+                 primary_region: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  series: Optional[pulumi.Input[str]] = None,
+                 upgrade_spec_native: Optional[pulumi.Input[bool]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -787,6 +1003,7 @@ class BaseInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to automatically renew.
+               
                It takes effect when the parameter ChargeType is PrePaid. Value range:
                - true: automatic renewal.
                - false (default): no automatic renewal.
@@ -797,47 +1014,71 @@ class BaseInstance(pulumi.CustomResource):
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
+               
                > **NOTE:**   The default value is delete_all.
+        :param pulumi.Input[str] cpu_arch: Cpu architecture, x86, arm. If no, the default value is x86
         :param pulumi.Input[int] disk_size: The size of the storage space, in GB.
+               
                The limits of storage space vary according to the cluster specifications, as follows:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
+               
                The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+               
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
                - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
-        :param pulumi.Input[str] instance_class: Cluster specification information.
-               Four packages are currently supported:
-               - 4C16GB：4cores 16GB
-               - 8C32GB：8cores 32GB
-               - 14C70GB：14cores 70GB
-               - 24C120GB：24cores 120GB
-               - 30C180GB：30cores 180GB
-               - 62C400GB：62cores 400GB
-               - 104C600GB：104cores 600GB
-               - 16C70GB：16cores 70GB
-               - 32C160GB：32cores 160GB
-               - 64C380GB：64cores 380GB
-               - 20C32GB：20cores 32GB
-               - 40C64GB：40cores 64GB
-               - 16C32GB：16cores 32GB
-               - 32C70GB：32cores 70GB
-               - 64C180GB：64cores 180GB
-               - 32C180GB：32cores 180GB
-               - 64C400GB：64cores 400GB.
-        :param pulumi.Input[str] instance_name: OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
-        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+               
+               The x86 cluster architecture currently supports the following packages:
+               - 4C16G:4 core 16GB
+               - 8C32G:8 core 32GB
+               - 14C70G:14 core 70GB
+               - 24C120G:24 core 120GB
+               - 30C180G:30 core 180GB
+               - 62C400G:62 core 400GB
+               - 104C600G:104 core 600GB
+               - 16C70G:16 core 70GB
+               - 32C160G:32 core 160GB
+               - 64C380G:64 core 380GB
+               - 20C32G:20 core 32GB
+               - 40C64G:40 core 64GB
+               - 16C32G:16 core 32GB
+               - 32C70G:32 core 70GB
+               - 64C180G:64 core 180GB
+               - 32C180G:32 core 180GB
+               - 64C400G:64 core 400GB,
+               
+               The cluster architecture of arm currently supports the following packages:
+               - 8C32G:8 core 32GB
+               - 16C70G:16 core 70GB
+               - 32C180G:32 core 180GB
+        :param pulumi.Input[str] instance_name: OceanBase cluster name.
+               
+               The length is 1 to 20 English or Chinese characters.
+               
+               If this parameter is not specified, the default value is the InstanceId of the cluster.
+        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         :param pulumi.Input[str] ob_version: The OceanBase Server version number.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Value range:
                - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
                - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         :param pulumi.Input[int] period: The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
-        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.
+               
+               Package year and Month value range: Month.
+               
+               Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] primary_instance: The ID of the primary instance.
+        :param pulumi.Input[str] primary_region: The primary instance Region.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance resides.
         :param pulumi.Input[str] series: Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
+        :param pulumi.Input[bool] upgrade_spec_native: Valid values:
+               - false: migration and configuration change.
+               - true: in-situ matching
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
         """
         ...
@@ -909,6 +1150,7 @@ class BaseInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retain_mode: Optional[pulumi.Input[str]] = None,
+                 cpu_arch: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -918,8 +1160,11 @@ class BaseInstance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
+                 primary_instance: Optional[pulumi.Input[str]] = None,
+                 primary_region: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  series: Optional[pulumi.Input[str]] = None,
+                 upgrade_spec_native: Optional[pulumi.Input[bool]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -933,6 +1178,7 @@ class BaseInstance(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["backup_retain_mode"] = backup_retain_mode
+            __props__.__dict__["cpu_arch"] = cpu_arch
             if disk_size is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_size'")
             __props__.__dict__["disk_size"] = disk_size
@@ -948,10 +1194,13 @@ class BaseInstance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["primary_instance"] = primary_instance
+            __props__.__dict__["primary_region"] = primary_region
             __props__.__dict__["resource_group_id"] = resource_group_id
             if series is None and not opts.urn:
                 raise TypeError("Missing required property 'series'")
             __props__.__dict__["series"] = series
+            __props__.__dict__["upgrade_spec_native"] = upgrade_spec_native
             if zones is None and not opts.urn:
                 raise TypeError("Missing required property 'zones'")
             __props__.__dict__["zones"] = zones
@@ -974,6 +1223,7 @@ class BaseInstance(pulumi.CustomResource):
             backup_retain_mode: Optional[pulumi.Input[str]] = None,
             commodity_code: Optional[pulumi.Input[str]] = None,
             cpu: Optional[pulumi.Input[int]] = None,
+            cpu_arch: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
@@ -984,9 +1234,12 @@ class BaseInstance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
+            primary_instance: Optional[pulumi.Input[str]] = None,
+            primary_region: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             series: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            upgrade_spec_native: Optional[pulumi.Input[bool]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'BaseInstance':
         """
         Get an existing BaseInstance resource's state with the given name, id, and optional extra
@@ -996,6 +1249,7 @@ class BaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to automatically renew.
+               
                It takes effect when the parameter ChargeType is PrePaid. Value range:
                - true: automatic renewal.
                - false (default): no automatic renewal.
@@ -1006,51 +1260,75 @@ class BaseInstance(pulumi.CustomResource):
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
+               
                > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[str] commodity_code: The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         :param pulumi.Input[int] cpu: The number of CPU cores of the cluster.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] cpu_arch: Cpu architecture, x86, arm. If no, the default value is x86
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[int] disk_size: The size of the storage space, in GB.
+               
                The limits of storage space vary according to the cluster specifications, as follows:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
+               
                The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+               
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
                - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
-        :param pulumi.Input[str] instance_class: Cluster specification information.
-               Four packages are currently supported:
-               - 4C16GB：4cores 16GB
-               - 8C32GB：8cores 32GB
-               - 14C70GB：14cores 70GB
-               - 24C120GB：24cores 120GB
-               - 30C180GB：30cores 180GB
-               - 62C400GB：62cores 400GB
-               - 104C600GB：104cores 600GB
-               - 16C70GB：16cores 70GB
-               - 32C160GB：32cores 160GB
-               - 64C380GB：64cores 380GB
-               - 20C32GB：20cores 32GB
-               - 40C64GB：40cores 64GB
-               - 16C32GB：16cores 32GB
-               - 32C70GB：32cores 70GB
-               - 64C180GB：64cores 180GB
-               - 32C180GB：32cores 180GB
-               - 64C400GB：64cores 400GB.
-        :param pulumi.Input[str] instance_name: OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
-        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        :param pulumi.Input[str] instance_class: Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+               
+               The x86 cluster architecture currently supports the following packages:
+               - 4C16G:4 core 16GB
+               - 8C32G:8 core 32GB
+               - 14C70G:14 core 70GB
+               - 24C120G:24 core 120GB
+               - 30C180G:30 core 180GB
+               - 62C400G:62 core 400GB
+               - 104C600G:104 core 600GB
+               - 16C70G:16 core 70GB
+               - 32C160G:32 core 160GB
+               - 64C380G:64 core 380GB
+               - 20C32G:20 core 32GB
+               - 40C64G:40 core 64GB
+               - 16C32G:16 core 32GB
+               - 32C70G:32 core 70GB
+               - 64C180G:64 core 180GB
+               - 32C180G:32 core 180GB
+               - 64C400G:64 core 400GB,
+               
+               The cluster architecture of arm currently supports the following packages:
+               - 8C32G:8 core 32GB
+               - 16C70G:16 core 70GB
+               - 32C180G:32 core 180GB
+        :param pulumi.Input[str] instance_name: OceanBase cluster name.
+               
+               The length is 1 to 20 English or Chinese characters.
+               
+               If this parameter is not specified, the default value is the InstanceId of the cluster.
+        :param pulumi.Input[str] node_num: The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         :param pulumi.Input[str] ob_version: The OceanBase Server version number.
         :param pulumi.Input[str] payment_type: The payment method of the instance. Value range:
                - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
                - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
         :param pulumi.Input[int] period: The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
-        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] period_unit: The duration of the purchase of resources.
+               
+               Package year and Month value range: Month.
+               
+               Default value: Month of the package, which is billed by volume. The default period is Hour.
+        :param pulumi.Input[str] primary_instance: The ID of the primary instance.
+        :param pulumi.Input[str] primary_region: The primary instance Region.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance resides.
         :param pulumi.Input[str] series: Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[bool] upgrade_spec_native: Valid values:
+               - false: migration and configuration change.
+               - true: in-situ matching
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1062,6 +1340,7 @@ class BaseInstance(pulumi.CustomResource):
         __props__.__dict__["backup_retain_mode"] = backup_retain_mode
         __props__.__dict__["commodity_code"] = commodity_code
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["cpu_arch"] = cpu_arch
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["disk_type"] = disk_type
@@ -1072,9 +1351,12 @@ class BaseInstance(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
+        __props__.__dict__["primary_instance"] = primary_instance
+        __props__.__dict__["primary_region"] = primary_region
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["series"] = series
         __props__.__dict__["status"] = status
+        __props__.__dict__["upgrade_spec_native"] = upgrade_spec_native
         __props__.__dict__["zones"] = zones
         return BaseInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -1083,6 +1365,7 @@ class BaseInstance(pulumi.CustomResource):
     def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to automatically renew.
+
         It takes effect when the parameter ChargeType is PrePaid. Value range:
         - true: automatic renewal.
         - false (default): no automatic renewal.
@@ -1107,6 +1390,7 @@ class BaseInstance(pulumi.CustomResource):
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
+
         > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
@@ -1128,10 +1412,18 @@ class BaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "cpu")
 
     @property
+    @pulumi.getter(name="cpuArch")
+    def cpu_arch(self) -> pulumi.Output[str]:
+        """
+        Cpu architecture, x86, arm. If no, the default value is x86
+        """
+        return pulumi.get(self, "cpu_arch")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -1140,11 +1432,13 @@ class BaseInstance(pulumi.CustomResource):
     def disk_size(self) -> pulumi.Output[int]:
         """
         The size of the storage space, in GB.
+
         The limits of storage space vary according to the cluster specifications, as follows:
         - 8C32GB:100GB ~ 10000GB
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
+
         The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
@@ -1154,6 +1448,7 @@ class BaseInstance(pulumi.CustomResource):
     def disk_type(self) -> pulumi.Output[str]:
         """
         The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+
         Two types are currently supported:
         - cloud_essd_pl1: cloud disk ESSD pl1.
         - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -1164,25 +1459,31 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[str]:
         """
-        Cluster specification information.
-        Four packages are currently supported:
-        - 4C16GB：4cores 16GB
-        - 8C32GB：8cores 32GB
-        - 14C70GB：14cores 70GB
-        - 24C120GB：24cores 120GB
-        - 30C180GB：30cores 180GB
-        - 62C400GB：62cores 400GB
-        - 104C600GB：104cores 600GB
-        - 16C70GB：16cores 70GB
-        - 32C160GB：32cores 160GB
-        - 64C380GB：64cores 380GB
-        - 20C32GB：20cores 32GB
-        - 40C64GB：40cores 64GB
-        - 16C32GB：16cores 32GB
-        - 32C70GB：32cores 70GB
-        - 64C180GB：64cores 180GB
-        - 32C180GB：32cores 180GB
-        - 64C400GB：64cores 400GB.
+        Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+
+        The x86 cluster architecture currently supports the following packages:
+        - 4C16G:4 core 16GB
+        - 8C32G:8 core 32GB
+        - 14C70G:14 core 70GB
+        - 24C120G:24 core 120GB
+        - 30C180G:30 core 180GB
+        - 62C400G:62 core 400GB
+        - 104C600G:104 core 600GB
+        - 16C70G:16 core 70GB
+        - 32C160G:32 core 160GB
+        - 64C380G:64 core 380GB
+        - 20C32G:20 core 32GB
+        - 40C64G:40 core 64GB
+        - 16C32G:16 core 32GB
+        - 32C70G:32 core 70GB
+        - 64C180G:64 core 180GB
+        - 32C180G:32 core 180GB
+        - 64C400G:64 core 400GB,
+
+        The cluster architecture of arm currently supports the following packages:
+        - 8C32G:8 core 32GB
+        - 16C70G:16 core 70GB
+        - 32C180G:32 core 180GB
         """
         return pulumi.get(self, "instance_class")
 
@@ -1190,7 +1491,11 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
         """
-        OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        OceanBase cluster name.
+
+        The length is 1 to 20 English or Chinese characters.
+
+        If this parameter is not specified, the default value is the InstanceId of the cluster.
         """
         return pulumi.get(self, "instance_name")
 
@@ -1198,7 +1503,7 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="nodeNum")
     def node_num(self) -> pulumi.Output[str]:
         """
-        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         """
         return pulumi.get(self, "node_num")
 
@@ -1232,9 +1537,29 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        The duration of the purchase of resources.
+
+        Package year and Month value range: Month.
+
+        Default value: Month of the package, which is billed by volume. The default period is Hour.
         """
         return pulumi.get(self, "period_unit")
+
+    @property
+    @pulumi.getter(name="primaryInstance")
+    def primary_instance(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the primary instance.
+        """
+        return pulumi.get(self, "primary_instance")
+
+    @property
+    @pulumi.getter(name="primaryRegion")
+    def primary_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The primary instance Region.
+        """
+        return pulumi.get(self, "primary_region")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -1256,9 +1581,19 @@ class BaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="upgradeSpecNative")
+    def upgrade_spec_native(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Valid values:
+        - false: migration and configuration change.
+        - true: in-situ matching
+        """
+        return pulumi.get(self, "upgrade_spec_native")
 
     @property
     @pulumi.getter

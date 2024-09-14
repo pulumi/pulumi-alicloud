@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Express Connect Physical Connection resource.
  * 
- * For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
+ * For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-createphysicalconnection-efficiency-channels).
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
@@ -88,184 +89,230 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/physicalConnection:PhysicalConnection")
 public class PhysicalConnection extends com.pulumi.resources.CustomResource {
     /**
-     * The Physical Leased Line Access Point ID.
+     * The access point ID of the Express Connect circuit.
      * 
      */
     @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
     /**
-     * @return The Physical Leased Line Access Point ID.
+     * @return The access point ID of the Express Connect circuit.
      * 
      */
     public Output<String> accessPointId() {
         return this.accessPointId;
     }
     /**
-     * On the Bandwidth of the ECC Service and Physical Connection.
+     * The maximum bandwidth of the hosted connection.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return On the Bandwidth of the ECC Service and Physical Connection.
+     * @return The maximum bandwidth of the hosted connection.
      * 
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * Operators for Physical Connection Circuit Provided Coding.
+     * The circuit code of the Express Connect circuit.
      * 
      */
     @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> circuitCode;
 
     /**
-     * @return Operators for Physical Connection Circuit Provided Coding.
+     * @return The circuit code of the Express Connect circuit.
      * 
      */
     public Output<Optional<String>> circuitCode() {
         return Codegen.optional(this.circuitCode);
     }
     /**
-     * The Physical Connection to Which the Description.
+     * The description of the Express Connect circuit.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The Physical Connection to Which the Description.
+     * @return The description of the Express Connect circuit.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Provides Access to the Physical Line Operator. Valid values:
-     * * CT: China Telecom
-     * * CU: China Unicom
-     * * CM: china Mobile
-     * * CO: Other Chinese
-     * * Equinix: Equinix
-     * * Other: Other Overseas.
+     * The connectivity provider of the Express Connect circuit. Valid values:
+     * - `CT`: China Telecom.
+     * - `CU`: China Unicom.
+     * - `CM`: China Mobile.
+     * - `CO`: Other connectivity providers in the Chinese mainland.
+     * - `Equinix`: Equinix.
+     * - `Other`: Other connectivity providers outside the Chinese mainland.
      * 
      */
     @Export(name="lineOperator", refs={String.class}, tree="[0]")
     private Output<String> lineOperator;
 
     /**
-     * @return Provides Access to the Physical Line Operator. Valid values:
-     * * CT: China Telecom
-     * * CU: China Unicom
-     * * CM: china Mobile
-     * * CO: Other Chinese
-     * * Equinix: Equinix
-     * * Other: Other Overseas.
+     * @return The connectivity provider of the Express Connect circuit. Valid values:
+     * - `CT`: China Telecom.
+     * - `CU`: China Unicom.
+     * - `CM`: China Mobile.
+     * - `CO`: Other connectivity providers in the Chinese mainland.
+     * - `Equinix`: Equinix.
+     * - `Other`: Other connectivity providers outside the Chinese mainland.
      * 
      */
     public Output<String> lineOperator() {
         return this.lineOperator;
     }
     /**
-     * and an on-Premises Data Center Location.
+     * The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * 
+     */
+    @Export(name="orderId", refs={String.class}, tree="[0]")
+    private Output<String> orderId;
+
+    /**
+     * @return The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+     * 
+     */
+    public Output<String> orderId() {
+        return this.orderId;
+    }
+    /**
+     * The geographical location of the data center.
      * 
      */
     @Export(name="peerLocation", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> peerLocation;
+    private Output<String> peerLocation;
 
     /**
-     * @return and an on-Premises Data Center Location.
+     * @return The geographical location of the data center.
      * 
      */
-    public Output<Optional<String>> peerLocation() {
-        return Codegen.optional(this.peerLocation);
+    public Output<String> peerLocation() {
+        return this.peerLocation;
     }
     /**
-     * on Behalf of the Resource Name of the Resources-Attribute Field.
+     * The subscription duration. Valid values:
+     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * 
+     */
+    @Export(name="period", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> period;
+
+    /**
+     * @return The subscription duration. Valid values:
+     * - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+     * - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+     * 
+     */
+    public Output<Optional<Integer>> period() {
+        return Codegen.optional(this.period);
+    }
+    /**
+     * The name of the Express Connect circuit.
      * 
      */
     @Export(name="physicalConnectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> physicalConnectionName;
 
     /**
-     * @return on Behalf of the Resource Name of the Resources-Attribute Field.
+     * @return The name of the Express Connect circuit.
      * 
      */
     public Output<Optional<String>> physicalConnectionName() {
         return Codegen.optional(this.physicalConnectionName);
     }
     /**
-     * The Physical Leased Line Access Port Type. Valid value:
-     * * 100Base-T: Fast Electrical Ports
-     * * 1000Base-T: gigabit Electrical Ports
-     * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-     * * 10GBase-T: Gigabit Electrical Port
-     * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-     * 
-     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+     * The port type of the Express Connect circuit. Valid values:
+     * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+     * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+     * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+     * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+     * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+     * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+     * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
      * 
      */
     @Export(name="portType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portType;
 
     /**
-     * @return The Physical Leased Line Access Port Type. Valid value:
-     * * 100Base-T: Fast Electrical Ports
-     * * 1000Base-T: gigabit Electrical Ports
-     * * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-     * * 10GBase-T: Gigabit Electrical Port
-     * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-     * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-     * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-     * 
-     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+     * @return The port type of the Express Connect circuit. Valid values:
+     * - `100Base-T`: 100 Mbit/s copper Ethernet port.
+     * - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+     * - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+     * - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+     * - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+     * - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+     * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+     * &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
      * 
      */
     public Output<Optional<String>> portType() {
         return Codegen.optional(this.portType);
     }
     /**
-     * Redundant Physical Connection to Which the ID.
+     * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * 
+     */
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pricingCycle;
+
+    /**
+     * @return The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+     * &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+     * 
+     */
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
      * 
      */
     @Export(name="redundantPhysicalConnectionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redundantPhysicalConnectionId;
 
     /**
-     * @return Redundant Physical Connection to Which the ID.
+     * @return The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
      * 
      */
     public Output<Optional<String>> redundantPhysicalConnectionId() {
         return Codegen.optional(this.redundantPhysicalConnectionId);
     }
     /**
-     * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+     * The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+     * @return The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Physical Private Line of Type. Default Value: VPC.
+     * The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Physical Private Line of Type. Default Value: VPC.
+     * @return The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     public Output<String> type() {

@@ -19,9 +19,9 @@ class ListenerAdditionalCertificateAttachmentArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ListenerAdditionalCertificateAttachment resource.
-        :param pulumi.Input[str] certificate_id: Certificate ID. Currently, only server certificates are supported.
-        :param pulumi.Input[str] listener_id: The ID of the tcpssl listener.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[str] certificate_id: The ID of additional certificates.
+        :param pulumi.Input[str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "listener_id", listener_id)
@@ -32,7 +32,7 @@ class ListenerAdditionalCertificateAttachmentArgs:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Input[str]:
         """
-        Certificate ID. Currently, only server certificates are supported.
+        The ID of additional certificates.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -44,7 +44,7 @@ class ListenerAdditionalCertificateAttachmentArgs:
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Input[str]:
         """
-        The ID of the tcpssl listener.
+        The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         """
         return pulumi.get(self, "listener_id")
 
@@ -56,7 +56,7 @@ class ListenerAdditionalCertificateAttachmentArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -74,10 +74,10 @@ class _ListenerAdditionalCertificateAttachmentState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ListenerAdditionalCertificateAttachment resources.
-        :param pulumi.Input[str] certificate_id: Certificate ID. Currently, only server certificates are supported.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] listener_id: The ID of the tcpssl listener.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] certificate_id: The ID of additional certificates.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        :param pulumi.Input[str] status: The status of the resource
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -92,7 +92,7 @@ class _ListenerAdditionalCertificateAttachmentState:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate ID. Currently, only server certificates are supported.
+        The ID of additional certificates.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -104,7 +104,7 @@ class _ListenerAdditionalCertificateAttachmentState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -116,7 +116,7 @@ class _ListenerAdditionalCertificateAttachmentState:
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the tcpssl listener.
+        The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         """
         return pulumi.get(self, "listener_id")
 
@@ -128,7 +128,7 @@ class _ListenerAdditionalCertificateAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -163,9 +163,9 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_id: Certificate ID. Currently, only server certificates are supported.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] listener_id: The ID of the tcpssl listener.
+        :param pulumi.Input[str] certificate_id: The ID of additional certificates.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         """
         ...
     @overload
@@ -244,10 +244,10 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_id: Certificate ID. Currently, only server certificates are supported.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] listener_id: The ID of the tcpssl listener.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] certificate_id: The ID of additional certificates.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_id: The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        :param pulumi.Input[str] status: The status of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,7 +263,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[str]:
         """
-        Certificate ID. Currently, only server certificates are supported.
+        The ID of additional certificates.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -271,7 +271,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -279,7 +279,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[str]:
         """
-        The ID of the tcpssl listener.
+        The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         """
         return pulumi.get(self, "listener_id")
 
@@ -287,7 +287,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

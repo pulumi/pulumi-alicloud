@@ -17,14 +17,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
 
     /**
-     * The ID of the elastic IP address.
+     * The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the elastic IP address.
+     * @return The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -32,14 +32,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of ENI.
+     * The ID of the elastic network interface (ENI).
      * 
      */
     @Import(name="eniId")
     private @Nullable Output<String> eniId;
 
     /**
-     * @return The ID of ENI.
+     * @return The ID of the elastic network interface (ENI).
      * 
      */
     public Optional<Output<String>> eniId() {
@@ -47,14 +47,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The IPv6 address of a network-based server load balancer instance.
+     * The IPv6 address of the NLB instance.
      * 
      */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
     /**
-     * @return The IPv6 address of a network-based server load balancer instance.
+     * @return The IPv6 address of the NLB instance.
      * 
      */
     public Optional<Output<String>> ipv6Address() {
@@ -62,14 +62,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The private IPv4 address of a network-based server load balancer instance.
+     * The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     @Import(name="privateIpv4Address")
     private @Nullable Output<String> privateIpv4Address;
 
     /**
-     * @return The private IPv4 address of a network-based server load balancer instance.
+     * @return The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public Optional<Output<String>> privateIpv4Address() {
@@ -92,14 +92,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Zone Status.
+     * Zone Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Zone Status.
+     * @return Zone Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -107,14 +107,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+     * The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public Output<String> vswitchId() {
@@ -122,14 +122,18 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+     * The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+     * 
+     * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+     * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+     * 
+     * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
     public Output<String> zoneId() {
@@ -168,7 +172,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationId The ID of the elastic IP address.
+         * @param allocationId The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -179,7 +183,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param allocationId The ID of the elastic IP address.
+         * @param allocationId The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -189,7 +193,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param eniId The ID of ENI.
+         * @param eniId The ID of the elastic network interface (ENI).
          * 
          * @return builder
          * 
@@ -200,7 +204,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param eniId The ID of ENI.
+         * @param eniId The ID of the elastic network interface (ENI).
          * 
          * @return builder
          * 
@@ -210,7 +214,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv6Address The IPv6 address of a network-based server load balancer instance.
+         * @param ipv6Address The IPv6 address of the NLB instance.
          * 
          * @return builder
          * 
@@ -221,7 +225,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipv6Address The IPv6 address of a network-based server load balancer instance.
+         * @param ipv6Address The IPv6 address of the NLB instance.
          * 
          * @return builder
          * 
@@ -231,7 +235,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateIpv4Address The private IPv4 address of a network-based server load balancer instance.
+         * @param privateIpv4Address The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -242,7 +246,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateIpv4Address The private IPv4 address of a network-based server load balancer instance.
+         * @param privateIpv4Address The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -273,7 +277,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status Zone Status.
+         * @param status Zone Status
          * 
          * @return builder
          * 
@@ -284,7 +288,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param status Zone Status.
+         * @param status Zone Status
          * 
          * @return builder
          * 
@@ -294,7 +298,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+         * @param vswitchId The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -305,7 +309,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+         * @param vswitchId The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
          * 
          * @return builder
          * 
@@ -315,7 +319,9 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+         * @param zoneId The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+         * 
+         * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          * 
          * @return builder
          * 
@@ -326,7 +332,9 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+         * @param zoneId The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+         * 
+         * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          * 
          * @return builder
          * 

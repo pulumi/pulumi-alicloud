@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nlb
 {
     /// <summary>
-    /// Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+    /// Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+    /// 
+    /// Bandwidth Package Operation.
     /// 
     /// For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
     /// 
@@ -93,7 +95,7 @@ namespace Pulumi.AliCloud.Nlb
     ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
     ///     {
     ///         Bandwidth = "2",
-    ///         InternetChargeType = "PayByBandwidth",
+    ///         InternetChargeType = "PayByTraffic",
     ///         BandwidthPackageName = name,
     ///         Description = name,
     ///     });
@@ -119,13 +121,13 @@ namespace Pulumi.AliCloud.Nlb
     public partial class LoadbalancerCommonBandwidthPackageAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the bound shared bandwidth package.
+        /// Specifies whether only to precheck the request. Valid values:
         /// </summary>
         [Output("bandwidthPackageId")]
         public Output<string> BandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the network-based server load balancer instance.
+        /// The ID of the EIP bandwidth plan.
         /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
@@ -183,13 +185,13 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class LoadbalancerCommonBandwidthPackageAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the bound shared bandwidth package.
+        /// Specifies whether only to precheck the request. Valid values:
         /// </summary>
         [Input("bandwidthPackageId", required: true)]
         public Input<string> BandwidthPackageId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the network-based server load balancer instance.
+        /// The ID of the EIP bandwidth plan.
         /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
@@ -203,13 +205,13 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class LoadbalancerCommonBandwidthPackageAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the bound shared bandwidth package.
+        /// Specifies whether only to precheck the request. Valid values:
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }
 
         /// <summary>
-        /// The ID of the network-based server load balancer instance.
+        /// The ID of the EIP bandwidth plan.
         /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }

@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.CS
     ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("source", new()
     ///     {
     ///         InstanceId = source.Id,
-    ///         Name = name,
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.CS
     ///     var targetRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("target", new()
     ///     {
     ///         InstanceId = target.Id,
-    ///         Name = name,
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         InstanceId = source.Id,
     ///         Namespace = sourceRegistryEnterpriseNamespace.Name,
-    ///         Name = name,
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///     });
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         InstanceId = target.Id,
     ///         Namespace = targetRegistryEnterpriseNamespace.Name,
-    ///         Name = name,
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///     });
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         InstanceId = source.Id,
     ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
-    ///         Name = name,
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         TargetInstanceId = target.Id,
     ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
     ///         TargetRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),

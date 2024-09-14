@@ -148,8 +148,15 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> EndpointGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        /// </summary>
+        [Output("endpointProtocolVersion")]
+        public Output<string> EndpointProtocolVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         /// </summary>
         [Output("endpointRequestProtocol")]
         public Output<string> EndpointRequestProtocol { get; private set; } = null!;
@@ -315,8 +322,15 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        /// </summary>
+        [Input("endpointProtocolVersion")]
+        public Input<string>? EndpointProtocolVersion { get; set; }
+
+        /// <summary>
+        /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }
@@ -456,8 +470,15 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
-        /// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        /// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        /// &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        /// </summary>
+        [Input("endpointProtocolVersion")]
+        public Input<string>? EndpointProtocolVersion { get; set; }
+
+        /// <summary>
+        /// The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        /// &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }

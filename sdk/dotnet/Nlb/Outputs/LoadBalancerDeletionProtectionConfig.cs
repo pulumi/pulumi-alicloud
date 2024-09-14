@@ -14,15 +14,18 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     public sealed class LoadBalancerDeletionProtectionConfig
     {
         /// <summary>
-        /// Delete protection enable.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Opening time.
+        /// Opening time of the configuration read-only mode.
         /// </summary>
         public readonly string? EnabledTime;
         /// <summary>
-        /// Reason for opening.
+        /// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        /// 
+        /// 
+        /// &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         /// </summary>
         public readonly string? Reason;
 

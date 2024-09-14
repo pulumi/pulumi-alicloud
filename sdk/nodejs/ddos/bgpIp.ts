@@ -86,7 +86,7 @@ export class BgpIp extends pulumi.CustomResource {
     /**
      * The member account id of the IP address.
      */
-    public readonly memberUid!: pulumi.Output<string | undefined>;
+    public readonly memberUid!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */

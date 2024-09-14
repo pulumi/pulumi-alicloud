@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -36,9 +39,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "example-name"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000000,
+//				Max: 99999999,
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
@@ -46,14 +56,14 @@ import (
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cr.NewChartNamespace(ctx, "example", &cr.ChartNamespaceArgs{
 //				InstanceId:    example.ID(),
-//				NamespaceName: pulumi.String(name),
+//				NamespaceName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -83,6 +83,7 @@ namespace Pulumi.AliCloud.Ocean
     {
         /// <summary>
         /// Whether to automatically renew.
+        /// 
         /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
@@ -103,6 +104,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
+        /// 
         /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Output("backupRetainMode")]
@@ -121,18 +123,26 @@ namespace Pulumi.AliCloud.Ocean
         public Output<int> Cpu { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// Cpu architecture, x86, arm. If no, the default value is x86
+        /// </summary>
+        [Output("cpuArch")]
+        public Output<string> CpuArch { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The size of the storage space, in GB.
+        /// 
         /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
+        /// 
         /// The default value of each package is its minimum value.
         /// </summary>
         [Output("diskSize")]
@@ -140,6 +150,7 @@ namespace Pulumi.AliCloud.Ocean
 
         /// <summary>
         /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// 
         /// Two types are currently supported:
         /// - cloud_essd_pl1: cloud disk ESSD pl1.
         /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -148,37 +159,47 @@ namespace Pulumi.AliCloud.Ocean
         public Output<string> DiskType { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster specification information.
-        /// Four packages are currently supported:
-        /// - 4C16GB：4cores 16GB
-        /// - 8C32GB：8cores 32GB
-        /// - 14C70GB：14cores 70GB
-        /// - 24C120GB：24cores 120GB
-        /// - 30C180GB：30cores 180GB
-        /// - 62C400GB：62cores 400GB
-        /// - 104C600GB：104cores 600GB
-        /// - 16C70GB：16cores 70GB
-        /// - 32C160GB：32cores 160GB
-        /// - 64C380GB：64cores 380GB
-        /// - 20C32GB：20cores 32GB
-        /// - 40C64GB：40cores 64GB
-        /// - 16C32GB：16cores 32GB
-        /// - 32C70GB：32cores 70GB
-        /// - 64C180GB：64cores 180GB
-        /// - 32C180GB：32cores 180GB
-        /// - 64C400GB：64cores 400GB.
+        /// Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+        /// 
+        /// The x86 cluster architecture currently supports the following packages:
+        /// - 4C16G:4 core 16GB
+        /// - 8C32G:8 core 32GB
+        /// - 14C70G:14 core 70GB
+        /// - 24C120G:24 core 120GB
+        /// - 30C180G:30 core 180GB
+        /// - 62C400G:62 core 400GB
+        /// - 104C600G:104 core 600GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C160G:32 core 160GB
+        /// - 64C380G:64 core 380GB
+        /// - 20C32G:20 core 32GB
+        /// - 40C64G:40 core 64GB
+        /// - 16C32G:16 core 32GB
+        /// - 32C70G:32 core 70GB
+        /// - 64C180G:64 core 180GB
+        /// - 32C180G:32 core 180GB
+        /// - 64C400G:64 core 400GB,
+        /// 
+        /// The cluster architecture of arm currently supports the following packages:
+        /// - 8C32G:8 core 32GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C180G:32 core 180GB
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.
+        /// 
+        /// The length is 1 to 20 English or Chinese characters.
+        /// 
+        /// If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         /// </summary>
         [Output("nodeNum")]
         public Output<string> NodeNum { get; private set; } = null!;
@@ -204,10 +225,26 @@ namespace Pulumi.AliCloud.Ocean
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        /// The duration of the purchase of resources.
+        /// 
+        /// Package year and Month value range: Month.
+        /// 
+        /// Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the primary instance.
+        /// </summary>
+        [Output("primaryInstance")]
+        public Output<string?> PrimaryInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The primary instance Region.
+        /// </summary>
+        [Output("primaryRegion")]
+        public Output<string?> PrimaryRegion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the enterprise resource group to which the instance resides.
@@ -222,10 +259,18 @@ namespace Pulumi.AliCloud.Ocean
         public Output<string> Series { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid values:
+        /// - false: migration and configuration change.
+        /// - true: in-situ matching
+        /// </summary>
+        [Output("upgradeSpecNative")]
+        public Output<bool?> UpgradeSpecNative { get; private set; } = null!;
 
         /// <summary>
         /// Information about the zone where the cluster is deployed.
@@ -281,6 +326,7 @@ namespace Pulumi.AliCloud.Ocean
     {
         /// <summary>
         /// Whether to automatically renew.
+        /// 
         /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
@@ -301,18 +347,27 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
+        /// 
         /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
         public Input<string>? BackupRetainMode { get; set; }
 
         /// <summary>
+        /// Cpu architecture, x86, arm. If no, the default value is x86
+        /// </summary>
+        [Input("cpuArch")]
+        public Input<string>? CpuArch { get; set; }
+
+        /// <summary>
         /// The size of the storage space, in GB.
+        /// 
         /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
+        /// 
         /// The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize", required: true)]
@@ -320,6 +375,7 @@ namespace Pulumi.AliCloud.Ocean
 
         /// <summary>
         /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// 
         /// Two types are currently supported:
         /// - cloud_essd_pl1: cloud disk ESSD pl1.
         /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -328,37 +384,47 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Cluster specification information.
-        /// Four packages are currently supported:
-        /// - 4C16GB：4cores 16GB
-        /// - 8C32GB：8cores 32GB
-        /// - 14C70GB：14cores 70GB
-        /// - 24C120GB：24cores 120GB
-        /// - 30C180GB：30cores 180GB
-        /// - 62C400GB：62cores 400GB
-        /// - 104C600GB：104cores 600GB
-        /// - 16C70GB：16cores 70GB
-        /// - 32C160GB：32cores 160GB
-        /// - 64C380GB：64cores 380GB
-        /// - 20C32GB：20cores 32GB
-        /// - 40C64GB：40cores 64GB
-        /// - 16C32GB：16cores 32GB
-        /// - 32C70GB：32cores 70GB
-        /// - 64C180GB：64cores 180GB
-        /// - 32C180GB：32cores 180GB
-        /// - 64C400GB：64cores 400GB.
+        /// Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+        /// 
+        /// The x86 cluster architecture currently supports the following packages:
+        /// - 4C16G:4 core 16GB
+        /// - 8C32G:8 core 32GB
+        /// - 14C70G:14 core 70GB
+        /// - 24C120G:24 core 120GB
+        /// - 30C180G:30 core 180GB
+        /// - 62C400G:62 core 400GB
+        /// - 104C600G:104 core 600GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C160G:32 core 160GB
+        /// - 64C380G:64 core 380GB
+        /// - 20C32G:20 core 32GB
+        /// - 40C64G:40 core 64GB
+        /// - 16C32G:16 core 32GB
+        /// - 32C70G:32 core 70GB
+        /// - 64C180G:64 core 180GB
+        /// - 32C180G:32 core 180GB
+        /// - 64C400G:64 core 400GB,
+        /// 
+        /// The cluster architecture of arm currently supports the following packages:
+        /// - 8C32G:8 core 32GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C180G:32 core 180GB
         /// </summary>
         [Input("instanceClass", required: true)]
         public Input<string> InstanceClass { get; set; } = null!;
 
         /// <summary>
-        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.
+        /// 
+        /// The length is 1 to 20 English or Chinese characters.
+        /// 
+        /// If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         /// </summary>
         [Input("nodeNum")]
         public Input<string>? NodeNum { get; set; }
@@ -384,10 +450,26 @@ namespace Pulumi.AliCloud.Ocean
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        /// The duration of the purchase of resources.
+        /// 
+        /// Package year and Month value range: Month.
+        /// 
+        /// Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
+
+        /// <summary>
+        /// The ID of the primary instance.
+        /// </summary>
+        [Input("primaryInstance")]
+        public Input<string>? PrimaryInstance { get; set; }
+
+        /// <summary>
+        /// The primary instance Region.
+        /// </summary>
+        [Input("primaryRegion")]
+        public Input<string>? PrimaryRegion { get; set; }
 
         /// <summary>
         /// The ID of the enterprise resource group to which the instance resides.
@@ -400,6 +482,14 @@ namespace Pulumi.AliCloud.Ocean
         /// </summary>
         [Input("series", required: true)]
         public Input<string> Series { get; set; } = null!;
+
+        /// <summary>
+        /// Valid values:
+        /// - false: migration and configuration change.
+        /// - true: in-situ matching
+        /// </summary>
+        [Input("upgradeSpecNative")]
+        public Input<bool>? UpgradeSpecNative { get; set; }
 
         [Input("zones", required: true)]
         private InputList<string>? _zones;
@@ -423,6 +513,7 @@ namespace Pulumi.AliCloud.Ocean
     {
         /// <summary>
         /// Whether to automatically renew.
+        /// 
         /// It takes effect when the parameter ChargeType is PrePaid. Value range:
         /// - true: automatic renewal.
         /// - false (default): no automatic renewal.
@@ -443,6 +534,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
+        /// 
         /// &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
@@ -461,18 +553,26 @@ namespace Pulumi.AliCloud.Ocean
         public Input<int>? Cpu { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// Cpu architecture, x86, arm. If no, the default value is x86
+        /// </summary>
+        [Input("cpuArch")]
+        public Input<string>? CpuArch { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The size of the storage space, in GB.
+        /// 
         /// The limits of storage space vary according to the cluster specifications, as follows:
         /// - 8C32GB:100GB ~ 10000GB
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
+        /// 
         /// The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize")]
@@ -480,6 +580,7 @@ namespace Pulumi.AliCloud.Ocean
 
         /// <summary>
         /// The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+        /// 
         /// Two types are currently supported:
         /// - cloud_essd_pl1: cloud disk ESSD pl1.
         /// - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -488,37 +589,47 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Cluster specification information.
-        /// Four packages are currently supported:
-        /// - 4C16GB：4cores 16GB
-        /// - 8C32GB：8cores 32GB
-        /// - 14C70GB：14cores 70GB
-        /// - 24C120GB：24cores 120GB
-        /// - 30C180GB：30cores 180GB
-        /// - 62C400GB：62cores 400GB
-        /// - 104C600GB：104cores 600GB
-        /// - 16C70GB：16cores 70GB
-        /// - 32C160GB：32cores 160GB
-        /// - 64C380GB：64cores 380GB
-        /// - 20C32GB：20cores 32GB
-        /// - 40C64GB：40cores 64GB
-        /// - 16C32GB：16cores 32GB
-        /// - 32C70GB：32cores 70GB
-        /// - 64C180GB：64cores 180GB
-        /// - 32C180GB：32cores 180GB
-        /// - 64C400GB：64cores 400GB.
+        /// Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+        /// 
+        /// The x86 cluster architecture currently supports the following packages:
+        /// - 4C16G:4 core 16GB
+        /// - 8C32G:8 core 32GB
+        /// - 14C70G:14 core 70GB
+        /// - 24C120G:24 core 120GB
+        /// - 30C180G:30 core 180GB
+        /// - 62C400G:62 core 400GB
+        /// - 104C600G:104 core 600GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C160G:32 core 160GB
+        /// - 64C380G:64 core 380GB
+        /// - 20C32G:20 core 32GB
+        /// - 40C64G:40 core 64GB
+        /// - 16C32G:16 core 32GB
+        /// - 32C70G:32 core 70GB
+        /// - 64C180G:64 core 180GB
+        /// - 32C180G:32 core 180GB
+        /// - 64C400G:64 core 400GB,
+        /// 
+        /// The cluster architecture of arm currently supports the following packages:
+        /// - 8C32G:8 core 32GB
+        /// - 16C70G:16 core 70GB
+        /// - 32C180G:32 core 180GB
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+        /// OceanBase cluster name.
+        /// 
+        /// The length is 1 to 20 English or Chinese characters.
+        /// 
+        /// If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+        /// The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         /// </summary>
         [Input("nodeNum")]
         public Input<string>? NodeNum { get; set; }
@@ -544,10 +655,26 @@ namespace Pulumi.AliCloud.Ocean
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+        /// The duration of the purchase of resources.
+        /// 
+        /// Package year and Month value range: Month.
+        /// 
+        /// Default value: Month of the package, which is billed by volume. The default period is Hour.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
+
+        /// <summary>
+        /// The ID of the primary instance.
+        /// </summary>
+        [Input("primaryInstance")]
+        public Input<string>? PrimaryInstance { get; set; }
+
+        /// <summary>
+        /// The primary instance Region.
+        /// </summary>
+        [Input("primaryRegion")]
+        public Input<string>? PrimaryRegion { get; set; }
 
         /// <summary>
         /// The ID of the enterprise resource group to which the instance resides.
@@ -562,10 +689,18 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? Series { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Valid values:
+        /// - false: migration and configuration change.
+        /// - true: in-situ matching
+        /// </summary>
+        [Input("upgradeSpecNative")]
+        public Input<bool>? UpgradeSpecNative { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;

@@ -25,11 +25,18 @@ namespace Pulumi.AliCloud.CR
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example-name";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000000,
+    ///         Max = 99999999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.CR.RegistryEnterpriseInstance("example", new()
     ///     {
     ///         PaymentType = "Subscription",
@@ -37,13 +44,13 @@ namespace Pulumi.AliCloud.CR
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("example", new()
     ///     {
     ///         InstanceId = example.Id,
-    ///         NamespaceName = name,
+    ///         NamespaceName = $"{name}-{@default.Result}",
     ///     });
     /// 
     /// });

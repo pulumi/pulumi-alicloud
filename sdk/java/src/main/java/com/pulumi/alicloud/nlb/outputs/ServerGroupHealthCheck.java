@@ -15,150 +15,184 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupHealthCheck {
     /**
-     * @return The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+     * @return The port that you want to use for health checks on backend servers.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
     private @Nullable Integer healthCheckConnectPort;
     /**
-     * @return Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+     * @return The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
      * 
      */
     private @Nullable Integer healthCheckConnectTimeout;
     /**
-     * @return The domain name used for health check. Valid values:
-     * - **$SERVER_IP**: uses the intranet IP of the backend server.
-     * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The domain name that you want to use for health checks. Valid values:
+     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     private @Nullable String healthCheckDomain;
     /**
-     * @return Whether to enable health check. Valid values:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable the health check feature. Valid values:
      * 
      */
     private @Nullable Boolean healthCheckEnabled;
     /**
-     * @return Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     private @Nullable List<String> healthCheckHttpCodes;
     /**
-     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+     * @return The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `5` to `50`.
+     * 
+     * Default value: `10`.
      * 
      */
     private @Nullable Integer healthCheckInterval;
     /**
-     * @return Health check protocol. Valid values: **TCP** or **HTTP**.
+     * @return The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
      */
     private @Nullable String healthCheckType;
     /**
-     * @return Health check path.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The path to which health check requests are sent.
+     * 
+     * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     private @Nullable String healthCheckUrl;
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     private @Nullable Integer healthyThreshold;
     /**
-     * @return The health check method. Valid values: **GET** or **HEAD**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     private @Nullable String httpCheckMethod;
     /**
-     * @return After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     private @Nullable Integer unhealthyThreshold;
 
     private ServerGroupHealthCheck() {}
     /**
-     * @return The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+     * @return The port that you want to use for health checks on backend servers.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
     public Optional<Integer> healthCheckConnectPort() {
         return Optional.ofNullable(this.healthCheckConnectPort);
     }
     /**
-     * @return Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+     * @return The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
      * 
      */
     public Optional<Integer> healthCheckConnectTimeout() {
         return Optional.ofNullable(this.healthCheckConnectTimeout);
     }
     /**
-     * @return The domain name used for health check. Valid values:
-     * - **$SERVER_IP**: uses the intranet IP of the backend server.
-     * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The domain name that you want to use for health checks. Valid values:
+     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     public Optional<String> healthCheckDomain() {
         return Optional.ofNullable(this.healthCheckDomain);
     }
     /**
-     * @return Whether to enable health check. Valid values:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable the health check feature. Valid values:
      * 
      */
     public Optional<Boolean> healthCheckEnabled() {
         return Optional.ofNullable(this.healthCheckEnabled);
     }
     /**
-     * @return Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public List<String> healthCheckHttpCodes() {
         return this.healthCheckHttpCodes == null ? List.of() : this.healthCheckHttpCodes;
     }
     /**
-     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+     * @return The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `5` to `50`.
+     * 
+     * Default value: `10`.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
     }
     /**
-     * @return Health check protocol. Valid values: **TCP** or **HTTP**.
+     * @return The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
      */
     public Optional<String> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
     }
     /**
-     * @return Health check path.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The path to which health check requests are sent.
+     * 
+     * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public Optional<String> healthCheckUrl() {
         return Optional.ofNullable(this.healthCheckUrl);
     }
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     public Optional<Integer> healthyThreshold() {
         return Optional.ofNullable(this.healthyThreshold);
     }
     /**
-     * @return The health check method. Valid values: **GET** or **HEAD**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public Optional<String> httpCheckMethod() {
         return Optional.ofNullable(this.httpCheckMethod);
     }
     /**
-     * @return After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     public Optional<Integer> unhealthyThreshold() {

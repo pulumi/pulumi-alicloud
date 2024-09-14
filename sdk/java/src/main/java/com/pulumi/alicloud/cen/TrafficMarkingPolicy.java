@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cen.TrafficMarkingPolicyArgs;
 import com.pulumi.alicloud.cen.inputs.TrafficMarkingPolicyState;
+import com.pulumi.alicloud.cen.outputs.TrafficMarkingPolicyTrafficMatchRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -79,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
+ * CEN Traffic Marking Policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
@@ -89,112 +91,130 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy")
 public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * TrafficMarkingPolicyDescription
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return TrafficMarkingPolicyDescription
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+     * MarkingDscp
      * 
      */
     @Export(name="markingDscp", refs={Integer.class}, tree="[0]")
     private Output<Integer> markingDscp;
 
     /**
-     * @return The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+     * @return MarkingDscp
      * 
      */
     public Output<Integer> markingDscp() {
         return this.markingDscp;
     }
     /**
-     * The Priority of the Traffic Marking Policy. Value range: 1~100.
+     * Priority
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return The Priority of the Traffic Marking Policy. Value range: 1~100.
+     * @return Priority
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of the Traffic Marking Policy.
+     * The first ID of the resource
      * 
      */
     @Export(name="trafficMarkingPolicyId", refs={String.class}, tree="[0]")
     private Output<String> trafficMarkingPolicyId;
 
     /**
-     * @return The ID of the Traffic Marking Policy.
+     * @return The first ID of the resource
      * 
      */
     public Output<String> trafficMarkingPolicyId() {
         return this.trafficMarkingPolicyId;
     }
     /**
-     * The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * TrafficMarkingPolicyName
      * 
      */
     @Export(name="trafficMarkingPolicyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMarkingPolicyName;
 
     /**
-     * @return The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return TrafficMarkingPolicyName
      * 
      */
     public Output<Optional<String>> trafficMarkingPolicyName() {
         return Codegen.optional(this.trafficMarkingPolicyName);
     }
     /**
-     * The ID of the transit router.
+     * List of stream classification rules.
+     * 
+     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * 
+     */
+    @Export(name="trafficMatchRules", refs={List.class,TrafficMarkingPolicyTrafficMatchRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TrafficMarkingPolicyTrafficMatchRule>> trafficMatchRules;
+
+    /**
+     * @return List of stream classification rules.
+     * 
+     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * 
+     */
+    public Output<Optional<List<TrafficMarkingPolicyTrafficMatchRule>>> trafficMatchRules() {
+        return Codegen.optional(this.trafficMatchRules);
+    }
+    /**
+     * TransitRouterId
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return TransitRouterId
      * 
      */
     public Output<String> transitRouterId() {

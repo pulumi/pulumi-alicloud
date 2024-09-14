@@ -23,18 +23,20 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
 
     /**
-     * Protocol version. Value:
-     * - **Ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * The protocol version. Valid values:
+     * 
+     * - **ipv4:** IPv4. This is the default value.
+     * - **DualStack:** dual stack.
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return Protocol version. Value:
-     * - **Ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * @return The protocol version. Valid values:
+     * 
+     * - **ipv4:** IPv4. This is the default value.
+     * - **DualStack:** dual stack.
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -42,18 +44,22 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network address type of IPv4 for network load balancing. Value:
-     * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-     * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+     * The type of IPv4 address used by the NLB instance. Valid values:
+     * - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+     * - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+     * 
+     * &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
      * 
      */
     @Import(name="addressType", required=true)
     private Output<String> addressType;
 
     /**
-     * @return The network address type of IPv4 for network load balancing. Value:
-     * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-     * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+     * @return The type of IPv4 address used by the NLB instance. Valid values:
+     * - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+     * - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+     * 
+     * &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
      * 
      */
     public Output<String> addressType() {
@@ -61,14 +67,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the shared bandwidth package associated with the public network instance.
+     * The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
      * 
      */
     @Import(name="bandwidthPackageId")
     private @Nullable Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the shared bandwidth package associated with the public network instance.
+     * @return The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
      * 
      */
     public Optional<Output<String>> bandwidthPackageId() {
@@ -76,18 +82,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether cross-zone is enabled for a network-based load balancing instance. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
      * 
      */
     @Import(name="crossZoneEnabled")
     private @Nullable Output<Boolean> crossZoneEnabled;
 
     /**
-     * @return Whether cross-zone is enabled for a network-based load balancing instance. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
      * 
      */
     public Optional<Output<Boolean>> crossZoneEnabled() {
@@ -95,63 +97,47 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delete protection. See `deletion_protection_config` below.
+     * Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
      * 
      */
     @Import(name="deletionProtectionConfig")
     private @Nullable Output<LoadBalancerDeletionProtectionConfigArgs> deletionProtectionConfig;
 
     /**
-     * @return Delete protection. See `deletion_protection_config` below.
+     * @return Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
      * 
      */
     public Optional<Output<LoadBalancerDeletionProtectionConfigArgs>> deletionProtectionConfig() {
         return Optional.ofNullable(this.deletionProtectionConfig);
     }
 
-    /**
-     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-     * 
-     */
     @Import(name="deletionProtectionEnabled")
     private @Nullable Output<Boolean> deletionProtectionEnabled;
 
-    /**
-     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-     * 
-     */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
         return Optional.ofNullable(this.deletionProtectionEnabled);
     }
 
-    /**
-     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
-     * 
-     */
     @Import(name="deletionProtectionReason")
     private @Nullable Output<String> deletionProtectionReason;
 
-    /**
-     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
-     * 
-     */
     public Optional<Output<String>> deletionProtectionReason() {
         return Optional.ofNullable(this.deletionProtectionReason);
     }
 
     /**
-     * The IPv6 address type of network load balancing. Value:
-     * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-     * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+     * The type of IPv6 address used by the NLB instance. Valid values:
+     * - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+     * - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
      * 
      */
     @Import(name="ipv6AddressType")
     private @Nullable Output<String> ipv6AddressType;
 
     /**
-     * @return The IPv6 address type of network load balancing. Value:
-     * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-     * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+     * @return The type of IPv6 address used by the NLB instance. Valid values:
+     * - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+     * - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
      * 
      */
     public Optional<Output<String>> ipv6AddressType() {
@@ -159,14 +145,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+     * The name of the NLB instance.
+     * 
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
     /**
-     * @return The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+     * @return The name of the NLB instance.
+     * 
+     * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -174,14 +164,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Load balancing type. Only value: **network**, which indicates network-based load balancing.
+     * The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
      * 
      */
     @Import(name="loadBalancerType")
     private @Nullable Output<String> loadBalancerType;
 
     /**
-     * @return Load balancing type. Only value: **network**, which indicates network-based load balancing.
+     * @return The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
      * 
      */
     public Optional<Output<String>> loadBalancerType() {
@@ -189,63 +179,47 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Modify protection. See `modification_protection_config` below.
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
      * 
      */
     @Import(name="modificationProtectionConfig")
     private @Nullable Output<LoadBalancerModificationProtectionConfigArgs> modificationProtectionConfig;
 
     /**
-     * @return Modify protection. See `modification_protection_config` below.
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
      * 
      */
     public Optional<Output<LoadBalancerModificationProtectionConfigArgs>> modificationProtectionConfig() {
         return Optional.ofNullable(this.modificationProtectionConfig);
     }
 
-    /**
-     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
-     * 
-     */
     @Import(name="modificationProtectionReason")
     private @Nullable Output<String> modificationProtectionReason;
 
-    /**
-     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
-     * 
-     */
     public Optional<Output<String>> modificationProtectionReason() {
         return Optional.ofNullable(this.modificationProtectionReason);
     }
 
-    /**
-     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
-     * 
-     */
     @Import(name="modificationProtectionStatus")
     private @Nullable Output<String> modificationProtectionStatus;
 
-    /**
-     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
-     * 
-     */
     public Optional<Output<String>> modificationProtectionStatus() {
         return Optional.ofNullable(this.modificationProtectionStatus);
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -283,14 +257,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the network-based SLB instance.
+     * The ID of the VPC where the NLB instance is deployed.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the network-based SLB instance.
+     * @return The ID of the VPC where the NLB instance is deployed.
      * 
      */
     public Output<String> vpcId() {
@@ -298,14 +272,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+     * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     @Import(name="zoneMappings", required=true)
     private Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+     * @return Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMappingArgs>> zoneMappings() {
@@ -354,9 +328,10 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion Protocol version. Value:
-         * - **Ipv4**:IPv4 type.
-         * - **DualStack**: Double Stack type.
+         * @param addressIpVersion The protocol version. Valid values:
+         * 
+         * - **ipv4:** IPv4. This is the default value.
+         * - **DualStack:** dual stack.
          * 
          * @return builder
          * 
@@ -367,9 +342,10 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion Protocol version. Value:
-         * - **Ipv4**:IPv4 type.
-         * - **DualStack**: Double Stack type.
+         * @param addressIpVersion The protocol version. Valid values:
+         * 
+         * - **ipv4:** IPv4. This is the default value.
+         * - **DualStack:** dual stack.
          * 
          * @return builder
          * 
@@ -379,9 +355,11 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressType The network address type of IPv4 for network load balancing. Value:
-         * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-         * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+         * @param addressType The type of IPv4 address used by the NLB instance. Valid values:
+         * - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+         * - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+         * 
+         * &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
          * 
          * @return builder
          * 
@@ -392,9 +370,11 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressType The network address type of IPv4 for network load balancing. Value:
-         * - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-         * - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+         * @param addressType The type of IPv4 address used by the NLB instance. Valid values:
+         * - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+         * - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+         * 
+         * &gt; **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
          * 
          * @return builder
          * 
@@ -404,7 +384,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidthPackageId The ID of the shared bandwidth package associated with the public network instance.
+         * @param bandwidthPackageId The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
          * 
          * @return builder
          * 
@@ -415,7 +395,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidthPackageId The ID of the shared bandwidth package associated with the public network instance.
+         * @param bandwidthPackageId The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
          * 
          * @return builder
          * 
@@ -425,9 +405,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossZoneEnabled Whether cross-zone is enabled for a network-based load balancing instance. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param crossZoneEnabled Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
          * 
          * @return builder
          * 
@@ -438,9 +416,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossZoneEnabled Whether cross-zone is enabled for a network-based load balancing instance. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param crossZoneEnabled Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
          * 
          * @return builder
          * 
@@ -450,7 +426,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Delete protection. See `deletion_protection_config` below.
+         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
          * 
          * @return builder
          * 
@@ -461,7 +437,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Delete protection. See `deletion_protection_config` below.
+         * @param deletionProtectionConfig Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
          * 
          * @return builder
          * 
@@ -470,52 +446,28 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
             return deletionProtectionConfig(Output.of(deletionProtectionConfig));
         }
 
-        /**
-         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
             $.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
         }
 
-        /**
-         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
             return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
         }
 
-        /**
-         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtectionReason(@Nullable Output<String> deletionProtectionReason) {
             $.deletionProtectionReason = deletionProtectionReason;
             return this;
         }
 
-        /**
-         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deletionProtectionReason(String deletionProtectionReason) {
             return deletionProtectionReason(Output.of(deletionProtectionReason));
         }
 
         /**
-         * @param ipv6AddressType The IPv6 address type of network load balancing. Value:
-         * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-         * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+         * @param ipv6AddressType The type of IPv6 address used by the NLB instance. Valid values:
+         * - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+         * - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
          * 
          * @return builder
          * 
@@ -526,9 +478,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6AddressType The IPv6 address type of network load balancing. Value:
-         * - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-         * - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+         * @param ipv6AddressType The type of IPv6 address used by the NLB instance. Valid values:
+         * - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+         * - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
          * 
          * @return builder
          * 
@@ -538,7 +490,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+         * @param loadBalancerName The name of the NLB instance.
+         * 
+         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
          * 
@@ -549,7 +503,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+         * @param loadBalancerName The name of the NLB instance.
+         * 
+         * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
          * 
@@ -559,7 +515,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerType Load balancing type. Only value: **network**, which indicates network-based load balancing.
+         * @param loadBalancerType The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
          * 
          * @return builder
          * 
@@ -570,7 +526,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerType Load balancing type. Only value: **network**, which indicates network-based load balancing.
+         * @param loadBalancerType The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
          * 
          * @return builder
          * 
@@ -580,7 +536,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify protection. See `modification_protection_config` below.
+         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
          * 
          * @return builder
          * 
@@ -591,7 +547,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modificationProtectionConfig Modify protection. See `modification_protection_config` below.
+         * @param modificationProtectionConfig Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
          * 
          * @return builder
          * 
@@ -600,54 +556,28 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
             return modificationProtectionConfig(Output.of(modificationProtectionConfig));
         }
 
-        /**
-         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationProtectionReason(@Nullable Output<String> modificationProtectionReason) {
             $.modificationProtectionReason = modificationProtectionReason;
             return this;
         }
 
-        /**
-         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationProtectionReason(String modificationProtectionReason) {
             return modificationProtectionReason(Output.of(modificationProtectionReason));
         }
 
-        /**
-         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationProtectionStatus(@Nullable Output<String> modificationProtectionStatus) {
             $.modificationProtectionStatus = modificationProtectionStatus;
             return this;
         }
 
-        /**
-         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
-         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationProtectionStatus(String modificationProtectionStatus) {
             return modificationProtectionStatus(Output.of(modificationProtectionStatus));
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -658,7 +588,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -720,7 +652,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the network-based SLB instance.
+         * @param vpcId The ID of the VPC where the NLB instance is deployed.
          * 
          * @return builder
          * 
@@ -731,7 +663,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the network-based SLB instance.
+         * @param vpcId The ID of the VPC where the NLB instance is deployed.
          * 
          * @return builder
          * 
@@ -741,7 +673,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -752,7 +684,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -762,7 +694,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+         * @param zoneMappings Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
          * 
          * @return builder
          * 

@@ -3,11 +3,13 @@
 
 package com.pulumi.alicloud.cen.inputs;
 
+import com.pulumi.alicloud.cen.inputs.TrafficMarkingPolicyTrafficMatchRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +20,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     public static final TrafficMarkingPolicyState Empty = new TrafficMarkingPolicyState();
 
     /**
-     * The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * TrafficMarkingPolicyDescription
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return TrafficMarkingPolicyDescription
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +35,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -48,14 +50,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+     * MarkingDscp
      * 
      */
     @Import(name="markingDscp")
     private @Nullable Output<Integer> markingDscp;
 
     /**
-     * @return The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+     * @return MarkingDscp
      * 
      */
     public Optional<Output<Integer>> markingDscp() {
@@ -63,14 +65,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Priority of the Traffic Marking Policy. Value range: 1~100.
+     * Priority
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The Priority of the Traffic Marking Policy. Value range: 1~100.
+     * @return Priority
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -78,14 +80,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -93,14 +95,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the Traffic Marking Policy.
+     * The first ID of the resource
      * 
      */
     @Import(name="trafficMarkingPolicyId")
     private @Nullable Output<String> trafficMarkingPolicyId;
 
     /**
-     * @return The ID of the Traffic Marking Policy.
+     * @return The first ID of the resource
      * 
      */
     public Optional<Output<String>> trafficMarkingPolicyId() {
@@ -108,14 +110,14 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * TrafficMarkingPolicyName
      * 
      */
     @Import(name="trafficMarkingPolicyName")
     private @Nullable Output<String> trafficMarkingPolicyName;
 
     /**
-     * @return The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return TrafficMarkingPolicyName
      * 
      */
     public Optional<Output<String>> trafficMarkingPolicyName() {
@@ -123,14 +125,33 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the transit router.
+     * List of stream classification rules.
+     * 
+     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * 
+     */
+    @Import(name="trafficMatchRules")
+    private @Nullable Output<List<TrafficMarkingPolicyTrafficMatchRuleArgs>> trafficMatchRules;
+
+    /**
+     * @return List of stream classification rules.
+     * 
+     * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+     * 
+     */
+    public Optional<Output<List<TrafficMarkingPolicyTrafficMatchRuleArgs>>> trafficMatchRules() {
+        return Optional.ofNullable(this.trafficMatchRules);
+    }
+
+    /**
+     * TransitRouterId
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return TransitRouterId
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -147,6 +168,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         this.status = $.status;
         this.trafficMarkingPolicyId = $.trafficMarkingPolicyId;
         this.trafficMarkingPolicyName = $.trafficMarkingPolicyName;
+        this.trafficMatchRules = $.trafficMatchRules;
         this.transitRouterId = $.transitRouterId;
     }
 
@@ -169,7 +191,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param description TrafficMarkingPolicyDescription
          * 
          * @return builder
          * 
@@ -180,7 +202,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param description TrafficMarkingPolicyDescription
          * 
          * @return builder
          * 
@@ -190,7 +212,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -201,7 +223,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -211,7 +233,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param markingDscp The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+         * @param markingDscp MarkingDscp
          * 
          * @return builder
          * 
@@ -222,7 +244,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param markingDscp The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+         * @param markingDscp MarkingDscp
          * 
          * @return builder
          * 
@@ -232,7 +254,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority The Priority of the Traffic Marking Policy. Value range: 1~100.
+         * @param priority Priority
          * 
          * @return builder
          * 
@@ -243,7 +265,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority The Priority of the Traffic Marking Policy. Value range: 1~100.
+         * @param priority Priority
          * 
          * @return builder
          * 
@@ -253,7 +275,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -264,7 +286,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -274,7 +296,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param trafficMarkingPolicyId The ID of the Traffic Marking Policy.
+         * @param trafficMarkingPolicyId The first ID of the resource
          * 
          * @return builder
          * 
@@ -285,7 +307,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param trafficMarkingPolicyId The ID of the Traffic Marking Policy.
+         * @param trafficMarkingPolicyId The first ID of the resource
          * 
          * @return builder
          * 
@@ -295,7 +317,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param trafficMarkingPolicyName The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param trafficMarkingPolicyName TrafficMarkingPolicyName
          * 
          * @return builder
          * 
@@ -306,7 +328,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param trafficMarkingPolicyName The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param trafficMarkingPolicyName TrafficMarkingPolicyName
          * 
          * @return builder
          * 
@@ -316,7 +338,44 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param trafficMatchRules List of stream classification rules.
+         * 
+         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficMatchRules(@Nullable Output<List<TrafficMarkingPolicyTrafficMatchRuleArgs>> trafficMatchRules) {
+            $.trafficMatchRules = trafficMatchRules;
+            return this;
+        }
+
+        /**
+         * @param trafficMatchRules List of stream classification rules.
+         * 
+         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficMatchRules(List<TrafficMarkingPolicyTrafficMatchRuleArgs> trafficMatchRules) {
+            return trafficMatchRules(Output.of(trafficMatchRules));
+        }
+
+        /**
+         * @param trafficMatchRules List of stream classification rules.
+         * 
+         * You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficMatchRules(TrafficMarkingPolicyTrafficMatchRuleArgs... trafficMatchRules) {
+            return trafficMatchRules(List.of(trafficMatchRules));
+        }
+
+        /**
+         * @param transitRouterId TransitRouterId
          * 
          * @return builder
          * 
@@ -327,7 +386,7 @@ public final class TrafficMarkingPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId TransitRouterId
          * 
          * @return builder
          * 

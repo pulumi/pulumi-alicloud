@@ -20,7 +20,15 @@ public final class GetListenersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+     * 
+     */
     private @Nullable String listenerProtocol;
+    /**
+     * @return A list of Nlb Listeners. Each element contains the following attributes:
+     * 
+     */
     private List<GetListenersListener> listeners;
     private @Nullable List<String> loadBalancerIds;
     private @Nullable String outputFile;
@@ -36,9 +44,17 @@ public final class GetListenersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+     * 
+     */
     public Optional<String> listenerProtocol() {
         return Optional.ofNullable(this.listenerProtocol);
     }
+    /**
+     * @return A list of Nlb Listeners. Each element contains the following attributes:
+     * 
+     */
     public List<GetListenersListener> listeners() {
         return this.listeners;
     }

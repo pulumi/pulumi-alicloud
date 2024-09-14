@@ -588,19 +588,19 @@ func (o ClusterNodeAttributeArrayOutput) Index(i pulumi.IntInput) ClusterNodeAtt
 }
 
 type ClusterNodeGroup struct {
-	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
+	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
 	AdditionalSecurityGroupIds []string `pulumi:"additionalSecurityGroupIds"`
 	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
 	AutoScalingPolicy *ClusterNodeGroupAutoScalingPolicy `pulumi:"autoScalingPolicy"`
-	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
 	CostOptimizedConfig *ClusterNodeGroupCostOptimizedConfig `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks []ClusterNodeGroupDataDisk `pulumi:"dataDisks"`
-	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
 	DeploymentSetStrategy *string `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// Host Ecs instance types.
+	// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount int `pulumi:"nodeCount"`
@@ -620,9 +620,9 @@ type ClusterNodeGroup struct {
 	SubscriptionConfig *ClusterNodeGroupSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDisk `pulumi:"systemDisk"`
-	// Global vSwitch ids, you can also specify it in node group.
+	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
 	VswitchIds []string `pulumi:"vswitchIds"`
-	// Whether the node has a public IP address enabled.
+	// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
 	WithPublicIp *bool `pulumi:"withPublicIp"`
 }
 
@@ -638,19 +638,19 @@ type ClusterNodeGroupInput interface {
 }
 
 type ClusterNodeGroupArgs struct {
-	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
+	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
 	AdditionalSecurityGroupIds pulumi.StringArrayInput `pulumi:"additionalSecurityGroupIds"`
 	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
 	AutoScalingPolicy ClusterNodeGroupAutoScalingPolicyPtrInput `pulumi:"autoScalingPolicy"`
-	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
 	CostOptimizedConfig ClusterNodeGroupCostOptimizedConfigPtrInput `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks ClusterNodeGroupDataDiskArrayInput `pulumi:"dataDisks"`
-	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
 	DeploymentSetStrategy pulumi.StringPtrInput `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown pulumi.BoolPtrInput `pulumi:"gracefulShutdown"`
-	// Host Ecs instance types.
+	// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
 	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
@@ -670,9 +670,9 @@ type ClusterNodeGroupArgs struct {
 	SubscriptionConfig ClusterNodeGroupSubscriptionConfigPtrInput `pulumi:"subscriptionConfig"`
 	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDiskInput `pulumi:"systemDisk"`
-	// Global vSwitch ids, you can also specify it in node group.
+	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	// Whether the node has a public IP address enabled.
+	// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
 	WithPublicIp pulumi.BoolPtrInput `pulumi:"withPublicIp"`
 }
 
@@ -727,7 +727,7 @@ func (o ClusterNodeGroupOutput) ToClusterNodeGroupOutputWithContext(ctx context.
 	return o
 }
 
-// Additional security Group IDS for Cluster, you can also specify this key for each node group.
+// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
 func (o ClusterNodeGroupOutput) AdditionalSecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.AdditionalSecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -737,7 +737,7 @@ func (o ClusterNodeGroupOutput) AutoScalingPolicy() ClusterNodeGroupAutoScalingP
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupAutoScalingPolicy { return v.AutoScalingPolicy }).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
 }
 
-// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
+// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
 func (o ClusterNodeGroupOutput) CostOptimizedConfig() ClusterNodeGroupCostOptimizedConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupCostOptimizedConfig { return v.CostOptimizedConfig }).(ClusterNodeGroupCostOptimizedConfigPtrOutput)
 }
@@ -747,7 +747,7 @@ func (o ClusterNodeGroupOutput) DataDisks() ClusterNodeGroupDataDiskArrayOutput 
 	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupDataDisk { return v.DataDisks }).(ClusterNodeGroupDataDiskArrayOutput)
 }
 
-// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
 func (o ClusterNodeGroupOutput) DeploymentSetStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.DeploymentSetStrategy }).(pulumi.StringPtrOutput)
 }
@@ -757,7 +757,7 @@ func (o ClusterNodeGroupOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
 
-// Host Ecs instance types.
+// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
 func (o ClusterNodeGroupOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
@@ -807,12 +807,12 @@ func (o ClusterNodeGroupOutput) SystemDisk() ClusterNodeGroupSystemDiskOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) ClusterNodeGroupSystemDisk { return v.SystemDisk }).(ClusterNodeGroupSystemDiskOutput)
 }
 
-// Global vSwitch ids, you can also specify it in node group.
+// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
 func (o ClusterNodeGroupOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-// Whether the node has a public IP address enabled.
+// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
 func (o ClusterNodeGroupOutput) WithPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.WithPublicIp }).(pulumi.BoolPtrOutput)
 }

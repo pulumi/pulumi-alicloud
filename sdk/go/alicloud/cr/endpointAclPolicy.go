@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,12 +42,19 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000000,
+// Max: 99999999,
+// })
+// if err != nil {
+// return err
+// }
 // defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 // PaymentType: pulumi.String("Subscription"),
 // Period: pulumi.Int(1),
 // RenewalStatus: pulumi.String("ManualRenewal"),
 // InstanceType: pulumi.String("Advanced"),
-// InstanceName: pulumi.String(name),
+// InstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // })
 // if err != nil {
 // return err

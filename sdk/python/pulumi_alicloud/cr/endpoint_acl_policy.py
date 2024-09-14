@@ -209,17 +209,21 @@ class EndpointAclPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default_integer['result']}")
         default = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
             enable=True,
             instance_id=default_registry_enterprise_instance.id,
@@ -268,17 +272,21 @@ class EndpointAclPolicy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default_integer['result']}")
         default = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
             enable=True,
             instance_id=default_registry_enterprise_instance.id,

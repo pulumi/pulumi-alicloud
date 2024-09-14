@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
 public class BaseInstance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to automatically renew.
+     * 
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -105,6 +106,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to automatically renew.
+     * 
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -136,6 +138,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     * 
      * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
@@ -147,6 +150,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     * 
      * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
@@ -182,14 +186,28 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
-     * The creation time of the resource.
+     * Cpu architecture, x86, arm. If no, the default value is x86
+     * 
+     */
+    @Export(name="cpuArch", refs={String.class}, tree="[0]")
+    private Output<String> cpuArch;
+
+    /**
+     * @return Cpu architecture, x86, arm. If no, the default value is x86
+     * 
+     */
+    public Output<String> cpuArch() {
+        return this.cpuArch;
+    }
+    /**
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
@@ -197,12 +215,14 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The size of the storage space, in GB.
+     * 
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     *   The default value of each package is its minimum value.
+     * 
+     * The default value of each package is its minimum value.
      * 
      */
     @Export(name="diskSize", refs={Integer.class}, tree="[0]")
@@ -210,12 +230,14 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The size of the storage space, in GB.
+     * 
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     *   The default value of each package is its minimum value.
+     * 
+     * The default value of each package is its minimum value.
      * 
      */
     public Output<Integer> diskSize() {
@@ -223,6 +245,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * 
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -233,6 +256,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * 
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -242,78 +266,98 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.diskType;
     }
     /**
-     * Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     * 
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     * 
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      * 
      */
     @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * @return Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     * 
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     * 
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      * 
      */
     public Output<String> instanceClass() {
         return this.instanceClass;
     }
     /**
-     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.
+     * 
+     * The length is 1 to 20 English or Chinese characters.
+     * 
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * @return OceanBase cluster name.
+     * 
+     * The length is 1 to 20 English or Chinese characters.
+     * 
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      * 
      */
     @Export(name="nodeNum", refs={String.class}, tree="[0]")
     private Output<String> nodeNum;
 
     /**
-     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      * 
      */
     public Output<String> nodeNum() {
@@ -366,18 +410,54 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * The duration of the purchase of resources.
+     * 
+     * Package year and Month value range: Month.
+     * 
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * @return The duration of the purchase of resources.
+     * 
+     * Package year and Month value range: Month.
+     * 
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
+    }
+    /**
+     * The ID of the primary instance.
+     * 
+     */
+    @Export(name="primaryInstance", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> primaryInstance;
+
+    /**
+     * @return The ID of the primary instance.
+     * 
+     */
+    public Output<Optional<String>> primaryInstance() {
+        return Codegen.optional(this.primaryInstance);
+    }
+    /**
+     * The primary instance Region.
+     * 
+     */
+    @Export(name="primaryRegion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> primaryRegion;
+
+    /**
+     * @return The primary instance Region.
+     * 
+     */
+    public Output<Optional<String>> primaryRegion() {
+        return Codegen.optional(this.primaryRegion);
     }
     /**
      * The ID of the enterprise resource group to which the instance resides.
@@ -408,18 +488,36 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
         return this.series;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     * 
+     */
+    @Export(name="upgradeSpecNative", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> upgradeSpecNative;
+
+    /**
+     * @return Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     * 
+     */
+    public Output<Optional<Boolean>> upgradeSpecNative() {
+        return Codegen.optional(this.upgradeSpecNative);
     }
     /**
      * Information about the zone where the cluster is deployed.

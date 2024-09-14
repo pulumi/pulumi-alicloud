@@ -34,56 +34,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment")
 public class ListenerAdditionalCertificateAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      * 
      */
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
-     * @return Certificate ID. Currently, only server certificates are supported.
+     * @return The ID of additional certificates.
      * 
      */
     public Output<String> certificateId() {
         return this.certificateId;
     }
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
-     * @return The ID of the tcpssl listener.
+     * @return The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     public Output<String> listenerId() {
         return this.listenerId;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

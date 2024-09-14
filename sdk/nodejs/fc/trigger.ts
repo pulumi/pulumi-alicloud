@@ -31,11 +31,11 @@ import * as utilities from "../utilities";
  * });
  * const defaultProject = new alicloud.log.Project("default", {projectName: `example-value-${defaultInteger.result}`});
  * const defaultStore = new alicloud.log.Store("default", {
- *     projectName: defaultProject.name,
+ *     projectName: defaultProject.projectName,
  *     logstoreName: "example-value",
  * });
  * const sourceStore = new alicloud.log.Store("source_store", {
- *     projectName: defaultProject.name,
+ *     projectName: defaultProject.projectName,
  *     logstoreName: "example-source-store",
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
@@ -68,8 +68,8 @@ import * as utilities from "../utilities";
  *     description: "example-value",
  *     role: defaultRole.arn,
  *     logConfig: {
- *         project: defaultProject.name,
- *         logstore: defaultStore.name,
+ *         project: defaultProject.projectName,
+ *         logstore: defaultStore.logstoreName,
  *         enableInstanceMetrics: true,
  *         enableRequestMetrics: true,
  *     },
@@ -100,11 +100,11 @@ import * as utilities from "../utilities";
  *     "function": defaultFunction.name,
  *     name: "terraform-example",
  *     role: defaultRole.arn,
- *     sourceArn: pulumi.all([defaultGetRegions, _default, defaultProject.name]).apply(([defaultGetRegions, _default, name]) => `acs:log:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:project/${name}`),
+ *     sourceArn: pulumi.all([defaultGetRegions, _default, defaultProject.projectName]).apply(([defaultGetRegions, _default, projectName]) => `acs:log:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:project/${projectName}`),
  *     type: "log",
  *     config: pulumi.interpolate`    {
  *         "sourceConfig": {
- *             "logstore": "${sourceStore.name}",
+ *             "logstore": "${sourceStore.logstoreName}",
  *             "startTime": null
  *         },
  *         "jobConfig": {
@@ -116,10 +116,9 @@ import * as utilities from "../utilities";
  *             "c": "d"
  *         },
  *         "logConfig": {
- *              "project": "${defaultProject.name}",
- *             "logstore": "${defaultStore.name}"
+ *              "project": "${defaultProject.projectName}",
+ *             "logstore": "${defaultStore.logstoreName}"
  *         },
- *         "targetConfig": null,
  *         "enable": true
  *     }
  *   

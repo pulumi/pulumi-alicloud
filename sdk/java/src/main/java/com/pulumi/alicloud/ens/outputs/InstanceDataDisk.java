@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ens.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,6 +22,21 @@ public final class InstanceDataDisk {
      * 
      */
     private @Nullable String category;
+    /**
+     * @return Cloud Disk ID.
+     * 
+     */
+    private @Nullable String diskId;
+    /**
+     * @return The ID of the KMS key used by the cloud disk.
+     * 
+     */
+    private @Nullable String encryptKeyId;
+    /**
+     * @return Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+     * 
+     */
+    private @Nullable Boolean encrypted;
     /**
      * @return Data disk size, unit: GB.
      * 
@@ -40,6 +56,27 @@ public final class InstanceDataDisk {
         return Optional.ofNullable(this.category);
     }
     /**
+     * @return Cloud Disk ID.
+     * 
+     */
+    public Optional<String> diskId() {
+        return Optional.ofNullable(this.diskId);
+    }
+    /**
+     * @return The ID of the KMS key used by the cloud disk.
+     * 
+     */
+    public Optional<String> encryptKeyId() {
+        return Optional.ofNullable(this.encryptKeyId);
+    }
+    /**
+     * @return Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+     * 
+     */
+    public Optional<Boolean> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+    /**
      * @return Data disk size, unit: GB.
      * 
      */
@@ -57,11 +94,17 @@ public final class InstanceDataDisk {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
+        private @Nullable String diskId;
+        private @Nullable String encryptKeyId;
+        private @Nullable Boolean encrypted;
         private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
+    	      this.diskId = defaults.diskId;
+    	      this.encryptKeyId = defaults.encryptKeyId;
+    	      this.encrypted = defaults.encrypted;
     	      this.size = defaults.size;
         }
 
@@ -69,6 +112,24 @@ public final class InstanceDataDisk {
         public Builder category(@Nullable String category) {
 
             this.category = category;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskId(@Nullable String diskId) {
+
+            this.diskId = diskId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryptKeyId(@Nullable String encryptKeyId) {
+
+            this.encryptKeyId = encryptKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encrypted(@Nullable Boolean encrypted) {
+
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
@@ -80,6 +141,9 @@ public final class InstanceDataDisk {
         public InstanceDataDisk build() {
             final var _resultValue = new InstanceDataDisk();
             _resultValue.category = category;
+            _resultValue.diskId = diskId;
+            _resultValue.encryptKeyId = encryptKeyId;
+            _resultValue.encrypted = encrypted;
             _resultValue.size = size;
             return _resultValue;
         }

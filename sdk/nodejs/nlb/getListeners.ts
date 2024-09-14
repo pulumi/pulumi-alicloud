@@ -9,7 +9,21 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nlb.getListeners({
+ *     ids: ["example_value"],
+ * });
+ * export const alicloudNlbListenerId1 = ids.then(ids => ids.listeners?.[0]?.id);
+ * ```
  */
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     args = args || {};
@@ -54,7 +68,13 @@ export interface GetListenersResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+     */
     readonly listenerProtocol?: string;
+    /**
+     * A list of Nlb Listeners. Each element contains the following attributes:
+     */
     readonly listeners: outputs.nlb.GetListenersListener[];
     readonly loadBalancerIds?: string[];
     readonly outputFile?: string;
@@ -62,7 +82,21 @@ export interface GetListenersResult {
 /**
  * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.191.0+.
+ * > **NOTE:** Available since v1.191.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nlb.getListeners({
+ *     ids: ["example_value"],
+ * });
+ * export const alicloudNlbListenerId1 = ids.then(ids => ids.listeners?.[0]?.id);
+ * ```
  */
 export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
     return pulumi.output(args).apply((a: any) => getListeners(a, opts))

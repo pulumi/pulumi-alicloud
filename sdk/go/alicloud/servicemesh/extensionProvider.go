@@ -16,7 +16,7 @@ import (
 //
 // For information about Service Mesh Extension Provider and how to use it, see [What is Extension Provider](https://help.aliyun.com/document_detail/461549.html).
 //
-// > **NOTE:** Available in v1.191.0+.
+// > **NOTE:** Available since v1.191.0.
 //
 // ## Import
 //

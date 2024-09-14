@@ -50,9 +50,12 @@ class LoadBalancerDeletionProtectionConfig(dict):
                  enabled_time: Optional[str] = None,
                  reason: Optional[str] = None):
         """
-        :param bool enabled: Delete protection enable.
-        :param str enabled_time: Opening time.
-        :param str reason: Reason for opening.
+        :param bool enabled: Specifies whether to enable deletion protection. Valid values:
+        :param str enabled_time: Opening time of the configuration read-only mode.
+        :param str reason: The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
+               
+               
+               > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -65,7 +68,7 @@ class LoadBalancerDeletionProtectionConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Delete protection enable.
+        Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "enabled")
 
@@ -73,7 +76,7 @@ class LoadBalancerDeletionProtectionConfig(dict):
     @pulumi.getter(name="enabledTime")
     def enabled_time(self) -> Optional[str]:
         """
-        Opening time.
+        Opening time of the configuration read-only mode.
         """
         return pulumi.get(self, "enabled_time")
 
@@ -81,7 +84,10 @@ class LoadBalancerDeletionProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        Reason for opening.
+        The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
+
+
+        > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """
         return pulumi.get(self, "reason")
 
@@ -110,9 +116,15 @@ class LoadBalancerModificationProtectionConfig(dict):
                  reason: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str enabled_time: Opening time.
-        :param str reason: Reason for opening.
-        :param str status: ON.
+        :param str enabled_time: Opening time of the configuration read-only mode.
+        :param str reason: The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
+               
+               > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
+        :param str status: Specifies whether to enable the configuration read-only mode. Valid values:
+               - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+               - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+               
+               > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         """
         if enabled_time is not None:
             pulumi.set(__self__, "enabled_time", enabled_time)
@@ -125,7 +137,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter(name="enabledTime")
     def enabled_time(self) -> Optional[str]:
         """
-        Opening time.
+        Opening time of the configuration read-only mode.
         """
         return pulumi.get(self, "enabled_time")
 
@@ -133,7 +145,9 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        Reason for opening.
+        The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
+
+        > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
         """
         return pulumi.get(self, "reason")
 
@@ -141,7 +155,11 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        ON.
+        Specifies whether to enable the configuration read-only mode. Valid values:
+        - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+        - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+
+        > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         """
         return pulumi.get(self, "status")
 
@@ -187,14 +205,16 @@ class LoadBalancerZoneMapping(dict):
                  public_ipv4_address: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str vswitch_id: The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
-        :param str zone_id: The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
-        :param str allocation_id: The ID of the elastic IP address.
-        :param str eni_id: The ID of ENI.
-        :param str ipv6_address: The IPv6 address of a network-based server load balancer instance.
-        :param str private_ipv4_address: The private IPv4 address of a network-based server load balancer instance.
+        :param str vswitch_id: The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+        :param str zone_id: The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+               
+               You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
+        :param str allocation_id: The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
+        :param str eni_id: The ID of the elastic network interface (ENI).
+        :param str ipv6_address: The IPv6 address of the NLB instance.
+        :param str private_ipv4_address: The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         :param str public_ipv4_address: Public IPv4 address of a network-based server load balancer instance.
-        :param str status: Zone Status.
+        :param str status: Zone Status
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -215,7 +235,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+        The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -223,7 +243,9 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+        The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+
+        You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         """
         return pulumi.get(self, "zone_id")
 
@@ -231,7 +253,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> Optional[str]:
         """
-        The ID of the elastic IP address.
+        The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         """
         return pulumi.get(self, "allocation_id")
 
@@ -239,7 +261,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[str]:
         """
-        The ID of ENI.
+        The ID of the elastic network interface (ENI).
         """
         return pulumi.get(self, "eni_id")
 
@@ -247,7 +269,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[str]:
         """
-        The IPv6 address of a network-based server load balancer instance.
+        The IPv6 address of the NLB instance.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -255,7 +277,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter(name="privateIpv4Address")
     def private_ipv4_address(self) -> Optional[str]:
         """
-        The private IPv4 address of a network-based server load balancer instance.
+        The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         """
         return pulumi.get(self, "private_ipv4_address")
 
@@ -271,7 +293,7 @@ class LoadBalancerZoneMapping(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Zone Status.
+        Zone Status
         """
         return pulumi.get(self, "status")
 
@@ -328,25 +350,42 @@ class ServerGroupHealthCheck(dict):
                  http_check_method: Optional[str] = None,
                  unhealthy_threshold: Optional[int] = None):
         """
-        :param int health_check_connect_port: The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
-        :param int health_check_connect_timeout: Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
-        :param str health_check_domain: The domain name used for health check. Valid values:
-               - **$SERVER_IP**: uses the intranet IP of the backend server.
-               - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param bool health_check_enabled: Whether to enable health check. Valid values:
-               - **true**: on.
-               - **false**: closed.
-        :param Sequence[str] health_check_http_codes: Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\\_2xx**, **http\\_3xx**, **http\\_4xx**, and **http\\_5xx**.
-               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param int health_check_interval: Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
-        :param str health_check_type: Health check protocol. Valid values: **TCP** or **HTTP**.
-        :param str health_check_url: Health check path.
-               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param int healthy_threshold: After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
-        :param str http_check_method: The health check method. Valid values: **GET** or **HEAD**.
-               > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param int unhealthy_threshold: After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+        :param int health_check_connect_port: The port that you want to use for health checks on backend servers.
+               
+               Valid values: `0` to `65535`.
+               
+               Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
+        :param int health_check_connect_timeout: The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
+        :param str health_check_domain: The domain name that you want to use for health checks. Valid values:
+               - `$SERVER_IP`: the private IP address of a backend server.
+        :param bool health_check_enabled: Specifies whether to enable the health check feature. Valid values:
+        :param Sequence[str] health_check_http_codes: The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
+               
+               > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        :param int health_check_interval: The interval at which health checks are performed. Unit: seconds.
+               
+               Valid values: `5` to `50`.
+               
+               Default value: `10`.
+        :param str health_check_type: The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
+        :param str health_check_url: The path to which health check requests are sent.
+               
+               The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+               
+               > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        :param int healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+               
+               Valid values: `2` to `10`.
+               
+               Default value: `2`.
+        :param str http_check_method: The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+               
+               > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
+        :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+               
+               Valid values: `2` to `10`.
+               
+               Default value: `2`.
         """
         if health_check_connect_port is not None:
             pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
@@ -375,7 +414,11 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[int]:
         """
-        The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+        The port that you want to use for health checks on backend servers.
+
+        Valid values: `0` to `65535`.
+
+        Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -383,7 +426,7 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckConnectTimeout")
     def health_check_connect_timeout(self) -> Optional[int]:
         """
-        Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+        The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
         """
         return pulumi.get(self, "health_check_connect_timeout")
 
@@ -391,10 +434,8 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[str]:
         """
-        The domain name used for health check. Valid values:
-        - **$SERVER_IP**: uses the intranet IP of the backend server.
-        - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        The domain name that you want to use for health checks. Valid values:
+        - `$SERVER_IP`: the private IP address of a backend server.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -402,9 +443,7 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[bool]:
         """
-        Whether to enable health check. Valid values:
-        - **true**: on.
-        - **false**: closed.
+        Specifies whether to enable the health check feature. Valid values:
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -412,8 +451,9 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckHttpCodes")
     def health_check_http_codes(self) -> Optional[Sequence[str]]:
         """
-        Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\\_2xx**, **http\\_3xx**, **http\\_4xx**, and **http\\_5xx**.
-        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
+
+        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_codes")
 
@@ -421,7 +461,11 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[int]:
         """
-        Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+        The interval at which health checks are performed. Unit: seconds.
+
+        Valid values: `5` to `50`.
+
+        Default value: `10`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -429,7 +473,7 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[str]:
         """
-        Health check protocol. Valid values: **TCP** or **HTTP**.
+        The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -437,8 +481,11 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckUrl")
     def health_check_url(self) -> Optional[str]:
         """
-        Health check path.
-        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        The path to which health check requests are sent.
+
+        The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+
+        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_url")
 
@@ -446,7 +493,11 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[int]:
         """
-        After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+
+        Valid values: `2` to `10`.
+
+        Default value: `2`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -454,8 +505,9 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="httpCheckMethod")
     def http_check_method(self) -> Optional[str]:
         """
-        The health check method. Valid values: **GET** or **HEAD**.
-        > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+        The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+
+        > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         """
         return pulumi.get(self, "http_check_method")
 
@@ -463,7 +515,11 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[int]:
         """
-        After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+
+        Valid values: `2` to `10`.
+
+        Default value: `2`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -1135,7 +1191,7 @@ class GetServerGroupServerAttachmentsAttachmentResult(dict):
                  zone_id: str):
         """
         :param str description: The description of the backend server.
-        :param str id: The ID of the server group.
+        :param str id: The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
         :param int port: The port used by the backend server.
         :param str server_group_id: The ID of the server group.
         :param str server_id: The ID of the server.
@@ -1168,7 +1224,7 @@ class GetServerGroupServerAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the server group.
+        The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
         """
         return pulumi.get(self, "id")
 

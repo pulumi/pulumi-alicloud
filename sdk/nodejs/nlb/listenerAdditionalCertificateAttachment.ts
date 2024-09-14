@@ -48,19 +48,19 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
     }
 
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      */
     public readonly certificateId!: pulumi.Output<string>;
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */
     public readonly listenerId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -104,19 +104,19 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
  */
 export interface ListenerAdditionalCertificateAttachmentState {
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      */
     certificateId?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */
     listenerId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
 }
@@ -126,15 +126,15 @@ export interface ListenerAdditionalCertificateAttachmentState {
  */
 export interface ListenerAdditionalCertificateAttachmentArgs {
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      */
     certificateId: pulumi.Input<string>;
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */
     listenerId: pulumi.Input<string>;
 }

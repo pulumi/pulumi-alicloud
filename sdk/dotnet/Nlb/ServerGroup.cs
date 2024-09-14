@@ -88,31 +88,31 @@ namespace Pulumi.AliCloud.Nlb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        /// The protocol version. Valid values:
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string> AddressIpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Full port forwarding.
+        /// Specifies whether to enable all-port forwarding. Valid values:
         /// </summary>
         [Output("anyPortEnabled")]
         public Output<bool> AnyPortEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        /// . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         /// </summary>
         [Output("connectionDrain")]
         public Output<bool> ConnectionDrain { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable connection draining.
+        /// Specifies whether to enable connection draining. Valid values:
         /// </summary>
         [Output("connectionDrainEnabled")]
         public Output<bool> ConnectionDrainEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        /// The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         /// </summary>
         [Output("connectionDrainTimeout")]
         public Output<int> ConnectionDrainTimeout { get; private set; } = null!;
@@ -124,44 +124,50 @@ namespace Pulumi.AliCloud.Nlb
         public Output<Outputs.ServerGroupHealthCheck> HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+        /// Specifies whether to enable client IP preservation. Valid values:
         /// </summary>
         [Output("preserveClientIpEnabled")]
         public Output<bool> PreserveClientIpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        /// The protocol used to forward requests to the backend servers. Valid values:
+        /// - `TCP` (default)
+        /// - `UDP`
+        /// - `TCPSSL`
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The routing algorithm. Valid values:
-        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+        /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The new name of the server group.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("serverGroupName")]
         public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values: 
-        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-        /// - `Ip`: allows you to specify IP addresses.
+        /// The type of server group. Valid values:
+        /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
@@ -179,7 +185,10 @@ namespace Pulumi.AliCloud.Nlb
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC to which the server group belongs.
+        /// The ID of the virtual private cloud (VPC) to which the server group belongs.
+        /// 
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -233,31 +242,31 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        /// The protocol version. Valid values:
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// Full port forwarding.
+        /// Specifies whether to enable all-port forwarding. Valid values:
         /// </summary>
         [Input("anyPortEnabled")]
         public Input<bool>? AnyPortEnabled { get; set; }
 
         /// <summary>
-        /// . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        /// . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         /// </summary>
         [Input("connectionDrain")]
         public Input<bool>? ConnectionDrain { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable connection draining.
+        /// Specifies whether to enable connection draining. Valid values:
         /// </summary>
         [Input("connectionDrainEnabled")]
         public Input<bool>? ConnectionDrainEnabled { get; set; }
 
         /// <summary>
-        /// Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        /// The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         /// </summary>
         [Input("connectionDrainTimeout")]
         public Input<int>? ConnectionDrainTimeout { get; set; }
@@ -269,44 +278,50 @@ namespace Pulumi.AliCloud.Nlb
         public Input<Inputs.ServerGroupHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+        /// Specifies whether to enable client IP preservation. Valid values:
         /// </summary>
         [Input("preserveClientIpEnabled")]
         public Input<bool>? PreserveClientIpEnabled { get; set; }
 
         /// <summary>
-        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        /// The protocol used to forward requests to the backend servers. Valid values:
+        /// - `TCP` (default)
+        /// - `UDP`
+        /// - `TCPSSL`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The routing algorithm. Valid values:
-        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+        /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The new name of the server group.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName", required: true)]
         public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values: 
-        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-        /// - `Ip`: allows you to specify IP addresses.
+        /// The type of server group. Valid values:
+        /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -324,7 +339,10 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The ID of the VPC to which the server group belongs.
+        /// The ID of the virtual private cloud (VPC) to which the server group belongs.
+        /// 
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -340,31 +358,31 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+        /// The protocol version. Valid values:
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// Full port forwarding.
+        /// Specifies whether to enable all-port forwarding. Valid values:
         /// </summary>
         [Input("anyPortEnabled")]
         public Input<bool>? AnyPortEnabled { get; set; }
 
         /// <summary>
-        /// . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+        /// . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         /// </summary>
         [Input("connectionDrain")]
         public Input<bool>? ConnectionDrain { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable connection draining.
+        /// Specifies whether to enable connection draining. Valid values:
         /// </summary>
         [Input("connectionDrainEnabled")]
         public Input<bool>? ConnectionDrainEnabled { get; set; }
 
         /// <summary>
-        /// Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+        /// The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         /// </summary>
         [Input("connectionDrainTimeout")]
         public Input<int>? ConnectionDrainTimeout { get; set; }
@@ -376,44 +394,50 @@ namespace Pulumi.AliCloud.Nlb
         public Input<Inputs.ServerGroupHealthCheckGetArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+        /// Specifies whether to enable client IP preservation. Valid values:
         /// </summary>
         [Input("preserveClientIpEnabled")]
         public Input<bool>? PreserveClientIpEnabled { get; set; }
 
         /// <summary>
-        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+        /// The protocol used to forward requests to the backend servers. Valid values:
+        /// - `TCP` (default)
+        /// - `UDP`
+        /// - `TCPSSL`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the security group belongs.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The routing algorithm. Valid values:
-        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+        /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// The new name of the server group.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The type of the server group. Valid values: 
-        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-        /// - `Ip`: allows you to specify IP addresses.
+        /// The type of server group. Valid values:
+        /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -437,7 +461,10 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The ID of the VPC to which the server group belongs.
+        /// The ID of the virtual private cloud (VPC) to which the server group belongs.
+        /// 
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+        /// 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

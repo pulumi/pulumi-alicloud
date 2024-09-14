@@ -50,13 +50,13 @@ namespace Pulumi.AliCloud.FC
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
-    ///         ProjectName = defaultProject.Name,
+    ///         ProjectName = defaultProject.ProjectName,
     ///         LogstoreName = "example-value",
     ///     });
     /// 
     ///     var sourceStore = new AliCloud.Log.Store("source_store", new()
     ///     {
-    ///         ProjectName = defaultProject.Name,
+    ///         ProjectName = defaultProject.ProjectName,
     ///         LogstoreName = "example-source-store",
     ///     });
     /// 
@@ -96,8 +96,8 @@ namespace Pulumi.AliCloud.FC
     ///         Role = defaultRole.Arn,
     ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
     ///         {
-    ///             Project = defaultProject.Name,
-    ///             Logstore = defaultStore.Name,
+    ///             Project = defaultProject.ProjectName,
+    ///             Logstore = defaultStore.LogstoreName,
     ///             EnableInstanceMetrics = true,
     ///             EnableRequestMetrics = true,
     ///         },
@@ -138,22 +138,22 @@ namespace Pulumi.AliCloud.FC
     ///         Function = defaultFunction.Name,
     ///         Name = "terraform-example",
     ///         Role = defaultRole.Arn,
-    ///         SourceArn = Output.Tuple(defaultGetRegions, @default, defaultProject.Name).Apply(values =&gt;
+    ///         SourceArn = Output.Tuple(defaultGetRegions, @default, defaultProject.ProjectName).Apply(values =&gt;
     ///         {
     ///             var defaultGetRegions = values.Item1;
     ///             var @default = values.Item2;
-    ///             var name = values.Item3;
-    ///             return $"acs:log:{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///             var projectName = values.Item3;
+    ///             return $"acs:log:{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{projectName}";
     ///         }),
     ///         Type = "log",
-    ///         Config = Output.Tuple(sourceStore.Name, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
+    ///         Config = Output.Tuple(sourceStore.LogstoreName, defaultProject.ProjectName, defaultStore.LogstoreName).Apply(values =&gt;
     ///         {
-    ///             var sourceStoreName = values.Item1;
-    ///             var defaultProjectName = values.Item2;
-    ///             var defaultStoreName = values.Item3;
+    ///             var sourceStoreLogstoreName = values.Item1;
+    ///             var projectName = values.Item2;
+    ///             var defaultStoreLogstoreName = values.Item3;
     ///             return @$"    {{
     ///         ""sourceConfig"": {{
-    ///             ""logstore"": ""{sourceStoreName}"",
+    ///             ""logstore"": ""{sourceStoreLogstoreName}"",
     ///             ""startTime"": null
     ///         }},
     ///         ""jobConfig"": {{
@@ -165,10 +165,9 @@ namespace Pulumi.AliCloud.FC
     ///             ""c"": ""d""
     ///         }},
     ///         ""logConfig"": {{
-    ///              ""project"": ""{defaultProjectName}"",
-    ///             ""logstore"": ""{defaultStoreName}""
+    ///              ""project"": ""{projectName}"",
+    ///             ""logstore"": ""{defaultStoreLogstoreName}""
     ///         }},
-    ///         ""targetConfig"": null,
     ///         ""enable"": true
     ///     }}
     ///   

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// &gt; **NOTE:** Available since v1.192.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.192.0+.
+        /// &gt; **NOTE:** Available since v1.192.0.
         /// 
         /// ## Example Usage
         /// 
@@ -199,6 +199,9 @@ namespace Pulumi.AliCloud.Nlb
     [OutputType]
     public sealed class GetServerGroupServerAttachmentsResult
     {
+        /// <summary>
+        /// A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupServerAttachmentsAttachmentResult> Attachments;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -206,6 +209,9 @@ namespace Pulumi.AliCloud.Nlb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the server group.
+        /// </summary>
         public readonly string? ServerGroupId;
         public readonly ImmutableArray<string> ServerIds;
         public readonly ImmutableArray<string> ServerIps;

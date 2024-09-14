@@ -13,22 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMapping {
     /**
-     * @return The ID of the elastic IP address.
+     * @return The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     private @Nullable String allocationId;
     /**
-     * @return The ID of ENI.
+     * @return The ID of the elastic network interface (ENI).
      * 
      */
     private @Nullable String eniId;
     /**
-     * @return The IPv6 address of a network-based server load balancer instance.
+     * @return The IPv6 address of the NLB instance.
      * 
      */
     private @Nullable String ipv6Address;
     /**
-     * @return The private IPv4 address of a network-based server load balancer instance.
+     * @return The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     private @Nullable String privateIpv4Address;
@@ -38,45 +38,47 @@ public final class LoadBalancerZoneMapping {
      */
     private @Nullable String publicIpv4Address;
     /**
-     * @return Zone Status.
+     * @return Zone Status
      * 
      */
     private @Nullable String status;
     /**
-     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     private String vswitchId;
     /**
-     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+     * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+     * 
+     * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
     private String zoneId;
 
     private LoadBalancerZoneMapping() {}
     /**
-     * @return The ID of the elastic IP address.
+     * @return The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public Optional<String> allocationId() {
         return Optional.ofNullable(this.allocationId);
     }
     /**
-     * @return The ID of ENI.
+     * @return The ID of the elastic network interface (ENI).
      * 
      */
     public Optional<String> eniId() {
         return Optional.ofNullable(this.eniId);
     }
     /**
-     * @return The IPv6 address of a network-based server load balancer instance.
+     * @return The IPv6 address of the NLB instance.
      * 
      */
     public Optional<String> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
     /**
-     * @return The private IPv4 address of a network-based server load balancer instance.
+     * @return The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public Optional<String> privateIpv4Address() {
@@ -90,21 +92,23 @@ public final class LoadBalancerZoneMapping {
         return Optional.ofNullable(this.publicIpv4Address);
     }
     /**
-     * @return Zone Status.
+     * @return Zone Status
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+     * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+     * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+     * 
+     * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
     public String zoneId() {

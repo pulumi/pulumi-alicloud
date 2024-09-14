@@ -29,6 +29,11 @@ public final class EcsLaunchTemplateDataDisk {
      */
     private @Nullable String description;
     /**
+     * @return The mount point of the data disk.
+     * 
+     */
+    private @Nullable String device;
+    /**
      * @return Encrypted the data in this disk.
      * 
      */
@@ -75,6 +80,13 @@ public final class EcsLaunchTemplateDataDisk {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
+    public Optional<String> device() {
+        return Optional.ofNullable(this.device);
     }
     /**
      * @return Encrypted the data in this disk.
@@ -124,6 +136,7 @@ public final class EcsLaunchTemplateDataDisk {
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
         private @Nullable String description;
+        private @Nullable String device;
         private @Nullable Boolean encrypted;
         private @Nullable String name;
         private @Nullable String performanceLevel;
@@ -135,6 +148,7 @@ public final class EcsLaunchTemplateDataDisk {
     	      this.category = defaults.category;
     	      this.deleteWithInstance = defaults.deleteWithInstance;
     	      this.description = defaults.description;
+    	      this.device = defaults.device;
     	      this.encrypted = defaults.encrypted;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
@@ -158,6 +172,12 @@ public final class EcsLaunchTemplateDataDisk {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder device(@Nullable String device) {
+
+            this.device = device;
             return this;
         }
         @CustomType.Setter
@@ -195,6 +215,7 @@ public final class EcsLaunchTemplateDataDisk {
             _resultValue.category = category;
             _resultValue.deleteWithInstance = deleteWithInstance;
             _resultValue.description = description;
+            _resultValue.device = device;
             _resultValue.encrypted = encrypted;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;

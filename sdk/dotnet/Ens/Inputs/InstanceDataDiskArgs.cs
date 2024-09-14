@@ -23,6 +23,24 @@ namespace Pulumi.AliCloud.Ens.Inputs
         public Input<string>? Category { get; set; }
 
         /// <summary>
+        /// Cloud Disk ID.
+        /// </summary>
+        [Input("diskId")]
+        public Input<string>? DiskId { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key used by the cloud disk.
+        /// </summary>
+        [Input("encryptKeyId")]
+        public Input<string>? EncryptKeyId { get; set; }
+
+        /// <summary>
+        /// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        /// <summary>
         /// Data disk size, unit: GB.
         /// </summary>
         [Input("size")]

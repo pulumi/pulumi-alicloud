@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ens
     /// <summary>
     /// ## Import
     /// 
-    /// ENS Instance can be imported using the id, e.g.
+    /// Ens Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ens/instance:Instance example &lt;id&gt;
@@ -22,10 +22,18 @@ namespace Pulumi.AliCloud.Ens
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100
         /// </summary>
         [Output("amount")]
         public Output<int?> Amount { get; private set; } = null!;
+
+        /// <summary>
+        /// The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
+        /// - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
+        /// - The minimum release time is one hour after the current time.
+        /// </summary>
+        [Output("autoReleaseTime")]
+        public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
         /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
@@ -36,7 +44,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to use vouchers. The default is to use. Value:
         /// - true (used)
-        /// - false (not used).
+        /// - false (not used)
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<string?> AutoUseCoupon { get; private set; } = null!;
@@ -45,7 +53,7 @@ namespace Pulumi.AliCloud.Ens
         /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
         /// - Hour: hourly billing
         /// - Day: Daily billing
-        /// - Month: monthly billing.
+        /// - Month: monthly billing
         /// </summary>
         [Output("billingCycle")]
         public Output<string?> BillingCycle { get; private set; } = null!;
@@ -54,13 +62,13 @@ namespace Pulumi.AliCloud.Ens
         /// Operator, required for regional scheduling. Optional values:
         /// - cmcc (mobile)
         /// - unicom
-        /// - telecom.
+        /// - telecom
         /// </summary>
         [Output("carrier")]
         public Output<string?> Carrier { get; private set; } = null!;
 
         /// <summary>
-        /// Data disk specifications. See `data_disk` below.
+        /// Data disk specifications See `data_disk` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
@@ -80,13 +88,13 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> ForceStop { get; private set; } = null!;
 
         /// <summary>
-        /// The host name of the instance. Example value: test-HostName.
+        /// The host name of the instance. Example value: test-HostName
         /// </summary>
         [Output("hostName")]
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
@@ -100,19 +108,21 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The instance billing policy. Optional values:
         /// - instance: instance granularity (the subscription method does not support instance)
-        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode)
         /// </summary>
         [Output("instanceChargeStrategy")]
         public Output<string?> InstanceChargeStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+        /// 
+        /// The default value is the InstanceId of the instance.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the instance. Example value: ens.sn1.small.
+        /// The specification of the instance. Example value: ens.sn1.small
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -120,13 +130,13 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
         /// - BandwidthByDay: Daily peak bandwidth
-        /// - 95bandwidthbymonth: 95 peak bandwidth.
+        /// - 95bandwidthbymonth: 95 peak bandwidth
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
@@ -135,39 +145,47 @@ namespace Pulumi.AliCloud.Ens
         /// The IP type. Value:
         /// - ipv4 (default):IPv4
         /// - ipv6:IPv6
-        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// - ipv4Andipv6:IPv4 and IPv6
         /// </summary>
         [Output("ipType")]
         public Output<string?> IpType { get; private set; } = null!;
 
         /// <summary>
-        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        /// The key pair name.
+        /// 
+        /// &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+        /// </summary>
+        [Output("keyPairName")]
+        public Output<string?> KeyPairName { get; private set; } = null!;
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
         /// </summary>
         [Output("netDistrictCode")]
         public Output<string?> NetDistrictCode { get; private set; } = null!;
 
         /// <summary>
-        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// The network ID of the instance. Can only be used in node-level scheduling
         /// </summary>
         [Output("netWorkId")]
         public Output<string> NetWorkId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
         /// </summary>
         [Output("passwordInherit")]
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
-        /// Instance payment method. Optional values:
+        /// Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
         /// - Subscription: prepaid, annual and monthly
-        /// - PayAsYouGo: Pay by volume.
+        /// - PayAsYouGo: Pay by volume
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -183,7 +201,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The unit of time for purchasing resources. Value:
         /// - Month (default): purchase by Month
-        /// - Day: buy by Day.
+        /// - Day: buy by Day
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -197,7 +215,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to assign a public IP identifier. Value:
         /// - true (default): Assign
-        /// - false: do not assign.
+        /// - false: do not assign
         /// </summary>
         [Output("publicIpIdentification")]
         public Output<bool?> PublicIpIdentification { get; private set; } = null!;
@@ -205,7 +223,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
         /// - Node-level scheduling: Region
-        /// - Regional scheduling: Big (region),Middle (province),Small (city).
+        /// - Regional scheduling: Big (region),Middle (province),Small (city)
         /// </summary>
         [Output("scheduleAreaLevel")]
         public Output<string> ScheduleAreaLevel { get; private set; } = null!;
@@ -213,7 +231,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
         /// - PriceLowPriority
-        /// - PriceLowPriority (priority low price).
+        /// - PriceLowPriority (priority low price)
         /// </summary>
         [Output("schedulingPriceStrategy")]
         public Output<string?> SchedulingPriceStrategy { get; private set; } = null!;
@@ -221,7 +239,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling policy. Optional values:
         /// - Concentrate for node-level scheduling
-        /// - For regional scheduling, Concentrate, Disperse.
+        /// - For regional scheduling, Concentrate, Disperse
         /// </summary>
         [Output("schedulingStrategy")]
         public Output<string?> SchedulingStrategy { get; private set; } = null!;
@@ -233,7 +251,15 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> SecurityId { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the instance.
+        /// The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
+        /// - NoSpot: normal pay-as-you-go instance (default)
+        /// - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+        /// </summary>
+        [Output("spotStrategy")]
+        public Output<string?> SpotStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the instance
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -243,6 +269,12 @@ namespace Pulumi.AliCloud.Ens
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.InstanceSystemDisk?> SystemDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag bound to the instance
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
@@ -257,7 +289,7 @@ namespace Pulumi.AliCloud.Ens
         public Output<string?> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -313,10 +345,18 @@ namespace Pulumi.AliCloud.Ens
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
+
+        /// <summary>
+        /// The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
+        /// - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
+        /// - The minimum release time is one hour after the current time.
+        /// </summary>
+        [Input("autoReleaseTime")]
+        public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
         /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
@@ -327,7 +367,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to use vouchers. The default is to use. Value:
         /// - true (used)
-        /// - false (not used).
+        /// - false (not used)
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<string>? AutoUseCoupon { get; set; }
@@ -336,7 +376,7 @@ namespace Pulumi.AliCloud.Ens
         /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
         /// - Hour: hourly billing
         /// - Day: Daily billing
-        /// - Month: monthly billing.
+        /// - Month: monthly billing
         /// </summary>
         [Input("billingCycle")]
         public Input<string>? BillingCycle { get; set; }
@@ -345,7 +385,7 @@ namespace Pulumi.AliCloud.Ens
         /// Operator, required for regional scheduling. Optional values:
         /// - cmcc (mobile)
         /// - unicom
-        /// - telecom.
+        /// - telecom
         /// </summary>
         [Input("carrier")]
         public Input<string>? Carrier { get; set; }
@@ -354,7 +394,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk specifications. See `data_disk` below.
+        /// Data disk specifications See `data_disk` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
@@ -377,13 +417,13 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? ForceStop { get; set; }
 
         /// <summary>
-        /// The host name of the instance. Example value: test-HostName.
+        /// The host name of the instance. Example value: test-HostName
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -397,19 +437,21 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The instance billing policy. Optional values:
         /// - instance: instance granularity (the subscription method does not support instance)
-        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode)
         /// </summary>
         [Input("instanceChargeStrategy")]
         public Input<string>? InstanceChargeStrategy { get; set; }
 
         /// <summary>
-        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+        /// 
+        /// The default value is the InstanceId of the instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The specification of the instance. Example value: ens.sn1.small.
+        /// The specification of the instance. Example value: ens.sn1.small
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -417,13 +459,13 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
         /// - BandwidthByDay: Daily peak bandwidth
-        /// - 95bandwidthbymonth: 95 peak bandwidth.
+        /// - 95bandwidthbymonth: 95 peak bandwidth
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -432,19 +474,27 @@ namespace Pulumi.AliCloud.Ens
         /// The IP type. Value:
         /// - ipv4 (default):IPv4
         /// - ipv6:IPv6
-        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// - ipv4Andipv6:IPv4 and IPv6
         /// </summary>
         [Input("ipType")]
         public Input<string>? IpType { get; set; }
 
         /// <summary>
-        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        /// The key pair name.
+        /// 
+        /// &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+        /// </summary>
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
         /// </summary>
         [Input("netDistrictCode")]
         public Input<string>? NetDistrictCode { get; set; }
 
         /// <summary>
-        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// The network ID of the instance. Can only be used in node-level scheduling
         /// </summary>
         [Input("netWorkId")]
         public Input<string>? NetWorkId { get; set; }
@@ -453,7 +503,7 @@ namespace Pulumi.AliCloud.Ens
         private Input<string>? _password;
 
         /// <summary>
-        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit
         /// </summary>
         public Input<string>? Password
         {
@@ -466,15 +516,15 @@ namespace Pulumi.AliCloud.Ens
         }
 
         /// <summary>
-        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// Instance payment method. Optional values:
+        /// Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
         /// - Subscription: prepaid, annual and monthly
-        /// - PayAsYouGo: Pay by volume.
+        /// - PayAsYouGo: Pay by volume
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -490,7 +540,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The unit of time for purchasing resources. Value:
         /// - Month (default): purchase by Month
-        /// - Day: buy by Day.
+        /// - Day: buy by Day
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -504,7 +554,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to assign a public IP identifier. Value:
         /// - true (default): Assign
-        /// - false: do not assign.
+        /// - false: do not assign
         /// </summary>
         [Input("publicIpIdentification")]
         public Input<bool>? PublicIpIdentification { get; set; }
@@ -512,7 +562,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
         /// - Node-level scheduling: Region
-        /// - Regional scheduling: Big (region),Middle (province),Small (city).
+        /// - Regional scheduling: Big (region),Middle (province),Small (city)
         /// </summary>
         [Input("scheduleAreaLevel", required: true)]
         public Input<string> ScheduleAreaLevel { get; set; } = null!;
@@ -520,7 +570,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
         /// - PriceLowPriority
-        /// - PriceLowPriority (priority low price).
+        /// - PriceLowPriority (priority low price)
         /// </summary>
         [Input("schedulingPriceStrategy")]
         public Input<string>? SchedulingPriceStrategy { get; set; }
@@ -528,7 +578,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling policy. Optional values:
         /// - Concentrate for node-level scheduling
-        /// - For regional scheduling, Concentrate, Disperse.
+        /// - For regional scheduling, Concentrate, Disperse
         /// </summary>
         [Input("schedulingStrategy")]
         public Input<string>? SchedulingStrategy { get; set; }
@@ -540,7 +590,15 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? SecurityId { get; set; }
 
         /// <summary>
-        /// Status of the instance.
+        /// The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
+        /// - NoSpot: normal pay-as-you-go instance (default)
+        /// - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
+        /// Status of the instance
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -550,6 +608,18 @@ namespace Pulumi.AliCloud.Ens
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskArgs>? SystemDisk { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag bound to the instance
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
@@ -564,7 +634,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -578,10 +648,18 @@ namespace Pulumi.AliCloud.Ens
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of instances created, with a minimum of 1 and a maximum of 100.
+        /// The number of instances created, with a minimum of 1 and a maximum of 100
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
+
+        /// <summary>
+        /// The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
+        /// - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
+        /// - The minimum release time is one hour after the current time.
+        /// </summary>
+        [Input("autoReleaseTime")]
+        public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
         /// Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
@@ -592,7 +670,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to use vouchers. The default is to use. Value:
         /// - true (used)
-        /// - false (not used).
+        /// - false (not used)
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<string>? AutoUseCoupon { get; set; }
@@ -601,7 +679,7 @@ namespace Pulumi.AliCloud.Ens
         /// The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
         /// - Hour: hourly billing
         /// - Day: Daily billing
-        /// - Month: monthly billing.
+        /// - Month: monthly billing
         /// </summary>
         [Input("billingCycle")]
         public Input<string>? BillingCycle { get; set; }
@@ -610,7 +688,7 @@ namespace Pulumi.AliCloud.Ens
         /// Operator, required for regional scheduling. Optional values:
         /// - cmcc (mobile)
         /// - unicom
-        /// - telecom.
+        /// - telecom
         /// </summary>
         [Input("carrier")]
         public Input<string>? Carrier { get; set; }
@@ -619,7 +697,7 @@ namespace Pulumi.AliCloud.Ens
         private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk specifications. See `data_disk` below.
+        /// Data disk specifications See `data_disk` below.
         /// </summary>
         public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
@@ -642,13 +720,13 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? ForceStop { get; set; }
 
         /// <summary>
-        /// The host name of the instance. Example value: test-HostName.
+        /// The host name of the instance. Example value: test-HostName
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+        /// The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -662,19 +740,21 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The instance billing policy. Optional values:
         /// - instance: instance granularity (the subscription method does not support instance)
-        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+        /// - user: user Dimension (user is not transmitted or supported in the prepaid mode)
         /// </summary>
         [Input("instanceChargeStrategy")]
         public Input<string>? InstanceChargeStrategy { get; set; }
 
         /// <summary>
-        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+        /// The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+        /// 
+        /// The default value is the InstanceId of the instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The specification of the instance. Example value: ens.sn1.small.
+        /// The specification of the instance. Example value: ens.sn1.small
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -682,13 +762,13 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
         /// - BandwidthByDay: Daily peak bandwidth
-        /// - 95bandwidthbymonth: 95 peak bandwidth.
+        /// - 95bandwidthbymonth: 95 peak bandwidth
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -697,19 +777,27 @@ namespace Pulumi.AliCloud.Ens
         /// The IP type. Value:
         /// - ipv4 (default):IPv4
         /// - ipv6:IPv6
-        /// - ipv4Andipv6:IPv4 and IPv6.
+        /// - ipv4Andipv6:IPv4 and IPv6
         /// </summary>
         [Input("ipType")]
         public Input<string>? IpType { get; set; }
 
         /// <summary>
-        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+        /// The key pair name.
+        /// 
+        /// &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+        /// </summary>
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        /// <summary>
+        /// The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
         /// </summary>
         [Input("netDistrictCode")]
         public Input<string>? NetDistrictCode { get; set; }
 
         /// <summary>
-        /// The network ID of the instance. Can only be used in node-level scheduling.
+        /// The network ID of the instance. Can only be used in node-level scheduling
         /// </summary>
         [Input("netWorkId")]
         public Input<string>? NetWorkId { get; set; }
@@ -718,7 +806,7 @@ namespace Pulumi.AliCloud.Ens
         private Input<string>? _password;
 
         /// <summary>
-        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+        /// The instance password. At least one of Password, KeyPairName, and PasswordInherit
         /// </summary>
         public Input<string>? Password
         {
@@ -731,15 +819,15 @@ namespace Pulumi.AliCloud.Ens
         }
 
         /// <summary>
-        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+        /// Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
         /// </summary>
         [Input("passwordInherit")]
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// Instance payment method. Optional values:
+        /// Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
         /// - Subscription: prepaid, annual and monthly
-        /// - PayAsYouGo: Pay by volume.
+        /// - PayAsYouGo: Pay by volume
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -755,7 +843,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// The unit of time for purchasing resources. Value:
         /// - Month (default): purchase by Month
-        /// - Day: buy by Day.
+        /// - Day: buy by Day
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -769,7 +857,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Whether to assign a public IP identifier. Value:
         /// - true (default): Assign
-        /// - false: do not assign.
+        /// - false: do not assign
         /// </summary>
         [Input("publicIpIdentification")]
         public Input<bool>? PublicIpIdentification { get; set; }
@@ -777,7 +865,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
         /// - Node-level scheduling: Region
-        /// - Regional scheduling: Big (region),Middle (province),Small (city).
+        /// - Regional scheduling: Big (region),Middle (province),Small (city)
         /// </summary>
         [Input("scheduleAreaLevel")]
         public Input<string>? ScheduleAreaLevel { get; set; }
@@ -785,7 +873,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling price policy. If it is not filled in, the default priority is low price. Value:
         /// - PriceLowPriority
-        /// - PriceLowPriority (priority low price).
+        /// - PriceLowPriority (priority low price)
         /// </summary>
         [Input("schedulingPriceStrategy")]
         public Input<string>? SchedulingPriceStrategy { get; set; }
@@ -793,7 +881,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Scheduling policy. Optional values:
         /// - Concentrate for node-level scheduling
-        /// - For regional scheduling, Concentrate, Disperse.
+        /// - For regional scheduling, Concentrate, Disperse
         /// </summary>
         [Input("schedulingStrategy")]
         public Input<string>? SchedulingStrategy { get; set; }
@@ -805,7 +893,15 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? SecurityId { get; set; }
 
         /// <summary>
-        /// Status of the instance.
+        /// The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
+        /// - NoSpot: normal pay-as-you-go instance (default)
+        /// - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
+        /// Status of the instance
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -815,6 +911,18 @@ namespace Pulumi.AliCloud.Ens
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.InstanceSystemDiskGetArgs>? SystemDisk { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag bound to the instance
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
@@ -829,7 +937,7 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+        /// The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

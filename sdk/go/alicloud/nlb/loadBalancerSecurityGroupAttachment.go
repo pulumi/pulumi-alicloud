@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Nlb Load Balancer Security Group Attachment resource.
+// Provides a NLB Load Balancer Security Group Attachment resource.
 //
-// For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
+// Security Group mount.
+//
+// For information about NLB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
 //
 // > **NOTE:** Available since v1.198.0.
 //
@@ -131,13 +133,11 @@ import (
 type LoadBalancerSecurityGroupAttachment struct {
 	pulumi.CustomResourceState
 
-	// Whether to PreCheck this request only. Value:
-	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of the network-based server load balancer instance to be bound to the security group.
+	// The ID of the NLB instance to be associated with the security group.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// The ID of the security group.
+	// The ID of the security group to be disassociated.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 }
 
@@ -177,24 +177,20 @@ func GetLoadBalancerSecurityGroupAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
 type loadBalancerSecurityGroupAttachmentState struct {
-	// Whether to PreCheck this request only. Value:
-	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the network-based server load balancer instance to be bound to the security group.
+	// The ID of the NLB instance to be associated with the security group.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// The ID of the security group.
+	// The ID of the security group to be disassociated.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 }
 
 type LoadBalancerSecurityGroupAttachmentState struct {
-	// Whether to PreCheck this request only. Value:
-	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the network-based server load balancer instance to be bound to the security group.
+	// The ID of the NLB instance to be associated with the security group.
 	LoadBalancerId pulumi.StringPtrInput
-	// The ID of the security group.
+	// The ID of the security group to be disassociated.
 	SecurityGroupId pulumi.StringPtrInput
 }
 
@@ -203,25 +199,21 @@ func (LoadBalancerSecurityGroupAttachmentState) ElementType() reflect.Type {
 }
 
 type loadBalancerSecurityGroupAttachmentArgs struct {
-	// Whether to PreCheck this request only. Value:
-	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the network-based server load balancer instance to be bound to the security group.
+	// The ID of the NLB instance to be associated with the security group.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// The ID of the security group.
+	// The ID of the security group to be disassociated.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 }
 
 // The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
 type LoadBalancerSecurityGroupAttachmentArgs struct {
-	// Whether to PreCheck this request only. Value:
-	// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the network-based server load balancer instance to be bound to the security group.
+	// The ID of the NLB instance to be associated with the security group.
 	LoadBalancerId pulumi.StringInput
-	// The ID of the security group.
+	// The ID of the security group to be disassociated.
 	SecurityGroupId pulumi.StringInput
 }
 
@@ -312,19 +304,17 @@ func (o LoadBalancerSecurityGroupAttachmentOutput) ToLoadBalancerSecurityGroupAt
 	return o
 }
 
-// Whether to PreCheck this request only. Value:
-// - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 func (o LoadBalancerSecurityGroupAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the network-based server load balancer instance to be bound to the security group.
+// The ID of the NLB instance to be associated with the security group.
 func (o LoadBalancerSecurityGroupAttachmentOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The ID of the security group.
+// The ID of the security group to be disassociated.
 func (o LoadBalancerSecurityGroupAttachmentOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerSecurityGroupAttachment) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }

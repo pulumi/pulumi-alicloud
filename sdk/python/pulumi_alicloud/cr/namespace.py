@@ -144,13 +144,17 @@ class Namespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         example = alicloud.cr.Namespace("example",
-            name=name,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         ```
@@ -189,13 +193,17 @@ class Namespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         example = alicloud.cr.Namespace("example",
-            name=name,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         ```

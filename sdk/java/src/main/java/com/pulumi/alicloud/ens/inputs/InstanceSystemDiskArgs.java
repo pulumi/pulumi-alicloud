@@ -17,7 +17,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
     public static final InstanceSystemDiskArgs Empty = new InstanceSystemDiskArgs();
 
     /**
-     * System disk type. Optional values:
+     * System disk type. Value
      * - cloud_efficiency: Ultra cloud disk
      * - cloud_ssd: Full Flash cloud disk
      * - local_hdd: local hdd disk
@@ -28,7 +28,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> category;
 
     /**
-     * @return System disk type. Optional values:
+     * @return System disk type. Value
      * - cloud_efficiency: Ultra cloud disk
      * - cloud_ssd: Full Flash cloud disk
      * - local_hdd: local hdd disk
@@ -80,7 +80,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param category System disk type. Optional values:
+         * @param category System disk type. Value
          * - cloud_efficiency: Ultra cloud disk
          * - cloud_ssd: Full Flash cloud disk
          * - local_hdd: local hdd disk
@@ -95,7 +95,7 @@ public final class InstanceSystemDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param category System disk type. Optional values:
+         * @param category System disk type. Value
          * - cloud_efficiency: Ultra cloud disk
          * - cloud_ssd: Full Flash cloud disk
          * - local_hdd: local hdd disk

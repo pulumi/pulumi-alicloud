@@ -399,10 +399,10 @@ class Trigger(pulumi.CustomResource):
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default_integer['result']}")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-value")
         source_store = alicloud.log.Store("source_store",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-source-store")
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
@@ -432,8 +432,8 @@ class Trigger(pulumi.CustomResource):
             description="example-value",
             role=default_role.arn,
             log_config={
-                "project": default_project.name,
-                "logstore": default_store.name,
+                "project": default_project.project_name,
+                "logstore": default_store.logstore_name,
                 "enable_instance_metrics": True,
                 "enable_request_metrics": True,
             })
@@ -461,15 +461,15 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example",
             role=default_role.arn,
-            source_arn=default_project.name.apply(lambda name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{name}"),
+            source_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{project_name}"),
             type="log",
             config=pulumi.Output.all(
-                sourceStoreName=source_store.name,
-                defaultProjectName=default_project.name,
-                defaultStoreName=default_store.name
+                sourceStoreLogstore_name=source_store.logstore_name,
+                project_name=default_project.project_name,
+                defaultStoreLogstore_name=default_store.logstore_name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "sourceConfig": {{
-                    "logstore": "{resolved_outputs['sourceStoreName']}",
+                    "logstore": "{resolved_outputs['sourceStoreLogstore_name']}",
                     "startTime": null
                 }},
                 "jobConfig": {{
@@ -481,10 +481,9 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{resolved_outputs['defaultProjectName']}",
-                    "logstore": "{resolved_outputs['defaultStoreName']}"
+                     "project": "{resolved_outputs['project_name']}",
+                    "logstore": "{resolved_outputs['defaultStoreLogstore_name']}"
                 }},
-                "targetConfig": null,
                 "enable": true
             }}
           
@@ -899,10 +898,10 @@ class Trigger(pulumi.CustomResource):
             min=10000)
         default_project = alicloud.log.Project("default", project_name=f"example-value-{default_integer['result']}")
         default_store = alicloud.log.Store("default",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-value")
         source_store = alicloud.log.Store("source_store",
-            project_name=default_project.name,
+            project_name=default_project.project_name,
             logstore_name="example-source-store")
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
@@ -932,8 +931,8 @@ class Trigger(pulumi.CustomResource):
             description="example-value",
             role=default_role.arn,
             log_config={
-                "project": default_project.name,
-                "logstore": default_store.name,
+                "project": default_project.project_name,
+                "logstore": default_store.logstore_name,
                 "enable_instance_metrics": True,
                 "enable_request_metrics": True,
             })
@@ -961,15 +960,15 @@ class Trigger(pulumi.CustomResource):
             function=default_function.name,
             name="terraform-example",
             role=default_role.arn,
-            source_arn=default_project.name.apply(lambda name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{name}"),
+            source_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default_get_regions.regions[0].id}:{default.id}:project/{project_name}"),
             type="log",
             config=pulumi.Output.all(
-                sourceStoreName=source_store.name,
-                defaultProjectName=default_project.name,
-                defaultStoreName=default_store.name
+                sourceStoreLogstore_name=source_store.logstore_name,
+                project_name=default_project.project_name,
+                defaultStoreLogstore_name=default_store.logstore_name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
                 "sourceConfig": {{
-                    "logstore": "{resolved_outputs['sourceStoreName']}",
+                    "logstore": "{resolved_outputs['sourceStoreLogstore_name']}",
                     "startTime": null
                 }},
                 "jobConfig": {{
@@ -981,10 +980,9 @@ class Trigger(pulumi.CustomResource):
                     "c": "d"
                 }},
                 "logConfig": {{
-                     "project": "{resolved_outputs['defaultProjectName']}",
-                    "logstore": "{resolved_outputs['defaultStoreName']}"
+                     "project": "{resolved_outputs['project_name']}",
+                    "logstore": "{resolved_outputs['defaultStoreLogstore_name']}"
                 }},
-                "targetConfig": null,
                 "enable": true
             }}
           

@@ -100,16 +100,33 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+     * 
+     */
+    @Import(name="endpointProtocolVersion")
+    private @Nullable Output<String> endpointProtocolVersion;
+
+    /**
+     * @return The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+     * 
+     */
+    public Optional<Output<String>> endpointProtocolVersion() {
+        return Optional.ofNullable(this.endpointProtocolVersion);
+    }
+
+    /**
+     * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
      * 
      */
     @Import(name="endpointRequestProtocol")
     private @Nullable Output<String> endpointRequestProtocol;
 
     /**
-     * @return The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * @return The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
      * 
      */
     public Optional<Output<String>> endpointRequestProtocol() {
@@ -299,6 +316,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.endpointConfigurations = $.endpointConfigurations;
         this.endpointGroupRegion = $.endpointGroupRegion;
         this.endpointGroupType = $.endpointGroupType;
+        this.endpointProtocolVersion = $.endpointProtocolVersion;
         this.endpointRequestProtocol = $.endpointRequestProtocol;
         this.healthCheckEnabled = $.healthCheckEnabled;
         this.healthCheckIntervalSeconds = $.healthCheckIntervalSeconds;
@@ -449,8 +467,31 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointRequestProtocol The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-         * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+         * @param endpointProtocolVersion The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+         * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointProtocolVersion(@Nullable Output<String> endpointProtocolVersion) {
+            $.endpointProtocolVersion = endpointProtocolVersion;
+            return this;
+        }
+
+        /**
+         * @param endpointProtocolVersion The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+         * &gt; **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointProtocolVersion(String endpointProtocolVersion) {
+            return endpointProtocolVersion(Output.of(endpointProtocolVersion));
+        }
+
+        /**
+         * @param endpointRequestProtocol The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+         * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
          * 
          * @return builder
          * 
@@ -461,8 +502,8 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointRequestProtocol The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-         * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+         * @param endpointRequestProtocol The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+         * &gt; **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
          * 
          * @return builder
          * 

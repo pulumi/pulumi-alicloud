@@ -25,14 +25,21 @@ namespace Pulumi.AliCloud.CR
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000000,
+    ///         Max = 99999999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.CR.Namespace("example", new()
     ///     {
-    ///         Name = name,
+    ///         Name = $"{name}-{@default.Result}",
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });

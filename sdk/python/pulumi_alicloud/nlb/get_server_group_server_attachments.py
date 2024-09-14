@@ -48,6 +48,9 @@ class GetServerGroupServerAttachmentsResult:
     @property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetServerGroupServerAttachmentsAttachmentResult']:
+        """
+        A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @property
@@ -71,6 +74,9 @@ class GetServerGroupServerAttachmentsResult:
     @property
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[str]:
+        """
+        The ID of the server group.
+        """
         return pulumi.get(self, "server_group_id")
 
     @property
@@ -108,7 +114,7 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.192.0+.
+    > **NOTE:** Available since v1.192.0.
 
     ## Example Usage
 
@@ -158,7 +164,7 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
     """
     This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.192.0+.
+    > **NOTE:** Available since v1.192.0.
 
     ## Example Usage
 

@@ -58,11 +58,17 @@ class GetListenersResult:
     @property
     @pulumi.getter(name="listenerProtocol")
     def listener_protocol(self) -> Optional[str]:
+        """
+        The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        """
         return pulumi.get(self, "listener_protocol")
 
     @property
     @pulumi.getter
     def listeners(self) -> Sequence['outputs.GetListenersListenerResult']:
+        """
+        A list of Nlb Listeners. Each element contains the following attributes:
+        """
         return pulumi.get(self, "listeners")
 
     @property
@@ -98,7 +104,19 @@ def get_listeners(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Nlb Listeners of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.191.0+.
+    > **NOTE:** Available since v1.191.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nlb.get_listeners(ids=["example_value"])
+    pulumi.export("alicloudNlbListenerId1", ids.listeners[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Listener IDs.
@@ -132,7 +150,19 @@ def get_listeners_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     """
     This data source provides the Nlb Listeners of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.191.0+.
+    > **NOTE:** Available since v1.191.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.nlb.get_listeners(ids=["example_value"])
+    pulumi.export("alicloudNlbListenerId1", ids.listeners[0].id)
+    ```
 
 
     :param Sequence[str] ids: A list of Listener IDs.

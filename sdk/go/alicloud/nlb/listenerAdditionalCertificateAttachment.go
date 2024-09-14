@@ -28,13 +28,13 @@ import (
 type ListenerAdditionalCertificateAttachment struct {
 	pulumi.CustomResourceState
 
-	// Certificate ID. Currently, only server certificates are supported.
+	// The ID of additional certificates.
 	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
-	// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of the tcpssl listener.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -74,24 +74,24 @@ func GetListenerAdditionalCertificateAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListenerAdditionalCertificateAttachment resources.
 type listenerAdditionalCertificateAttachmentState struct {
-	// Certificate ID. Currently, only server certificates are supported.
+	// The ID of additional certificates.
 	CertificateId *string `pulumi:"certificateId"`
-	// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the tcpssl listener.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId *string `pulumi:"listenerId"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 }
 
 type ListenerAdditionalCertificateAttachmentState struct {
-	// Certificate ID. Currently, only server certificates are supported.
+	// The ID of additional certificates.
 	CertificateId pulumi.StringPtrInput
-	// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the tcpssl listener.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 }
 
@@ -100,21 +100,21 @@ func (ListenerAdditionalCertificateAttachmentState) ElementType() reflect.Type {
 }
 
 type listenerAdditionalCertificateAttachmentArgs struct {
-	// Certificate ID. Currently, only server certificates are supported.
+	// The ID of additional certificates.
 	CertificateId string `pulumi:"certificateId"`
-	// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of the tcpssl listener.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId string `pulumi:"listenerId"`
 }
 
 // The set of arguments for constructing a ListenerAdditionalCertificateAttachment resource.
 type ListenerAdditionalCertificateAttachmentArgs struct {
-	// Certificate ID. Currently, only server certificates are supported.
+	// The ID of additional certificates.
 	CertificateId pulumi.StringInput
-	// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The ID of the tcpssl listener.
+	// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 	ListenerId pulumi.StringInput
 }
 
@@ -205,22 +205,22 @@ func (o ListenerAdditionalCertificateAttachmentOutput) ToListenerAdditionalCerti
 	return o
 }
 
-// Certificate ID. Currently, only server certificates are supported.
+// The ID of additional certificates.
 func (o ListenerAdditionalCertificateAttachmentOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
 
-// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 func (o ListenerAdditionalCertificateAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the tcpssl listener.
+// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
 func (o ListenerAdditionalCertificateAttachmentOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o ListenerAdditionalCertificateAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListenerAdditionalCertificateAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

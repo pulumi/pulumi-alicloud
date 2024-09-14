@@ -14,7 +14,7 @@ import (
 
 // Provides a NLB Load Balancer resource.
 //
-// For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
+// For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createloadbalancer).
 //
 // > **NOTE:** Available since v1.191.0.
 //
@@ -116,59 +116,58 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	// Protocol version. Value:
-	// - **Ipv4**:IPv4 type.
-	// - **DualStack**: Double Stack type.
+	// The protocol version. Valid values:
+	//
+	// - **ipv4:** IPv4. This is the default value.
+	// - **DualStack:** dual stack.
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
-	// The network address type of IPv4 for network load balancing. Value:
-	// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+	// The type of IPv4 address used by the NLB instance. Valid values:
+	// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	//
+	// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
-	// The ID of the shared bandwidth package associated with the public network instance.
+	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 	CrossZoneEnabled pulumi.BoolOutput `pulumi:"crossZoneEnabled"`
-	// Delete protection. See `deletionProtectionConfig` below.
-	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigOutput `pulumi:"deletionProtectionConfig"`
-	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-	DeletionProtectionEnabled pulumi.BoolOutput `pulumi:"deletionProtectionEnabled"`
-	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
-	DeletionProtectionReason pulumi.StringOutput `pulumi:"deletionProtectionReason"`
+	// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
+	DeletionProtectionConfig  LoadBalancerDeletionProtectionConfigOutput `pulumi:"deletionProtectionConfig"`
+	DeletionProtectionEnabled pulumi.BoolOutput                          `pulumi:"deletionProtectionEnabled"`
+	DeletionProtectionReason  pulumi.StringOutput                        `pulumi:"deletionProtectionReason"`
 	// The domain name of the NLB instance.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
-	// The IPv6 address type of network load balancing. Value:
-	// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+	// The type of IPv6 address used by the NLB instance. Valid values:
+	// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	Ipv6AddressType pulumi.StringOutput `pulumi:"ipv6AddressType"`
 	// The business status of the NLB instance.
 	LoadBalancerBusinessStatus pulumi.StringOutput `pulumi:"loadBalancerBusinessStatus"`
-	// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+	// The name of the NLB instance.
+	//
+	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 	LoadBalancerName pulumi.StringPtrOutput `pulumi:"loadBalancerName"`
-	// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 	LoadBalancerType pulumi.StringOutput `pulumi:"loadBalancerType"`
-	// Modify protection. See `modificationProtectionConfig` below.
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigOutput `pulumi:"modificationProtectionConfig"`
-	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
-	ModificationProtectionReason pulumi.StringOutput `pulumi:"modificationProtectionReason"`
-	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
-	ModificationProtectionStatus pulumi.StringOutput `pulumi:"modificationProtectionStatus"`
-	// The ID of the resource group.
+	ModificationProtectionReason pulumi.StringOutput                            `pulumi:"modificationProtectionReason"`
+	ModificationProtectionStatus pulumi.StringOutput                            `pulumi:"modificationProtectionStatus"`
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The status of the resource.
+	// The status of the NLB instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of labels.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the network-based SLB instance.
+	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -211,116 +210,114 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	// Protocol version. Value:
-	// - **Ipv4**:IPv4 type.
-	// - **DualStack**: Double Stack type.
+	// The protocol version. Valid values:
+	//
+	// - **ipv4:** IPv4. This is the default value.
+	// - **DualStack:** dual stack.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	// The network address type of IPv4 for network load balancing. Value:
-	// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+	// The type of IPv4 address used by the NLB instance. Valid values:
+	// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	//
+	// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 	AddressType *string `pulumi:"addressType"`
-	// The ID of the shared bandwidth package associated with the public network instance.
+	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
 	// Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
 	CreateTime *string `pulumi:"createTime"`
-	// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
-	// Delete protection. See `deletionProtectionConfig` below.
-	DeletionProtectionConfig *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
-	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
-	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
-	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
+	// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
+	DeletionProtectionConfig  *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
+	DeletionProtectionEnabled *bool                                 `pulumi:"deletionProtectionEnabled"`
+	DeletionProtectionReason  *string                               `pulumi:"deletionProtectionReason"`
 	// The domain name of the NLB instance.
 	DnsName *string `pulumi:"dnsName"`
-	// The IPv6 address type of network load balancing. Value:
-	// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+	// The type of IPv6 address used by the NLB instance. Valid values:
+	// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
 	// The business status of the NLB instance.
 	LoadBalancerBusinessStatus *string `pulumi:"loadBalancerBusinessStatus"`
-	// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+	// The name of the NLB instance.
+	//
+	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 	LoadBalancerType *string `pulumi:"loadBalancerType"`
-	// Modify protection. See `modificationProtectionConfig` below.
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
-	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
-	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
-	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
-	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
-	// The ID of the resource group.
+	ModificationProtectionReason *string                                   `pulumi:"modificationProtectionReason"`
+	ModificationProtectionStatus *string                                   `pulumi:"modificationProtectionStatus"`
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The status of the resource.
+	// The status of the NLB instance.
 	Status *string `pulumi:"status"`
 	// List of labels.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the network-based SLB instance.
+	// The ID of the VPC where the NLB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
-	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 type LoadBalancerState struct {
-	// Protocol version. Value:
-	// - **Ipv4**:IPv4 type.
-	// - **DualStack**: Double Stack type.
+	// The protocol version. Valid values:
+	//
+	// - **ipv4:** IPv4. This is the default value.
+	// - **DualStack:** dual stack.
 	AddressIpVersion pulumi.StringPtrInput
-	// The network address type of IPv4 for network load balancing. Value:
-	// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+	// The type of IPv4 address used by the NLB instance. Valid values:
+	// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	//
+	// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 	AddressType pulumi.StringPtrInput
-	// The ID of the shared bandwidth package associated with the public network instance.
+	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 	BandwidthPackageId pulumi.StringPtrInput
 	// Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
 	CreateTime pulumi.StringPtrInput
-	// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 	CrossZoneEnabled pulumi.BoolPtrInput
-	// Delete protection. See `deletionProtectionConfig` below.
-	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigPtrInput
-	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
+	DeletionProtectionConfig  LoadBalancerDeletionProtectionConfigPtrInput
 	DeletionProtectionEnabled pulumi.BoolPtrInput
-	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
-	DeletionProtectionReason pulumi.StringPtrInput
+	DeletionProtectionReason  pulumi.StringPtrInput
 	// The domain name of the NLB instance.
 	DnsName pulumi.StringPtrInput
-	// The IPv6 address type of network load balancing. Value:
-	// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+	// The type of IPv6 address used by the NLB instance. Valid values:
+	// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	Ipv6AddressType pulumi.StringPtrInput
 	// The business status of the NLB instance.
 	LoadBalancerBusinessStatus pulumi.StringPtrInput
-	// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+	// The name of the NLB instance.
+	//
+	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 	LoadBalancerName pulumi.StringPtrInput
-	// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 	LoadBalancerType pulumi.StringPtrInput
-	// Modify protection. See `modificationProtectionConfig` below.
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
-	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
-	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The status of the resource.
+	// The status of the NLB instance.
 	Status pulumi.StringPtrInput
 	// List of labels.
 	Tags pulumi.StringMapInput
-	// The ID of the network-based SLB instance.
+	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringPtrInput
-	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -329,101 +326,99 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	// Protocol version. Value:
-	// - **Ipv4**:IPv4 type.
-	// - **DualStack**: Double Stack type.
+	// The protocol version. Valid values:
+	//
+	// - **ipv4:** IPv4. This is the default value.
+	// - **DualStack:** dual stack.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	// The network address type of IPv4 for network load balancing. Value:
-	// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+	// The type of IPv4 address used by the NLB instance. Valid values:
+	// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	//
+	// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 	AddressType string `pulumi:"addressType"`
-	// The ID of the shared bandwidth package associated with the public network instance.
+	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
-	// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
-	// Delete protection. See `deletionProtectionConfig` below.
-	DeletionProtectionConfig *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
-	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
-	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
-	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
-	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
-	// The IPv6 address type of network load balancing. Value:
-	// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+	// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
+	DeletionProtectionConfig  *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
+	DeletionProtectionEnabled *bool                                 `pulumi:"deletionProtectionEnabled"`
+	DeletionProtectionReason  *string                               `pulumi:"deletionProtectionReason"`
+	// The type of IPv6 address used by the NLB instance. Valid values:
+	// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
-	// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+	// The name of the NLB instance.
+	//
+	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 	LoadBalancerType *string `pulumi:"loadBalancerType"`
-	// Modify protection. See `modificationProtectionConfig` below.
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
-	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
-	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
-	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
-	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
-	// The ID of the resource group.
+	ModificationProtectionReason *string                                   `pulumi:"modificationProtectionReason"`
+	ModificationProtectionStatus *string                                   `pulumi:"modificationProtectionStatus"`
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// List of labels.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the network-based SLB instance.
+	// The ID of the VPC where the NLB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
-	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	// Protocol version. Value:
-	// - **Ipv4**:IPv4 type.
-	// - **DualStack**: Double Stack type.
+	// The protocol version. Valid values:
+	//
+	// - **ipv4:** IPv4. This is the default value.
+	// - **DualStack:** dual stack.
 	AddressIpVersion pulumi.StringPtrInput
-	// The network address type of IPv4 for network load balancing. Value:
-	// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+	// The type of IPv4 address used by the NLB instance. Valid values:
+	// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	//
+	// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 	AddressType pulumi.StringInput
-	// The ID of the shared bandwidth package associated with the public network instance.
+	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 	BandwidthPackageId pulumi.StringPtrInput
-	// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 	CrossZoneEnabled pulumi.BoolPtrInput
-	// Delete protection. See `deletionProtectionConfig` below.
-	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigPtrInput
-	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
+	DeletionProtectionConfig  LoadBalancerDeletionProtectionConfigPtrInput
 	DeletionProtectionEnabled pulumi.BoolPtrInput
-	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
-	DeletionProtectionReason pulumi.StringPtrInput
-	// The IPv6 address type of network load balancing. Value:
-	// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-	// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+	DeletionProtectionReason  pulumi.StringPtrInput
+	// The type of IPv6 address used by the NLB instance. Valid values:
+	// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	Ipv6AddressType pulumi.StringPtrInput
-	// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+	// The name of the NLB instance.
+	//
+	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 	LoadBalancerName pulumi.StringPtrInput
-	// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 	LoadBalancerType pulumi.StringPtrInput
-	// Modify protection. See `modificationProtectionConfig` below.
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
-	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
-	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The ID of the new resource group.
+	//
+	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayInput
 	// List of labels.
 	Tags pulumi.StringMapInput
-	// The ID of the network-based SLB instance.
+	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringInput
-	// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+	// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -514,21 +509,24 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Protocol version. Value:
-// - **Ipv4**:IPv4 type.
-// - **DualStack**: Double Stack type.
+// The protocol version. Valid values:
+//
+// - **ipv4:** IPv4. This is the default value.
+// - **DualStack:** dual stack.
 func (o LoadBalancerOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)
 }
 
-// The network address type of IPv4 for network load balancing. Value:
-// - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
-// - **Intranet**: private network. The server load balancer only has a private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the intranet environment of the VPC where the server load balancer is located.
+// The type of IPv4 address used by the NLB instance. Valid values:
+// - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+// - `Intranet`: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+//
+// > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
 func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
 }
 
-// The ID of the shared bandwidth package associated with the public network instance.
+// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
 func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
@@ -538,24 +536,20 @@ func (o LoadBalancerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether cross-zone is enabled for a network-based load balancing instance. Value:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
 func (o LoadBalancerOutput) CrossZoneEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolOutput { return v.CrossZoneEnabled }).(pulumi.BoolOutput)
 }
 
-// Delete protection. See `deletionProtectionConfig` below.
+// Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
 func (o LoadBalancerOutput) DeletionProtectionConfig() LoadBalancerDeletionProtectionConfigOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerDeletionProtectionConfigOutput { return v.DeletionProtectionConfig }).(LoadBalancerDeletionProtectionConfigOutput)
 }
 
-// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 func (o LoadBalancerOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
 }
 
-// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
 func (o LoadBalancerOutput) DeletionProtectionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.DeletionProtectionReason }).(pulumi.StringOutput)
 }
@@ -565,9 +559,9 @@ func (o LoadBalancerOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
 }
 
-// The IPv6 address type of network load balancing. Value:
-// - **Internet**: Server Load Balancer has a public IP address, and the DNS domain name is resolved to a public IP address, so it can be accessed in a public network environment.
-// - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
+// The type of IPv6 address used by the NLB instance. Valid values:
+// - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+// - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
 func (o LoadBalancerOutput) Ipv6AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Ipv6AddressType }).(pulumi.StringOutput)
 }
@@ -577,36 +571,36 @@ func (o LoadBalancerOutput) LoadBalancerBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerBusinessStatus }).(pulumi.StringOutput)
 }
 
-// The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
+// The name of the NLB instance.
+//
+// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
 func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
 }
 
-// Load balancing type. Only value: **network**, which indicates network-based load balancing.
+// The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
 func (o LoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerType }).(pulumi.StringOutput)
 }
 
-// Modify protection. See `modificationProtectionConfig` below.
+// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
 func (o LoadBalancerOutput) ModificationProtectionConfig() LoadBalancerModificationProtectionConfigOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerModificationProtectionConfigOutput {
 		return v.ModificationProtectionConfig
 	}).(LoadBalancerModificationProtectionConfigOutput)
 }
 
-// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 func (o LoadBalancerOutput) ModificationProtectionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionReason }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
-// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
-// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 func (o LoadBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group.
+// The ID of the new resource group.
+//
+// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -616,7 +610,7 @@ func (o LoadBalancerOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The status of the resource.
+// The status of the NLB instance.
 func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -626,12 +620,12 @@ func (o LoadBalancerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the network-based SLB instance.
+// The ID of the VPC where the NLB instance is deployed.
 func (o LoadBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zoneMappings` below.
+// Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
 func (o LoadBalancerOutput) ZoneMappings() LoadBalancerZoneMappingArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerZoneMappingArrayOutput { return v.ZoneMappings }).(LoadBalancerZoneMappingArrayOutput)
 }

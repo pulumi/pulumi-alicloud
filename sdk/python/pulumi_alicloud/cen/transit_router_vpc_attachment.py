@@ -16,11 +16,12 @@ __all__ = ['TransitRouterVpcAttachmentArgs', 'TransitRouterVpcAttachment']
 @pulumi.input_type
 class TransitRouterVpcAttachmentArgs:
     def __init__(__self__, *,
-                 cen_id: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  zone_mappings: pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]],
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
+                 cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -29,32 +30,46 @@ class TransitRouterVpcAttachmentArgs:
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[str]] = None):
+                 transit_router_vpc_attachment_name: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
-        :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+               - **false:** (default)
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
+        :param pulumi.Input[bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_attachment_description: The description of the VPC connection.
+               
+               The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[str] transit_router_id: The ID of the Enterprise Edition transit router.
+        :param pulumi.Input[str] transit_router_vpc_attachment_name: The name of the VPC connection.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
+        :param pulumi.Input[int] vpc_owner_id: VpcOwnerId
         """
-        pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_mappings", zone_mappings)
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        if cen_id is not None:
+            pulumi.set(__self__, "cen_id", cen_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
@@ -74,29 +89,24 @@ class TransitRouterVpcAttachmentArgs:
         if transit_router_attachment_description is not None:
             pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
+            warnings.warn("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""transit_router_attachment_name is deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
+        if transit_router_attachment_name is not None:
             pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if transit_router_vpc_attachment_name is not None:
+            pulumi.set(__self__, "transit_router_vpc_attachment_name", transit_router_vpc_attachment_name)
+        if transit_router_vpc_attachment_options is not None:
+            pulumi.set(__self__, "transit_router_vpc_attachment_options", transit_router_vpc_attachment_options)
         if vpc_owner_id is not None:
             pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
-
-    @property
-    @pulumi.getter(name="cenId")
-    def cen_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the CEN.
-        """
-        return pulumi.get(self, "cen_id")
-
-    @cen_id.setter
-    def cen_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cen_id", value)
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The ID of the VPC.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -108,8 +118,9 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]:
         """
-        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        ZoneMappingss See `zone_mappings` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -121,7 +132,8 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        - **false:** (default)
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -130,10 +142,22 @@ class TransitRouterVpcAttachmentArgs:
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Cloud Enterprise Network (CEN) instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @cen_id.setter
+    def cen_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cen_id", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
@@ -142,10 +166,22 @@ class TransitRouterVpcAttachmentArgs:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to forcibly delete the VPC connection. The value is:
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
@@ -195,7 +231,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -207,7 +243,9 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router vbr attachment.
+        The description of the VPC connection.
+
+        The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
@@ -217,9 +255,10 @@ class TransitRouterVpcAttachmentArgs:
 
     @property
     @pulumi.getter(name="transitRouterAttachmentName")
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router vbr attachment.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -231,7 +270,7 @@ class TransitRouterVpcAttachmentArgs:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router.
+        The ID of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -240,15 +279,41 @@ class TransitRouterVpcAttachmentArgs:
         pulumi.set(self, "transit_router_id", value)
 
     @property
-    @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="transitRouterVpcAttachmentName")
+    def transit_router_vpc_attachment_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner id of vpc.
+        The name of the VPC connection.
+
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_name")
+
+    @transit_router_vpc_attachment_name.setter
+    def transit_router_vpc_attachment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_router_vpc_attachment_name", value)
+
+    @property
+    @pulumi.getter(name="transitRouterVpcAttachmentOptions")
+    def transit_router_vpc_attachment_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        TransitRouterVpcAttachmentOptions
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_options")
+
+    @transit_router_vpc_attachment_options.setter
+    def transit_router_vpc_attachment_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "transit_router_vpc_attachment_options", value)
+
+    @property
+    @pulumi.getter(name="vpcOwnerId")
+    def vpc_owner_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[str]]):
+    def vpc_owner_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vpc_owner_id", value)
 
 
@@ -257,7 +322,9 @@ class _TransitRouterVpcAttachmentState:
     def __init__(__self__, *,
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -268,35 +335,51 @@ class _TransitRouterVpcAttachmentState:
                  transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_name: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[int]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+               - **false:** (default)
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
+        :param pulumi.Input[bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
-        :param pulumi.Input[str] status: The associating status of the network.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
+        :param pulumi.Input[str] status: Status
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_attachment_description: The description of the VPC connection.
+               
+               The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_id: The ID of the Transit Router Attachment.
-        :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        :param pulumi.Input[str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[str] transit_router_id: The ID of the Enterprise Edition transit router.
+        :param pulumi.Input[str] transit_router_vpc_attachment_name: The name of the VPC connection.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
@@ -320,9 +403,16 @@ class _TransitRouterVpcAttachmentState:
         if transit_router_attachment_id is not None:
             pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_attachment_name is not None:
+            warnings.warn("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""transit_router_attachment_name is deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
+        if transit_router_attachment_name is not None:
             pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if transit_router_vpc_attachment_name is not None:
+            pulumi.set(__self__, "transit_router_vpc_attachment_name", transit_router_vpc_attachment_name)
+        if transit_router_vpc_attachment_options is not None:
+            pulumi.set(__self__, "transit_router_vpc_attachment_options", transit_router_vpc_attachment_options)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_owner_id is not None:
@@ -334,7 +424,8 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        - **false:** (default)
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -346,7 +437,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the CEN.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -355,10 +446,22 @@ class _TransitRouterVpcAttachmentState:
         pulumi.set(self, "cen_id", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
@@ -367,10 +470,22 @@ class _TransitRouterVpcAttachmentState:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to forcibly delete the VPC connection. The value is:
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
@@ -420,7 +535,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The associating status of the network.
+        Status
         """
         return pulumi.get(self, "status")
 
@@ -432,7 +547,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -444,7 +559,9 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router vbr attachment.
+        The description of the VPC connection.
+
+        The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
@@ -466,9 +583,10 @@ class _TransitRouterVpcAttachmentState:
 
     @property
     @pulumi.getter(name="transitRouterAttachmentName")
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router vbr attachment.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -480,7 +598,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router.
+        The ID of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -489,10 +607,36 @@ class _TransitRouterVpcAttachmentState:
         pulumi.set(self, "transit_router_id", value)
 
     @property
+    @pulumi.getter(name="transitRouterVpcAttachmentName")
+    def transit_router_vpc_attachment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPC connection.
+
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_name")
+
+    @transit_router_vpc_attachment_name.setter
+    def transit_router_vpc_attachment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_router_vpc_attachment_name", value)
+
+    @property
+    @pulumi.getter(name="transitRouterVpcAttachmentOptions")
+    def transit_router_vpc_attachment_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        TransitRouterVpcAttachmentOptions
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_options")
+
+    @transit_router_vpc_attachment_options.setter
+    def transit_router_vpc_attachment_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "transit_router_vpc_attachment_options", value)
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -502,22 +646,23 @@ class _TransitRouterVpcAttachmentState:
 
     @property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[str]]:
+    def vpc_owner_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The owner id of vpc.
+        VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[str]]):
+    def vpc_owner_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vpc_owner_id", value)
 
     @property
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
         """
-        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        ZoneMappingss See `zone_mappings` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -534,6 +679,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -542,8 +688,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_name: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[int]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -605,29 +753,38 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router VPC Attachment can be imported using the id, e.g.
+        CEN Transit Router Vpc Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
+        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+               - **false:** (default)
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
+        :param pulumi.Input[bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_attachment_description: The description of the VPC connection.
+               
+               The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[str] transit_router_id: The ID of the Enterprise Edition transit router.
+        :param pulumi.Input[str] transit_router_vpc_attachment_name: The name of the VPC connection.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -694,10 +851,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router VPC Attachment can be imported using the id, e.g.
+        CEN Transit Router Vpc Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <cen_id>:<transit_router_attachment_id>
+        $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -718,6 +875,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -726,8 +884,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_name: Optional[pulumi.Input[str]] = None,
+                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[int]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -739,10 +899,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             __props__ = TransitRouterVpcAttachmentArgs.__new__(TransitRouterVpcAttachmentArgs)
 
             __props__.__dict__["auto_publish_route_enabled"] = auto_publish_route_enabled
-            if cen_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cen_id'")
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
@@ -751,6 +910,8 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
             __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
             __props__.__dict__["transit_router_id"] = transit_router_id
+            __props__.__dict__["transit_router_vpc_attachment_name"] = transit_router_vpc_attachment_name
+            __props__.__dict__["transit_router_vpc_attachment_options"] = transit_router_vpc_attachment_options
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -758,6 +919,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             if zone_mappings is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_mappings'")
             __props__.__dict__["zone_mappings"] = zone_mappings
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["transit_router_attachment_id"] = None
         super(TransitRouterVpcAttachment, __self__).__init__(
@@ -772,7 +934,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             resource_type: Optional[pulumi.Input[str]] = None,
             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -783,8 +947,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None,
+            transit_router_vpc_attachment_name: Optional[pulumi.Input[str]] = None,
+            transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
-            vpc_owner_id: Optional[pulumi.Input[str]] = None,
+            vpc_owner_id: Optional[pulumi.Input[int]] = None,
             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None) -> 'TransitRouterVpcAttachment':
         """
         Get an existing TransitRouterVpcAttachment resource's state with the given name, id, and optional extra
@@ -793,23 +959,33 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+               - **false:** (default)
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
+        :param pulumi.Input[bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
-        :param pulumi.Input[str] status: The associating status of the network.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
+        :param pulumi.Input[str] status: Status
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_attachment_description: The description of the VPC connection.
+               
+               The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_id: The ID of the Transit Router Attachment.
-        :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        :param pulumi.Input[str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[str] transit_router_id: The ID of the Enterprise Edition transit router.
+        :param pulumi.Input[str] transit_router_vpc_attachment_name: The name of the VPC connection.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input[int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -817,7 +993,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         __props__.__dict__["auto_publish_route_enabled"] = auto_publish_route_enabled
         __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
@@ -828,6 +1006,8 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["transit_router_attachment_id"] = transit_router_attachment_id
         __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
         __props__.__dict__["transit_router_id"] = transit_router_id
+        __props__.__dict__["transit_router_vpc_attachment_name"] = transit_router_vpc_attachment_name
+        __props__.__dict__["transit_router_vpc_attachment_options"] = transit_router_vpc_attachment_options
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vpc_owner_id"] = vpc_owner_id
         __props__.__dict__["zone_mappings"] = zone_mappings
@@ -837,31 +1017,48 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        - **false:** (default)
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> pulumi.Output[str]:
+    def cen_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the CEN.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to forcibly delete the VPC connection. The value is:
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
@@ -895,7 +1092,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The associating status of the network.
+        Status
         """
         return pulumi.get(self, "status")
 
@@ -903,7 +1100,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -911,7 +1108,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the transit router vbr attachment.
+        The description of the VPC connection.
+
+        The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
@@ -925,9 +1124,10 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transitRouterAttachmentName")
-    def transit_router_attachment_name(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
+    def transit_router_attachment_name(self) -> pulumi.Output[str]:
         """
-        The name of the transit router vbr attachment.
+        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -935,23 +1135,41 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router.
+        The ID of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
+
+    @property
+    @pulumi.getter(name="transitRouterVpcAttachmentName")
+    def transit_router_vpc_attachment_name(self) -> pulumi.Output[str]:
+        """
+        The name of the VPC connection.
+
+        The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_name")
+
+    @property
+    @pulumi.getter(name="transitRouterVpcAttachmentOptions")
+    def transit_router_vpc_attachment_options(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        TransitRouterVpcAttachmentOptions
+        """
+        return pulumi.get(self, "transit_router_vpc_attachment_options")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of the VPC.
+        The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> pulumi.Output[str]:
+    def vpc_owner_id(self) -> pulumi.Output[int]:
         """
-        The owner id of vpc.
+        VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
@@ -959,8 +1177,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.TransitRouterVpcAttachmentZoneMapping']]:
         """
-        The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        ZoneMappingss See `zone_mappings` below.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_mappings")
 

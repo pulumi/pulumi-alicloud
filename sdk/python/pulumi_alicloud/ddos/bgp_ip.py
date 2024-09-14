@@ -372,7 +372,7 @@ class BgpIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> pulumi.Output[Optional[str]]:
+    def member_uid(self) -> pulumi.Output[str]:
         """
         The member account id of the IP address.
         """

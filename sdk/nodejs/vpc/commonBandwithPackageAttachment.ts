@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.vpc.CommonBandwithPackage("default", {
  *     bandwidth: "3",
- *     internetChargeType: "PayByBandwidth",
+ *     internetChargeType: "PayByTraffic",
  * });
  * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     bandwidth: "3",

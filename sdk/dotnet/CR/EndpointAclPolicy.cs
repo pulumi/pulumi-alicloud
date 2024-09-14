@@ -25,18 +25,25 @@ namespace Pulumi.AliCloud.CR
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000000,
+    ///         Max = 99999999,
+    ///     });
+    /// 
     ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
+    ///         InstanceName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var @default = AliCloud.CR.GetEndpointAclService.Invoke(new()

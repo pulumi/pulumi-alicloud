@@ -78,6 +78,7 @@ export class BaseInstance extends pulumi.CustomResource {
 
     /**
      * Whether to automatically renew.
+     *
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -94,6 +95,7 @@ export class BaseInstance extends pulumi.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     *
      * > **NOTE:**   The default value is delete_all.
      */
     public readonly backupRetainMode!: pulumi.Output<string | undefined>;
@@ -106,54 +108,71 @@ export class BaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpu!: pulumi.Output<number>;
     /**
-     * The creation time of the resource.
+     * Cpu architecture, x86, arm. If no, the default value is x86
+     */
+    public readonly cpuArch!: pulumi.Output<string>;
+    /**
+     * The creation time of the resource
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The size of the storage space, in GB.
+     *
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
+     *
      * The default value of each package is its minimum value.
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     *
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
      */
     public readonly diskType!: pulumi.Output<string>;
     /**
-     * Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     *
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     *
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      */
     public readonly instanceClass!: pulumi.Output<string>;
     /**
-     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.
+     *
+     * The length is 1 to 20 English or Chinese characters.
+     *
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      */
     public readonly nodeNum!: pulumi.Output<string>;
     /**
@@ -171,9 +190,21 @@ export class BaseInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * The duration of the purchase of resources.
+     *
+     * Package year and Month value range: Month.
+     *
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the primary instance.
+     */
+    public readonly primaryInstance!: pulumi.Output<string | undefined>;
+    /**
+     * The primary instance Region.
+     */
+    public readonly primaryRegion!: pulumi.Output<string | undefined>;
     /**
      * The ID of the enterprise resource group to which the instance resides.
      */
@@ -183,9 +214,15 @@ export class BaseInstance extends pulumi.CustomResource {
      */
     public readonly series!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     */
+    public readonly upgradeSpecNative!: pulumi.Output<boolean | undefined>;
     /**
      * Information about the zone where the cluster is deployed.
      */
@@ -209,6 +246,7 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["backupRetainMode"] = state ? state.backupRetainMode : undefined;
             resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
+            resourceInputs["cpuArch"] = state ? state.cpuArch : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
@@ -219,9 +257,12 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["primaryInstance"] = state ? state.primaryInstance : undefined;
+            resourceInputs["primaryRegion"] = state ? state.primaryRegion : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["series"] = state ? state.series : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["upgradeSpecNative"] = state ? state.upgradeSpecNative : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as BaseInstanceArgs | undefined;
@@ -243,6 +284,7 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["backupRetainMode"] = args ? args.backupRetainMode : undefined;
+            resourceInputs["cpuArch"] = args ? args.cpuArch : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
@@ -252,8 +294,11 @@ export class BaseInstance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["primaryInstance"] = args ? args.primaryInstance : undefined;
+            resourceInputs["primaryRegion"] = args ? args.primaryRegion : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["series"] = args ? args.series : undefined;
+            resourceInputs["upgradeSpecNative"] = args ? args.upgradeSpecNative : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["commodityCode"] = undefined /*out*/;
             resourceInputs["cpu"] = undefined /*out*/;
@@ -271,6 +316,7 @@ export class BaseInstance extends pulumi.CustomResource {
 export interface BaseInstanceState {
     /**
      * Whether to automatically renew.
+     *
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -287,6 +333,7 @@ export interface BaseInstanceState {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     *
      * > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
@@ -299,54 +346,71 @@ export interface BaseInstanceState {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * The creation time of the resource.
+     * Cpu architecture, x86, arm. If no, the default value is x86
+     */
+    cpuArch?: pulumi.Input<string>;
+    /**
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
     /**
      * The size of the storage space, in GB.
+     *
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
+     *
      * The default value of each package is its minimum value.
      */
     diskSize?: pulumi.Input<number>;
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     *
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
      */
     diskType?: pulumi.Input<string>;
     /**
-     * Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     *
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     *
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.
+     *
+     * The length is 1 to 20 English or Chinese characters.
+     *
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      */
     nodeNum?: pulumi.Input<string>;
     /**
@@ -364,9 +428,21 @@ export interface BaseInstanceState {
      */
     period?: pulumi.Input<number>;
     /**
-     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * The duration of the purchase of resources.
+     *
+     * Package year and Month value range: Month.
+     *
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     periodUnit?: pulumi.Input<string>;
+    /**
+     * The ID of the primary instance.
+     */
+    primaryInstance?: pulumi.Input<string>;
+    /**
+     * The primary instance Region.
+     */
+    primaryRegion?: pulumi.Input<string>;
     /**
      * The ID of the enterprise resource group to which the instance resides.
      */
@@ -376,9 +452,15 @@ export interface BaseInstanceState {
      */
     series?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
+    /**
+     * Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     */
+    upgradeSpecNative?: pulumi.Input<boolean>;
     /**
      * Information about the zone where the cluster is deployed.
      */
@@ -391,6 +473,7 @@ export interface BaseInstanceState {
 export interface BaseInstanceArgs {
     /**
      * Whether to automatically renew.
+     *
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -407,54 +490,72 @@ export interface BaseInstanceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     *
      * > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
     /**
+     * Cpu architecture, x86, arm. If no, the default value is x86
+     */
+    cpuArch?: pulumi.Input<string>;
+    /**
      * The size of the storage space, in GB.
+     *
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
+     *
      * The default value of each package is its minimum value.
      */
     diskSize: pulumi.Input<number>;
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     *
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
      */
     diskType?: pulumi.Input<string>;
     /**
-     * Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     *
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     *
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      */
     instanceClass: pulumi.Input<string>;
     /**
-     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.
+     *
+     * The length is 1 to 20 English or Chinese characters.
+     *
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      */
     nodeNum?: pulumi.Input<string>;
     /**
@@ -472,9 +573,21 @@ export interface BaseInstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * The duration of the purchase of resources.
+     *
+     * Package year and Month value range: Month.
+     *
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
     periodUnit?: pulumi.Input<string>;
+    /**
+     * The ID of the primary instance.
+     */
+    primaryInstance?: pulumi.Input<string>;
+    /**
+     * The primary instance Region.
+     */
+    primaryRegion?: pulumi.Input<string>;
     /**
      * The ID of the enterprise resource group to which the instance resides.
      */
@@ -483,6 +596,12 @@ export interface BaseInstanceArgs {
      * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      */
     series: pulumi.Input<string>;
+    /**
+     * Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     */
+    upgradeSpecNative?: pulumi.Input<boolean>;
     /**
      * Information about the zone where the cluster is deployed.
      */

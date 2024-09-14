@@ -13,11 +13,200 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type TrafficMarkingPolicyTrafficMatchRule struct {
+	// IP Address Family.
+	AddressFamily *string `pulumi:"addressFamily"`
+	// The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+	DstCidr *string `pulumi:"dstCidr"`
+	// The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+	// - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+	// - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+	// - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+	DstPortRanges []int `pulumi:"dstPortRanges"`
+	// The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+	MatchDscp *int `pulumi:"matchDscp"`
+	// The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+	Protocol *string `pulumi:"protocol"`
+	// The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+	SrcCidr *string `pulumi:"srcCidr"`
+	// The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+	// - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+	// - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+	// - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+	SrcPortRanges []int `pulumi:"srcPortRanges"`
+	// The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+	TrafficMatchRuleDescription *string `pulumi:"trafficMatchRuleDescription"`
+	// The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+	TrafficMatchRuleName *string `pulumi:"trafficMatchRuleName"`
+}
+
+// TrafficMarkingPolicyTrafficMatchRuleInput is an input type that accepts TrafficMarkingPolicyTrafficMatchRuleArgs and TrafficMarkingPolicyTrafficMatchRuleOutput values.
+// You can construct a concrete instance of `TrafficMarkingPolicyTrafficMatchRuleInput` via:
+//
+//	TrafficMarkingPolicyTrafficMatchRuleArgs{...}
+type TrafficMarkingPolicyTrafficMatchRuleInput interface {
+	pulumi.Input
+
+	ToTrafficMarkingPolicyTrafficMatchRuleOutput() TrafficMarkingPolicyTrafficMatchRuleOutput
+	ToTrafficMarkingPolicyTrafficMatchRuleOutputWithContext(context.Context) TrafficMarkingPolicyTrafficMatchRuleOutput
+}
+
+type TrafficMarkingPolicyTrafficMatchRuleArgs struct {
+	// IP Address Family.
+	AddressFamily pulumi.StringPtrInput `pulumi:"addressFamily"`
+	// The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+	DstCidr pulumi.StringPtrInput `pulumi:"dstCidr"`
+	// The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+	// - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+	// - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+	// - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+	DstPortRanges pulumi.IntArrayInput `pulumi:"dstPortRanges"`
+	// The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+	MatchDscp pulumi.IntPtrInput `pulumi:"matchDscp"`
+	// The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+	SrcCidr pulumi.StringPtrInput `pulumi:"srcCidr"`
+	// The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+	// - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+	// - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+	// - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+	SrcPortRanges pulumi.IntArrayInput `pulumi:"srcPortRanges"`
+	// The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+	TrafficMatchRuleDescription pulumi.StringPtrInput `pulumi:"trafficMatchRuleDescription"`
+	// The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+	TrafficMatchRuleName pulumi.StringPtrInput `pulumi:"trafficMatchRuleName"`
+}
+
+func (TrafficMarkingPolicyTrafficMatchRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRule)(nil)).Elem()
+}
+
+func (i TrafficMarkingPolicyTrafficMatchRuleArgs) ToTrafficMarkingPolicyTrafficMatchRuleOutput() TrafficMarkingPolicyTrafficMatchRuleOutput {
+	return i.ToTrafficMarkingPolicyTrafficMatchRuleOutputWithContext(context.Background())
+}
+
+func (i TrafficMarkingPolicyTrafficMatchRuleArgs) ToTrafficMarkingPolicyTrafficMatchRuleOutputWithContext(ctx context.Context) TrafficMarkingPolicyTrafficMatchRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMarkingPolicyTrafficMatchRuleOutput)
+}
+
+// TrafficMarkingPolicyTrafficMatchRuleArrayInput is an input type that accepts TrafficMarkingPolicyTrafficMatchRuleArray and TrafficMarkingPolicyTrafficMatchRuleArrayOutput values.
+// You can construct a concrete instance of `TrafficMarkingPolicyTrafficMatchRuleArrayInput` via:
+//
+//	TrafficMarkingPolicyTrafficMatchRuleArray{ TrafficMarkingPolicyTrafficMatchRuleArgs{...} }
+type TrafficMarkingPolicyTrafficMatchRuleArrayInput interface {
+	pulumi.Input
+
+	ToTrafficMarkingPolicyTrafficMatchRuleArrayOutput() TrafficMarkingPolicyTrafficMatchRuleArrayOutput
+	ToTrafficMarkingPolicyTrafficMatchRuleArrayOutputWithContext(context.Context) TrafficMarkingPolicyTrafficMatchRuleArrayOutput
+}
+
+type TrafficMarkingPolicyTrafficMatchRuleArray []TrafficMarkingPolicyTrafficMatchRuleInput
+
+func (TrafficMarkingPolicyTrafficMatchRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMarkingPolicyTrafficMatchRule)(nil)).Elem()
+}
+
+func (i TrafficMarkingPolicyTrafficMatchRuleArray) ToTrafficMarkingPolicyTrafficMatchRuleArrayOutput() TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+	return i.ToTrafficMarkingPolicyTrafficMatchRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TrafficMarkingPolicyTrafficMatchRuleArray) ToTrafficMarkingPolicyTrafficMatchRuleArrayOutputWithContext(ctx context.Context) TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMarkingPolicyTrafficMatchRuleArrayOutput)
+}
+
+type TrafficMarkingPolicyTrafficMatchRuleOutput struct{ *pulumi.OutputState }
+
+func (TrafficMarkingPolicyTrafficMatchRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRule)(nil)).Elem()
+}
+
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) ToTrafficMarkingPolicyTrafficMatchRuleOutput() TrafficMarkingPolicyTrafficMatchRuleOutput {
+	return o
+}
+
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) ToTrafficMarkingPolicyTrafficMatchRuleOutputWithContext(ctx context.Context) TrafficMarkingPolicyTrafficMatchRuleOutput {
+	return o
+}
+
+// IP Address Family.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) AddressFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.AddressFamily }).(pulumi.StringPtrOutput)
+}
+
+// The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) DstCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.DstCidr }).(pulumi.StringPtrOutput)
+}
+
+// The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+// - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+// - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+// - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) DstPortRanges() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) []int { return v.DstPortRanges }).(pulumi.IntArrayOutput)
+}
+
+// The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) MatchDscp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *int { return v.MatchDscp }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) SrcCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.SrcCidr }).(pulumi.StringPtrOutput)
+}
+
+// The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+// - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+// - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+// - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) SrcPortRanges() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) []int { return v.SrcPortRanges }).(pulumi.IntArrayOutput)
+}
+
+// The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) TrafficMatchRuleDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.TrafficMatchRuleDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+func (o TrafficMarkingPolicyTrafficMatchRuleOutput) TrafficMatchRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMarkingPolicyTrafficMatchRule) *string { return v.TrafficMatchRuleName }).(pulumi.StringPtrOutput)
+}
+
+type TrafficMarkingPolicyTrafficMatchRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficMarkingPolicyTrafficMatchRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMarkingPolicyTrafficMatchRule)(nil)).Elem()
+}
+
+func (o TrafficMarkingPolicyTrafficMatchRuleArrayOutput) ToTrafficMarkingPolicyTrafficMatchRuleArrayOutput() TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+	return o
+}
+
+func (o TrafficMarkingPolicyTrafficMatchRuleArrayOutput) ToTrafficMarkingPolicyTrafficMatchRuleArrayOutputWithContext(ctx context.Context) TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+	return o
+}
+
+func (o TrafficMarkingPolicyTrafficMatchRuleArrayOutput) Index(i pulumi.IntInput) TrafficMarkingPolicyTrafficMatchRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficMarkingPolicyTrafficMatchRule {
+		return vs[0].([]TrafficMarkingPolicyTrafficMatchRule)[vs[1].(int)]
+	}).(TrafficMarkingPolicyTrafficMatchRuleOutput)
+}
+
 type TransitRouterVpcAttachmentZoneMapping struct {
-	// The VSwitch id of attachment.
-	VswitchId *string `pulumi:"vswitchId"`
-	// The zone Id of VSwitch.
-	ZoneId *string `pulumi:"zoneId"`
+	// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+	// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	// - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	VswitchId string `pulumi:"vswitchId"`
+	// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // TransitRouterVpcAttachmentZoneMappingInput is an input type that accepts TransitRouterVpcAttachmentZoneMappingArgs and TransitRouterVpcAttachmentZoneMappingOutput values.
@@ -32,10 +221,12 @@ type TransitRouterVpcAttachmentZoneMappingInput interface {
 }
 
 type TransitRouterVpcAttachmentZoneMappingArgs struct {
-	// The VSwitch id of attachment.
-	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
-	// The zone Id of VSwitch.
-	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+	// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+	// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	// - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (TransitRouterVpcAttachmentZoneMappingArgs) ElementType() reflect.Type {
@@ -89,14 +280,16 @@ func (o TransitRouterVpcAttachmentZoneMappingOutput) ToTransitRouterVpcAttachmen
 	return o
 }
 
-// The VSwitch id of attachment.
-func (o TransitRouterVpcAttachmentZoneMappingOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+// The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+// - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+// - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+func (o TransitRouterVpcAttachmentZoneMappingOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone Id of VSwitch.
-func (o TransitRouterVpcAttachmentZoneMappingOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+// The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
+func (o TransitRouterVpcAttachmentZoneMappingOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type TransitRouterVpcAttachmentZoneMappingArrayOutput struct{ *pulumi.OutputState }
@@ -6085,6 +6278,8 @@ func (o GetVbrHealthChecksCheckArrayOutput) Index(i pulumi.IntInput) GetVbrHealt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRuleInput)(nil)).Elem(), TrafficMarkingPolicyTrafficMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRuleArrayInput)(nil)).Elem(), TrafficMarkingPolicyTrafficMatchRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingArrayInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpnAttachmentZoneInput)(nil)).Elem(), TransitRouterVpnAttachmentZoneArgs{})
@@ -6161,6 +6356,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRoutersTransitRouterArrayInput)(nil)).Elem(), GetTransitRoutersTransitRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrHealthChecksCheckInput)(nil)).Elem(), GetVbrHealthChecksCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrHealthChecksCheckArrayInput)(nil)).Elem(), GetVbrHealthChecksCheckArray{})
+	pulumi.RegisterOutputType(TrafficMarkingPolicyTrafficMatchRuleOutput{})
+	pulumi.RegisterOutputType(TrafficMarkingPolicyTrafficMatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpnAttachmentZoneOutput{})

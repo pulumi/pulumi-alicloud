@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+// Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+//
+// Bandwidth Package Operation.
 //
 // For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
 //
@@ -110,7 +112,7 @@ import (
 //			}
 //			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:            pulumi.String("2"),
-//				InternetChargeType:   pulumi.String("PayByBandwidth"),
+//				InternetChargeType:   pulumi.String("PayByTraffic"),
 //				BandwidthPackageName: pulumi.String(name),
 //				Description:          pulumi.String(name),
 //			})
@@ -140,9 +142,9 @@ import (
 type LoadbalancerCommonBandwidthPackageAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the bound shared bandwidth package.
+	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the EIP bandwidth plan.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -184,18 +186,18 @@ func GetLoadbalancerCommonBandwidthPackageAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadbalancerCommonBandwidthPackageAttachment resources.
 type loadbalancerCommonBandwidthPackageAttachmentState struct {
-	// The ID of the bound shared bandwidth package.
+	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the EIP bandwidth plan.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
 	Status *string `pulumi:"status"`
 }
 
 type LoadbalancerCommonBandwidthPackageAttachmentState struct {
-	// The ID of the bound shared bandwidth package.
+	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId pulumi.StringPtrInput
-	// The ID of the network-based server load balancer instance.
+	// The ID of the EIP bandwidth plan.
 	LoadBalancerId pulumi.StringPtrInput
 	// Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
 	Status pulumi.StringPtrInput
@@ -206,17 +208,17 @@ func (LoadbalancerCommonBandwidthPackageAttachmentState) ElementType() reflect.T
 }
 
 type loadbalancerCommonBandwidthPackageAttachmentArgs struct {
-	// The ID of the bound shared bandwidth package.
+	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the EIP bandwidth plan.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 }
 
 // The set of arguments for constructing a LoadbalancerCommonBandwidthPackageAttachment resource.
 type LoadbalancerCommonBandwidthPackageAttachmentArgs struct {
-	// The ID of the bound shared bandwidth package.
+	// Specifies whether only to precheck the request. Valid values:
 	BandwidthPackageId pulumi.StringInput
-	// The ID of the network-based server load balancer instance.
+	// The ID of the EIP bandwidth plan.
 	LoadBalancerId pulumi.StringInput
 }
 
@@ -307,12 +309,12 @@ func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) ToLoadbalancerCommon
 	return o
 }
 
-// The ID of the bound shared bandwidth package.
+// Specifies whether only to precheck the request. Valid values:
 func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadbalancerCommonBandwidthPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
 
-// The ID of the network-based server load balancer instance.
+// The ID of the EIP bandwidth plan.
 func (o LoadbalancerCommonBandwidthPackageAttachmentOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadbalancerCommonBandwidthPackageAttachment) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }

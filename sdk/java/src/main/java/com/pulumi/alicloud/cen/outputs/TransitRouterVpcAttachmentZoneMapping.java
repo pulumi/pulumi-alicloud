@@ -4,38 +4,41 @@
 package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class TransitRouterVpcAttachmentZoneMapping {
     /**
-     * @return The VSwitch id of attachment.
+     * @return The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+     * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+     * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
      * 
      */
-    private @Nullable String vswitchId;
+    private String vswitchId;
     /**
-     * @return The zone Id of VSwitch.
+     * @return The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
      * 
      */
-    private @Nullable String zoneId;
+    private String zoneId;
 
     private TransitRouterVpcAttachmentZoneMapping() {}
     /**
-     * @return The VSwitch id of attachment.
+     * @return The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+     * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+     * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
      * 
      */
-    public Optional<String> vswitchId() {
-        return Optional.ofNullable(this.vswitchId);
+    public String vswitchId() {
+        return this.vswitchId;
     }
     /**
-     * @return The zone Id of VSwitch.
+     * @return The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -47,8 +50,8 @@ public final class TransitRouterVpcAttachmentZoneMapping {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String vswitchId;
-        private @Nullable String zoneId;
+        private String vswitchId;
+        private String zoneId;
         public Builder() {}
         public Builder(TransitRouterVpcAttachmentZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +60,18 @@ public final class TransitRouterVpcAttachmentZoneMapping {
         }
 
         @CustomType.Setter
-        public Builder vswitchId(@Nullable String vswitchId) {
-
+        public Builder vswitchId(String vswitchId) {
+            if (vswitchId == null) {
+              throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentZoneMapping", "vswitchId");
+            }
             this.vswitchId = vswitchId;
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentZoneMapping", "zoneId");
+            }
             this.zoneId = zoneId;
             return this;
         }

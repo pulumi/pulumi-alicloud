@@ -19,6 +19,9 @@ __all__ = [
 class InstanceDataDiskArgs:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
+                 disk_id: Optional[pulumi.Input[str]] = None,
+                 encrypt_key_id: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
                  size: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] category: Data disk type. Optional values:
@@ -26,10 +29,19 @@ class InstanceDataDiskArgs:
                - cloud_ssd: Full Flash cloud disk
                - local_hdd: local hdd disk
                - local_ssd: local disk ssd.
+        :param pulumi.Input[str] disk_id: Cloud Disk ID.
+        :param pulumi.Input[str] encrypt_key_id: The ID of the KMS key used by the cloud disk.
+        :param pulumi.Input[bool] encrypted: Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
         :param pulumi.Input[int] size: Data disk size, unit: GB.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if encrypt_key_id is not None:
+            pulumi.set(__self__, "encrypt_key_id", encrypt_key_id)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
         if size is not None:
             pulumi.set(__self__, "size", size)
 
@@ -50,6 +62,42 @@ class InstanceDataDiskArgs:
         pulumi.set(self, "category", value)
 
     @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Disk ID.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_id", value)
+
+    @property
+    @pulumi.getter(name="encryptKeyId")
+    def encrypt_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS key used by the cloud disk.
+        """
+        return pulumi.get(self, "encrypt_key_id")
+
+    @encrypt_key_id.setter
+    def encrypt_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypt_key_id", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -68,7 +116,7 @@ class InstanceSystemDiskArgs:
                  category: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] category: System disk type. Optional values:
+        :param pulumi.Input[str] category: System disk type. Value
                - cloud_efficiency: Ultra cloud disk
                - cloud_ssd: Full Flash cloud disk
                - local_hdd: local hdd disk
@@ -84,7 +132,7 @@ class InstanceSystemDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        System disk type. Optional values:
+        System disk type. Value
         - cloud_efficiency: Ultra cloud disk
         - cloud_ssd: Full Flash cloud disk
         - local_hdd: local hdd disk

@@ -22,6 +22,18 @@ namespace Pulumi.AliCloud.Ens.Outputs
         /// </summary>
         public readonly string? Category;
         /// <summary>
+        /// Cloud Disk ID.
+        /// </summary>
+        public readonly string? DiskId;
+        /// <summary>
+        /// The ID of the KMS key used by the cloud disk.
+        /// </summary>
+        public readonly string? EncryptKeyId;
+        /// <summary>
+        /// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+        /// </summary>
+        public readonly bool? Encrypted;
+        /// <summary>
         /// Data disk size, unit: GB.
         /// </summary>
         public readonly int? Size;
@@ -30,9 +42,18 @@ namespace Pulumi.AliCloud.Ens.Outputs
         private InstanceDataDisk(
             string? category,
 
+            string? diskId,
+
+            string? encryptKeyId,
+
+            bool? encrypted,
+
             int? size)
         {
             Category = category;
+            DiskId = diskId;
+            EncryptKeyId = encryptKeyId;
+            Encrypted = encrypted;
             Size = size;
         }
     }

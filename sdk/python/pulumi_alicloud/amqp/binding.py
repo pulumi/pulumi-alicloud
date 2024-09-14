@@ -305,10 +305,6 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
         default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
@@ -316,29 +312,30 @@ class Binding(pulumi.CustomResource):
             storage_size="700",
             support_eip=False,
             max_eip_tps="128",
-            payment_type="Subscription")
+            payment_type="Subscription",
+            period=1)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
             instance_id=default.id,
-            virtual_host_name=name)
+            virtual_host_name="tf-example")
         default_exchange = alicloud.amqp.Exchange("default",
-            instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            exchange_name=name,
-            exchange_type="HEADERS",
             auto_delete_state=False,
-            internal=False)
+            exchange_name="tf-example",
+            exchange_type="HEADERS",
+            instance_id=default.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         default_queue = alicloud.amqp.Queue("default",
             instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            queue_name=name)
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
         default_binding = alicloud.amqp.Binding("default",
-            instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            source_exchange=default_exchange.exchange_name,
-            destination_name=name,
-            binding_type="QUEUE",
+            argument="x-match:all",
             binding_key=default_queue.queue_name,
-            argument="x-match:all")
+            binding_type="QUEUE",
+            destination_name="tf-example",
+            instance_id=default.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import
@@ -388,10 +385,6 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
         default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
@@ -399,29 +392,30 @@ class Binding(pulumi.CustomResource):
             storage_size="700",
             support_eip=False,
             max_eip_tps="128",
-            payment_type="Subscription")
+            payment_type="Subscription",
+            period=1)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
             instance_id=default.id,
-            virtual_host_name=name)
+            virtual_host_name="tf-example")
         default_exchange = alicloud.amqp.Exchange("default",
-            instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            exchange_name=name,
-            exchange_type="HEADERS",
             auto_delete_state=False,
-            internal=False)
+            exchange_name="tf-example",
+            exchange_type="HEADERS",
+            instance_id=default.id,
+            internal=False,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         default_queue = alicloud.amqp.Queue("default",
             instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            queue_name=name)
+            queue_name="tf-example",
+            virtual_host_name=default_virtual_host.virtual_host_name)
         default_binding = alicloud.amqp.Binding("default",
-            instance_id=default.id,
-            virtual_host_name=default_virtual_host.virtual_host_name,
-            source_exchange=default_exchange.exchange_name,
-            destination_name=name,
-            binding_type="QUEUE",
+            argument="x-match:all",
             binding_key=default_queue.queue_name,
-            argument="x-match:all")
+            binding_type="QUEUE",
+            destination_name="tf-example",
+            instance_id=default.id,
+            source_exchange=default_exchange.exchange_name,
+            virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
         ## Import

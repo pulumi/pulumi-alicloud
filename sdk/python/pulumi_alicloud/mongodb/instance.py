@@ -27,6 +27,7 @@ class InstanceArgs:
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class InstanceArgs:
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -74,6 +76,7 @@ class InstanceArgs:
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        :param pulumi.Input[int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -81,6 +84,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[int] log_backup_retention_period: The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
@@ -135,6 +139,8 @@ class InstanceArgs:
             pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if enable_backup_log is not None:
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if encryption_key is not None:
@@ -149,6 +155,8 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if log_backup_retention_period is not None:
+            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if maintain_end_time is not None:
             pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
@@ -334,6 +342,18 @@ class InstanceArgs:
         pulumi.set(self, "effective_time", value)
 
     @property
+    @pulumi.getter(name="enableBackupLog")
+    def enable_backup_log(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable the log backup feature. Valid values:
+        """
+        return pulumi.get(self, "enable_backup_log")
+
+    @enable_backup_log.setter
+    def enable_backup_log(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enable_backup_log", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -416,6 +436,18 @@ class InstanceArgs:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="logBackupRetentionPeriod")
+    def log_backup_retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        """
+        return pulumi.get(self, "log_backup_retention_period")
+
+    @log_backup_retention_period.setter
+    def log_backup_retention_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_backup_retention_period", value)
 
     @property
     @pulumi.getter(name="maintainEndTime")
@@ -729,6 +761,7 @@ class _InstanceState:
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -737,6 +770,7 @@ class _InstanceState:
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -780,6 +814,7 @@ class _InstanceState:
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        :param pulumi.Input[int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -788,6 +823,7 @@ class _InstanceState:
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[int] log_backup_retention_period: The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
@@ -847,6 +883,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_storage", db_instance_storage)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if enable_backup_log is not None:
+            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if encryption_key is not None:
@@ -863,6 +901,8 @@ class _InstanceState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if log_backup_retention_period is not None:
+            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
         if maintain_end_time is not None:
             pulumi.set(__self__, "maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
@@ -1044,6 +1084,18 @@ class _InstanceState:
         pulumi.set(self, "effective_time", value)
 
     @property
+    @pulumi.getter(name="enableBackupLog")
+    def enable_backup_log(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies whether to enable the log backup feature. Valid values:
+        """
+        return pulumi.get(self, "enable_backup_log")
+
+    @enable_backup_log.setter
+    def enable_backup_log(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enable_backup_log", value)
+
+    @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1138,6 +1190,18 @@ class _InstanceState:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="logBackupRetentionPeriod")
+    def log_backup_retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        """
+        return pulumi.get(self, "log_backup_retention_period")
+
+    @log_backup_retention_period.setter
+    def log_backup_retention_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_backup_retention_period", value)
 
     @property
     @pulumi.getter(name="maintainEndTime")
@@ -1501,6 +1565,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1509,6 +1574,7 @@ class Instance(pulumi.CustomResource):
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1613,6 +1679,7 @@ class Instance(pulumi.CustomResource):
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        :param pulumi.Input[int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1621,6 +1688,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[int] log_backup_retention_period: The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
@@ -1751,6 +1819,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 enable_backup_log: Optional[pulumi.Input[int]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1759,6 +1828,7 @@ class Instance(pulumi.CustomResource):
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 log_backup_retention_period: Optional[pulumi.Input[int]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1806,6 +1876,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_instance_storage'")
             __props__.__dict__["db_instance_storage"] = db_instance_storage
             __props__.__dict__["effective_time"] = effective_time
+            __props__.__dict__["enable_backup_log"] = enable_backup_log
             __props__.__dict__["encrypted"] = encrypted
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["encryptor_name"] = encryptor_name
@@ -1816,6 +1887,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
             __props__.__dict__["maintain_end_time"] = maintain_end_time
             __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["name"] = name
@@ -1866,6 +1938,7 @@ class Instance(pulumi.CustomResource):
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_storage: Optional[pulumi.Input[int]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
+            enable_backup_log: Optional[pulumi.Input[int]] = None,
             encrypted: Optional[pulumi.Input[bool]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             encryptor_name: Optional[pulumi.Input[str]] = None,
@@ -1874,6 +1947,7 @@ class Instance(pulumi.CustomResource):
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            log_backup_retention_period: Optional[pulumi.Input[int]] = None,
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1922,6 +1996,7 @@ class Instance(pulumi.CustomResource):
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
+        :param pulumi.Input[int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
         :param pulumi.Input[bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] encryption_key: The ID of the custom key.
         :param pulumi.Input[str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1930,6 +2005,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[int] log_backup_retention_period: The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
@@ -1983,6 +2059,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_storage"] = db_instance_storage
         __props__.__dict__["effective_time"] = effective_time
+        __props__.__dict__["enable_backup_log"] = enable_backup_log
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["encryptor_name"] = encryptor_name
@@ -1991,6 +2068,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
         __props__.__dict__["maintain_end_time"] = maintain_end_time
         __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["name"] = name
@@ -2105,6 +2183,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "effective_time")
 
     @property
+    @pulumi.getter(name="enableBackupLog")
+    def enable_backup_log(self) -> pulumi.Output[int]:
+        """
+        Specifies whether to enable the log backup feature. Valid values:
+        """
+        return pulumi.get(self, "enable_backup_log")
+
+    @property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2167,6 +2253,14 @@ class Instance(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter(name="logBackupRetentionPeriod")
+    def log_backup_retention_period(self) -> pulumi.Output[int]:
+        """
+        The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        """
+        return pulumi.get(self, "log_backup_retention_period")
 
     @property
     @pulumi.getter(name="maintainEndTime")

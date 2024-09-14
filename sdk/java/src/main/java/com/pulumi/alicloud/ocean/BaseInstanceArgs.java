@@ -21,6 +21,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to automatically renew.
+     * 
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -31,6 +32,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to automatically renew.
+     * 
      * It takes effect when the parameter ChargeType is PrePaid. Value range:
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
@@ -64,6 +66,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     * 
      * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
@@ -75,6 +78,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
+     * 
      * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
@@ -83,13 +87,30 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cpu architecture, x86, arm. If no, the default value is x86
+     * 
+     */
+    @Import(name="cpuArch")
+    private @Nullable Output<String> cpuArch;
+
+    /**
+     * @return Cpu architecture, x86, arm. If no, the default value is x86
+     * 
+     */
+    public Optional<Output<String>> cpuArch() {
+        return Optional.ofNullable(this.cpuArch);
+    }
+
+    /**
      * The size of the storage space, in GB.
+     * 
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     *   The default value of each package is its minimum value.
+     * 
+     * The default value of each package is its minimum value.
      * 
      */
     @Import(name="diskSize", required=true)
@@ -97,12 +118,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The size of the storage space, in GB.
+     * 
      * The limits of storage space vary according to the cluster specifications, as follows:
      * - 8C32GB:100GB ~ 10000GB
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     *   The default value of each package is its minimum value.
+     * 
+     * The default value of each package is its minimum value.
      * 
      */
     public Output<Integer> diskSize() {
@@ -111,6 +134,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * 
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -121,6 +145,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+     * 
      * Two types are currently supported:
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -131,50 +156,62 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     * 
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     * 
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      * 
      */
     @Import(name="instanceClass", required=true)
     private Output<String> instanceClass;
 
     /**
-     * @return Cluster specification information.
-     * Four packages are currently supported:
-     * - 4C16GB：4cores 16GB
-     * - 8C32GB：8cores 32GB
-     * - 14C70GB：14cores 70GB
-     * - 24C120GB：24cores 120GB
-     * - 30C180GB：30cores 180GB
-     * - 62C400GB：62cores 400GB
-     * - 104C600GB：104cores 600GB
-     * - 16C70GB：16cores 70GB
-     * - 32C160GB：32cores 160GB
-     * - 64C380GB：64cores 380GB
-     * - 20C32GB：20cores 32GB
-     * - 40C64GB：40cores 64GB
-     * - 16C32GB：16cores 32GB
-     * - 32C70GB：32cores 70GB
-     * - 64C180GB：64cores 180GB
-     * - 32C180GB：32cores 180GB
-     * - 64C400GB：64cores 400GB.
+     * @return Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+     * 
+     * The x86 cluster architecture currently supports the following packages:
+     * - 4C16G:4 core 16GB
+     * - 8C32G:8 core 32GB
+     * - 14C70G:14 core 70GB
+     * - 24C120G:24 core 120GB
+     * - 30C180G:30 core 180GB
+     * - 62C400G:62 core 400GB
+     * - 104C600G:104 core 600GB
+     * - 16C70G:16 core 70GB
+     * - 32C160G:32 core 160GB
+     * - 64C380G:64 core 380GB
+     * - 20C32G:20 core 32GB
+     * - 40C64G:40 core 64GB
+     * - 16C32G:16 core 32GB
+     * - 32C70G:32 core 70GB
+     * - 64C180G:64 core 180GB
+     * - 32C180G:32 core 180GB
+     * - 64C400G:64 core 400GB,
+     * 
+     * The cluster architecture of arm currently supports the following packages:
+     * - 8C32G:8 core 32GB
+     * - 16C70G:16 core 70GB
+     * - 32C180G:32 core 180GB
      * 
      */
     public Output<String> instanceClass() {
@@ -182,14 +219,22 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * OceanBase cluster name.
+     * 
+     * The length is 1 to 20 English or Chinese characters.
+     * 
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+     * @return OceanBase cluster name.
+     * 
+     * The length is 1 to 20 English or Chinese characters.
+     * 
+     * If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -197,14 +242,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      * 
      */
     @Import(name="nodeNum")
     private @Nullable Output<String> nodeNum;
 
     /**
-     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+     * @return The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      * 
      */
     public Optional<Output<String>> nodeNum() {
@@ -261,18 +306,56 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * The duration of the purchase of resources.
+     * 
+     * Package year and Month value range: Month.
+     * 
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+     * @return The duration of the purchase of resources.
+     * 
+     * Package year and Month value range: Month.
+     * 
+     * Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
+    }
+
+    /**
+     * The ID of the primary instance.
+     * 
+     */
+    @Import(name="primaryInstance")
+    private @Nullable Output<String> primaryInstance;
+
+    /**
+     * @return The ID of the primary instance.
+     * 
+     */
+    public Optional<Output<String>> primaryInstance() {
+        return Optional.ofNullable(this.primaryInstance);
+    }
+
+    /**
+     * The primary instance Region.
+     * 
+     */
+    @Import(name="primaryRegion")
+    private @Nullable Output<String> primaryRegion;
+
+    /**
+     * @return The primary instance Region.
+     * 
+     */
+    public Optional<Output<String>> primaryRegion() {
+        return Optional.ofNullable(this.primaryRegion);
     }
 
     /**
@@ -306,6 +389,25 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     * 
+     */
+    @Import(name="upgradeSpecNative")
+    private @Nullable Output<Boolean> upgradeSpecNative;
+
+    /**
+     * @return Valid values:
+     * - false: migration and configuration change.
+     * - true: in-situ matching
+     * 
+     */
+    public Optional<Output<Boolean>> upgradeSpecNative() {
+        return Optional.ofNullable(this.upgradeSpecNative);
+    }
+
+    /**
      * Information about the zone where the cluster is deployed.
      * 
      */
@@ -326,6 +428,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupRetainMode = $.backupRetainMode;
+        this.cpuArch = $.cpuArch;
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.instanceClass = $.instanceClass;
@@ -335,8 +438,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
+        this.primaryInstance = $.primaryInstance;
+        this.primaryRegion = $.primaryRegion;
         this.resourceGroupId = $.resourceGroupId;
         this.series = $.series;
+        this.upgradeSpecNative = $.upgradeSpecNative;
         this.zones = $.zones;
     }
 
@@ -360,6 +466,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRenew Whether to automatically renew.
+         * 
          * It takes effect when the parameter ChargeType is PrePaid. Value range:
          * - true: automatic renewal.
          * - false (default): no automatic renewal.
@@ -374,6 +481,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoRenew Whether to automatically renew.
+         * 
          * It takes effect when the parameter ChargeType is PrePaid. Value range:
          * - true: automatic renewal.
          * - false (default): no automatic renewal.
@@ -415,6 +523,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - receive_all: Keep all backup sets;
          * - delete_all: delete all backup sets;
          * - receive_last: Keep the last backup set.
+         * 
          * &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
@@ -430,6 +539,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - receive_all: Keep all backup sets;
          * - delete_all: delete all backup sets;
          * - receive_last: Keep the last backup set.
+         * 
          * &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
@@ -440,13 +550,36 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cpuArch Cpu architecture, x86, arm. If no, the default value is x86
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuArch(@Nullable Output<String> cpuArch) {
+            $.cpuArch = cpuArch;
+            return this;
+        }
+
+        /**
+         * @param cpuArch Cpu architecture, x86, arm. If no, the default value is x86
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuArch(String cpuArch) {
+            return cpuArch(Output.of(cpuArch));
+        }
+
+        /**
          * @param diskSize The size of the storage space, in GB.
+         * 
          * The limits of storage space vary according to the cluster specifications, as follows:
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
          * - 62C400G:800GB ~ 10000GB.
-         *   The default value of each package is its minimum value.
+         * 
+         * The default value of each package is its minimum value.
          * 
          * @return builder
          * 
@@ -458,12 +591,14 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskSize The size of the storage space, in GB.
+         * 
          * The limits of storage space vary according to the cluster specifications, as follows:
          * - 8C32GB:100GB ~ 10000GB
          * - 14C70GB:200GB ~ 10000GB
          * - 30C180GB:400GB ~ 10000GB
          * - 62C400G:800GB ~ 10000GB.
-         *   The default value of each package is its minimum value.
+         * 
+         * The default value of each package is its minimum value.
          * 
          * @return builder
          * 
@@ -474,6 +609,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskType The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+         * 
          * Two types are currently supported:
          * - cloud_essd_pl1: cloud disk ESSD pl1.
          * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -488,6 +624,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskType The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
+         * 
          * Two types are currently supported:
          * - cloud_essd_pl1: cloud disk ESSD pl1.
          * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
@@ -500,25 +637,31 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information.
-         * Four packages are currently supported:
-         * - 4C16GB：4cores 16GB
-         * - 8C32GB：8cores 32GB
-         * - 14C70GB：14cores 70GB
-         * - 24C120GB：24cores 120GB
-         * - 30C180GB：30cores 180GB
-         * - 62C400GB：62cores 400GB
-         * - 104C600GB：104cores 600GB
-         * - 16C70GB：16cores 70GB
-         * - 32C160GB：32cores 160GB
-         * - 64C380GB：64cores 380GB
-         * - 20C32GB：20cores 32GB
-         * - 40C64GB：40cores 64GB
-         * - 16C32GB：16cores 32GB
-         * - 32C70GB：32cores 70GB
-         * - 64C180GB：64cores 180GB
-         * - 32C180GB：32cores 180GB
-         * - 64C400GB：64cores 400GB.
+         * @param instanceClass Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+         * 
+         * The x86 cluster architecture currently supports the following packages:
+         * - 4C16G:4 core 16GB
+         * - 8C32G:8 core 32GB
+         * - 14C70G:14 core 70GB
+         * - 24C120G:24 core 120GB
+         * - 30C180G:30 core 180GB
+         * - 62C400G:62 core 400GB
+         * - 104C600G:104 core 600GB
+         * - 16C70G:16 core 70GB
+         * - 32C160G:32 core 160GB
+         * - 64C380G:64 core 380GB
+         * - 20C32G:20 core 32GB
+         * - 40C64G:40 core 64GB
+         * - 16C32G:16 core 32GB
+         * - 32C70G:32 core 70GB
+         * - 64C180G:64 core 180GB
+         * - 32C180G:32 core 180GB
+         * - 64C400G:64 core 400GB,
+         * 
+         * The cluster architecture of arm currently supports the following packages:
+         * - 8C32G:8 core 32GB
+         * - 16C70G:16 core 70GB
+         * - 32C180G:32 core 180GB
          * 
          * @return builder
          * 
@@ -529,25 +672,31 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Cluster specification information.
-         * Four packages are currently supported:
-         * - 4C16GB：4cores 16GB
-         * - 8C32GB：8cores 32GB
-         * - 14C70GB：14cores 70GB
-         * - 24C120GB：24cores 120GB
-         * - 30C180GB：30cores 180GB
-         * - 62C400GB：62cores 400GB
-         * - 104C600GB：104cores 600GB
-         * - 16C70GB：16cores 70GB
-         * - 32C160GB：32cores 160GB
-         * - 64C380GB：64cores 380GB
-         * - 20C32GB：20cores 32GB
-         * - 40C64GB：40cores 64GB
-         * - 16C32GB：16cores 32GB
-         * - 32C70GB：32cores 70GB
-         * - 64C180GB：64cores 180GB
-         * - 32C180GB：32cores 180GB
-         * - 64C400GB：64cores 400GB.
+         * @param instanceClass Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
+         * 
+         * The x86 cluster architecture currently supports the following packages:
+         * - 4C16G:4 core 16GB
+         * - 8C32G:8 core 32GB
+         * - 14C70G:14 core 70GB
+         * - 24C120G:24 core 120GB
+         * - 30C180G:30 core 180GB
+         * - 62C400G:62 core 400GB
+         * - 104C600G:104 core 600GB
+         * - 16C70G:16 core 70GB
+         * - 32C160G:32 core 160GB
+         * - 64C380G:64 core 380GB
+         * - 20C32G:20 core 32GB
+         * - 40C64G:40 core 64GB
+         * - 16C32G:16 core 32GB
+         * - 32C70G:32 core 70GB
+         * - 64C180G:64 core 180GB
+         * - 32C180G:32 core 180GB
+         * - 64C400G:64 core 400GB,
+         * 
+         * The cluster architecture of arm currently supports the following packages:
+         * - 8C32G:8 core 32GB
+         * - 16C70G:16 core 70GB
+         * - 32C180G:32 core 180GB
          * 
          * @return builder
          * 
@@ -557,7 +706,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+         * @param instanceName OceanBase cluster name.
+         * 
+         * The length is 1 to 20 English or Chinese characters.
+         * 
+         * If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -568,7 +721,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
+         * @param instanceName OceanBase cluster name.
+         * 
+         * The length is 1 to 20 English or Chinese characters.
+         * 
+         * If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -578,7 +735,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
          * 
          * @return builder
          * 
@@ -589,7 +746,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
+         * @param nodeNum The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
          * 
          * @return builder
          * 
@@ -666,7 +823,11 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+         * @param periodUnit The duration of the purchase of resources.
+         * 
+         * Package year and Month value range: Month.
+         * 
+         * Default value: Month of the package, which is billed by volume. The default period is Hour.
          * 
          * @return builder
          * 
@@ -677,13 +838,59 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
+         * @param periodUnit The duration of the purchase of resources.
+         * 
+         * Package year and Month value range: Month.
+         * 
+         * Default value: Month of the package, which is billed by volume. The default period is Hour.
          * 
          * @return builder
          * 
          */
         public Builder periodUnit(String periodUnit) {
             return periodUnit(Output.of(periodUnit));
+        }
+
+        /**
+         * @param primaryInstance The ID of the primary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryInstance(@Nullable Output<String> primaryInstance) {
+            $.primaryInstance = primaryInstance;
+            return this;
+        }
+
+        /**
+         * @param primaryInstance The ID of the primary instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryInstance(String primaryInstance) {
+            return primaryInstance(Output.of(primaryInstance));
+        }
+
+        /**
+         * @param primaryRegion The primary instance Region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryRegion(@Nullable Output<String> primaryRegion) {
+            $.primaryRegion = primaryRegion;
+            return this;
+        }
+
+        /**
+         * @param primaryRegion The primary instance Region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryRegion(String primaryRegion) {
+            return primaryRegion(Output.of(primaryRegion));
         }
 
         /**
@@ -726,6 +933,31 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder series(String series) {
             return series(Output.of(series));
+        }
+
+        /**
+         * @param upgradeSpecNative Valid values:
+         * - false: migration and configuration change.
+         * - true: in-situ matching
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeSpecNative(@Nullable Output<Boolean> upgradeSpecNative) {
+            $.upgradeSpecNative = upgradeSpecNative;
+            return this;
+        }
+
+        /**
+         * @param upgradeSpecNative Valid values:
+         * - false: migration and configuration change.
+         * - true: in-situ matching
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeSpecNative(Boolean upgradeSpecNative) {
+            return upgradeSpecNative(Output.of(upgradeSpecNative));
         }
 
         /**

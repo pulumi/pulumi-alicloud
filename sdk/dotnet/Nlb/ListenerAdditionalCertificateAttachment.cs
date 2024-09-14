@@ -28,25 +28,25 @@ namespace Pulumi.AliCloud.Nlb
     public partial class ListenerAdditionalCertificateAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Certificate ID. Currently, only server certificates are supported.
+        /// The ID of additional certificates.
         /// </summary>
         [Output("certificateId")]
         public Output<string> CertificateId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the tcpssl listener.
+        /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         /// </summary>
         [Output("listenerId")]
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ListenerAdditionalCertificateAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate ID. Currently, only server certificates are supported.
+        /// The ID of additional certificates.
         /// </summary>
         [Input("certificateId", required: true)]
         public Input<string> CertificateId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the tcpssl listener.
+        /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         /// </summary>
         [Input("listenerId", required: true)]
         public Input<string> ListenerId { get; set; } = null!;
@@ -124,25 +124,25 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ListenerAdditionalCertificateAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate ID. Currently, only server certificates are supported.
+        /// The ID of additional certificates.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the tcpssl listener.
+        /// The listener ID. You must specify the ID of a listener that uses SSL over TCP.
         /// </summary>
         [Input("listenerId")]
         public Input<string>? ListenerId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

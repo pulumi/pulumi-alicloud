@@ -16,9 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Nlb Load Balancer Security Group Attachment resource.
+ * Provides a NLB Load Balancer Security Group Attachment resource.
  * 
- * For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
+ * Security Group mount.
+ * 
+ * For information about NLB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
  * 
  * &gt; **NOTE:** Available since v1.198.0.
  * 
@@ -137,46 +139,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")
 public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the network-based server load balancer instance to be bound to the security group.
+     * The ID of the NLB instance to be associated with the security group.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the network-based server load balancer instance to be bound to the security group.
+     * @return The ID of the NLB instance to be associated with the security group.
      * 
      */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**
-     * The ID of the security group.
+     * The ID of the security group to be disassociated.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group.
+     * @return The ID of the security group to be disassociated.
      * 
      */
     public Output<String> securityGroupId() {

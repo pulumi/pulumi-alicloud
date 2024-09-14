@@ -729,6 +729,8 @@ type EcsLaunchTemplateDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
+	// The mount point of the data disk.
+	Device *string `pulumi:"device"`
 	// Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
@@ -759,6 +761,8 @@ type EcsLaunchTemplateDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The mount point of the data disk.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
@@ -835,6 +839,11 @@ func (o EcsLaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutp
 // The description of the data disk.
 func (o EcsLaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the data disk.
+func (o EcsLaunchTemplateDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // Encrypted the data in this disk.
@@ -2589,6 +2598,7 @@ type LaunchTemplateDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
+	Device      *string `pulumi:"device"`
 	// Encrypted the data in this disk.
 	//
 	// Default to false
@@ -2634,6 +2644,7 @@ type LaunchTemplateDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	Device      pulumi.StringPtrInput `pulumi:"device"`
 	// Encrypted the data in this disk.
 	//
 	// Default to false
@@ -2725,6 +2736,10 @@ func (o LaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput 
 // The description of the data disk.
 func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // Encrypted the data in this disk.

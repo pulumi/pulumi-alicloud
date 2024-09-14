@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Nlb.Inputs
     public sealed class LoadBalancerZoneMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the elastic IP address.
+        /// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
         /// <summary>
-        /// The ID of ENI.
+        /// The ID of the elastic network interface (ENI).
         /// </summary>
         [Input("eniId")]
         public Input<string>? EniId { get; set; }
 
         /// <summary>
-        /// The IPv6 address of a network-based server load balancer instance.
+        /// The IPv6 address of the NLB instance.
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
-        /// The private IPv4 address of a network-based server load balancer instance.
+        /// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         [Input("privateIpv4Address")]
         public Input<string>? PrivateIpv4Address { get; set; }
@@ -43,19 +43,21 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         public Input<string>? PublicIpv4Address { get; set; }
 
         /// <summary>
-        /// Zone Status.
+        /// Zone Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+        /// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+        /// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+        /// 
+        /// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;

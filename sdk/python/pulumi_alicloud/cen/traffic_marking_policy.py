@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TrafficMarkingPolicyArgs', 'TrafficMarkingPolicy']
 
@@ -19,15 +21,19 @@ class TrafficMarkingPolicyArgs:
                  transit_router_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 traffic_marking_policy_name: Optional[pulumi.Input[str]] = None):
+                 traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None):
         """
         The set of arguments for constructing a TrafficMarkingPolicy resource.
-        :param pulumi.Input[int] marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
-        :param pulumi.Input[int] priority: The Priority of the Traffic Marking Policy. Value range: 1~100.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] description: The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        :param pulumi.Input[int] marking_dscp: MarkingDscp
+        :param pulumi.Input[int] priority: Priority
+        :param pulumi.Input[str] transit_router_id: TransitRouterId
+        :param pulumi.Input[str] description: TrafficMarkingPolicyDescription
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[str] traffic_marking_policy_name: TrafficMarkingPolicyName
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]] traffic_match_rules: List of stream classification rules.
+               
+               You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
         """
         pulumi.set(__self__, "marking_dscp", marking_dscp)
         pulumi.set(__self__, "priority", priority)
@@ -38,12 +44,14 @@ class TrafficMarkingPolicyArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if traffic_marking_policy_name is not None:
             pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+        if traffic_match_rules is not None:
+            pulumi.set(__self__, "traffic_match_rules", traffic_match_rules)
 
     @property
     @pulumi.getter(name="markingDscp")
     def marking_dscp(self) -> pulumi.Input[int]:
         """
-        The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        MarkingDscp
         """
         return pulumi.get(self, "marking_dscp")
 
@@ -55,7 +63,7 @@ class TrafficMarkingPolicyArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[int]:
         """
-        The Priority of the Traffic Marking Policy. Value range: 1~100.
+        Priority
         """
         return pulumi.get(self, "priority")
 
@@ -67,7 +75,7 @@ class TrafficMarkingPolicyArgs:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Input[str]:
         """
-        The ID of the transit router.
+        TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -79,7 +87,7 @@ class TrafficMarkingPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyDescription
         """
         return pulumi.get(self, "description")
 
@@ -91,7 +99,7 @@ class TrafficMarkingPolicyArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
@@ -103,13 +111,27 @@ class TrafficMarkingPolicyArgs:
     @pulumi.getter(name="trafficMarkingPolicyName")
     def traffic_marking_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyName
         """
         return pulumi.get(self, "traffic_marking_policy_name")
 
     @traffic_marking_policy_name.setter
     def traffic_marking_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "traffic_marking_policy_name", value)
+
+    @property
+    @pulumi.getter(name="trafficMatchRules")
+    def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
+        """
+        List of stream classification rules.
+
+        You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        """
+        return pulumi.get(self, "traffic_match_rules")
+
+    @traffic_match_rules.setter
+    def traffic_match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
+        pulumi.set(self, "traffic_match_rules", value)
 
 
 @pulumi.input_type
@@ -122,17 +144,21 @@ class _TrafficMarkingPolicyState:
                  status: Optional[pulumi.Input[str]] = None,
                  traffic_marking_policy_id: Optional[pulumi.Input[str]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TrafficMarkingPolicy resources.
-        :param pulumi.Input[str] description: The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[int] marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
-        :param pulumi.Input[int] priority: The Priority of the Traffic Marking Policy. Value range: 1~100.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[str] traffic_marking_policy_id: The ID of the Traffic Marking Policy.
-        :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] description: TrafficMarkingPolicyDescription
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[int] marking_dscp: MarkingDscp
+        :param pulumi.Input[int] priority: Priority
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] traffic_marking_policy_id: The first ID of the resource
+        :param pulumi.Input[str] traffic_marking_policy_name: TrafficMarkingPolicyName
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]] traffic_match_rules: List of stream classification rules.
+               
+               You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        :param pulumi.Input[str] transit_router_id: TransitRouterId
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -148,6 +174,8 @@ class _TrafficMarkingPolicyState:
             pulumi.set(__self__, "traffic_marking_policy_id", traffic_marking_policy_id)
         if traffic_marking_policy_name is not None:
             pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+        if traffic_match_rules is not None:
+            pulumi.set(__self__, "traffic_match_rules", traffic_match_rules)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
 
@@ -155,7 +183,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyDescription
         """
         return pulumi.get(self, "description")
 
@@ -167,7 +195,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
@@ -179,7 +207,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter(name="markingDscp")
     def marking_dscp(self) -> Optional[pulumi.Input[int]]:
         """
-        The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        MarkingDscp
         """
         return pulumi.get(self, "marking_dscp")
 
@@ -191,7 +219,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The Priority of the Traffic Marking Policy. Value range: 1~100.
+        Priority
         """
         return pulumi.get(self, "priority")
 
@@ -203,7 +231,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -215,7 +243,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter(name="trafficMarkingPolicyId")
     def traffic_marking_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Traffic Marking Policy.
+        The first ID of the resource
         """
         return pulumi.get(self, "traffic_marking_policy_id")
 
@@ -227,7 +255,7 @@ class _TrafficMarkingPolicyState:
     @pulumi.getter(name="trafficMarkingPolicyName")
     def traffic_marking_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyName
         """
         return pulumi.get(self, "traffic_marking_policy_name")
 
@@ -236,10 +264,24 @@ class _TrafficMarkingPolicyState:
         pulumi.set(self, "traffic_marking_policy_name", value)
 
     @property
+    @pulumi.getter(name="trafficMatchRules")
+    def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
+        """
+        List of stream classification rules.
+
+        You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        """
+        return pulumi.get(self, "traffic_match_rules")
+
+    @traffic_match_rules.setter
+    def traffic_match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
+        pulumi.set(self, "traffic_match_rules", value)
+
+    @property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router.
+        TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -258,6 +300,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  marking_dscp: Optional[pulumi.Input[int]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -290,7 +333,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
+        CEN Traffic Marking Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -298,12 +341,15 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[int] marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
-        :param pulumi.Input[int] priority: The Priority of the Traffic Marking Policy. Value range: 1~100.
-        :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] description: TrafficMarkingPolicyDescription
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[int] marking_dscp: MarkingDscp
+        :param pulumi.Input[int] priority: Priority
+        :param pulumi.Input[str] traffic_marking_policy_name: TrafficMarkingPolicyName
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
+               
+               You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        :param pulumi.Input[str] transit_router_id: TransitRouterId
         """
         ...
     @overload
@@ -341,7 +387,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
+        CEN Traffic Marking Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -367,6 +413,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                  marking_dscp: Optional[pulumi.Input[int]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -386,6 +433,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
             __props__.__dict__["traffic_marking_policy_name"] = traffic_marking_policy_name
+            __props__.__dict__["traffic_match_rules"] = traffic_match_rules
             if transit_router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'transit_router_id'")
             __props__.__dict__["transit_router_id"] = transit_router_id
@@ -408,6 +456,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             traffic_marking_policy_id: Optional[pulumi.Input[str]] = None,
             traffic_marking_policy_name: Optional[pulumi.Input[str]] = None,
+            traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None) -> 'TrafficMarkingPolicy':
         """
         Get an existing TrafficMarkingPolicy resource's state with the given name, id, and optional extra
@@ -416,14 +465,17 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[int] marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
-        :param pulumi.Input[int] priority: The Priority of the Traffic Marking Policy. Value range: 1~100.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[str] traffic_marking_policy_id: The ID of the Traffic Marking Policy.
-        :param pulumi.Input[str] traffic_marking_policy_name: The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] description: TrafficMarkingPolicyDescription
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[int] marking_dscp: MarkingDscp
+        :param pulumi.Input[int] priority: Priority
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] traffic_marking_policy_id: The first ID of the resource
+        :param pulumi.Input[str] traffic_marking_policy_name: TrafficMarkingPolicyName
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]] traffic_match_rules: List of stream classification rules.
+               
+               You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        :param pulumi.Input[str] transit_router_id: TransitRouterId
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -436,6 +488,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["traffic_marking_policy_id"] = traffic_marking_policy_id
         __props__.__dict__["traffic_marking_policy_name"] = traffic_marking_policy_name
+        __props__.__dict__["traffic_match_rules"] = traffic_match_rules
         __props__.__dict__["transit_router_id"] = transit_router_id
         return TrafficMarkingPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -443,7 +496,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyDescription
         """
         return pulumi.get(self, "description")
 
@@ -451,7 +504,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
@@ -459,7 +512,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="markingDscp")
     def marking_dscp(self) -> pulumi.Output[int]:
         """
-        The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        MarkingDscp
         """
         return pulumi.get(self, "marking_dscp")
 
@@ -467,7 +520,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[int]:
         """
-        The Priority of the Traffic Marking Policy. Value range: 1~100.
+        Priority
         """
         return pulumi.get(self, "priority")
 
@@ -475,7 +528,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -483,7 +536,7 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="trafficMarkingPolicyId")
     def traffic_marking_policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Traffic Marking Policy.
+        The first ID of the resource
         """
         return pulumi.get(self, "traffic_marking_policy_id")
 
@@ -491,15 +544,25 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="trafficMarkingPolicyName")
     def traffic_marking_policy_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        TrafficMarkingPolicyName
         """
         return pulumi.get(self, "traffic_marking_policy_name")
+
+    @property
+    @pulumi.getter(name="trafficMatchRules")
+    def traffic_match_rules(self) -> pulumi.Output[Optional[Sequence['outputs.TrafficMarkingPolicyTrafficMatchRule']]]:
+        """
+        List of stream classification rules.
+
+        You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        """
+        return pulumi.get(self, "traffic_match_rules")
 
     @property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router.
+        TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 

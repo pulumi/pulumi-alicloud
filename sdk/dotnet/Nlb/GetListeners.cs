@@ -14,7 +14,34 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// &gt; **NOTE:** Available since v1.191.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetListeners.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNlbListenerId1"] = ids.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:nlb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
@@ -22,7 +49,34 @@ namespace Pulumi.AliCloud.Nlb
         /// <summary>
         /// This data source provides the Nlb Listeners of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.191.0+.
+        /// &gt; **NOTE:** Available since v1.191.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ids = AliCloud.Nlb.GetListeners.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNlbListenerId1"] = ids.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:nlb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
@@ -126,7 +180,13 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+        /// </summary>
         public readonly string? ListenerProtocol;
+        /// <summary>
+        /// A list of Nlb Listeners. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerResult> Listeners;
         public readonly ImmutableArray<string> LoadBalancerIds;
         public readonly string? OutputFile;
