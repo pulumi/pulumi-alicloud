@@ -1139,7 +1139,22 @@
                 "current": "alicloud:cen/routeService:RouteService"
             },
             "alicloud_cen_traffic_marking_policy": {
-                "current": "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy"
+                "current": "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy",
+                "fields": {
+                    "traffic_match_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dst_port_range": {
+                                    "maxItemsOne": false
+                                },
+                                "src_port_range": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_cen_transit_route_table_aggregation": {
                 "current": "alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation"
