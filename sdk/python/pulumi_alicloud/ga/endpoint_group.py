@@ -22,6 +22,7 @@ class EndpointGroupArgs:
                  listener_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_protocol_version: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
                  health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -42,8 +43,10 @@ class EndpointGroupArgs:
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-               > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[str] endpoint_protocol_version: The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+               > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        :param pulumi.Input[str] endpoint_request_protocol: The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+               > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -68,6 +71,8 @@ class EndpointGroupArgs:
             pulumi.set(__self__, "description", description)
         if endpoint_group_type is not None:
             pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
+        if endpoint_protocol_version is not None:
+            pulumi.set(__self__, "endpoint_protocol_version", endpoint_protocol_version)
         if endpoint_request_protocol is not None:
             pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
         if health_check_enabled is not None:
@@ -165,11 +170,24 @@ class EndpointGroupArgs:
         pulumi.set(self, "endpoint_group_type", value)
 
     @property
+    @pulumi.getter(name="endpointProtocolVersion")
+    def endpoint_protocol_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        """
+        return pulumi.get(self, "endpoint_protocol_version")
+
+    @endpoint_protocol_version.setter
+    def endpoint_protocol_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_protocol_version", value)
+
+    @property
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         """
         return pulumi.get(self, "endpoint_request_protocol")
 
@@ -312,6 +330,7 @@ class _EndpointGroupState:
                  endpoint_group_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_protocol_version: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
                  health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -334,8 +353,10 @@ class _EndpointGroupState:
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-               > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[str] endpoint_protocol_version: The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+               > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        :param pulumi.Input[str] endpoint_request_protocol: The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+               > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -366,6 +387,8 @@ class _EndpointGroupState:
             pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
         if endpoint_group_type is not None:
             pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
+        if endpoint_protocol_version is not None:
+            pulumi.set(__self__, "endpoint_protocol_version", endpoint_protocol_version)
         if endpoint_request_protocol is not None:
             pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
         if health_check_enabled is not None:
@@ -467,11 +490,24 @@ class _EndpointGroupState:
         pulumi.set(self, "endpoint_group_type", value)
 
     @property
+    @pulumi.getter(name="endpointProtocolVersion")
+    def endpoint_protocol_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        """
+        return pulumi.get(self, "endpoint_protocol_version")
+
+    @endpoint_protocol_version.setter
+    def endpoint_protocol_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_protocol_version", value)
+
+    @property
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         """
         return pulumi.get(self, "endpoint_request_protocol")
 
@@ -639,6 +675,7 @@ class EndpointGroup(pulumi.CustomResource):
                  endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_protocol_version: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
                  health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -728,8 +765,10 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-               > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[str] endpoint_protocol_version: The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+               > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        :param pulumi.Input[str] endpoint_request_protocol: The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+               > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -841,6 +880,7 @@ class EndpointGroup(pulumi.CustomResource):
                  endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointGroupEndpointConfigurationArgs', 'EndpointGroupEndpointConfigurationArgsDict']]]]] = None,
                  endpoint_group_region: Optional[pulumi.Input[str]] = None,
                  endpoint_group_type: Optional[pulumi.Input[str]] = None,
+                 endpoint_protocol_version: Optional[pulumi.Input[str]] = None,
                  endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
                  health_check_enabled: Optional[pulumi.Input[bool]] = None,
                  health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -873,6 +913,7 @@ class EndpointGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'endpoint_group_region'")
             __props__.__dict__["endpoint_group_region"] = endpoint_group_region
             __props__.__dict__["endpoint_group_type"] = endpoint_group_type
+            __props__.__dict__["endpoint_protocol_version"] = endpoint_protocol_version
             __props__.__dict__["endpoint_request_protocol"] = endpoint_request_protocol
             __props__.__dict__["health_check_enabled"] = health_check_enabled
             __props__.__dict__["health_check_interval_seconds"] = health_check_interval_seconds
@@ -905,6 +946,7 @@ class EndpointGroup(pulumi.CustomResource):
             endpoint_group_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             endpoint_group_region: Optional[pulumi.Input[str]] = None,
             endpoint_group_type: Optional[pulumi.Input[str]] = None,
+            endpoint_protocol_version: Optional[pulumi.Input[str]] = None,
             endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
             health_check_enabled: Optional[pulumi.Input[bool]] = None,
             health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
@@ -932,8 +974,10 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-               > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        :param pulumi.Input[str] endpoint_protocol_version: The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+               > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        :param pulumi.Input[str] endpoint_request_protocol: The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+               > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -962,6 +1006,7 @@ class EndpointGroup(pulumi.CustomResource):
         __props__.__dict__["endpoint_group_ip_lists"] = endpoint_group_ip_lists
         __props__.__dict__["endpoint_group_region"] = endpoint_group_region
         __props__.__dict__["endpoint_group_type"] = endpoint_group_type
+        __props__.__dict__["endpoint_protocol_version"] = endpoint_protocol_version
         __props__.__dict__["endpoint_request_protocol"] = endpoint_request_protocol
         __props__.__dict__["health_check_enabled"] = health_check_enabled
         __props__.__dict__["health_check_interval_seconds"] = health_check_interval_seconds
@@ -1027,11 +1072,20 @@ class EndpointGroup(pulumi.CustomResource):
         return pulumi.get(self, "endpoint_group_type")
 
     @property
+    @pulumi.getter(name="endpointProtocolVersion")
+    def endpoint_protocol_version(self) -> pulumi.Output[str]:
+        """
+        The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+        > **NOTE:** `endpoint_protocol_version` is valid only when `endpoint_request_protocol` is set to `HTTPS`.
+        """
+        return pulumi.get(self, "endpoint_protocol_version")
+
+    @property
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> pulumi.Output[str]:
         """
-        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-        > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+        The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+        > **NOTE:** `endpoint_request_protocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpoint_request_protocol` can only be set to `HTTP`.
         """
         return pulumi.get(self, "endpoint_request_protocol")
 

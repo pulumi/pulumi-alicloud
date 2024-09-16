@@ -10,46 +10,212 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'TrafficMarkingPolicyTrafficMatchRuleArgs',
     'TransitRouterVpcAttachmentZoneMappingArgs',
     'TransitRouterVpnAttachmentZoneArgs',
 ]
 
 @pulumi.input_type
+class TrafficMarkingPolicyTrafficMatchRuleArgs:
+    def __init__(__self__, *,
+                 address_family: Optional[pulumi.Input[str]] = None,
+                 dst_cidr: Optional[pulumi.Input[str]] = None,
+                 dst_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 match_dscp: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 src_cidr: Optional[pulumi.Input[str]] = None,
+                 src_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 traffic_match_rule_description: Optional[pulumi.Input[str]] = None,
+                 traffic_match_rule_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address_family: IP Address Family.
+        :param pulumi.Input[str] dst_cidr: The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] dst_port_ranges: The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+               - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+               - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+               - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+        :param pulumi.Input[int] match_dscp: The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+        :param pulumi.Input[str] protocol: The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+        :param pulumi.Input[str] src_cidr: The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] src_port_ranges: The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+               - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+               - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+               - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+        :param pulumi.Input[str] traffic_match_rule_description: The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+        :param pulumi.Input[str] traffic_match_rule_name: The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+        """
+        if address_family is not None:
+            pulumi.set(__self__, "address_family", address_family)
+        if dst_cidr is not None:
+            pulumi.set(__self__, "dst_cidr", dst_cidr)
+        if dst_port_ranges is not None:
+            pulumi.set(__self__, "dst_port_ranges", dst_port_ranges)
+        if match_dscp is not None:
+            pulumi.set(__self__, "match_dscp", match_dscp)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if src_cidr is not None:
+            pulumi.set(__self__, "src_cidr", src_cidr)
+        if src_port_ranges is not None:
+            pulumi.set(__self__, "src_port_ranges", src_port_ranges)
+        if traffic_match_rule_description is not None:
+            pulumi.set(__self__, "traffic_match_rule_description", traffic_match_rule_description)
+        if traffic_match_rule_name is not None:
+            pulumi.set(__self__, "traffic_match_rule_name", traffic_match_rule_name)
+
+    @property
+    @pulumi.getter(name="addressFamily")
+    def address_family(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP Address Family.
+        """
+        return pulumi.get(self, "address_family")
+
+    @address_family.setter
+    def address_family(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_family", value)
+
+    @property
+    @pulumi.getter(name="dstCidr")
+    def dst_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+        """
+        return pulumi.get(self, "dst_cidr")
+
+    @dst_cidr.setter
+    def dst_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dst_cidr", value)
+
+    @property
+    @pulumi.getter(name="dstPortRanges")
+    def dst_port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+        - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+        - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+        - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+        """
+        return pulumi.get(self, "dst_port_ranges")
+
+    @dst_port_ranges.setter
+    def dst_port_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "dst_port_ranges", value)
+
+    @property
+    @pulumi.getter(name="matchDscp")
+    def match_dscp(self) -> Optional[pulumi.Input[int]]:
+        """
+        The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+        """
+        return pulumi.get(self, "match_dscp")
+
+    @match_dscp.setter
+    def match_dscp(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "match_dscp", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="srcCidr")
+    def src_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+        """
+        return pulumi.get(self, "src_cidr")
+
+    @src_cidr.setter
+    def src_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_cidr", value)
+
+    @property
+    @pulumi.getter(name="srcPortRanges")
+    def src_port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+        - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+        - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+        - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+        """
+        return pulumi.get(self, "src_port_ranges")
+
+    @src_port_ranges.setter
+    def src_port_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "src_port_ranges", value)
+
+    @property
+    @pulumi.getter(name="trafficMatchRuleDescription")
+    def traffic_match_rule_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+        """
+        return pulumi.get(self, "traffic_match_rule_description")
+
+    @traffic_match_rule_description.setter
+    def traffic_match_rule_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "traffic_match_rule_description", value)
+
+    @property
+    @pulumi.getter(name="trafficMatchRuleName")
+    def traffic_match_rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+        """
+        return pulumi.get(self, "traffic_match_rule_name")
+
+    @traffic_match_rule_name.setter
+    def traffic_match_rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "traffic_match_rule_name", value)
+
+
+@pulumi.input_type
 class TransitRouterVpcAttachmentZoneMappingArgs:
     def __init__(__self__, *,
-                 vswitch_id: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 vswitch_id: pulumi.Input[str],
+                 zone_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] vswitch_id: The VSwitch id of attachment.
-        :param pulumi.Input[str] zone_id: The zone Id of VSwitch.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+               - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+               - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+        :param pulumi.Input[str] zone_id: The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
         """
-        if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+    def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The VSwitch id of attachment.
+        The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+        - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+        - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+    def vswitch_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vswitch_id", value)
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[str]]:
+    def zone_id(self) -> pulumi.Input[str]:
         """
-        The zone Id of VSwitch.
+        The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[str]]):
+    def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
 

@@ -243,7 +243,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="3",
-            internet_charge_type="PayByBandwidth")
+            internet_charge_type="PayByTraffic")
         default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="3",
             internet_charge_type="PayByTraffic")
@@ -295,7 +295,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="3",
-            internet_charge_type="PayByBandwidth")
+            internet_charge_type="PayByTraffic")
         default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="3",
             internet_charge_type="PayByTraffic")

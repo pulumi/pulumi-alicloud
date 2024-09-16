@@ -16,14 +16,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     public static final LoadBalancerModificationProtectionConfigArgs Empty = new LoadBalancerModificationProtectionConfigArgs();
 
     /**
-     * Opening time.
+     * Opening time of the configuration read-only mode.
      * 
      */
     @Import(name="enabledTime")
     private @Nullable Output<String> enabledTime;
 
     /**
-     * @return Opening time.
+     * @return Opening time of the configuration read-only mode.
      * 
      */
     public Optional<Output<String>> enabledTime() {
@@ -31,14 +31,18 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     }
 
     /**
-     * Reason for opening.
+     * The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
      * 
      */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
     /**
-     * @return Reason for opening.
+     * @return The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+     * 
+     * &gt; **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -46,14 +50,22 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     }
 
     /**
-     * ON.
+     * Specifies whether to enable the configuration read-only mode. Valid values:
+     * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+     * - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+     * 
+     * &gt; **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return ON.
+     * @return Specifies whether to enable the configuration read-only mode. Valid values:
+     * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+     * - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+     * 
+     * &gt; **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
      * 
      */
     public Optional<Output<String>> status() {
@@ -87,7 +99,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabledTime Opening time.
+         * @param enabledTime Opening time of the configuration read-only mode.
          * 
          * @return builder
          * 
@@ -98,7 +110,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabledTime Opening time.
+         * @param enabledTime Opening time of the configuration read-only mode.
          * 
          * @return builder
          * 
@@ -108,7 +120,9 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason Reason for opening.
+         * @param reason The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+         * 
+         * &gt; **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -119,7 +133,9 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason Reason for opening.
+         * @param reason The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+         * 
+         * &gt; **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -129,7 +145,11 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status ON.
+         * @param status Specifies whether to enable the configuration read-only mode. Valid values:
+         * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+         * - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+         * 
+         * &gt; **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
          * 
          * @return builder
          * 
@@ -140,7 +160,11 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param status ON.
+         * @param status Specifies whether to enable the configuration read-only mode. Valid values:
+         * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+         * - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+         * 
+         * &gt; **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
          * 
          * @return builder
          * 

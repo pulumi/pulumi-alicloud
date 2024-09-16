@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroup {
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
      * 
      */
     private @Nullable List<String> additionalSecurityGroupIds;
@@ -32,7 +32,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
      * 
      */
     private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
@@ -42,7 +42,7 @@ public final class ClusterNodeGroup {
      */
     private List<ClusterNodeGroupDataDisk> dataDisks;
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
      * 
      */
     private @Nullable String deploymentSetStrategy;
@@ -52,7 +52,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable Boolean gracefulShutdown;
     /**
-     * @return Host Ecs instance types.
+     * @return Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
      * 
      */
     private List<String> instanceTypes;
@@ -102,19 +102,19 @@ public final class ClusterNodeGroup {
      */
     private ClusterNodeGroupSystemDisk systemDisk;
     /**
-     * @return Global vSwitch ids, you can also specify it in node group.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
      * 
      */
     private @Nullable List<String> vswitchIds;
     /**
-     * @return Whether the node has a public IP address enabled.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
      * 
      */
     private @Nullable Boolean withPublicIp;
 
     private ClusterNodeGroup() {}
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
      * 
      */
     public List<String> additionalSecurityGroupIds() {
@@ -128,7 +128,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.autoScalingPolicy);
     }
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
      * 
      */
     public Optional<ClusterNodeGroupCostOptimizedConfig> costOptimizedConfig() {
@@ -142,7 +142,7 @@ public final class ClusterNodeGroup {
         return this.dataDisks;
     }
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
      * 
      */
     public Optional<String> deploymentSetStrategy() {
@@ -156,7 +156,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
-     * @return Host Ecs instance types.
+     * @return Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
      * 
      */
     public List<String> instanceTypes() {
@@ -226,14 +226,14 @@ public final class ClusterNodeGroup {
         return this.systemDisk;
     }
     /**
-     * @return Global vSwitch ids, you can also specify it in node group.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
      * 
      */
     public List<String> vswitchIds() {
         return this.vswitchIds == null ? List.of() : this.vswitchIds;
     }
     /**
-     * @return Whether the node has a public IP address enabled.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
      * 
      */
     public Optional<Boolean> withPublicIp() {

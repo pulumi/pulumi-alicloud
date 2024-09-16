@@ -19,11 +19,9 @@ class LoadBalancerSecurityGroupAttachmentArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
-               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        :param pulumi.Input[str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to be disassociated.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
@@ -34,7 +32,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The ID of the network-based server load balancer instance to be bound to the security group.
+        The ID of the NLB instance to be associated with the security group.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -46,7 +44,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of the security group.
+        The ID of the security group to be disassociated.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -58,9 +56,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck this request only. Value:
-        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -77,11 +73,9 @@ class _LoadBalancerSecurityGroupAttachmentState:
                  security_group_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
-               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to be disassociated.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -94,9 +88,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to PreCheck this request only. Value:
-        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -108,7 +100,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the network-based server load balancer instance to be bound to the security group.
+        The ID of the NLB instance to be associated with the security group.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -120,7 +112,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security group.
+        The ID of the security group to be disassociated.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -139,9 +131,11 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Nlb Load Balancer Security Group Attachment resource.
+        Provides a NLB Load Balancer Security Group Attachment resource.
 
-        For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
+        Security Group mount.
+
+        For information about NLB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
 
         > **NOTE:** Available since v1.198.0.
 
@@ -211,11 +205,9 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
-               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to be disassociated.
         """
         ...
     @overload
@@ -224,9 +216,11 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                  args: LoadBalancerSecurityGroupAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Nlb Load Balancer Security Group Attachment resource.
+        Provides a NLB Load Balancer Security Group Attachment resource.
 
-        For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
+        Security Group mount.
+
+        For information about NLB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
 
         > **NOTE:** Available since v1.198.0.
 
@@ -348,11 +342,9 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
-               - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-               - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the NLB instance to be associated with the security group.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to be disassociated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,9 +359,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to PreCheck this request only. Value:
-        - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -377,7 +367,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The ID of the network-based server load balancer instance to be bound to the security group.
+        The ID of the NLB instance to be associated with the security group.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -385,7 +375,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the security group.
+        The ID of the security group to be disassociated.
         """
         return pulumi.get(self, "security_group_id")
 

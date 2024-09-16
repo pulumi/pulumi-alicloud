@@ -97,25 +97,25 @@ export class ServerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * The protocol version. Valid values:
      */
     public readonly addressIpVersion!: pulumi.Output<string>;
     /**
-     * Full port forwarding.
+     * Specifies whether to enable all-port forwarding. Valid values:
      */
     public readonly anyPortEnabled!: pulumi.Output<boolean>;
     /**
-     * . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+     * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
     public readonly connectionDrain!: pulumi.Output<boolean>;
     /**
-     * Specifies whether to enable connection draining.
+     * Specifies whether to enable connection draining. Valid values:
      */
     public readonly connectionDrainEnabled!: pulumi.Output<boolean>;
     /**
-     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+     * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
     public readonly connectionDrainTimeout!: pulumi.Output<number>;
     /**
@@ -123,34 +123,40 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly healthCheck!: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+     * Specifies whether to enable client IP preservation. Valid values:
      */
     public readonly preserveClientIpEnabled!: pulumi.Output<boolean>;
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The protocol used to forward requests to the backend servers. Valid values:
+     * - `TCP` (default)
+     * - `UDP`
+     * - `TCPSSL`
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The routing algorithm. Valid values:
-     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+     * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      */
     public readonly scheduler!: pulumi.Output<string>;
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The new name of the server group.
+     *
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     public readonly serverGroupName!: pulumi.Output<string>;
     /**
-     * The type of the server group. Valid values: 
-     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-     * - `Ip`: allows you to specify IP addresses.
+     * The type of server group. Valid values:
+     * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
@@ -162,7 +168,10 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The ID of the VPC to which the server group belongs.
+     * The ID of the virtual private cloud (VPC) to which the server group belongs.
+     *
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -230,25 +239,25 @@ export class ServerGroup extends pulumi.CustomResource {
  */
 export interface ServerGroupState {
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * The protocol version. Valid values:
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
-     * Full port forwarding.
+     * Specifies whether to enable all-port forwarding. Valid values:
      */
     anyPortEnabled?: pulumi.Input<boolean>;
     /**
-     * . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+     * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
     connectionDrain?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable connection draining.
+     * Specifies whether to enable connection draining. Valid values:
      */
     connectionDrainEnabled?: pulumi.Input<boolean>;
     /**
-     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+     * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
     connectionDrainTimeout?: pulumi.Input<number>;
     /**
@@ -256,34 +265,40 @@ export interface ServerGroupState {
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+     * Specifies whether to enable client IP preservation. Valid values:
      */
     preserveClientIpEnabled?: pulumi.Input<boolean>;
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The protocol used to forward requests to the backend servers. Valid values:
+     * - `TCP` (default)
+     * - `UDP`
+     * - `TCPSSL`
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The routing algorithm. Valid values:
-     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+     * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The new name of the server group.
+     *
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values: 
-     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-     * - `Ip`: allows you to specify IP addresses.
+     * The type of server group. Valid values:
+     * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
@@ -295,7 +310,10 @@ export interface ServerGroupState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC to which the server group belongs.
+     * The ID of the virtual private cloud (VPC) to which the server group belongs.
+     *
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -307,25 +325,25 @@ export interface ServerGroupState {
  */
 export interface ServerGroupArgs {
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * The protocol version. Valid values:
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
-     * Full port forwarding.
+     * Specifies whether to enable all-port forwarding. Valid values:
      */
     anyPortEnabled?: pulumi.Input<boolean>;
     /**
-     * . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
+     * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
     connectionDrain?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable connection draining.
+     * Specifies whether to enable connection draining. Valid values:
      */
     connectionDrainEnabled?: pulumi.Input<boolean>;
     /**
-     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+     * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
     connectionDrainTimeout?: pulumi.Input<number>;
     /**
@@ -333,34 +351,40 @@ export interface ServerGroupArgs {
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+     * Specifies whether to enable client IP preservation. Valid values:
      */
     preserveClientIpEnabled?: pulumi.Input<boolean>;
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The protocol used to forward requests to the backend servers. Valid values:
+     * - `TCP` (default)
+     * - `UDP`
+     * - `TCPSSL`
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The routing algorithm. Valid values:
-     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+     * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The new name of the server group.
+     *
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName: pulumi.Input<string>;
     /**
-     * The type of the server group. Valid values: 
-     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-     * - `Ip`: allows you to specify IP addresses.
+     * The type of server group. Valid values:
+     * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
@@ -368,7 +392,10 @@ export interface ServerGroupArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the VPC to which the server group belongs.
+     * The ID of the virtual private cloud (VPC) to which the server group belongs.
+     *
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

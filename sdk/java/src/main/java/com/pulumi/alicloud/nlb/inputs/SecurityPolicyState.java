@@ -39,14 +39,18 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -54,14 +58,18 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the security policy.
+     * 
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      * 
      */
     @Import(name="securityPolicyName")
     private @Nullable Output<String> securityPolicyName;
 
     /**
-     * @return The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the security policy.
+     * 
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> securityPolicyName() {
@@ -69,14 +77,14 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -84,14 +92,14 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -183,7 +191,9 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -194,7 +204,9 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -204,7 +216,9 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicyName The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+         * @param securityPolicyName The name of the security policy.
+         * 
+         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -215,7 +229,9 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicyName The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+         * @param securityPolicyName The name of the security policy.
+         * 
+         * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -225,7 +241,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -236,7 +252,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -246,7 +262,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -257,7 +273,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 

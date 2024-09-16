@@ -19,8 +19,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.amqp.Instance("default", {
  *     instanceType: "enterprise",
  *     maxTps: "3000",
@@ -29,32 +27,33 @@ import * as utilities from "../utilities";
  *     supportEip: false,
  *     maxEipTps: "128",
  *     paymentType: "Subscription",
+ *     period: 1,
  * });
  * const defaultVirtualHost = new alicloud.amqp.VirtualHost("default", {
  *     instanceId: _default.id,
- *     virtualHostName: name,
+ *     virtualHostName: "tf-example",
  * });
  * const defaultExchange = new alicloud.amqp.Exchange("default", {
- *     instanceId: _default.id,
- *     virtualHostName: defaultVirtualHost.virtualHostName,
- *     exchangeName: name,
- *     exchangeType: "HEADERS",
  *     autoDeleteState: false,
+ *     exchangeName: "tf-example",
+ *     exchangeType: "HEADERS",
+ *     instanceId: _default.id,
  *     internal: false,
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
  * const defaultQueue = new alicloud.amqp.Queue("default", {
  *     instanceId: _default.id,
+ *     queueName: "tf-example",
  *     virtualHostName: defaultVirtualHost.virtualHostName,
- *     queueName: name,
  * });
  * const defaultBinding = new alicloud.amqp.Binding("default", {
- *     instanceId: _default.id,
- *     virtualHostName: defaultVirtualHost.virtualHostName,
- *     sourceExchange: defaultExchange.exchangeName,
- *     destinationName: name,
- *     bindingType: "QUEUE",
- *     bindingKey: defaultQueue.queueName,
  *     argument: "x-match:all",
+ *     bindingKey: defaultQueue.queueName,
+ *     bindingType: "QUEUE",
+ *     destinationName: "tf-example",
+ *     instanceId: _default.id,
+ *     sourceExchange: defaultExchange.exchangeName,
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
  * ```
  *

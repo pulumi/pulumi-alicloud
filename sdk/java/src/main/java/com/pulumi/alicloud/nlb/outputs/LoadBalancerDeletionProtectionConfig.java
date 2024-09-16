@@ -13,38 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerDeletionProtectionConfig {
     /**
-     * @return Delete protection enable.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Opening time.
+     * @return Opening time of the configuration read-only mode.
      * 
      */
     private @Nullable String enabledTime;
     /**
-     * @return Reason for opening.
+     * @return The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
      * 
      */
     private @Nullable String reason;
 
     private LoadBalancerDeletionProtectionConfig() {}
     /**
-     * @return Delete protection enable.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Opening time.
+     * @return Opening time of the configuration read-only mode.
      * 
      */
     public Optional<String> enabledTime() {
         return Optional.ofNullable(this.enabledTime);
     }
     /**
-     * @return Reason for opening.
+     * @return The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
      * 
      */
     public Optional<String> reason() {

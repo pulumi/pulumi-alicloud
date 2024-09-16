@@ -85,19 +85,23 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly ciphers!: pulumi.Output<string[]>;
     /**
-     * The ID of the resource group.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the security policy.
+     *
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     public readonly securityPolicyName!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -156,19 +160,23 @@ export interface SecurityPolicyState {
      */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the security policy.
+     *
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     securityPolicyName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -189,15 +197,19 @@ export interface SecurityPolicyArgs {
      */
     ciphers: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group.
+     * The ID of the new resource group.
+     *
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the security policy.
+     *
+     * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     securityPolicyName?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

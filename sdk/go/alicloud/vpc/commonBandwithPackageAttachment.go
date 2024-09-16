@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:          pulumi.String("3"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				InternetChargeType: pulumi.String("PayByTraffic"),
 //			})
 //			if err != nil {
 //				return err

@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ddos
         /// The member account id of the IP address.
         /// </summary>
         [Output("memberUid")]
-        public Output<string?> MemberUid { get; private set; } = null!;
+        public Output<string> MemberUid { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.

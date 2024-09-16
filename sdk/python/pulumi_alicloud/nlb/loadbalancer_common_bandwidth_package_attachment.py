@@ -18,8 +18,8 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
                  load_balancer_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a LoadbalancerCommonBandwidthPackageAttachment resource.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bound shared bandwidth package.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
+        :param pulumi.Input[str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the EIP bandwidth plan.
         """
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -28,7 +28,7 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Input[str]:
         """
-        The ID of the bound shared bandwidth package.
+        Specifies whether only to precheck the request. Valid values:
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -40,7 +40,7 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The ID of the network-based server load balancer instance.
+        The ID of the EIP bandwidth plan.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -57,8 +57,8 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadbalancerCommonBandwidthPackageAttachment resources.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bound shared bandwidth package.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
+        :param pulumi.Input[str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the EIP bandwidth plan.
         :param pulumi.Input[str] status: Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
         """
         if bandwidth_package_id is not None:
@@ -72,7 +72,7 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the bound shared bandwidth package.
+        Specifies whether only to precheck the request. Valid values:
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -84,7 +84,7 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the network-based server load balancer instance.
+        The ID of the EIP bandwidth plan.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -114,7 +114,9 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+        Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+
+        Bandwidth Package Operation.
 
         For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
 
@@ -173,7 +175,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             ])
         default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="2",
-            internet_charge_type="PayByBandwidth",
+            internet_charge_type="PayByTraffic",
             bandwidth_package_name=name,
             description=name)
         default_loadbalancer_common_bandwidth_package_attachment = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("default",
@@ -191,8 +193,8 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bound shared bandwidth package.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
+        :param pulumi.Input[str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the EIP bandwidth plan.
         """
         ...
     @overload
@@ -201,7 +203,9 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
                  args: LoadbalancerCommonBandwidthPackageAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+        Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+
+        Bandwidth Package Operation.
 
         For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
 
@@ -260,7 +264,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             ])
         default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="2",
-            internet_charge_type="PayByBandwidth",
+            internet_charge_type="PayByTraffic",
             bandwidth_package_name=name,
             description=name)
         default_loadbalancer_common_bandwidth_package_attachment = alicloud.nlb.LoadbalancerCommonBandwidthPackageAttachment("default",
@@ -329,8 +333,8 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bound shared bandwidth package.
-        :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance.
+        :param pulumi.Input[str] bandwidth_package_id: Specifies whether only to precheck the request. Valid values:
+        :param pulumi.Input[str] load_balancer_id: The ID of the EIP bandwidth plan.
         :param pulumi.Input[str] status: Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -346,7 +350,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
-        The ID of the bound shared bandwidth package.
+        Specifies whether only to precheck the request. Valid values:
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -354,7 +358,7 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The ID of the network-based server load balancer instance.
+        The ID of the EIP bandwidth plan.
         """
         return pulumi.get(self, "load_balancer_id")
 

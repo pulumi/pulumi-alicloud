@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _additionalSecurityGroupIds;
 
         /// <summary>
-        /// Additional security Group IDS for Cluster, you can also specify this key for each node group.
+        /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
         /// </summary>
         public InputList<string> AdditionalSecurityGroupIds
         {
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyArgs>? AutoScalingPolicy { get; set; }
 
         /// <summary>
-        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
+        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
         /// </summary>
         [Input("costOptimizedConfig")]
         public Input<Inputs.ClusterNodeGroupCostOptimizedConfigArgs>? CostOptimizedConfig { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
         /// </summary>
         [Input("deploymentSetStrategy")]
         public Input<string>? DeploymentSetStrategy { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _instanceTypes;
 
         /// <summary>
-        /// Host Ecs instance types.
+        /// Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
         /// </summary>
         public InputList<string> InstanceTypes
         {
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         private InputList<string>? _vswitchIds;
 
         /// <summary>
-        /// Global vSwitch ids, you can also specify it in node group.
+        /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
-        /// Whether the node has a public IP address enabled.
+        /// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
         /// </summary>
         [Input("withPublicIp")]
         public Input<bool>? WithPublicIp { get; set; }

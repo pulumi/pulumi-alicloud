@@ -17,18 +17,14 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
     public static final LoadBalancerSecurityGroupAttachmentState Empty = new LoadBalancerSecurityGroupAttachmentState();
 
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -36,14 +32,14 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
     }
 
     /**
-     * The ID of the network-based server load balancer instance to be bound to the security group.
+     * The ID of the NLB instance to be associated with the security group.
      * 
      */
     @Import(name="loadBalancerId")
     private @Nullable Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the network-based server load balancer instance to be bound to the security group.
+     * @return The ID of the NLB instance to be associated with the security group.
      * 
      */
     public Optional<Output<String>> loadBalancerId() {
@@ -51,14 +47,14 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
     }
 
     /**
-     * The ID of the security group.
+     * The ID of the security group to be disassociated.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group.
+     * @return The ID of the security group to be disassociated.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -92,9 +88,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:
-         * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -105,9 +99,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:
-         * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -117,7 +109,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance to be bound to the security group.
+         * @param loadBalancerId The ID of the NLB instance to be associated with the security group.
          * 
          * @return builder
          * 
@@ -128,7 +120,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance to be bound to the security group.
+         * @param loadBalancerId The ID of the NLB instance to be associated with the security group.
          * 
          * @return builder
          * 
@@ -138,7 +130,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param securityGroupId The ID of the security group.
+         * @param securityGroupId The ID of the security group to be disassociated.
          * 
          * @return builder
          * 
@@ -149,7 +141,7 @@ public final class LoadBalancerSecurityGroupAttachmentState extends com.pulumi.r
         }
 
         /**
-         * @param securityGroupId The ID of the security group.
+         * @param securityGroupId The ID of the security group to be disassociated.
          * 
          * @return builder
          * 

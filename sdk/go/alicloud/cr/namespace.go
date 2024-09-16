@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,8 +43,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
-//				Name:              pulumi.String(name),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000000,
+//				Max: 99999999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
+//				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})

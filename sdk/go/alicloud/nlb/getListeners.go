@@ -13,7 +13,38 @@ import (
 
 // This data source provides the Nlb Listeners of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.191.0+.
+// > **NOTE:** Available since v1.191.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ids, err := nlb.GetListeners(ctx, &nlb.GetListenersArgs{
+//				Ids: []string{
+//					"example_value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudNlbListenerId1", ids.Listeners[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListenersResult
@@ -39,12 +70,14 @@ type GetListenersArgs struct {
 // A collection of values returned by getListeners.
 type GetListenersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                 `pulumi:"id"`
-	Ids              []string               `pulumi:"ids"`
-	ListenerProtocol *string                `pulumi:"listenerProtocol"`
-	Listeners        []GetListenersListener `pulumi:"listeners"`
-	LoadBalancerIds  []string               `pulumi:"loadBalancerIds"`
-	OutputFile       *string                `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
+	ListenerProtocol *string `pulumi:"listenerProtocol"`
+	// A list of Nlb Listeners. Each element contains the following attributes:
+	Listeners       []GetListenersListener `pulumi:"listeners"`
+	LoadBalancerIds []string               `pulumi:"loadBalancerIds"`
+	OutputFile      *string                `pulumi:"outputFile"`
 }
 
 func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
@@ -100,10 +133,12 @@ func (o GetListenersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
 func (o GetListenersResultOutput) ListenerProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetListenersResult) *string { return v.ListenerProtocol }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nlb Listeners. Each element contains the following attributes:
 func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
 	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
 }

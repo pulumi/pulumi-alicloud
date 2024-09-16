@@ -21,14 +21,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupArgs Empty = new ServerGroupArgs();
 
     /**
-     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * The protocol version. Valid values:
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+     * @return The protocol version. Valid values:
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -36,14 +36,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Full port forwarding.
+     * Specifies whether to enable all-port forwarding. Valid values:
      * 
      */
     @Import(name="anyPortEnabled")
     private @Nullable Output<Boolean> anyPortEnabled;
 
     /**
-     * @return Full port forwarding.
+     * @return Specifies whether to enable all-port forwarding. Valid values:
      * 
      */
     public Optional<Output<Boolean>> anyPortEnabled() {
@@ -51,7 +51,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      * @deprecated
      * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
@@ -62,7 +62,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> connectionDrain;
 
     /**
-     * @return . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+     * @return . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
      * 
      * @deprecated
      * Field &#39;connection_drain&#39; has been deprecated since provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
@@ -74,14 +74,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable connection draining.
+     * Specifies whether to enable connection draining. Valid values:
      * 
      */
     @Import(name="connectionDrainEnabled")
     private @Nullable Output<Boolean> connectionDrainEnabled;
 
     /**
-     * @return Specifies whether to enable connection draining.
+     * @return Specifies whether to enable connection draining. Valid values:
      * 
      */
     public Optional<Output<Boolean>> connectionDrainEnabled() {
@@ -89,14 +89,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+     * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      * 
      */
     @Import(name="connectionDrainTimeout")
     private @Nullable Output<Integer> connectionDrainTimeout;
 
     /**
-     * @return Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+     * @return The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      * 
      */
     public Optional<Output<Integer>> connectionDrainTimeout() {
@@ -119,14 +119,14 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+     * Specifies whether to enable client IP preservation. Valid values:
      * 
      */
     @Import(name="preserveClientIpEnabled")
     private @Nullable Output<Boolean> preserveClientIpEnabled;
 
     /**
-     * @return Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+     * @return Specifies whether to enable client IP preservation. Valid values:
      * 
      */
     public Optional<Output<Boolean>> preserveClientIpEnabled() {
@@ -134,14 +134,20 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * The protocol used to forward requests to the backend servers. Valid values:
+     * - `TCP` (default)
+     * - `UDP`
+     * - `TCPSSL`
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+     * @return The protocol used to forward requests to the backend servers. Valid values:
+     * - `TCP` (default)
+     * - `UDP`
+     * - `TCPSSL`
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -149,14 +155,18 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group to which the security group belongs.
+     * The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the security group belongs.
+     * @return The ID of the new resource group.
+     * 
+     * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -164,24 +174,22 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The routing algorithm. Valid values:
-     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+     * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return The routing algorithm. Valid values:
-     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+     * @return The scheduling algorithm. Valid values:
+     * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+     * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -189,14 +197,18 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * The new name of the server group.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="serverGroupName", required=true)
     private Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The new name of the server group.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> serverGroupName() {
@@ -204,18 +216,18 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the server group. Valid values:
-     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-     * - `Ip`: allows you to specify IP addresses.
+     * The type of server group. Valid values:
+     * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group. Valid values:
-     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-     * - `Ip`: allows you to specify IP addresses.
+     * @return The type of server group. Valid values:
+     * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -238,7 +250,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC to which the server group belongs.
+     * The ID of the virtual private cloud (VPC) to which the server group belongs.
+     * 
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -247,7 +261,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC to which the server group belongs.
+     * @return The ID of the virtual private cloud (VPC) to which the server group belongs.
+     * 
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -294,7 +310,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+         * @param addressIpVersion The protocol version. Valid values:
          * 
          * @return builder
          * 
@@ -305,7 +321,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Valid values: `Ipv4` (default), `DualStack`.
+         * @param addressIpVersion The protocol version. Valid values:
          * 
          * @return builder
          * 
@@ -315,7 +331,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param anyPortEnabled Full port forwarding.
+         * @param anyPortEnabled Specifies whether to enable all-port forwarding. Valid values:
          * 
          * @return builder
          * 
@@ -326,7 +342,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param anyPortEnabled Full port forwarding.
+         * @param anyPortEnabled Specifies whether to enable all-port forwarding. Valid values:
          * 
          * @return builder
          * 
@@ -336,7 +352,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
          * 
          * @return builder
          * 
@@ -351,7 +367,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.214.0. New field &#39;connection_drain_enabled&#39; instead.
+         * @param connectionDrain . Field &#39;connection_drain&#39; has been deprecated from provider version 1.231.0. New field &#39;connection_drain_enabled&#39; instead.
          * 
          * @return builder
          * 
@@ -365,7 +381,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainEnabled Specifies whether to enable connection draining.
+         * @param connectionDrainEnabled Specifies whether to enable connection draining. Valid values:
          * 
          * @return builder
          * 
@@ -376,7 +392,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainEnabled Specifies whether to enable connection draining.
+         * @param connectionDrainEnabled Specifies whether to enable connection draining. Valid values:
          * 
          * @return builder
          * 
@@ -386,7 +402,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainTimeout Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+         * @param connectionDrainTimeout The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
          * 
          * @return builder
          * 
@@ -397,7 +413,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionDrainTimeout Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
+         * @param connectionDrainTimeout The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
          * 
          * @return builder
          * 
@@ -428,7 +444,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preserveClientIpEnabled Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+         * @param preserveClientIpEnabled Specifies whether to enable client IP preservation. Valid values:
          * 
          * @return builder
          * 
@@ -439,7 +455,7 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param preserveClientIpEnabled Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
+         * @param preserveClientIpEnabled Specifies whether to enable client IP preservation. Valid values:
          * 
          * @return builder
          * 
@@ -449,7 +465,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+         * @param protocol The protocol used to forward requests to the backend servers. Valid values:
+         * - `TCP` (default)
+         * - `UDP`
+         * - `TCPSSL`
          * 
          * @return builder
          * 
@@ -460,7 +479,10 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
+         * @param protocol The protocol used to forward requests to the backend servers. Valid values:
+         * - `TCP` (default)
+         * - `UDP`
+         * - `TCPSSL`
          * 
          * @return builder
          * 
@@ -470,7 +492,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -481,7 +505,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group to which the security group belongs.
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
          * 
@@ -491,12 +517,11 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The routing algorithm. Valid values:
-         * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-         * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-         * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-         * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-         * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+         * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+         * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+         * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
          * 
          * @return builder
          * 
@@ -507,12 +532,11 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler The routing algorithm. Valid values:
-         * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
-         * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-         * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-         * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
-         * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+         * - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+         * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+         * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
          * 
          * @return builder
          * 
@@ -522,7 +546,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param serverGroupName The new name of the server group.
+         * 
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -533,7 +559,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupName The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+         * @param serverGroupName The new name of the server group.
+         * 
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -543,9 +571,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
-         * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-         * - `Ip`: allows you to specify IP addresses.
+         * @param serverGroupType The type of server group. Valid values:
+         * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+         * - `Ip`: allows you to add servers by specifying IP addresses.
          * 
          * @return builder
          * 
@@ -556,9 +584,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group. Valid values:
-         * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
-         * - `Ip`: allows you to specify IP addresses.
+         * @param serverGroupType The type of server group. Valid values:
+         * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
+         * - `Ip`: allows you to add servers by specifying IP addresses.
          * 
          * @return builder
          * 
@@ -589,7 +617,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC to which the server group belongs.
+         * @param vpcId The ID of the virtual private cloud (VPC) to which the server group belongs.
+         * 
+         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -602,7 +632,9 @@ public final class ServerGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC to which the server group belongs.
+         * @param vpcId The ID of the virtual private cloud (VPC) to which the server group belongs.
+         * 
+         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

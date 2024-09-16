@@ -67,14 +67,14 @@ import (
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-//				ProjectName:  defaultProject.Name,
+//				ProjectName:  defaultProject.ProjectName,
 //				LogstoreName: pulumi.String("example-value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			sourceStore, err := log.NewStore(ctx, "source_store", &log.StoreArgs{
-//				ProjectName:  defaultProject.Name,
+//				ProjectName:  defaultProject.ProjectName,
 //				LogstoreName: pulumi.String("example-source-store"),
 //			})
 //			if err != nil {
@@ -118,8 +118,8 @@ import (
 //				Description: pulumi.String("example-value"),
 //				Role:        defaultRole.Arn,
 //				LogConfig: &fc.ServiceLogConfigArgs{
-//					Project:               defaultProject.Name,
-//					Logstore:              defaultStore.Name,
+//					Project:               defaultProject.ProjectName,
+//					Logstore:              defaultStore.LogstoreName,
 //					EnableInstanceMetrics: pulumi.Bool(true),
 //					EnableRequestMetrics:  pulumi.Bool(true),
 //				},
@@ -160,14 +160,14 @@ import (
 //				Function: defaultFunction.Name,
 //				Name:     pulumi.String("terraform-example"),
 //				Role:     defaultRole.Arn,
-//				SourceArn: defaultProject.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("acs:log:%v:%v:project/%v", defaultGetRegions.Regions[0].Id, _default.Id, name), nil
+//				SourceArn: defaultProject.ProjectName.ApplyT(func(projectName string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", defaultGetRegions.Regions[0].Id, _default.Id, projectName), nil
 //				}).(pulumi.StringOutput),
 //				Type: pulumi.String("log"),
-//				Config: pulumi.All(sourceStore.Name, defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					sourceStoreName := _args[0].(string)
-//					defaultProjectName := _args[1].(string)
-//					defaultStoreName := _args[2].(string)
+//				Config: pulumi.All(sourceStore.LogstoreName, defaultProject.ProjectName, defaultStore.LogstoreName).ApplyT(func(_args []interface{}) (string, error) {
+//					sourceStoreLogstoreName := _args[0].(string)
+//					projectName := _args[1].(string)
+//					defaultStoreLogstoreName := _args[2].(string)
 //					return fmt.Sprintf(`    {
 //	        "sourceConfig": {
 //	            "logstore": "%v",
@@ -185,11 +185,10 @@ import (
 //	             "project": "%v",
 //	            "logstore": "%v"
 //	        },
-//	        "targetConfig": null,
 //	        "enable": true
 //	    }
 //
-// `, sourceStoreName, defaultProjectName, defaultStoreName), nil
+// `, sourceStoreLogstoreName, projectName, defaultStoreLogstoreName), nil
 //
 //				}).(pulumi.StringOutput),
 //			})

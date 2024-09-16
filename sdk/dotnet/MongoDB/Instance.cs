@@ -157,6 +157,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// </summary>
+        [Output("enableBackupLog")]
+        public Output<int> EnableBackupLog { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("encrypted")]
@@ -203,6 +209,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Output("logBackupRetentionPeriod")]
+        public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -512,6 +524,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("encrypted")]
@@ -564,6 +582,12 @@ namespace Pulumi.AliCloud.MongoDB
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -825,6 +849,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
+
+        /// <summary>
         /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("encrypted")]
@@ -877,6 +907,12 @@ namespace Pulumi.AliCloud.MongoDB
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
 
         /// <summary>
         /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).

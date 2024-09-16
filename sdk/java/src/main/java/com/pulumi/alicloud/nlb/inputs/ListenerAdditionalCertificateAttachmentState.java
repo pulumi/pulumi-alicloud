@@ -17,14 +17,14 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
     public static final ListenerAdditionalCertificateAttachmentState Empty = new ListenerAdditionalCertificateAttachmentState();
 
     /**
-     * Certificate ID. Currently, only server certificates are supported.
+     * The ID of additional certificates.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return Certificate ID. Currently, only server certificates are supported.
+     * @return The ID of additional certificates.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -32,14 +32,14 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
     }
 
     /**
-     * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -47,14 +47,14 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
     }
 
     /**
-     * The ID of the tcpssl listener.
+     * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     @Import(name="listenerId")
     private @Nullable Output<String> listenerId;
 
     /**
-     * @return The ID of the tcpssl listener.
+     * @return The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      * 
      */
     public Optional<Output<String>> listenerId() {
@@ -62,14 +62,14 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -104,7 +104,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param certificateId Certificate ID. Currently, only server certificates are supported.
+         * @param certificateId The ID of additional certificates.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param certificateId Certificate ID. Currently, only server certificates are supported.
+         * @param certificateId The ID of additional certificates.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param listenerId The ID of the tcpssl listener.
+         * @param listenerId The listener ID. You must specify the ID of a listener that uses SSL over TCP.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param listenerId The ID of the tcpssl listener.
+         * @param listenerId The listener ID. You must specify the ID of a listener that uses SSL over TCP.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ListenerAdditionalCertificateAttachmentState extends com.pulu
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

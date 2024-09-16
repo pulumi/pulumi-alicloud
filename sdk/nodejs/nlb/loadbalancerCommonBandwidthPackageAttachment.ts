@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+ * Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+ *
+ * Bandwidth Package Operation.
  *
  * For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
  *
@@ -67,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
  *     bandwidth: "2",
- *     internetChargeType: "PayByBandwidth",
+ *     internetChargeType: "PayByTraffic",
  *     bandwidthPackageName: name,
  *     description: name,
  * });
@@ -114,11 +116,11 @@ export class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
     }
 
     /**
-     * The ID of the bound shared bandwidth package.
+     * Specifies whether only to precheck the request. Valid values:
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the EIP bandwidth plan.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
@@ -164,11 +166,11 @@ export class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
  */
 export interface LoadbalancerCommonBandwidthPackageAttachmentState {
     /**
-     * The ID of the bound shared bandwidth package.
+     * Specifies whether only to precheck the request. Valid values:
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the EIP bandwidth plan.
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
@@ -182,11 +184,11 @@ export interface LoadbalancerCommonBandwidthPackageAttachmentState {
  */
 export interface LoadbalancerCommonBandwidthPackageAttachmentArgs {
     /**
-     * The ID of the bound shared bandwidth package.
+     * Specifies whether only to precheck the request. Valid values:
      */
     bandwidthPackageId: pulumi.Input<string>;
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the EIP bandwidth plan.
      */
     loadBalancerId: pulumi.Input<string>;
 }

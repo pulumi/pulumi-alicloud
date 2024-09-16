@@ -133,8 +133,13 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly endpointGroupType!: pulumi.Output<string>;
     /**
-     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
+     */
+    public readonly endpointProtocolVersion!: pulumi.Output<string>;
+    /**
+     * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     public readonly endpointRequestProtocol!: pulumi.Output<string>;
     /**
@@ -210,6 +215,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["endpointGroupIpLists"] = state ? state.endpointGroupIpLists : undefined;
             resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
             resourceInputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
+            resourceInputs["endpointProtocolVersion"] = state ? state.endpointProtocolVersion : undefined;
             resourceInputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
             resourceInputs["healthCheckEnabled"] = state ? state.healthCheckEnabled : undefined;
             resourceInputs["healthCheckIntervalSeconds"] = state ? state.healthCheckIntervalSeconds : undefined;
@@ -242,6 +248,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["endpointConfigurations"] = args ? args.endpointConfigurations : undefined;
             resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
             resourceInputs["endpointGroupType"] = args ? args.endpointGroupType : undefined;
+            resourceInputs["endpointProtocolVersion"] = args ? args.endpointProtocolVersion : undefined;
             resourceInputs["endpointRequestProtocol"] = args ? args.endpointRequestProtocol : undefined;
             resourceInputs["healthCheckEnabled"] = args ? args.healthCheckEnabled : undefined;
             resourceInputs["healthCheckIntervalSeconds"] = args ? args.healthCheckIntervalSeconds : undefined;
@@ -292,8 +299,13 @@ export interface EndpointGroupState {
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
+     */
+    endpointProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
     /**
@@ -377,8 +389,13 @@ export interface EndpointGroupArgs {
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
-     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
+     * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
+     */
+    endpointProtocolVersion?: pulumi.Input<string>;
+    /**
+     * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
+     * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
     /**

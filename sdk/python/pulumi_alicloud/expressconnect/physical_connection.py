@@ -20,39 +20,45 @@ class PhysicalConnectionArgs:
                  circuit_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  peer_location: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  physical_connection_name: Optional[pulumi.Input[str]] = None,
                  port_type: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PhysicalConnection resource.
-        :param pulumi.Input[str] access_point_id: The Physical Leased Line Access Point ID.
-        :param pulumi.Input[str] line_operator: Provides Access to the Physical Line Operator. Valid values:
-               * CT: China Telecom
-               * CU: China Unicom
-               * CM: china Mobile
-               * CO: Other Chinese
-               * Equinix: Equinix
-               * Other: Other Overseas.
-        :param pulumi.Input[str] bandwidth: On the Bandwidth of the ECC Service and Physical Connection.
-        :param pulumi.Input[str] circuit_code: Operators for Physical Connection Circuit Provided Coding.
-        :param pulumi.Input[str] description: The Physical Connection to Which the Description.
-        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
-        :param pulumi.Input[str] physical_connection_name: on Behalf of the Resource Name of the Resources-Attribute Field.
-        :param pulumi.Input[str] port_type: The Physical Leased Line Access Port Type. Valid value:
-               * 100Base-T: Fast Electrical Ports
-               * 1000Base-T: gigabit Electrical Ports
-               * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-               * 10GBase-T: Gigabit Electrical Port
-               * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-               * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-               * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-               
-               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
-        :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
-        :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
-        :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
+        :param pulumi.Input[str] access_point_id: The access point ID of the Express Connect circuit.
+        :param pulumi.Input[str] line_operator: The connectivity provider of the Express Connect circuit. Valid values:
+               - `CT`: China Telecom.
+               - `CU`: China Unicom.
+               - `CM`: China Mobile.
+               - `CO`: Other connectivity providers in the Chinese mainland.
+               - `Equinix`: Equinix.
+               - `Other`: Other connectivity providers outside the Chinese mainland.
+        :param pulumi.Input[str] bandwidth: The maximum bandwidth of the hosted connection.
+        :param pulumi.Input[str] circuit_code: The circuit code of the Express Connect circuit.
+        :param pulumi.Input[str] description: The description of the Express Connect circuit.
+        :param pulumi.Input[str] peer_location: The geographical location of the data center.
+        :param pulumi.Input[int] period: The subscription duration. Valid values:
+               - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+               - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] physical_connection_name: The name of the Express Connect circuit.
+        :param pulumi.Input[str] port_type: The port type of the Express Connect circuit. Valid values:
+               - `100Base-T`: 100 Mbit/s copper Ethernet port.
+               - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+               - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+               - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+               - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+               - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+               - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        :param pulumi.Input[str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        :param pulumi.Input[str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        :param pulumi.Input[str] type: The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         pulumi.set(__self__, "access_point_id", access_point_id)
         pulumi.set(__self__, "line_operator", line_operator)
@@ -64,10 +70,14 @@ class PhysicalConnectionArgs:
             pulumi.set(__self__, "description", description)
         if peer_location is not None:
             pulumi.set(__self__, "peer_location", peer_location)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if physical_connection_name is not None:
             pulumi.set(__self__, "physical_connection_name", physical_connection_name)
         if port_type is not None:
             pulumi.set(__self__, "port_type", port_type)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if redundant_physical_connection_id is not None:
             pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
         if status is not None:
@@ -79,7 +89,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Input[str]:
         """
-        The Physical Leased Line Access Point ID.
+        The access point ID of the Express Connect circuit.
         """
         return pulumi.get(self, "access_point_id")
 
@@ -91,13 +101,13 @@ class PhysicalConnectionArgs:
     @pulumi.getter(name="lineOperator")
     def line_operator(self) -> pulumi.Input[str]:
         """
-        Provides Access to the Physical Line Operator. Valid values:
-        * CT: China Telecom
-        * CU: China Unicom
-        * CM: china Mobile
-        * CO: Other Chinese
-        * Equinix: Equinix
-        * Other: Other Overseas.
+        The connectivity provider of the Express Connect circuit. Valid values:
+        - `CT`: China Telecom.
+        - `CU`: China Unicom.
+        - `CM`: China Mobile.
+        - `CO`: Other connectivity providers in the Chinese mainland.
+        - `Equinix`: Equinix.
+        - `Other`: Other connectivity providers outside the Chinese mainland.
         """
         return pulumi.get(self, "line_operator")
 
@@ -109,7 +119,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        On the Bandwidth of the ECC Service and Physical Connection.
+        The maximum bandwidth of the hosted connection.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -121,7 +131,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Operators for Physical Connection Circuit Provided Coding.
+        The circuit code of the Express Connect circuit.
         """
         return pulumi.get(self, "circuit_code")
 
@@ -133,7 +143,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Physical Connection to Which the Description.
+        The description of the Express Connect circuit.
         """
         return pulumi.get(self, "description")
 
@@ -145,7 +155,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter(name="peerLocation")
     def peer_location(self) -> Optional[pulumi.Input[str]]:
         """
-        and an on-Premises Data Center Location.
+        The geographical location of the data center.
         """
         return pulumi.get(self, "peer_location")
 
@@ -154,10 +164,24 @@ class PhysicalConnectionArgs:
         pulumi.set(self, "peer_location", value)
 
     @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The subscription duration. Valid values:
+        - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
     @pulumi.getter(name="physicalConnectionName")
     def physical_connection_name(self) -> Optional[pulumi.Input[str]]:
         """
-        on Behalf of the Resource Name of the Resources-Attribute Field.
+        The name of the Express Connect circuit.
         """
         return pulumi.get(self, "physical_connection_name")
 
@@ -169,16 +193,15 @@ class PhysicalConnectionArgs:
     @pulumi.getter(name="portType")
     def port_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Physical Leased Line Access Port Type. Valid value:
-        * 100Base-T: Fast Electrical Ports
-        * 1000Base-T: gigabit Electrical Ports
-        * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        * 10GBase-T: Gigabit Electrical Port
-        * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-
-        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        The port type of the Express Connect circuit. Valid values:
+        - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
 
@@ -187,10 +210,23 @@ class PhysicalConnectionArgs:
         pulumi.set(self, "port_type", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="redundantPhysicalConnectionId")
     def redundant_physical_connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Redundant Physical Connection to Which the ID.
+        The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
@@ -202,7 +238,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         """
         return pulumi.get(self, "status")
 
@@ -214,7 +250,7 @@ class PhysicalConnectionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Physical Private Line of Type. Default Value: VPC.
+        The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "type")
 
@@ -231,40 +267,48 @@ class _PhysicalConnectionState:
                  circuit_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  line_operator: Optional[pulumi.Input[str]] = None,
+                 order_id: Optional[pulumi.Input[str]] = None,
                  peer_location: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  physical_connection_name: Optional[pulumi.Input[str]] = None,
                  port_type: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PhysicalConnection resources.
-        :param pulumi.Input[str] access_point_id: The Physical Leased Line Access Point ID.
-        :param pulumi.Input[str] bandwidth: On the Bandwidth of the ECC Service and Physical Connection.
-        :param pulumi.Input[str] circuit_code: Operators for Physical Connection Circuit Provided Coding.
-        :param pulumi.Input[str] description: The Physical Connection to Which the Description.
-        :param pulumi.Input[str] line_operator: Provides Access to the Physical Line Operator. Valid values:
-               * CT: China Telecom
-               * CU: China Unicom
-               * CM: china Mobile
-               * CO: Other Chinese
-               * Equinix: Equinix
-               * Other: Other Overseas.
-        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
-        :param pulumi.Input[str] physical_connection_name: on Behalf of the Resource Name of the Resources-Attribute Field.
-        :param pulumi.Input[str] port_type: The Physical Leased Line Access Port Type. Valid value:
-               * 100Base-T: Fast Electrical Ports
-               * 1000Base-T: gigabit Electrical Ports
-               * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-               * 10GBase-T: Gigabit Electrical Port
-               * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-               * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-               * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-               
-               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
-        :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
-        :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
-        :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
+        :param pulumi.Input[str] access_point_id: The access point ID of the Express Connect circuit.
+        :param pulumi.Input[str] bandwidth: The maximum bandwidth of the hosted connection.
+        :param pulumi.Input[str] circuit_code: The circuit code of the Express Connect circuit.
+        :param pulumi.Input[str] description: The description of the Express Connect circuit.
+        :param pulumi.Input[str] line_operator: The connectivity provider of the Express Connect circuit. Valid values:
+               - `CT`: China Telecom.
+               - `CU`: China Unicom.
+               - `CM`: China Mobile.
+               - `CO`: Other connectivity providers in the Chinese mainland.
+               - `Equinix`: Equinix.
+               - `Other`: Other connectivity providers outside the Chinese mainland.
+        :param pulumi.Input[str] order_id: The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        :param pulumi.Input[str] peer_location: The geographical location of the data center.
+        :param pulumi.Input[int] period: The subscription duration. Valid values:
+               - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+               - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] physical_connection_name: The name of the Express Connect circuit.
+        :param pulumi.Input[str] port_type: The port type of the Express Connect circuit. Valid values:
+               - `100Base-T`: 100 Mbit/s copper Ethernet port.
+               - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+               - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+               - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+               - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+               - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+               - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        :param pulumi.Input[str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        :param pulumi.Input[str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        :param pulumi.Input[str] type: The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         if access_point_id is not None:
             pulumi.set(__self__, "access_point_id", access_point_id)
@@ -276,12 +320,18 @@ class _PhysicalConnectionState:
             pulumi.set(__self__, "description", description)
         if line_operator is not None:
             pulumi.set(__self__, "line_operator", line_operator)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
         if peer_location is not None:
             pulumi.set(__self__, "peer_location", peer_location)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if physical_connection_name is not None:
             pulumi.set(__self__, "physical_connection_name", physical_connection_name)
         if port_type is not None:
             pulumi.set(__self__, "port_type", port_type)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if redundant_physical_connection_id is not None:
             pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
         if status is not None:
@@ -293,7 +343,7 @@ class _PhysicalConnectionState:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Physical Leased Line Access Point ID.
+        The access point ID of the Express Connect circuit.
         """
         return pulumi.get(self, "access_point_id")
 
@@ -305,7 +355,7 @@ class _PhysicalConnectionState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        On the Bandwidth of the ECC Service and Physical Connection.
+        The maximum bandwidth of the hosted connection.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -317,7 +367,7 @@ class _PhysicalConnectionState:
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Operators for Physical Connection Circuit Provided Coding.
+        The circuit code of the Express Connect circuit.
         """
         return pulumi.get(self, "circuit_code")
 
@@ -329,7 +379,7 @@ class _PhysicalConnectionState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Physical Connection to Which the Description.
+        The description of the Express Connect circuit.
         """
         return pulumi.get(self, "description")
 
@@ -341,13 +391,13 @@ class _PhysicalConnectionState:
     @pulumi.getter(name="lineOperator")
     def line_operator(self) -> Optional[pulumi.Input[str]]:
         """
-        Provides Access to the Physical Line Operator. Valid values:
-        * CT: China Telecom
-        * CU: China Unicom
-        * CM: china Mobile
-        * CO: Other Chinese
-        * Equinix: Equinix
-        * Other: Other Overseas.
+        The connectivity provider of the Express Connect circuit. Valid values:
+        - `CT`: China Telecom.
+        - `CU`: China Unicom.
+        - `CM`: China Mobile.
+        - `CO`: Other connectivity providers in the Chinese mainland.
+        - `Equinix`: Equinix.
+        - `Other`: Other connectivity providers outside the Chinese mainland.
         """
         return pulumi.get(self, "line_operator")
 
@@ -356,10 +406,22 @@ class _PhysicalConnectionState:
         pulumi.set(self, "line_operator", value)
 
     @property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        """
+        return pulumi.get(self, "order_id")
+
+    @order_id.setter
+    def order_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order_id", value)
+
+    @property
     @pulumi.getter(name="peerLocation")
     def peer_location(self) -> Optional[pulumi.Input[str]]:
         """
-        and an on-Premises Data Center Location.
+        The geographical location of the data center.
         """
         return pulumi.get(self, "peer_location")
 
@@ -368,10 +430,24 @@ class _PhysicalConnectionState:
         pulumi.set(self, "peer_location", value)
 
     @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The subscription duration. Valid values:
+        - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
     @pulumi.getter(name="physicalConnectionName")
     def physical_connection_name(self) -> Optional[pulumi.Input[str]]:
         """
-        on Behalf of the Resource Name of the Resources-Attribute Field.
+        The name of the Express Connect circuit.
         """
         return pulumi.get(self, "physical_connection_name")
 
@@ -383,16 +459,15 @@ class _PhysicalConnectionState:
     @pulumi.getter(name="portType")
     def port_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Physical Leased Line Access Port Type. Valid value:
-        * 100Base-T: Fast Electrical Ports
-        * 1000Base-T: gigabit Electrical Ports
-        * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        * 10GBase-T: Gigabit Electrical Port
-        * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-
-        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        The port type of the Express Connect circuit. Valid values:
+        - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
 
@@ -401,10 +476,23 @@ class _PhysicalConnectionState:
         pulumi.set(self, "port_type", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="redundantPhysicalConnectionId")
     def redundant_physical_connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Redundant Physical Connection to Which the ID.
+        The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
@@ -416,7 +504,7 @@ class _PhysicalConnectionState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         """
         return pulumi.get(self, "status")
 
@@ -428,7 +516,7 @@ class _PhysicalConnectionState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Physical Private Line of Type. Default Value: VPC.
+        The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "type")
 
@@ -448,8 +536,10 @@ class PhysicalConnection(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  line_operator: Optional[pulumi.Input[str]] = None,
                  peer_location: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  physical_connection_name: Optional[pulumi.Input[str]] = None,
                  port_type: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -457,7 +547,7 @@ class PhysicalConnection(pulumi.CustomResource):
         """
         Provides a Express Connect Physical Connection resource.
 
-        For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
+        For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-createphysicalconnection-efficiency-channels).
 
         > **NOTE:** Available since v1.132.0.
 
@@ -499,32 +589,36 @@ class PhysicalConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_point_id: The Physical Leased Line Access Point ID.
-        :param pulumi.Input[str] bandwidth: On the Bandwidth of the ECC Service and Physical Connection.
-        :param pulumi.Input[str] circuit_code: Operators for Physical Connection Circuit Provided Coding.
-        :param pulumi.Input[str] description: The Physical Connection to Which the Description.
-        :param pulumi.Input[str] line_operator: Provides Access to the Physical Line Operator. Valid values:
-               * CT: China Telecom
-               * CU: China Unicom
-               * CM: china Mobile
-               * CO: Other Chinese
-               * Equinix: Equinix
-               * Other: Other Overseas.
-        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
-        :param pulumi.Input[str] physical_connection_name: on Behalf of the Resource Name of the Resources-Attribute Field.
-        :param pulumi.Input[str] port_type: The Physical Leased Line Access Port Type. Valid value:
-               * 100Base-T: Fast Electrical Ports
-               * 1000Base-T: gigabit Electrical Ports
-               * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-               * 10GBase-T: Gigabit Electrical Port
-               * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-               * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-               * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-               
-               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
-        :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
-        :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
-        :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
+        :param pulumi.Input[str] access_point_id: The access point ID of the Express Connect circuit.
+        :param pulumi.Input[str] bandwidth: The maximum bandwidth of the hosted connection.
+        :param pulumi.Input[str] circuit_code: The circuit code of the Express Connect circuit.
+        :param pulumi.Input[str] description: The description of the Express Connect circuit.
+        :param pulumi.Input[str] line_operator: The connectivity provider of the Express Connect circuit. Valid values:
+               - `CT`: China Telecom.
+               - `CU`: China Unicom.
+               - `CM`: China Mobile.
+               - `CO`: Other connectivity providers in the Chinese mainland.
+               - `Equinix`: Equinix.
+               - `Other`: Other connectivity providers outside the Chinese mainland.
+        :param pulumi.Input[str] peer_location: The geographical location of the data center.
+        :param pulumi.Input[int] period: The subscription duration. Valid values:
+               - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+               - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] physical_connection_name: The name of the Express Connect circuit.
+        :param pulumi.Input[str] port_type: The port type of the Express Connect circuit. Valid values:
+               - `100Base-T`: 100 Mbit/s copper Ethernet port.
+               - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+               - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+               - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+               - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+               - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+               - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        :param pulumi.Input[str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        :param pulumi.Input[str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        :param pulumi.Input[str] type: The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         ...
     @overload
@@ -535,7 +629,7 @@ class PhysicalConnection(pulumi.CustomResource):
         """
         Provides a Express Connect Physical Connection resource.
 
-        For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
+        For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-createphysicalconnection-efficiency-channels).
 
         > **NOTE:** Available since v1.132.0.
 
@@ -596,8 +690,10 @@ class PhysicalConnection(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  line_operator: Optional[pulumi.Input[str]] = None,
                  peer_location: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  physical_connection_name: Optional[pulumi.Input[str]] = None,
                  port_type: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -620,11 +716,14 @@ class PhysicalConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'line_operator'")
             __props__.__dict__["line_operator"] = line_operator
             __props__.__dict__["peer_location"] = peer_location
+            __props__.__dict__["period"] = period
             __props__.__dict__["physical_connection_name"] = physical_connection_name
             __props__.__dict__["port_type"] = port_type
+            __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["redundant_physical_connection_id"] = redundant_physical_connection_id
             __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
+            __props__.__dict__["order_id"] = None
         super(PhysicalConnection, __self__).__init__(
             'alicloud:expressconnect/physicalConnection:PhysicalConnection',
             resource_name,
@@ -640,9 +739,12 @@ class PhysicalConnection(pulumi.CustomResource):
             circuit_code: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             line_operator: Optional[pulumi.Input[str]] = None,
+            order_id: Optional[pulumi.Input[str]] = None,
             peer_location: Optional[pulumi.Input[str]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             physical_connection_name: Optional[pulumi.Input[str]] = None,
             port_type: Optional[pulumi.Input[str]] = None,
+            pricing_cycle: Optional[pulumi.Input[str]] = None,
             redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'PhysicalConnection':
@@ -653,32 +755,37 @@ class PhysicalConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_point_id: The Physical Leased Line Access Point ID.
-        :param pulumi.Input[str] bandwidth: On the Bandwidth of the ECC Service and Physical Connection.
-        :param pulumi.Input[str] circuit_code: Operators for Physical Connection Circuit Provided Coding.
-        :param pulumi.Input[str] description: The Physical Connection to Which the Description.
-        :param pulumi.Input[str] line_operator: Provides Access to the Physical Line Operator. Valid values:
-               * CT: China Telecom
-               * CU: China Unicom
-               * CM: china Mobile
-               * CO: Other Chinese
-               * Equinix: Equinix
-               * Other: Other Overseas.
-        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
-        :param pulumi.Input[str] physical_connection_name: on Behalf of the Resource Name of the Resources-Attribute Field.
-        :param pulumi.Input[str] port_type: The Physical Leased Line Access Port Type. Valid value:
-               * 100Base-T: Fast Electrical Ports
-               * 1000Base-T: gigabit Electrical Ports
-               * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-               * 10GBase-T: Gigabit Electrical Port
-               * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-               * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-               * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-               
-               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
-        :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
-        :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
-        :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
+        :param pulumi.Input[str] access_point_id: The access point ID of the Express Connect circuit.
+        :param pulumi.Input[str] bandwidth: The maximum bandwidth of the hosted connection.
+        :param pulumi.Input[str] circuit_code: The circuit code of the Express Connect circuit.
+        :param pulumi.Input[str] description: The description of the Express Connect circuit.
+        :param pulumi.Input[str] line_operator: The connectivity provider of the Express Connect circuit. Valid values:
+               - `CT`: China Telecom.
+               - `CU`: China Unicom.
+               - `CM`: China Mobile.
+               - `CO`: Other connectivity providers in the Chinese mainland.
+               - `Equinix`: Equinix.
+               - `Other`: Other connectivity providers outside the Chinese mainland.
+        :param pulumi.Input[str] order_id: The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        :param pulumi.Input[str] peer_location: The geographical location of the data center.
+        :param pulumi.Input[int] period: The subscription duration. Valid values:
+               - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+               - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] physical_connection_name: The name of the Express Connect circuit.
+        :param pulumi.Input[str] port_type: The port type of the Express Connect circuit. Valid values:
+               - `100Base-T`: 100 Mbit/s copper Ethernet port.
+               - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+               - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+               - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+               - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+               - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+               - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+               > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+               > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        :param pulumi.Input[str] redundant_physical_connection_id: The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
+        :param pulumi.Input[str] status: The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
+        :param pulumi.Input[str] type: The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -689,9 +796,12 @@ class PhysicalConnection(pulumi.CustomResource):
         __props__.__dict__["circuit_code"] = circuit_code
         __props__.__dict__["description"] = description
         __props__.__dict__["line_operator"] = line_operator
+        __props__.__dict__["order_id"] = order_id
         __props__.__dict__["peer_location"] = peer_location
+        __props__.__dict__["period"] = period
         __props__.__dict__["physical_connection_name"] = physical_connection_name
         __props__.__dict__["port_type"] = port_type
+        __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["redundant_physical_connection_id"] = redundant_physical_connection_id
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
@@ -701,7 +811,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[str]:
         """
-        The Physical Leased Line Access Point ID.
+        The access point ID of the Express Connect circuit.
         """
         return pulumi.get(self, "access_point_id")
 
@@ -709,7 +819,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
         """
-        On the Bandwidth of the ECC Service and Physical Connection.
+        The maximum bandwidth of the hosted connection.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -717,7 +827,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Operators for Physical Connection Circuit Provided Coding.
+        The circuit code of the Express Connect circuit.
         """
         return pulumi.get(self, "circuit_code")
 
@@ -725,7 +835,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Physical Connection to Which the Description.
+        The description of the Express Connect circuit.
         """
         return pulumi.get(self, "description")
 
@@ -733,29 +843,47 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter(name="lineOperator")
     def line_operator(self) -> pulumi.Output[str]:
         """
-        Provides Access to the Physical Line Operator. Valid values:
-        * CT: China Telecom
-        * CU: China Unicom
-        * CM: china Mobile
-        * CO: Other Chinese
-        * Equinix: Equinix
-        * Other: Other Overseas.
+        The connectivity provider of the Express Connect circuit. Valid values:
+        - `CT`: China Telecom.
+        - `CU`: China Unicom.
+        - `CM`: China Mobile.
+        - `CO`: Other connectivity providers in the Chinese mainland.
+        - `Equinix`: Equinix.
+        - `Other`: Other connectivity providers outside the Chinese mainland.
         """
         return pulumi.get(self, "line_operator")
 
     @property
-    @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> pulumi.Output[str]:
         """
-        and an on-Premises Data Center Location.
+        The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        """
+        return pulumi.get(self, "order_id")
+
+    @property
+    @pulumi.getter(name="peerLocation")
+    def peer_location(self) -> pulumi.Output[str]:
+        """
+        The geographical location of the data center.
         """
         return pulumi.get(self, "peer_location")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The subscription duration. Valid values:
+        - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        """
+        return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="physicalConnectionName")
     def physical_connection_name(self) -> pulumi.Output[Optional[str]]:
         """
-        on Behalf of the Resource Name of the Resources-Attribute Field.
+        The name of the Express Connect circuit.
         """
         return pulumi.get(self, "physical_connection_name")
 
@@ -763,24 +891,32 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter(name="portType")
     def port_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Physical Leased Line Access Port Type. Valid value:
-        * 100Base-T: Fast Electrical Ports
-        * 1000Base-T: gigabit Electrical Ports
-        * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        * 10GBase-T: Gigabit Electrical Port
-        * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-
-        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        The port type of the Express Connect circuit. Valid values:
+        - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        > **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         """
         return pulumi.get(self, "port_type")
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
+        """
+        The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        """
+        return pulumi.get(self, "pricing_cycle")
 
     @property
     @pulumi.getter(name="redundantPhysicalConnectionId")
     def redundant_physical_connection_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Redundant Physical Connection to Which the ID.
+        The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
@@ -788,7 +924,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         """
         return pulumi.get(self, "status")
 
@@ -796,7 +932,7 @@ class PhysicalConnection(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Physical Private Line of Type. Default Value: VPC.
+        The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "type")
 

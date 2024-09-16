@@ -177,21 +177,25 @@ class ChartNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example-name"
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         example_chart_namespace = alicloud.cr.ChartNamespace("example",
             instance_id=example.id,
-            namespace_name=name)
+            namespace_name=f"{name}-{default['result']}")
         ```
 
         ## Import
@@ -229,21 +233,25 @@ class ChartNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "example-name"
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         example_chart_namespace = alicloud.cr.ChartNamespace("example",
             instance_id=example.id,
-            namespace_name=name)
+            namespace_name=f"{name}-{default['result']}")
         ```
 
         ## Import

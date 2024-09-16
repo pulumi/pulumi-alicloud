@@ -5,10 +5,9 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class TransitRouterVpcAttachmentZoneMappingArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,37 @@ public final class TransitRouterVpcAttachmentZoneMappingArgs extends com.pulumi.
     public static final TransitRouterVpcAttachmentZoneMappingArgs Empty = new TransitRouterVpcAttachmentZoneMappingArgs();
 
     /**
-     * The VSwitch id of attachment.
+     * The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+     * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+     * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
      * 
      */
-    @Import(name="vswitchId")
-    private @Nullable Output<String> vswitchId;
+    @Import(name="vswitchId", required=true)
+    private Output<String> vswitchId;
 
     /**
-     * @return The VSwitch id of attachment.
+     * @return The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+     * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+     * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
      * 
      */
-    public Optional<Output<String>> vswitchId() {
-        return Optional.ofNullable(this.vswitchId);
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
 
     /**
-     * The zone Id of VSwitch.
+     * The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
-     * @return The zone Id of VSwitch.
+     * @return The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private TransitRouterVpcAttachmentZoneMappingArgs() {}
@@ -71,18 +74,22 @@ public final class TransitRouterVpcAttachmentZoneMappingArgs extends com.pulumi.
         }
 
         /**
-         * @param vswitchId The VSwitch id of attachment.
+         * @param vswitchId The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+         * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+         * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
          * 
          * @return builder
          * 
          */
-        public Builder vswitchId(@Nullable Output<String> vswitchId) {
+        public Builder vswitchId(Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
         /**
-         * @param vswitchId The VSwitch id of attachment.
+         * @param vswitchId The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+         * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+         * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
          * 
          * @return builder
          * 
@@ -92,18 +99,18 @@ public final class TransitRouterVpcAttachmentZoneMappingArgs extends com.pulumi.
         }
 
         /**
-         * @param zoneId The zone Id of VSwitch.
+         * @param zoneId The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         /**
-         * @param zoneId The zone Id of VSwitch.
+         * @param zoneId The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
          * 
          * @return builder
          * 
@@ -113,6 +120,12 @@ public final class TransitRouterVpcAttachmentZoneMappingArgs extends com.pulumi.
         }
 
         public TransitRouterVpcAttachmentZoneMappingArgs build() {
+            if ($.vswitchId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentZoneMappingArgs", "vswitchId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("TransitRouterVpcAttachmentZoneMappingArgs", "zoneId");
+            }
             return $;
         }
     }

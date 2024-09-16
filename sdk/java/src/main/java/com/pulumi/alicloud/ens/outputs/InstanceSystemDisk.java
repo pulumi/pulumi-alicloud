@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceSystemDisk {
     /**
-     * @return System disk type. Optional values:
+     * @return System disk type. Value
      * - cloud_efficiency: Ultra cloud disk
      * - cloud_ssd: Full Flash cloud disk
      * - local_hdd: local hdd disk
@@ -29,7 +29,7 @@ public final class InstanceSystemDisk {
 
     private InstanceSystemDisk() {}
     /**
-     * @return System disk type. Optional values:
+     * @return System disk type. Value
      * - cloud_efficiency: Ultra cloud disk
      * - cloud_ssd: Full Flash cloud disk
      * - local_hdd: local hdd disk

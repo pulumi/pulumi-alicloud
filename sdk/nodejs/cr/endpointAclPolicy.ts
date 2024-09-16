@@ -18,15 +18,20 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000000,
+ *     max: 99999999,
+ * });
  * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${defaultInteger.result}`,
  * });
  * const default = alicloud.cr.getEndpointAclServiceOutput({
  *     endpointType: "internet",

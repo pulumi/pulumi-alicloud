@@ -14,7 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource. Bandwidth Package Operation.
+ * Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
+ * 
+ * Bandwidth Package Operation.
  * 
  * For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
  * 
@@ -116,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCommonBandwithPackage = new CommonBandwithPackage("defaultCommonBandwithPackage", CommonBandwithPackageArgs.builder()
  *             .bandwidth(2)
- *             .internetChargeType("PayByBandwidth")
+ *             .internetChargeType("PayByTraffic")
  *             .bandwidthPackageName(name)
  *             .description(name)
  *             .build());
@@ -144,28 +146,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment")
 public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the bound shared bandwidth package.
+     * Specifies whether only to precheck the request. Valid values:
      * 
      */
     @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bound shared bandwidth package.
+     * @return Specifies whether only to precheck the request. Valid values:
      * 
      */
     public Output<String> bandwidthPackageId() {
         return this.bandwidthPackageId;
     }
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the EIP bandwidth plan.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the network-based server load balancer instance.
+     * @return The ID of the EIP bandwidth plan.
      * 
      */
     public Output<String> loadBalancerId() {

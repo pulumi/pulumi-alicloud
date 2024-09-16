@@ -93,7 +93,7 @@ type BgpIp struct {
 	// The IP address.
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// The member account id of the IP address.
-	MemberUid pulumi.StringPtrOutput `pulumi:"memberUid"`
+	MemberUid pulumi.StringOutput `pulumi:"memberUid"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
@@ -286,8 +286,8 @@ func (o BgpIpOutput) Ip() pulumi.StringOutput {
 }
 
 // The member account id of the IP address.
-func (o BgpIpOutput) MemberUid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpIp) pulumi.StringPtrOutput { return v.MemberUid }).(pulumi.StringPtrOutput)
+func (o BgpIpOutput) MemberUid() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.MemberUid }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

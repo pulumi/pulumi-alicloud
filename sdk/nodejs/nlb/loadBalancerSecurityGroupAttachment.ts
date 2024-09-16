@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Nlb Load Balancer Security Group Attachment resource.
+ * Provides a NLB Load Balancer Security Group Attachment resource.
  *
- * For information about Nlb Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
+ * Security Group mount.
+ *
+ * For information about NLB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/loadbalancerjoinsecuritygroup).
  *
  * > **NOTE:** Available since v1.198.0.
  *
@@ -108,17 +110,15 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the network-based server load balancer instance to be bound to the security group.
+     * The ID of the NLB instance to be associated with the security group.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * The ID of the security group.
+     * The ID of the security group to be disassociated.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
 
@@ -160,17 +160,15 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
  */
 export interface LoadBalancerSecurityGroupAttachmentState {
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the network-based server load balancer instance to be bound to the security group.
+     * The ID of the NLB instance to be associated with the security group.
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
-     * The ID of the security group.
+     * The ID of the security group to be disassociated.
      */
     securityGroupId?: pulumi.Input<string>;
 }
@@ -180,17 +178,15 @@ export interface LoadBalancerSecurityGroupAttachmentState {
  */
 export interface LoadBalancerSecurityGroupAttachmentArgs {
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the network-based server load balancer instance to be bound to the security group.
+     * The ID of the NLB instance to be associated with the security group.
      */
     loadBalancerId: pulumi.Input<string>;
     /**
-     * The ID of the security group.
+     * The ID of the security group to be disassociated.
      */
     securityGroupId: pulumi.Input<string>;
 }

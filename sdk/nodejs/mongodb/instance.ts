@@ -143,6 +143,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     */
+    public readonly enableBackupLog!: pulumi.Output<number>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
@@ -174,6 +178,10 @@ export class Instance extends pulumi.CustomResource {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    public readonly logBackupRetentionPeriod!: pulumi.Output<number>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
@@ -320,6 +328,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
             resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
+            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             resourceInputs["encrypted"] = state ? state.encrypted : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["encryptorName"] = state ? state.encryptorName : undefined;
@@ -328,6 +337,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
             resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -377,6 +387,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
             resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
+            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             resourceInputs["encrypted"] = args ? args.encrypted : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["encryptorName"] = args ? args.encryptorName : undefined;
@@ -385,6 +396,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
             resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -469,6 +481,10 @@ export interface InstanceState {
      */
     effectiveTime?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     */
+    enableBackupLog?: pulumi.Input<number>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
@@ -500,6 +516,10 @@ export interface InstanceState {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    logBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
@@ -672,6 +692,10 @@ export interface InstanceArgs {
      */
     effectiveTime?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     */
+    enableBackupLog?: pulumi.Input<number>;
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
     encrypted?: pulumi.Input<boolean>;
@@ -703,6 +727,10 @@ export interface InstanceArgs {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    logBackupRetentionPeriod?: pulumi.Input<number>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */

@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
+    /// CEN Traffic Marking Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example &lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;
@@ -63,49 +63,57 @@ namespace Pulumi.AliCloud.Cen
     public partial class TrafficMarkingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyDescription
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        /// MarkingDscp
         /// </summary>
         [Output("markingDscp")]
         public Output<int> MarkingDscp { get; private set; } = null!;
 
         /// <summary>
-        /// The Priority of the Traffic Marking Policy. Value range: 1~100.
+        /// Priority
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Traffic Marking Policy.
+        /// The first ID of the resource
         /// </summary>
         [Output("trafficMarkingPolicyId")]
         public Output<string> TrafficMarkingPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyName
         /// </summary>
         [Output("trafficMarkingPolicyName")]
         public Output<string?> TrafficMarkingPolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router.
+        /// List of stream classification rules.
+        /// 
+        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// </summary>
+        [Output("trafficMatchRules")]
+        public Output<ImmutableArray<Outputs.TrafficMarkingPolicyTrafficMatchRule>> TrafficMatchRules { get; private set; } = null!;
+
+        /// <summary>
+        /// TransitRouterId
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
@@ -157,37 +165,51 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TrafficMarkingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyDescription
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        /// MarkingDscp
         /// </summary>
         [Input("markingDscp", required: true)]
         public Input<int> MarkingDscp { get; set; } = null!;
 
         /// <summary>
-        /// The Priority of the Traffic Marking Policy. Value range: 1~100.
+        /// Priority
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyName
         /// </summary>
         [Input("trafficMarkingPolicyName")]
         public Input<string>? TrafficMarkingPolicyName { get; set; }
 
+        [Input("trafficMatchRules")]
+        private InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleArgs>? _trafficMatchRules;
+
         /// <summary>
-        /// The ID of the transit router.
+        /// List of stream classification rules.
+        /// 
+        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// </summary>
+        public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleArgs> TrafficMatchRules
+        {
+            get => _trafficMatchRules ?? (_trafficMatchRules = new InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleArgs>());
+            set => _trafficMatchRules = value;
+        }
+
+        /// <summary>
+        /// TransitRouterId
         /// </summary>
         [Input("transitRouterId", required: true)]
         public Input<string> TransitRouterId { get; set; } = null!;
@@ -201,49 +223,63 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TrafficMarkingPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyDescription
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+        /// MarkingDscp
         /// </summary>
         [Input("markingDscp")]
         public Input<int>? MarkingDscp { get; set; }
 
         /// <summary>
-        /// The Priority of the Traffic Marking Policy. Value range: 1~100.
+        /// Priority
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the Traffic Marking Policy.
+        /// The first ID of the resource
         /// </summary>
         [Input("trafficMarkingPolicyId")]
         public Input<string>? TrafficMarkingPolicyId { get; set; }
 
         /// <summary>
-        /// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// TrafficMarkingPolicyName
         /// </summary>
         [Input("trafficMarkingPolicyName")]
         public Input<string>? TrafficMarkingPolicyName { get; set; }
 
+        [Input("trafficMatchRules")]
+        private InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleGetArgs>? _trafficMatchRules;
+
         /// <summary>
-        /// The ID of the transit router.
+        /// List of stream classification rules.
+        /// 
+        /// You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
+        /// </summary>
+        public InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleGetArgs> TrafficMatchRules
+        {
+            get => _trafficMatchRules ?? (_trafficMatchRules = new InputList<Inputs.TrafficMarkingPolicyTrafficMatchRuleGetArgs>());
+            set => _trafficMatchRules = value;
+        }
+
+        /// <summary>
+        /// TransitRouterId
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }

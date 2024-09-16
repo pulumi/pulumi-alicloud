@@ -269,6 +269,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectiveTime);
     }
     /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * 
+     */
+    @Export(name="enableBackupLog", refs={Integer.class}, tree="[0]")
+    private Output<Integer> enableBackupLog;
+
+    /**
+     * @return Specifies whether to enable the log backup feature. Valid values:
+     * 
+     */
+    public Output<Integer> enableBackupLog() {
+        return this.enableBackupLog;
+    }
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
@@ -379,6 +393,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> logBackupRetentionPeriod;
+
+    /**
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    public Output<Integer> logBackupRetentionPeriod() {
+        return this.logBackupRetentionPeriod;
     }
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).

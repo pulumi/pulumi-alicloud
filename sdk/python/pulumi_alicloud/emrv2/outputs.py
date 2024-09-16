@@ -579,23 +579,23 @@ class ClusterNodeGroup(dict):
                  with_public_ip: Optional[bool] = None):
         """
         :param Sequence['ClusterNodeGroupDataDiskArgs'] data_disks: Host Ecs data disks information in this node group. See `data_disks` below.
-        :param Sequence[str] instance_types: Host Ecs instance types.
+        :param Sequence[str] instance_types: Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
         :param int node_count: Host Ecs number in this node group.
         :param str node_group_name: The node group name of emr cluster.
         :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
-        :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group.
+        :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
         :param 'ClusterNodeGroupAutoScalingPolicyArgs' auto_scaling_policy: The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
-        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
-        :param str deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+        :param str deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
         :param bool graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param str node_resize_strategy: Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         :param str payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param bool spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         :param 'ClusterNodeGroupSubscriptionConfigArgs' subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param Sequence[str] vswitch_ids: Global vSwitch ids, you can also specify it in node group.
-        :param bool with_public_ip: Whether the node has a public IP address enabled.
+        :param Sequence[str] vswitch_ids: Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+        :param bool with_public_ip: Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
         """
         pulumi.set(__self__, "data_disks", data_disks)
         pulumi.set(__self__, "instance_types", instance_types)
@@ -640,7 +640,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> Sequence[str]:
         """
-        Host Ecs instance types.
+        Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
         """
         return pulumi.get(self, "instance_types")
 
@@ -680,7 +680,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="additionalSecurityGroupIds")
     def additional_security_group_ids(self) -> Optional[Sequence[str]]:
         """
-        Additional security Group IDS for Cluster, you can also specify this key for each node group.
+        Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
         """
         return pulumi.get(self, "additional_security_group_ids")
 
@@ -696,7 +696,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="costOptimizedConfig")
     def cost_optimized_config(self) -> Optional['outputs.ClusterNodeGroupCostOptimizedConfig']:
         """
-        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
+        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
         """
         return pulumi.get(self, "cost_optimized_config")
 
@@ -704,7 +704,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="deploymentSetStrategy")
     def deployment_set_strategy(self) -> Optional[str]:
         """
-        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
         """
         return pulumi.get(self, "deployment_set_strategy")
 
@@ -760,7 +760,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[Sequence[str]]:
         """
-        Global vSwitch ids, you can also specify it in node group.
+        Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -768,7 +768,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="withPublicIp")
     def with_public_ip(self) -> Optional[bool]:
         """
-        Whether the node has a public IP address enabled.
+        Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
         """
         return pulumi.get(self, "with_public_ip")
 

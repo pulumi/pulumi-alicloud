@@ -178,6 +178,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * 
+     */
+    @Import(name="enableBackupLog")
+    private @Nullable Output<Integer> enableBackupLog;
+
+    /**
+     * @return Specifies whether to enable the log backup feature. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> enableBackupLog() {
+        return Optional.ofNullable(this.enableBackupLog);
+    }
+
+    /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
@@ -295,6 +310,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    @Import(name="logBackupRetentionPeriod")
+    private @Nullable Output<Integer> logBackupRetentionPeriod;
+
+    /**
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    public Optional<Output<Integer>> logBackupRetentionPeriod() {
+        return Optional.ofNullable(this.logBackupRetentionPeriod);
     }
 
     /**
@@ -690,6 +720,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceStorage = $.dbInstanceStorage;
         this.effectiveTime = $.effectiveTime;
+        this.enableBackupLog = $.enableBackupLog;
         this.encrypted = $.encrypted;
         this.encryptionKey = $.encryptionKey;
         this.encryptorName = $.encryptorName;
@@ -698,6 +729,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceChargeType = $.instanceChargeType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.logBackupRetentionPeriod = $.logBackupRetentionPeriod;
         this.maintainEndTime = $.maintainEndTime;
         this.maintainStartTime = $.maintainStartTime;
         this.name = $.name;
@@ -969,6 +1001,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBackupLog(@Nullable Output<Integer> enableBackupLog) {
+            $.enableBackupLog = enableBackupLog;
+            return this;
+        }
+
+        /**
+         * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBackupLog(Integer enableBackupLog) {
+            return enableBackupLog(Output.of(enableBackupLog));
+        }
+
+        /**
          * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
@@ -1134,6 +1187,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logBackupRetentionPeriod(@Nullable Output<Integer> logBackupRetentionPeriod) {
+            $.logBackupRetentionPeriod = logBackupRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logBackupRetentionPeriod(Integer logBackupRetentionPeriod) {
+            return logBackupRetentionPeriod(Output.of(logBackupRetentionPeriod));
         }
 
         /**

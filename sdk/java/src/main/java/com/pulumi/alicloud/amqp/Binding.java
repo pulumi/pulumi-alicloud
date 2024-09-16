@@ -55,8 +55,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("enterprise")
  *             .maxTps(3000)
@@ -65,36 +63,37 @@ import javax.annotation.Nullable;
  *             .supportEip(false)
  *             .maxEipTps(128)
  *             .paymentType("Subscription")
+ *             .period(1)
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
  *             .instanceId(default_.id())
- *             .virtualHostName(name)
+ *             .virtualHostName("tf-example")
  *             .build());
  * 
  *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()
- *             .instanceId(default_.id())
- *             .virtualHostName(defaultVirtualHost.virtualHostName())
- *             .exchangeName(name)
- *             .exchangeType("HEADERS")
  *             .autoDeleteState(false)
+ *             .exchangeName("tf-example")
+ *             .exchangeType("HEADERS")
+ *             .instanceId(default_.id())
  *             .internal(false)
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
  *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .instanceId(default_.id())
+ *             .queueName("tf-example")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
- *             .queueName(name)
  *             .build());
  * 
  *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
- *             .instanceId(default_.id())
- *             .virtualHostName(defaultVirtualHost.virtualHostName())
- *             .sourceExchange(defaultExchange.exchangeName())
- *             .destinationName(name)
- *             .bindingType("QUEUE")
- *             .bindingKey(defaultQueue.queueName())
  *             .argument("x-match:all")
+ *             .bindingKey(defaultQueue.queueName())
+ *             .bindingType("QUEUE")
+ *             .destinationName("tf-example")
+ *             .instanceId(default_.id())
+ *             .sourceExchange(defaultExchange.exchangeName())
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
  *     }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ens.Outputs
     public sealed class InstanceSystemDisk
     {
         /// <summary>
-        /// System disk type. Optional values:
+        /// System disk type. Value
         /// - cloud_efficiency: Ultra cloud disk
         /// - cloud_ssd: Full Flash cloud disk
         /// - local_hdd: local hdd disk

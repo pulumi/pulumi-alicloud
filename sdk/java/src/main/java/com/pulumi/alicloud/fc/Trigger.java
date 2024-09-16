@@ -86,12 +86,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
- *             .projectName(defaultProject.name())
+ *             .projectName(defaultProject.projectName())
  *             .logstoreName("example-value")
  *             .build());
  * 
  *         var sourceStore = new Store("sourceStore", StoreArgs.builder()
- *             .projectName(defaultProject.name())
+ *             .projectName(defaultProject.projectName())
  *             .logstoreName("example-source-store")
  *             .build());
  * 
@@ -128,8 +128,8 @@ import javax.annotation.Nullable;
  *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
- *                 .project(defaultProject.name())
- *                 .logstore(defaultStore.name())
+ *                 .project(defaultProject.projectName())
+ *                 .logstore(defaultStore.logstoreName())
  *                 .enableInstanceMetrics(true)
  *                 .enableRequestMetrics(true)
  *                 .build())
@@ -167,12 +167,12 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultProject.name().applyValue(name -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *             .sourceArn(defaultProject.projectName().applyValue(projectName -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),projectName)))
  *             .type("log")
- *             .config(Output.tuple(sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -> {
- *                 var sourceStoreName = values.t1;
- *                 var defaultProjectName = values.t2;
- *                 var defaultStoreName = values.t3;
+ *             .config(Output.tuple(sourceStore.logstoreName(), defaultProject.projectName(), defaultStore.logstoreName()).applyValue(values -> {
+ *                 var sourceStoreLogstoreName = values.t1;
+ *                 var projectName = values.t2;
+ *                 var defaultStoreLogstoreName = values.t3;
  *                 return """
  *     {
  *         "sourceConfig": {
@@ -191,11 +191,10 @@ import javax.annotation.Nullable;
  *              "project": "%s",
  *             "logstore": "%s"
  *         },
- *         "targetConfig": null,
  *         "enable": true
  *     }
  *   
- * ", sourceStoreName,defaultProjectName,defaultStoreName);
+ * ", sourceStoreLogstoreName,projectName,defaultStoreLogstoreName);
  *             }))
  *             .build());
  * 

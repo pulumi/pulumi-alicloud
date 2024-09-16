@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new CommonBandwithPackage("default", CommonBandwithPackageArgs.builder()
  *             .bandwidth(3)
- *             .internetChargeType("PayByBandwidth")
+ *             .internetChargeType("PayByTraffic")
  *             .build());
  * 
  *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()

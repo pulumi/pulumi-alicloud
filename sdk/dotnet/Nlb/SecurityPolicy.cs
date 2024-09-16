@@ -78,25 +78,29 @@ namespace Pulumi.AliCloud.Nlb
         public Output<ImmutableArray<string>> Ciphers { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the security policy.
+        /// 
+        /// The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Output("securityPolicyName")]
         public Output<string> SecurityPolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -169,13 +173,17 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the security policy.
+        /// 
+        /// The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("securityPolicyName")]
         public Input<string>? SecurityPolicyName { get; set; }
@@ -184,7 +192,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -228,19 +236,23 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the new resource group.
+        /// 
+        /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the security policy.
+        /// 
+        /// The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("securityPolicyName")]
         public Input<string>? SecurityPolicyName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -249,7 +261,7 @@ namespace Pulumi.AliCloud.Nlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {

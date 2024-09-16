@@ -32,7 +32,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners() {
@@ -41,7 +79,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain() {
@@ -50,7 +126,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
@@ -59,7 +173,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -68,7 +220,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
@@ -77,7 +267,45 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Listeners of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nlb.NlbFunctions;
+     * import com.pulumi.alicloud.nlb.inputs.GetListenersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = NlbFunctions.getListeners(GetListenersArgs.builder()
+     *             .ids("example_value")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {
@@ -698,7 +926,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 
@@ -745,7 +973,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 
@@ -792,7 +1020,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 
@@ -839,7 +1067,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 
@@ -886,7 +1114,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 
@@ -933,7 +1161,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.192.0+.
+     * &gt; **NOTE:** Available since v1.192.0.
      * 
      * ## Example Usage
      * 

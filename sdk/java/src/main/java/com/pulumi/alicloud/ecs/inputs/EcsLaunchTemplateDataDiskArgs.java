@@ -63,6 +63,21 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The mount point of the data disk.
+     * 
+     */
+    @Import(name="device")
+    private @Nullable Output<String> device;
+
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
+    public Optional<Output<String>> device() {
+        return Optional.ofNullable(this.device);
+    }
+
+    /**
      * Encrypted the data in this disk.
      * 
      */
@@ -143,6 +158,7 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.device = $.device;
         this.encrypted = $.encrypted;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
@@ -229,6 +245,27 @@ public final class EcsLaunchTemplateDataDiskArgs extends com.pulumi.resources.Re
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(@Nullable Output<String> device) {
+            $.device = device;
+            return this;
+        }
+
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder device(String device) {
+            return device(Output.of(device));
         }
 
         /**

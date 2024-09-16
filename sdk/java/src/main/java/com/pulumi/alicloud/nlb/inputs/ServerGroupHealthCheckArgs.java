@@ -19,14 +19,22 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     public static final ServerGroupHealthCheckArgs Empty = new ServerGroupHealthCheckArgs();
 
     /**
-     * The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+     * The port that you want to use for health checks on backend servers.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
     @Import(name="healthCheckConnectPort")
     private @Nullable Output<Integer> healthCheckConnectPort;
 
     /**
-     * @return The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+     * @return The port that you want to use for health checks on backend servers.
+     * 
+     * Valid values: `0` to `65535`.
+     * 
+     * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
      * 
      */
     public Optional<Output<Integer>> healthCheckConnectPort() {
@@ -34,14 +42,14 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+     * The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
      * 
      */
     @Import(name="healthCheckConnectTimeout")
     private @Nullable Output<Integer> healthCheckConnectTimeout;
 
     /**
-     * @return Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+     * @return The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
      * 
      */
     public Optional<Output<Integer>> healthCheckConnectTimeout() {
@@ -49,20 +57,16 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The domain name used for health check. Valid values:
-     * - **$SERVER_IP**: uses the intranet IP of the backend server.
-     * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * The domain name that you want to use for health checks. Valid values:
+     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     @Import(name="healthCheckDomain")
     private @Nullable Output<String> healthCheckDomain;
 
     /**
-     * @return The domain name used for health check. Valid values:
-     * - **$SERVER_IP**: uses the intranet IP of the backend server.
-     * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The domain name that you want to use for health checks. Valid values:
+     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     public Optional<Output<String>> healthCheckDomain() {
@@ -70,18 +74,14 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Whether to enable health check. Valid values:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable the health check feature. Valid values:
      * 
      */
     @Import(name="healthCheckEnabled")
     private @Nullable Output<Boolean> healthCheckEnabled;
 
     /**
-     * @return Whether to enable health check. Valid values:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable the health check feature. Valid values:
      * 
      */
     public Optional<Output<Boolean>> healthCheckEnabled() {
@@ -89,16 +89,18 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     @Import(name="healthCheckHttpCodes")
     private @Nullable Output<List<String>> healthCheckHttpCodes;
 
     /**
-     * @return Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public Optional<Output<List<String>>> healthCheckHttpCodes() {
@@ -106,14 +108,22 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+     * The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `5` to `50`.
+     * 
+     * Default value: `10`.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+     * @return The interval at which health checks are performed. Unit: seconds.
+     * 
+     * Valid values: `5` to `50`.
+     * 
+     * Default value: `10`.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -121,14 +131,14 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Health check protocol. Valid values: **TCP** or **HTTP**.
+     * The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Health check protocol. Valid values: **TCP** or **HTTP**.
+     * @return The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -136,16 +146,22 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Health check path.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * The path to which health check requests are sent.
+     * 
+     * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     @Import(name="healthCheckUrl")
     private @Nullable Output<String> healthCheckUrl;
 
     /**
-     * @return Health check path.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The path to which health check requests are sent.
+     * 
+     * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckUrl() {
@@ -153,14 +169,22 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -168,16 +192,18 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The health check method. Valid values: **GET** or **HEAD**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     @Import(name="httpCheckMethod")
     private @Nullable Output<String> httpCheckMethod;
 
     /**
-     * @return The health check method. Valid values: **GET** or **HEAD**.
-     * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+     * @return The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
      * 
      */
     public Optional<Output<String>> httpCheckMethod() {
@@ -185,14 +211,22 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
     /**
-     * @return After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+     * 
+     * Valid values: `2` to `10`.
+     * 
+     * Default value: `2`.
      * 
      */
     public Optional<Output<Integer>> unhealthyThreshold() {
@@ -234,7 +268,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckConnectPort The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+         * @param healthCheckConnectPort The port that you want to use for health checks on backend servers.
+         * 
+         * Valid values: `0` to `65535`.
+         * 
+         * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
          * 
          * @return builder
          * 
@@ -245,7 +283,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckConnectPort The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+         * @param healthCheckConnectPort The port that you want to use for health checks on backend servers.
+         * 
+         * Valid values: `0` to `65535`.
+         * 
+         * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
          * 
          * @return builder
          * 
@@ -255,7 +297,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckConnectTimeout Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+         * @param healthCheckConnectTimeout The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
          * 
          * @return builder
          * 
@@ -266,7 +308,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckConnectTimeout Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+         * @param healthCheckConnectTimeout The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
          * 
          * @return builder
          * 
@@ -276,10 +318,8 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckDomain The domain name used for health check. Valid values:
-         * - **$SERVER_IP**: uses the intranet IP of the backend server.
-         * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckDomain The domain name that you want to use for health checks. Valid values:
+         * - `$SERVER_IP`: the private IP address of a backend server.
          * 
          * @return builder
          * 
@@ -290,10 +330,8 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckDomain The domain name used for health check. Valid values:
-         * - **$SERVER_IP**: uses the intranet IP of the backend server.
-         * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckDomain The domain name that you want to use for health checks. Valid values:
+         * - `$SERVER_IP`: the private IP address of a backend server.
          * 
          * @return builder
          * 
@@ -303,9 +341,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckEnabled Whether to enable health check. Valid values:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param healthCheckEnabled Specifies whether to enable the health check feature. Valid values:
          * 
          * @return builder
          * 
@@ -316,9 +352,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckEnabled Whether to enable health check. Valid values:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param healthCheckEnabled Specifies whether to enable the health check feature. Valid values:
          * 
          * @return builder
          * 
@@ -328,8 +362,9 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -340,8 +375,9 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -351,8 +387,9 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckHttpCodes Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckHttpCodes The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -362,7 +399,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckInterval Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+         * @param healthCheckInterval The interval at which health checks are performed. Unit: seconds.
+         * 
+         * Valid values: `5` to `50`.
+         * 
+         * Default value: `10`.
          * 
          * @return builder
          * 
@@ -373,7 +414,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckInterval Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+         * @param healthCheckInterval The interval at which health checks are performed. Unit: seconds.
+         * 
+         * Valid values: `5` to `50`.
+         * 
+         * Default value: `10`.
          * 
          * @return builder
          * 
@@ -383,7 +428,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckType Health check protocol. Valid values: **TCP** or **HTTP**.
+         * @param healthCheckType The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
          * 
          * @return builder
          * 
@@ -394,7 +439,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckType Health check protocol. Valid values: **TCP** or **HTTP**.
+         * @param healthCheckType The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
          * 
          * @return builder
          * 
@@ -404,8 +449,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckUrl Health check path.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckUrl The path to which health check requests are sent.
+         * 
+         * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -416,8 +464,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckUrl Health check path.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param healthCheckUrl The path to which health check requests are sent.
+         * 
+         * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] {@literal @} $ ^ : &#39; , +`. The path must start with a forward slash (/).
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -427,7 +478,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+         * 
+         * Valid values: `2` to `10`.
+         * 
+         * Default value: `2`.
          * 
          * @return builder
          * 
@@ -438,7 +493,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+         * 
+         * Valid values: `2` to `10`.
+         * 
+         * Default value: `2`.
          * 
          * @return builder
          * 
@@ -448,8 +507,9 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param httpCheckMethod The health check method. Valid values: **GET** or **HEAD**.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param httpCheckMethod The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -460,8 +520,9 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param httpCheckMethod The health check method. Valid values: **GET** or **HEAD**.
-         * &gt; **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * @param httpCheckMethod The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -471,7 +532,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param unhealthyThreshold After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+         * 
+         * Valid values: `2` to `10`.
+         * 
+         * Default value: `2`.
          * 
          * @return builder
          * 
@@ -482,7 +547,11 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param unhealthyThreshold After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+         * 
+         * Valid values: `2` to `10`.
+         * 
+         * Default value: `2`.
          * 
          * @return builder
          * 

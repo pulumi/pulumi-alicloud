@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
+// CEN Traffic Marking Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy example <transit_router_id>:<traffic_marking_policy_id>
@@ -73,21 +73,25 @@ import (
 type TrafficMarkingPolicy struct {
 	pulumi.CustomResourceState
 
-	// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyDescription
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+	// MarkingDscp
 	MarkingDscp pulumi.IntOutput `pulumi:"markingDscp"`
-	// The Priority of the Traffic Marking Policy. Value range: 1~100.
+	// Priority
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the Traffic Marking Policy.
+	// The first ID of the resource
 	TrafficMarkingPolicyId pulumi.StringOutput `pulumi:"trafficMarkingPolicyId"`
-	// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrOutput `pulumi:"trafficMarkingPolicyName"`
-	// The ID of the transit router.
+	// List of stream classification rules.
+	//
+	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayOutput `pulumi:"trafficMatchRules"`
+	// TransitRouterId
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 }
 
@@ -130,40 +134,48 @@ func GetTrafficMarkingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrafficMarkingPolicy resources.
 type trafficMarkingPolicyState struct {
-	// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyDescription
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+	// MarkingDscp
 	MarkingDscp *int `pulumi:"markingDscp"`
-	// The Priority of the Traffic Marking Policy. Value range: 1~100.
+	// Priority
 	Priority *int `pulumi:"priority"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The ID of the Traffic Marking Policy.
+	// The first ID of the resource
 	TrafficMarkingPolicyId *string `pulumi:"trafficMarkingPolicyId"`
-	// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName *string `pulumi:"trafficMarkingPolicyName"`
-	// The ID of the transit router.
+	// List of stream classification rules.
+	//
+	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+	TrafficMatchRules []TrafficMarkingPolicyTrafficMatchRule `pulumi:"trafficMatchRules"`
+	// TransitRouterId
 	TransitRouterId *string `pulumi:"transitRouterId"`
 }
 
 type TrafficMarkingPolicyState struct {
-	// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyDescription
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
-	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+	// MarkingDscp
 	MarkingDscp pulumi.IntPtrInput
-	// The Priority of the Traffic Marking Policy. Value range: 1~100.
+	// Priority
 	Priority pulumi.IntPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The ID of the Traffic Marking Policy.
+	// The first ID of the resource
 	TrafficMarkingPolicyId pulumi.StringPtrInput
-	// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrInput
-	// The ID of the transit router.
+	// List of stream classification rules.
+	//
+	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayInput
+	// TransitRouterId
 	TransitRouterId pulumi.StringPtrInput
 }
 
@@ -172,33 +184,41 @@ func (TrafficMarkingPolicyState) ElementType() reflect.Type {
 }
 
 type trafficMarkingPolicyArgs struct {
-	// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyDescription
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+	// MarkingDscp
 	MarkingDscp int `pulumi:"markingDscp"`
-	// The Priority of the Traffic Marking Policy. Value range: 1~100.
+	// Priority
 	Priority int `pulumi:"priority"`
-	// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName *string `pulumi:"trafficMarkingPolicyName"`
-	// The ID of the transit router.
+	// List of stream classification rules.
+	//
+	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+	TrafficMatchRules []TrafficMarkingPolicyTrafficMatchRule `pulumi:"trafficMatchRules"`
+	// TransitRouterId
 	TransitRouterId string `pulumi:"transitRouterId"`
 }
 
 // The set of arguments for constructing a TrafficMarkingPolicy resource.
 type TrafficMarkingPolicyArgs struct {
-	// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyDescription
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrInput
-	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+	// MarkingDscp
 	MarkingDscp pulumi.IntInput
-	// The Priority of the Traffic Marking Policy. Value range: 1~100.
+	// Priority
 	Priority pulumi.IntInput
-	// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// TrafficMarkingPolicyName
 	TrafficMarkingPolicyName pulumi.StringPtrInput
-	// The ID of the transit router.
+	// List of stream classification rules.
+	//
+	// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+	TrafficMatchRules TrafficMarkingPolicyTrafficMatchRuleArrayInput
+	// TransitRouterId
 	TransitRouterId pulumi.StringInput
 }
 
@@ -289,42 +309,51 @@ func (o TrafficMarkingPolicyOutput) ToTrafficMarkingPolicyOutputWithContext(ctx 
 	return o
 }
 
-// The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+// TrafficMarkingPolicyDescription
 func (o TrafficMarkingPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dry run.
+// Whether to PreCheck only this request. Value:
 func (o TrafficMarkingPolicyOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
+// MarkingDscp
 func (o TrafficMarkingPolicyOutput) MarkingDscp() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.IntOutput { return v.MarkingDscp }).(pulumi.IntOutput)
 }
 
-// The Priority of the Traffic Marking Policy. Value range: 1~100.
+// Priority
 func (o TrafficMarkingPolicyOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o TrafficMarkingPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the Traffic Marking Policy.
+// The first ID of the resource
 func (o TrafficMarkingPolicyOutput) TrafficMarkingPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.TrafficMarkingPolicyId }).(pulumi.StringOutput)
 }
 
-// The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+// TrafficMarkingPolicyName
 func (o TrafficMarkingPolicyOutput) TrafficMarkingPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringPtrOutput { return v.TrafficMarkingPolicyName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the transit router.
+// List of stream classification rules.
+//
+// You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
+func (o TrafficMarkingPolicyOutput) TrafficMatchRules() TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+	return o.ApplyT(func(v *TrafficMarkingPolicy) TrafficMarkingPolicyTrafficMatchRuleArrayOutput {
+		return v.TrafficMatchRules
+	}).(TrafficMarkingPolicyTrafficMatchRuleArrayOutput)
+}
+
+// TransitRouterId
 func (o TrafficMarkingPolicyOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMarkingPolicy) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
 }

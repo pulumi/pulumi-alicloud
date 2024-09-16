@@ -20,6 +20,12 @@ type InstanceDataDisk struct {
 	// - local_hdd: local hdd disk
 	// - local_ssd: local disk ssd.
 	Category *string `pulumi:"category"`
+	// Cloud Disk ID.
+	DiskId *string `pulumi:"diskId"`
+	// The ID of the KMS key used by the cloud disk.
+	EncryptKeyId *string `pulumi:"encryptKeyId"`
+	// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+	Encrypted *bool `pulumi:"encrypted"`
 	// Data disk size, unit: GB.
 	Size *int `pulumi:"size"`
 }
@@ -42,6 +48,12 @@ type InstanceDataDiskArgs struct {
 	// - local_hdd: local hdd disk
 	// - local_ssd: local disk ssd.
 	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Cloud Disk ID.
+	DiskId pulumi.StringPtrInput `pulumi:"diskId"`
+	// The ID of the KMS key used by the cloud disk.
+	EncryptKeyId pulumi.StringPtrInput `pulumi:"encryptKeyId"`
+	// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// Data disk size, unit: GB.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
@@ -106,6 +118,21 @@ func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Cloud Disk ID.
+func (o InstanceDataDiskOutput) DiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.DiskId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the KMS key used by the cloud disk.
+func (o InstanceDataDiskOutput) EncryptKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.EncryptKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+func (o InstanceDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
 // Data disk size, unit: GB.
 func (o InstanceDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
@@ -132,7 +159,7 @@ func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOu
 }
 
 type InstanceSystemDisk struct {
-	// System disk type. Optional values:
+	// System disk type. Value
 	// - cloud_efficiency: Ultra cloud disk
 	// - cloud_ssd: Full Flash cloud disk
 	// - local_hdd: local hdd disk
@@ -154,7 +181,7 @@ type InstanceSystemDiskInput interface {
 }
 
 type InstanceSystemDiskArgs struct {
-	// System disk type. Optional values:
+	// System disk type. Value
 	// - cloud_efficiency: Ultra cloud disk
 	// - cloud_ssd: Full Flash cloud disk
 	// - local_hdd: local hdd disk
@@ -241,7 +268,7 @@ func (o InstanceSystemDiskOutput) ToInstanceSystemDiskPtrOutputWithContext(ctx c
 	}).(InstanceSystemDiskPtrOutput)
 }
 
-// System disk type. Optional values:
+// System disk type. Value
 // - cloud_efficiency: Ultra cloud disk
 // - cloud_ssd: Full Flash cloud disk
 // - local_hdd: local hdd disk
@@ -279,7 +306,7 @@ func (o InstanceSystemDiskPtrOutput) Elem() InstanceSystemDiskOutput {
 	}).(InstanceSystemDiskOutput)
 }
 
-// System disk type. Optional values:
+// System disk type. Value
 // - cloud_efficiency: Ultra cloud disk
 // - cloud_ssd: Full Flash cloud disk
 // - local_hdd: local hdd disk

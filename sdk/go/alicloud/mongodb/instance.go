@@ -130,6 +130,8 @@ type Instance struct {
 	DbInstanceStorage pulumi.IntOutput `pulumi:"dbInstanceStorage"`
 	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	EnableBackupLog pulumi.IntOutput `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -146,6 +148,8 @@ type Instance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntOutput `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -283,6 +287,8 @@ type instanceState struct {
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
 	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
 	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -299,6 +305,8 @@ type instanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -391,6 +399,8 @@ type InstanceState struct {
 	DbInstanceStorage pulumi.IntPtrInput
 	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
 	EffectiveTime pulumi.StringPtrInput
+	// Specifies whether to enable the log backup feature. Valid values:
+	EnableBackupLog pulumi.IntPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the custom key.
@@ -407,6 +417,8 @@ type InstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -503,6 +515,8 @@ type instanceArgs struct {
 	DbInstanceStorage int `pulumi:"dbInstanceStorage"`
 	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
 	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the custom key.
@@ -519,6 +533,8 @@ type instanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -604,6 +620,8 @@ type InstanceArgs struct {
 	DbInstanceStorage pulumi.IntInput
 	// The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
 	EffectiveTime pulumi.StringPtrInput
+	// Specifies whether to enable the log backup feature. Valid values:
+	EnableBackupLog pulumi.IntPtrInput
 	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the custom key.
@@ -620,6 +638,8 @@ type InstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -820,6 +840,11 @@ func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable the log backup feature. Valid values:
+func (o InstanceOutput) EnableBackupLog() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.EnableBackupLog }).(pulumi.IntOutput)
+}
+
 // Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
 func (o InstanceOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
@@ -858,6 +883,11 @@ func (o InstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o InstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+func (o InstanceOutput) LogBackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LogBackupRetentionPeriod }).(pulumi.IntOutput)
 }
 
 // The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).

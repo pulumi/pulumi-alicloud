@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerGroupServerAttachmentsResult {
+    /**
+     * @return A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerGroupServerAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,19 @@ public final class GetServerGroupServerAttachmentsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the server group.
+     * 
+     */
     private @Nullable String serverGroupId;
     private @Nullable List<String> serverIds;
     private @Nullable List<String> serverIps;
 
     private GetServerGroupServerAttachmentsResult() {}
+    /**
+     * @return A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerGroupServerAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -43,6 +55,10 @@ public final class GetServerGroupServerAttachmentsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the server group.
+     * 
+     */
     public Optional<String> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }

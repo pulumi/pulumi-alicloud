@@ -14,7 +14,7 @@ import (
 
 // Provides a Express Connect Physical Connection resource.
 //
-// For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
+// For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-createphysicalconnection-efficiency-channels).
 //
 // > **NOTE:** Available since v1.132.0.
 //
@@ -76,42 +76,50 @@ import (
 type PhysicalConnection struct {
 	pulumi.CustomResourceState
 
-	// The Physical Leased Line Access Point ID.
+	// The access point ID of the Express Connect circuit.
 	AccessPointId pulumi.StringOutput `pulumi:"accessPointId"`
-	// On the Bandwidth of the ECC Service and Physical Connection.
+	// The maximum bandwidth of the hosted connection.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
-	// Operators for Physical Connection Circuit Provided Coding.
+	// The circuit code of the Express Connect circuit.
 	CircuitCode pulumi.StringPtrOutput `pulumi:"circuitCode"`
-	// The Physical Connection to Which the Description.
+	// The description of the Express Connect circuit.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Provides Access to the Physical Line Operator. Valid values:
-	// * CT: China Telecom
-	// * CU: China Unicom
-	// * CM: china Mobile
-	// * CO: Other Chinese
-	// * Equinix: Equinix
-	// * Other: Other Overseas.
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	// - `CT`: China Telecom.
+	// - `CU`: China Unicom.
+	// - `CM`: China Mobile.
+	// - `CO`: Other connectivity providers in the Chinese mainland.
+	// - `Equinix`: Equinix.
+	// - `Other`: Other connectivity providers outside the Chinese mainland.
 	LineOperator pulumi.StringOutput `pulumi:"lineOperator"`
-	// and an on-Premises Data Center Location.
-	PeerLocation pulumi.StringPtrOutput `pulumi:"peerLocation"`
-	// on Behalf of the Resource Name of the Resources-Attribute Field.
+	// The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
+	OrderId pulumi.StringOutput `pulumi:"orderId"`
+	// The geographical location of the data center.
+	PeerLocation pulumi.StringOutput `pulumi:"peerLocation"`
+	// The subscription duration. Valid values:
+	// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+	// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The name of the Express Connect circuit.
 	PhysicalConnectionName pulumi.StringPtrOutput `pulumi:"physicalConnectionName"`
-	// The Physical Leased Line Access Port Type. Valid value:
-	// * 100Base-T: Fast Electrical Ports
-	// * 1000Base-T: gigabit Electrical Ports
-	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-	// * 10GBase-T: Gigabit Electrical Port
-	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-	//
-	// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+	// The port type of the Express Connect circuit. Valid values:
+	// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+	// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+	// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+	// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrOutput `pulumi:"portType"`
-	// Redundant Physical Connection to Which the ID.
+	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 	RedundantPhysicalConnectionId pulumi.StringPtrOutput `pulumi:"redundantPhysicalConnectionId"`
-	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+	// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Physical Private Line of Type. Default Value: VPC.
+	// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -151,82 +159,98 @@ func GetPhysicalConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PhysicalConnection resources.
 type physicalConnectionState struct {
-	// The Physical Leased Line Access Point ID.
+	// The access point ID of the Express Connect circuit.
 	AccessPointId *string `pulumi:"accessPointId"`
-	// On the Bandwidth of the ECC Service and Physical Connection.
+	// The maximum bandwidth of the hosted connection.
 	Bandwidth *string `pulumi:"bandwidth"`
-	// Operators for Physical Connection Circuit Provided Coding.
+	// The circuit code of the Express Connect circuit.
 	CircuitCode *string `pulumi:"circuitCode"`
-	// The Physical Connection to Which the Description.
+	// The description of the Express Connect circuit.
 	Description *string `pulumi:"description"`
-	// Provides Access to the Physical Line Operator. Valid values:
-	// * CT: China Telecom
-	// * CU: China Unicom
-	// * CM: china Mobile
-	// * CO: Other Chinese
-	// * Equinix: Equinix
-	// * Other: Other Overseas.
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	// - `CT`: China Telecom.
+	// - `CU`: China Unicom.
+	// - `CM`: China Mobile.
+	// - `CO`: Other connectivity providers in the Chinese mainland.
+	// - `Equinix`: Equinix.
+	// - `Other`: Other connectivity providers outside the Chinese mainland.
 	LineOperator *string `pulumi:"lineOperator"`
-	// and an on-Premises Data Center Location.
+	// The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
+	OrderId *string `pulumi:"orderId"`
+	// The geographical location of the data center.
 	PeerLocation *string `pulumi:"peerLocation"`
-	// on Behalf of the Resource Name of the Resources-Attribute Field.
+	// The subscription duration. Valid values:
+	// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+	// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+	Period *int `pulumi:"period"`
+	// The name of the Express Connect circuit.
 	PhysicalConnectionName *string `pulumi:"physicalConnectionName"`
-	// The Physical Leased Line Access Port Type. Valid value:
-	// * 100Base-T: Fast Electrical Ports
-	// * 1000Base-T: gigabit Electrical Ports
-	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-	// * 10GBase-T: Gigabit Electrical Port
-	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-	//
-	// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+	// The port type of the Express Connect circuit. Valid values:
+	// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+	// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+	// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+	// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType *string `pulumi:"portType"`
-	// Redundant Physical Connection to Which the ID.
+	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 	RedundantPhysicalConnectionId *string `pulumi:"redundantPhysicalConnectionId"`
-	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+	// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 	Status *string `pulumi:"status"`
-	// Physical Private Line of Type. Default Value: VPC.
+	// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 	Type *string `pulumi:"type"`
 }
 
 type PhysicalConnectionState struct {
-	// The Physical Leased Line Access Point ID.
+	// The access point ID of the Express Connect circuit.
 	AccessPointId pulumi.StringPtrInput
-	// On the Bandwidth of the ECC Service and Physical Connection.
+	// The maximum bandwidth of the hosted connection.
 	Bandwidth pulumi.StringPtrInput
-	// Operators for Physical Connection Circuit Provided Coding.
+	// The circuit code of the Express Connect circuit.
 	CircuitCode pulumi.StringPtrInput
-	// The Physical Connection to Which the Description.
+	// The description of the Express Connect circuit.
 	Description pulumi.StringPtrInput
-	// Provides Access to the Physical Line Operator. Valid values:
-	// * CT: China Telecom
-	// * CU: China Unicom
-	// * CM: china Mobile
-	// * CO: Other Chinese
-	// * Equinix: Equinix
-	// * Other: Other Overseas.
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	// - `CT`: China Telecom.
+	// - `CU`: China Unicom.
+	// - `CM`: China Mobile.
+	// - `CO`: Other connectivity providers in the Chinese mainland.
+	// - `Equinix`: Equinix.
+	// - `Other`: Other connectivity providers outside the Chinese mainland.
 	LineOperator pulumi.StringPtrInput
-	// and an on-Premises Data Center Location.
+	// The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
+	OrderId pulumi.StringPtrInput
+	// The geographical location of the data center.
 	PeerLocation pulumi.StringPtrInput
-	// on Behalf of the Resource Name of the Resources-Attribute Field.
+	// The subscription duration. Valid values:
+	// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+	// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+	Period pulumi.IntPtrInput
+	// The name of the Express Connect circuit.
 	PhysicalConnectionName pulumi.StringPtrInput
-	// The Physical Leased Line Access Port Type. Valid value:
-	// * 100Base-T: Fast Electrical Ports
-	// * 1000Base-T: gigabit Electrical Ports
-	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-	// * 10GBase-T: Gigabit Electrical Port
-	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-	//
-	// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+	// The port type of the Express Connect circuit. Valid values:
+	// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+	// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+	// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+	// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrInput
-	// Redundant Physical Connection to Which the ID.
+	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+	PricingCycle pulumi.StringPtrInput
+	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 	RedundantPhysicalConnectionId pulumi.StringPtrInput
-	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+	// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 	Status pulumi.StringPtrInput
-	// Physical Private Line of Type. Default Value: VPC.
+	// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 	Type pulumi.StringPtrInput
 }
 
@@ -235,83 +259,95 @@ func (PhysicalConnectionState) ElementType() reflect.Type {
 }
 
 type physicalConnectionArgs struct {
-	// The Physical Leased Line Access Point ID.
+	// The access point ID of the Express Connect circuit.
 	AccessPointId string `pulumi:"accessPointId"`
-	// On the Bandwidth of the ECC Service and Physical Connection.
+	// The maximum bandwidth of the hosted connection.
 	Bandwidth *string `pulumi:"bandwidth"`
-	// Operators for Physical Connection Circuit Provided Coding.
+	// The circuit code of the Express Connect circuit.
 	CircuitCode *string `pulumi:"circuitCode"`
-	// The Physical Connection to Which the Description.
+	// The description of the Express Connect circuit.
 	Description *string `pulumi:"description"`
-	// Provides Access to the Physical Line Operator. Valid values:
-	// * CT: China Telecom
-	// * CU: China Unicom
-	// * CM: china Mobile
-	// * CO: Other Chinese
-	// * Equinix: Equinix
-	// * Other: Other Overseas.
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	// - `CT`: China Telecom.
+	// - `CU`: China Unicom.
+	// - `CM`: China Mobile.
+	// - `CO`: Other connectivity providers in the Chinese mainland.
+	// - `Equinix`: Equinix.
+	// - `Other`: Other connectivity providers outside the Chinese mainland.
 	LineOperator string `pulumi:"lineOperator"`
-	// and an on-Premises Data Center Location.
+	// The geographical location of the data center.
 	PeerLocation *string `pulumi:"peerLocation"`
-	// on Behalf of the Resource Name of the Resources-Attribute Field.
+	// The subscription duration. Valid values:
+	// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+	// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+	Period *int `pulumi:"period"`
+	// The name of the Express Connect circuit.
 	PhysicalConnectionName *string `pulumi:"physicalConnectionName"`
-	// The Physical Leased Line Access Port Type. Valid value:
-	// * 100Base-T: Fast Electrical Ports
-	// * 1000Base-T: gigabit Electrical Ports
-	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-	// * 10GBase-T: Gigabit Electrical Port
-	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-	//
-	// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+	// The port type of the Express Connect circuit. Valid values:
+	// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+	// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+	// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+	// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType *string `pulumi:"portType"`
-	// Redundant Physical Connection to Which the ID.
+	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 	RedundantPhysicalConnectionId *string `pulumi:"redundantPhysicalConnectionId"`
-	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+	// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 	Status *string `pulumi:"status"`
-	// Physical Private Line of Type. Default Value: VPC.
+	// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a PhysicalConnection resource.
 type PhysicalConnectionArgs struct {
-	// The Physical Leased Line Access Point ID.
+	// The access point ID of the Express Connect circuit.
 	AccessPointId pulumi.StringInput
-	// On the Bandwidth of the ECC Service and Physical Connection.
+	// The maximum bandwidth of the hosted connection.
 	Bandwidth pulumi.StringPtrInput
-	// Operators for Physical Connection Circuit Provided Coding.
+	// The circuit code of the Express Connect circuit.
 	CircuitCode pulumi.StringPtrInput
-	// The Physical Connection to Which the Description.
+	// The description of the Express Connect circuit.
 	Description pulumi.StringPtrInput
-	// Provides Access to the Physical Line Operator. Valid values:
-	// * CT: China Telecom
-	// * CU: China Unicom
-	// * CM: china Mobile
-	// * CO: Other Chinese
-	// * Equinix: Equinix
-	// * Other: Other Overseas.
+	// The connectivity provider of the Express Connect circuit. Valid values:
+	// - `CT`: China Telecom.
+	// - `CU`: China Unicom.
+	// - `CM`: China Mobile.
+	// - `CO`: Other connectivity providers in the Chinese mainland.
+	// - `Equinix`: Equinix.
+	// - `Other`: Other connectivity providers outside the Chinese mainland.
 	LineOperator pulumi.StringInput
-	// and an on-Premises Data Center Location.
+	// The geographical location of the data center.
 	PeerLocation pulumi.StringPtrInput
-	// on Behalf of the Resource Name of the Resources-Attribute Field.
+	// The subscription duration. Valid values:
+	// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+	// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+	Period pulumi.IntPtrInput
+	// The name of the Express Connect circuit.
 	PhysicalConnectionName pulumi.StringPtrInput
-	// The Physical Leased Line Access Port Type. Valid value:
-	// * 100Base-T: Fast Electrical Ports
-	// * 1000Base-T: gigabit Electrical Ports
-	// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-	// * 10GBase-T: Gigabit Electrical Port
-	// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-	// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-	// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-	//
-	// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+	// The port type of the Express Connect circuit. Valid values:
+	// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+	// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+	// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+	// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+	// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+	// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+	// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+	// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 	PortType pulumi.StringPtrInput
-	// Redundant Physical Connection to Which the ID.
+	// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+	// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+	PricingCycle pulumi.StringPtrInput
+	// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 	RedundantPhysicalConnectionId pulumi.StringPtrInput
-	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+	// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 	Status pulumi.StringPtrInput
-	// Physical Private Line of Type. Default Value: VPC.
+	// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 	Type pulumi.StringPtrInput
 }
 
@@ -402,72 +438,89 @@ func (o PhysicalConnectionOutput) ToPhysicalConnectionOutputWithContext(ctx cont
 	return o
 }
 
-// The Physical Leased Line Access Point ID.
+// The access point ID of the Express Connect circuit.
 func (o PhysicalConnectionOutput) AccessPointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.AccessPointId }).(pulumi.StringOutput)
 }
 
-// On the Bandwidth of the ECC Service and Physical Connection.
+// The maximum bandwidth of the hosted connection.
 func (o PhysicalConnectionOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// Operators for Physical Connection Circuit Provided Coding.
+// The circuit code of the Express Connect circuit.
 func (o PhysicalConnectionOutput) CircuitCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.CircuitCode }).(pulumi.StringPtrOutput)
 }
 
-// The Physical Connection to Which the Description.
+// The description of the Express Connect circuit.
 func (o PhysicalConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Provides Access to the Physical Line Operator. Valid values:
-// * CT: China Telecom
-// * CU: China Unicom
-// * CM: china Mobile
-// * CO: Other Chinese
-// * Equinix: Equinix
-// * Other: Other Overseas.
+// The connectivity provider of the Express Connect circuit. Valid values:
+// - `CT`: China Telecom.
+// - `CU`: China Unicom.
+// - `CM`: China Mobile.
+// - `CO`: Other connectivity providers in the Chinese mainland.
+// - `Equinix`: Equinix.
+// - `Other`: Other connectivity providers outside the Chinese mainland.
 func (o PhysicalConnectionOutput) LineOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.LineOperator }).(pulumi.StringOutput)
 }
 
-// and an on-Premises Data Center Location.
-func (o PhysicalConnectionOutput) PeerLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PeerLocation }).(pulumi.StringPtrOutput)
+// The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
+func (o PhysicalConnectionOutput) OrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.OrderId }).(pulumi.StringOutput)
 }
 
-// on Behalf of the Resource Name of the Resources-Attribute Field.
+// The geographical location of the data center.
+func (o PhysicalConnectionOutput) PeerLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.PeerLocation }).(pulumi.StringOutput)
+}
+
+// The subscription duration. Valid values:
+// - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
+// - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
+func (o PhysicalConnectionOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The name of the Express Connect circuit.
 func (o PhysicalConnectionOutput) PhysicalConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PhysicalConnectionName }).(pulumi.StringPtrOutput)
 }
 
-// The Physical Leased Line Access Port Type. Valid value:
-// * 100Base-T: Fast Electrical Ports
-// * 1000Base-T: gigabit Electrical Ports
-// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-// * 10GBase-T: Gigabit Electrical Port
-// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-//
-// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+// The port type of the Express Connect circuit. Valid values:
+// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+// > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
 func (o PhysicalConnectionOutput) PortType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PortType }).(pulumi.StringPtrOutput)
 }
 
-// Redundant Physical Connection to Which the ID.
+// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+// > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
+func (o PhysicalConnectionOutput) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
 func (o PhysicalConnectionOutput) RedundantPhysicalConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.RedundantPhysicalConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
 func (o PhysicalConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Physical Private Line of Type. Default Value: VPC.
+// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
 func (o PhysicalConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cr.ChartNamespace;
@@ -51,19 +53,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("example-name");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000000)
+ *             .max(99999999)
+ *             .build());
+ * 
  *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(name)
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var exampleChartNamespace = new ChartNamespace("exampleChartNamespace", ChartNamespaceArgs.builder()
  *             .instanceId(example.id())
- *             .namespaceName(name)
+ *             .namespaceName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *     }

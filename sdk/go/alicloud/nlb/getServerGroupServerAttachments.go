@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.192.0+.
+// > **NOTE:** Available since v1.192.0.
 //
 // ## Example Usage
 //
@@ -71,11 +71,13 @@ type GetServerGroupServerAttachmentsArgs struct {
 
 // A collection of values returned by getServerGroupServerAttachments.
 type GetServerGroupServerAttachmentsResult struct {
+	// A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
 	Attachments []GetServerGroupServerAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string   `pulumi:"id"`
-	Ids           []string `pulumi:"ids"`
-	OutputFile    *string  `pulumi:"outputFile"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the server group.
 	ServerGroupId *string  `pulumi:"serverGroupId"`
 	ServerIds     []string `pulumi:"serverIds"`
 	ServerIps     []string `pulumi:"serverIps"`
@@ -127,6 +129,7 @@ func (o GetServerGroupServerAttachmentsResultOutput) ToGetServerGroupServerAttac
 	return o
 }
 
+// A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
 func (o GetServerGroupServerAttachmentsResultOutput) Attachments() GetServerGroupServerAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetServerGroupServerAttachmentsResult) []GetServerGroupServerAttachmentsAttachment {
 		return v.Attachments
@@ -146,6 +149,7 @@ func (o GetServerGroupServerAttachmentsResultOutput) OutputFile() pulumi.StringP
 	return o.ApplyT(func(v GetServerGroupServerAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the server group.
 func (o GetServerGroupServerAttachmentsResultOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerGroupServerAttachmentsResult) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
 }

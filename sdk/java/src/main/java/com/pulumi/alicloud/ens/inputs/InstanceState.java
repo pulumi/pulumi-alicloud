@@ -11,6 +11,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,18 +22,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * The number of instances created, with a minimum of 1 and a maximum of 100.
+     * The number of instances created, with a minimum of 1 and a maximum of 100
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return The number of instances created, with a minimum of 1 and a maximum of 100.
+     * @return The number of instances created, with a minimum of 1 and a maximum of 100
      * 
      */
     public Optional<Output<Integer>> amount() {
         return Optional.ofNullable(this.amount);
+    }
+
+    /**
+     * The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+     * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+     * - The minimum release time is one hour after the current time.
+     * 
+     */
+    @Import(name="autoReleaseTime")
+    private @Nullable Output<String> autoReleaseTime;
+
+    /**
+     * @return The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+     * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+     * - The minimum release time is one hour after the current time.
+     * 
+     */
+    public Optional<Output<String>> autoReleaseTime() {
+        return Optional.ofNullable(this.autoReleaseTime);
     }
 
     /**
@@ -53,7 +73,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to use vouchers. The default is to use. Value:
      * - true (used)
-     * - false (not used).
+     * - false (not used)
      * 
      */
     @Import(name="autoUseCoupon")
@@ -62,7 +82,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to use vouchers. The default is to use. Value:
      * - true (used)
-     * - false (not used).
+     * - false (not used)
      * 
      */
     public Optional<Output<String>> autoUseCoupon() {
@@ -73,7 +93,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
-     * - Month: monthly billing.
+     * - Month: monthly billing
      * 
      */
     @Import(name="billingCycle")
@@ -83,7 +103,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
-     * - Month: monthly billing.
+     * - Month: monthly billing
      * 
      */
     public Optional<Output<String>> billingCycle() {
@@ -94,7 +114,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
-     * - telecom.
+     * - telecom
      * 
      */
     @Import(name="carrier")
@@ -104,7 +124,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
-     * - telecom.
+     * - telecom
      * 
      */
     public Optional<Output<String>> carrier() {
@@ -112,14 +132,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data disk specifications. See `data_disk` below.
+     * Data disk specifications See `data_disk` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<InstanceDataDiskArgs>> dataDisks;
 
     /**
-     * @return Data disk specifications. See `data_disk` below.
+     * @return Data disk specifications See `data_disk` below.
      * 
      */
     public Optional<Output<List<InstanceDataDiskArgs>>> dataDisks() {
@@ -161,14 +181,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The host name of the instance. Example value: test-HostName.
+     * The host name of the instance. Example value: test-HostName
      * 
      */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
     /**
-     * @return The host name of the instance. Example value: test-HostName.
+     * @return The host name of the instance. Example value: test-HostName
      * 
      */
     public Optional<Output<String>> hostName() {
@@ -176,14 +196,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+     * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+     * @return The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -208,7 +228,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
-     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      * 
      */
     @Import(name="instanceChargeStrategy")
@@ -217,7 +237,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
-     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      * 
      */
     public Optional<Output<String>> instanceChargeStrategy() {
@@ -225,14 +245,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+     * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+     * 
+     * The default value is the InstanceId of the instance.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+     * @return The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+     * 
+     * The default value is the InstanceId of the instance.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -240,14 +264,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of the instance. Example value: ens.sn1.small.
+     * The specification of the instance. Example value: ens.sn1.small
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The specification of the instance. Example value: ens.sn1.small.
+     * @return The specification of the instance. Example value: ens.sn1.small
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -257,7 +281,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
-     * - 95bandwidthbymonth: 95 peak bandwidth.
+     * - 95bandwidthbymonth: 95 peak bandwidth
      * 
      */
     @Import(name="internetChargeType")
@@ -266,7 +290,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
-     * - 95bandwidthbymonth: 95 peak bandwidth.
+     * - 95bandwidthbymonth: 95 peak bandwidth
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -274,14 +298,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+     * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+     * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -292,7 +316,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
-     * - ipv4Andipv6:IPv4 and IPv6.
+     * - ipv4Andipv6:IPv4 and IPv6
      * 
      */
     @Import(name="ipType")
@@ -302,7 +326,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
-     * - ipv4Andipv6:IPv4 and IPv6.
+     * - ipv4Andipv6:IPv4 and IPv6
      * 
      */
     public Optional<Output<String>> ipType() {
@@ -310,14 +334,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+     * The key pair name.
+     * 
+     * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+     * 
+     */
+    @Import(name="keyPairName")
+    private @Nullable Output<String> keyPairName;
+
+    /**
+     * @return The key pair name.
+     * 
+     * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+     * 
+     */
+    public Optional<Output<String>> keyPairName() {
+        return Optional.ofNullable(this.keyPairName);
+    }
+
+    /**
+     * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      * 
      */
     @Import(name="netDistrictCode")
     private @Nullable Output<String> netDistrictCode;
 
     /**
-     * @return The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+     * @return The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      * 
      */
     public Optional<Output<String>> netDistrictCode() {
@@ -325,14 +368,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network ID of the instance. Can only be used in node-level scheduling.
+     * The network ID of the instance. Can only be used in node-level scheduling
      * 
      */
     @Import(name="netWorkId")
     private @Nullable Output<String> netWorkId;
 
     /**
-     * @return The network ID of the instance. Can only be used in node-level scheduling.
+     * @return The network ID of the instance. Can only be used in node-level scheduling
      * 
      */
     public Optional<Output<String>> netWorkId() {
@@ -340,14 +383,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+     * The instance password. At least one of Password, KeyPairName, and PasswordInherit
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+     * @return The instance password. At least one of Password, KeyPairName, and PasswordInherit
      * 
      */
     public Optional<Output<String>> password() {
@@ -355,14 +398,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+     * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      * 
      */
     @Import(name="passwordInherit")
     private @Nullable Output<Boolean> passwordInherit;
 
     /**
-     * @return Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+     * @return Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      * 
      */
     public Optional<Output<Boolean>> passwordInherit() {
@@ -370,18 +413,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance payment method. Optional values:
+     * Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
-     * - PayAsYouGo: Pay by volume.
+     * - PayAsYouGo: Pay by volume
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Instance payment method. Optional values:
+     * @return Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
-     * - PayAsYouGo: Pay by volume.
+     * - PayAsYouGo: Pay by volume
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -410,7 +453,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
-     * - Day: buy by Day.
+     * - Day: buy by Day
      * 
      */
     @Import(name="periodUnit")
@@ -419,7 +462,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
-     * - Day: buy by Day.
+     * - Day: buy by Day
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -444,7 +487,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to assign a public IP identifier. Value:
      * - true (default): Assign
-     * - false: do not assign.
+     * - false: do not assign
      * 
      */
     @Import(name="publicIpIdentification")
@@ -453,7 +496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to assign a public IP identifier. Value:
      * - true (default): Assign
-     * - false: do not assign.
+     * - false: do not assign
      * 
      */
     public Optional<Output<Boolean>> publicIpIdentification() {
@@ -463,7 +506,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
-     * - Regional scheduling: Big (region),Middle (province),Small (city).
+     * - Regional scheduling: Big (region),Middle (province),Small (city)
      * 
      */
     @Import(name="scheduleAreaLevel")
@@ -472,7 +515,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
-     * - Regional scheduling: Big (region),Middle (province),Small (city).
+     * - Regional scheduling: Big (region),Middle (province),Small (city)
      * 
      */
     public Optional<Output<String>> scheduleAreaLevel() {
@@ -482,7 +525,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
-     * - PriceLowPriority (priority low price).
+     * - PriceLowPriority (priority low price)
      * 
      */
     @Import(name="schedulingPriceStrategy")
@@ -491,7 +534,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
-     * - PriceLowPriority (priority low price).
+     * - PriceLowPriority (priority low price)
      * 
      */
     public Optional<Output<String>> schedulingPriceStrategy() {
@@ -501,7 +544,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
-     * - For regional scheduling, Concentrate, Disperse.
+     * - For regional scheduling, Concentrate, Disperse
      * 
      */
     @Import(name="schedulingStrategy")
@@ -510,7 +553,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
-     * - For regional scheduling, Concentrate, Disperse.
+     * - For regional scheduling, Concentrate, Disperse
      * 
      */
     public Optional<Output<String>> schedulingStrategy() {
@@ -533,14 +576,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of the instance.
+     * The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+     * - NoSpot: normal pay-as-you-go instance (default)
+     * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+     * 
+     */
+    @Import(name="spotStrategy")
+    private @Nullable Output<String> spotStrategy;
+
+    /**
+     * @return The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+     * - NoSpot: normal pay-as-you-go instance (default)
+     * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+     * 
+     */
+    public Optional<Output<String>> spotStrategy() {
+        return Optional.ofNullable(this.spotStrategy);
+    }
+
+    /**
+     * Status of the instance
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the instance.
+     * @return Status of the instance
      * 
      */
     public Optional<Output<String>> status() {
@@ -560,6 +622,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceSystemDiskArgs>> systemDisk() {
         return Optional.ofNullable(this.systemDisk);
+    }
+
+    /**
+     * The tag bound to the instance
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag bound to the instance
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -593,14 +670,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * @return The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -611,6 +688,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.amount = $.amount;
+        this.autoReleaseTime = $.autoReleaseTime;
         this.autoRenew = $.autoRenew;
         this.autoUseCoupon = $.autoUseCoupon;
         this.billingCycle = $.billingCycle;
@@ -627,6 +705,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.internetChargeType = $.internetChargeType;
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
         this.ipType = $.ipType;
+        this.keyPairName = $.keyPairName;
         this.netDistrictCode = $.netDistrictCode;
         this.netWorkId = $.netWorkId;
         this.password = $.password;
@@ -640,8 +719,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.schedulingPriceStrategy = $.schedulingPriceStrategy;
         this.schedulingStrategy = $.schedulingStrategy;
         this.securityId = $.securityId;
+        this.spotStrategy = $.spotStrategy;
         this.status = $.status;
         this.systemDisk = $.systemDisk;
+        this.tags = $.tags;
         this.uniqueSuffix = $.uniqueSuffix;
         this.userData = $.userData;
         this.vswitchId = $.vswitchId;
@@ -666,7 +747,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amount The number of instances created, with a minimum of 1 and a maximum of 100.
+         * @param amount The number of instances created, with a minimum of 1 and a maximum of 100
          * 
          * @return builder
          * 
@@ -677,13 +758,38 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amount The number of instances created, with a minimum of 1 and a maximum of 100.
+         * @param amount The number of instances created, with a minimum of 1 and a maximum of 100
          * 
          * @return builder
          * 
          */
         public Builder amount(Integer amount) {
             return amount(Output.of(amount));
+        }
+
+        /**
+         * @param autoReleaseTime The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+         * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+         * - The minimum release time is one hour after the current time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoReleaseTime(@Nullable Output<String> autoReleaseTime) {
+            $.autoReleaseTime = autoReleaseTime;
+            return this;
+        }
+
+        /**
+         * @param autoReleaseTime The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+         * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+         * - The minimum release time is one hour after the current time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoReleaseTime(String autoReleaseTime) {
+            return autoReleaseTime(Output.of(autoReleaseTime));
         }
 
         /**
@@ -710,7 +816,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoUseCoupon Whether to use vouchers. The default is to use. Value:
          * - true (used)
-         * - false (not used).
+         * - false (not used)
          * 
          * @return builder
          * 
@@ -723,7 +829,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoUseCoupon Whether to use vouchers. The default is to use. Value:
          * - true (used)
-         * - false (not used).
+         * - false (not used)
          * 
          * @return builder
          * 
@@ -736,7 +842,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param billingCycle The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
          * - Hour: hourly billing
          * - Day: Daily billing
-         * - Month: monthly billing.
+         * - Month: monthly billing
          * 
          * @return builder
          * 
@@ -750,7 +856,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param billingCycle The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
          * - Hour: hourly billing
          * - Day: Daily billing
-         * - Month: monthly billing.
+         * - Month: monthly billing
          * 
          * @return builder
          * 
@@ -763,7 +869,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param carrier Operator, required for regional scheduling. Optional values:
          * - cmcc (mobile)
          * - unicom
-         * - telecom.
+         * - telecom
          * 
          * @return builder
          * 
@@ -777,7 +883,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param carrier Operator, required for regional scheduling. Optional values:
          * - cmcc (mobile)
          * - unicom
-         * - telecom.
+         * - telecom
          * 
          * @return builder
          * 
@@ -787,7 +893,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications. See `data_disk` below.
+         * @param dataDisks Data disk specifications See `data_disk` below.
          * 
          * @return builder
          * 
@@ -798,7 +904,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications. See `data_disk` below.
+         * @param dataDisks Data disk specifications See `data_disk` below.
          * 
          * @return builder
          * 
@@ -808,7 +914,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk specifications. See `data_disk` below.
+         * @param dataDisks Data disk specifications See `data_disk` below.
          * 
          * @return builder
          * 
@@ -864,7 +970,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The host name of the instance. Example value: test-HostName.
+         * @param hostName The host name of the instance. Example value: test-HostName
          * 
          * @return builder
          * 
@@ -875,7 +981,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The host name of the instance. Example value: test-HostName.
+         * @param hostName The host name of the instance. Example value: test-HostName
          * 
          * @return builder
          * 
@@ -885,7 +991,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+         * @param imageId The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
          * 
          * @return builder
          * 
@@ -896,7 +1002,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+         * @param imageId The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
          * 
          * @return builder
          * 
@@ -929,7 +1035,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceChargeStrategy The instance billing policy. Optional values:
          * - instance: instance granularity (the subscription method does not support instance)
-         * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+         * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
          * 
          * @return builder
          * 
@@ -942,7 +1048,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceChargeStrategy The instance billing policy. Optional values:
          * - instance: instance granularity (the subscription method does not support instance)
-         * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+         * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
          * 
          * @return builder
          * 
@@ -952,7 +1058,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+         * @param instanceName The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+         * 
+         * The default value is the InstanceId of the instance.
          * 
          * @return builder
          * 
@@ -963,7 +1071,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+         * @param instanceName The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+         * 
+         * The default value is the InstanceId of the instance.
          * 
          * @return builder
          * 
@@ -973,7 +1083,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The specification of the instance. Example value: ens.sn1.small.
+         * @param instanceType The specification of the instance. Example value: ens.sn1.small
          * 
          * @return builder
          * 
@@ -984,7 +1094,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The specification of the instance. Example value: ens.sn1.small.
+         * @param instanceType The specification of the instance. Example value: ens.sn1.small
          * 
          * @return builder
          * 
@@ -996,7 +1106,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param internetChargeType Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
          * - BandwidthByDay: Daily peak bandwidth
-         * - 95bandwidthbymonth: 95 peak bandwidth.
+         * - 95bandwidthbymonth: 95 peak bandwidth
          * 
          * @return builder
          * 
@@ -1009,7 +1119,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param internetChargeType Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
          * - BandwidthByDay: Daily peak bandwidth
-         * - 95bandwidthbymonth: 95 peak bandwidth.
+         * - 95bandwidthbymonth: 95 peak bandwidth
          * 
          * @return builder
          * 
@@ -1019,7 +1129,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+         * @param internetMaxBandwidthOut Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
          * 
          * @return builder
          * 
@@ -1030,7 +1140,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+         * @param internetMaxBandwidthOut Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
          * 
          * @return builder
          * 
@@ -1043,7 +1153,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param ipType The IP type. Value:
          * - ipv4 (default):IPv4
          * - ipv6:IPv6
-         * - ipv4Andipv6:IPv4 and IPv6.
+         * - ipv4Andipv6:IPv4 and IPv6
          * 
          * @return builder
          * 
@@ -1057,7 +1167,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param ipType The IP type. Value:
          * - ipv4 (default):IPv4
          * - ipv6:IPv6
-         * - ipv4Andipv6:IPv4 and IPv6.
+         * - ipv4Andipv6:IPv4 and IPv6
          * 
          * @return builder
          * 
@@ -1067,7 +1177,32 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netDistrictCode The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+         * @param keyPairName The key pair name.
+         * 
+         * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(@Nullable Output<String> keyPairName) {
+            $.keyPairName = keyPairName;
+            return this;
+        }
+
+        /**
+         * @param keyPairName The key pair name.
+         * 
+         * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyPairName(String keyPairName) {
+            return keyPairName(Output.of(keyPairName));
+        }
+
+        /**
+         * @param netDistrictCode The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
          * 
          * @return builder
          * 
@@ -1078,7 +1213,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netDistrictCode The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+         * @param netDistrictCode The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
          * 
          * @return builder
          * 
@@ -1088,7 +1223,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netWorkId The network ID of the instance. Can only be used in node-level scheduling.
+         * @param netWorkId The network ID of the instance. Can only be used in node-level scheduling
          * 
          * @return builder
          * 
@@ -1099,7 +1234,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netWorkId The network ID of the instance. Can only be used in node-level scheduling.
+         * @param netWorkId The network ID of the instance. Can only be used in node-level scheduling
          * 
          * @return builder
          * 
@@ -1109,7 +1244,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+         * @param password The instance password. At least one of Password, KeyPairName, and PasswordInherit
          * 
          * @return builder
          * 
@@ -1120,7 +1255,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+         * @param password The instance password. At least one of Password, KeyPairName, and PasswordInherit
          * 
          * @return builder
          * 
@@ -1130,7 +1265,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordInherit Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+         * @param passwordInherit Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
          * 
          * @return builder
          * 
@@ -1141,7 +1276,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordInherit Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+         * @param passwordInherit Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
          * 
          * @return builder
          * 
@@ -1151,9 +1286,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Instance payment method. Optional values:
+         * @param paymentType Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
          * - Subscription: prepaid, annual and monthly
-         * - PayAsYouGo: Pay by volume.
+         * - PayAsYouGo: Pay by volume
          * 
          * @return builder
          * 
@@ -1164,9 +1299,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Instance payment method. Optional values:
+         * @param paymentType Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
          * - Subscription: prepaid, annual and monthly
-         * - PayAsYouGo: Pay by volume.
+         * - PayAsYouGo: Pay by volume
          * 
          * @return builder
          * 
@@ -1203,7 +1338,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param periodUnit The unit of time for purchasing resources. Value:
          * - Month (default): purchase by Month
-         * - Day: buy by Day.
+         * - Day: buy by Day
          * 
          * @return builder
          * 
@@ -1216,7 +1351,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param periodUnit The unit of time for purchasing resources. Value:
          * - Month (default): purchase by Month
-         * - Day: buy by Day.
+         * - Day: buy by Day
          * 
          * @return builder
          * 
@@ -1249,7 +1384,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param publicIpIdentification Whether to assign a public IP identifier. Value:
          * - true (default): Assign
-         * - false: do not assign.
+         * - false: do not assign
          * 
          * @return builder
          * 
@@ -1262,7 +1397,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param publicIpIdentification Whether to assign a public IP identifier. Value:
          * - true (default): Assign
-         * - false: do not assign.
+         * - false: do not assign
          * 
          * @return builder
          * 
@@ -1274,7 +1409,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scheduleAreaLevel Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
          * - Node-level scheduling: Region
-         * - Regional scheduling: Big (region),Middle (province),Small (city).
+         * - Regional scheduling: Big (region),Middle (province),Small (city)
          * 
          * @return builder
          * 
@@ -1287,7 +1422,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scheduleAreaLevel Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
          * - Node-level scheduling: Region
-         * - Regional scheduling: Big (region),Middle (province),Small (city).
+         * - Regional scheduling: Big (region),Middle (province),Small (city)
          * 
          * @return builder
          * 
@@ -1299,7 +1434,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schedulingPriceStrategy Scheduling price policy. If it is not filled in, the default priority is low price. Value:
          * - PriceLowPriority
-         * - PriceLowPriority (priority low price).
+         * - PriceLowPriority (priority low price)
          * 
          * @return builder
          * 
@@ -1312,7 +1447,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schedulingPriceStrategy Scheduling price policy. If it is not filled in, the default priority is low price. Value:
          * - PriceLowPriority
-         * - PriceLowPriority (priority low price).
+         * - PriceLowPriority (priority low price)
          * 
          * @return builder
          * 
@@ -1324,7 +1459,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schedulingStrategy Scheduling policy. Optional values:
          * - Concentrate for node-level scheduling
-         * - For regional scheduling, Concentrate, Disperse.
+         * - For regional scheduling, Concentrate, Disperse
          * 
          * @return builder
          * 
@@ -1337,7 +1472,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schedulingStrategy Scheduling policy. Optional values:
          * - Concentrate for node-level scheduling
-         * - For regional scheduling, Concentrate, Disperse.
+         * - For regional scheduling, Concentrate, Disperse
          * 
          * @return builder
          * 
@@ -1368,7 +1503,32 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the instance.
+         * @param spotStrategy The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+         * - NoSpot: normal pay-as-you-go instance (default)
+         * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(@Nullable Output<String> spotStrategy) {
+            $.spotStrategy = spotStrategy;
+            return this;
+        }
+
+        /**
+         * @param spotStrategy The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+         * - NoSpot: normal pay-as-you-go instance (default)
+         * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(String spotStrategy) {
+            return spotStrategy(Output.of(spotStrategy));
+        }
+
+        /**
+         * @param status Status of the instance
          * 
          * @return builder
          * 
@@ -1379,7 +1539,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the instance.
+         * @param status Status of the instance
          * 
          * @return builder
          * 
@@ -1407,6 +1567,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder systemDisk(InstanceSystemDiskArgs systemDisk) {
             return systemDisk(Output.of(systemDisk));
+        }
+
+        /**
+         * @param tags The tag bound to the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag bound to the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -1452,7 +1633,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+         * @param vswitchId The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
          * 
          * @return builder
          * 
@@ -1463,7 +1644,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+         * @param vswitchId The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
          * 
          * @return builder
          * 

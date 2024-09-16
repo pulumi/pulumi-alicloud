@@ -16,13 +16,14 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Import
  * 
- * ENS Instance can be imported using the id, e.g.
+ * Ens Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ens/instance:Instance example &lt;id&gt;
@@ -32,18 +33,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The number of instances created, with a minimum of 1 and a maximum of 100.
+     * The number of instances created, with a minimum of 1 and a maximum of 100
      * 
      */
     @Export(name="amount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> amount;
 
     /**
-     * @return The number of instances created, with a minimum of 1 and a maximum of 100.
+     * @return The number of instances created, with a minimum of 1 and a maximum of 100
      * 
      */
     public Output<Optional<Integer>> amount() {
         return Codegen.optional(this.amount);
+    }
+    /**
+     * The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+     * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+     * - The minimum release time is one hour after the current time.
+     * 
+     */
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoReleaseTime;
+
+    /**
+     * @return The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: &#39;yyyy-MM-ddTHH:mm:ssZ &#39;.
+     * - If the second (&#39;ss&#39;) value is not &#39;00&#39;, it is automatically taken as the start of the current minute (&#39;mm&#39;).
+     * - The minimum release time is one hour after the current time.
+     * 
+     */
+    public Output<Optional<String>> autoReleaseTime() {
+        return Codegen.optional(this.autoReleaseTime);
     }
     /**
      * Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
@@ -62,7 +81,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to use vouchers. The default is to use. Value:
      * - true (used)
-     * - false (not used).
+     * - false (not used)
      * 
      */
     @Export(name="autoUseCoupon", refs={String.class}, tree="[0]")
@@ -71,7 +90,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to use vouchers. The default is to use. Value:
      * - true (used)
-     * - false (not used).
+     * - false (not used)
      * 
      */
     public Output<Optional<String>> autoUseCoupon() {
@@ -81,7 +100,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
-     * - Month: monthly billing.
+     * - Month: monthly billing
      * 
      */
     @Export(name="billingCycle", refs={String.class}, tree="[0]")
@@ -91,7 +110,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
-     * - Month: monthly billing.
+     * - Month: monthly billing
      * 
      */
     public Output<Optional<String>> billingCycle() {
@@ -101,7 +120,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
-     * - telecom.
+     * - telecom
      * 
      */
     @Export(name="carrier", refs={String.class}, tree="[0]")
@@ -111,21 +130,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
-     * - telecom.
+     * - telecom
      * 
      */
     public Output<Optional<String>> carrier() {
         return Codegen.optional(this.carrier);
     }
     /**
-     * Data disk specifications. See `data_disk` below.
+     * Data disk specifications See `data_disk` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,InstanceDataDisk.class}, tree="[0,1]")
     private Output<List<InstanceDataDisk>> dataDisks;
 
     /**
-     * @return Data disk specifications. See `data_disk` below.
+     * @return Data disk specifications See `data_disk` below.
      * 
      */
     public Output<List<InstanceDataDisk>> dataDisks() {
@@ -164,28 +183,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceStop);
     }
     /**
-     * The host name of the instance. Example value: test-HostName.
+     * The host name of the instance. Example value: test-HostName
      * 
      */
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
-     * @return The host name of the instance. Example value: test-HostName.
+     * @return The host name of the instance. Example value: test-HostName
      * 
      */
     public Output<String> hostName() {
         return this.hostName;
     }
     /**
-     * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+     * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *.
+     * @return The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      * 
      */
     public Output<Optional<String>> imageId() {
@@ -208,7 +227,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
-     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      * 
      */
     @Export(name="instanceChargeStrategy", refs={String.class}, tree="[0]")
@@ -217,35 +236,39 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
-     * - user: user Dimension (user is not transmitted or supported in the prepaid mode).
+     * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      * 
      */
     public Output<Optional<String>> instanceChargeStrategy() {
         return Codegen.optional(this.instanceChargeStrategy);
     }
     /**
-     * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+     * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+     * 
+     * The default value is the InstanceId of the instance.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) The default value is the InstanceId of the instance. .
+     * @return The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
+     * 
+     * The default value is the InstanceId of the instance.
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The specification of the instance. Example value: ens.sn1.small.
+     * The specification of the instance. Example value: ens.sn1.small
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The specification of the instance. Example value: ens.sn1.small.
+     * @return The specification of the instance. Example value: ens.sn1.small
      * 
      */
     public Output<String> instanceType() {
@@ -254,7 +277,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
-     * - 95bandwidthbymonth: 95 peak bandwidth.
+     * - 95bandwidthbymonth: 95 peak bandwidth
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
@@ -263,21 +286,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
-     * - 95bandwidthbymonth: 95 peak bandwidth.
+     * - 95bandwidthbymonth: 95 peak bandwidth
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+     * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+     * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      * 
      */
     public Output<Integer> internetMaxBandwidthOut() {
@@ -287,7 +310,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
-     * - ipv4Andipv6:IPv4 and IPv6.
+     * - ipv4Andipv6:IPv4 and IPv6
      * 
      */
     @Export(name="ipType", refs={String.class}, tree="[0]")
@@ -297,81 +320,99 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
-     * - ipv4Andipv6:IPv4 and IPv6.
+     * - ipv4Andipv6:IPv4 and IPv6
      * 
      */
     public Output<Optional<String>> ipType() {
         return Codegen.optional(this.ipType);
     }
     /**
-     * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+     * The key pair name.
+     * 
+     * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+     * 
+     */
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyPairName;
+
+    /**
+     * @return The key pair name.
+     * 
+     * &gt; **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
+     * 
+     */
+    public Output<Optional<String>> keyPairName() {
+        return Codegen.optional(this.keyPairName);
+    }
+    /**
+     * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      * 
      */
     @Export(name="netDistrictCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netDistrictCode;
 
     /**
-     * @return The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling.
+     * @return The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      * 
      */
     public Output<Optional<String>> netDistrictCode() {
         return Codegen.optional(this.netDistrictCode);
     }
     /**
-     * The network ID of the instance. Can only be used in node-level scheduling.
+     * The network ID of the instance. Can only be used in node-level scheduling
      * 
      */
     @Export(name="netWorkId", refs={String.class}, tree="[0]")
     private Output<String> netWorkId;
 
     /**
-     * @return The network ID of the instance. Can only be used in node-level scheduling.
+     * @return The network ID of the instance. Can only be used in node-level scheduling
      * 
      */
     public Output<String> netWorkId() {
         return this.netWorkId;
     }
     /**
-     * The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+     * The instance password. At least one of Password, KeyPairName, and PasswordInherit
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The instance password. At least one of Password, KeyPairName, and PasswordInherit.
+     * @return The instance password. At least one of Password, KeyPairName, and PasswordInherit
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+     * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      * 
      */
     @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
-     * @return Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed.
+     * @return Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      * 
      */
     public Output<Optional<Boolean>> passwordInherit() {
         return Codegen.optional(this.passwordInherit);
     }
     /**
-     * Instance payment method. Optional values:
+     * Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
-     * - PayAsYouGo: Pay by volume.
+     * - PayAsYouGo: Pay by volume
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Instance payment method. Optional values:
+     * @return Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
-     * - PayAsYouGo: Pay by volume.
+     * - PayAsYouGo: Pay by volume
      * 
      */
     public Output<String> paymentType() {
@@ -398,7 +439,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
-     * - Day: buy by Day.
+     * - Day: buy by Day
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
@@ -407,7 +448,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
-     * - Day: buy by Day.
+     * - Day: buy by Day
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -430,7 +471,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to assign a public IP identifier. Value:
      * - true (default): Assign
-     * - false: do not assign.
+     * - false: do not assign
      * 
      */
     @Export(name="publicIpIdentification", refs={Boolean.class}, tree="[0]")
@@ -439,7 +480,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to assign a public IP identifier. Value:
      * - true (default): Assign
-     * - false: do not assign.
+     * - false: do not assign
      * 
      */
     public Output<Optional<Boolean>> publicIpIdentification() {
@@ -448,7 +489,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
-     * - Regional scheduling: Big (region),Middle (province),Small (city).
+     * - Regional scheduling: Big (region),Middle (province),Small (city)
      * 
      */
     @Export(name="scheduleAreaLevel", refs={String.class}, tree="[0]")
@@ -457,7 +498,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
-     * - Regional scheduling: Big (region),Middle (province),Small (city).
+     * - Regional scheduling: Big (region),Middle (province),Small (city)
      * 
      */
     public Output<String> scheduleAreaLevel() {
@@ -466,7 +507,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
-     * - PriceLowPriority (priority low price).
+     * - PriceLowPriority (priority low price)
      * 
      */
     @Export(name="schedulingPriceStrategy", refs={String.class}, tree="[0]")
@@ -475,7 +516,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
-     * - PriceLowPriority (priority low price).
+     * - PriceLowPriority (priority low price)
      * 
      */
     public Output<Optional<String>> schedulingPriceStrategy() {
@@ -484,7 +525,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
-     * - For regional scheduling, Concentrate, Disperse.
+     * - For regional scheduling, Concentrate, Disperse
      * 
      */
     @Export(name="schedulingStrategy", refs={String.class}, tree="[0]")
@@ -493,7 +534,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
-     * - For regional scheduling, Concentrate, Disperse.
+     * - For regional scheduling, Concentrate, Disperse
      * 
      */
     public Output<Optional<String>> schedulingStrategy() {
@@ -514,14 +555,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityId;
     }
     /**
-     * Status of the instance.
+     * The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+     * - NoSpot: normal pay-as-you-go instance (default)
+     * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+     * 
+     */
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> spotStrategy;
+
+    /**
+     * @return The bidding strategy for pay-as-you-go instances. It takes effect when the value of the &#39;InstanceChargeType&#39; parameter is set to &#39;PostPaid. Value range:
+     * - NoSpot: normal pay-as-you-go instance (default)
+     * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
+     * 
+     */
+    public Output<Optional<String>> spotStrategy() {
+        return Codegen.optional(this.spotStrategy);
+    }
+    /**
+     * Status of the instance
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the instance.
+     * @return Status of the instance
      * 
      */
     public Output<String> status() {
@@ -540,6 +599,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceSystemDisk>> systemDisk() {
         return Codegen.optional(this.systemDisk);
+    }
+    /**
+     * The tag bound to the instance
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag bound to the instance
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
@@ -570,14 +643,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userData);
     }
     /**
-     * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
+     * @return The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      * 
      */
     public Output<String> vswitchId() {

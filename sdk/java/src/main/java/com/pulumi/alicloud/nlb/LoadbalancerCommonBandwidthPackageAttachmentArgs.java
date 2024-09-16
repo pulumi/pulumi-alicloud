@@ -15,14 +15,14 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
     public static final LoadbalancerCommonBandwidthPackageAttachmentArgs Empty = new LoadbalancerCommonBandwidthPackageAttachmentArgs();
 
     /**
-     * The ID of the bound shared bandwidth package.
+     * Specifies whether only to precheck the request. Valid values:
      * 
      */
     @Import(name="bandwidthPackageId", required=true)
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bound shared bandwidth package.
+     * @return Specifies whether only to precheck the request. Valid values:
      * 
      */
     public Output<String> bandwidthPackageId() {
@@ -30,14 +30,14 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
     }
 
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the EIP bandwidth plan.
      * 
      */
     @Import(name="loadBalancerId", required=true)
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the network-based server load balancer instance.
+     * @return The ID of the EIP bandwidth plan.
      * 
      */
     public Output<String> loadBalancerId() {
@@ -70,7 +70,7 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bound shared bandwidth package.
+         * @param bandwidthPackageId Specifies whether only to precheck the request. Valid values:
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bound shared bandwidth package.
+         * @param bandwidthPackageId Specifies whether only to precheck the request. Valid values:
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance.
+         * @param loadBalancerId The ID of the EIP bandwidth plan.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class LoadbalancerCommonBandwidthPackageAttachmentArgs extends com.
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance.
+         * @param loadBalancerId The ID of the EIP bandwidth plan.
          * 
          * @return builder
          * 

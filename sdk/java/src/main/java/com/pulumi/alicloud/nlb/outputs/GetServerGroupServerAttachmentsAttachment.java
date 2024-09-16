@@ -17,7 +17,7 @@ public final class GetServerGroupServerAttachmentsAttachment {
      */
     private String description;
     /**
-     * @return The ID of the server group.
+     * @return The ID of the server group. The value is formulated as `&lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;`.
      * 
      */
     private String id;
@@ -71,7 +71,7 @@ public final class GetServerGroupServerAttachmentsAttachment {
         return this.description;
     }
     /**
-     * @return The ID of the server group.
+     * @return The ID of the server group. The value is formulated as `&lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;`.
      * 
      */
     public String id() {

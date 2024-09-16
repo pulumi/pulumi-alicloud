@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     public sealed class LoadBalancerZoneMapping
     {
         /// <summary>
-        /// The ID of the elastic IP address.
+        /// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         public readonly string? AllocationId;
         /// <summary>
-        /// The ID of ENI.
+        /// The ID of the elastic network interface (ENI).
         /// </summary>
         public readonly string? EniId;
         /// <summary>
-        /// The IPv6 address of a network-based server load balancer instance.
+        /// The IPv6 address of the NLB instance.
         /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
-        /// The private IPv4 address of a network-based server load balancer instance.
+        /// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         public readonly string? PrivateIpv4Address;
         /// <summary>
@@ -34,15 +34,17 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string? PublicIpv4Address;
         /// <summary>
-        /// Zone Status.
+        /// Zone Status
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+        /// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+        /// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+        /// 
+        /// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         /// </summary>
         public readonly string ZoneId;
 

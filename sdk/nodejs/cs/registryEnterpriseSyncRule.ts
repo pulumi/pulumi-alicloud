@@ -49,34 +49,34 @@ import * as utilities from "../utilities";
  * });
  * const sourceRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("source", {
  *     instanceId: source.id,
- *     name: name,
+ *     name: `${name}-${defaultInteger.result}`,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
  * const targetRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("target", {
  *     instanceId: target.id,
- *     name: name,
+ *     name: `${name}-${defaultInteger.result}`,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
  * const sourceRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("source", {
  *     instanceId: source.id,
  *     namespace: sourceRegistryEnterpriseNamespace.name,
- *     name: name,
+ *     name: `${name}-${defaultInteger.result}`,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  * });
  * const targetRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("target", {
  *     instanceId: target.id,
  *     namespace: targetRegistryEnterpriseNamespace.name,
- *     name: name,
+ *     name: `${name}-${defaultInteger.result}`,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  * });
  * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
  *     instanceId: source.id,
  *     namespaceName: sourceRegistryEnterpriseNamespace.name,
- *     name: name,
+ *     name: `${name}-${defaultInteger.result}`,
  *     targetInstanceId: target.id,
  *     targetNamespaceName: targetRegistryEnterpriseNamespace.name,
  *     targetRegionId: _default.then(_default => _default.regions?.[0]?.id),

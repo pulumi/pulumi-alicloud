@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// The mount point of the data disk.
+        /// </summary>
+        public readonly string? Device;
+        /// <summary>
         /// Encrypted the data in this disk.
         /// </summary>
         public readonly bool? Encrypted;
@@ -54,6 +58,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? description,
 
+            string? device,
+
             bool? encrypted,
 
             string? name,
@@ -67,6 +73,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;
+            Device = device;
             Encrypted = encrypted;
             Name = name;
             PerformanceLevel = performanceLevel;

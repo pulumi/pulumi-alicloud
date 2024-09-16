@@ -84,7 +84,7 @@ import (
 //			}
 //			sourceRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "source", &cs.RegistryEnterpriseNamespaceArgs{
 //				InstanceId:        source.ID(),
-//				Name:              pulumi.String(name),
+//				Name:              pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -93,7 +93,7 @@ import (
 //			}
 //			targetRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "target", &cs.RegistryEnterpriseNamespaceArgs{
 //				InstanceId:        target.ID(),
-//				Name:              pulumi.String(name),
+//				Name:              pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -103,7 +103,7 @@ import (
 //			sourceRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "source", &cs.RegistryEnterpriseRepoArgs{
 //				InstanceId: source.ID(),
 //				Namespace:  sourceRegistryEnterpriseNamespace.Name,
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //			})
@@ -113,7 +113,7 @@ import (
 //			targetRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "target", &cs.RegistryEnterpriseRepoArgs{
 //				InstanceId: target.ID(),
 //				Namespace:  targetRegistryEnterpriseNamespace.Name,
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //			})
@@ -123,7 +123,7 @@ import (
 //			_, err = cs.NewRegistryEnterpriseSyncRule(ctx, "default", &cs.RegistryEnterpriseSyncRuleArgs{
 //				InstanceId:          source.ID(),
 //				NamespaceName:       sourceRegistryEnterpriseNamespace.Name,
-//				Name:                pulumi.String(name),
+//				Name:                pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				TargetInstanceId:    target.ID(),
 //				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
 //				TargetRegionId:      pulumi.String(_default.Regions[0].Id),

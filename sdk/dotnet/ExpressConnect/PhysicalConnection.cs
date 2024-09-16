@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// <summary>
     /// Provides a Express Connect Physical Connection resource.
     /// 
-    /// For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/doc-detail/44852.htm).
+    /// For information about Express Connect Physical Connection and how to use it, see [What is Physical Connection](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-createphysicalconnection-efficiency-channels).
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
     /// 
@@ -67,82 +67,102 @@ namespace Pulumi.AliCloud.ExpressConnect
     public partial class PhysicalConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Physical Leased Line Access Point ID.
+        /// The access point ID of the Express Connect circuit.
         /// </summary>
         [Output("accessPointId")]
         public Output<string> AccessPointId { get; private set; } = null!;
 
         /// <summary>
-        /// On the Bandwidth of the ECC Service and Physical Connection.
+        /// The maximum bandwidth of the hosted connection.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Operators for Physical Connection Circuit Provided Coding.
+        /// The circuit code of the Express Connect circuit.
         /// </summary>
         [Output("circuitCode")]
         public Output<string?> CircuitCode { get; private set; } = null!;
 
         /// <summary>
-        /// The Physical Connection to Which the Description.
+        /// The description of the Express Connect circuit.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Provides Access to the Physical Line Operator. Valid values:
-        /// * CT: China Telecom
-        /// * CU: China Unicom
-        /// * CM: china Mobile
-        /// * CO: Other Chinese
-        /// * Equinix: Equinix
-        /// * Other: Other Overseas.
+        /// The connectivity provider of the Express Connect circuit. Valid values:
+        /// - `CT`: China Telecom.
+        /// - `CU`: China Unicom.
+        /// - `CM`: China Mobile.
+        /// - `CO`: Other connectivity providers in the Chinese mainland.
+        /// - `Equinix`: Equinix.
+        /// - `Other`: Other connectivity providers outside the Chinese mainland.
         /// </summary>
         [Output("lineOperator")]
         public Output<string> LineOperator { get; private set; } = null!;
 
         /// <summary>
-        /// and an on-Premises Data Center Location.
+        /// The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
         /// </summary>
-        [Output("peerLocation")]
-        public Output<string?> PeerLocation { get; private set; } = null!;
+        [Output("orderId")]
+        public Output<string> OrderId { get; private set; } = null!;
 
         /// <summary>
-        /// on Behalf of the Resource Name of the Resources-Attribute Field.
+        /// The geographical location of the data center.
+        /// </summary>
+        [Output("peerLocation")]
+        public Output<string> PeerLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// The subscription duration. Valid values:
+        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Express Connect circuit.
         /// </summary>
         [Output("physicalConnectionName")]
         public Output<string?> PhysicalConnectionName { get; private set; } = null!;
 
         /// <summary>
-        /// The Physical Leased Line Access Port Type. Valid value:
-        /// * 100Base-T: Fast Electrical Ports
-        /// * 1000Base-T: gigabit Electrical Ports
-        /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        /// * 10GBase-T: Gigabit Electrical Port
-        /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-        /// 
-        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        /// The port type of the Express Connect circuit. Valid values:
+        /// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        /// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        /// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        /// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         /// </summary>
         [Output("portType")]
         public Output<string?> PortType { get; private set; } = null!;
 
         /// <summary>
-        /// Redundant Physical Connection to Which the ID.
+        /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// </summary>
+        [Output("pricingCycle")]
+        public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         /// </summary>
         [Output("redundantPhysicalConnectionId")]
         public Output<string?> RedundantPhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Physical Private Line of Type. Default Value: VPC.
+        /// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -194,82 +214,96 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class PhysicalConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Physical Leased Line Access Point ID.
+        /// The access point ID of the Express Connect circuit.
         /// </summary>
         [Input("accessPointId", required: true)]
         public Input<string> AccessPointId { get; set; } = null!;
 
         /// <summary>
-        /// On the Bandwidth of the ECC Service and Physical Connection.
+        /// The maximum bandwidth of the hosted connection.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Operators for Physical Connection Circuit Provided Coding.
+        /// The circuit code of the Express Connect circuit.
         /// </summary>
         [Input("circuitCode")]
         public Input<string>? CircuitCode { get; set; }
 
         /// <summary>
-        /// The Physical Connection to Which the Description.
+        /// The description of the Express Connect circuit.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Provides Access to the Physical Line Operator. Valid values:
-        /// * CT: China Telecom
-        /// * CU: China Unicom
-        /// * CM: china Mobile
-        /// * CO: Other Chinese
-        /// * Equinix: Equinix
-        /// * Other: Other Overseas.
+        /// The connectivity provider of the Express Connect circuit. Valid values:
+        /// - `CT`: China Telecom.
+        /// - `CU`: China Unicom.
+        /// - `CM`: China Mobile.
+        /// - `CO`: Other connectivity providers in the Chinese mainland.
+        /// - `Equinix`: Equinix.
+        /// - `Other`: Other connectivity providers outside the Chinese mainland.
         /// </summary>
         [Input("lineOperator", required: true)]
         public Input<string> LineOperator { get; set; } = null!;
 
         /// <summary>
-        /// and an on-Premises Data Center Location.
+        /// The geographical location of the data center.
         /// </summary>
         [Input("peerLocation")]
         public Input<string>? PeerLocation { get; set; }
 
         /// <summary>
-        /// on Behalf of the Resource Name of the Resources-Attribute Field.
+        /// The subscription duration. Valid values:
+        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The name of the Express Connect circuit.
         /// </summary>
         [Input("physicalConnectionName")]
         public Input<string>? PhysicalConnectionName { get; set; }
 
         /// <summary>
-        /// The Physical Leased Line Access Port Type. Valid value:
-        /// * 100Base-T: Fast Electrical Ports
-        /// * 1000Base-T: gigabit Electrical Ports
-        /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        /// * 10GBase-T: Gigabit Electrical Port
-        /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-        /// 
-        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        /// The port type of the Express Connect circuit. Valid values:
+        /// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        /// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        /// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        /// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
 
         /// <summary>
-        /// Redundant Physical Connection to Which the ID.
+        /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         /// </summary>
         [Input("redundantPhysicalConnectionId")]
         public Input<string>? RedundantPhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Physical Private Line of Type. Default Value: VPC.
+        /// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -283,82 +317,102 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class PhysicalConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Physical Leased Line Access Point ID.
+        /// The access point ID of the Express Connect circuit.
         /// </summary>
         [Input("accessPointId")]
         public Input<string>? AccessPointId { get; set; }
 
         /// <summary>
-        /// On the Bandwidth of the ECC Service and Physical Connection.
+        /// The maximum bandwidth of the hosted connection.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Operators for Physical Connection Circuit Provided Coding.
+        /// The circuit code of the Express Connect circuit.
         /// </summary>
         [Input("circuitCode")]
         public Input<string>? CircuitCode { get; set; }
 
         /// <summary>
-        /// The Physical Connection to Which the Description.
+        /// The description of the Express Connect circuit.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Provides Access to the Physical Line Operator. Valid values:
-        /// * CT: China Telecom
-        /// * CU: China Unicom
-        /// * CM: china Mobile
-        /// * CO: Other Chinese
-        /// * Equinix: Equinix
-        /// * Other: Other Overseas.
+        /// The connectivity provider of the Express Connect circuit. Valid values:
+        /// - `CT`: China Telecom.
+        /// - `CU`: China Unicom.
+        /// - `CM`: China Mobile.
+        /// - `CO`: Other connectivity providers in the Chinese mainland.
+        /// - `Equinix`: Equinix.
+        /// - `Other`: Other connectivity providers outside the Chinese mainland.
         /// </summary>
         [Input("lineOperator")]
         public Input<string>? LineOperator { get; set; }
 
         /// <summary>
-        /// and an on-Premises Data Center Location.
+        /// The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
+        /// </summary>
+        [Input("orderId")]
+        public Input<string>? OrderId { get; set; }
+
+        /// <summary>
+        /// The geographical location of the data center.
         /// </summary>
         [Input("peerLocation")]
         public Input<string>? PeerLocation { get; set; }
 
         /// <summary>
-        /// on Behalf of the Resource Name of the Resources-Attribute Field.
+        /// The subscription duration. Valid values:
+        /// - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
+        /// - If `pricing_cycle` is set to `Year`. Valid values: `1` to `5`.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The name of the Express Connect circuit.
         /// </summary>
         [Input("physicalConnectionName")]
         public Input<string>? PhysicalConnectionName { get; set; }
 
         /// <summary>
-        /// The Physical Leased Line Access Port Type. Valid value:
-        /// * 100Base-T: Fast Electrical Ports
-        /// * 1000Base-T: gigabit Electrical Ports
-        /// * 1000Base-LX: Gigabit Singlemode Optical Ports (10Km)
-        /// * 10GBase-T: Gigabit Electrical Port
-        /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
-        /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
-        /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
-        /// 
-        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
+        /// The port type of the Express Connect circuit. Valid values:
+        /// - `100Base-T`: 100 Mbit/s copper Ethernet port.
+        /// - `1000Base-T`: 1000 Mbit/s copper Ethernet port.
+        /// - `1000Base-LX`: 1000 Mbit/s single-mode optical port (10 km).
+        /// - `10GBase-T`: 10000 Mbit/s copper Ethernet port.
+        /// - `10GBase-LR`: 10000 Mbit/s single-mode optical port (10 km).
+        /// - `40GBase-LR`: 40000 Mbit/s single-mode optical port.
+        /// - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
+        /// &gt; **NOTE:** From version 1.185.0, `port_type` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `port_type` cannot be modified.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
 
         /// <summary>
-        /// Redundant Physical Connection to Which the ID.
+        /// The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
+        /// &gt; **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         /// </summary>
         [Input("redundantPhysicalConnectionId")]
         public Input<string>? RedundantPhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
+        /// The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Physical Private Line of Type. Default Value: VPC.
+        /// The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

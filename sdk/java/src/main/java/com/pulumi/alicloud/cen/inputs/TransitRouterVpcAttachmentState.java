@@ -7,6 +7,7 @@ import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,14 +21,16 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     public static final TransitRouterVpcAttachmentState Empty = new TransitRouterVpcAttachmentState();
 
     /**
-     * Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * - **false:** (default)
      * 
      */
     @Import(name="autoPublishRouteEnabled")
     private @Nullable Output<Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+     * - **false:** (default)
      * 
      */
     public Optional<Output<Boolean>> autoPublishRouteEnabled() {
@@ -35,14 +38,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -50,14 +53,29 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The dry run.
+     * The creation time of the resource
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -65,14 +83,29 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+     * Whether to forcibly delete the VPC connection. The value is:
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Whether to forcibly delete the VPC connection. The value is:
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+     * @return The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -141,14 +174,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The associating status of the network.
+     * Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -156,14 +189,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -171,14 +204,18 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The description of the transit router vbr attachment.
+     * The description of the VPC connection.
+     * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="transitRouterAttachmentDescription")
     private @Nullable Output<String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the transit router vbr attachment.
+     * @return The description of the VPC connection.
+     * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentDescription() {
@@ -201,29 +238,37 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The name of the transit router vbr attachment.
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the transit router vbr attachment.
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
 
     /**
-     * The ID of the transit router.
+     * The ID of the Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the Enterprise Edition transit router.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -231,14 +276,48 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the VPC.
+     * The name of the VPC connection.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    @Import(name="transitRouterVpcAttachmentName")
+    private @Nullable Output<String> transitRouterVpcAttachmentName;
+
+    /**
+     * @return The name of the VPC connection.
+     * 
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+     * 
+     */
+    public Optional<Output<String>> transitRouterVpcAttachmentName() {
+        return Optional.ofNullable(this.transitRouterVpcAttachmentName);
+    }
+
+    /**
+     * TransitRouterVpcAttachmentOptions
+     * 
+     */
+    @Import(name="transitRouterVpcAttachmentOptions")
+    private @Nullable Output<Map<String,String>> transitRouterVpcAttachmentOptions;
+
+    /**
+     * @return TransitRouterVpcAttachmentOptions
+     * 
+     */
+    public Optional<Output<Map<String,String>>> transitRouterVpcAttachmentOptions() {
+        return Optional.ofNullable(this.transitRouterVpcAttachmentOptions);
+    }
+
+    /**
+     * The VPC ID.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return The VPC ID.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -246,31 +325,33 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The owner id of vpc.
+     * VpcOwnerId
      * 
      */
     @Import(name="vpcOwnerId")
-    private @Nullable Output<String> vpcOwnerId;
+    private @Nullable Output<Integer> vpcOwnerId;
 
     /**
-     * @return The owner id of vpc.
+     * @return VpcOwnerId
      * 
      */
-    public Optional<Output<String>> vpcOwnerId() {
+    public Optional<Output<Integer>> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
 
     /**
-     * The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+     * ZoneMappingss See `zone_mappings` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+     * @return ZoneMappingss See `zone_mappings` below.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<List<TransitRouterVpcAttachmentZoneMappingArgs>>> zoneMappings() {
@@ -282,7 +363,9 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     private TransitRouterVpcAttachmentState(TransitRouterVpcAttachmentState $) {
         this.autoPublishRouteEnabled = $.autoPublishRouteEnabled;
         this.cenId = $.cenId;
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
+        this.forceDelete = $.forceDelete;
         this.paymentType = $.paymentType;
         this.resourceType = $.resourceType;
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
@@ -293,6 +376,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterAttachmentName = $.transitRouterAttachmentName;
         this.transitRouterId = $.transitRouterId;
+        this.transitRouterVpcAttachmentName = $.transitRouterVpcAttachmentName;
+        this.transitRouterVpcAttachmentOptions = $.transitRouterVpcAttachmentOptions;
         this.vpcId = $.vpcId;
         this.vpcOwnerId = $.vpcOwnerId;
         this.zoneMappings = $.zoneMappings;
@@ -317,7 +402,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+         * - **false:** (default)
          * 
          * @return builder
          * 
@@ -328,7 +414,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+         * - **false:** (default)
          * 
          * @return builder
          * 
@@ -338,7 +425,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -349,7 +436,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -359,7 +446,28 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -370,7 +478,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -380,7 +488,28 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param paymentType The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+         * @param forceDelete Whether to forcibly delete the VPC connection. The value is:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Whether to forcibly delete the VPC connection. The value is:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param paymentType The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
          * 
          * @return builder
          * 
@@ -391,7 +520,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param paymentType The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+         * @param paymentType The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
          * 
          * @return builder
          * 
@@ -480,7 +609,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status Status
          * 
          * @return builder
          * 
@@ -491,7 +620,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status Status
          * 
          * @return builder
          * 
@@ -501,7 +630,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -512,7 +641,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -522,7 +651,9 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the transit router vbr attachment.
+         * @param transitRouterAttachmentDescription The description of the VPC connection.
+         * 
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -533,7 +664,9 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the transit router vbr attachment.
+         * @param transitRouterAttachmentDescription The description of the VPC connection.
+         * 
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -564,28 +697,36 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the transit router vbr attachment.
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the transit router vbr attachment.
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead. */
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -596,7 +737,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -606,7 +747,53 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param transitRouterVpcAttachmentName The name of the VPC connection.
+         * 
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpcAttachmentName(@Nullable Output<String> transitRouterVpcAttachmentName) {
+            $.transitRouterVpcAttachmentName = transitRouterVpcAttachmentName;
+            return this;
+        }
+
+        /**
+         * @param transitRouterVpcAttachmentName The name of the VPC connection.
+         * 
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpcAttachmentName(String transitRouterVpcAttachmentName) {
+            return transitRouterVpcAttachmentName(Output.of(transitRouterVpcAttachmentName));
+        }
+
+        /**
+         * @param transitRouterVpcAttachmentOptions TransitRouterVpcAttachmentOptions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpcAttachmentOptions(@Nullable Output<Map<String,String>> transitRouterVpcAttachmentOptions) {
+            $.transitRouterVpcAttachmentOptions = transitRouterVpcAttachmentOptions;
+            return this;
+        }
+
+        /**
+         * @param transitRouterVpcAttachmentOptions TransitRouterVpcAttachmentOptions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterVpcAttachmentOptions(Map<String,String> transitRouterVpcAttachmentOptions) {
+            return transitRouterVpcAttachmentOptions(Output.of(transitRouterVpcAttachmentOptions));
+        }
+
+        /**
+         * @param vpcId The VPC ID.
          * 
          * @return builder
          * 
@@ -617,7 +804,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId The VPC ID.
          * 
          * @return builder
          * 
@@ -627,29 +814,30 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcOwnerId The owner id of vpc.
+         * @param vpcOwnerId VpcOwnerId
          * 
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(@Nullable Output<String> vpcOwnerId) {
+        public Builder vpcOwnerId(@Nullable Output<Integer> vpcOwnerId) {
             $.vpcOwnerId = vpcOwnerId;
             return this;
         }
 
         /**
-         * @param vpcOwnerId The owner id of vpc.
+         * @param vpcOwnerId VpcOwnerId
          * 
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(String vpcOwnerId) {
+        public Builder vpcOwnerId(Integer vpcOwnerId) {
             return vpcOwnerId(Output.of(vpcOwnerId));
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -660,8 +848,9 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -671,8 +860,9 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+         * @param zoneMappings ZoneMappingss See `zone_mappings` below.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

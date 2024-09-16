@@ -91,14 +91,14 @@ import javax.annotation.Nullable;
  * 
  *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(source.id())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
  *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(target.id())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(source.id())
  *             .namespace(sourceRegistryEnterpriseNamespace.name())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
  *             .build());
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(target.id())
  *             .namespace(targetRegistryEnterpriseNamespace.name())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
  *             .build());
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
  *             .targetRegionId(default_.regions()[0].id())

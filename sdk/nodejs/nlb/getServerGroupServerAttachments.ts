@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.192.0+.
+ * > **NOTE:** Available since v1.192.0.
  *
  * ## Example Usage
  *
@@ -68,6 +68,9 @@ export interface GetServerGroupServerAttachmentsArgs {
  * A collection of values returned by getServerGroupServerAttachments.
  */
 export interface GetServerGroupServerAttachmentsResult {
+    /**
+     * A list of Nlb Server Group Server Attachments. Each element contains the following attributes:
+     */
     readonly attachments: outputs.nlb.GetServerGroupServerAttachmentsAttachment[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,6 +78,9 @@ export interface GetServerGroupServerAttachmentsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the server group.
+     */
     readonly serverGroupId?: string;
     readonly serverIds?: string[];
     readonly serverIps?: string[];
@@ -82,7 +88,7 @@ export interface GetServerGroupServerAttachmentsResult {
 /**
  * This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.192.0+.
+ * > **NOTE:** Available since v1.192.0.
  *
  * ## Example Usage
  *

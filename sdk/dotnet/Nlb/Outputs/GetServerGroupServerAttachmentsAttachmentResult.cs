@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of the server group.
+        /// The ID of the server group. The value is formulated as `&lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

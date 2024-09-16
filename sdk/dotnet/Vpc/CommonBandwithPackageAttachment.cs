@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var @default = new AliCloud.Vpc.CommonBandwithPackage("default", new()
     ///     {
     ///         Bandwidth = "3",
-    ///         InternetChargeType = "PayByBandwidth",
+    ///         InternetChargeType = "PayByTraffic",
     ///     });
     /// 
     ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()

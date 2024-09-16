@@ -95,35 +95,48 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN Transit Router VPC Attachment can be imported using the id, e.g.
+    /// CEN Transit Router Vpc Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")]
     public partial class TransitRouterVpcAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// - **false:** (default)
         /// </summary>
         [Output("autoPublishRouteEnabled")]
         public Output<bool?> AutoPublishRouteEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Output("cenId")]
-        public Output<string> CenId { get; private set; } = null!;
+        public Output<string?> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        /// Whether to forcibly delete the VPC connection. The value is:
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -147,19 +160,21 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The associating status of the network.
+        /// Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the transit router vbr attachment.
+        /// The description of the VPC connection.
+        /// 
+        /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("transitRouterAttachmentDescription")]
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
@@ -171,32 +186,47 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the transit router vbr attachment.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Output("transitRouterAttachmentName")]
-        public Output<string?> TransitRouterAttachmentName { get; private set; } = null!;
+        public Output<string> TransitRouterAttachmentName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the Enterprise Edition transit router.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The name of the VPC connection.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Output("transitRouterVpcAttachmentName")]
+        public Output<string> TransitRouterVpcAttachmentName { get; private set; } = null!;
+
+        /// <summary>
+        /// TransitRouterVpcAttachmentOptions
+        /// </summary>
+        [Output("transitRouterVpcAttachmentOptions")]
+        public Output<ImmutableDictionary<string, string>> TransitRouterVpcAttachmentOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPC ID.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The owner id of vpc.
+        /// VpcOwnerId
         /// </summary>
         [Output("vpcOwnerId")]
-        public Output<string> VpcOwnerId { get; private set; } = null!;
+        public Output<int> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        /// ZoneMappingss See `zone_mappings` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.TransitRouterVpcAttachmentZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -248,25 +278,32 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVpcAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// - **false:** (default)
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
-        [Input("cenId", required: true)]
-        public Input<string> CenId { get; set; } = null!;
+        [Input("cenId")]
+        public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        /// Whether to forcibly delete the VPC connection. The value is:
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -293,7 +330,7 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -302,41 +339,64 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The description of the transit router vbr attachment.
+        /// The description of the VPC connection.
+        /// 
+        /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The name of the transit router vbr attachment.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The name of the VPC connection.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Input("transitRouterVpcAttachmentName")]
+        public Input<string>? TransitRouterVpcAttachmentName { get; set; }
+
+        [Input("transitRouterVpcAttachmentOptions")]
+        private InputMap<string>? _transitRouterVpcAttachmentOptions;
+
+        /// <summary>
+        /// TransitRouterVpcAttachmentOptions
+        /// </summary>
+        public InputMap<string> TransitRouterVpcAttachmentOptions
+        {
+            get => _transitRouterVpcAttachmentOptions ?? (_transitRouterVpcAttachmentOptions = new InputMap<string>());
+            set => _transitRouterVpcAttachmentOptions = value;
+        }
+
+        /// <summary>
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The owner id of vpc.
+        /// VpcOwnerId
         /// </summary>
         [Input("vpcOwnerId")]
-        public Input<string>? VpcOwnerId { get; set; }
+        public Input<int>? VpcOwnerId { get; set; }
 
         [Input("zoneMappings", required: true)]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        /// ZoneMappingss See `zone_mappings` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
         {
@@ -353,25 +413,38 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVpcAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        /// - **false:** (default)
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
+        /// Whether to forcibly delete the VPC connection. The value is:
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -395,7 +468,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
         /// <summary>
-        /// The associating status of the network.
+        /// Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -404,7 +477,7 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -413,7 +486,9 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The description of the transit router vbr attachment.
+        /// The description of the VPC connection.
+        /// 
+        /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
@@ -425,35 +500,56 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// The name of the transit router vbr attachment.
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
 
         /// <summary>
-        /// The ID of the VPC.
+        /// The name of the VPC connection.
+        /// 
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        /// </summary>
+        [Input("transitRouterVpcAttachmentName")]
+        public Input<string>? TransitRouterVpcAttachmentName { get; set; }
+
+        [Input("transitRouterVpcAttachmentOptions")]
+        private InputMap<string>? _transitRouterVpcAttachmentOptions;
+
+        /// <summary>
+        /// TransitRouterVpcAttachmentOptions
+        /// </summary>
+        public InputMap<string> TransitRouterVpcAttachmentOptions
+        {
+            get => _transitRouterVpcAttachmentOptions ?? (_transitRouterVpcAttachmentOptions = new InputMap<string>());
+            set => _transitRouterVpcAttachmentOptions = value;
+        }
+
+        /// <summary>
+        /// The VPC ID.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The owner id of vpc.
+        /// VpcOwnerId
         /// </summary>
         [Input("vpcOwnerId")]
-        public Input<string>? VpcOwnerId { get; set; }
+        public Input<int>? VpcOwnerId { get; set; }
 
         [Input("zoneMappings")]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
+        /// ZoneMappingss See `zone_mappings` below.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings
         {

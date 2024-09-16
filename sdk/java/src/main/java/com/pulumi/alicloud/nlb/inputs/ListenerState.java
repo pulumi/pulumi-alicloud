@@ -20,18 +20,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * Whether ALPN is turned on. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
      * 
      */
     @Import(name="alpnEnabled")
     private @Nullable Output<Boolean> alpnEnabled;
 
     /**
-     * @return Whether ALPN is turned on. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
      * 
      */
     public Optional<Output<Boolean>> alpnEnabled() {
@@ -39,22 +35,30 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ALPN policy. Value:
-     * - **HTTP1Only**
-     * - **HTTP2Only**
-     * - **HTTP2Preferred**
-     * - **HTTP2Optional**.
+     * The ALPN policy. Valid values:
+     * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+     * - `HTTP2Only`: uses only HTTP 2.0.
+     * - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+     * - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+     * 
+     * &gt; **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+     * 
+     * &gt; **NOTE:**  Effective only for TCPSSL listener.
      * 
      */
     @Import(name="alpnPolicy")
     private @Nullable Output<String> alpnPolicy;
 
     /**
-     * @return ALPN policy. Value:
-     * - **HTTP1Only**
-     * - **HTTP2Only**
-     * - **HTTP2Preferred**
-     * - **HTTP2Optional**.
+     * @return The ALPN policy. Valid values:
+     * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+     * - `HTTP2Only`: uses only HTTP 2.0.
+     * - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+     * - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+     * 
+     * &gt; **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+     * 
+     * &gt; **NOTE:**  Effective only for TCPSSL listener.
      * 
      */
     public Optional<Output<String>> alpnPolicy() {
@@ -62,16 +66,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CA certificate list information. Currently, only one CA certificate can be added.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+     * 
+     * &gt; **NOTE:**  Only one CA certificate is supported.
      * 
      */
     @Import(name="caCertificateIds")
     private @Nullable Output<List<String>> caCertificateIds;
 
     /**
-     * @return CA certificate list information. Currently, only one CA certificate can be added.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * @return The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+     * 
+     * &gt; **NOTE:**  Only one CA certificate is supported.
      * 
      */
     public Optional<Output<List<String>>> caCertificateIds() {
@@ -79,18 +85,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to start two-way authentication. Value:
-     * - **true**: start.
-     * - **false**: closed.
+     * Specifies whether to enable mutual authentication. Valid values:
      * 
      */
     @Import(name="caEnabled")
     private @Nullable Output<Boolean> caEnabled;
 
     /**
-     * @return Whether to start two-way authentication. Value:
-     * - **true**: start.
-     * - **false**: closed.
+     * @return Specifies whether to enable mutual authentication. Valid values:
      * 
      */
     public Optional<Output<Boolean>> caEnabled() {
@@ -98,16 +100,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server certificate list information. Currently, only one server certificate can be added.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      * 
      */
     @Import(name="certificateIds")
     private @Nullable Output<List<String>> certificateIds;
 
     /**
-     * @return Server certificate list information. Currently, only one server certificate can be added.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * @return The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      * 
      */
     public Optional<Output<List<String>>> certificateIds() {
@@ -115,14 +119,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+     * The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
      * 
      */
     @Import(name="cps")
     private @Nullable Output<Integer> cps;
 
     /**
-     * @return The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+     * @return The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
      * 
      */
     public Optional<Output<Integer>> cps() {
@@ -130,14 +134,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+     * The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+     * 
+     * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      * 
      */
     @Import(name="endPort")
     private @Nullable Output<Integer> endPort;
 
     /**
-     * @return Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+     * @return The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+     * 
+     * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      * 
      */
     public Optional<Output<Integer>> endPort() {
@@ -145,14 +153,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+     * The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      * 
      */
     @Import(name="idleTimeout")
     private @Nullable Output<Integer> idleTimeout;
 
     /**
-     * @return Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+     * @return The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      * 
      */
     public Optional<Output<Integer>> idleTimeout() {
@@ -160,14 +168,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * Enter a name for the listener.
+     * 
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     @Import(name="listenerDescription")
     private @Nullable Output<String> listenerDescription;
 
     /**
-     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * @return Enter a name for the listener.
+     * 
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> listenerDescription() {
@@ -175,14 +187,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+     * The listener port. Valid values: `0` to `65535`.
+     * 
+     * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
     @Import(name="listenerPort")
     private @Nullable Output<Integer> listenerPort;
 
     /**
-     * @return Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+     * @return The listener port. Valid values: `0` to `65535`.
+     * 
+     * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
     public Optional<Output<Integer>> listenerPort() {
@@ -190,14 +206,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
      * 
      */
     @Import(name="listenerProtocol")
     private @Nullable Output<String> listenerProtocol;
 
     /**
-     * @return The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * @return The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
      * 
      */
     public Optional<Output<String>> listenerProtocol() {
@@ -205,14 +221,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the network-based server load balancer instance.
+     * The ID of the Network Load Balancer (NLB) instance.
      * 
      */
     @Import(name="loadBalancerId")
     private @Nullable Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the network-based server load balancer instance.
+     * @return The ID of the Network Load Balancer (NLB) instance.
      * 
      */
     public Optional<Output<String>> loadBalancerId() {
@@ -220,16 +236,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-     * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
+     * The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+     * 
+     * &gt; **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      * 
      */
     @Import(name="mss")
     private @Nullable Output<Integer> mss;
 
     /**
-     * @return The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-     * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
+     * @return The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+     * 
+     * &gt; **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      * 
      */
     public Optional<Output<Integer>> mss() {
@@ -237,18 +255,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      * 
      */
     @Import(name="proxyProtocolEnabled")
     private @Nullable Output<Boolean> proxyProtocolEnabled;
 
     /**
-     * @return Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      * 
      */
     public Optional<Output<Boolean>> proxyProtocolEnabled() {
@@ -256,18 +270,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to turn on the second-level monitoring function. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable fine-grained monitoring. Valid values:
      * 
      */
     @Import(name="secSensorEnabled")
     private @Nullable Output<Boolean> secSensorEnabled;
 
     /**
-     * @return Whether to turn on the second-level monitoring function. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable fine-grained monitoring. Valid values:
      * 
      */
     public Optional<Output<Boolean>> secSensorEnabled() {
@@ -275,16 +285,22 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * The security policy ID. System security policies and custom security policies are supported.
+     * 
+     * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      * 
      */
     @Import(name="securityPolicyId")
     private @Nullable Output<String> securityPolicyId;
 
     /**
-     * @return Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-     * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+     * @return The security policy ID. System security policies and custom security policies are supported.
+     * 
+     * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+     * 
+     * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      * 
      */
     public Optional<Output<String>> securityPolicyId() {
@@ -307,14 +323,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+     * The first port in the listener port range. Valid values: `0` to `65535`.
+     * 
+     * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      * 
      */
     @Import(name="startPort")
     private @Nullable Output<Integer> startPort;
 
     /**
-     * @return Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+     * @return The first port in the listener port range. Valid values: `0` to `65535`.
+     * 
+     * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      * 
      */
     public Optional<Output<Integer>> startPort() {
@@ -322,14 +342,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
      * 
      */
     public Optional<Output<String>> status() {
@@ -337,14 +357,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -395,9 +415,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alpnEnabled Whether ALPN is turned on. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param alpnEnabled Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
          * 
          * @return builder
          * 
@@ -408,9 +426,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alpnEnabled Whether ALPN is turned on. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param alpnEnabled Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
          * 
          * @return builder
          * 
@@ -420,11 +436,15 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alpnPolicy ALPN policy. Value:
-         * - **HTTP1Only**
-         * - **HTTP2Only**
-         * - **HTTP2Preferred**
-         * - **HTTP2Optional**.
+         * @param alpnPolicy The ALPN policy. Valid values:
+         * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+         * - `HTTP2Only`: uses only HTTP 2.0.
+         * - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+         * - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+         * 
+         * &gt; **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+         * 
+         * &gt; **NOTE:**  Effective only for TCPSSL listener.
          * 
          * @return builder
          * 
@@ -435,11 +455,15 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alpnPolicy ALPN policy. Value:
-         * - **HTTP1Only**
-         * - **HTTP2Only**
-         * - **HTTP2Preferred**
-         * - **HTTP2Optional**.
+         * @param alpnPolicy The ALPN policy. Valid values:
+         * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+         * - `HTTP2Only`: uses only HTTP 2.0.
+         * - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+         * - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+         * 
+         * &gt; **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+         * 
+         * &gt; **NOTE:**  Effective only for TCPSSL listener.
          * 
          * @return builder
          * 
@@ -449,8 +473,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificateIds CA certificate list information. Currently, only one CA certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param caCertificateIds The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  Only one CA certificate is supported.
          * 
          * @return builder
          * 
@@ -461,8 +486,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificateIds CA certificate list information. Currently, only one CA certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param caCertificateIds The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  Only one CA certificate is supported.
          * 
          * @return builder
          * 
@@ -472,8 +498,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificateIds CA certificate list information. Currently, only one CA certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param caCertificateIds The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  Only one CA certificate is supported.
          * 
          * @return builder
          * 
@@ -483,9 +510,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caEnabled Whether to start two-way authentication. Value:
-         * - **true**: start.
-         * - **false**: closed.
+         * @param caEnabled Specifies whether to enable mutual authentication. Valid values:
          * 
          * @return builder
          * 
@@ -496,9 +521,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caEnabled Whether to start two-way authentication. Value:
-         * - **true**: start.
-         * - **false**: closed.
+         * @param caEnabled Specifies whether to enable mutual authentication. Valid values:
          * 
          * @return builder
          * 
@@ -508,8 +531,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateIds Server certificate list information. Currently, only one server certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param certificateIds The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
          * 
          * @return builder
          * 
@@ -520,8 +544,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateIds Server certificate list information. Currently, only one server certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param certificateIds The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
          * 
          * @return builder
          * 
@@ -531,8 +556,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateIds Server certificate list information. Currently, only one server certificate can be added.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param certificateIds The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only for TCPSSL listeners.
          * 
          * @return builder
          * 
@@ -542,7 +568,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cps The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+         * @param cps The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
          * 
          * @return builder
          * 
@@ -553,7 +579,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cps The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+         * @param cps The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
          * 
          * @return builder
          * 
@@ -563,7 +589,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endPort Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+         * @param endPort The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+         * 
+         * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
          * 
          * @return builder
          * 
@@ -574,7 +602,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endPort Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+         * @param endPort The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+         * 
+         * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
          * 
          * @return builder
          * 
@@ -584,7 +614,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+         * @param idleTimeout The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
          * 
          * @return builder
          * 
@@ -595,7 +625,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+         * @param idleTimeout The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
          * 
          * @return builder
          * 
@@ -605,7 +635,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+         * @param listenerDescription Enter a name for the listener.
+         * 
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -616,7 +648,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+         * @param listenerDescription Enter a name for the listener.
+         * 
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -626,7 +660,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerPort Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+         * @param listenerPort The listener port. Valid values: `0` to `65535`.
+         * 
+         * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
          * 
          * @return builder
          * 
@@ -637,7 +673,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerPort Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+         * @param listenerPort The listener port. Valid values: `0` to `65535`.
+         * 
+         * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
          * 
          * @return builder
          * 
@@ -647,7 +685,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerProtocol The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+         * @param listenerProtocol The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
          * 
          * @return builder
          * 
@@ -658,7 +696,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerProtocol The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+         * @param listenerProtocol The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
          * 
          * @return builder
          * 
@@ -668,7 +706,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance.
+         * @param loadBalancerId The ID of the Network Load Balancer (NLB) instance.
          * 
          * @return builder
          * 
@@ -679,7 +717,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ID of the network-based server load balancer instance.
+         * @param loadBalancerId The ID of the Network Load Balancer (NLB) instance.
          * 
          * @return builder
          * 
@@ -689,8 +727,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mss The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-         * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
+         * @param mss The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+         * 
+         * &gt; **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
          * 
          * @return builder
          * 
@@ -701,8 +740,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mss The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-         * &gt; **NOTE:**  only TCP and TCPSSL listeners support this field value.
+         * @param mss The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+         * 
+         * &gt; **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
          * 
          * @return builder
          * 
@@ -712,9 +752,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolEnabled Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param proxyProtocolEnabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
          * 
          * @return builder
          * 
@@ -725,9 +763,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolEnabled Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param proxyProtocolEnabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
          * 
          * @return builder
          * 
@@ -737,9 +773,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secSensorEnabled Whether to turn on the second-level monitoring function. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param secSensorEnabled Specifies whether to enable fine-grained monitoring. Valid values:
          * 
          * @return builder
          * 
@@ -750,9 +784,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secSensorEnabled Whether to turn on the second-level monitoring function. Value:
-         * - **true**: on.
-         * - **false**: closed.
+         * @param secSensorEnabled Specifies whether to enable fine-grained monitoring. Valid values:
          * 
          * @return builder
          * 
@@ -762,8 +794,11 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param securityPolicyId The security policy ID. System security policies and custom security policies are supported.
+         * 
+         * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
          * 
          * @return builder
          * 
@@ -774,8 +809,11 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-         * &gt; **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+         * @param securityPolicyId The security policy ID. System security policies and custom security policies are supported.
+         * 
+         * Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+         * 
+         * &gt; **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
          * 
          * @return builder
          * 
@@ -806,7 +844,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startPort Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+         * @param startPort The first port in the listener port range. Valid values: `0` to `65535`.
+         * 
+         * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
          * 
          * @return builder
          * 
@@ -817,7 +857,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startPort Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+         * @param startPort The first port in the listener port range. Valid values: `0` to `65535`.
+         * 
+         * &gt; **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
          * 
          * @return builder
          * 
@@ -827,7 +869,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
          * 
          * @return builder
          * 
@@ -838,7 +880,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
          * 
          * @return builder
          * 
@@ -848,7 +890,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -859,7 +901,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 

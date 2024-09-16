@@ -80,6 +80,13 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="device")
+    private @Nullable Output<String> device;
+
+    public Optional<Output<String>> device() {
+        return Optional.ofNullable(this.device);
+    }
+
     /**
      * Encrypted the data in this disk.
      * 
@@ -167,6 +174,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.device = $.device;
         this.encrypted = $.encrypted;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
@@ -271,6 +279,15 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder device(@Nullable Output<String> device) {
+            $.device = device;
+            return this;
+        }
+
+        public Builder device(String device) {
+            return device(Output.of(device));
         }
 
         /**

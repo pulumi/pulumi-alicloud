@@ -2491,15 +2491,62 @@ export namespace cdn {
 }
 
 export namespace cen {
+    export interface TrafficMarkingPolicyTrafficMatchRule {
+        /**
+         * IP Address Family.
+         */
+        addressFamily?: pulumi.Input<string>;
+        /**
+         * The destination network segment of the traffic message.  The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
+         */
+        dstCidr?: pulumi.Input<string>;
+        /**
+         * The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the destination port number in the destination port range. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination port number.  The current parameter supports a maximum of 2 port numbers. The input format is described as follows:
+         * - If you only enter a port number, such as 1, the system defaults to match the traffic with the destination port of 1.
+         * - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
+         * - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
+         */
+        dstPortRanges?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The DSCP value of the traffic message. Valid values: `0` to **63 * *.  The flow classification rule matches the flow with the specified DSCP value. If the flow classification rule is not set, it means that the flow classification rule matches the flow with any DSCP value.> **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
+         */
+        matchDscp?: pulumi.Input<number>;
+        /**
+         * The protocol type of the traffic message.  Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The source network segment of the traffic message.  The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
+         */
+        srcCidr?: pulumi.Input<string>;
+        /**
+         * The source port of the traffic message. Valid values: **-1**, `1` to `65535`.  The flow classification rule matches the traffic of the source port number in the source port range. If it is not set, it means that the flow classification rule matches the traffic of any source port number.  The current parameter supports entering up to two port numbers. The input format is described as follows:
+         * - If you only enter a port number, such as 1, the system defaults to match the traffic with source port 1.
+         * - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
+         * - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
+         */
+        srcPortRanges?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The description information of the stream classification rule.  The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         */
+        trafficMatchRuleDescription?: pulumi.Input<string>;
+        /**
+         * The name of the stream classification rule.  The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
+         */
+        trafficMatchRuleName?: pulumi.Input<string>;
+    }
+
     export interface TransitRouterVpcAttachmentZoneMapping {
         /**
-         * The VSwitch id of attachment.
+         * The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
+         * - If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://www.alibabacloud.com/help/en/doc-detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+         * - If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://www.alibabacloud.com/help/en/doc-detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
          */
-        vswitchId?: pulumi.Input<string>;
+        vswitchId: pulumi.Input<string>;
         /**
-         * The zone Id of VSwitch.
+         * The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
          */
-        zoneId?: pulumi.Input<string>;
+        zoneId: pulumi.Input<string>;
     }
 
     export interface TransitRouterVpnAttachmentZone {
@@ -6717,6 +6764,10 @@ export namespace ecs {
          */
         description?: pulumi.Input<string>;
         /**
+         * The mount point of the data disk.
+         */
+        device?: pulumi.Input<string>;
+        /**
          * Encrypted the data in this disk.
          */
         encrypted?: pulumi.Input<boolean>;
@@ -7041,6 +7092,7 @@ export namespace ecs {
          * The description of the data disk.
          */
         description?: pulumi.Input<string>;
+        device?: pulumi.Input<string>;
         /**
          * Encrypted the data in this disk.
          *
@@ -7639,7 +7691,7 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroup {
         /**
-         * Additional security Group IDS for Cluster, you can also specify this key for each node group.
+         * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
          */
         additionalSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -7647,7 +7699,7 @@ export namespace emrv2 {
          */
         autoScalingPolicy?: pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicy>;
         /**
-         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
+         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
          */
         costOptimizedConfig?: pulumi.Input<inputs.emrv2.ClusterNodeGroupCostOptimizedConfig>;
         /**
@@ -7655,7 +7707,7 @@ export namespace emrv2 {
          */
         dataDisks: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupDataDisk>[]>;
         /**
-         * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+         * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
          */
         deploymentSetStrategy?: pulumi.Input<string>;
         /**
@@ -7663,7 +7715,7 @@ export namespace emrv2 {
          */
         gracefulShutdown?: pulumi.Input<boolean>;
         /**
-         * Host Ecs instance types.
+         * Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
          */
         instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -7703,11 +7755,11 @@ export namespace emrv2 {
          */
         systemDisk: pulumi.Input<inputs.emrv2.ClusterNodeGroupSystemDisk>;
         /**
-         * Global vSwitch ids, you can also specify it in node group.
+         * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
          */
         vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Whether the node has a public IP address enabled.
+         * Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
          */
         withPublicIp?: pulumi.Input<boolean>;
     }
@@ -7999,6 +8051,18 @@ export namespace ens {
          */
         category?: pulumi.Input<string>;
         /**
+         * Cloud Disk ID.
+         */
+        diskId?: pulumi.Input<string>;
+        /**
+         * The ID of the KMS key used by the cloud disk.
+         */
+        encryptKeyId?: pulumi.Input<string>;
+        /**
+         * Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
          * Data disk size, unit: GB.
          */
         size?: pulumi.Input<number>;
@@ -8006,7 +8070,7 @@ export namespace ens {
 
     export interface InstanceSystemDisk {
         /**
-         * System disk type. Optional values:
+         * System disk type. Value
          * - cloud_efficiency: Ultra cloud disk
          * - cloud_ssd: Full Flash cloud disk
          * - local_hdd: local hdd disk
@@ -11169,49 +11233,58 @@ export namespace nas {
 export namespace nlb {
     export interface LoadBalancerDeletionProtectionConfig {
         /**
-         * Delete protection enable.
+         * Specifies whether to enable deletion protection. Valid values:
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Opening time.
+         * Opening time of the configuration read-only mode.
          */
         enabledTime?: pulumi.Input<string>;
         /**
-         * Reason for opening.
+         * The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+         *
+         *
+         * > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
          */
         reason?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * Opening time.
+         * Opening time of the configuration read-only mode.
          */
         enabledTime?: pulumi.Input<string>;
         /**
-         * Reason for opening.
+         * The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+         *
+         * > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
          */
         reason?: pulumi.Input<string>;
         /**
-         * ON.
+         * Specifies whether to enable the configuration read-only mode. Valid values:
+         * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+         * - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+         *
+         * > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
          */
         status?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The ID of the elastic IP address.
+         * The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
          */
         allocationId?: pulumi.Input<string>;
         /**
-         * The ID of ENI.
+         * The ID of the elastic network interface (ENI).
          */
         eniId?: pulumi.Input<string>;
         /**
-         * The IPv6 address of a network-based server load balancer instance.
+         * The IPv6 address of the NLB instance.
          */
         ipv6Address?: pulumi.Input<string>;
         /**
-         * The private IPv4 address of a network-based server load balancer instance.
+         * The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
          */
         privateIpv4Address?: pulumi.Input<string>;
         /**
@@ -11219,70 +11292,89 @@ export namespace nlb {
          */
         publicIpv4Address?: pulumi.Input<string>;
         /**
-         * Zone Status.
+         * Zone Status
          */
         status?: pulumi.Input<string>;
         /**
-         * The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+         * The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+         * The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+         *
+         * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          */
         zoneId: pulumi.Input<string>;
     }
 
     export interface ServerGroupHealthCheck {
         /**
-         * The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+         * The port that you want to use for health checks on backend servers.
+         *
+         * Valid values: `0` to `65535`.
+         *
+         * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
         /**
-         * Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+         * The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
          */
         healthCheckConnectTimeout?: pulumi.Input<number>;
         /**
-         * The domain name used for health check. Valid values:
-         * - **$SERVER_IP**: uses the intranet IP of the backend server.
-         * - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * The domain name that you want to use for health checks. Valid values:
+         * - `$SERVER_IP`: the private IP address of a backend server.
          */
         healthCheckDomain?: pulumi.Input<string>;
         /**
-         * Whether to enable health check. Valid values:
-         * - **true**: on.
-         * - **false**: closed.
+         * Specifies whether to enable the health check feature. Valid values:
          */
         healthCheckEnabled?: pulumi.Input<boolean>;
         /**
-         * Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+         *
+         * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          */
         healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+         * The interval at which health checks are performed. Unit: seconds.
+         *
+         * Valid values: `5` to `50`.
+         *
+         * Default value: `10`.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
-         * Health check protocol. Valid values: **TCP** or **HTTP**.
+         * The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
          */
         healthCheckType?: pulumi.Input<string>;
         /**
-         * Health check path.
-         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * The path to which health check requests are sent.
+         *
+         * The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+         *
+         * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          */
         healthCheckUrl?: pulumi.Input<string>;
         /**
-         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `2`.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**
-         * The health check method. Valid values: **GET** or **HEAD**.
-         * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+         * The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+         *
+         * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          */
         httpCheckMethod?: pulumi.Input<string>;
         /**
-         * After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+         *
+         * Valid values: `2` to `10`.
+         *
+         * Default value: `2`.
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }

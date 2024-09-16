@@ -14,11 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type LoadBalancerDeletionProtectionConfig struct {
-	// Delete protection enable.
+	// Specifies whether to enable deletion protection. Valid values:
 	Enabled *bool `pulumi:"enabled"`
-	// Opening time.
+	// Opening time of the configuration read-only mode.
 	EnabledTime *string `pulumi:"enabledTime"`
-	// Reason for opening.
+	// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	//
+	// > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
 	Reason *string `pulumi:"reason"`
 }
 
@@ -34,11 +36,13 @@ type LoadBalancerDeletionProtectionConfigInput interface {
 }
 
 type LoadBalancerDeletionProtectionConfigArgs struct {
-	// Delete protection enable.
+	// Specifies whether to enable deletion protection. Valid values:
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Opening time.
+	// Opening time of the configuration read-only mode.
 	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
-	// Reason for opening.
+	// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	//
+	// > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 }
 
@@ -119,17 +123,19 @@ func (o LoadBalancerDeletionProtectionConfigOutput) ToLoadBalancerDeletionProtec
 	}).(LoadBalancerDeletionProtectionConfigPtrOutput)
 }
 
-// Delete protection enable.
+// Specifies whether to enable deletion protection. Valid values:
 func (o LoadBalancerDeletionProtectionConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Opening time.
+// Opening time of the configuration read-only mode.
 func (o LoadBalancerDeletionProtectionConfigOutput) EnabledTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
 }
 
-// Reason for opening.
+// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+//
+// > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
 func (o LoadBalancerDeletionProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDeletionProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +164,7 @@ func (o LoadBalancerDeletionProtectionConfigPtrOutput) Elem() LoadBalancerDeleti
 	}).(LoadBalancerDeletionProtectionConfigOutput)
 }
 
-// Delete protection enable.
+// Specifies whether to enable deletion protection. Valid values:
 func (o LoadBalancerDeletionProtectionConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *bool {
 		if v == nil {
@@ -168,7 +174,7 @@ func (o LoadBalancerDeletionProtectionConfigPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Opening time.
+// Opening time of the configuration read-only mode.
 func (o LoadBalancerDeletionProtectionConfigPtrOutput) EnabledTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *string {
 		if v == nil {
@@ -178,7 +184,9 @@ func (o LoadBalancerDeletionProtectionConfigPtrOutput) EnabledTime() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reason for opening.
+// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+//
+// > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
 func (o LoadBalancerDeletionProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerDeletionProtectionConfig) *string {
 		if v == nil {
@@ -189,11 +197,17 @@ func (o LoadBalancerDeletionProtectionConfigPtrOutput) Reason() pulumi.StringPtr
 }
 
 type LoadBalancerModificationProtectionConfig struct {
-	// Opening time.
+	// Opening time of the configuration read-only mode.
 	EnabledTime *string `pulumi:"enabledTime"`
-	// Reason for opening.
+	// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+	//
+	// > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
 	Reason *string `pulumi:"reason"`
-	// ON.
+	// Specifies whether to enable the configuration read-only mode. Valid values:
+	// - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+	// - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+	//
+	// > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
 	Status *string `pulumi:"status"`
 }
 
@@ -209,11 +223,17 @@ type LoadBalancerModificationProtectionConfigInput interface {
 }
 
 type LoadBalancerModificationProtectionConfigArgs struct {
-	// Opening time.
+	// Opening time of the configuration read-only mode.
 	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
-	// Reason for opening.
+	// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+	//
+	// > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// ON.
+	// Specifies whether to enable the configuration read-only mode. Valid values:
+	// - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+	// - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+	//
+	// > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -294,17 +314,23 @@ func (o LoadBalancerModificationProtectionConfigOutput) ToLoadBalancerModificati
 	}).(LoadBalancerModificationProtectionConfigPtrOutput)
 }
 
-// Opening time.
+// Opening time of the configuration read-only mode.
 func (o LoadBalancerModificationProtectionConfigOutput) EnabledTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
 }
 
-// Reason for opening.
+// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+//
+// > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
 func (o LoadBalancerModificationProtectionConfigOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
-// ON.
+// Specifies whether to enable the configuration read-only mode. Valid values:
+// - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+// - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+//
+// > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
 func (o LoadBalancerModificationProtectionConfigOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerModificationProtectionConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -333,7 +359,7 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Elem() LoadBalancerMo
 	}).(LoadBalancerModificationProtectionConfigOutput)
 }
 
-// Opening time.
+// Opening time of the configuration read-only mode.
 func (o LoadBalancerModificationProtectionConfigPtrOutput) EnabledTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -343,7 +369,9 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) EnabledTime() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reason for opening.
+// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+//
+// > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -353,7 +381,11 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Reason() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// ON.
+// Specifies whether to enable the configuration read-only mode. Valid values:
+// - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+// - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+//
+// > **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
 func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerModificationProtectionConfig) *string {
 		if v == nil {
@@ -364,21 +396,23 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.Strin
 }
 
 type LoadBalancerZoneMapping struct {
-	// The ID of the elastic IP address.
+	// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
 	AllocationId *string `pulumi:"allocationId"`
-	// The ID of ENI.
+	// The ID of the elastic network interface (ENI).
 	EniId *string `pulumi:"eniId"`
-	// The IPv6 address of a network-based server load balancer instance.
+	// The IPv6 address of the NLB instance.
 	Ipv6Address *string `pulumi:"ipv6Address"`
-	// The private IPv4 address of a network-based server load balancer instance.
+	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 	PrivateIpv4Address *string `pulumi:"privateIpv4Address"`
 	// Public IPv4 address of a network-based server load balancer instance.
 	PublicIpv4Address *string `pulumi:"publicIpv4Address"`
-	// Zone Status.
+	// Zone Status
 	Status *string `pulumi:"status"`
-	// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
 	VswitchId string `pulumi:"vswitchId"`
-	// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+	// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+	//
+	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -394,21 +428,23 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The ID of the elastic IP address.
+	// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
-	// The ID of ENI.
+	// The ID of the elastic network interface (ENI).
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
-	// The IPv6 address of a network-based server load balancer instance.
+	// The IPv6 address of the NLB instance.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// The private IPv4 address of a network-based server load balancer instance.
+	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 	PrivateIpv4Address pulumi.StringPtrInput `pulumi:"privateIpv4Address"`
 	// Public IPv4 address of a network-based server load balancer instance.
 	PublicIpv4Address pulumi.StringPtrInput `pulumi:"publicIpv4Address"`
-	// Zone Status.
+	// Zone Status
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+	// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+	//
+	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -463,22 +499,22 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The ID of the elastic IP address.
+// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
 func (o LoadBalancerZoneMappingOutput) AllocationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of ENI.
+// The ID of the elastic network interface (ENI).
 func (o LoadBalancerZoneMappingOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 address of a network-based server load balancer instance.
+// The IPv6 address of the NLB instance.
 func (o LoadBalancerZoneMappingOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
 
-// The private IPv4 address of a network-based server load balancer instance.
+// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 func (o LoadBalancerZoneMappingOutput) PrivateIpv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PrivateIpv4Address }).(pulumi.StringPtrOutput)
 }
@@ -488,17 +524,19 @@ func (o LoadBalancerZoneMappingOutput) PublicIpv4Address() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PublicIpv4Address }).(pulumi.StringPtrOutput)
 }
 
-// Zone Status.
+// Zone Status
 func (o LoadBalancerZoneMappingOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The switch corresponding to the zone. Each zone uses one switch and one subnet by default.
+// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
 func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The name of the zone. You can call the DescribeZones operation to obtain the name of the zone.
+// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+//
+// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -524,35 +562,52 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type ServerGroupHealthCheck struct {
-	// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+	// The port that you want to use for health checks on backend servers.
+	//
+	// Valid values: `0` to `65535`.
+	//
+	// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+	// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
 	HealthCheckConnectTimeout *int `pulumi:"healthCheckConnectTimeout"`
-	// The domain name used for health check. Valid values:
-	// - **$SERVER_IP**: uses the intranet IP of the backend server.
-	// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The domain name that you want to use for health checks. Valid values:
+	// - `$SERVER_IP`: the private IP address of a backend server.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
-	// Whether to enable health check. Valid values:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
-	// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// Valid values: `5` to `50`.
+	//
+	// Default value: `10`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// Health check protocol. Valid values: **TCP** or **HTTP**.
+	// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// Health check path.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The path to which health check requests are sent.
+	//
+	// The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckUrl *string `pulumi:"healthCheckUrl"`
-	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `2`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The health check method. Valid values: **GET** or **HEAD**.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HttpCheckMethod *string `pulumi:"httpCheckMethod"`
-	// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `2`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -568,35 +623,52 @@ type ServerGroupHealthCheckInput interface {
 }
 
 type ServerGroupHealthCheckArgs struct {
-	// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+	// The port that you want to use for health checks on backend servers.
+	//
+	// Valid values: `0` to `65535`.
+	//
+	// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+	// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
 	HealthCheckConnectTimeout pulumi.IntPtrInput `pulumi:"healthCheckConnectTimeout"`
-	// The domain name used for health check. Valid values:
-	// - **$SERVER_IP**: uses the intranet IP of the backend server.
-	// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The domain name that you want to use for health checks. Valid values:
+	// - `$SERVER_IP`: the private IP address of a backend server.
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
-	// Whether to enable health check. Valid values:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
-	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
-	// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// Valid values: `5` to `50`.
+	//
+	// Default value: `10`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// Health check protocol. Valid values: **TCP** or **HTTP**.
+	// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
-	// Health check path.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The path to which health check requests are sent.
+	//
+	// The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HealthCheckUrl pulumi.StringPtrInput `pulumi:"healthCheckUrl"`
-	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `2`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The health check method. Valid values: **GET** or **HEAD**.
-	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+	// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+	//
+	// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 	HttpCheckMethod pulumi.StringPtrInput `pulumi:"httpCheckMethod"`
-	// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+	//
+	// Valid values: `2` to `10`.
+	//
+	// Default value: `2`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
 }
 
@@ -677,65 +749,82 @@ func (o ServerGroupHealthCheckOutput) ToServerGroupHealthCheckPtrOutputWithConte
 	}).(ServerGroupHealthCheckPtrOutput)
 }
 
-// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+// The port that you want to use for health checks on backend servers.
+//
+// Valid values: `0` to `65535`.
+//
+// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 func (o ServerGroupHealthCheckOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
 func (o ServerGroupHealthCheckOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckConnectTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The domain name used for health check. Valid values:
-// - **$SERVER_IP**: uses the intranet IP of the backend server.
-// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The domain name that you want to use for health checks. Valid values:
+// - `$SERVER_IP`: the private IP address of a backend server.
 func (o ServerGroupHealthCheckOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable health check. Valid values:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
 }
 
-// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+// The interval at which health checks are performed. Unit: seconds.
+//
+// Valid values: `5` to `50`.
+//
+// Default value: `10`.
 func (o ServerGroupHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// Health check protocol. Valid values: **TCP** or **HTTP**.
+// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 func (o ServerGroupHealthCheckOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// Health check path.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The path to which health check requests are sent.
+//
+// The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckUrl }).(pulumi.StringPtrOutput)
 }
 
-// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `2`.
 func (o ServerGroupHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The health check method. Valid values: **GET** or **HEAD**.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckOutput) HttpCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HttpCheckMethod }).(pulumi.StringPtrOutput)
 }
 
-// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `2`.
 func (o ServerGroupHealthCheckOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.UnhealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -764,7 +853,11 @@ func (o ServerGroupHealthCheckPtrOutput) Elem() ServerGroupHealthCheckOutput {
 	}).(ServerGroupHealthCheckOutput)
 }
 
-// The port of the backend server for health checks. Valid values: **0** ~ **65535**. **0** indicates that the port of the backend server is used for health check.
+// The port that you want to use for health checks on backend servers.
+//
+// Valid values: `0` to `65535`.
+//
+// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -774,7 +867,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectPort() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum timeout for health check responses. Unit: seconds. Valid values: **1** ~ **300**.
+// The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -784,10 +877,8 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectTimeout() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The domain name used for health check. Valid values:
-// - **$SERVER_IP**: uses the intranet IP of the backend server.
-// - **domain**: Specify a specific domain name. The length is limited to 1 to 80 characters. Only lowercase letters, numbers, dashes (-), and half-width periods (.) can be used.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The domain name that you want to use for health checks. Valid values:
+// - `$SERVER_IP`: the private IP address of a backend server.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -797,9 +888,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckDomain() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable health check. Valid values:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *bool {
 		if v == nil {
@@ -809,8 +898,9 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) []string {
 		if v == nil {
@@ -820,7 +910,11 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
+// The interval at which health checks are performed. Unit: seconds.
+//
+// Valid values: `5` to `50`.
+//
+// Default value: `10`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -830,7 +924,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Health check protocol. Valid values: **TCP** or **HTTP**.
+// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -840,8 +934,11 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Health check path.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The path to which health check requests are sent.
+//
+// The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : ' , +`. The path must start with a forward slash (/).
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -851,7 +948,11 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `2`.
 func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -861,8 +962,9 @@ func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// The health check method. Valid values: **GET** or **HEAD**.
-// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
+// The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
+//
+// > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
 func (o ServerGroupHealthCheckPtrOutput) HttpCheckMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {
@@ -872,7 +974,11 @@ func (o ServerGroupHealthCheckPtrOutput) HttpCheckMethod() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
+//
+// Valid values: `2` to `10`.
+//
+// Default value: `2`.
 func (o ServerGroupHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -1829,7 +1935,7 @@ func (o GetSecurityPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetSecuri
 type GetServerGroupServerAttachmentsAttachment struct {
 	// The description of the backend server.
 	Description string `pulumi:"description"`
-	// The ID of the server group.
+	// The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
 	Id string `pulumi:"id"`
 	// The port used by the backend server.
 	Port int `pulumi:"port"`
@@ -1863,7 +1969,7 @@ type GetServerGroupServerAttachmentsAttachmentInput interface {
 type GetServerGroupServerAttachmentsAttachmentArgs struct {
 	// The description of the backend server.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The ID of the server group.
+	// The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The port used by the backend server.
 	Port pulumi.IntInput `pulumi:"port"`
@@ -1939,7 +2045,7 @@ func (o GetServerGroupServerAttachmentsAttachmentOutput) Description() pulumi.St
 	return o.ApplyT(func(v GetServerGroupServerAttachmentsAttachment) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of the server group.
+// The ID of the server group. The value is formulated as `<server_group_id>:<server_id>:<server_type>:<port>`.
 func (o GetServerGroupServerAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupServerAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }

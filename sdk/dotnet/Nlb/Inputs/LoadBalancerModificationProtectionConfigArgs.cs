@@ -13,19 +13,25 @@ namespace Pulumi.AliCloud.Nlb.Inputs
     public sealed class LoadBalancerModificationProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Opening time.
+        /// Opening time of the configuration read-only mode.
         /// </summary>
         [Input("enabledTime")]
         public Input<string>? EnabledTime { get; set; }
 
         /// <summary>
-        /// Reason for opening.
+        /// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        /// 
+        /// &gt; **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
         /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// ON.
+        /// Specifies whether to enable the configuration read-only mode. Valid values:
+        /// - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
+        /// - `ConsoleProtection`: enables the configuration read-only mode. In this case, you can specify `ModificationProtectionReason`.
+        /// 
+        /// &gt; **NOTE:**  If you set this parameter to `ConsoleProtection`, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -171,61 +171,71 @@ import (
 type Listener struct {
 	pulumi.CustomResourceState
 
-	// Whether ALPN is turned on. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled pulumi.BoolOutput `pulumi:"alpnEnabled"`
-	// ALPN policy. Value:
-	// - **HTTP1Only**
-	// - **HTTP2Only**
-	// - **HTTP2Preferred**
-	// - **HTTP2Optional**.
+	// The ALPN policy. Valid values:
+	// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// - `HTTP2Only`: uses only HTTP 2.0.
+	// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+	//
+	// > **NOTE:**  Effective only for TCPSSL listener.
 	AlpnPolicy pulumi.StringPtrOutput `pulumi:"alpnPolicy"`
-	// CA certificate list information. Currently, only one CA certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  Only one CA certificate is supported.
 	CaCertificateIds pulumi.StringArrayOutput `pulumi:"caCertificateIds"`
-	// Whether to start two-way authentication. Value:
-	// - **true**: start.
-	// - **false**: closed.
+	// Specifies whether to enable mutual authentication. Valid values:
 	CaEnabled pulumi.BoolOutput `pulumi:"caEnabled"`
-	// Server certificate list information. Currently, only one server certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 	CertificateIds pulumi.StringArrayOutput `pulumi:"certificateIds"`
-	// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+	// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 	Cps pulumi.IntPtrOutput `pulumi:"cps"`
-	// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+	// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	EndPort pulumi.IntPtrOutput `pulumi:"endPort"`
-	// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
-	// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// Enter a name for the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
-	// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+	// The listener port. Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntOutput `pulumi:"listenerPort"`
-	// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 	ListenerProtocol pulumi.StringOutput `pulumi:"listenerProtocol"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-	// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+	// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+	//
+	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrOutput `pulumi:"mss"`
-	// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolOutput `pulumi:"proxyProtocolEnabled"`
-	// Whether to turn on the second-level monitoring function. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled pulumi.BoolOutput `pulumi:"secSensorEnabled"`
-	// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The security policy ID. System security policies and custom security policies are supported.
+	//
+	// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+	//
+	// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
-	// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+	// The first port in the listener port range. Valid values: `0` to `65535`.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	StartPort pulumi.IntPtrOutput `pulumi:"startPort"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -271,120 +281,140 @@ func GetListener(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
-	// Whether ALPN is turned on. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled *bool `pulumi:"alpnEnabled"`
-	// ALPN policy. Value:
-	// - **HTTP1Only**
-	// - **HTTP2Only**
-	// - **HTTP2Preferred**
-	// - **HTTP2Optional**.
+	// The ALPN policy. Valid values:
+	// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// - `HTTP2Only`: uses only HTTP 2.0.
+	// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+	//
+	// > **NOTE:**  Effective only for TCPSSL listener.
 	AlpnPolicy *string `pulumi:"alpnPolicy"`
-	// CA certificate list information. Currently, only one CA certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  Only one CA certificate is supported.
 	CaCertificateIds []string `pulumi:"caCertificateIds"`
-	// Whether to start two-way authentication. Value:
-	// - **true**: start.
-	// - **false**: closed.
+	// Specifies whether to enable mutual authentication. Valid values:
 	CaEnabled *bool `pulumi:"caEnabled"`
-	// Server certificate list information. Currently, only one server certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 	CertificateIds []string `pulumi:"certificateIds"`
-	// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+	// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 	Cps *int `pulumi:"cps"`
-	// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+	// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	EndPort *int `pulumi:"endPort"`
-	// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// Enter a name for the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+	// The listener port. Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort *int `pulumi:"listenerPort"`
-	// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 	ListenerProtocol *string `pulumi:"listenerProtocol"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-	// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+	// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+	//
+	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss *int `pulumi:"mss"`
-	// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
-	// Whether to turn on the second-level monitoring function. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled *bool `pulumi:"secSensorEnabled"`
-	// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The security policy ID. System security policies and custom security policies are supported.
+	//
+	// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+	//
+	// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+	// The first port in the listener port range. Valid values: `0` to `65535`.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	StartPort *int `pulumi:"startPort"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type ListenerState struct {
-	// Whether ALPN is turned on. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled pulumi.BoolPtrInput
-	// ALPN policy. Value:
-	// - **HTTP1Only**
-	// - **HTTP2Only**
-	// - **HTTP2Preferred**
-	// - **HTTP2Optional**.
+	// The ALPN policy. Valid values:
+	// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// - `HTTP2Only`: uses only HTTP 2.0.
+	// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+	//
+	// > **NOTE:**  Effective only for TCPSSL listener.
 	AlpnPolicy pulumi.StringPtrInput
-	// CA certificate list information. Currently, only one CA certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  Only one CA certificate is supported.
 	CaCertificateIds pulumi.StringArrayInput
-	// Whether to start two-way authentication. Value:
-	// - **true**: start.
-	// - **false**: closed.
+	// Specifies whether to enable mutual authentication. Valid values:
 	CaEnabled pulumi.BoolPtrInput
-	// Server certificate list information. Currently, only one server certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 	CertificateIds pulumi.StringArrayInput
-	// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+	// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 	Cps pulumi.IntPtrInput
-	// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+	// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	EndPort pulumi.IntPtrInput
-	// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntPtrInput
-	// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// Enter a name for the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
-	// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+	// The listener port. Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntPtrInput
-	// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 	ListenerProtocol pulumi.StringPtrInput
-	// The ID of the network-based server load balancer instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	LoadBalancerId pulumi.StringPtrInput
-	// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-	// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+	// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+	//
+	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrInput
-	// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolPtrInput
-	// Whether to turn on the second-level monitoring function. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled pulumi.BoolPtrInput
-	// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The security policy ID. System security policies and custom security policies are supported.
+	//
+	// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+	//
+	// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The ID of the server group.
 	ServerGroupId pulumi.StringPtrInput
-	// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+	// The first port in the listener port range. Valid values: `0` to `65535`.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	StartPort pulumi.IntPtrInput
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
 }
 
@@ -393,121 +423,141 @@ func (ListenerState) ElementType() reflect.Type {
 }
 
 type listenerArgs struct {
-	// Whether ALPN is turned on. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled *bool `pulumi:"alpnEnabled"`
-	// ALPN policy. Value:
-	// - **HTTP1Only**
-	// - **HTTP2Only**
-	// - **HTTP2Preferred**
-	// - **HTTP2Optional**.
+	// The ALPN policy. Valid values:
+	// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// - `HTTP2Only`: uses only HTTP 2.0.
+	// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+	//
+	// > **NOTE:**  Effective only for TCPSSL listener.
 	AlpnPolicy *string `pulumi:"alpnPolicy"`
-	// CA certificate list information. Currently, only one CA certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  Only one CA certificate is supported.
 	CaCertificateIds []string `pulumi:"caCertificateIds"`
-	// Whether to start two-way authentication. Value:
-	// - **true**: start.
-	// - **false**: closed.
+	// Specifies whether to enable mutual authentication. Valid values:
 	CaEnabled *bool `pulumi:"caEnabled"`
-	// Server certificate list information. Currently, only one server certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 	CertificateIds []string `pulumi:"certificateIds"`
-	// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+	// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 	Cps *int `pulumi:"cps"`
-	// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+	// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	EndPort *int `pulumi:"endPort"`
-	// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout *int `pulumi:"idleTimeout"`
-	// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// Enter a name for the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+	// The listener port. Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort int `pulumi:"listenerPort"`
-	// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 	ListenerProtocol string `pulumi:"listenerProtocol"`
-	// The ID of the network-based server load balancer instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-	// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+	// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+	//
+	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss *int `pulumi:"mss"`
-	// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
-	// Whether to turn on the second-level monitoring function. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled *bool `pulumi:"secSensorEnabled"`
-	// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The security policy ID. System security policies and custom security policies are supported.
+	//
+	// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+	//
+	// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId string `pulumi:"serverGroupId"`
-	// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+	// The first port in the listener port range. Valid values: `0` to `65535`.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	StartPort *int `pulumi:"startPort"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
-	// Whether ALPN is turned on. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	AlpnEnabled pulumi.BoolPtrInput
-	// ALPN policy. Value:
-	// - **HTTP1Only**
-	// - **HTTP2Only**
-	// - **HTTP2Preferred**
-	// - **HTTP2Optional**.
+	// The ALPN policy. Valid values:
+	// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// - `HTTP2Only`: uses only HTTP 2.0.
+	// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+	// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	//
+	// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+	//
+	// > **NOTE:**  Effective only for TCPSSL listener.
 	AlpnPolicy pulumi.StringPtrInput
-	// CA certificate list information. Currently, only one CA certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  Only one CA certificate is supported.
 	CaCertificateIds pulumi.StringArrayInput
-	// Whether to start two-way authentication. Value:
-	// - **true**: start.
-	// - **false**: closed.
+	// Specifies whether to enable mutual authentication. Valid values:
 	CaEnabled pulumi.BoolPtrInput
-	// Server certificate list information. Currently, only one server certificate can be added.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	//
+	// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 	CertificateIds pulumi.StringArrayInput
-	// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+	// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 	Cps pulumi.IntPtrInput
-	// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+	// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	EndPort pulumi.IntPtrInput
-	// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntPtrInput
-	// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// Enter a name for the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
-	// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+	// The listener port. Valid values: `0` to `65535`.
+	//
+	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntInput
-	// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 	ListenerProtocol pulumi.StringInput
-	// The ID of the network-based server load balancer instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	LoadBalancerId pulumi.StringInput
-	// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-	// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+	// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+	//
+	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrInput
-	// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolPtrInput
-	// Whether to turn on the second-level monitoring function. Value:
-	// - **true**: on.
-	// - **false**: closed.
+	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled pulumi.BoolPtrInput
-	// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-	// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+	// The security policy ID. System security policies and custom security policies are supported.
+	//
+	// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+	//
+	// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The ID of the server group.
 	ServerGroupId pulumi.StringInput
-	// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+	// The first port in the listener port range. Valid values: `0` to `65535`.
+	//
+	// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 	StartPort pulumi.IntPtrInput
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
 }
 
@@ -598,98 +648,106 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
-// Whether ALPN is turned on. Value:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 func (o ListenerOutput) AlpnEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.AlpnEnabled }).(pulumi.BoolOutput)
 }
 
-// ALPN policy. Value:
-// - **HTTP1Only**
-// - **HTTP2Only**
-// - **HTTP2Preferred**
-// - **HTTP2Optional**.
+// The ALPN policy. Valid values:
+// - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+// - `HTTP2Only`: uses only HTTP 2.0.
+// - `HTTP2Optional`: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
+// - `HTTP2Preferred`: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+//
+// > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
+//
+// > **NOTE:**  Effective only for TCPSSL listener.
 func (o ListenerOutput) AlpnPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.AlpnPolicy }).(pulumi.StringPtrOutput)
 }
 
-// CA certificate list information. Currently, only one CA certificate can be added.
-// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+// The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+//
+// > **NOTE:**  Only one CA certificate is supported.
 func (o ListenerOutput) CaCertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.CaCertificateIds }).(pulumi.StringArrayOutput)
 }
 
-// Whether to start two-way authentication. Value:
-// - **true**: start.
-// - **false**: closed.
+// Specifies whether to enable mutual authentication. Valid values:
 func (o ListenerOutput) CaEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.CaEnabled }).(pulumi.BoolOutput)
 }
 
-// Server certificate list information. Currently, only one server certificate can be added.
-// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+// The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+//
+// > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
 func (o ListenerOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.CertificateIds }).(pulumi.StringArrayOutput)
 }
 
-// The new connection speed limit for a network-based load balancing instance per second. Valid values: **0** ~ **1000000**. **0** indicates unlimited speed.
+// The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
 func (o ListenerOutput) Cps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.Cps }).(pulumi.IntPtrOutput)
 }
 
-// Full port listening end port. Valid values: **0** ~ **65535 * *. The value of the end port is less than the start port.
+// The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
+//
+// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 func (o ListenerOutput) EndPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.EndPort }).(pulumi.IntPtrOutput)
 }
 
-// Connection idle timeout time. Unit: seconds. Valid values: **1** ~ **900**.
+// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.IdleTimeout }).(pulumi.IntOutput)
 }
 
-// Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+// Enter a name for the listener.
+//
+// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 func (o ListenerOutput) ListenerDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerDescription }).(pulumi.StringPtrOutput)
 }
 
-// Listening port. Valid values: **0** ~ **65535 * *. **0**: indicates that full port listening is used. When set to **0**, you must configure **StartPort** and **EndPort**.
+// The listener port. Valid values: `0` to `65535`.
+//
+// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 func (o ListenerOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
-// The listening protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
 func (o ListenerOutput) ListenerProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ListenerProtocol }).(pulumi.StringOutput)
 }
 
-// The ID of the network-based server load balancer instance.
+// The ID of the Network Load Balancer (NLB) instance.
 func (o ListenerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The maximum segment size of the TCP message. Unit: Bytes. Valid values: **0** ~ **1500**. **0** indicates that the MSS value of the TCP message is not modified.
-// > **NOTE:**  only TCP and TCPSSL listeners support this field value.
+// The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
+//
+// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 func (o ListenerOutput) Mss() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.Mss }).(pulumi.IntPtrOutput)
 }
 
-// Whether to enable the Proxy Protocol to carry the source address of the client to the backend server. Value:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 func (o ListenerOutput) ProxyProtocolEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.ProxyProtocolEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether to turn on the second-level monitoring function. Value:
-// - **true**: on.
-// - **false**: closed.
+// Specifies whether to enable fine-grained monitoring. Valid values:
 func (o ListenerOutput) SecSensorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.SecSensorEnabled }).(pulumi.BoolOutput)
 }
 
-// Security policy ID. Support system security policies and custom security policies. Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, or **tls_cipher_policy_1_2_strict_with_1_3**.
-// > **NOTE:**  This parameter only takes effect for TCPSSL listeners.
+// The security policy ID. System security policies and custom security policies are supported.
+//
+// Valid values: `tls_cipher_policy\_1\_0` (default), `tls_cipher_policy\_1\_1`, `tls_cipher_policy\_1\_2`, `tls_cipher_policy\_1\_2\_strict`, and `tls_cipher_policy\_1\_2\_strict_with\_1\_3`.
+//
+// > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
 func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
@@ -699,17 +757,19 @@ func (o ListenerOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
-// Full Port listens to the starting port. Valid values: **0** ~ **65535**.
+// The first port in the listener port range. Valid values: `0` to `65535`.
+//
+// > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
 func (o ListenerOutput) StartPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.StartPort }).(pulumi.IntPtrOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
 func (o ListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// The tag of the resource
 func (o ListenerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

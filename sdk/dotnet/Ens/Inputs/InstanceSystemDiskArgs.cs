@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ens.Inputs
     public sealed class InstanceSystemDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// System disk type. Optional values:
+        /// System disk type. Value
         /// - cloud_efficiency: Ultra cloud disk
         /// - cloud_ssd: Full Flash cloud disk
         /// - local_hdd: local hdd disk
