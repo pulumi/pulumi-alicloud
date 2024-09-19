@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
  */
 export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCredentialResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getClusterCredential:getClusterCredential", {
         "clusterId": args.clusterId,
@@ -80,7 +79,12 @@ export interface GetClusterCredentialResult {
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
  */
 export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterCredentialResult> {
-    return pulumi.output(args).apply((a: any) => getClusterCredential(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getClusterCredential:getClusterCredential", {
+        "clusterId": args.clusterId,
+        "outputFile": args.outputFile,
+        "temporaryDurationMinutes": args.temporaryDurationMinutes,
+    }, opts);
 }
 
 /**

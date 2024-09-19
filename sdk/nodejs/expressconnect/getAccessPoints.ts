@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getAccessPoints(args?: GetAccessPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPointsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getAccessPoints:getAccessPoints", {
         "ids": args.ids,
@@ -102,7 +101,14 @@ export interface GetAccessPointsResult {
  * ```
  */
 export function getAccessPointsOutput(args?: GetAccessPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPointsResult> {
-    return pulumi.output(args).apply((a: any) => getAccessPoints(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getAccessPoints:getAccessPoints", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

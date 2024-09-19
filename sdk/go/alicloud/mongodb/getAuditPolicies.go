@@ -72,14 +72,20 @@ type GetAuditPoliciesResult struct {
 
 func GetAuditPoliciesOutput(ctx *pulumi.Context, args GetAuditPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAuditPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAuditPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetAuditPoliciesResultOutput, error) {
 			args := v.(GetAuditPoliciesArgs)
-			r, err := GetAuditPolicies(ctx, &args, opts...)
-			var s GetAuditPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAuditPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetAuditPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAuditPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAuditPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAuditPoliciesResultOutput)
 }
 

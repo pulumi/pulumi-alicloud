@@ -84,14 +84,20 @@ type GetLogConfigsResult struct {
 
 func GetLogConfigsOutput(ctx *pulumi.Context, args GetLogConfigsOutputArgs, opts ...pulumi.InvokeOption) GetLogConfigsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLogConfigsResult, error) {
+		ApplyT(func(v interface{}) (GetLogConfigsResultOutput, error) {
 			args := v.(GetLogConfigsArgs)
-			r, err := GetLogConfigs(ctx, &args, opts...)
-			var s GetLogConfigsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLogConfigsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:apigateway/getLogConfigs:getLogConfigs", args, &rv, "", opts...)
+			if err != nil {
+				return GetLogConfigsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLogConfigsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLogConfigsResultOutput), nil
+			}
+			return output, nil
 		}).(GetLogConfigsResultOutput)
 }
 

@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  */
 export function getServerDisks(args?: GetServerDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDisksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", {
         "diskType": args.diskType,
@@ -138,7 +137,16 @@ export interface GetServerDisksResult {
  * ```
  */
 export function getServerDisksOutput(args?: GetServerDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDisksResult> {
-    return pulumi.output(args).apply((a: any) => getServerDisks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", {
+        "diskType": args.diskType,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

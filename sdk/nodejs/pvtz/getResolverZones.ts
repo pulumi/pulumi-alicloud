@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getResolverZones(args?: GetResolverZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:pvtz/getResolverZones:getResolverZones", {
         "outputFile": args.outputFile,
@@ -81,7 +80,12 @@ export interface GetResolverZonesResult {
  * ```
  */
 export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolverZonesResult> {
-    return pulumi.output(args).apply((a: any) => getResolverZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:pvtz/getResolverZones:getResolverZones", {
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

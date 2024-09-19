@@ -93,14 +93,20 @@ type GetAccessGroupsResult struct {
 
 func GetAccessGroupsOutput(ctx *pulumi.Context, args GetAccessGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAccessGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccessGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetAccessGroupsResultOutput, error) {
 			args := v.(GetAccessGroupsArgs)
-			r, err := GetAccessGroups(ctx, &args, opts...)
-			var s GetAccessGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccessGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dfs/getAccessGroups:getAccessGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccessGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccessGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccessGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccessGroupsResultOutput)
 }
 

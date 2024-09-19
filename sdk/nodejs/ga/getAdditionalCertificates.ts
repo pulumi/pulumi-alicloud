@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAdditionalCertificates(args: GetAdditionalCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdditionalCertificatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", {
         "acceleratorId": args.acceleratorId,
@@ -102,7 +101,13 @@ export interface GetAdditionalCertificatesResult {
  * ```
  */
 export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdditionalCertificatesResult> {
-    return pulumi.output(args).apply((a: any) => getAdditionalCertificates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", {
+        "acceleratorId": args.acceleratorId,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

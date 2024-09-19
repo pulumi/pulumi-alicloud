@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAggregateCompliancePacks(args: GetAggregateCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateCompliancePacksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", {
         "aggregatorId": args.aggregatorId,
@@ -118,7 +117,15 @@ export interface GetAggregateCompliancePacksResult {
  * ```
  */
 export function getAggregateCompliancePacksOutput(args: GetAggregateCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateCompliancePacksResult> {
-    return pulumi.output(args).apply((a: any) => getAggregateCompliancePacks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", {
+        "aggregatorId": args.aggregatorId,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

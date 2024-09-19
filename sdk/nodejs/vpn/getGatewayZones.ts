@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayZones(args: GetGatewayZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayZonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getGatewayZones:getGatewayZones", {
         "ids": args.ids,
@@ -94,7 +93,12 @@ export interface GetGatewayZonesResult {
  * ```
  */
 export function getGatewayZonesOutput(args: GetGatewayZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayZonesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayZones(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpn/getGatewayZones:getGatewayZones", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "spec": args.spec,
+    }, opts);
 }
 
 /**

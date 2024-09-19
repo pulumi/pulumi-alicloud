@@ -102,14 +102,20 @@ type GetProvisionedProductsResult struct {
 
 func GetProvisionedProductsOutput(ctx *pulumi.Context, args GetProvisionedProductsOutputArgs, opts ...pulumi.InvokeOption) GetProvisionedProductsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProvisionedProductsResult, error) {
+		ApplyT(func(v interface{}) (GetProvisionedProductsResultOutput, error) {
 			args := v.(GetProvisionedProductsArgs)
-			r, err := GetProvisionedProducts(ctx, &args, opts...)
-			var s GetProvisionedProductsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProvisionedProductsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args, &rv, "", opts...)
+			if err != nil {
+				return GetProvisionedProductsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProvisionedProductsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProvisionedProductsResultOutput), nil
+			}
+			return output, nil
 		}).(GetProvisionedProductsResultOutput)
 }
 

@@ -91,14 +91,20 @@ type GetEcsDeploymentSetsResult struct {
 
 func GetEcsDeploymentSetsOutput(ctx *pulumi.Context, args GetEcsDeploymentSetsOutputArgs, opts ...pulumi.InvokeOption) GetEcsDeploymentSetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsDeploymentSetsResult, error) {
+		ApplyT(func(v interface{}) (GetEcsDeploymentSetsResultOutput, error) {
 			args := v.(GetEcsDeploymentSetsArgs)
-			r, err := GetEcsDeploymentSets(ctx, &args, opts...)
-			var s GetEcsDeploymentSetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsDeploymentSetsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsDeploymentSetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsDeploymentSetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsDeploymentSetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsDeploymentSetsResultOutput)
 }
 

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getNestServiceInstances(args?: GetNestServiceInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetNestServiceInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:compute/getNestServiceInstances:getNestServiceInstances", {
         "filters": args.filters,
@@ -126,7 +125,16 @@ export interface GetNestServiceInstancesResult {
  * ```
  */
 export function getNestServiceInstancesOutput(args?: GetNestServiceInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNestServiceInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getNestServiceInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:compute/getNestServiceInstances:getNestServiceInstances", {
+        "filters": args.filters,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

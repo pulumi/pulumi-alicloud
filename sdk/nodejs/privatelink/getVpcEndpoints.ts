@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getVpcEndpoints(args?: GetVpcEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", {
         "connectionStatus": args.connectionStatus,
@@ -126,7 +125,19 @@ export interface GetVpcEndpointsResult {
  * ```
  */
 export function getVpcEndpointsOutput(args?: GetVpcEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointsResult> {
-    return pulumi.output(args).apply((a: any) => getVpcEndpoints(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", {
+        "connectionStatus": args.connectionStatus,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "serviceName": args.serviceName,
+        "status": args.status,
+        "vpcEndpointName": args.vpcEndpointName,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getBackendServers:getBackendServers", {
         "ids": args.ids,
@@ -82,7 +81,12 @@ export interface GetBackendServersResult {
  * ```
  */
 export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServersResult> {
-    return pulumi.output(args).apply((a: any) => getBackendServers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getBackendServers:getBackendServers", {
+        "ids": args.ids,
+        "loadBalancerId": args.loadBalancerId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

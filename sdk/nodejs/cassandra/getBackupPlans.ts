@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackupPlans(args: GetBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlansResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cassandra/getBackupPlans:getBackupPlans", {
         "clusterId": args.clusterId,
@@ -85,7 +84,11 @@ export interface GetBackupPlansResult {
  * ```
  */
 export function getBackupPlansOutput(args: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
-    return pulumi.output(args).apply((a: any) => getBackupPlans(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cassandra/getBackupPlans:getBackupPlans", {
+        "clusterId": args.clusterId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -87,14 +87,20 @@ type GetPrefixListsResult struct {
 
 func GetPrefixListsOutput(ctx *pulumi.Context, args GetPrefixListsOutputArgs, opts ...pulumi.InvokeOption) GetPrefixListsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPrefixListsResult, error) {
+		ApplyT(func(v interface{}) (GetPrefixListsResultOutput, error) {
 			args := v.(GetPrefixListsArgs)
-			r, err := GetPrefixLists(ctx, &args, opts...)
-			var s GetPrefixListsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPrefixListsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getPrefixLists:getPrefixLists", args, &rv, "", opts...)
+			if err != nil {
+				return GetPrefixListsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPrefixListsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPrefixListsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPrefixListsResultOutput)
 }
 

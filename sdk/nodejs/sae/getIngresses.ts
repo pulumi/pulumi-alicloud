@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.137.0+.
  */
 export function getIngresses(args: GetIngressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getIngresses:getIngresses", {
         "enableDetails": args.enableDetails,
@@ -64,7 +63,13 @@ export interface GetIngressesResult {
  * > **NOTE:** Available in v1.137.0+.
  */
 export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIngressesResult> {
-    return pulumi.output(args).apply((a: any) => getIngresses(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getIngresses:getIngresses", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "namespaceId": args.namespaceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

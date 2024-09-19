@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsStorageCapacityUnits(args?: GetEcsStorageCapacityUnitsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsStorageCapacityUnitsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", {
         "ids": args.ids,
@@ -98,7 +97,14 @@ export interface GetEcsStorageCapacityUnitsResult {
  * ```
  */
 export function getEcsStorageCapacityUnitsOutput(args?: GetEcsStorageCapacityUnitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsStorageCapacityUnitsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsStorageCapacityUnits(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

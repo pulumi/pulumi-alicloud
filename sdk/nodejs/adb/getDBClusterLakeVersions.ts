@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDBClusterLakeVersions(args?: GetDBClusterLakeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClusterLakeVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", {
         "enableDetails": args.enableDetails,
@@ -105,7 +104,17 @@ export interface GetDBClusterLakeVersionsResult {
  * ```
  */
 export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getDBClusterLakeVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

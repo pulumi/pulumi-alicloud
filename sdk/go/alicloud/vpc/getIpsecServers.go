@@ -91,14 +91,20 @@ type GetIpsecServersResult struct {
 
 func GetIpsecServersOutput(ctx *pulumi.Context, args GetIpsecServersOutputArgs, opts ...pulumi.InvokeOption) GetIpsecServersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpsecServersResult, error) {
+		ApplyT(func(v interface{}) (GetIpsecServersResultOutput, error) {
 			args := v.(GetIpsecServersArgs)
-			r, err := GetIpsecServers(ctx, &args, opts...)
-			var s GetIpsecServersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpsecServersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpsecServers:getIpsecServers", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpsecServersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpsecServersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpsecServersResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpsecServersResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetBundlesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getBundles:getBundles", {
         "bundleIds": args.bundleIds,
@@ -95,7 +94,15 @@ export interface GetBundlesResult {
  * ```
  */
 export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBundlesResult> {
-    return pulumi.output(args).apply((a: any) => getBundles(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getBundles:getBundles", {
+        "bundleIds": args.bundleIds,
+        "bundleType": args.bundleType,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

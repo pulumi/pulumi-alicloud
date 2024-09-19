@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  */
 export function getVirtualNodes(args?: GetVirtualNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNodesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getVirtualNodes:getVirtualNodes", {
         "ids": args.ids,
@@ -135,7 +134,19 @@ export interface GetVirtualNodesResult {
  * ```
  */
 export function getVirtualNodesOutput(args?: GetVirtualNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNodesResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualNodes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eci/getVirtualNodes:getVirtualNodes", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "securityGroupId": args.securityGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "virtualNodeName": args.virtualNodeName,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

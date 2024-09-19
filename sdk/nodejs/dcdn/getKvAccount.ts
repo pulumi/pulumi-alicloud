@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getKvAccount(args?: GetKvAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetKvAccountResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getKvAccount:getKvAccount", {
         "status": args.status,
@@ -69,7 +68,11 @@ export interface GetKvAccountResult {
  * ```
  */
 export function getKvAccountOutput(args?: GetKvAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKvAccountResult> {
-    return pulumi.output(args).apply((a: any) => getKvAccount(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dcdn/getKvAccount:getKvAccount", {
+        "status": args.status,
+    }, opts);
 }
 
 /**

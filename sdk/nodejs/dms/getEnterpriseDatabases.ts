@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEnterpriseDatabases(args: GetEnterpriseDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseDatabasesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", {
         "ids": args.ids,
@@ -103,7 +102,13 @@ export interface GetEnterpriseDatabasesResult {
  * ```
  */
 export function getEnterpriseDatabasesOutput(args: GetEnterpriseDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseDatabasesResult> {
-    return pulumi.output(args).apply((a: any) => getEnterpriseDatabases(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

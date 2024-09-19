@@ -76,14 +76,20 @@ type GetStateConfigurationsResult struct {
 
 func GetStateConfigurationsOutput(ctx *pulumi.Context, args GetStateConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetStateConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetStateConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (GetStateConfigurationsResultOutput, error) {
 			args := v.(GetStateConfigurationsArgs)
-			r, err := GetStateConfigurations(ctx, &args, opts...)
-			var s GetStateConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetStateConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:oos/getStateConfigurations:getStateConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return GetStateConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetStateConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetStateConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetStateConfigurationsResultOutput)
 }
 

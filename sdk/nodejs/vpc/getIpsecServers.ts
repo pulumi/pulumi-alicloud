@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getIpsecServers(args?: GetIpsecServersArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsecServersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpsecServers:getIpsecServers", {
         "ids": args.ids,
@@ -108,7 +107,15 @@ export interface GetIpsecServersResult {
  * ```
  */
 export function getIpsecServersOutput(args?: GetIpsecServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpsecServersResult> {
-    return pulumi.output(args).apply((a: any) => getIpsecServers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getIpsecServers:getIpsecServers", {
+        "ids": args.ids,
+        "ipsecServerName": args.ipsecServerName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "vpnGatewayId": args.vpnGatewayId,
+    }, opts);
 }
 
 /**

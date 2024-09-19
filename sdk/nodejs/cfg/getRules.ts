@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getRules:getRules", {
         "configRuleState": args.configRuleState,
@@ -145,7 +144,18 @@ export interface GetRulesResult {
  * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getRules:getRules", {
+        "configRuleState": args.configRuleState,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "riskLevel": args.riskLevel,
+        "ruleName": args.ruleName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

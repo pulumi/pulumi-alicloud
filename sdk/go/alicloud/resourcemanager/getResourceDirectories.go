@@ -66,14 +66,20 @@ type GetResourceDirectoriesResult struct {
 
 func GetResourceDirectoriesOutput(ctx *pulumi.Context, args GetResourceDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetResourceDirectoriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetResourceDirectoriesResult, error) {
+		ApplyT(func(v interface{}) (GetResourceDirectoriesResultOutput, error) {
 			args := v.(GetResourceDirectoriesArgs)
-			r, err := GetResourceDirectories(ctx, &args, opts...)
-			var s GetResourceDirectoriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetResourceDirectoriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", args, &rv, "", opts...)
+			if err != nil {
+				return GetResourceDirectoriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetResourceDirectoriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetResourceDirectoriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetResourceDirectoriesResultOutput)
 }
 

@@ -78,14 +78,20 @@ type GetAccountDeletionCheckTaskResult struct {
 
 func GetAccountDeletionCheckTaskOutput(ctx *pulumi.Context, args GetAccountDeletionCheckTaskOutputArgs, opts ...pulumi.InvokeOption) GetAccountDeletionCheckTaskResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccountDeletionCheckTaskResult, error) {
+		ApplyT(func(v interface{}) (GetAccountDeletionCheckTaskResultOutput, error) {
 			args := v.(GetAccountDeletionCheckTaskArgs)
-			r, err := GetAccountDeletionCheckTask(ctx, &args, opts...)
-			var s GetAccountDeletionCheckTaskResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccountDeletionCheckTaskResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccountDeletionCheckTaskResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccountDeletionCheckTaskResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccountDeletionCheckTaskResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccountDeletionCheckTaskResultOutput)
 }
 

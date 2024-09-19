@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:wafv3/getDomains:getDomains", {
         "backend": args.backend,
@@ -130,7 +129,17 @@ export interface GetDomainsResult {
  * ```
  */
 export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:wafv3/getDomains:getDomains", {
+        "backend": args.backend,
+        "domain": args.domain,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

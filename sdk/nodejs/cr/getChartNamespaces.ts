@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.149.0+.
  */
 export function getChartNamespaces(args: GetChartNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetChartNamespacesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getChartNamespaces:getChartNamespaces", {
         "ids": args.ids,
@@ -65,7 +64,13 @@ export interface GetChartNamespacesResult {
  * > **NOTE:** Available in v1.149.0+.
  */
 export function getChartNamespacesOutput(args: GetChartNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartNamespacesResult> {
-    return pulumi.output(args).apply((a: any) => getChartNamespaces(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getChartNamespaces:getChartNamespaces", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpInfo(args: GetIpInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetIpInfoResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cdn/getIpInfo:getIpInfo", {
         "ip": args.ip,
@@ -74,7 +73,10 @@ export interface GetIpInfoResult {
  * ```
  */
 export function getIpInfoOutput(args: GetIpInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpInfoResult> {
-    return pulumi.output(args).apply((a: any) => getIpInfo(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cdn/getIpInfo:getIpInfo", {
+        "ip": args.ip,
+    }, opts);
 }
 
 /**

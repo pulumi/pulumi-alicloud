@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getAgents(args?: GetAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAgentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:chatbot/getAgents:getAgents", {
         "agentName": args.agentName,
@@ -100,7 +99,15 @@ export interface GetAgentsResult {
  * ```
  */
 export function getAgentsOutput(args?: GetAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentsResult> {
-    return pulumi.output(args).apply((a: any) => getAgents(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:chatbot/getAgents:getAgents", {
+        "agentName": args.agentName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

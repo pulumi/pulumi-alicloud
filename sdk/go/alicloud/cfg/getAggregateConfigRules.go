@@ -101,14 +101,20 @@ type GetAggregateConfigRulesResult struct {
 
 func GetAggregateConfigRulesOutput(ctx *pulumi.Context, args GetAggregateConfigRulesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateConfigRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAggregateConfigRulesResult, error) {
+		ApplyT(func(v interface{}) (GetAggregateConfigRulesResultOutput, error) {
 			args := v.(GetAggregateConfigRulesArgs)
-			r, err := GetAggregateConfigRules(ctx, &args, opts...)
-			var s GetAggregateConfigRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAggregateConfigRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetAggregateConfigRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAggregateConfigRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAggregateConfigRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAggregateConfigRulesResultOutput)
 }
 

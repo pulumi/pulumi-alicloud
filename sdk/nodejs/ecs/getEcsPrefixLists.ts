@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsPrefixLists(args?: GetEcsPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsPrefixListsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", {
         "addressFamily": args.addressFamily,
@@ -99,7 +98,15 @@ export interface GetEcsPrefixListsResult {
  * ```
  */
 export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsPrefixListsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsPrefixLists(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", {
+        "addressFamily": args.addressFamily,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

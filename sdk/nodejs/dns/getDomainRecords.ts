@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
  */
 export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
         "domainName": args.domainName,
@@ -64,7 +63,18 @@ export interface GetDomainRecordsResult {
  * > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
  */
 export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordsResult> {
-    return pulumi.output(args).apply((a: any) => getDomainRecords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getDomainRecords:getDomainRecords", {
+        "domainName": args.domainName,
+        "hostRecordRegex": args.hostRecordRegex,
+        "ids": args.ids,
+        "isLocked": args.isLocked,
+        "line": args.line,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "type": args.type,
+        "valueRegex": args.valueRegex,
+    }, opts);
 }
 
 /**

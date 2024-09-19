@@ -82,14 +82,20 @@ type GetAgentsResult struct {
 
 func GetAgentsOutput(ctx *pulumi.Context, args GetAgentsOutputArgs, opts ...pulumi.InvokeOption) GetAgentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAgentsResult, error) {
+		ApplyT(func(v interface{}) (GetAgentsResultOutput, error) {
 			args := v.(GetAgentsArgs)
-			r, err := GetAgents(ctx, &args, opts...)
-			var s GetAgentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAgentsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:chatbot/getAgents:getAgents", args, &rv, "", opts...)
+			if err != nil {
+				return GetAgentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAgentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAgentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAgentsResultOutput)
 }
 

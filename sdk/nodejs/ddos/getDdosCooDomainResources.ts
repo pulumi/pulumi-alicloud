@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDdosCooDomainResources(args?: GetDdosCooDomainResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooDomainResourcesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", {
         "ids": args.ids,
@@ -93,7 +92,14 @@ export interface GetDdosCooDomainResourcesResult {
  * ```
  */
 export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
-    return pulumi.output(args).apply((a: any) => getDdosCooDomainResources(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", {
+        "ids": args.ids,
+        "instanceIds": args.instanceIds,
+        "outputFile": args.outputFile,
+        "queryDomainPattern": args.queryDomainPattern,
+    }, opts);
 }
 
 /**

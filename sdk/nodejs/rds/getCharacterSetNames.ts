@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCharacterSetNames(args: GetCharacterSetNamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCharacterSetNamesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getCharacterSetNames:getCharacterSetNames", {
         "engine": args.engine,
@@ -73,7 +72,11 @@ export interface GetCharacterSetNamesResult {
  * ```
  */
 export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCharacterSetNamesResult> {
-    return pulumi.output(args).apply((a: any) => getCharacterSetNames(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getCharacterSetNames:getCharacterSetNames", {
+        "engine": args.engine,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -92,14 +92,20 @@ type GetSlsGroupsResult struct {
 
 func GetSlsGroupsOutput(ctx *pulumi.Context, args GetSlsGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSlsGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSlsGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetSlsGroupsResultOutput, error) {
 			args := v.(GetSlsGroupsArgs)
-			r, err := GetSlsGroups(ctx, &args, opts...)
-			var s GetSlsGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSlsGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getSlsGroups:getSlsGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetSlsGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSlsGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSlsGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSlsGroupsResultOutput)
 }
 

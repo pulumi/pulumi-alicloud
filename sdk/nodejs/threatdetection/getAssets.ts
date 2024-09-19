@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getAssets(args?: GetAssetsArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getAssets:getAssets", {
         "criteria": args.criteria,
@@ -122,7 +121,19 @@ export interface GetAssetsResult {
  * ```
  */
 export function getAssetsOutput(args?: GetAssetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetsResult> {
-    return pulumi.output(args).apply((a: any) => getAssets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getAssets:getAssets", {
+        "criteria": args.criteria,
+        "ids": args.ids,
+        "importance": args.importance,
+        "logicalExp": args.logicalExp,
+        "machineTypes": args.machineTypes,
+        "noGroupTrace": args.noGroupTrace,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

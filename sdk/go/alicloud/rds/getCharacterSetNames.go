@@ -70,14 +70,20 @@ type GetCharacterSetNamesResult struct {
 
 func GetCharacterSetNamesOutput(ctx *pulumi.Context, args GetCharacterSetNamesOutputArgs, opts ...pulumi.InvokeOption) GetCharacterSetNamesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCharacterSetNamesResult, error) {
+		ApplyT(func(v interface{}) (GetCharacterSetNamesResultOutput, error) {
 			args := v.(GetCharacterSetNamesArgs)
-			r, err := GetCharacterSetNames(ctx, &args, opts...)
-			var s GetCharacterSetNamesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCharacterSetNamesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args, &rv, "", opts...)
+			if err != nil {
+				return GetCharacterSetNamesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCharacterSetNamesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCharacterSetNamesResultOutput), nil
+			}
+			return output, nil
 		}).(GetCharacterSetNamesResultOutput)
 }
 

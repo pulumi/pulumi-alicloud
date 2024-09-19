@@ -86,14 +86,20 @@ type GetEndpointAclServiceResult struct {
 
 func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclServiceOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEndpointAclServiceResult, error) {
+		ApplyT(func(v interface{}) (GetEndpointAclServiceResultOutput, error) {
 			args := v.(GetEndpointAclServiceArgs)
-			r, err := GetEndpointAclService(ctx, &args, opts...)
-			var s GetEndpointAclServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEndpointAclServiceResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cr/getEndpointAclService:getEndpointAclService", args, &rv, "", opts...)
+			if err != nil {
+				return GetEndpointAclServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEndpointAclServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEndpointAclServiceResultOutput), nil
+			}
+			return output, nil
 		}).(GetEndpointAclServiceResultOutput)
 }
 

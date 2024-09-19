@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getEnterpriseProxies(args?: GetEnterpriseProxiesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseProxiesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", {
         "ids": args.ids,
@@ -83,7 +82,13 @@ export interface GetEnterpriseProxiesResult {
  * ```
  */
 export function getEnterpriseProxiesOutput(args?: GetEnterpriseProxiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxiesResult> {
-    return pulumi.output(args).apply((a: any) => getEnterpriseProxies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tid": args.tid,
+    }, opts);
 }
 
 /**

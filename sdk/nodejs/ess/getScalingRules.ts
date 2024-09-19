@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getScalingRules(args?: GetScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScalingRules:getScalingRules", {
         "ids": args.ids,
@@ -117,7 +116,15 @@ export interface GetScalingRulesResult {
  * ```
  */
 export function getScalingRulesOutput(args?: GetScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingRulesResult> {
-    return pulumi.output(args).apply((a: any) => getScalingRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ess/getScalingRules:getScalingRules", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

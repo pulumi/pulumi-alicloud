@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsParameterGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", {
         "enableDetails": args.enableDetails,
@@ -44,7 +43,14 @@ export interface GetRdsParameterGroupsResult {
     readonly outputFile?: string;
 }
 export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsParameterGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getRdsParameterGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

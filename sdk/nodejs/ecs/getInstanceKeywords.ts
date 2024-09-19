@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceKeywords(args: GetInstanceKeywordsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceKeywordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", {
         "key": args.key,
@@ -83,7 +82,11 @@ export interface GetInstanceKeywordsResult {
  * ```
  */
 export function getInstanceKeywordsOutput(args: GetInstanceKeywordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceKeywordsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceKeywords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", {
+        "key": args.key,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

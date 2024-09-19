@@ -79,14 +79,20 @@ type GetModifyParameterLogsResult struct {
 
 func GetModifyParameterLogsOutput(ctx *pulumi.Context, args GetModifyParameterLogsOutputArgs, opts ...pulumi.InvokeOption) GetModifyParameterLogsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetModifyParameterLogsResult, error) {
+		ApplyT(func(v interface{}) (GetModifyParameterLogsResultOutput, error) {
 			args := v.(GetModifyParameterLogsArgs)
-			r, err := GetModifyParameterLogs(ctx, &args, opts...)
-			var s GetModifyParameterLogsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetModifyParameterLogsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args, &rv, "", opts...)
+			if err != nil {
+				return GetModifyParameterLogsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetModifyParameterLogsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetModifyParameterLogsResultOutput), nil
+			}
+			return output, nil
 		}).(GetModifyParameterLogsResultOutput)
 }
 

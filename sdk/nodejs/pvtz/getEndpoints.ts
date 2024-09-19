@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getEndpoints(args?: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:pvtz/getEndpoints:getEndpoints", {
         "ids": args.ids,
@@ -102,7 +101,14 @@ export interface GetEndpointsResult {
  * ```
  */
 export function getEndpointsOutput(args?: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
-    return pulumi.output(args).apply((a: any) => getEndpoints(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:pvtz/getEndpoints:getEndpoints", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

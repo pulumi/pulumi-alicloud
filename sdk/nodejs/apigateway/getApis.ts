@@ -61,7 +61,6 @@ import * as utilities from "../utilities";
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getApis:getApis", {
         "apiId": args.apiId,
@@ -180,7 +179,15 @@ export interface GetApisResult {
  * ```
  */
 export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
-    return pulumi.output(args).apply((a: any) => getApis(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getApis:getApis", {
+        "apiId": args.apiId,
+        "groupId": args.groupId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

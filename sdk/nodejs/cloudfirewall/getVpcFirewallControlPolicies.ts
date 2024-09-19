@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVpcFirewallControlPolicies(args: GetVpcFirewallControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallControlPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", {
         "aclAction": args.aclAction,
@@ -158,7 +157,23 @@ export interface GetVpcFirewallControlPoliciesResult {
  * ```
  */
 export function getVpcFirewallControlPoliciesOutput(args: GetVpcFirewallControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallControlPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getVpcFirewallControlPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", {
+        "aclAction": args.aclAction,
+        "aclUuid": args.aclUuid,
+        "description": args.description,
+        "destination": args.destination,
+        "ids": args.ids,
+        "lang": args.lang,
+        "memberUid": args.memberUid,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "proto": args.proto,
+        "release": args.release,
+        "source": args.source,
+        "vpcFirewallId": args.vpcFirewallId,
+    }, opts);
 }
 
 /**

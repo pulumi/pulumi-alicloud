@@ -111,14 +111,20 @@ type GetEcsSnapshotGroupsResult struct {
 
 func GetEcsSnapshotGroupsOutput(ctx *pulumi.Context, args GetEcsSnapshotGroupsOutputArgs, opts ...pulumi.InvokeOption) GetEcsSnapshotGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsSnapshotGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetEcsSnapshotGroupsResultOutput, error) {
 			args := v.(GetEcsSnapshotGroupsArgs)
-			r, err := GetEcsSnapshotGroups(ctx, &args, opts...)
-			var s GetEcsSnapshotGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsSnapshotGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsSnapshotGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsSnapshotGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsSnapshotGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsSnapshotGroupsResultOutput)
 }
 

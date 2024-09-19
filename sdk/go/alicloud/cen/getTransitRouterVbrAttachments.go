@@ -55,14 +55,20 @@ type GetTransitRouterVbrAttachmentsResult struct {
 
 func GetTransitRouterVbrAttachmentsOutput(ctx *pulumi.Context, args GetTransitRouterVbrAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterVbrAttachmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterVbrAttachmentsResult, error) {
+		ApplyT(func(v interface{}) (GetTransitRouterVbrAttachmentsResultOutput, error) {
 			args := v.(GetTransitRouterVbrAttachmentsArgs)
-			r, err := GetTransitRouterVbrAttachments(ctx, &args, opts...)
-			var s GetTransitRouterVbrAttachmentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTransitRouterVbrAttachmentsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args, &rv, "", opts...)
+			if err != nil {
+				return GetTransitRouterVbrAttachmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTransitRouterVbrAttachmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTransitRouterVbrAttachmentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTransitRouterVbrAttachmentsResultOutput)
 }
 

@@ -79,14 +79,20 @@ type GetHpcClustersResult struct {
 
 func GetHpcClustersOutput(ctx *pulumi.Context, args GetHpcClustersOutputArgs, opts ...pulumi.InvokeOption) GetHpcClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHpcClustersResult, error) {
+		ApplyT(func(v interface{}) (GetHpcClustersResultOutput, error) {
 			args := v.(GetHpcClustersArgs)
-			r, err := GetHpcClusters(ctx, &args, opts...)
-			var s GetHpcClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHpcClustersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getHpcClusters:getHpcClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetHpcClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHpcClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHpcClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetHpcClustersResultOutput)
 }
 

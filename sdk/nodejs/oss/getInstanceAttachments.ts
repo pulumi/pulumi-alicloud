@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
     pulumi.log.warn("getInstanceAttachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {
         "instanceName": args.instanceName,
@@ -99,7 +98,13 @@ export interface GetInstanceAttachmentsResult {
  */
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))
+    pulumi.log.warn("getInstanceAttachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {
+        "instanceName": args.instanceName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getMigrationJobs(args?: GetMigrationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetMigrationJobsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getMigrationJobs:getMigrationJobs", {
         "enableDetails": args.enableDetails,
@@ -94,7 +93,14 @@ export interface GetMigrationJobsResult {
  * ```
  */
 export function getMigrationJobsOutput(args?: GetMigrationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobsResult> {
-    return pulumi.output(args).apply((a: any) => getMigrationJobs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dts/getMigrationJobs:getMigrationJobs", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

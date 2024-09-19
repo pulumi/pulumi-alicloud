@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getServiceTopics(args?: GetServiceTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTopicsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:message/getServiceTopics:getServiceTopics", {
         "ids": args.ids,
@@ -113,7 +112,16 @@ export interface GetServiceTopicsResult {
  * ```
  */
 export function getServiceTopicsOutput(args?: GetServiceTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTopicsResult> {
-    return pulumi.output(args).apply((a: any) => getServiceTopics(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:message/getServiceTopics:getServiceTopics", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 /**

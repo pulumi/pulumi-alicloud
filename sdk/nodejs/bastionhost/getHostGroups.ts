@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHostGroups(args: GetHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getHostGroups:getHostGroups", {
         "hostGroupName": args.hostGroupName,
@@ -117,7 +116,14 @@ export interface GetHostGroupsResult {
  * ```
  */
 export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getHostGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostGroups:getHostGroups", {
+        "hostGroupName": args.hostGroupName,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

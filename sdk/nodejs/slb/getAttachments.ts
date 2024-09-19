@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getAttachments:getAttachments", {
         "instanceIds": args.instanceIds,
@@ -81,7 +80,12 @@ export interface GetAttachmentsResult {
  * ```
  */
 export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getAttachments:getAttachments", {
+        "instanceIds": args.instanceIds,
+        "loadBalancerId": args.loadBalancerId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

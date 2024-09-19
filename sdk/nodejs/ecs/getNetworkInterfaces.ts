@@ -97,7 +97,6 @@ import * as utilities from "../utilities";
  */
 export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
         "ids": args.ids,
@@ -317,7 +316,26 @@ export interface GetNetworkInterfacesResult {
  * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
  */
 export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfacesResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkInterfaces(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "networkInterfaceName": args.networkInterfaceName,
+        "outputFile": args.outputFile,
+        "primaryIpAddress": args.primaryIpAddress,
+        "privateIp": args.privateIp,
+        "resourceGroupId": args.resourceGroupId,
+        "securityGroupId": args.securityGroupId,
+        "serviceManaged": args.serviceManaged,
+        "status": args.status,
+        "tags": args.tags,
+        "type": args.type,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

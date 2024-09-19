@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dfs/getAccessGroups:getAccessGroups", {
         "ids": args.ids,
@@ -108,7 +107,17 @@ export interface GetAccessGroupsResult {
  * ```
  */
 export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getAccessGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dfs/getAccessGroups:getAccessGroups", {
+        "ids": args.ids,
+        "limit": args.limit,
+        "nameRegex": args.nameRegex,
+        "orderBy": args.orderBy,
+        "orderType": args.orderType,
+        "outputFile": args.outputFile,
+        "startOffset": args.startOffset,
+    }, opts);
 }
 
 /**

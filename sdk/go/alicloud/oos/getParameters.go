@@ -127,14 +127,20 @@ type GetParametersResult struct {
 
 func GetParametersOutput(ctx *pulumi.Context, args GetParametersOutputArgs, opts ...pulumi.InvokeOption) GetParametersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetParametersResult, error) {
+		ApplyT(func(v interface{}) (GetParametersResultOutput, error) {
 			args := v.(GetParametersArgs)
-			r, err := GetParameters(ctx, &args, opts...)
-			var s GetParametersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetParametersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:oos/getParameters:getParameters", args, &rv, "", opts...)
+			if err != nil {
+				return GetParametersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetParametersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetParametersResultOutput), nil
+			}
+			return output, nil
 		}).(GetParametersResultOutput)
 }
 

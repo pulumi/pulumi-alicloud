@@ -92,14 +92,20 @@ type GetBasicAccelerateIpEndpointRelationsResult struct {
 
 func GetBasicAccelerateIpEndpointRelationsOutput(ctx *pulumi.Context, args GetBasicAccelerateIpEndpointRelationsOutputArgs, opts ...pulumi.InvokeOption) GetBasicAccelerateIpEndpointRelationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBasicAccelerateIpEndpointRelationsResult, error) {
+		ApplyT(func(v interface{}) (GetBasicAccelerateIpEndpointRelationsResultOutput, error) {
 			args := v.(GetBasicAccelerateIpEndpointRelationsArgs)
-			r, err := GetBasicAccelerateIpEndpointRelations(ctx, &args, opts...)
-			var s GetBasicAccelerateIpEndpointRelationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBasicAccelerateIpEndpointRelationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args, &rv, "", opts...)
+			if err != nil {
+				return GetBasicAccelerateIpEndpointRelationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBasicAccelerateIpEndpointRelationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBasicAccelerateIpEndpointRelationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBasicAccelerateIpEndpointRelationsResultOutput)
 }
 

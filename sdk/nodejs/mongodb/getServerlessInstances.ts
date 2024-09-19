@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getServerlessInstances(args?: GetServerlessInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getServerlessInstances:getServerlessInstances", {
         "dbInstanceClass": args.dbInstanceClass,
@@ -165,7 +164,22 @@ export interface GetServerlessInstancesResult {
  * ```
  */
 export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getServerlessInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mongodb/getServerlessInstances:getServerlessInstances", {
+        "dbInstanceClass": args.dbInstanceClass,
+        "dbInstanceDescription": args.dbInstanceDescription,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

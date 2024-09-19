@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  */
 export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDhcpOptionsSetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", {
         "dhcpOptionsSetName": args.dhcpOptionsSetName,
@@ -142,7 +141,16 @@ export interface GetDhcpOptionsSetsResult {
  * ```
  */
 export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
-    return pulumi.output(args).apply((a: any) => getDhcpOptionsSets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", {
+        "dhcpOptionsSetName": args.dhcpOptionsSetName,
+        "domainName": args.domainName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

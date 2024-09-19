@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getStaticAccounts(args?: GetStaticAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticAccountsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getStaticAccounts:getStaticAccounts", {
         "ids": args.ids,
@@ -89,7 +88,13 @@ export interface GetStaticAccountsResult {
  * ```
  */
 export function getStaticAccountsOutput(args?: GetStaticAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getStaticAccounts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:amqp/getStaticAccounts:getStaticAccounts", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

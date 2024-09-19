@@ -81,14 +81,20 @@ type GetEngineNamespacesResult struct {
 
 func GetEngineNamespacesOutput(ctx *pulumi.Context, args GetEngineNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetEngineNamespacesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEngineNamespacesResult, error) {
+		ApplyT(func(v interface{}) (GetEngineNamespacesResultOutput, error) {
 			args := v.(GetEngineNamespacesArgs)
-			r, err := GetEngineNamespaces(ctx, &args, opts...)
-			var s GetEngineNamespacesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEngineNamespacesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args, &rv, "", opts...)
+			if err != nil {
+				return GetEngineNamespacesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEngineNamespacesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEngineNamespacesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEngineNamespacesResultOutput)
 }
 

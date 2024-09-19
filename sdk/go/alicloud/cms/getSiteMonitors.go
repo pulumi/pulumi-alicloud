@@ -129,14 +129,20 @@ type GetSiteMonitorsResult struct {
 
 func GetSiteMonitorsOutput(ctx *pulumi.Context, args GetSiteMonitorsOutputArgs, opts ...pulumi.InvokeOption) GetSiteMonitorsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSiteMonitorsResult, error) {
+		ApplyT(func(v interface{}) (GetSiteMonitorsResultOutput, error) {
 			args := v.(GetSiteMonitorsArgs)
-			r, err := GetSiteMonitors(ctx, &args, opts...)
-			var s GetSiteMonitorsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSiteMonitorsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getSiteMonitors:getSiteMonitors", args, &rv, "", opts...)
+			if err != nil {
+				return GetSiteMonitorsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSiteMonitorsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSiteMonitorsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSiteMonitorsResultOutput)
 }
 

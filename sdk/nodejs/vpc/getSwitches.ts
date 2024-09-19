@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  */
 export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSwitches:getSwitches", {
         "cidrBlock": args.cidrBlock,
@@ -206,7 +205,24 @@ export interface GetSwitchesResult {
  * ```
  */
 export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchesResult> {
-    return pulumi.output(args).apply((a: any) => getSwitches(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getSwitches:getSwitches", {
+        "cidrBlock": args.cidrBlock,
+        "dryRun": args.dryRun,
+        "ids": args.ids,
+        "isDefault": args.isDefault,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "routeTableId": args.routeTableId,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+        "vswitchName": args.vswitchName,
+        "vswitchOwnerId": args.vswitchOwnerId,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

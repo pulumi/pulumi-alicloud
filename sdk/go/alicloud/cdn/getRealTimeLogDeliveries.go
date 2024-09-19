@@ -74,14 +74,20 @@ type GetRealTimeLogDeliveriesResult struct {
 
 func GetRealTimeLogDeliveriesOutput(ctx *pulumi.Context, args GetRealTimeLogDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetRealTimeLogDeliveriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRealTimeLogDeliveriesResult, error) {
+		ApplyT(func(v interface{}) (GetRealTimeLogDeliveriesResultOutput, error) {
 			args := v.(GetRealTimeLogDeliveriesArgs)
-			r, err := GetRealTimeLogDeliveries(ctx, &args, opts...)
-			var s GetRealTimeLogDeliveriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRealTimeLogDeliveriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args, &rv, "", opts...)
+			if err != nil {
+				return GetRealTimeLogDeliveriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRealTimeLogDeliveriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRealTimeLogDeliveriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetRealTimeLogDeliveriesResultOutput)
 }
 

@@ -90,14 +90,20 @@ type GetIpv4GatewaysResult struct {
 
 func GetIpv4GatewaysOutput(ctx *pulumi.Context, args GetIpv4GatewaysOutputArgs, opts ...pulumi.InvokeOption) GetIpv4GatewaysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv4GatewaysResult, error) {
+		ApplyT(func(v interface{}) (GetIpv4GatewaysResultOutput, error) {
 			args := v.(GetIpv4GatewaysArgs)
-			r, err := GetIpv4Gateways(ctx, &args, opts...)
-			var s GetIpv4GatewaysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv4GatewaysResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv4GatewaysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv4GatewaysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv4GatewaysResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv4GatewaysResultOutput)
 }
 

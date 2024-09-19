@@ -99,14 +99,20 @@ type GetExtensionProvidersResult struct {
 
 func GetExtensionProvidersOutput(ctx *pulumi.Context, args GetExtensionProvidersOutputArgs, opts ...pulumi.InvokeOption) GetExtensionProvidersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetExtensionProvidersResult, error) {
+		ApplyT(func(v interface{}) (GetExtensionProvidersResultOutput, error) {
 			args := v.(GetExtensionProvidersArgs)
-			r, err := GetExtensionProviders(ctx, &args, opts...)
-			var s GetExtensionProvidersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetExtensionProvidersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", args, &rv, "", opts...)
+			if err != nil {
+				return GetExtensionProvidersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetExtensionProvidersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetExtensionProvidersResultOutput), nil
+			}
+			return output, nil
 		}).(GetExtensionProvidersResultOutput)
 }
 

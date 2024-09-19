@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getCiphertext:getCiphertext", {
         "encryptionContext": args.encryptionContext,
@@ -87,7 +86,12 @@ export interface GetCiphertextResult {
  * ```
  */
 export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCiphertextResult> {
-    return pulumi.output(args).apply((a: any) => getCiphertext(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getCiphertext:getCiphertext", {
+        "encryptionContext": args.encryptionContext,
+        "keyId": args.keyId,
+        "plaintext": args.plaintext,
+    }, opts);
 }
 
 /**

@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetHistoryDeliveryJobsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", {
         "enableDetails": args.enableDetails,
@@ -100,7 +99,14 @@ export interface GetHistoryDeliveryJobsResult {
  * ```
  */
 export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
-    return pulumi.output(args).apply((a: any) => getHistoryDeliveryJobs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

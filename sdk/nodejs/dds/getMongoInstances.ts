@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
         "availabilityZone": args.availabilityZone,
@@ -53,7 +52,17 @@ export interface GetMongoInstancesResult {
     readonly tags?: {[key: string]: string};
 }
 export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getMongoInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dds/getMongoInstances:getMongoInstances", {
+        "availabilityZone": args.availabilityZone,
+        "ids": args.ids,
+        "instanceClass": args.instanceClass,
+        "instanceType": args.instanceType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

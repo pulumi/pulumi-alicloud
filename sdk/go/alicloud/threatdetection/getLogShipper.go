@@ -83,14 +83,20 @@ type GetLogShipperResult struct {
 
 func GetLogShipperOutput(ctx *pulumi.Context, args GetLogShipperOutputArgs, opts ...pulumi.InvokeOption) GetLogShipperResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLogShipperResult, error) {
+		ApplyT(func(v interface{}) (GetLogShipperResultOutput, error) {
 			args := v.(GetLogShipperArgs)
-			r, err := GetLogShipper(ctx, &args, opts...)
-			var s GetLogShipperResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLogShipperResult
+			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getLogShipper:getLogShipper", args, &rv, "", opts...)
+			if err != nil {
+				return GetLogShipperResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLogShipperResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLogShipperResultOutput), nil
+			}
+			return output, nil
 		}).(GetLogShipperResultOutput)
 }
 

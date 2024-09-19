@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getAlidnsDomains(args?: GetAlidnsDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsDomains:getAlidnsDomains", {
         "aliDomain": args.aliDomain,
@@ -179,7 +178,25 @@ export interface GetAlidnsDomainsResult {
  * ```
  */
 export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getAlidnsDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsDomains:getAlidnsDomains", {
+        "aliDomain": args.aliDomain,
+        "domainNameRegex": args.domainNameRegex,
+        "enableDetails": args.enableDetails,
+        "groupId": args.groupId,
+        "groupNameRegex": args.groupNameRegex,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "keyWord": args.keyWord,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "searchMode": args.searchMode,
+        "starmark": args.starmark,
+        "tags": args.tags,
+        "versionCode": args.versionCode,
+    }, opts);
 }
 
 /**

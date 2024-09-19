@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:adb/getDBClusters:getDBClusters", {
         "description": args.description,
@@ -143,7 +142,20 @@ export interface GetDBClustersResult {
  * ```
  */
 export function getDBClustersOutput(args?: GetDBClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClustersResult> {
-    return pulumi.output(args).apply((a: any) => getDBClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:adb/getDBClusters:getDBClusters", {
+        "description": args.description,
+        "descriptionRegex": args.descriptionRegex,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

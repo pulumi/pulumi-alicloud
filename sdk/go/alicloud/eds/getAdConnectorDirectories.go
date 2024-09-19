@@ -81,14 +81,20 @@ type GetAdConnectorDirectoriesResult struct {
 
 func GetAdConnectorDirectoriesOutput(ctx *pulumi.Context, args GetAdConnectorDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetAdConnectorDirectoriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAdConnectorDirectoriesResult, error) {
+		ApplyT(func(v interface{}) (GetAdConnectorDirectoriesResultOutput, error) {
 			args := v.(GetAdConnectorDirectoriesArgs)
-			r, err := GetAdConnectorDirectories(ctx, &args, opts...)
-			var s GetAdConnectorDirectoriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAdConnectorDirectoriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args, &rv, "", opts...)
+			if err != nil {
+				return GetAdConnectorDirectoriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAdConnectorDirectoriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAdConnectorDirectoriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAdConnectorDirectoriesResultOutput)
 }
 

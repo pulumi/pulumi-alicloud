@@ -92,14 +92,20 @@ type GetHanaBackupPlansResult struct {
 
 func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetHanaBackupPlansResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHanaBackupPlansResult, error) {
+		ApplyT(func(v interface{}) (GetHanaBackupPlansResultOutput, error) {
 			args := v.(GetHanaBackupPlansArgs)
-			r, err := GetHanaBackupPlans(ctx, &args, opts...)
-			var s GetHanaBackupPlansResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHanaBackupPlansResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", args, &rv, "", opts...)
+			if err != nil {
+				return GetHanaBackupPlansResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHanaBackupPlansResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHanaBackupPlansResultOutput), nil
+			}
+			return output, nil
 		}).(GetHanaBackupPlansResultOutput)
 }
 

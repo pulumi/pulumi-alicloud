@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getResourceGroups(args: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:adb/getResourceGroups:getResourceGroups", {
         "dbClusterId": args.dbClusterId,
@@ -99,7 +98,13 @@ export interface GetResourceGroupsResult {
  * ```
  */
 export function getResourceGroupsOutput(args: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getResourceGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:adb/getResourceGroups:getResourceGroups", {
+        "dbClusterId": args.dbClusterId,
+        "groupName": args.groupName,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

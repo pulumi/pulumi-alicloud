@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getSimpleOfficeSites(args?: GetSimpleOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetSimpleOfficeSitesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", {
         "ids": args.ids,
@@ -96,7 +95,14 @@ export interface GetSimpleOfficeSitesResult {
  * ```
  */
 export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
-    return pulumi.output(args).apply((a: any) => getSimpleOfficeSites(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

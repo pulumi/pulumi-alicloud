@@ -85,14 +85,20 @@ type GetScheduledTasksResult struct {
 
 func GetScheduledTasksOutput(ctx *pulumi.Context, args GetScheduledTasksOutputArgs, opts ...pulumi.InvokeOption) GetScheduledTasksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetScheduledTasksResult, error) {
+		ApplyT(func(v interface{}) (GetScheduledTasksResultOutput, error) {
 			args := v.(GetScheduledTasksArgs)
-			r, err := GetScheduledTasks(ctx, &args, opts...)
-			var s GetScheduledTasksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetScheduledTasksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ess/getScheduledTasks:getScheduledTasks", args, &rv, "", opts...)
+			if err != nil {
+				return GetScheduledTasksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetScheduledTasksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetScheduledTasksResultOutput), nil
+			}
+			return output, nil
 		}).(GetScheduledTasksResultOutput)
 }
 

@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions): Promise<GetExchangesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getExchanges:getExchanges", {
         "ids": args.ids,
@@ -121,7 +120,14 @@ export interface GetExchangesResult {
  * ```
  */
 export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
-    return pulumi.output(args).apply((a: any) => getExchanges(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:amqp/getExchanges:getExchanges", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "virtualHostName": args.virtualHostName,
+    }, opts);
 }
 
 /**

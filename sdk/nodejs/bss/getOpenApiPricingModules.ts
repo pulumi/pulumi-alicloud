@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiPricingModulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", {
         "ids": args.ids,
@@ -112,7 +111,15 @@ export interface GetOpenApiPricingModulesResult {
  * ```
  */
 export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
-    return pulumi.output(args).apply((a: any) => getOpenApiPricingModules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "productType": args.productType,
+        "subscriptionType": args.subscriptionType,
+    }, opts);
 }
 
 /**

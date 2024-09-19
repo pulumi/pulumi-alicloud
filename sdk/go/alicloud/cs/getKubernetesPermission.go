@@ -76,14 +76,20 @@ type LookupKubernetesPermissionResult struct {
 
 func LookupKubernetesPermissionOutput(ctx *pulumi.Context, args LookupKubernetesPermissionOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesPermissionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesPermissionResult, error) {
+		ApplyT(func(v interface{}) (LookupKubernetesPermissionResultOutput, error) {
 			args := v.(LookupKubernetesPermissionArgs)
-			r, err := LookupKubernetesPermission(ctx, &args, opts...)
-			var s LookupKubernetesPermissionResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKubernetesPermissionResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKubernetesPermissionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKubernetesPermissionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKubernetesPermissionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKubernetesPermissionResultOutput)
 }
 

@@ -107,14 +107,20 @@ type GetIpv6AddressesResult struct {
 
 func GetIpv6AddressesOutput(ctx *pulumi.Context, args GetIpv6AddressesOutputArgs, opts ...pulumi.InvokeOption) GetIpv6AddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv6AddressesResult, error) {
+		ApplyT(func(v interface{}) (GetIpv6AddressesResultOutput, error) {
 			args := v.(GetIpv6AddressesArgs)
-			r, err := GetIpv6Addresses(ctx, &args, opts...)
-			var s GetIpv6AddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv6AddressesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv6AddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv6AddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv6AddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv6AddressesResultOutput)
 }
 

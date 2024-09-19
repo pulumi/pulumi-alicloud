@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBasicAccelerateIps(args: GetBasicAccelerateIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", {
         "accelerateIpAddress": args.accelerateIpAddress,
@@ -121,7 +120,15 @@ export interface GetBasicAccelerateIpsResult {
  * ```
  */
 export function getBasicAccelerateIpsOutput(args: GetBasicAccelerateIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpsResult> {
-    return pulumi.output(args).apply((a: any) => getBasicAccelerateIps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", {
+        "accelerateIpAddress": args.accelerateIpAddress,
+        "accelerateIpId": args.accelerateIpId,
+        "ids": args.ids,
+        "ipSetId": args.ipSetId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

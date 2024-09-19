@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getBackends(args?: GetBackendsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getBackends:getBackends", {
         "ids": args.ids,
@@ -90,7 +89,15 @@ export interface GetBackendsResult {
  * ```
  */
 export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendsResult> {
-    return pulumi.output(args).apply((a: any) => getBackends(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getBackends:getBackends", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

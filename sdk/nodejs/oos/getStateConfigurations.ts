@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getStateConfigurations(args?: GetStateConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStateConfigurationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getStateConfigurations:getStateConfigurations", {
         "ids": args.ids,
@@ -89,7 +88,14 @@ export interface GetStateConfigurationsResult {
  * ```
  */
 export function getStateConfigurationsOutput(args?: GetStateConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStateConfigurationsResult> {
-    return pulumi.output(args).apply((a: any) => getStateConfigurations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oos/getStateConfigurations:getStateConfigurations", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

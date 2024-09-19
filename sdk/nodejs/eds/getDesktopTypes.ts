@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDesktopTypes(args?: GetDesktopTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopTypesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getDesktopTypes:getDesktopTypes", {
         "cpuCount": args.cpuCount,
@@ -111,7 +110,17 @@ export interface GetDesktopTypesResult {
  * ```
  */
 export function getDesktopTypesOutput(args?: GetDesktopTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopTypesResult> {
-    return pulumi.output(args).apply((a: any) => getDesktopTypes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getDesktopTypes:getDesktopTypes", {
+        "cpuCount": args.cpuCount,
+        "gpuCount": args.gpuCount,
+        "ids": args.ids,
+        "instanceTypeFamily": args.instanceTypeFamily,
+        "memorySize": args.memorySize,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -90,14 +90,20 @@ type GetPeerConnectionsResult struct {
 
 func GetPeerConnectionsOutput(ctx *pulumi.Context, args GetPeerConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPeerConnectionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPeerConnectionsResult, error) {
+		ApplyT(func(v interface{}) (GetPeerConnectionsResultOutput, error) {
 			args := v.(GetPeerConnectionsArgs)
-			r, err := GetPeerConnections(ctx, &args, opts...)
-			var s GetPeerConnectionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPeerConnectionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getPeerConnections:getPeerConnections", args, &rv, "", opts...)
+			if err != nil {
+				return GetPeerConnectionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPeerConnectionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPeerConnectionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPeerConnectionsResultOutput)
 }
 

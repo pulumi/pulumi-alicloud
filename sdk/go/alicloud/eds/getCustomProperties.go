@@ -74,14 +74,20 @@ type GetCustomPropertiesResult struct {
 
 func GetCustomPropertiesOutput(ctx *pulumi.Context, args GetCustomPropertiesOutputArgs, opts ...pulumi.InvokeOption) GetCustomPropertiesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCustomPropertiesResult, error) {
+		ApplyT(func(v interface{}) (GetCustomPropertiesResultOutput, error) {
 			args := v.(GetCustomPropertiesArgs)
-			r, err := GetCustomProperties(ctx, &args, opts...)
-			var s GetCustomPropertiesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCustomPropertiesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getCustomProperties:getCustomProperties", args, &rv, "", opts...)
+			if err != nil {
+				return GetCustomPropertiesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCustomPropertiesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCustomPropertiesResultOutput), nil
+			}
+			return output, nil
 		}).(GetCustomPropertiesResultOutput)
 }
 

@@ -98,14 +98,20 @@ type GetPublicIpAddressPoolCidrBlocksResult struct {
 
 func GetPublicIpAddressPoolCidrBlocksOutput(ctx *pulumi.Context, args GetPublicIpAddressPoolCidrBlocksOutputArgs, opts ...pulumi.InvokeOption) GetPublicIpAddressPoolCidrBlocksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPublicIpAddressPoolCidrBlocksResult, error) {
+		ApplyT(func(v interface{}) (GetPublicIpAddressPoolCidrBlocksResultOutput, error) {
 			args := v.(GetPublicIpAddressPoolCidrBlocksArgs)
-			r, err := GetPublicIpAddressPoolCidrBlocks(ctx, &args, opts...)
-			var s GetPublicIpAddressPoolCidrBlocksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPublicIpAddressPoolCidrBlocksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args, &rv, "", opts...)
+			if err != nil {
+				return GetPublicIpAddressPoolCidrBlocksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPublicIpAddressPoolCidrBlocksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPublicIpAddressPoolCidrBlocksResultOutput), nil
+			}
+			return output, nil
 		}).(GetPublicIpAddressPoolCidrBlocksResultOutput)
 }
 

@@ -99,14 +99,20 @@ type GetBaselineStrategiesResult struct {
 
 func GetBaselineStrategiesOutput(ctx *pulumi.Context, args GetBaselineStrategiesOutputArgs, opts ...pulumi.InvokeOption) GetBaselineStrategiesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBaselineStrategiesResult, error) {
+		ApplyT(func(v interface{}) (GetBaselineStrategiesResultOutput, error) {
 			args := v.(GetBaselineStrategiesArgs)
-			r, err := GetBaselineStrategies(ctx, &args, opts...)
-			var s GetBaselineStrategiesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBaselineStrategiesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args, &rv, "", opts...)
+			if err != nil {
+				return GetBaselineStrategiesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBaselineStrategiesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBaselineStrategiesResultOutput), nil
+			}
+			return output, nil
 		}).(GetBaselineStrategiesResultOutput)
 }
 

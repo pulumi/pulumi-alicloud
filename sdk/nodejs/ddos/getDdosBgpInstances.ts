@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  */
 export function getDdosBgpInstances(args?: GetDdosBgpInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", {
         "ids": args.ids,
@@ -123,7 +122,13 @@ export interface GetDdosBgpInstancesResult {
  * ```
  */
 export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getDdosBgpInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

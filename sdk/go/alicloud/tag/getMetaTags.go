@@ -72,14 +72,20 @@ type GetMetaTagsResult struct {
 
 func GetMetaTagsOutput(ctx *pulumi.Context, args GetMetaTagsOutputArgs, opts ...pulumi.InvokeOption) GetMetaTagsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMetaTagsResult, error) {
+		ApplyT(func(v interface{}) (GetMetaTagsResultOutput, error) {
 			args := v.(GetMetaTagsArgs)
-			r, err := GetMetaTags(ctx, &args, opts...)
-			var s GetMetaTagsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMetaTagsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:tag/getMetaTags:getMetaTags", args, &rv, "", opts...)
+			if err != nil {
+				return GetMetaTagsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMetaTagsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMetaTagsResultOutput), nil
+			}
+			return output, nil
 		}).(GetMetaTagsResultOutput)
 }
 

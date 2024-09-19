@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMountPoints(args: GetMountPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountPointsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dfs/getMountPoints:getMountPoints", {
         "fileSystemId": args.fileSystemId,
@@ -100,7 +99,13 @@ export interface GetMountPointsResult {
  * ```
  */
 export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
-    return pulumi.output(args).apply((a: any) => getMountPoints(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dfs/getMountPoints:getMountPoints", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

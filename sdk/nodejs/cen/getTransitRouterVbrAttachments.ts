@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.126.0+
  */
 export function getTransitRouterVbrAttachments(args: GetTransitRouterVbrAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVbrAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", {
         "cenId": args.cenId,
@@ -79,7 +78,14 @@ export interface GetTransitRouterVbrAttachmentsResult {
  * > **NOTE:** Available in 1.126.0+
  */
 export function getTransitRouterVbrAttachmentsOutput(args: GetTransitRouterVbrAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVbrAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterVbrAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", {
+        "cenId": args.cenId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

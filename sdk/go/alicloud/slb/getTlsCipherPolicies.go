@@ -95,14 +95,20 @@ type GetTlsCipherPoliciesResult struct {
 
 func GetTlsCipherPoliciesOutput(ctx *pulumi.Context, args GetTlsCipherPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTlsCipherPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTlsCipherPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetTlsCipherPoliciesResultOutput, error) {
 			args := v.(GetTlsCipherPoliciesArgs)
-			r, err := GetTlsCipherPolicies(ctx, &args, opts...)
-			var s GetTlsCipherPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTlsCipherPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetTlsCipherPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTlsCipherPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTlsCipherPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetTlsCipherPoliciesResultOutput)
 }
 

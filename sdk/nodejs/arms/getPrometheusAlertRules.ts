@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrometheusAlertRules(args: GetPrometheusAlertRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusAlertRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", {
         "clusterId": args.clusterId,
@@ -126,7 +125,16 @@ export interface GetPrometheusAlertRulesResult {
  * ```
  */
 export function getPrometheusAlertRulesOutput(args: GetPrometheusAlertRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusAlertRulesResult> {
-    return pulumi.output(args).apply((a: any) => getPrometheusAlertRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "matchExpressions": args.matchExpressions,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "type": args.type,
+    }, opts);
 }
 
 /**

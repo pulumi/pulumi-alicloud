@@ -51,7 +51,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNatIpCidrs(args: GetNatIpCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpCidrsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", {
         "ids": args.ids,
@@ -161,7 +160,16 @@ export interface GetNatIpCidrsResult {
  * ```
  */
 export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
-    return pulumi.output(args).apply((a: any) => getNatIpCidrs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "natGatewayId": args.natGatewayId,
+        "natIpCidrNames": args.natIpCidrNames,
+        "natIpCidrs": args.natIpCidrs,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

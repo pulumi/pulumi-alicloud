@@ -84,14 +84,20 @@ type GetAppTemplatesResult struct {
 
 func GetAppTemplatesOutput(ctx *pulumi.Context, args GetAppTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAppTemplatesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAppTemplatesResult, error) {
+		ApplyT(func(v interface{}) (GetAppTemplatesResultOutput, error) {
 			args := v.(GetAppTemplatesArgs)
-			r, err := GetAppTemplates(ctx, &args, opts...)
-			var s GetAppTemplatesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAppTemplatesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:imp/getAppTemplates:getAppTemplates", args, &rv, "", opts...)
+			if err != nil {
+				return GetAppTemplatesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAppTemplatesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAppTemplatesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAppTemplatesResultOutput)
 }
 

@@ -74,14 +74,20 @@ type GetInstanceKeywordsResult struct {
 
 func GetInstanceKeywordsOutput(ctx *pulumi.Context, args GetInstanceKeywordsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceKeywordsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceKeywordsResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceKeywordsResultOutput, error) {
 			args := v.(GetInstanceKeywordsArgs)
-			r, err := GetInstanceKeywords(ctx, &args, opts...)
-			var s GetInstanceKeywordsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceKeywordsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceKeywordsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceKeywordsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceKeywordsResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceKeywordsResultOutput)
 }
 

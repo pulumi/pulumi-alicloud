@@ -79,14 +79,20 @@ type GetVulWhitelistsResult struct {
 
 func GetVulWhitelistsOutput(ctx *pulumi.Context, args GetVulWhitelistsOutputArgs, opts ...pulumi.InvokeOption) GetVulWhitelistsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVulWhitelistsResult, error) {
+		ApplyT(func(v interface{}) (GetVulWhitelistsResultOutput, error) {
 			args := v.(GetVulWhitelistsArgs)
-			r, err := GetVulWhitelists(ctx, &args, opts...)
-			var s GetVulWhitelistsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVulWhitelistsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args, &rv, "", opts...)
+			if err != nil {
+				return GetVulWhitelistsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVulWhitelistsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVulWhitelistsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVulWhitelistsResultOutput)
 }
 

@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getLoadBalancers:getLoadBalancers", {
         "addressType": args.addressType,
@@ -167,7 +166,25 @@ export interface GetLoadBalancersResult {
  * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getLoadBalancers:getLoadBalancers", {
+        "addressType": args.addressType,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "loadBalancerBusinessStatus": args.loadBalancerBusinessStatus,
+        "loadBalancerBussinessStatus": args.loadBalancerBussinessStatus,
+        "loadBalancerIds": args.loadBalancerIds,
+        "loadBalancerName": args.loadBalancerName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+        "vpcIds": args.vpcIds,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

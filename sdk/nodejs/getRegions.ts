@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
         "current": args.current,
@@ -89,7 +88,13 @@ export interface GetRegionsResult {
  * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
-    return pulumi.output(args).apply((a: any) => getRegions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getRegions:getRegions", {
+        "current": args.current,
+        "name": args.name,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

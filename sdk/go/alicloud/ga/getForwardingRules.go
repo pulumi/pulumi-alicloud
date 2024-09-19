@@ -85,14 +85,20 @@ type GetForwardingRulesResult struct {
 
 func GetForwardingRulesOutput(ctx *pulumi.Context, args GetForwardingRulesOutputArgs, opts ...pulumi.InvokeOption) GetForwardingRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetForwardingRulesResult, error) {
+		ApplyT(func(v interface{}) (GetForwardingRulesResultOutput, error) {
 			args := v.(GetForwardingRulesArgs)
-			r, err := GetForwardingRules(ctx, &args, opts...)
-			var s GetForwardingRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetForwardingRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getForwardingRules:getForwardingRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetForwardingRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetForwardingRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetForwardingRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetForwardingRulesResultOutput)
 }
 

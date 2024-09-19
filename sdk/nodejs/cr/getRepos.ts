@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getRepos(args?: GetReposArgs, opts?: pulumi.InvokeOptions): Promise<GetReposResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getRepos:getRepos", {
         "enableDetails": args.enableDetails,
@@ -107,7 +106,14 @@ export interface GetReposResult {
  * ```
  */
 export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
-    return pulumi.output(args).apply((a: any) => getRepos(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getRepos:getRepos", {
+        "enableDetails": args.enableDetails,
+        "nameRegex": args.nameRegex,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

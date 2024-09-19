@@ -91,14 +91,20 @@ type GetLifecyclePoliciesResult struct {
 
 func GetLifecyclePoliciesOutput(ctx *pulumi.Context, args GetLifecyclePoliciesOutputArgs, opts ...pulumi.InvokeOption) GetLifecyclePoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLifecyclePoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetLifecyclePoliciesResultOutput, error) {
 			args := v.(GetLifecyclePoliciesArgs)
-			r, err := GetLifecyclePolicies(ctx, &args, opts...)
-			var s GetLifecyclePoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLifecyclePoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetLifecyclePoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLifecyclePoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLifecyclePoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetLifecyclePoliciesResultOutput)
 }
 

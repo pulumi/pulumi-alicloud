@@ -42,7 +42,6 @@ import * as utilities from "../utilities";
  */
 export function getDynamicTagGroups(args?: GetDynamicTagGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicTagGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", {
         "ids": args.ids,
@@ -123,7 +122,14 @@ export interface GetDynamicTagGroupsResult {
  * ```
  */
 export function getDynamicTagGroupsOutput(args?: GetDynamicTagGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicTagGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getDynamicTagGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "tagKey": args.tagKey,
+    }, opts);
 }
 
 /**

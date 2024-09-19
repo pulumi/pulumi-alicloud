@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {
         "ids": args.ids,
@@ -104,7 +103,14 @@ export interface GetLifecycleHooksResult {
  * ```
  */
 export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
-    return pulumi.output(args).apply((a: any) => getLifecycleHooks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
+    }, opts);
 }
 
 /**

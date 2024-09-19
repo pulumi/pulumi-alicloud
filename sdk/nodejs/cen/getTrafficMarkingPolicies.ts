@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTrafficMarkingPolicies(args: GetTrafficMarkingPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMarkingPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", {
         "description": args.description,
@@ -120,7 +119,15 @@ export interface GetTrafficMarkingPoliciesResult {
  * ```
  */
 export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMarkingPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getTrafficMarkingPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", {
+        "description": args.description,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

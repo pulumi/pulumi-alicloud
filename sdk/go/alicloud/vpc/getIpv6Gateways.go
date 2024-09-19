@@ -114,14 +114,20 @@ type GetIpv6GatewaysResult struct {
 
 func GetIpv6GatewaysOutput(ctx *pulumi.Context, args GetIpv6GatewaysOutputArgs, opts ...pulumi.InvokeOption) GetIpv6GatewaysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv6GatewaysResult, error) {
+		ApplyT(func(v interface{}) (GetIpv6GatewaysResultOutput, error) {
 			args := v.(GetIpv6GatewaysArgs)
-			r, err := GetIpv6Gateways(ctx, &args, opts...)
-			var s GetIpv6GatewaysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv6GatewaysResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv6GatewaysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv6GatewaysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv6GatewaysResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv6GatewaysResultOutput)
 }
 

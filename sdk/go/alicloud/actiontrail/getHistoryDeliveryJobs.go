@@ -89,14 +89,20 @@ type GetHistoryDeliveryJobsResult struct {
 
 func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJobsOutputArgs, opts ...pulumi.InvokeOption) GetHistoryDeliveryJobsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHistoryDeliveryJobsResult, error) {
+		ApplyT(func(v interface{}) (GetHistoryDeliveryJobsResultOutput, error) {
 			args := v.(GetHistoryDeliveryJobsArgs)
-			r, err := GetHistoryDeliveryJobs(ctx, &args, opts...)
-			var s GetHistoryDeliveryJobsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHistoryDeliveryJobsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args, &rv, "", opts...)
+			if err != nil {
+				return GetHistoryDeliveryJobsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHistoryDeliveryJobsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHistoryDeliveryJobsResultOutput), nil
+			}
+			return output, nil
 		}).(GetHistoryDeliveryJobsResultOutput)
 }
 

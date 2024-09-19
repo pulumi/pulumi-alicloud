@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getCustomProperties(args?: GetCustomPropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPropertiesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getCustomProperties:getCustomProperties", {
         "ids": args.ids,
@@ -81,7 +80,12 @@ export interface GetCustomPropertiesResult {
  * ```
  */
 export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomPropertiesResult> {
-    return pulumi.output(args).apply((a: any) => getCustomProperties(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getCustomProperties:getCustomProperties", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVirtualHosts(args: GetVirtualHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHostsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getVirtualHosts:getVirtualHosts", {
         "ids": args.ids,
@@ -111,7 +110,13 @@ export interface GetVirtualHostsResult {
  * ```
  */
 export function getVirtualHostsOutput(args: GetVirtualHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHostsResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualHosts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:amqp/getVirtualHosts:getVirtualHosts", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

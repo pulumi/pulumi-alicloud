@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", {
         "enableDetails": args.enableDetails,
@@ -111,7 +110,17 @@ export interface GetEcsLaunchTemplatesResult {
  * ```
  */
 export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getEcsLaunchTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "launchTemplateName": args.launchTemplateName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "templateResourceGroupId": args.templateResourceGroupId,
+        "templateTags": args.templateTags,
+    }, opts);
 }
 
 /**

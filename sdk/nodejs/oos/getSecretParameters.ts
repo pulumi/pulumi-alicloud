@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretParametersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getSecretParameters:getSecretParameters", {
         "enableDetails": args.enableDetails,
@@ -90,7 +89,19 @@ export interface GetSecretParametersResult {
  * > **NOTE:** Available in v1.147.0+.
  */
 export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretParametersResult> {
-    return pulumi.output(args).apply((a: any) => getSecretParameters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oos/getSecretParameters:getSecretParameters", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "secretParameterName": args.secretParameterName,
+        "sortField": args.sortField,
+        "sortOrder": args.sortOrder,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

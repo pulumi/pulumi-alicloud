@@ -82,14 +82,20 @@ type GetMountPointsResult struct {
 
 func GetMountPointsOutput(ctx *pulumi.Context, args GetMountPointsOutputArgs, opts ...pulumi.InvokeOption) GetMountPointsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMountPointsResult, error) {
+		ApplyT(func(v interface{}) (GetMountPointsResultOutput, error) {
 			args := v.(GetMountPointsArgs)
-			r, err := GetMountPoints(ctx, &args, opts...)
-			var s GetMountPointsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMountPointsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dfs/getMountPoints:getMountPoints", args, &rv, "", opts...)
+			if err != nil {
+				return GetMountPointsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMountPointsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMountPointsResultOutput), nil
+			}
+			return output, nil
 		}).(GetMountPointsResultOutput)
 }
 

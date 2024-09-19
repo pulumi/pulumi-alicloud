@@ -80,14 +80,20 @@ type GetDdosCooDomainResourcesResult struct {
 
 func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooDomainResourcesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDdosCooDomainResourcesResult, error) {
+		ApplyT(func(v interface{}) (GetDdosCooDomainResourcesResultOutput, error) {
 			args := v.(GetDdosCooDomainResourcesArgs)
-			r, err := GetDdosCooDomainResources(ctx, &args, opts...)
-			var s GetDdosCooDomainResourcesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDdosCooDomainResourcesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args, &rv, "", opts...)
+			if err != nil {
+				return GetDdosCooDomainResourcesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDdosCooDomainResourcesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDdosCooDomainResourcesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDdosCooDomainResourcesResultOutput)
 }
 

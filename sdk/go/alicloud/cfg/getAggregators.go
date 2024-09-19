@@ -88,14 +88,20 @@ type GetAggregatorsResult struct {
 
 func GetAggregatorsOutput(ctx *pulumi.Context, args GetAggregatorsOutputArgs, opts ...pulumi.InvokeOption) GetAggregatorsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAggregatorsResult, error) {
+		ApplyT(func(v interface{}) (GetAggregatorsResultOutput, error) {
 			args := v.(GetAggregatorsArgs)
-			r, err := GetAggregators(ctx, &args, opts...)
-			var s GetAggregatorsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAggregatorsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getAggregators:getAggregators", args, &rv, "", opts...)
+			if err != nil {
+				return GetAggregatorsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAggregatorsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAggregatorsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAggregatorsResultOutput)
 }
 

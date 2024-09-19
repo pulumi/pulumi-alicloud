@@ -98,14 +98,20 @@ type GetRouteMapsResult struct {
 
 func GetRouteMapsOutput(ctx *pulumi.Context, args GetRouteMapsOutputArgs, opts ...pulumi.InvokeOption) GetRouteMapsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRouteMapsResult, error) {
+		ApplyT(func(v interface{}) (GetRouteMapsResultOutput, error) {
 			args := v.(GetRouteMapsArgs)
-			r, err := GetRouteMaps(ctx, &args, opts...)
-			var s GetRouteMapsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRouteMapsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getRouteMaps:getRouteMaps", args, &rv, "", opts...)
+			if err != nil {
+				return GetRouteMapsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRouteMapsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRouteMapsResultOutput), nil
+			}
+			return output, nil
 		}).(GetRouteMapsResultOutput)
 }
 

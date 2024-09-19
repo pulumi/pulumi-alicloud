@@ -94,14 +94,20 @@ type GetCommandsResult struct {
 
 func GetCommandsOutput(ctx *pulumi.Context, args GetCommandsOutputArgs, opts ...pulumi.InvokeOption) GetCommandsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCommandsResult, error) {
+		ApplyT(func(v interface{}) (GetCommandsResultOutput, error) {
 			args := v.(GetCommandsArgs)
-			r, err := GetCommands(ctx, &args, opts...)
-			var s GetCommandsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCommandsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getCommands:getCommands", args, &rv, "", opts...)
+			if err != nil {
+				return GetCommandsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCommandsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCommandsResultOutput), nil
+			}
+			return output, nil
 		}).(GetCommandsResultOutput)
 }
 

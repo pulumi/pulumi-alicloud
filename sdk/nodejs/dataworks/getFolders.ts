@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dataworks/getFolders:getFolders", {
         "ids": args.ids,
@@ -104,7 +103,13 @@ export interface GetFoldersResult {
  * ```
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dataworks/getFolders:getFolders", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "parentFolderPath": args.parentFolderPath,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

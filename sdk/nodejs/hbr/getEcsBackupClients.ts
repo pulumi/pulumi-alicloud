@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupClientsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", {
         "ids": args.ids,
@@ -103,7 +102,14 @@ export interface GetEcsBackupClientsResult {
  * ```
  */
 export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsBackupClients(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", {
+        "ids": args.ids,
+        "instanceIds": args.instanceIds,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

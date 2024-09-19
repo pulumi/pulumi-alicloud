@@ -84,14 +84,20 @@ type GetVaultsResult struct {
 
 func GetVaultsOutput(ctx *pulumi.Context, args GetVaultsOutputArgs, opts ...pulumi.InvokeOption) GetVaultsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVaultsResult, error) {
+		ApplyT(func(v interface{}) (GetVaultsResultOutput, error) {
 			args := v.(GetVaultsArgs)
-			r, err := GetVaults(ctx, &args, opts...)
-			var s GetVaultsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVaultsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getVaults:getVaults", args, &rv, "", opts...)
+			if err != nil {
+				return GetVaultsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVaultsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVaultsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVaultsResultOutput)
 }
 

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getPatchBaselines(args?: GetPatchBaselinesArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchBaselinesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", {
         "enableDetails": args.enableDetails,
@@ -78,7 +77,16 @@ export interface GetPatchBaselinesResult {
  * > **NOTE:** Available in v1.146.0+.
  */
 export function getPatchBaselinesOutput(args?: GetPatchBaselinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchBaselinesResult> {
-    return pulumi.output(args).apply((a: any) => getPatchBaselines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oos/getPatchBaselines:getPatchBaselines", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "operationSystem": args.operationSystem,
+        "outputFile": args.outputFile,
+        "shareType": args.shareType,
+    }, opts);
 }
 
 /**

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getOpenApiProducts(args?: GetOpenApiProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiProductsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", {
         "ids": args.ids,
@@ -66,7 +65,13 @@ export interface GetOpenApiProductsResult {
  * > **NOTE:** Available in 1.195.0+
  */
 export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiProductsResult> {
-    return pulumi.output(args).apply((a: any) => getOpenApiProducts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bss/getOpenApiProducts:getOpenApiProducts", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

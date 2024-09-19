@@ -87,14 +87,20 @@ type GetServerlessKubernetesClustersResult struct {
 
 func GetServerlessKubernetesClustersOutput(ctx *pulumi.Context, args GetServerlessKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetServerlessKubernetesClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerlessKubernetesClustersResult, error) {
+		ApplyT(func(v interface{}) (GetServerlessKubernetesClustersResultOutput, error) {
 			args := v.(GetServerlessKubernetesClustersArgs)
-			r, err := GetServerlessKubernetesClusters(ctx, &args, opts...)
-			var s GetServerlessKubernetesClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerlessKubernetesClustersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerlessKubernetesClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerlessKubernetesClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerlessKubernetesClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerlessKubernetesClustersResultOutput)
 }
 

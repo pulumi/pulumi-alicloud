@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  */
 export function getVirtualBorderRouters(args?: GetVirtualBorderRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualBorderRoutersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", {
         "filters": args.filters,
@@ -136,7 +135,15 @@ export interface GetVirtualBorderRoutersResult {
  * ```
  */
 export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualBorderRoutersResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualBorderRouters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", {
+        "filters": args.filters,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

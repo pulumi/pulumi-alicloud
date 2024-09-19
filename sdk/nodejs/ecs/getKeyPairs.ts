@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
         "fingerPrint": args.fingerPrint,
@@ -122,7 +121,16 @@ export interface GetKeyPairsResult {
  * ```
  */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
-    return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getKeyPairs:getKeyPairs", {
+        "fingerPrint": args.fingerPrint,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

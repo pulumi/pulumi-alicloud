@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getTrafficMirrorService(args?: GetTrafficMirrorServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorServiceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", {
         "enable": args.enable,
@@ -80,7 +79,11 @@ export interface GetTrafficMirrorServiceResult {
  * ```
  */
 export function getTrafficMirrorServiceOutput(args?: GetTrafficMirrorServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorServiceResult> {
-    return pulumi.output(args).apply((a: any) => getTrafficMirrorService(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", {
+        "enable": args.enable,
+    }, opts);
 }
 
 /**

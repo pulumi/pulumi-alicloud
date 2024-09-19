@@ -76,14 +76,20 @@ type GetBindingsResult struct {
 
 func GetBindingsOutput(ctx *pulumi.Context, args GetBindingsOutputArgs, opts ...pulumi.InvokeOption) GetBindingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBindingsResult, error) {
+		ApplyT(func(v interface{}) (GetBindingsResultOutput, error) {
 			args := v.(GetBindingsArgs)
-			r, err := GetBindings(ctx, &args, opts...)
-			var s GetBindingsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBindingsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:amqp/getBindings:getBindings", args, &rv, "", opts...)
+			if err != nil {
+				return GetBindingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBindingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBindingsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBindingsResultOutput)
 }
 

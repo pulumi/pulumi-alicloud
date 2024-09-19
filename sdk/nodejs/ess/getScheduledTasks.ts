@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", {
         "ids": args.ids,
@@ -110,7 +109,15 @@ export interface GetScheduledTasksResult {
  * ```
  */
 export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
-    return pulumi.output(args).apply((a: any) => getScheduledTasks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ess/getScheduledTasks:getScheduledTasks", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "scheduledAction": args.scheduledAction,
+        "scheduledTaskId": args.scheduledTaskId,
+    }, opts);
 }
 
 /**

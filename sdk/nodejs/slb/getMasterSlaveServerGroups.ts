@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.54.0+
  */
 export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSlaveServerGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
         "ids": args.ids,
@@ -74,7 +73,13 @@ export interface GetMasterSlaveServerGroupsResult {
  * > **NOTE:** Available in 1.54.0+
  */
 export function getMasterSlaveServerGroupsOutput(args: GetMasterSlaveServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMasterSlaveServerGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getMasterSlaveServerGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
+        "ids": args.ids,
+        "loadBalancerId": args.loadBalancerId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

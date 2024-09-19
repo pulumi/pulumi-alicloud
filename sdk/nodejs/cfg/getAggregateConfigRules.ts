@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateConfigRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", {
         "aggregateConfigRuleName": args.aggregateConfigRuleName,
@@ -139,7 +138,17 @@ export interface GetAggregateConfigRulesResult {
  * ```
  */
 export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateConfigRulesResult> {
-    return pulumi.output(args).apply((a: any) => getAggregateConfigRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", {
+        "aggregateConfigRuleName": args.aggregateConfigRuleName,
+        "aggregatorId": args.aggregatorId,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "riskLevel": args.riskLevel,
+        "status": args.status,
+    }, opts);
 }
 
 /**

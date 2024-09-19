@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecp/getInstanceTypes:getInstanceTypes", {
         "outputFile": args.outputFile,
@@ -71,7 +70,11 @@ export interface GetInstanceTypesResult {
  * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecp/getInstanceTypes:getInstanceTypes", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

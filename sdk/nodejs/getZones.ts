@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
         "availableDiskCategory": args.availableDiskCategory,
@@ -149,7 +148,21 @@ export interface GetZonesResult {
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply((a: any) => getZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getZones:getZones", {
+        "availableDiskCategory": args.availableDiskCategory,
+        "availableInstanceType": args.availableInstanceType,
+        "availableResourceCreation": args.availableResourceCreation,
+        "availableSlbAddressIpVersion": args.availableSlbAddressIpVersion,
+        "availableSlbAddressType": args.availableSlbAddressType,
+        "enableDetails": args.enableDetails,
+        "instanceChargeType": args.instanceChargeType,
+        "multi": args.multi,
+        "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "spotStrategy": args.spotStrategy,
+    }, opts);
 }
 
 /**

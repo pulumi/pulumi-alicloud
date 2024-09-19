@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getImageCaches(args?: GetImageCachesArgs, opts?: pulumi.InvokeOptions): Promise<GetImageCachesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getImageCaches:getImageCaches", {
         "ids": args.ids,
@@ -126,7 +125,17 @@ export interface GetImageCachesResult {
  * ```
  */
 export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageCachesResult> {
-    return pulumi.output(args).apply((a: any) => getImageCaches(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eci/getImageCaches:getImageCaches", {
+        "ids": args.ids,
+        "image": args.image,
+        "imageCacheName": args.imageCacheName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "snapshotId": args.snapshotId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsSnapshotGroups(args?: GetEcsSnapshotGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", {
         "ids": args.ids,
@@ -136,7 +135,17 @@ export interface GetEcsSnapshotGroupsResult {
  * ```
  */
 export function getEcsSnapshotGroupsOutput(args?: GetEcsSnapshotGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsSnapshotGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "snapshotGroupName": args.snapshotGroupName,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

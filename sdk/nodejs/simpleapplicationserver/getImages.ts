@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getImages:getImages", {
         "ids": args.ids,
@@ -57,7 +56,15 @@ export interface GetImagesResult {
  * > **NOTE:** Available in v1.135.0+.
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply((a: any) => getImages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getImages:getImages", {
+        "ids": args.ids,
+        "imageType": args.imageType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "platform": args.platform,
+    }, opts);
 }
 
 /**

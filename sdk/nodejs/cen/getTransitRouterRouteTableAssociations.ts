@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getTransitRouterRouteTableAssociations(args?: GetTransitRouterRouteTableAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTableAssociationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", {
         "ids": args.ids,
@@ -126,7 +125,17 @@ export interface GetTransitRouterRouteTableAssociationsResult {
  * ```
  */
 export function getTransitRouterRouteTableAssociationsOutput(args?: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterRouteTableAssociations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
+        "transitRouterAttachmentResourceId": args.transitRouterAttachmentResourceId,
+        "transitRouterAttachmentResourceType": args.transitRouterAttachmentResourceType,
+        "transitRouterRouteTableId": args.transitRouterRouteTableId,
+    }, opts);
 }
 
 /**

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGrantRuleToCens(args: GetGrantRuleToCensArgs, opts?: pulumi.InvokeOptions): Promise<GetGrantRuleToCensResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", {
         "ids": args.ids,
@@ -97,7 +96,14 @@ export interface GetGrantRuleToCensResult {
  * ```
  */
 export function getGrantRuleToCensOutput(args: GetGrantRuleToCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrantRuleToCensResult> {
-    return pulumi.output(args).apply((a: any) => getGrantRuleToCens(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

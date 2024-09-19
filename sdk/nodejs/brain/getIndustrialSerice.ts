@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialSericeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", {
         "enable": args.enable,
@@ -80,7 +79,11 @@ export interface GetIndustrialSericeResult {
  * ```
  */
 export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
-    return pulumi.output(args).apply((a: any) => getIndustrialSerice(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:brain/getIndustrialSerice:getIndustrialSerice", {
+        "enable": args.enable,
+    }, opts);
 }
 
 /**

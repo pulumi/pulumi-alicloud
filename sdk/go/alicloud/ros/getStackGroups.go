@@ -85,14 +85,20 @@ type GetStackGroupsResult struct {
 
 func GetStackGroupsOutput(ctx *pulumi.Context, args GetStackGroupsOutputArgs, opts ...pulumi.InvokeOption) GetStackGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetStackGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetStackGroupsResultOutput, error) {
 			args := v.(GetStackGroupsArgs)
-			r, err := GetStackGroups(ctx, &args, opts...)
-			var s GetStackGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetStackGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ros/getStackGroups:getStackGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetStackGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetStackGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetStackGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetStackGroupsResultOutput)
 }
 

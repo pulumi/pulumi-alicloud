@@ -78,14 +78,20 @@ type GetAppsResult struct {
 
 func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.InvokeOption) GetAppsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAppsResult, error) {
+		ApplyT(func(v interface{}) (GetAppsResultOutput, error) {
 			args := v.(GetAppsArgs)
-			r, err := GetApps(ctx, &args, opts...)
-			var s GetAppsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAppsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:apigateway/getApps:getApps", args, &rv, "", opts...)
+			if err != nil {
+				return GetAppsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAppsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAppsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAppsResultOutput)
 }
 

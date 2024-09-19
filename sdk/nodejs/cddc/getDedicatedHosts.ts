@@ -66,7 +66,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDedicatedHosts(args: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", {
         "allocationStatus": args.allocationStatus,
@@ -209,7 +208,19 @@ export interface GetDedicatedHostsResult {
  * ```
  */
 export function getDedicatedHostsOutput(args: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
-    return pulumi.output(args).apply((a: any) => getDedicatedHosts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", {
+        "allocationStatus": args.allocationStatus,
+        "dedicatedHostGroupId": args.dedicatedHostGroupId,
+        "enableDetails": args.enableDetails,
+        "hostType": args.hostType,
+        "ids": args.ids,
+        "orderId": args.orderId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "tags": args.tags,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

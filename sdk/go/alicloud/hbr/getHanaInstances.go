@@ -92,14 +92,20 @@ type GetHanaInstancesResult struct {
 
 func GetHanaInstancesOutput(ctx *pulumi.Context, args GetHanaInstancesOutputArgs, opts ...pulumi.InvokeOption) GetHanaInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHanaInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetHanaInstancesResultOutput, error) {
 			args := v.(GetHanaInstancesArgs)
-			r, err := GetHanaInstances(ctx, &args, opts...)
-			var s GetHanaInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHanaInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getHanaInstances:getHanaInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetHanaInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHanaInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHanaInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetHanaInstancesResultOutput)
 }
 

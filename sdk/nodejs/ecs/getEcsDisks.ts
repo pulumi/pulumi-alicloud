@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDisks:getEcsDisks", {
         "additionalAttributes": args.additionalAttributes,
@@ -248,7 +247,39 @@ export interface GetEcsDisksResult {
  * ```
  */
 export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDisksResult> {
-    return pulumi.output(args).apply((a: any) => getEcsDisks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsDisks:getEcsDisks", {
+        "additionalAttributes": args.additionalAttributes,
+        "autoSnapshotPolicyId": args.autoSnapshotPolicyId,
+        "availabilityZone": args.availabilityZone,
+        "category": args.category,
+        "deleteAutoSnapshot": args.deleteAutoSnapshot,
+        "deleteWithInstance": args.deleteWithInstance,
+        "diskName": args.diskName,
+        "diskType": args.diskType,
+        "dryRun": args.dryRun,
+        "enableAutoSnapshot": args.enableAutoSnapshot,
+        "enableAutomatedSnapshotPolicy": args.enableAutomatedSnapshotPolicy,
+        "enableShared": args.enableShared,
+        "encrypted": args.encrypted,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "kmsKeyId": args.kmsKeyId,
+        "nameRegex": args.nameRegex,
+        "operationLocks": args.operationLocks,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "paymentType": args.paymentType,
+        "portable": args.portable,
+        "resourceGroupId": args.resourceGroupId,
+        "snapshotId": args.snapshotId,
+        "status": args.status,
+        "tags": args.tags,
+        "type": args.type,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

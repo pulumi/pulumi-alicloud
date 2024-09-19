@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getElasticityAssurances(args?: GetElasticityAssurancesArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticityAssurancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", {
         "ids": args.ids,
@@ -116,7 +115,16 @@ export interface GetElasticityAssurancesResult {
  * ```
  */
 export function getElasticityAssurancesOutput(args?: GetElasticityAssurancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticityAssurancesResult> {
-    return pulumi.output(args).apply((a: any) => getElasticityAssurances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "privatePoolOptionsIds": args.privatePoolOptionsIds,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

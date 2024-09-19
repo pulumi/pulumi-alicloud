@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getCallerIdentity:getCallerIdentity", {
     }, opts);
@@ -63,5 +62,7 @@ export interface GetCallerIdentityResult {
  * ```
  */
 export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
-    return pulumi.output(getCallerIdentity(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getCallerIdentity:getCallerIdentity", {
+    }, opts);
 }

@@ -43,14 +43,20 @@ type GetRdsParameterGroupsResult struct {
 
 func GetRdsParameterGroupsOutput(ctx *pulumi.Context, args GetRdsParameterGroupsOutputArgs, opts ...pulumi.InvokeOption) GetRdsParameterGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRdsParameterGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetRdsParameterGroupsResultOutput, error) {
 			args := v.(GetRdsParameterGroupsArgs)
-			r, err := GetRdsParameterGroups(ctx, &args, opts...)
-			var s GetRdsParameterGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRdsParameterGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetRdsParameterGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRdsParameterGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRdsParameterGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetRdsParameterGroupsResultOutput)
 }
 

@@ -106,14 +106,20 @@ type GetPolicyGroupsResult struct {
 
 func GetPolicyGroupsOutput(ctx *pulumi.Context, args GetPolicyGroupsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPolicyGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetPolicyGroupsResultOutput, error) {
 			args := v.(GetPolicyGroupsArgs)
-			r, err := GetPolicyGroups(ctx, &args, opts...)
-			var s GetPolicyGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPolicyGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getPolicyGroups:getPolicyGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetPolicyGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPolicyGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPolicyGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPolicyGroupsResultOutput)
 }
 

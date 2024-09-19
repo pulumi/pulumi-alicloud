@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getFaceConfigs(args?: GetFaceConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetFaceConfigsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", {
         "ids": args.ids,
@@ -98,7 +97,13 @@ export interface GetFaceConfigsResult {
  * ```
  */
 export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFaceConfigsResult> {
-    return pulumi.output(args).apply((a: any) => getFaceConfigs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

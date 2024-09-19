@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getResolutionLines:getResolutionLines", {
         "domainName": args.domainName,
@@ -115,7 +114,17 @@ export interface GetResolutionLinesResult {
  * ```
  */
 export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
-    return pulumi.output(args).apply((a: any) => getResolutionLines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getResolutionLines:getResolutionLines", {
+        "domainName": args.domainName,
+        "lang": args.lang,
+        "lineCodes": args.lineCodes,
+        "lineDisplayNames": args.lineDisplayNames,
+        "lineNames": args.lineNames,
+        "outputFile": args.outputFile,
+        "userClientIp": args.userClientIp,
+    }, opts);
 }
 
 /**

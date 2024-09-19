@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getFolders:getFolders", {
         "enableDetails": args.enableDetails,
@@ -118,7 +117,16 @@ export interface GetFoldersResult {
  * ```
  */
 export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getFolders:getFolders", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "parentFolderId": args.parentFolderId,
+        "queryKeyword": args.queryKeyword,
+    }, opts);
 }
 
 /**

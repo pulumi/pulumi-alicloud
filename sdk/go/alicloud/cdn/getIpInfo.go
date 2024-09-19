@@ -72,14 +72,20 @@ type GetIpInfoResult struct {
 
 func GetIpInfoOutput(ctx *pulumi.Context, args GetIpInfoOutputArgs, opts ...pulumi.InvokeOption) GetIpInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpInfoResult, error) {
+		ApplyT(func(v interface{}) (GetIpInfoResultOutput, error) {
 			args := v.(GetIpInfoArgs)
-			r, err := GetIpInfo(ctx, &args, opts...)
-			var s GetIpInfoResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpInfoResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cdn/getIpInfo:getIpInfo", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpInfoResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpInfoResultOutput)
 }
 

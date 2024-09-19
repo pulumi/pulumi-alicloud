@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getHandshakes(args?: GetHandshakesArgs, opts?: pulumi.InvokeOptions): Promise<GetHandshakesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getHandshakes:getHandshakes", {
         "enableDetails": args.enableDetails,
@@ -94,7 +93,14 @@ export interface GetHandshakesResult {
  * ```
  */
 export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHandshakesResult> {
-    return pulumi.output(args).apply((a: any) => getHandshakes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getHandshakes:getHandshakes", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

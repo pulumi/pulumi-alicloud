@@ -83,14 +83,20 @@ type GetAdditionalCertificatesResult struct {
 
 func GetAdditionalCertificatesOutput(ctx *pulumi.Context, args GetAdditionalCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetAdditionalCertificatesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAdditionalCertificatesResult, error) {
+		ApplyT(func(v interface{}) (GetAdditionalCertificatesResultOutput, error) {
 			args := v.(GetAdditionalCertificatesArgs)
-			r, err := GetAdditionalCertificates(ctx, &args, opts...)
-			var s GetAdditionalCertificatesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAdditionalCertificatesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args, &rv, "", opts...)
+			if err != nil {
+				return GetAdditionalCertificatesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAdditionalCertificatesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAdditionalCertificatesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAdditionalCertificatesResultOutput)
 }
 

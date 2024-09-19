@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getConfigurationRecorders(args?: GetConfigurationRecordersArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationRecordersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", {
         "outputFile": args.outputFile,
@@ -74,7 +73,11 @@ export interface GetConfigurationRecordersResult {
  * ```
  */
 export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationRecordersResult> {
-    return pulumi.output(args).apply((a: any) => getConfigurationRecorders(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

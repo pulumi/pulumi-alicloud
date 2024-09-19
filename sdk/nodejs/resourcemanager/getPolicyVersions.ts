@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", {
         "enableDetails": args.enableDetails,
@@ -102,7 +101,14 @@ export interface GetPolicyVersionsResult {
  * ```
  */
 export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyVersions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "policyName": args.policyName,
+        "policyType": args.policyType,
+    }, opts);
 }
 
 /**

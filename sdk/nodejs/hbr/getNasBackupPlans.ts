@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetNasBackupPlansResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", {
         "fileSystemId": args.fileSystemId,
@@ -100,7 +99,15 @@ export interface GetNasBackupPlansResult {
  * ```
  */
 export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasBackupPlansResult> {
-    return pulumi.output(args).apply((a: any) => getNasBackupPlans(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "vaultId": args.vaultId,
+    }, opts);
 }
 
 /**

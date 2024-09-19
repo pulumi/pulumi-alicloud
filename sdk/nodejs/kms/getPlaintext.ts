@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getPlaintext:getPlaintext", {
         "ciphertextBlob": args.ciphertextBlob,
@@ -93,7 +92,11 @@ export interface GetPlaintextResult {
  * ```
  */
 export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
-    return pulumi.output(args).apply((a: any) => getPlaintext(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getPlaintext:getPlaintext", {
+        "ciphertextBlob": args.ciphertextBlob,
+        "encryptionContext": args.encryptionContext,
+    }, opts);
 }
 
 /**

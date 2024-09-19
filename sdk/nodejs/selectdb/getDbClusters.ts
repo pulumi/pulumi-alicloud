@@ -55,7 +55,6 @@ import * as utilities from "../utilities";
  */
 export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:selectdb/getDbClusters:getDbClusters", {
         "ids": args.ids,
@@ -140,7 +139,12 @@ export interface GetDbClustersResult {
  * ```
  */
 export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
-    return pulumi.output(args).apply((a: any) => getDbClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:selectdb/getDbClusters:getDbClusters", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

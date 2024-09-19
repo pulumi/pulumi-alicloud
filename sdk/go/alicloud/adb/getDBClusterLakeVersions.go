@@ -87,14 +87,20 @@ type GetDBClusterLakeVersionsResult struct {
 
 func GetDBClusterLakeVersionsOutput(ctx *pulumi.Context, args GetDBClusterLakeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetDBClusterLakeVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDBClusterLakeVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetDBClusterLakeVersionsResultOutput, error) {
 			args := v.(GetDBClusterLakeVersionsArgs)
-			r, err := GetDBClusterLakeVersions(ctx, &args, opts...)
-			var s GetDBClusterLakeVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDBClusterLakeVersionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetDBClusterLakeVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDBClusterLakeVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDBClusterLakeVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDBClusterLakeVersionsResultOutput)
 }
 

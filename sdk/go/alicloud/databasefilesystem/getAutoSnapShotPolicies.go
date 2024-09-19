@@ -81,14 +81,20 @@ type GetAutoSnapShotPoliciesResult struct {
 
 func GetAutoSnapShotPoliciesOutput(ctx *pulumi.Context, args GetAutoSnapShotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAutoSnapShotPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAutoSnapShotPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetAutoSnapShotPoliciesResultOutput, error) {
 			args := v.(GetAutoSnapShotPoliciesArgs)
-			r, err := GetAutoSnapShotPolicies(ctx, &args, opts...)
-			var s GetAutoSnapShotPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAutoSnapShotPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetAutoSnapShotPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAutoSnapShotPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAutoSnapShotPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAutoSnapShotPoliciesResultOutput)
 }
 

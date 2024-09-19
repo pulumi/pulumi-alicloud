@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslAclsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getSaslAcls:getSaslAcls", {
         "aclResourceName": args.aclResourceName,
@@ -114,7 +113,14 @@ export interface GetSaslAclsResult {
  * ```
  */
 export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslAclsResult> {
-    return pulumi.output(args).apply((a: any) => getSaslAcls(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getSaslAcls:getSaslAcls", {
+        "aclResourceName": args.aclResourceName,
+        "aclResourceType": args.aclResourceType,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "username": args.username,
+    }, opts);
 }
 
 /**

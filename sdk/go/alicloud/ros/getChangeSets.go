@@ -92,14 +92,20 @@ type GetChangeSetsResult struct {
 
 func GetChangeSetsOutput(ctx *pulumi.Context, args GetChangeSetsOutputArgs, opts ...pulumi.InvokeOption) GetChangeSetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetChangeSetsResult, error) {
+		ApplyT(func(v interface{}) (GetChangeSetsResultOutput, error) {
 			args := v.(GetChangeSetsArgs)
-			r, err := GetChangeSets(ctx, &args, opts...)
-			var s GetChangeSetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetChangeSetsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ros/getChangeSets:getChangeSets", args, &rv, "", opts...)
+			if err != nil {
+				return GetChangeSetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetChangeSetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetChangeSetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetChangeSetsResultOutput)
 }
 

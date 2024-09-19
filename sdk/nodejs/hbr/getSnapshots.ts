@@ -52,7 +52,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSnapshots(args: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getSnapshots:getSnapshots", {
         "bucket": args.bucket,
@@ -192,7 +191,22 @@ export interface GetSnapshotsResult {
  * ```
  */
 export function getSnapshotsOutput(args: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getSnapshots:getSnapshots", {
+        "bucket": args.bucket,
+        "completeTime": args.completeTime,
+        "completeTimeChecker": args.completeTimeChecker,
+        "createTime": args.createTime,
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "limit": args.limit,
+        "outputFile": args.outputFile,
+        "query": args.query,
+        "sourceType": args.sourceType,
+        "status": args.status,
+        "vaultId": args.vaultId,
+    }, opts);
 }
 
 /**

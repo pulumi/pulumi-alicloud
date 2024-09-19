@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccessAssignments(args: GetAccessAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessAssignmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", {
         "accessConfigurationId": args.accessConfigurationId,
@@ -122,7 +121,16 @@ export interface GetAccessAssignmentsResult {
  * ```
  */
 export function getAccessAssignmentsOutput(args: GetAccessAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessAssignmentsResult> {
-    return pulumi.output(args).apply((a: any) => getAccessAssignments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", {
+        "accessConfigurationId": args.accessConfigurationId,
+        "directoryId": args.directoryId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "principalType": args.principalType,
+        "targetId": args.targetId,
+        "targetType": args.targetType,
+    }, opts);
 }
 
 /**

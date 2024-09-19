@@ -147,7 +147,6 @@ import * as utilities from "../utilities";
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:emr/getClusters:getClusters", {
         "clusterName": args.clusterName,
@@ -401,7 +400,26 @@ export interface GetClustersResult {
  * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:emr/getClusters:getClusters", {
+        "clusterName": args.clusterName,
+        "clusterTypeLists": args.clusterTypeLists,
+        "createType": args.createType,
+        "defaultStatus": args.defaultStatus,
+        "depositType": args.depositType,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "isDesc": args.isDesc,
+        "machineType": args.machineType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "statusLists": args.statusLists,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

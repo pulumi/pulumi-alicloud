@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHostAccounts(args: GetHostAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostAccountsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getHostAccounts:getHostAccounts", {
         "hostAccountName": args.hostAccountName,
@@ -133,7 +132,16 @@ export interface GetHostAccountsResult {
  * ```
  */
 export function getHostAccountsOutput(args: GetHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getHostAccounts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostAccounts:getHostAccounts", {
+        "hostAccountName": args.hostAccountName,
+        "hostId": args.hostId,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "protocolName": args.protocolName,
+    }, opts);
 }
 
 /**

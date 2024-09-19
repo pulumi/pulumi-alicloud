@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getOssBackupPlans(args?: GetOssBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetOssBackupPlansResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", {
         "bucket": args.bucket,
@@ -100,7 +99,15 @@ export interface GetOssBackupPlansResult {
  * ```
  */
 export function getOssBackupPlansOutput(args?: GetOssBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOssBackupPlansResult> {
-    return pulumi.output(args).apply((a: any) => getOssBackupPlans(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", {
+        "bucket": args.bucket,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "vaultId": args.vaultId,
+    }, opts);
 }
 
 /**

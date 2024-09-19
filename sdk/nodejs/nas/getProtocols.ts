@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getProtocols:getProtocols", {
         "outputFile": args.outputFile,
@@ -87,7 +86,12 @@ export interface GetProtocolsResult {
  * ```
  */
 export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtocolsResult> {
-    return pulumi.output(args).apply((a: any) => getProtocols(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getProtocols:getProtocols", {
+        "outputFile": args.outputFile,
+        "type": args.type,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

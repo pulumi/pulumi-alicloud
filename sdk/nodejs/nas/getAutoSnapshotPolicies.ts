@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapshotPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getAutoSnapshotPolicies:getAutoSnapshotPolicies", {
         "ids": args.ids,
@@ -99,7 +98,14 @@ export interface GetAutoSnapshotPoliciesResult {
  * ```
  */
 export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getAutoSnapshotPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getAutoSnapshotPolicies:getAutoSnapshotPolicies", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

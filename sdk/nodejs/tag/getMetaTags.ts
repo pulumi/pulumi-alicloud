@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getMetaTags(args?: GetMetaTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMetaTagsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:tag/getMetaTags:getMetaTags", {
         "keyName": args.keyName,
@@ -81,7 +80,12 @@ export interface GetMetaTagsResult {
  * ```
  */
 export function getMetaTagsOutput(args?: GetMetaTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetaTagsResult> {
-    return pulumi.output(args).apply((a: any) => getMetaTags(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:tag/getMetaTags:getMetaTags", {
+        "keyName": args.keyName,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

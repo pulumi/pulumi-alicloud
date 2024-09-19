@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getQuotaAlarms(args?: GetQuotaAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaAlarmsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", {
         "enableDetails": args.enableDetails,
@@ -120,7 +119,18 @@ export interface GetQuotaAlarmsResult {
  * ```
  */
 export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
-    return pulumi.output(args).apply((a: any) => getQuotaAlarms(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "quotaActionCode": args.quotaActionCode,
+        "quotaAlarmName": args.quotaAlarmName,
+        "quotaDimensions": args.quotaDimensions,
+    }, opts);
 }
 
 /**

@@ -59,7 +59,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNatIps(args: GetNatIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNatIps:getNatIps", {
         "ids": args.ids,
@@ -180,7 +179,17 @@ export interface GetNatIpsResult {
  * ```
  */
 export function getNatIpsOutput(args: GetNatIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpsResult> {
-    return pulumi.output(args).apply((a: any) => getNatIps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getNatIps:getNatIps", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "natGatewayId": args.natGatewayId,
+        "natIpCidr": args.natIpCidr,
+        "natIpIds": args.natIpIds,
+        "natIpNames": args.natIpNames,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

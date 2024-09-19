@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:scdn/getDomains:getDomains", {
         "enableDetails": args.enableDetails,
@@ -106,7 +105,16 @@ export interface GetDomainsResult {
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:scdn/getDomains:getDomains", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

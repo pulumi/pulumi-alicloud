@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:emrv2/getClusters:getClusters", {
         "clusterName": args.clusterName,
@@ -130,7 +129,21 @@ export interface GetClustersResult {
  * > **NOTE:** Available since v1.199.0.
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:emrv2/getClusters:getClusters", {
+        "clusterName": args.clusterName,
+        "clusterStates": args.clusterStates,
+        "clusterTypes": args.clusterTypes,
+        "ids": args.ids,
+        "maxResults": args.maxResults,
+        "nameRegex": args.nameRegex,
+        "nextToken": args.nextToken,
+        "outputFile": args.outputFile,
+        "paymentTypes": args.paymentTypes,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

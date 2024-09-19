@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getHavips(args?: GetHavipsArgs, opts?: pulumi.InvokeOptions): Promise<GetHavipsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getHavips:getHavips", {
         "ids": args.ids,
@@ -96,7 +95,14 @@ export interface GetHavipsResult {
  * ```
  */
 export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHavipsResult> {
-    return pulumi.output(args).apply((a: any) => getHavips(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getHavips:getHavips", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

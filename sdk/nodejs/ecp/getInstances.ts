@@ -54,7 +54,6 @@ import * as utilities from "../utilities";
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecp/getInstances:getInstances", {
         "enableDetails": args.enableDetails,
@@ -194,7 +193,22 @@ export interface GetInstancesResult {
  * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecp/getInstances:getInstances", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "imageId": args.imageId,
+        "instanceName": args.instanceName,
+        "instanceType": args.instanceType,
+        "keyPairName": args.keyPairName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resolution": args.resolution,
+        "status": args.status,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

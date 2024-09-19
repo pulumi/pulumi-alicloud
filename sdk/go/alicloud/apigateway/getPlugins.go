@@ -94,14 +94,20 @@ type GetPluginsResult struct {
 
 func GetPluginsOutput(ctx *pulumi.Context, args GetPluginsOutputArgs, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPluginsResult, error) {
+		ApplyT(func(v interface{}) (GetPluginsResultOutput, error) {
 			args := v.(GetPluginsArgs)
-			r, err := GetPlugins(ctx, &args, opts...)
-			var s GetPluginsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPluginsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:apigateway/getPlugins:getPlugins", args, &rv, "", opts...)
+			if err != nil {
+				return GetPluginsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPluginsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPluginsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPluginsResultOutput)
 }
 

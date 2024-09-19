@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseNamespacesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", {
         "ids": args.ids,
@@ -107,7 +106,13 @@ export interface GetRegistryEnterpriseNamespacesResult {
  * ```
  */
 export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseNamespaces(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

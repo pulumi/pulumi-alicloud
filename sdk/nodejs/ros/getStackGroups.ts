@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getStackGroups(args?: GetStackGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getStackGroups:getStackGroups", {
         "enableDetails": args.enableDetails,
@@ -102,7 +101,15 @@ export interface GetStackGroupsResult {
  * ```
  */
 export function getStackGroupsOutput(args?: GetStackGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getStackGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ros/getStackGroups:getStackGroups", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

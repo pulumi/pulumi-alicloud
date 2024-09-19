@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
         "dryRun": args.dryRun,
@@ -160,7 +159,25 @@ export interface GetNatGatewaysResult {
  * > **NOTE:** Available in 1.37.0+.
  */
 export function getNatGatewaysOutput(args?: GetNatGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatGatewaysResult> {
-    return pulumi.output(args).apply((a: any) => getNatGateways(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getNatGateways:getNatGateways", {
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "natGatewayName": args.natGatewayName,
+        "natType": args.natType,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "specification": args.specification,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

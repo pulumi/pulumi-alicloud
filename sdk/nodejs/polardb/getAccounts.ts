@@ -65,7 +65,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,
@@ -165,7 +164,11 @@ export interface GetAccountsResult {
  * ```
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
-    return pulumi.output(args).apply((a: any) => getAccounts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:polardb/getAccounts:getAccounts", {
+        "dbClusterId": args.dbClusterId,
+        "nameRegex": args.nameRegex,
+    }, opts);
 }
 
 /**

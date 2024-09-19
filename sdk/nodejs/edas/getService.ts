@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:edas/getService:getService", {
         "enable": args.enable,
@@ -80,7 +79,11 @@ export interface GetServiceResult {
  * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply((a: any) => getService(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:edas/getService:getService", {
+        "enable": args.enable,
+    }, opts);
 }
 
 /**

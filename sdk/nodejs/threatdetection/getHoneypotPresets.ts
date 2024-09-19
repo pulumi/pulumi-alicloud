@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getHoneypotPresets(args?: GetHoneypotPresetsArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotPresetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", {
         "currentPage": args.currentPage,
@@ -137,7 +136,21 @@ export interface GetHoneypotPresetsResult {
  * ```
  */
 export function getHoneypotPresetsOutput(args?: GetHoneypotPresetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotPresetsResult> {
-    return pulumi.output(args).apply((a: any) => getHoneypotPresets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", {
+        "currentPage": args.currentPage,
+        "enableDetails": args.enableDetails,
+        "honeypotImageName": args.honeypotImageName,
+        "ids": args.ids,
+        "lang": args.lang,
+        "nodeId": args.nodeId,
+        "nodeName": args.nodeName,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "presetName": args.presetName,
+    }, opts);
 }
 
 /**

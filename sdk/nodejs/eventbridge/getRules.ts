@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eventbridge/getRules:getRules", {
         "eventBusName": args.eventBusName,
@@ -109,7 +108,15 @@ export interface GetRulesResult {
  * ```
  */
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eventbridge/getRules:getRules", {
+        "eventBusName": args.eventBusName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "ruleNamePrefix": args.ruleNamePrefix,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -79,14 +79,20 @@ type GetScalingGroupsResult struct {
 
 func GetScalingGroupsOutput(ctx *pulumi.Context, args GetScalingGroupsOutputArgs, opts ...pulumi.InvokeOption) GetScalingGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetScalingGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetScalingGroupsResultOutput, error) {
 			args := v.(GetScalingGroupsArgs)
-			r, err := GetScalingGroups(ctx, &args, opts...)
-			var s GetScalingGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetScalingGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ess/getScalingGroups:getScalingGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetScalingGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetScalingGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetScalingGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetScalingGroupsResultOutput)
 }
 

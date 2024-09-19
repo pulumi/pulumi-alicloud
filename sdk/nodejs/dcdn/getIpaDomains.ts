@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  */
 export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpaDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getIpaDomains:getIpaDomains", {
         "domainName": args.domainName,
@@ -116,7 +115,15 @@ export interface GetIpaDomainsResult {
  * ```
  */
 export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpaDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getIpaDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dcdn/getIpaDomains:getIpaDomains", {
+        "domainName": args.domainName,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

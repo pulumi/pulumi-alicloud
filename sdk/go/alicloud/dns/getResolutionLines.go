@@ -90,14 +90,20 @@ type GetResolutionLinesResult struct {
 
 func GetResolutionLinesOutput(ctx *pulumi.Context, args GetResolutionLinesOutputArgs, opts ...pulumi.InvokeOption) GetResolutionLinesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetResolutionLinesResult, error) {
+		ApplyT(func(v interface{}) (GetResolutionLinesResultOutput, error) {
 			args := v.(GetResolutionLinesArgs)
-			r, err := GetResolutionLines(ctx, &args, opts...)
-			var s GetResolutionLinesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetResolutionLinesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dns/getResolutionLines:getResolutionLines", args, &rv, "", opts...)
+			if err != nil {
+				return GetResolutionLinesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetResolutionLinesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetResolutionLinesResultOutput), nil
+			}
+			return output, nil
 		}).(GetResolutionLinesResultOutput)
 }
 

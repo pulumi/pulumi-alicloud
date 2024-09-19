@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccessConfigurations(args: GetAccessConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessConfigurationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", {
         "directoryId": args.directoryId,
@@ -121,7 +120,14 @@ export interface GetAccessConfigurationsResult {
  * ```
  */
 export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConfigurationsResult> {
-    return pulumi.output(args).apply((a: any) => getAccessConfigurations(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", {
+        "directoryId": args.directoryId,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

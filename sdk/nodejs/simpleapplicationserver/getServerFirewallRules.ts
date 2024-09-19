@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServerFirewallRules(args: GetServerFirewallRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerFirewallRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", {
         "ids": args.ids,
@@ -94,7 +93,12 @@ export interface GetServerFirewallRulesResult {
  * ```
  */
 export function getServerFirewallRulesOutput(args: GetServerFirewallRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerFirewallRulesResult> {
-    return pulumi.output(args).apply((a: any) => getServerFirewallRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

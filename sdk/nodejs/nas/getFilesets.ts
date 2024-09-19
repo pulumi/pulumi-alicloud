@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFilesets(args: GetFilesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetFilesetsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getFilesets:getFilesets", {
         "fileSystemId": args.fileSystemId,
@@ -100,7 +99,13 @@ export interface GetFilesetsResult {
  * ```
  */
 export function getFilesetsOutput(args: GetFilesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFilesetsResult> {
-    return pulumi.output(args).apply((a: any) => getFilesets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getFilesets:getFilesets", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

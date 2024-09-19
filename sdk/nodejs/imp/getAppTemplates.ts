@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getAppTemplates(args?: GetAppTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:imp/getAppTemplates:getAppTemplates", {
         "ids": args.ids,
@@ -98,7 +97,14 @@ export interface GetAppTemplatesResult {
  * ```
  */
 export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getAppTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:imp/getAppTemplates:getAppTemplates", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeClassesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getNodeClasses:getNodeClasses", {
         "category": args.category,
@@ -127,7 +126,17 @@ export interface GetNodeClassesResult {
  * ```
  */
 export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeClassesResult> {
-    return pulumi.output(args).apply((a: any) => getNodeClasses(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:polardb/getNodeClasses:getNodeClasses", {
+        "category": args.category,
+        "dbNodeClass": args.dbNodeClass,
+        "dbType": args.dbType,
+        "dbVersion": args.dbVersion,
+        "outputFile": args.outputFile,
+        "payType": args.payType,
+        "regionId": args.regionId,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

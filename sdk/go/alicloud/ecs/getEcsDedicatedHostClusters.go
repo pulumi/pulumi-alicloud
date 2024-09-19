@@ -120,14 +120,20 @@ type GetEcsDedicatedHostClustersResult struct {
 
 func GetEcsDedicatedHostClustersOutput(ctx *pulumi.Context, args GetEcsDedicatedHostClustersOutputArgs, opts ...pulumi.InvokeOption) GetEcsDedicatedHostClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsDedicatedHostClustersResult, error) {
+		ApplyT(func(v interface{}) (GetEcsDedicatedHostClustersResultOutput, error) {
 			args := v.(GetEcsDedicatedHostClustersArgs)
-			r, err := GetEcsDedicatedHostClusters(ctx, &args, opts...)
-			var s GetEcsDedicatedHostClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsDedicatedHostClustersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsDedicatedHostClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsDedicatedHostClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsDedicatedHostClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsDedicatedHostClustersResultOutput)
 }
 

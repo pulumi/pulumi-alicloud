@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouterCidrs(args: GetTransitRouterCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterCidrsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", {
         "ids": args.ids,
@@ -111,7 +110,14 @@ export interface GetTransitRouterCidrsResult {
  * ```
  */
 export function getTransitRouterCidrsOutput(args: GetTransitRouterCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterCidrsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterCidrs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "transitRouterCidrId": args.transitRouterCidrId,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

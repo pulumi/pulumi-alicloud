@@ -77,14 +77,20 @@ type GetHandshakesResult struct {
 
 func GetHandshakesOutput(ctx *pulumi.Context, args GetHandshakesOutputArgs, opts ...pulumi.InvokeOption) GetHandshakesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHandshakesResult, error) {
+		ApplyT(func(v interface{}) (GetHandshakesResultOutput, error) {
 			args := v.(GetHandshakesArgs)
-			r, err := GetHandshakes(ctx, &args, opts...)
-			var s GetHandshakesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHandshakesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getHandshakes:getHandshakes", args, &rv, "", opts...)
+			if err != nil {
+				return GetHandshakesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHandshakesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHandshakesResultOutput), nil
+			}
+			return output, nil
 		}).(GetHandshakesResultOutput)
 }
 

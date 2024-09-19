@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getQueues:getQueues", {
         "ids": args.ids,
@@ -121,7 +120,14 @@ export interface GetQueuesResult {
  * ```
  */
 export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
-    return pulumi.output(args).apply((a: any) => getQueues(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:amqp/getQueues:getQueues", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "virtualHostName": args.virtualHostName,
+    }, opts);
 }
 
 /**

@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getSecurityPolicies:getSecurityPolicies", {
         "ids": args.ids,
@@ -119,7 +118,18 @@ export interface GetSecurityPoliciesResult {
  * ```
  */
 export function getSecurityPoliciesOutput(args?: GetSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getSecurityPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getSecurityPolicies:getSecurityPolicies", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "securityPolicyIds": args.securityPolicyIds,
+        "securityPolicyName": args.securityPolicyName,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

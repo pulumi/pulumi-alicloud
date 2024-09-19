@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getIpv6InternetBandwidths(args?: GetIpv6InternetBandwidthsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6InternetBandwidthsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", {
         "ids": args.ids,
@@ -123,7 +122,15 @@ export interface GetIpv6InternetBandwidthsResult {
  * ```
  */
 export function getIpv6InternetBandwidthsOutput(args?: GetIpv6InternetBandwidthsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6InternetBandwidthsResult> {
-    return pulumi.output(args).apply((a: any) => getIpv6InternetBandwidths(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", {
+        "ids": args.ids,
+        "ipv6AddressId": args.ipv6AddressId,
+        "ipv6InternetBandwidthId": args.ipv6InternetBandwidthId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

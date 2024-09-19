@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionJobsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", {
         "enableDetails": args.enableDetails,
@@ -96,7 +95,16 @@ export interface GetSubscriptionJobsResult {
  * ```
  */
 export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionJobsResult> {
-    return pulumi.output(args).apply((a: any) => getSubscriptionJobs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

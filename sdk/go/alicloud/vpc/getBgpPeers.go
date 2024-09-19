@@ -105,14 +105,20 @@ type GetBgpPeersResult struct {
 
 func GetBgpPeersOutput(ctx *pulumi.Context, args GetBgpPeersOutputArgs, opts ...pulumi.InvokeOption) GetBgpPeersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBgpPeersResult, error) {
+		ApplyT(func(v interface{}) (GetBgpPeersResultOutput, error) {
 			args := v.(GetBgpPeersArgs)
-			r, err := GetBgpPeers(ctx, &args, opts...)
-			var s GetBgpPeersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBgpPeersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getBgpPeers:getBgpPeers", args, &rv, "", opts...)
+			if err != nil {
+				return GetBgpPeersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBgpPeersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBgpPeersResultOutput), nil
+			}
+			return output, nil
 		}).(GetBgpPeersResultOutput)
 }
 

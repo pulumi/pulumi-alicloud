@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:directmail/getTags:getTags", {
         "ids": args.ids,
@@ -96,7 +95,13 @@ export interface GetTagsResult {
  * ```
  */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
-    return pulumi.output(args).apply((a: any) => getTags(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:directmail/getTags:getTags", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

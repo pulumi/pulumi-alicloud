@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAggregateDeliveries(args: GetAggregateDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateDeliveriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", {
         "aggregatorId": args.aggregatorId,
@@ -104,7 +103,14 @@ export interface GetAggregateDeliveriesResult {
  * ```
  */
 export function getAggregateDeliveriesOutput(args: GetAggregateDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateDeliveriesResult> {
-    return pulumi.output(args).apply((a: any) => getAggregateDeliveries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", {
+        "aggregatorId": args.aggregatorId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

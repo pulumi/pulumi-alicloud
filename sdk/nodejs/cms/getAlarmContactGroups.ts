@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getAlarmContactGroups(args?: GetAlarmContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", {
         "ids": args.ids,
@@ -86,7 +85,13 @@ export interface GetAlarmContactGroupsResult {
  * ```
  */
 export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getAlarmContactGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

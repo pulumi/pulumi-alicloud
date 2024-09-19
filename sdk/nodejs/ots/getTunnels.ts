@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTunnels(args: GetTunnelsArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ots/getTunnels:getTunnels", {
         "ids": args.ids,
@@ -120,7 +119,14 @@ export interface GetTunnelsResult {
  * ```
  */
 export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelsResult> {
-    return pulumi.output(args).apply((a: any) => getTunnels(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ots/getTunnels:getTunnels", {
+        "ids": args.ids,
+        "instanceName": args.instanceName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tableName": args.tableName,
+    }, opts);
 }
 
 /**

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVpnAttachmentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", {
         "ids": args.ids,
@@ -119,7 +118,17 @@ export interface GetGatewayVpnAttachmentsResult {
  * ```
  */
 export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayVpnAttachments(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+        "vpnGatewayId": args.vpnGatewayId,
+    }, opts);
 }
 
 /**

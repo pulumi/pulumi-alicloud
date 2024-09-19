@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", {
         "chargeType": args.chargeType,
@@ -113,7 +112,18 @@ export interface GetInstanceTypesResult {
  * > **NOTE:** Available since v1.106.0.
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbase/getInstanceTypes:getInstanceTypes", {
+        "chargeType": args.chargeType,
+        "diskType": args.diskType,
+        "engine": args.engine,
+        "instanceType": args.instanceType,
+        "outputFile": args.outputFile,
+        "regionId": args.regionId,
+        "version": args.version,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

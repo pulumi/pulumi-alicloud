@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getUserTenants(args?: GetUserTenantsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserTenantsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getUserTenants:getUserTenants", {
         "ids": args.ids,
@@ -98,7 +97,13 @@ export interface GetUserTenantsResult {
  * ```
  */
 export function getUserTenantsOutput(args?: GetUserTenantsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserTenantsResult> {
-    return pulumi.output(args).apply((a: any) => getUserTenants(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dms/getUserTenants:getUserTenants", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

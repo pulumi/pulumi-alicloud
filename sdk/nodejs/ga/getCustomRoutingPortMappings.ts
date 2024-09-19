@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomRoutingPortMappings(args: GetCustomRoutingPortMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingPortMappingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", {
         "acceleratorId": args.acceleratorId,
@@ -119,7 +118,16 @@ export interface GetCustomRoutingPortMappingsResult {
  * ```
  */
 export function getCustomRoutingPortMappingsOutput(args: GetCustomRoutingPortMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingPortMappingsResult> {
-    return pulumi.output(args).apply((a: any) => getCustomRoutingPortMappings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", {
+        "acceleratorId": args.acceleratorId,
+        "endpointGroupId": args.endpointGroupId,
+        "listenerId": args.listenerId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

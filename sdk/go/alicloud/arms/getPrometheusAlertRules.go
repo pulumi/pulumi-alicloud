@@ -99,14 +99,20 @@ type GetPrometheusAlertRulesResult struct {
 
 func GetPrometheusAlertRulesOutput(ctx *pulumi.Context, args GetPrometheusAlertRulesOutputArgs, opts ...pulumi.InvokeOption) GetPrometheusAlertRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPrometheusAlertRulesResult, error) {
+		ApplyT(func(v interface{}) (GetPrometheusAlertRulesResultOutput, error) {
 			args := v.(GetPrometheusAlertRulesArgs)
-			r, err := GetPrometheusAlertRules(ctx, &args, opts...)
-			var s GetPrometheusAlertRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPrometheusAlertRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetPrometheusAlertRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPrometheusAlertRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPrometheusAlertRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetPrometheusAlertRulesResultOutput)
 }
 

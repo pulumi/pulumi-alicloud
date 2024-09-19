@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getInstanceAttachments:getInstanceAttachments", {
         "childInstanceRegionId": args.childInstanceRegionId,
@@ -113,7 +112,14 @@ export interface GetInstanceAttachmentsResult {
  * ```
  */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getInstanceAttachments:getInstanceAttachments", {
+        "childInstanceRegionId": args.childInstanceRegionId,
+        "childInstanceType": args.childInstanceType,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

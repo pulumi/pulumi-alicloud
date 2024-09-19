@@ -80,14 +80,20 @@ type GetGreyTagRoutesResult struct {
 
 func GetGreyTagRoutesOutput(ctx *pulumi.Context, args GetGreyTagRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGreyTagRoutesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGreyTagRoutesResult, error) {
+		ApplyT(func(v interface{}) (GetGreyTagRoutesResultOutput, error) {
 			args := v.(GetGreyTagRoutesArgs)
-			r, err := GetGreyTagRoutes(ctx, &args, opts...)
-			var s GetGreyTagRoutesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGreyTagRoutesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args, &rv, "", opts...)
+			if err != nil {
+				return GetGreyTagRoutesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGreyTagRoutesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGreyTagRoutesResultOutput), nil
+			}
+			return output, nil
 		}).(GetGreyTagRoutesResultOutput)
 }
 

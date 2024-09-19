@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getDomains:getDomains", {
         "changeEndTime": args.changeEndTime,
@@ -144,7 +143,21 @@ export interface GetDomainsResult {
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dcdn/getDomains:getDomains", {
+        "changeEndTime": args.changeEndTime,
+        "changeStartTime": args.changeStartTime,
+        "checkDomainShow": args.checkDomainShow,
+        "domainSearchType": args.domainSearchType,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "securityToken": args.securityToken,
+        "status": args.status,
+    }, opts);
 }
 
 /**

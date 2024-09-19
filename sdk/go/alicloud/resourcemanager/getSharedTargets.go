@@ -111,14 +111,20 @@ type GetSharedTargetsResult struct {
 
 func GetSharedTargetsOutput(ctx *pulumi.Context, args GetSharedTargetsOutputArgs, opts ...pulumi.InvokeOption) GetSharedTargetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSharedTargetsResult, error) {
+		ApplyT(func(v interface{}) (GetSharedTargetsResultOutput, error) {
 			args := v.(GetSharedTargetsArgs)
-			r, err := GetSharedTargets(ctx, &args, opts...)
-			var s GetSharedTargetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSharedTargetsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getSharedTargets:getSharedTargets", args, &rv, "", opts...)
+			if err != nil {
+				return GetSharedTargetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSharedTargetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSharedTargetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSharedTargetsResultOutput)
 }
 

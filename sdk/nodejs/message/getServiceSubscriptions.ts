@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServiceSubscriptions(args: GetServiceSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceSubscriptionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", {
         "ids": args.ids,
@@ -123,7 +122,16 @@ export interface GetServiceSubscriptionsResult {
  * ```
  */
 export function getServiceSubscriptionsOutput(args: GetServiceSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceSubscriptionsResult> {
-    return pulumi.output(args).apply((a: any) => getServiceSubscriptions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "subscriptionName": args.subscriptionName,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 /**

@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getTopics:getTopics", {
         "namePrefix": args.namePrefix,
@@ -84,7 +83,12 @@ export interface GetTopicsResult {
  * ```
  */
 export function getTopicsOutput(args?: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
-    return pulumi.output(args).apply((a: any) => getTopics(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mns/getTopics:getTopics", {
+        "namePrefix": args.namePrefix,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

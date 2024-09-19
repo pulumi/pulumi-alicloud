@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:elasticsearch/getInstances:getInstances", {
         "descriptionRegex": args.descriptionRegex,
@@ -47,7 +46,15 @@ export interface GetInstancesResult {
     readonly version?: string;
 }
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:elasticsearch/getInstances:getInstances", {
+        "descriptionRegex": args.descriptionRegex,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+        "version": args.version,
+    }, opts);
 }
 
 /**

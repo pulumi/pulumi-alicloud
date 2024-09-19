@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  */
 export function getMscSubSubscriptions(args?: GetMscSubSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubSubscriptionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", {
         "outputFile": args.outputFile,
@@ -71,7 +70,11 @@ export interface GetMscSubSubscriptionsResult {
  * ```
  */
 export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
-    return pulumi.output(args).apply((a: any) => getMscSubSubscriptions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

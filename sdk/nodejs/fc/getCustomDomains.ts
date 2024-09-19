@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getCustomDomains(args?: GetCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fc/getCustomDomains:getCustomDomains", {
         "ids": args.ids,
@@ -93,7 +92,13 @@ export interface GetCustomDomainsResult {
  * ```
  */
 export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getCustomDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:fc/getCustomDomains:getCustomDomains", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

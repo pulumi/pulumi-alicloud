@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getBasicAccelerators(args?: GetBasicAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAcceleratorsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBasicAccelerators:getBasicAccelerators", {
         "acceleratorId": args.acceleratorId,
@@ -123,7 +122,17 @@ export interface GetBasicAcceleratorsResult {
  * ```
  */
 export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAcceleratorsResult> {
-    return pulumi.output(args).apply((a: any) => getBasicAccelerators(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerators:getBasicAccelerators", {
+        "acceleratorId": args.acceleratorId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

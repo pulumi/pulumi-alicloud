@@ -52,14 +52,20 @@ type GetSharedResourcesResult struct {
 
 func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutputArgs, opts ...pulumi.InvokeOption) GetSharedResourcesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSharedResourcesResult, error) {
+		ApplyT(func(v interface{}) (GetSharedResourcesResultOutput, error) {
 			args := v.(GetSharedResourcesArgs)
-			r, err := GetSharedResources(ctx, &args, opts...)
-			var s GetSharedResourcesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSharedResourcesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getSharedResources:getSharedResources", args, &rv, "", opts...)
+			if err != nil {
+				return GetSharedResourcesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSharedResourcesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSharedResourcesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSharedResourcesResultOutput)
 }
 
