@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
  */
 export function getKubernetesAddons(args: GetKubernetesAddonsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", {
         "clusterId": args.clusterId,
@@ -70,7 +69,12 @@ export interface GetKubernetesAddonsResult {
  * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
  */
 export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonsResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesAddons(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesAddons:getKubernetesAddons", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+    }, opts);
 }
 
 /**

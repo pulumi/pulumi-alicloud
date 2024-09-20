@@ -84,14 +84,20 @@ type GetDataCentersResult struct {
 
 func GetDataCentersOutput(ctx *pulumi.Context, args GetDataCentersOutputArgs, opts ...pulumi.InvokeOption) GetDataCentersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDataCentersResult, error) {
+		ApplyT(func(v interface{}) (GetDataCentersResultOutput, error) {
 			args := v.(GetDataCentersArgs)
-			r, err := GetDataCenters(ctx, &args, opts...)
-			var s GetDataCentersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDataCentersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cassandra/getDataCenters:getDataCenters", args, &rv, "", opts...)
+			if err != nil {
+				return GetDataCentersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDataCentersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDataCentersResultOutput), nil
+			}
+			return output, nil
 		}).(GetDataCentersResultOutput)
 }
 

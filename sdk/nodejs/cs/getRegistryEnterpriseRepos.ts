@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseReposResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", {
         "enableDetails": args.enableDetails,
@@ -122,7 +121,15 @@ export interface GetRegistryEnterpriseReposResult {
  * ```
  */
 export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseRepos(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

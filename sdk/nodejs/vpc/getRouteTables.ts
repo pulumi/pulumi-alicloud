@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  */
 export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getRouteTables:getRouteTables", {
         "ids": args.ids,
@@ -196,7 +195,23 @@ export interface GetRouteTablesResult {
  * ```
  */
 export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteTablesResult> {
-    return pulumi.output(args).apply((a: any) => getRouteTables(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getRouteTables:getRouteTables", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "routeTableName": args.routeTableName,
+        "routeTableType": args.routeTableType,
+        "routerId": args.routerId,
+        "routerType": args.routerType,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

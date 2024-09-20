@@ -92,14 +92,20 @@ type GetAggregateCompliancePacksResult struct {
 
 func GetAggregateCompliancePacksOutput(ctx *pulumi.Context, args GetAggregateCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetAggregateCompliancePacksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAggregateCompliancePacksResult, error) {
+		ApplyT(func(v interface{}) (GetAggregateCompliancePacksResultOutput, error) {
 			args := v.(GetAggregateCompliancePacksArgs)
-			r, err := GetAggregateCompliancePacks(ctx, &args, opts...)
-			var s GetAggregateCompliancePacksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAggregateCompliancePacksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args, &rv, "", opts...)
+			if err != nil {
+				return GetAggregateCompliancePacksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAggregateCompliancePacksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAggregateCompliancePacksResultOutput), nil
+			}
+			return output, nil
 		}).(GetAggregateCompliancePacksResultOutput)
 }
 

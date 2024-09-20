@@ -159,14 +159,20 @@ type GetDesktopsResult struct {
 
 func GetDesktopsOutput(ctx *pulumi.Context, args GetDesktopsOutputArgs, opts ...pulumi.InvokeOption) GetDesktopsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDesktopsResult, error) {
+		ApplyT(func(v interface{}) (GetDesktopsResultOutput, error) {
 			args := v.(GetDesktopsArgs)
-			r, err := GetDesktops(ctx, &args, opts...)
-			var s GetDesktopsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDesktopsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getDesktops:getDesktops", args, &rv, "", opts...)
+			if err != nil {
+				return GetDesktopsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDesktopsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDesktopsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDesktopsResultOutput)
 }
 

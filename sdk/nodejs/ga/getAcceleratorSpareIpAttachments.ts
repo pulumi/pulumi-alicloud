@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAcceleratorSpareIpAttachments(args: GetAcceleratorSpareIpAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorSpareIpAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", {
         "acceleratorId": args.acceleratorId,
@@ -100,7 +99,13 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
  * ```
  */
 export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getAcceleratorSpareIpAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", {
+        "acceleratorId": args.acceleratorId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

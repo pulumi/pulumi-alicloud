@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEcsNetworkInterfacePermissions(args: GetEcsNetworkInterfacePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacePermissionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", {
         "ids": args.ids,
@@ -101,7 +100,15 @@ export interface GetEcsNetworkInterfacePermissionsResult {
  * ```
  */
 export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsNetworkInterfacePermissions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", {
+        "ids": args.ids,
+        "networkInterfaceId": args.networkInterfaceId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

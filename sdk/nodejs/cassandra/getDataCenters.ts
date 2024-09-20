@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDataCenters(args: GetDataCentersArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCentersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cassandra/getDataCenters:getDataCenters", {
         "clusterId": args.clusterId,
@@ -107,7 +106,13 @@ export interface GetDataCentersResult {
  * ```
  */
 export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
-    return pulumi.output(args).apply((a: any) => getDataCenters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cassandra/getDataCenters:getDataCenters", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

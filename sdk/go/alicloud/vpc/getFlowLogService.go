@@ -73,14 +73,20 @@ type GetFlowLogServiceResult struct {
 
 func GetFlowLogServiceOutput(ctx *pulumi.Context, args GetFlowLogServiceOutputArgs, opts ...pulumi.InvokeOption) GetFlowLogServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetFlowLogServiceResult, error) {
+		ApplyT(func(v interface{}) (GetFlowLogServiceResultOutput, error) {
 			args := v.(GetFlowLogServiceArgs)
-			r, err := GetFlowLogService(ctx, &args, opts...)
-			var s GetFlowLogServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetFlowLogServiceResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getFlowLogService:getFlowLogService", args, &rv, "", opts...)
+			if err != nil {
+				return GetFlowLogServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetFlowLogServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetFlowLogServiceResultOutput), nil
+			}
+			return output, nil
 		}).(GetFlowLogServiceResultOutput)
 }
 

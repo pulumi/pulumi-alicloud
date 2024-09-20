@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getRecords:getRecords", {
         "domainName": args.domainName,
@@ -148,7 +147,18 @@ export interface GetRecordsResult {
  * ```
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
-    return pulumi.output(args).apply((a: any) => getRecords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getRecords:getRecords", {
+        "domainName": args.domainName,
+        "hostRecordRegex": args.hostRecordRegex,
+        "ids": args.ids,
+        "isLocked": args.isLocked,
+        "line": args.line,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "type": args.type,
+        "valueRegex": args.valueRegex,
+    }, opts);
 }
 
 /**

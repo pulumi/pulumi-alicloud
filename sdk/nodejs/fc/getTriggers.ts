@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fc/getTriggers:getTriggers", {
         "functionName": args.functionName,
@@ -104,7 +103,14 @@ export interface GetTriggersResult {
  * ```
  */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
-    return pulumi.output(args).apply((a: any) => getTriggers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:fc/getTriggers:getTriggers", {
+        "functionName": args.functionName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "serviceName": args.serviceName,
+    }, opts);
 }
 
 /**

@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getBaseInstances(args?: GetBaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaseInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ocean/getBaseInstances:getBaseInstances", {
         "enableDetails": args.enableDetails,
@@ -131,7 +130,21 @@ export interface GetBaseInstancesResult {
  * ```
  */
 export function getBaseInstancesOutput(args?: GetBaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaseInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getBaseInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ocean/getBaseInstances:getBaseInstances", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "instanceName": args.instanceName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "searchKey": args.searchKey,
+        "status": args.status,
+    }, opts);
 }
 
 /**

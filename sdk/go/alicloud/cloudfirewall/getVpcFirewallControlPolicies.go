@@ -114,14 +114,20 @@ type GetVpcFirewallControlPoliciesResult struct {
 
 func GetVpcFirewallControlPoliciesOutput(ctx *pulumi.Context, args GetVpcFirewallControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetVpcFirewallControlPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpcFirewallControlPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetVpcFirewallControlPoliciesResultOutput, error) {
 			args := v.(GetVpcFirewallControlPoliciesArgs)
-			r, err := GetVpcFirewallControlPolicies(ctx, &args, opts...)
-			var s GetVpcFirewallControlPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVpcFirewallControlPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetVpcFirewallControlPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVpcFirewallControlPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVpcFirewallControlPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetVpcFirewallControlPoliciesResultOutput)
 }
 

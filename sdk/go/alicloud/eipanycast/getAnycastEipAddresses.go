@@ -103,14 +103,20 @@ type GetAnycastEipAddressesResult struct {
 
 func GetAnycastEipAddressesOutput(ctx *pulumi.Context, args GetAnycastEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetAnycastEipAddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAnycastEipAddressesResult, error) {
+		ApplyT(func(v interface{}) (GetAnycastEipAddressesResultOutput, error) {
 			args := v.(GetAnycastEipAddressesArgs)
-			r, err := GetAnycastEipAddresses(ctx, &args, opts...)
-			var s GetAnycastEipAddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAnycastEipAddressesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetAnycastEipAddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAnycastEipAddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAnycastEipAddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAnycastEipAddressesResultOutput)
 }
 

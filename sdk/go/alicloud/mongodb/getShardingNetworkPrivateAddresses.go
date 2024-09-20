@@ -49,14 +49,20 @@ type GetShardingNetworkPrivateAddressesResult struct {
 
 func GetShardingNetworkPrivateAddressesOutput(ctx *pulumi.Context, args GetShardingNetworkPrivateAddressesOutputArgs, opts ...pulumi.InvokeOption) GetShardingNetworkPrivateAddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetShardingNetworkPrivateAddressesResult, error) {
+		ApplyT(func(v interface{}) (GetShardingNetworkPrivateAddressesResultOutput, error) {
 			args := v.(GetShardingNetworkPrivateAddressesArgs)
-			r, err := GetShardingNetworkPrivateAddresses(ctx, &args, opts...)
-			var s GetShardingNetworkPrivateAddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetShardingNetworkPrivateAddressesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetShardingNetworkPrivateAddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetShardingNetworkPrivateAddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetShardingNetworkPrivateAddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetShardingNetworkPrivateAddressesResultOutput)
 }
 

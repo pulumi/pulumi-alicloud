@@ -97,14 +97,20 @@ type GetPublicIpAddressPoolsResult struct {
 
 func GetPublicIpAddressPoolsOutput(ctx *pulumi.Context, args GetPublicIpAddressPoolsOutputArgs, opts ...pulumi.InvokeOption) GetPublicIpAddressPoolsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPublicIpAddressPoolsResult, error) {
+		ApplyT(func(v interface{}) (GetPublicIpAddressPoolsResultOutput, error) {
 			args := v.(GetPublicIpAddressPoolsArgs)
-			r, err := GetPublicIpAddressPools(ctx, &args, opts...)
-			var s GetPublicIpAddressPoolsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPublicIpAddressPoolsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", args, &rv, "", opts...)
+			if err != nil {
+				return GetPublicIpAddressPoolsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPublicIpAddressPoolsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPublicIpAddressPoolsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPublicIpAddressPoolsResultOutput)
 }
 

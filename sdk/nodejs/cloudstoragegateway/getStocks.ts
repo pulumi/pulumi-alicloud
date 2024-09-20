@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getStocks(args?: GetStocksArgs, opts?: pulumi.InvokeOptions): Promise<GetStocksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStocks:getStocks", {
         "gatewayClass": args.gatewayClass,
@@ -81,7 +80,12 @@ export interface GetStocksResult {
  * ```
  */
 export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStocksResult> {
-    return pulumi.output(args).apply((a: any) => getStocks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getStocks:getStocks", {
+        "gatewayClass": args.gatewayClass,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

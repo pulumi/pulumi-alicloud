@@ -89,14 +89,20 @@ type GetEcsBackupClientsResult struct {
 
 func GetEcsBackupClientsOutput(ctx *pulumi.Context, args GetEcsBackupClientsOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupClientsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsBackupClientsResult, error) {
+		ApplyT(func(v interface{}) (GetEcsBackupClientsResultOutput, error) {
 			args := v.(GetEcsBackupClientsArgs)
-			r, err := GetEcsBackupClients(ctx, &args, opts...)
-			var s GetEcsBackupClientsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsBackupClientsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsBackupClientsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsBackupClientsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsBackupClientsResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsBackupClientsResultOutput)
 }
 

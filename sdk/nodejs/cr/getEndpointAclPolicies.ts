@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", {
         "endpointType": args.endpointType,
@@ -102,7 +101,13 @@ export interface GetEndpointAclPoliciesResult {
  * ```
  */
 export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getEndpointAclPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", {
+        "endpointType": args.endpointType,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  */
 export function getMscSubWebhooks(args?: GetMscSubWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubWebhooksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", {
         "ids": args.ids,
@@ -96,7 +95,13 @@ export interface GetMscSubWebhooksResult {
  * ```
  */
 export function getMscSubWebhooksOutput(args?: GetMscSubWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubWebhooksResult> {
-    return pulumi.output(args).apply((a: any) => getMscSubWebhooks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseUsersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", {
         "ids": args.ids,
@@ -126,7 +125,17 @@ export interface GetEnterpriseUsersResult {
  * ```
  */
 export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
-    return pulumi.output(args).apply((a: any) => getEnterpriseUsers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "role": args.role,
+        "searchKey": args.searchKey,
+        "status": args.status,
+        "tid": args.tid,
+    }, opts);
 }
 
 /**

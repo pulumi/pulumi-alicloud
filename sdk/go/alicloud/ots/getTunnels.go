@@ -90,14 +90,20 @@ type GetTunnelsResult struct {
 
 func GetTunnelsOutput(ctx *pulumi.Context, args GetTunnelsOutputArgs, opts ...pulumi.InvokeOption) GetTunnelsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTunnelsResult, error) {
+		ApplyT(func(v interface{}) (GetTunnelsResultOutput, error) {
 			args := v.(GetTunnelsArgs)
-			r, err := GetTunnels(ctx, &args, opts...)
-			var s GetTunnelsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTunnelsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ots/getTunnels:getTunnels", args, &rv, "", opts...)
+			if err != nil {
+				return GetTunnelsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTunnelsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTunnelsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTunnelsResultOutput)
 }
 

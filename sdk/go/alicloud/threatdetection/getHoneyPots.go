@@ -96,14 +96,20 @@ type GetHoneyPotsResult struct {
 
 func GetHoneyPotsOutput(ctx *pulumi.Context, args GetHoneyPotsOutputArgs, opts ...pulumi.InvokeOption) GetHoneyPotsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHoneyPotsResult, error) {
+		ApplyT(func(v interface{}) (GetHoneyPotsResultOutput, error) {
 			args := v.(GetHoneyPotsArgs)
-			r, err := GetHoneyPots(ctx, &args, opts...)
-			var s GetHoneyPotsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHoneyPotsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getHoneyPots:getHoneyPots", args, &rv, "", opts...)
+			if err != nil {
+				return GetHoneyPotsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHoneyPotsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHoneyPotsResultOutput), nil
+			}
+			return output, nil
 		}).(GetHoneyPotsResultOutput)
 }
 

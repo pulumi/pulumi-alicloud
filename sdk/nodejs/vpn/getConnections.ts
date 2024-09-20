@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getConnections:getConnections", {
         "customerGatewayId": args.customerGatewayId,
@@ -115,7 +114,15 @@ export interface GetConnectionsResult {
  * ```
  */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => getConnections(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpn/getConnections:getConnections", {
+        "customerGatewayId": args.customerGatewayId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "vpnGatewayId": args.vpnGatewayId,
+    }, opts);
 }
 
 /**

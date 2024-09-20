@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getProvisionedProducts(args?: GetProvisionedProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisionedProductsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", {
         "accessLevelFilter": args.accessLevelFilter,
@@ -135,7 +134,19 @@ export interface GetProvisionedProductsResult {
  * ```
  */
 export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisionedProductsResult> {
-    return pulumi.output(args).apply((a: any) => getProvisionedProducts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", {
+        "accessLevelFilter": args.accessLevelFilter,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+    }, opts);
 }
 
 /**

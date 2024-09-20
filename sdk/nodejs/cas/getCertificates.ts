@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cas/getCertificates:getCertificates", {
         "enableDetails": args.enableDetails,
@@ -78,7 +77,16 @@ export interface GetCertificatesResult {
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
-    return pulumi.output(args).apply((a: any) => getCertificates(a, opts))
+    pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cas/getCertificates:getCertificates", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "lang": args.lang,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -94,14 +94,20 @@ type GetGatewayBlockVolumesResult struct {
 
 func GetGatewayBlockVolumesOutput(ctx *pulumi.Context, args GetGatewayBlockVolumesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayBlockVolumesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewayBlockVolumesResult, error) {
+		ApplyT(func(v interface{}) (GetGatewayBlockVolumesResultOutput, error) {
 			args := v.(GetGatewayBlockVolumesArgs)
-			r, err := GetGatewayBlockVolumes(ctx, &args, opts...)
-			var s GetGatewayBlockVolumesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewayBlockVolumesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewayBlockVolumesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewayBlockVolumesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewayBlockVolumesResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewayBlockVolumesResultOutput)
 }
 

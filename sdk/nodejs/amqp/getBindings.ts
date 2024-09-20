@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBindings(args: GetBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetBindingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getBindings:getBindings", {
         "instanceId": args.instanceId,
@@ -87,7 +86,12 @@ export interface GetBindingsResult {
  * ```
  */
 export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBindingsResult> {
-    return pulumi.output(args).apply((a: any) => getBindings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:amqp/getBindings:getBindings", {
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "virtualHostName": args.virtualHostName,
+    }, opts);
 }
 
 /**

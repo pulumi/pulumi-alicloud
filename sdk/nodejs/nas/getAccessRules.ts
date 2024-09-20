@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE**: Available in 1.35.0+
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getAccessRules:getAccessRules", {
         "accessGroupName": args.accessGroupName,
@@ -91,7 +90,15 @@ export interface GetAccessRulesResult {
  * > **NOTE**: Available in 1.35.0+
  */
 export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
-    return pulumi.output(args).apply((a: any) => getAccessRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getAccessRules:getAccessRules", {
+        "accessGroupName": args.accessGroupName,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "rwAccess": args.rwAccess,
+        "sourceCidrIp": args.sourceCidrIp,
+        "userAccess": args.userAccess,
+    }, opts);
 }
 
 /**

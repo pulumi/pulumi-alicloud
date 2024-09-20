@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRealTimeLogDeliveriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", {
         "domain": args.domain,
@@ -83,7 +82,12 @@ export interface GetRealTimeLogDeliveriesResult {
  * ```
  */
 export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
-    return pulumi.output(args).apply((a: any) => getRealTimeLogDeliveries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", {
+        "domain": args.domain,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

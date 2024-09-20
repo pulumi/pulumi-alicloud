@@ -82,14 +82,20 @@ type GetOssBackupPlansResult struct {
 
 func GetOssBackupPlansOutput(ctx *pulumi.Context, args GetOssBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetOssBackupPlansResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOssBackupPlansResult, error) {
+		ApplyT(func(v interface{}) (GetOssBackupPlansResultOutput, error) {
 			args := v.(GetOssBackupPlansArgs)
-			r, err := GetOssBackupPlans(ctx, &args, opts...)
-			var s GetOssBackupPlansResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOssBackupPlansResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args, &rv, "", opts...)
+			if err != nil {
+				return GetOssBackupPlansResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOssBackupPlansResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOssBackupPlansResultOutput), nil
+			}
+			return output, nil
 		}).(GetOssBackupPlansResultOutput)
 }
 

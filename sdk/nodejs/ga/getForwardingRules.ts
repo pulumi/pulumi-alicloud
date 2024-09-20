@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getForwardingRules(args: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getForwardingRules:getForwardingRules", {
         "acceleratorId": args.acceleratorId,
@@ -102,7 +101,14 @@ export interface GetForwardingRulesResult {
  * ```
  */
 export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
-    return pulumi.output(args).apply((a: any) => getForwardingRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getForwardingRules:getForwardingRules", {
+        "acceleratorId": args.acceleratorId,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

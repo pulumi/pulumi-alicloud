@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouteTableAggregations(args: GetTransitRouteTableAggregationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouteTableAggregationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", {
         "ids": args.ids,
@@ -132,7 +131,15 @@ export interface GetTransitRouteTableAggregationsResult {
  * ```
  */
 export function getTransitRouteTableAggregationsOutput(args: GetTransitRouteTableAggregationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouteTableAggregationsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouteTableAggregations(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouteTableAggregationCidr": args.transitRouteTableAggregationCidr,
+        "transitRouteTableId": args.transitRouteTableId,
+    }, opts);
 }
 
 /**

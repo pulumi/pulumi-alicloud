@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quickbi/getUsers:getUsers", {
         "enableDetails": args.enableDetails,
@@ -93,7 +92,14 @@ export interface GetUsersResult {
  * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quickbi/getUsers:getUsers", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

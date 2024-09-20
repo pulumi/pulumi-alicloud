@@ -108,14 +108,20 @@ type GetBasicEndpointsResult struct {
 
 func GetBasicEndpointsOutput(ctx *pulumi.Context, args GetBasicEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetBasicEndpointsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBasicEndpointsResult, error) {
+		ApplyT(func(v interface{}) (GetBasicEndpointsResultOutput, error) {
 			args := v.(GetBasicEndpointsArgs)
-			r, err := GetBasicEndpoints(ctx, &args, opts...)
-			var s GetBasicEndpointsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBasicEndpointsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBasicEndpoints:getBasicEndpoints", args, &rv, "", opts...)
+			if err != nil {
+				return GetBasicEndpointsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBasicEndpointsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBasicEndpointsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBasicEndpointsResultOutput)
 }
 

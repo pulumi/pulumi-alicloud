@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getServerCertificates:getServerCertificates", {
         "ids": args.ids,
@@ -103,7 +102,15 @@ export interface GetServerCertificatesResult {
  * ```
  */
 export function getServerCertificatesOutput(args?: GetServerCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCertificatesResult> {
-    return pulumi.output(args).apply((a: any) => getServerCertificates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getServerCertificates:getServerCertificates", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

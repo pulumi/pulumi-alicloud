@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAccelerators:getAccelerators", {
         "bandwidthBillingType": args.bandwidthBillingType,
@@ -111,7 +110,15 @@ export interface GetAcceleratorsResult {
  * ```
  */
 export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorsResult> {
-    return pulumi.output(args).apply((a: any) => getAccelerators(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getAccelerators:getAccelerators", {
+        "bandwidthBillingType": args.bandwidthBillingType,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

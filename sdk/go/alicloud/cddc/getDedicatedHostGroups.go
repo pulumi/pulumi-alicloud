@@ -79,14 +79,20 @@ type GetDedicatedHostGroupsResult struct {
 
 func GetDedicatedHostGroupsOutput(ctx *pulumi.Context, args GetDedicatedHostGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDedicatedHostGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetDedicatedHostGroupsResultOutput, error) {
 			args := v.(GetDedicatedHostGroupsArgs)
-			r, err := GetDedicatedHostGroups(ctx, &args, opts...)
-			var s GetDedicatedHostGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDedicatedHostGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetDedicatedHostGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDedicatedHostGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDedicatedHostGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDedicatedHostGroupsResultOutput)
 }
 

@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getReplicationVaultRegions(args?: GetReplicationVaultRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationVaultRegionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", {
         "outputFile": args.outputFile,
@@ -71,7 +70,11 @@ export interface GetReplicationVaultRegionsResult {
  * ```
  */
 export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
-    return pulumi.output(args).apply((a: any) => getReplicationVaultRegions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

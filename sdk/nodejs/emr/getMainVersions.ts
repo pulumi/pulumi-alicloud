@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMainVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:emr/getMainVersions:getMainVersions", {
         "clusterTypes": args.clusterTypes,
@@ -106,7 +105,13 @@ export interface GetMainVersionsResult {
  * ```
  */
 export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMainVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getMainVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:emr/getMainVersions:getMainVersions", {
+        "clusterTypes": args.clusterTypes,
+        "emrVersion": args.emrVersion,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFlowLogsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", {
         "description": args.description,
@@ -138,7 +137,21 @@ export interface GetVpcFlowLogsResult {
  * ```
  */
 export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
-    return pulumi.output(args).apply((a: any) => getVpcFlowLogs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", {
+        "description": args.description,
+        "flowLogName": args.flowLogName,
+        "ids": args.ids,
+        "logStoreName": args.logStoreName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "projectName": args.projectName,
+        "resourceId": args.resourceId,
+        "resourceType": args.resourceType,
+        "status": args.status,
+        "trafficType": args.trafficType,
+    }, opts);
 }
 
 /**

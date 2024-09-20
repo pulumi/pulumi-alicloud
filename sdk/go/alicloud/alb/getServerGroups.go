@@ -108,14 +108,20 @@ type GetServerGroupsResult struct {
 
 func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetServerGroupsResultOutput, error) {
 			args := v.(GetServerGroupsArgs)
-			r, err := GetServerGroups(ctx, &args, opts...)
-			var s GetServerGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:alb/getServerGroups:getServerGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerGroupsResultOutput)
 }
 

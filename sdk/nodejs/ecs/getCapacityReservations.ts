@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getCapacityReservations(args?: GetCapacityReservationsArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityReservationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getCapacityReservations:getCapacityReservations", {
         "capacityReservationIds": args.capacityReservationIds,
@@ -156,7 +155,20 @@ export interface GetCapacityReservationsResult {
  * ```
  */
 export function getCapacityReservationsOutput(args?: GetCapacityReservationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityReservationsResult> {
-    return pulumi.output(args).apply((a: any) => getCapacityReservations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getCapacityReservations:getCapacityReservations", {
+        "capacityReservationIds": args.capacityReservationIds,
+        "ids": args.ids,
+        "instanceType": args.instanceType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "platform": args.platform,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

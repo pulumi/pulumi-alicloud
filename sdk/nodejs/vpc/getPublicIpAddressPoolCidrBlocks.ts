@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPublicIpAddressPoolCidrBlocks(args: GetPublicIpAddressPoolCidrBlocksArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolCidrBlocksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", {
         "cidrBlock": args.cidrBlock,
@@ -126,7 +125,14 @@ export interface GetPublicIpAddressPoolCidrBlocksResult {
  * ```
  */
 export function getPublicIpAddressPoolCidrBlocksOutput(args: GetPublicIpAddressPoolCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolCidrBlocksResult> {
-    return pulumi.output(args).apply((a: any) => getPublicIpAddressPoolCidrBlocks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", {
+        "cidrBlock": args.cidrBlock,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "publicIpAddressPoolId": args.publicIpAddressPoolId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

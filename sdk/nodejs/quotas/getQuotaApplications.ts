@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getQuotaApplications:getQuotaApplications", {
         "dimensions": args.dimensions,
@@ -147,7 +146,18 @@ export interface GetQuotaApplicationsResult {
  * ```
  */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
-    return pulumi.output(args).apply((a: any) => getQuotaApplications(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quotas/getQuotaApplications:getQuotaApplications", {
+        "dimensions": args.dimensions,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "keyWord": args.keyWord,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "quotaActionCode": args.quotaActionCode,
+        "quotaCategory": args.quotaCategory,
+        "status": args.status,
+    }, opts);
 }
 
 /**

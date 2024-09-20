@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", {
         "filters": args.filters,
@@ -110,7 +109,17 @@ export interface GetRouterInterfacesResult {
  * ```
  */
 export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
-    return pulumi.output(args).apply((a: any) => getRouterInterfaces(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", {
+        "filters": args.filters,
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getInstances:getInstances", {
         "architectureType": args.architectureType,
@@ -221,7 +220,30 @@ export interface GetInstancesResult {
  * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kvstore/getInstances:getInstances", {
+        "architectureType": args.architectureType,
+        "editionType": args.editionType,
+        "enableDetails": args.enableDetails,
+        "engineVersion": args.engineVersion,
+        "expired": args.expired,
+        "globalInstance": args.globalInstance,
+        "ids": args.ids,
+        "instanceClass": args.instanceClass,
+        "instanceType": args.instanceType,
+        "nameRegex": args.nameRegex,
+        "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "searchKey": args.searchKey,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

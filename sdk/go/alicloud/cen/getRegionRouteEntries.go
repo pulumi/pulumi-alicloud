@@ -72,14 +72,20 @@ type GetRegionRouteEntriesResult struct {
 
 func GetRegionRouteEntriesOutput(ctx *pulumi.Context, args GetRegionRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRegionRouteEntriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRegionRouteEntriesResult, error) {
+		ApplyT(func(v interface{}) (GetRegionRouteEntriesResultOutput, error) {
 			args := v.(GetRegionRouteEntriesArgs)
-			r, err := GetRegionRouteEntries(ctx, &args, opts...)
-			var s GetRegionRouteEntriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRegionRouteEntriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args, &rv, "", opts...)
+			if err != nil {
+				return GetRegionRouteEntriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRegionRouteEntriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRegionRouteEntriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetRegionRouteEntriesResultOutput)
 }
 

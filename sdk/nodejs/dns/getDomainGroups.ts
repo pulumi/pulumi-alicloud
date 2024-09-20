@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  */
 export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
         "ids": args.ids,
@@ -47,7 +46,13 @@ export interface GetDomainGroupsResult {
  * > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
  */
 export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getDomainGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getDomainGroups:getDomainGroups", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

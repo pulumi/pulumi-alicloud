@@ -96,14 +96,20 @@ type GetRouteServicesResult struct {
 
 func GetRouteServicesOutput(ctx *pulumi.Context, args GetRouteServicesOutputArgs, opts ...pulumi.InvokeOption) GetRouteServicesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRouteServicesResult, error) {
+		ApplyT(func(v interface{}) (GetRouteServicesResultOutput, error) {
 			args := v.(GetRouteServicesArgs)
-			r, err := GetRouteServices(ctx, &args, opts...)
-			var s GetRouteServicesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRouteServicesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getRouteServices:getRouteServices", args, &rv, "", opts...)
+			if err != nil {
+				return GetRouteServicesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRouteServicesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRouteServicesResultOutput), nil
+			}
+			return output, nil
 		}).(GetRouteServicesResultOutput)
 }
 

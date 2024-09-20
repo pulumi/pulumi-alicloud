@@ -58,7 +58,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getForwardEntries:getForwardEntries", {
         "externalIp": args.externalIp,
@@ -229,7 +228,20 @@ export interface GetForwardEntriesResult {
  * ```
  */
 export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardEntriesResult> {
-    return pulumi.output(args).apply((a: any) => getForwardEntries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getForwardEntries:getForwardEntries", {
+        "externalIp": args.externalIp,
+        "externalPort": args.externalPort,
+        "forwardEntryName": args.forwardEntryName,
+        "forwardTableId": args.forwardTableId,
+        "ids": args.ids,
+        "internalIp": args.internalIp,
+        "internalPort": args.internalPort,
+        "ipProtocol": args.ipProtocol,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

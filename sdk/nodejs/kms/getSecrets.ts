@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getSecrets:getSecrets", {
         "enableDetails": args.enableDetails,
@@ -133,7 +132,17 @@ export interface GetSecretsResult {
  * ```
  */
 export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
-    return pulumi.output(args).apply((a: any) => getSecrets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getSecrets:getSecrets", {
+        "enableDetails": args.enableDetails,
+        "fetchTags": args.fetchTags,
+        "filters": args.filters,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

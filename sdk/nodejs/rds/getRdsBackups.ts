@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRdsBackups(args: GetRdsBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsBackupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getRdsBackups:getRdsBackups", {
         "backupMode": args.backupMode,
@@ -110,7 +109,16 @@ export interface GetRdsBackupsResult {
  * ```
  */
 export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsBackupsResult> {
-    return pulumi.output(args).apply((a: any) => getRdsBackups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getRdsBackups:getRdsBackups", {
+        "backupMode": args.backupMode,
+        "backupStatus": args.backupStatus,
+        "dbInstanceId": args.dbInstanceId,
+        "endTime": args.endTime,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "startTime": args.startTime,
+    }, opts);
 }
 
 /**

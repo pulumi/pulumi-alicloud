@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getShardingNetworkPublicAddresses(args: GetShardingNetworkPublicAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPublicAddressesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", {
         "dbInstanceId": args.dbInstanceId,
@@ -96,7 +95,13 @@ export interface GetShardingNetworkPublicAddressesResult {
  * ```
  */
 export function getShardingNetworkPublicAddressesOutput(args: GetShardingNetworkPublicAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPublicAddressesResult> {
-    return pulumi.output(args).apply((a: any) => getShardingNetworkPublicAddresses(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", {
+        "dbInstanceId": args.dbInstanceId,
+        "nodeId": args.nodeId,
+        "outputFile": args.outputFile,
+        "role": args.role,
+    }, opts);
 }
 
 /**

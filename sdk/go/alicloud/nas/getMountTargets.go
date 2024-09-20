@@ -112,14 +112,20 @@ type GetMountTargetsResult struct {
 
 func GetMountTargetsOutput(ctx *pulumi.Context, args GetMountTargetsOutputArgs, opts ...pulumi.InvokeOption) GetMountTargetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMountTargetsResult, error) {
+		ApplyT(func(v interface{}) (GetMountTargetsResultOutput, error) {
 			args := v.(GetMountTargetsArgs)
-			r, err := GetMountTargets(ctx, &args, opts...)
-			var s GetMountTargetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMountTargetsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:nas/getMountTargets:getMountTargets", args, &rv, "", opts...)
+			if err != nil {
+				return GetMountTargetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMountTargetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMountTargetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetMountTargetsResultOutput)
 }
 

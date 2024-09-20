@@ -78,14 +78,20 @@ type GetTopicSubscriptionsResult struct {
 
 func GetTopicSubscriptionsOutput(ctx *pulumi.Context, args GetTopicSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetTopicSubscriptionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTopicSubscriptionsResult, error) {
+		ApplyT(func(v interface{}) (GetTopicSubscriptionsResultOutput, error) {
 			args := v.(GetTopicSubscriptionsArgs)
-			r, err := GetTopicSubscriptions(ctx, &args, opts...)
-			var s GetTopicSubscriptionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTopicSubscriptionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args, &rv, "", opts...)
+			if err != nil {
+				return GetTopicSubscriptionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTopicSubscriptionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTopicSubscriptionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTopicSubscriptionsResultOutput)
 }
 

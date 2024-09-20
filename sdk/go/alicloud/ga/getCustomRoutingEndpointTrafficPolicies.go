@@ -100,14 +100,20 @@ type GetCustomRoutingEndpointTrafficPoliciesResult struct {
 
 func GetCustomRoutingEndpointTrafficPoliciesOutput(ctx *pulumi.Context, args GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetCustomRoutingEndpointTrafficPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCustomRoutingEndpointTrafficPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetCustomRoutingEndpointTrafficPoliciesResultOutput, error) {
 			args := v.(GetCustomRoutingEndpointTrafficPoliciesArgs)
-			r, err := GetCustomRoutingEndpointTrafficPolicies(ctx, &args, opts...)
-			var s GetCustomRoutingEndpointTrafficPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCustomRoutingEndpointTrafficPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetCustomRoutingEndpointTrafficPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCustomRoutingEndpointTrafficPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCustomRoutingEndpointTrafficPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetCustomRoutingEndpointTrafficPoliciesResultOutput)
 }
 

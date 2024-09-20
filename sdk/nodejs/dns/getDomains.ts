@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
         "aliDomain": args.aliDomain,
@@ -179,7 +178,25 @@ export interface GetDomainsResult {
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getDomains:getDomains", {
+        "aliDomain": args.aliDomain,
+        "domainNameRegex": args.domainNameRegex,
+        "enableDetails": args.enableDetails,
+        "groupId": args.groupId,
+        "groupNameRegex": args.groupNameRegex,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "keyWord": args.keyWord,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "searchMode": args.searchMode,
+        "starmark": args.starmark,
+        "tags": args.tags,
+        "versionCode": args.versionCode,
+    }, opts);
 }
 
 /**

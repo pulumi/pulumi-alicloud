@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getWafPolicies(args?: GetWafPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getWafPolicies:getWafPolicies", {
         "ids": args.ids,
@@ -93,7 +92,15 @@ export interface GetWafPoliciesResult {
  * ```
  */
 export function getWafPoliciesOutput(args?: GetWafPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getWafPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dcdn/getWafPolicies:getWafPolicies", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "queryArgs": args.queryArgs,
+        "status": args.status,
+    }, opts);
 }
 
 /**

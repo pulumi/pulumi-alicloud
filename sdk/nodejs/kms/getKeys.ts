@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getKeys:getKeys", {
         "descriptionRegex": args.descriptionRegex,
@@ -108,7 +107,16 @@ export interface GetKeysResult {
  * ```
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
-    return pulumi.output(args).apply((a: any) => getKeys(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getKeys:getKeys", {
+        "descriptionRegex": args.descriptionRegex,
+        "enableDetails": args.enableDetails,
+        "filters": args.filters,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

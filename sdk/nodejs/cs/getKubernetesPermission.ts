@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubernetesPermission(args: GetKubernetesPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesPermissionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesPermission:getKubernetesPermission", {
         "uid": args.uid,
@@ -82,7 +81,10 @@ export interface GetKubernetesPermissionResult {
  * ```
  */
 export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesPermission(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesPermission:getKubernetesPermission", {
+        "uid": args.uid,
+    }, opts);
 }
 
 /**

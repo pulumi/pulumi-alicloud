@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", {
         "ids": args.ids,
@@ -216,7 +215,26 @@ export interface GetEcsNetworkInterfacesResult {
  * ```
  */
 export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
-    return pulumi.output(args).apply((a: any) => getEcsNetworkInterfaces(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "networkInterfaceName": args.networkInterfaceName,
+        "outputFile": args.outputFile,
+        "primaryIpAddress": args.primaryIpAddress,
+        "privateIp": args.privateIp,
+        "resourceGroupId": args.resourceGroupId,
+        "securityGroupId": args.securityGroupId,
+        "serviceManaged": args.serviceManaged,
+        "status": args.status,
+        "tags": args.tags,
+        "type": args.type,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

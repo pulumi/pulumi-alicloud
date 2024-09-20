@@ -71,7 +71,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackupJobs(args: GetBackupJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupJobsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getBackupJobs:getBackupJobs", {
         "filters": args.filters,
@@ -191,7 +190,15 @@ export interface GetBackupJobsResult {
  * ```
  */
 export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupJobsResult> {
-    return pulumi.output(args).apply((a: any) => getBackupJobs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getBackupJobs:getBackupJobs", {
+        "filters": args.filters,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "sortDirection": args.sortDirection,
+        "sourceType": args.sourceType,
+        "status": args.status,
+    }, opts);
 }
 
 /**

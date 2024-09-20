@@ -59,7 +59,6 @@ import * as utilities from "../utilities";
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getApplications:getApplications", {
         "appName": args.appName,
@@ -193,7 +192,20 @@ export interface GetApplicationsResult {
  * ```
  */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
-    return pulumi.output(args).apply((a: any) => getApplications(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getApplications:getApplications", {
+        "appName": args.appName,
+        "enableDetails": args.enableDetails,
+        "fieldType": args.fieldType,
+        "fieldValue": args.fieldValue,
+        "ids": args.ids,
+        "namespaceId": args.namespaceId,
+        "orderBy": args.orderBy,
+        "outputFile": args.outputFile,
+        "reverse": args.reverse,
+        "status": args.status,
+    }, opts);
 }
 
 /**

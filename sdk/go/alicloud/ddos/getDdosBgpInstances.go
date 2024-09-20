@@ -93,14 +93,20 @@ type GetDdosBgpInstancesResult struct {
 
 func GetDdosBgpInstancesOutput(ctx *pulumi.Context, args GetDdosBgpInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosBgpInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDdosBgpInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetDdosBgpInstancesResultOutput, error) {
 			args := v.(GetDdosBgpInstancesArgs)
-			r, err := GetDdosBgpInstances(ctx, &args, opts...)
-			var s GetDdosBgpInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDdosBgpInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetDdosBgpInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDdosBgpInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDdosBgpInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDdosBgpInstancesResultOutput)
 }
 

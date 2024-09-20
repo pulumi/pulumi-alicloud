@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
         "instanceId": args.instanceId,
@@ -93,7 +92,12 @@ export interface GetSaslUsersResult {
  * ```
  */
 export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslUsersResult> {
-    return pulumi.output(args).apply((a: any) => getSaslUsers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

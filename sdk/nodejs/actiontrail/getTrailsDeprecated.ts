@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
 export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsDeprecatedResult> {
     pulumi.log.warn("getTrailsDeprecated is deprecated: DataSource has been renamed to `getTrails`")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", {
         "ids": args.ids,
@@ -78,7 +77,17 @@ export interface GetTrailsDeprecatedResult {
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsDeprecatedResult> {
-    return pulumi.output(args).apply((a: any) => getTrailsDeprecated(a, opts))
+    pulumi.log.warn("getTrailsDeprecated is deprecated: DataSource has been renamed to `getTrails`")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", {
+        "ids": args.ids,
+        "includeOrganizationTrail": args.includeOrganizationTrail,
+        "includeShadowTrails": args.includeShadowTrails,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

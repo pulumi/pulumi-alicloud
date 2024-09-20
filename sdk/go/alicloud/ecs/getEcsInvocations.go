@@ -87,14 +87,20 @@ type GetEcsInvocationsResult struct {
 
 func GetEcsInvocationsOutput(ctx *pulumi.Context, args GetEcsInvocationsOutputArgs, opts ...pulumi.InvokeOption) GetEcsInvocationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsInvocationsResult, error) {
+		ApplyT(func(v interface{}) (GetEcsInvocationsResultOutput, error) {
 			args := v.(GetEcsInvocationsArgs)
-			r, err := GetEcsInvocations(ctx, &args, opts...)
-			var s GetEcsInvocationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsInvocationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsInvocations:getEcsInvocations", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsInvocationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsInvocationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsInvocationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsInvocationsResultOutput)
 }
 

@@ -51,7 +51,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewaySmbUsers(args: GetGatewaySmbUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaySmbUsersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", {
         "gatewayId": args.gatewayId,
@@ -142,7 +141,13 @@ export interface GetGatewaySmbUsersResult {
  * ```
  */
 export function getGatewaySmbUsersOutput(args: GetGatewaySmbUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaySmbUsersResult> {
-    return pulumi.output(args).apply((a: any) => getGatewaySmbUsers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", {
+        "gatewayId": args.gatewayId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

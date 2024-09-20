@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHostShareKeys(args: GetHostShareKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetHostShareKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", {
         "enableDetails": args.enableDetails,
@@ -117,7 +116,14 @@ export interface GetHostShareKeysResult {
  * ```
  */
 export function getHostShareKeysOutput(args: GetHostShareKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostShareKeysResult> {
-    return pulumi.output(args).apply((a: any) => getHostShareKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

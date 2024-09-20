@@ -81,14 +81,20 @@ type GetMigrationJobsResult struct {
 
 func GetMigrationJobsOutput(ctx *pulumi.Context, args GetMigrationJobsOutputArgs, opts ...pulumi.InvokeOption) GetMigrationJobsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMigrationJobsResult, error) {
+		ApplyT(func(v interface{}) (GetMigrationJobsResultOutput, error) {
 			args := v.(GetMigrationJobsArgs)
-			r, err := GetMigrationJobs(ctx, &args, opts...)
-			var s GetMigrationJobsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMigrationJobsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dts/getMigrationJobs:getMigrationJobs", args, &rv, "", opts...)
+			if err != nil {
+				return GetMigrationJobsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMigrationJobsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMigrationJobsResultOutput), nil
+			}
+			return output, nil
 		}).(GetMigrationJobsResultOutput)
 }
 

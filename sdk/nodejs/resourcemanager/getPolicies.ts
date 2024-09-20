@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicies:getPolicies", {
         "ids": args.ids,
@@ -78,7 +77,14 @@ export interface GetPoliciesResult {
  * > **NOTE:**  Available in 1.86.0+.
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getPolicies:getPolicies", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "policyType": args.policyType,
+    }, opts);
 }
 
 /**

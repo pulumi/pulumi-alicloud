@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEngineNamespaces(args: GetEngineNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineNamespacesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mse/getEngineNamespaces:getEngineNamespaces", {
         "acceptLanguage": args.acceptLanguage,
@@ -94,7 +93,13 @@ export interface GetEngineNamespacesResult {
  * ```
  */
 export function getEngineNamespacesOutput(args: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineNamespacesResult> {
-    return pulumi.output(args).apply((a: any) => getEngineNamespaces(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mse/getEngineNamespaces:getEngineNamespaces", {
+        "acceptLanguage": args.acceptLanguage,
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

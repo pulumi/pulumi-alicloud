@@ -76,14 +76,20 @@ type GetWafDomainsResult struct {
 
 func GetWafDomainsOutput(ctx *pulumi.Context, args GetWafDomainsOutputArgs, opts ...pulumi.InvokeOption) GetWafDomainsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetWafDomainsResult, error) {
+		ApplyT(func(v interface{}) (GetWafDomainsResultOutput, error) {
 			args := v.(GetWafDomainsArgs)
-			r, err := GetWafDomains(ctx, &args, opts...)
-			var s GetWafDomainsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetWafDomainsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dcdn/getWafDomains:getWafDomains", args, &rv, "", opts...)
+			if err != nil {
+				return GetWafDomainsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetWafDomainsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetWafDomainsResultOutput), nil
+			}
+			return output, nil
 		}).(GetWafDomainsResultOutput)
 }
 

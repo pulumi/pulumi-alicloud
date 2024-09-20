@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getAlertContacts(args?: GetAlertContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getAlertContacts:getAlertContacts", {
         "alertContactName": args.alertContactName,
@@ -110,7 +109,16 @@ export interface GetAlertContactsResult {
  * ```
  */
 export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactsResult> {
-    return pulumi.output(args).apply((a: any) => getAlertContacts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getAlertContacts:getAlertContacts", {
+        "alertContactName": args.alertContactName,
+        "email": args.email,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "phoneNum": args.phoneNum,
+    }, opts);
 }
 
 /**

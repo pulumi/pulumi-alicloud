@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getZones:getZones", {
         "multi": args.multi,
@@ -84,7 +83,12 @@ export interface GetZonesResult {
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply((a: any) => getZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mongodb/getZones:getZones", {
+        "multi": args.multi,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

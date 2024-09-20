@@ -114,14 +114,20 @@ type GetServerSnapshotsResult struct {
 
 func GetServerSnapshotsOutput(ctx *pulumi.Context, args GetServerSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetServerSnapshotsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerSnapshotsResult, error) {
+		ApplyT(func(v interface{}) (GetServerSnapshotsResultOutput, error) {
 			args := v.(GetServerSnapshotsArgs)
-			r, err := GetServerSnapshots(ctx, &args, opts...)
-			var s GetServerSnapshotsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerSnapshotsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerSnapshotsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerSnapshotsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerSnapshotsResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerSnapshotsResultOutput)
 }
 

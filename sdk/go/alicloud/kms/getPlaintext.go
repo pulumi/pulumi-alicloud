@@ -84,14 +84,20 @@ type GetPlaintextResult struct {
 
 func GetPlaintextOutput(ctx *pulumi.Context, args GetPlaintextOutputArgs, opts ...pulumi.InvokeOption) GetPlaintextResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPlaintextResult, error) {
+		ApplyT(func(v interface{}) (GetPlaintextResultOutput, error) {
 			args := v.(GetPlaintextArgs)
-			r, err := GetPlaintext(ctx, &args, opts...)
-			var s GetPlaintextResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPlaintextResult
+			secret, err := ctx.InvokePackageRaw("alicloud:kms/getPlaintext:getPlaintext", args, &rv, "", opts...)
+			if err != nil {
+				return GetPlaintextResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPlaintextResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPlaintextResultOutput), nil
+			}
+			return output, nil
 		}).(GetPlaintextResultOutput)
 }
 

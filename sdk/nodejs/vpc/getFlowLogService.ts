@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getFlowLogService(args?: GetFlowLogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowLogServiceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getFlowLogService:getFlowLogService", {
         "enable": args.enable,
@@ -80,7 +79,11 @@ export interface GetFlowLogServiceResult {
  * ```
  */
 export function getFlowLogServiceOutput(args?: GetFlowLogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowLogServiceResult> {
-    return pulumi.output(args).apply((a: any) => getFlowLogService(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getFlowLogService:getFlowLogService", {
+        "enable": args.enable,
+    }, opts);
 }
 
 /**

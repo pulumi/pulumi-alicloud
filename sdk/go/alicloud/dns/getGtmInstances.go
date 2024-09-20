@@ -74,14 +74,20 @@ type GetGtmInstancesResult struct {
 
 func GetGtmInstancesOutput(ctx *pulumi.Context, args GetGtmInstancesOutputArgs, opts ...pulumi.InvokeOption) GetGtmInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGtmInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetGtmInstancesResultOutput, error) {
 			args := v.(GetGtmInstancesArgs)
-			r, err := GetGtmInstances(ctx, &args, opts...)
-			var s GetGtmInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGtmInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dns/getGtmInstances:getGtmInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetGtmInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGtmInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGtmInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetGtmInstancesResultOutput)
 }
 

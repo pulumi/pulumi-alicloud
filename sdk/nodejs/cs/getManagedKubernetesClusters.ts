@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  */
 export function getManagedKubernetesClusters(args?: GetManagedKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedKubernetesClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {
         "enableDetails": args.enableDetails,
@@ -112,7 +111,15 @@ export interface GetManagedKubernetesClustersResult {
  * ```
  */
 export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedKubernetesClustersResult> {
-    return pulumi.output(args).apply((a: any) => getManagedKubernetesClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "kubeConfigFilePrefix": args.kubeConfigFilePrefix,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

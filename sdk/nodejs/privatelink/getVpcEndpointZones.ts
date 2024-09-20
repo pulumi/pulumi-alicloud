@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointZonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", {
         "endpointId": args.endpointId,
@@ -87,7 +86,12 @@ export interface GetVpcEndpointZonesResult {
  * ```
  */
 export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
-    return pulumi.output(args).apply((a: any) => getVpcEndpointZones(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", {
+        "endpointId": args.endpointId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

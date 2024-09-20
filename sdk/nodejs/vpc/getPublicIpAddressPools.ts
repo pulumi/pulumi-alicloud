@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getPublicIpAddressPools(args?: GetPublicIpAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", {
         "ids": args.ids,
@@ -120,7 +119,17 @@ export interface GetPublicIpAddressPoolsResult {
  * ```
  */
 export function getPublicIpAddressPoolsOutput(args?: GetPublicIpAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolsResult> {
-    return pulumi.output(args).apply((a: any) => getPublicIpAddressPools(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", {
+        "ids": args.ids,
+        "isp": args.isp,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "publicIpAddressPoolIds": args.publicIpAddressPoolIds,
+        "publicIpAddressPoolName": args.publicIpAddressPoolName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

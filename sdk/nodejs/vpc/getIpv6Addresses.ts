@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getIpv6Addresses(args?: GetIpv6AddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6AddressesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", {
         "associatedInstanceId": args.associatedInstanceId,
@@ -129,7 +128,16 @@ export interface GetIpv6AddressesResult {
  * ```
  */
 export function getIpv6AddressesOutput(args?: GetIpv6AddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6AddressesResult> {
-    return pulumi.output(args).apply((a: any) => getIpv6Addresses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", {
+        "associatedInstanceId": args.associatedInstanceId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

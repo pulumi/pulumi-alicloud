@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnhancedNatAvailableZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", {
         "outputFile": args.outputFile,
@@ -35,7 +34,11 @@ export interface GetEnhancedNatAvailableZonesResult {
     readonly zones: outputs.vpc.GetEnhancedNatAvailableZonesZone[];
 }
 export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
-    return pulumi.output(args).apply((a: any) => getEnhancedNatAvailableZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

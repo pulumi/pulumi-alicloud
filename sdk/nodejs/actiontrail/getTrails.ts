@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrails:getTrails", {
         "ids": args.ids,
@@ -120,7 +119,16 @@ export interface GetTrailsResult {
  * ```
  */
 export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsResult> {
-    return pulumi.output(args).apply((a: any) => getTrails(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getTrails:getTrails", {
+        "ids": args.ids,
+        "includeOrganizationTrail": args.includeOrganizationTrail,
+        "includeShadowTrails": args.includeShadowTrails,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

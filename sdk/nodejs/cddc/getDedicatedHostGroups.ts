@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", {
         "engine": args.engine,
@@ -94,7 +93,14 @@ export interface GetDedicatedHostGroupsResult {
  * ```
  */
 export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getDedicatedHostGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", {
+        "engine": args.engine,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouterMulticastDomainMembers(args: GetTransitRouterMulticastDomainMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainMembersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", {
         "ids": args.ids,
@@ -101,7 +100,13 @@ export interface GetTransitRouterMulticastDomainMembersResult {
  * ```
  */
 export function getTransitRouterMulticastDomainMembersOutput(args: GetTransitRouterMulticastDomainMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainMembersResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomainMembers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", {
+        "ids": args.ids,
+        "networkInterfaceId": args.networkInterfaceId,
+        "outputFile": args.outputFile,
+        "transitRouterMulticastDomainId": args.transitRouterMulticastDomainId,
+    }, opts);
 }
 
 /**

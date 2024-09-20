@@ -73,14 +73,20 @@ type GetEnterpriseProxiesResult struct {
 
 func GetEnterpriseProxiesOutput(ctx *pulumi.Context, args GetEnterpriseProxiesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseProxiesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseProxiesResult, error) {
+		ApplyT(func(v interface{}) (GetEnterpriseProxiesResultOutput, error) {
 			args := v.(GetEnterpriseProxiesArgs)
-			r, err := GetEnterpriseProxies(ctx, &args, opts...)
-			var s GetEnterpriseProxiesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEnterpriseProxiesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", args, &rv, "", opts...)
+			if err != nil {
+				return GetEnterpriseProxiesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEnterpriseProxiesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEnterpriseProxiesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEnterpriseProxiesResultOutput)
 }
 

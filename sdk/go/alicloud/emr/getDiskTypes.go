@@ -90,14 +90,20 @@ type GetDiskTypesResult struct {
 
 func GetDiskTypesOutput(ctx *pulumi.Context, args GetDiskTypesOutputArgs, opts ...pulumi.InvokeOption) GetDiskTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDiskTypesResult, error) {
+		ApplyT(func(v interface{}) (GetDiskTypesResultOutput, error) {
 			args := v.(GetDiskTypesArgs)
-			r, err := GetDiskTypes(ctx, &args, opts...)
-			var s GetDiskTypesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDiskTypesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:emr/getDiskTypes:getDiskTypes", args, &rv, "", opts...)
+			if err != nil {
+				return GetDiskTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDiskTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDiskTypesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDiskTypesResultOutput)
 }
 

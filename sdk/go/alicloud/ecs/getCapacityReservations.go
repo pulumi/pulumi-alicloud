@@ -106,14 +106,20 @@ type GetCapacityReservationsResult struct {
 
 func GetCapacityReservationsOutput(ctx *pulumi.Context, args GetCapacityReservationsOutputArgs, opts ...pulumi.InvokeOption) GetCapacityReservationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCapacityReservationsResult, error) {
+		ApplyT(func(v interface{}) (GetCapacityReservationsResultOutput, error) {
 			args := v.(GetCapacityReservationsArgs)
-			r, err := GetCapacityReservations(ctx, &args, opts...)
-			var s GetCapacityReservationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCapacityReservationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getCapacityReservations:getCapacityReservations", args, &rv, "", opts...)
+			if err != nil {
+				return GetCapacityReservationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCapacityReservationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCapacityReservationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetCapacityReservationsResultOutput)
 }
 

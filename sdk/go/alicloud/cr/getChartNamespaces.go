@@ -50,14 +50,20 @@ type GetChartNamespacesResult struct {
 
 func GetChartNamespacesOutput(ctx *pulumi.Context, args GetChartNamespacesOutputArgs, opts ...pulumi.InvokeOption) GetChartNamespacesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetChartNamespacesResult, error) {
+		ApplyT(func(v interface{}) (GetChartNamespacesResultOutput, error) {
 			args := v.(GetChartNamespacesArgs)
-			r, err := GetChartNamespaces(ctx, &args, opts...)
-			var s GetChartNamespacesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetChartNamespacesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cr/getChartNamespaces:getChartNamespaces", args, &rv, "", opts...)
+			if err != nil {
+				return GetChartNamespacesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetChartNamespacesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetChartNamespacesResultOutput), nil
+			}
+			return output, nil
 		}).(GetChartNamespacesResultOutput)
 }
 

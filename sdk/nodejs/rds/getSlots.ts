@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSlots(args: GetSlotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlotsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getSlots:getSlots", {
         "dbInstanceId": args.dbInstanceId,
@@ -89,7 +88,12 @@ export interface GetSlotsResult {
  * ```
  */
 export function getSlotsOutput(args: GetSlotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlotsResult> {
-    return pulumi.output(args).apply((a: any) => getSlots(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getSlots:getSlots", {
+        "dbInstanceId": args.dbInstanceId,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+    }, opts);
 }
 
 /**

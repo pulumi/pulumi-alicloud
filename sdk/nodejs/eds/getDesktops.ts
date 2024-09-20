@@ -70,7 +70,6 @@ import * as utilities from "../utilities";
  */
 export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getDesktops:getDesktops", {
         "desktopName": args.desktopName,
@@ -201,7 +200,18 @@ export interface GetDesktopsResult {
  * ```
  */
 export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopsResult> {
-    return pulumi.output(args).apply((a: any) => getDesktops(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getDesktops:getDesktops", {
+        "desktopName": args.desktopName,
+        "endUserIds": args.endUserIds,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "officeSiteId": args.officeSiteId,
+        "outputFile": args.outputFile,
+        "policyGroupId": args.policyGroupId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

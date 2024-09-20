@@ -91,14 +91,20 @@ type GetTrailsResult struct {
 
 func GetTrailsOutput(ctx *pulumi.Context, args GetTrailsOutputArgs, opts ...pulumi.InvokeOption) GetTrailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTrailsResult, error) {
+		ApplyT(func(v interface{}) (GetTrailsResultOutput, error) {
 			args := v.(GetTrailsArgs)
-			r, err := GetTrails(ctx, &args, opts...)
-			var s GetTrailsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTrailsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getTrails:getTrails", args, &rv, "", opts...)
+			if err != nil {
+				return GetTrailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTrailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTrailsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTrailsResultOutput)
 }
 

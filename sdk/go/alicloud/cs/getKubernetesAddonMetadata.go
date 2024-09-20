@@ -47,14 +47,20 @@ type GetKubernetesAddonMetadataResult struct {
 
 func GetKubernetesAddonMetadataOutput(ctx *pulumi.Context, args GetKubernetesAddonMetadataOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesAddonMetadataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKubernetesAddonMetadataResult, error) {
+		ApplyT(func(v interface{}) (GetKubernetesAddonMetadataResultOutput, error) {
 			args := v.(GetKubernetesAddonMetadataArgs)
-			r, err := GetKubernetesAddonMetadata(ctx, &args, opts...)
-			var s GetKubernetesAddonMetadataResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKubernetesAddonMetadataResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args, &rv, "", opts...)
+			if err != nil {
+				return GetKubernetesAddonMetadataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKubernetesAddonMetadataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKubernetesAddonMetadataResultOutput), nil
+			}
+			return output, nil
 		}).(GetKubernetesAddonMetadataResultOutput)
 }
 

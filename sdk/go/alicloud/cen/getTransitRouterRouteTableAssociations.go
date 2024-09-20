@@ -94,14 +94,20 @@ type GetTransitRouterRouteTableAssociationsResult struct {
 
 func GetTransitRouterRouteTableAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterRouteTableAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterRouteTableAssociationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterRouteTableAssociationsResult, error) {
+		ApplyT(func(v interface{}) (GetTransitRouterRouteTableAssociationsResultOutput, error) {
 			args := v.(GetTransitRouterRouteTableAssociationsArgs)
-			r, err := GetTransitRouterRouteTableAssociations(ctx, &args, opts...)
-			var s GetTransitRouterRouteTableAssociationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTransitRouterRouteTableAssociationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args, &rv, "", opts...)
+			if err != nil {
+				return GetTransitRouterRouteTableAssociationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTransitRouterRouteTableAssociationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTransitRouterRouteTableAssociationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTransitRouterRouteTableAssociationsResultOutput)
 }
 

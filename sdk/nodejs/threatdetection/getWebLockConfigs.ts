@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getWebLockConfigs(args?: GetWebLockConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetWebLockConfigsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", {
         "ids": args.ids,
@@ -113,7 +112,18 @@ export interface GetWebLockConfigsResult {
  * ```
  */
 export function getWebLockConfigsOutput(args?: GetWebLockConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebLockConfigsResult> {
-    return pulumi.output(args).apply((a: any) => getWebLockConfigs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", {
+        "ids": args.ids,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "remark": args.remark,
+        "sourceIp": args.sourceIp,
+        "status": args.status,
+    }, opts);
 }
 
 /**

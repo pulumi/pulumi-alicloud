@@ -89,14 +89,20 @@ type GetExecutionsResult struct {
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetExecutionsResult, error) {
+		ApplyT(func(v interface{}) (GetExecutionsResultOutput, error) {
 			args := v.(GetExecutionsArgs)
-			r, err := GetExecutions(ctx, &args, opts...)
-			var s GetExecutionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetExecutionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:fnf/getExecutions:getExecutions", args, &rv, "", opts...)
+			if err != nil {
+				return GetExecutionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetExecutionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetExecutionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetExecutionsResultOutput)
 }
 

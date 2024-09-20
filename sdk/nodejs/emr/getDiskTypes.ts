@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskTypesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:emr/getDiskTypes:getDiskTypes", {
         "clusterType": args.clusterType,
@@ -117,7 +116,15 @@ export interface GetDiskTypesResult {
  * ```
  */
 export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskTypesResult> {
-    return pulumi.output(args).apply((a: any) => getDiskTypes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:emr/getDiskTypes:getDiskTypes", {
+        "clusterType": args.clusterType,
+        "destinationResource": args.destinationResource,
+        "instanceChargeType": args.instanceChargeType,
+        "instanceType": args.instanceType,
+        "outputFile": args.outputFile,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

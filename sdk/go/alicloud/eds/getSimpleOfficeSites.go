@@ -82,14 +82,20 @@ type GetSimpleOfficeSitesResult struct {
 
 func GetSimpleOfficeSitesOutput(ctx *pulumi.Context, args GetSimpleOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetSimpleOfficeSitesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSimpleOfficeSitesResult, error) {
+		ApplyT(func(v interface{}) (GetSimpleOfficeSitesResultOutput, error) {
 			args := v.(GetSimpleOfficeSitesArgs)
-			r, err := GetSimpleOfficeSites(ctx, &args, opts...)
-			var s GetSimpleOfficeSitesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSimpleOfficeSitesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args, &rv, "", opts...)
+			if err != nil {
+				return GetSimpleOfficeSitesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSimpleOfficeSitesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSimpleOfficeSitesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSimpleOfficeSitesResultOutput)
 }
 

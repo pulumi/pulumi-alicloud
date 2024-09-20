@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getAliases(args?: GetAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getAliases:getAliases", {
         "ids": args.ids,
@@ -97,7 +96,13 @@ export interface GetAliasesResult {
  * ```
  */
 export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasesResult> {
-    return pulumi.output(args).apply((a: any) => getAliases(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getAliases:getAliases", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

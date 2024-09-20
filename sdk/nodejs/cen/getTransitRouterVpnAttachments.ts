@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouterVpnAttachments(args: GetTransitRouterVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVpnAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", {
         "cenId": args.cenId,
@@ -102,7 +101,15 @@ export interface GetTransitRouterVpnAttachmentsResult {
  * ```
  */
 export function getTransitRouterVpnAttachmentsOutput(args: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterVpnAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", {
+        "cenId": args.cenId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

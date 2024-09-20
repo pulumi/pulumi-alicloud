@@ -55,7 +55,6 @@ import * as utilities from "../utilities";
  */
 export function getTemplateApplications(args?: GetTemplateApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateApplicationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getTemplateApplications:getTemplateApplications", {
         "batchQuotaApplicationId": args.batchQuotaApplicationId,
@@ -179,7 +178,16 @@ export interface GetTemplateApplicationsResult {
  * ```
  */
 export function getTemplateApplicationsOutput(args?: GetTemplateApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateApplicationsResult> {
-    return pulumi.output(args).apply((a: any) => getTemplateApplications(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quotas/getTemplateApplications:getTemplateApplications", {
+        "batchQuotaApplicationId": args.batchQuotaApplicationId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "quotaActionCode": args.quotaActionCode,
+        "quotaCategory": args.quotaCategory,
+    }, opts);
 }
 
 /**

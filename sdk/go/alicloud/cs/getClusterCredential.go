@@ -56,14 +56,20 @@ type GetClusterCredentialResult struct {
 
 func GetClusterCredentialOutput(ctx *pulumi.Context, args GetClusterCredentialOutputArgs, opts ...pulumi.InvokeOption) GetClusterCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetClusterCredentialResult, error) {
+		ApplyT(func(v interface{}) (GetClusterCredentialResultOutput, error) {
 			args := v.(GetClusterCredentialArgs)
-			r, err := GetClusterCredential(ctx, &args, opts...)
-			var s GetClusterCredentialResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetClusterCredentialResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getClusterCredential:getClusterCredential", args, &rv, "", opts...)
+			if err != nil {
+				return GetClusterCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetClusterCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetClusterCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(GetClusterCredentialResultOutput)
 }
 

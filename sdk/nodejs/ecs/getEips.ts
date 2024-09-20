@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
     pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
         "addressName": args.addressName,
@@ -166,7 +165,29 @@ export interface GetEipsResult {
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {
-    return pulumi.output(args).apply((a: any) => getEips(a, opts))
+    pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEips:getEips", {
+        "addressName": args.addressName,
+        "associatedInstanceId": args.associatedInstanceId,
+        "associatedInstanceType": args.associatedInstanceType,
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "ipAddress": args.ipAddress,
+        "ipAddresses": args.ipAddresses,
+        "isp": args.isp,
+        "lockReason": args.lockReason,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "segmentInstanceId": args.segmentInstanceId,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

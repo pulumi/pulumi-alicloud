@@ -80,14 +80,20 @@ type GetKeyVersionsResult struct {
 
 func GetKeyVersionsOutput(ctx *pulumi.Context, args GetKeyVersionsOutputArgs, opts ...pulumi.InvokeOption) GetKeyVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKeyVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetKeyVersionsResultOutput, error) {
 			args := v.(GetKeyVersionsArgs)
-			r, err := GetKeyVersions(ctx, &args, opts...)
-			var s GetKeyVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKeyVersionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:kms/getKeyVersions:getKeyVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetKeyVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKeyVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKeyVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetKeyVersionsResultOutput)
 }
 

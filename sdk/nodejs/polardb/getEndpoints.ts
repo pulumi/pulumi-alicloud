@@ -53,7 +53,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,
@@ -140,7 +139,11 @@ export interface GetEndpointsResult {
  * ```
  */
 export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
-    return pulumi.output(args).apply((a: any) => getEndpoints(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:polardb/getEndpoints:getEndpoints", {
+        "dbClusterId": args.dbClusterId,
+        "dbEndpointId": args.dbEndpointId,
+    }, opts);
 }
 
 /**

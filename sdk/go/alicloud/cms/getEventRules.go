@@ -95,14 +95,20 @@ type GetEventRulesResult struct {
 
 func GetEventRulesOutput(ctx *pulumi.Context, args GetEventRulesOutputArgs, opts ...pulumi.InvokeOption) GetEventRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEventRulesResult, error) {
+		ApplyT(func(v interface{}) (GetEventRulesResultOutput, error) {
 			args := v.(GetEventRulesArgs)
-			r, err := GetEventRules(ctx, &args, opts...)
-			var s GetEventRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEventRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getEventRules:getEventRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetEventRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEventRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEventRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEventRulesResultOutput)
 }
 

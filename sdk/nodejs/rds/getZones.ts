@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getZones:getZones", {
         "category": args.category,
@@ -131,7 +130,18 @@ export interface GetZonesResult {
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply((a: any) => getZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getZones:getZones", {
+        "category": args.category,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
+        "instanceChargeType": args.instanceChargeType,
+        "multi": args.multi,
+        "multiZone": args.multiZone,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClassDetails(args: GetClassDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetClassDetailsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getClassDetails:getClassDetails", {
         "classCode": args.classCode,
@@ -154,7 +153,13 @@ export interface GetClassDetailsResult {
  * ```
  */
 export function getClassDetailsOutput(args: GetClassDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClassDetailsResult> {
-    return pulumi.output(args).apply((a: any) => getClassDetails(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getClassDetails:getClassDetails", {
+        "classCode": args.classCode,
+        "commodityCode": args.commodityCode,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
+    }, opts);
 }
 
 /**

@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDbInstancePlans(args: GetDbInstancePlansArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancePlansResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", {
         "dbInstanceId": args.dbInstanceId,
@@ -123,7 +122,16 @@ export interface GetDbInstancePlansResult {
  * ```
  */
 export function getDbInstancePlansOutput(args: GetDbInstancePlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancePlansResult> {
-    return pulumi.output(args).apply((a: any) => getDbInstancePlans(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", {
+        "dbInstanceId": args.dbInstanceId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "planScheduleType": args.planScheduleType,
+        "planType": args.planType,
+        "status": args.status,
+    }, opts);
 }
 
 /**

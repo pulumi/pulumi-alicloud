@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKeyVersions(args: GetKeyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getKeyVersions:getKeyVersions", {
         "ids": args.ids,
@@ -95,7 +94,12 @@ export interface GetKeyVersionsResult {
  * ```
  */
 export function getKeyVersionsOutput(args: GetKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getKeyVersions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getKeyVersions:getKeyVersions", {
+        "ids": args.ids,
+        "keyId": args.keyId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

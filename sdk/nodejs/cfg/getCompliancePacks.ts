@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getCompliancePacks(args?: GetCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetCompliancePacksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getCompliancePacks:getCompliancePacks", {
         "enableDetails": args.enableDetails,
@@ -111,7 +110,15 @@ export interface GetCompliancePacksResult {
  * ```
  */
 export function getCompliancePacksOutput(args?: GetCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompliancePacksResult> {
-    return pulumi.output(args).apply((a: any) => getCompliancePacks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getCompliancePacks:getCompliancePacks", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

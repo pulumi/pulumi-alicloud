@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getHoneypotImages(args?: GetHoneypotImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotImagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", {
         "ids": args.ids,
@@ -98,7 +97,14 @@ export interface GetHoneypotImagesResult {
  * ```
  */
 export function getHoneypotImagesOutput(args?: GetHoneypotImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotImagesResult> {
-    return pulumi.output(args).apply((a: any) => getHoneypotImages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "nodeId": args.nodeId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

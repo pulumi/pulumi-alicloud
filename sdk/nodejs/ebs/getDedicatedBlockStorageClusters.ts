@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getDedicatedBlockStorageClusters(args?: GetDedicatedBlockStorageClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedBlockStorageClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", {
         "ids": args.ids,
@@ -95,7 +94,13 @@ export interface GetDedicatedBlockStorageClustersResult {
  * ```
  */
 export function getDedicatedBlockStorageClustersOutput(args?: GetDedicatedBlockStorageClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedBlockStorageClustersResult> {
-    return pulumi.output(args).apply((a: any) => getDedicatedBlockStorageClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

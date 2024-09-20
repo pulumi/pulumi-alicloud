@@ -93,14 +93,20 @@ type GetIpaDomainsResult struct {
 
 func GetIpaDomainsOutput(ctx *pulumi.Context, args GetIpaDomainsOutputArgs, opts ...pulumi.InvokeOption) GetIpaDomainsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpaDomainsResult, error) {
+		ApplyT(func(v interface{}) (GetIpaDomainsResultOutput, error) {
 			args := v.(GetIpaDomainsArgs)
-			r, err := GetIpaDomains(ctx, &args, opts...)
-			var s GetIpaDomainsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpaDomainsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dcdn/getIpaDomains:getIpaDomains", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpaDomainsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpaDomainsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpaDomainsResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpaDomainsResultOutput)
 }
 

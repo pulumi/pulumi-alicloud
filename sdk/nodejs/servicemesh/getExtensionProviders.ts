@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExtensionProviders(args: GetExtensionProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetExtensionProvidersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", {
         "ids": args.ids,
@@ -127,7 +126,14 @@ export interface GetExtensionProvidersResult {
  * ```
  */
 export function getExtensionProvidersOutput(args: GetExtensionProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExtensionProvidersResult> {
-    return pulumi.output(args).apply((a: any) => getExtensionProviders(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "serviceMeshId": args.serviceMeshId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

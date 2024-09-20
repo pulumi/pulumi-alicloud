@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMscSubContactVerificationMessage(args: GetMscSubContactVerificationMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactVerificationMessageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", {
         "contactId": args.contactId,
@@ -89,7 +88,11 @@ export interface GetMscSubContactVerificationMessageResult {
  * ```
  */
 export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {
-    return pulumi.output(args).apply((a: any) => getMscSubContactVerificationMessage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", {
+        "contactId": args.contactId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

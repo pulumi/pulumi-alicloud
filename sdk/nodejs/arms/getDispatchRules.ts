@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getDispatchRules:getDispatchRules", {
         "dispatchRuleName": args.dispatchRuleName,
@@ -104,7 +103,15 @@ export interface GetDispatchRulesResult {
  * ```
  */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
-    return pulumi.output(args).apply((a: any) => getDispatchRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getDispatchRules:getDispatchRules", {
+        "dispatchRuleName": args.dispatchRuleName,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

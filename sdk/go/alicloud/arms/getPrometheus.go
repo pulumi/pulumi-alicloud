@@ -137,14 +137,20 @@ type LookupPrometheusResult struct {
 
 func LookupPrometheusOutput(ctx *pulumi.Context, args LookupPrometheusOutputArgs, opts ...pulumi.InvokeOption) LookupPrometheusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrometheusResult, error) {
+		ApplyT(func(v interface{}) (LookupPrometheusResultOutput, error) {
 			args := v.(LookupPrometheusArgs)
-			r, err := LookupPrometheus(ctx, &args, opts...)
-			var s LookupPrometheusResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrometheusResult
+			secret, err := ctx.InvokePackageRaw("alicloud:arms/getPrometheus:getPrometheus", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrometheusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrometheusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrometheusResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrometheusResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
         "generation": args.generation,
@@ -104,7 +103,15 @@ export interface GetInstanceTypeFamiliesResult {
  * ```
  */
 export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceTypeFamilies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
+        "generation": args.generation,
+        "instanceChargeType": args.instanceChargeType,
+        "outputFile": args.outputFile,
+        "spotStrategy": args.spotStrategy,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

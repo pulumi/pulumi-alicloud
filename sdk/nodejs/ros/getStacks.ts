@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Promise<GetStacksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getStacks:getStacks", {
         "enableDetails": args.enableDetails,
@@ -126,7 +125,19 @@ export interface GetStacksResult {
  * ```
  */
 export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
-    return pulumi.output(args).apply((a: any) => getStacks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ros/getStacks:getStacks", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "parentStackId": args.parentStackId,
+        "showNestedStack": args.showNestedStack,
+        "stackName": args.stackName,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

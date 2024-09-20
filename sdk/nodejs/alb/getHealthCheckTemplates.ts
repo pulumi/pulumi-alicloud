@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getHealthCheckTemplates(args?: GetHealthCheckTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", {
         "healthCheckTemplateIds": args.healthCheckTemplateIds,
@@ -108,7 +107,15 @@ export interface GetHealthCheckTemplatesResult {
  * ```
  */
 export function getHealthCheckTemplatesOutput(args?: GetHealthCheckTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getHealthCheckTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", {
+        "healthCheckTemplateIds": args.healthCheckTemplateIds,
+        "healthCheckTemplateName": args.healthCheckTemplateName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

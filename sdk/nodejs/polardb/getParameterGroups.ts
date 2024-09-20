@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  */
 export function getParameterGroups(args?: GetParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetParameterGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getParameterGroups:getParameterGroups", {
         "dbType": args.dbType,
@@ -128,7 +127,15 @@ export interface GetParameterGroupsResult {
  * ```
  */
 export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParameterGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getParameterGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:polardb/getParameterGroups:getParameterGroups", {
+        "dbType": args.dbType,
+        "dbVersion": args.dbVersion,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAuditPolicies(args: GetAuditPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAuditPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getAuditPolicies:getAuditPolicies", {
         "dbInstanceId": args.dbInstanceId,
@@ -80,7 +79,11 @@ export interface GetAuditPoliciesResult {
  * ```
  */
 export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuditPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getAuditPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mongodb/getAuditPolicies:getAuditPolicies", {
+        "dbInstanceId": args.dbInstanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

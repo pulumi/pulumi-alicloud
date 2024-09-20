@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getCollationTimeZones(args?: GetCollationTimeZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetCollationTimeZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getCollationTimeZones:getCollationTimeZones", {
         "collationTimeZones": args.collationTimeZones,
@@ -82,7 +81,12 @@ export interface GetCollationTimeZonesResult {
  * ```
  */
 export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollationTimeZonesResult> {
-    return pulumi.output(args).apply((a: any) => getCollationTimeZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getCollationTimeZones:getCollationTimeZones", {
+        "collationTimeZones": args.collationTimeZones,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

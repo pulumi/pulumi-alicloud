@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  */
 export function getTemplateScratches(args?: GetTemplateScratchesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateScratchesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getTemplateScratches:getTemplateScratches", {
         "enableDetails": args.enableDetails,
@@ -115,7 +114,15 @@ export interface GetTemplateScratchesResult {
  * ```
  */
 export function getTemplateScratchesOutput(args?: GetTemplateScratchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateScratchesResult> {
-    return pulumi.output(args).apply((a: any) => getTemplateScratches(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ros/getTemplateScratches:getTemplateScratches", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "templateScratchType": args.templateScratchType,
+    }, opts);
 }
 
 /**

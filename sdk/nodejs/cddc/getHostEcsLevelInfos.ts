@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.147.0+.
  */
 export function getHostEcsLevelInfos(args: GetHostEcsLevelInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetHostEcsLevelInfosResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", {
         "dbType": args.dbType,
@@ -70,7 +69,14 @@ export interface GetHostEcsLevelInfosResult {
  * > **NOTE:** Available in v1.147.0+.
  */
 export function getHostEcsLevelInfosOutput(args: GetHostEcsLevelInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostEcsLevelInfosResult> {
-    return pulumi.output(args).apply((a: any) => getHostEcsLevelInfos(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", {
+        "dbType": args.dbType,
+        "imageCategory": args.imageCategory,
+        "outputFile": args.outputFile,
+        "storageType": args.storageType,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

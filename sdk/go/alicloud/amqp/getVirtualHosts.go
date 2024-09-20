@@ -91,14 +91,20 @@ type GetVirtualHostsResult struct {
 
 func GetVirtualHostsOutput(ctx *pulumi.Context, args GetVirtualHostsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualHostsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVirtualHostsResult, error) {
+		ApplyT(func(v interface{}) (GetVirtualHostsResultOutput, error) {
 			args := v.(GetVirtualHostsArgs)
-			r, err := GetVirtualHosts(ctx, &args, opts...)
-			var s GetVirtualHostsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVirtualHostsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:amqp/getVirtualHosts:getVirtualHosts", args, &rv, "", opts...)
+			if err != nil {
+				return GetVirtualHostsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVirtualHostsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVirtualHostsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVirtualHostsResultOutput)
 }
 

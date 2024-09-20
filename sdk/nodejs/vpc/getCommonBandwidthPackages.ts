@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  */
 export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
         "bandwidthPackageName": args.bandwidthPackageName,
@@ -158,7 +157,18 @@ export interface GetCommonBandwidthPackagesResult {
  *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
 export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
-    return pulumi.output(args).apply((a: any) => getCommonBandwidthPackages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
+        "bandwidthPackageName": args.bandwidthPackageName,
+        "dryRun": args.dryRun,
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

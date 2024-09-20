@@ -96,14 +96,20 @@ type GetGatewayVpnAttachmentsResult struct {
 
 func GetGatewayVpnAttachmentsOutput(ctx *pulumi.Context, args GetGatewayVpnAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVpnAttachmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewayVpnAttachmentsResult, error) {
+		ApplyT(func(v interface{}) (GetGatewayVpnAttachmentsResultOutput, error) {
 			args := v.(GetGatewayVpnAttachmentsArgs)
-			r, err := GetGatewayVpnAttachments(ctx, &args, opts...)
-			var s GetGatewayVpnAttachmentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewayVpnAttachmentsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewayVpnAttachmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewayVpnAttachmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewayVpnAttachmentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewayVpnAttachmentsResultOutput)
 }
 

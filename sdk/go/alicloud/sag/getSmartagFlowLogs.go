@@ -95,14 +95,20 @@ type GetSmartagFlowLogsResult struct {
 
 func GetSmartagFlowLogsOutput(ctx *pulumi.Context, args GetSmartagFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetSmartagFlowLogsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSmartagFlowLogsResult, error) {
+		ApplyT(func(v interface{}) (GetSmartagFlowLogsResultOutput, error) {
 			args := v.(GetSmartagFlowLogsArgs)
-			r, err := GetSmartagFlowLogs(ctx, &args, opts...)
-			var s GetSmartagFlowLogsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSmartagFlowLogsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args, &rv, "", opts...)
+			if err != nil {
+				return GetSmartagFlowLogsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSmartagFlowLogsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSmartagFlowLogsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSmartagFlowLogsResultOutput)
 }
 

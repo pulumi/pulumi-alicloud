@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  */
 export function getNasFileSystems(args?: GetNasFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetNasFileSystemsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getNasFileSystems:getNasFileSystems", {
         "ids": args.ids,
@@ -126,7 +125,15 @@ export interface GetNasFileSystemsResult {
  * ```
  */
 export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasFileSystemsResult> {
-    return pulumi.output(args).apply((a: any) => getNasFileSystems(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getNasFileSystems:getNasFileSystems", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "officeSiteId": args.officeSiteId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getModifyParameterLogs(args: GetModifyParameterLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetModifyParameterLogsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", {
         "dbInstanceId": args.dbInstanceId,
@@ -94,7 +93,13 @@ export interface GetModifyParameterLogsResult {
  * ```
  */
 export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModifyParameterLogsResult> {
-    return pulumi.output(args).apply((a: any) => getModifyParameterLogs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", {
+        "dbInstanceId": args.dbInstanceId,
+        "endTime": args.endTime,
+        "outputFile": args.outputFile,
+        "startTime": args.startTime,
+    }, opts);
 }
 
 /**

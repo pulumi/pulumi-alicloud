@@ -68,14 +68,20 @@ type GetConfigurationRecordersResult struct {
 
 func GetConfigurationRecordersOutput(ctx *pulumi.Context, args GetConfigurationRecordersOutputArgs, opts ...pulumi.InvokeOption) GetConfigurationRecordersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConfigurationRecordersResult, error) {
+		ApplyT(func(v interface{}) (GetConfigurationRecordersResultOutput, error) {
 			args := v.(GetConfigurationRecordersArgs)
-			r, err := GetConfigurationRecorders(ctx, &args, opts...)
-			var s GetConfigurationRecordersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetConfigurationRecordersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args, &rv, "", opts...)
+			if err != nil {
+				return GetConfigurationRecordersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetConfigurationRecordersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetConfigurationRecordersResultOutput), nil
+			}
+			return output, nil
 		}).(GetConfigurationRecordersResultOutput)
 }
 

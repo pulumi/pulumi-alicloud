@@ -100,14 +100,20 @@ type GetOrganizationsResult struct {
 
 func GetOrganizationsOutput(ctx *pulumi.Context, args GetOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOrganizationsResult, error) {
+		ApplyT(func(v interface{}) (GetOrganizationsResultOutput, error) {
 			args := v.(GetOrganizationsArgs)
-			r, err := GetOrganizations(ctx, &args, opts...)
-			var s GetOrganizationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOrganizationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rdc/getOrganizations:getOrganizations", args, &rv, "", opts...)
+			if err != nil {
+				return GetOrganizationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOrganizationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOrganizationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetOrganizationsResultOutput)
 }
 

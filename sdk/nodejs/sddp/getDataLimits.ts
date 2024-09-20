@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getDataLimits(args?: GetDataLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetDataLimitsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sddp/getDataLimits:getDataLimits", {
         "ids": args.ids,
@@ -89,7 +88,14 @@ export interface GetDataLimitsResult {
  * ```
  */
 export function getDataLimitsOutput(args?: GetDataLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLimitsResult> {
-    return pulumi.output(args).apply((a: any) => getDataLimits(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sddp/getDataLimits:getDataLimits", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "parentId": args.parentId,
+        "resourceType": args.resourceType,
+    }, opts);
 }
 
 /**

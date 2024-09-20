@@ -97,14 +97,20 @@ type GetZoneRecordsResult struct {
 
 func GetZoneRecordsOutput(ctx *pulumi.Context, args GetZoneRecordsOutputArgs, opts ...pulumi.InvokeOption) GetZoneRecordsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetZoneRecordsResult, error) {
+		ApplyT(func(v interface{}) (GetZoneRecordsResultOutput, error) {
 			args := v.(GetZoneRecordsArgs)
-			r, err := GetZoneRecords(ctx, &args, opts...)
-			var s GetZoneRecordsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetZoneRecordsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:pvtz/getZoneRecords:getZoneRecords", args, &rv, "", opts...)
+			if err != nil {
+				return GetZoneRecordsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetZoneRecordsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetZoneRecordsResultOutput), nil
+			}
+			return output, nil
 		}).(GetZoneRecordsResultOutput)
 }
 

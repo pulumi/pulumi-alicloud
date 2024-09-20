@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getHosts:getHosts", {
         "enableDetails": args.enableDetails,
@@ -153,7 +152,20 @@ export interface GetHostsResult {
  * ```
  */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
-    return pulumi.output(args).apply((a: any) => getHosts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHosts:getHosts", {
+        "enableDetails": args.enableDetails,
+        "hostAddress": args.hostAddress,
+        "hostName": args.hostName,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "osType": args.osType,
+        "outputFile": args.outputFile,
+        "source": args.source,
+        "sourceInstanceId": args.sourceInstanceId,
+        "sourceInstanceState": args.sourceInstanceState,
+    }, opts);
 }
 
 /**

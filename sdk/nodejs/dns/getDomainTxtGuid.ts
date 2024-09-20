@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDomainTxtGuid(args: GetDomainTxtGuidArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTxtGuidResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", {
         "domainName": args.domainName,
@@ -97,7 +96,13 @@ export interface GetDomainTxtGuidResult {
  * ```
  */
 export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTxtGuidResult> {
-    return pulumi.output(args).apply((a: any) => getDomainTxtGuid(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", {
+        "domainName": args.domainName,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "type": args.type,
+    }, opts);
 }
 
 /**

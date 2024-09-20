@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getStackInstances(args: GetStackInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetStackInstancesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getStackInstances:getStackInstances", {
         "enableDetails": args.enableDetails,
@@ -161,7 +160,16 @@ export interface GetStackInstancesResult {
  * ```
  */
 export function getStackInstancesOutput(args: GetStackInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getStackInstances(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ros/getStackInstances:getStackInstances", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "stackGroupName": args.stackGroupName,
+        "stackInstanceAccountId": args.stackInstanceAccountId,
+        "stackInstanceRegionId": args.stackInstanceRegionId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.82.0+
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:edas/getDeployGroups:getDeployGroups", {
         "appId": args.appId,
@@ -68,7 +67,12 @@ export interface GetDeployGroupsResult {
  * > **NOTE:** Available in 1.82.0+
  */
 export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeployGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getDeployGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:edas/getDeployGroups:getDeployGroups", {
+        "appId": args.appId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -89,14 +89,20 @@ type GetLaunchOptionsResult struct {
 
 func GetLaunchOptionsOutput(ctx *pulumi.Context, args GetLaunchOptionsOutputArgs, opts ...pulumi.InvokeOption) GetLaunchOptionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLaunchOptionsResult, error) {
+		ApplyT(func(v interface{}) (GetLaunchOptionsResultOutput, error) {
 			args := v.(GetLaunchOptionsArgs)
-			r, err := GetLaunchOptions(ctx, &args, opts...)
-			var s GetLaunchOptionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLaunchOptionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args, &rv, "", opts...)
+			if err != nil {
+				return GetLaunchOptionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLaunchOptionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLaunchOptionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetLaunchOptionsResultOutput)
 }
 

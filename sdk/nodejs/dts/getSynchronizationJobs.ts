@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSynchronizationJobsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", {
         "enableDetails": args.enableDetails,
@@ -92,7 +91,15 @@ export interface GetSynchronizationJobsResult {
  * ```
  */
 export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
-    return pulumi.output(args).apply((a: any) => getSynchronizationJobs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

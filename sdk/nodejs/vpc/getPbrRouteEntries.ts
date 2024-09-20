@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPbrRouteEntries(args: GetPbrRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetPbrRouteEntriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", {
         "ids": args.ids,
@@ -90,7 +89,12 @@ export interface GetPbrRouteEntriesResult {
  * ```
  */
 export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPbrRouteEntriesResult> {
-    return pulumi.output(args).apply((a: any) => getPbrRouteEntries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "vpnGatewayId": args.vpnGatewayId,
+    }, opts);
 }
 
 /**

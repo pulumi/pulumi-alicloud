@@ -85,14 +85,20 @@ type GetIntegrationExportersResult struct {
 
 func GetIntegrationExportersOutput(ctx *pulumi.Context, args GetIntegrationExportersOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationExportersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIntegrationExportersResult, error) {
+		ApplyT(func(v interface{}) (GetIntegrationExportersResultOutput, error) {
 			args := v.(GetIntegrationExportersArgs)
-			r, err := GetIntegrationExporters(ctx, &args, opts...)
-			var s GetIntegrationExportersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIntegrationExportersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:arms/getIntegrationExporters:getIntegrationExporters", args, &rv, "", opts...)
+			if err != nil {
+				return GetIntegrationExportersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIntegrationExportersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIntegrationExportersResultOutput), nil
+			}
+			return output, nil
 		}).(GetIntegrationExportersResultOutput)
 }
 

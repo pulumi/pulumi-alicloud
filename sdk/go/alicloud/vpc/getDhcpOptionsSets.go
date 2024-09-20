@@ -121,14 +121,20 @@ type GetDhcpOptionsSetsResult struct {
 
 func GetDhcpOptionsSetsOutput(ctx *pulumi.Context, args GetDhcpOptionsSetsOutputArgs, opts ...pulumi.InvokeOption) GetDhcpOptionsSetsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDhcpOptionsSetsResult, error) {
+		ApplyT(func(v interface{}) (GetDhcpOptionsSetsResultOutput, error) {
 			args := v.(GetDhcpOptionsSetsArgs)
-			r, err := GetDhcpOptionsSets(ctx, &args, opts...)
-			var s GetDhcpOptionsSetsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDhcpOptionsSetsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args, &rv, "", opts...)
+			if err != nil {
+				return GetDhcpOptionsSetsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDhcpOptionsSetsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDhcpOptionsSetsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDhcpOptionsSetsResultOutput)
 }
 

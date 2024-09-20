@@ -81,14 +81,20 @@ type GetEdgeKubernetesClustersResult struct {
 
 func GetEdgeKubernetesClustersOutput(ctx *pulumi.Context, args GetEdgeKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetEdgeKubernetesClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEdgeKubernetesClustersResult, error) {
+		ApplyT(func(v interface{}) (GetEdgeKubernetesClustersResultOutput, error) {
 			args := v.(GetEdgeKubernetesClustersArgs)
-			r, err := GetEdgeKubernetesClusters(ctx, &args, opts...)
-			var s GetEdgeKubernetesClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEdgeKubernetesClustersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetEdgeKubernetesClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEdgeKubernetesClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEdgeKubernetesClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetEdgeKubernetesClustersResultOutput)
 }
 

@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpv6EgressRules(args: GetIpv6EgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6EgressRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", {
         "ids": args.ids,
@@ -149,7 +148,16 @@ export interface GetIpv6EgressRulesResult {
  * ```
  */
 export function getIpv6EgressRulesOutput(args: GetIpv6EgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6EgressRulesResult> {
-    return pulumi.output(args).apply((a: any) => getIpv6EgressRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "ipv6EgressRuleName": args.ipv6EgressRuleName,
+        "ipv6GatewayId": args.ipv6GatewayId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

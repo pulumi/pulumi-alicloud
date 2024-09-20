@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getGtmInstances(args?: GetGtmInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetGtmInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getGtmInstances:getGtmInstances", {
         "ids": args.ids,
@@ -84,7 +83,13 @@ export interface GetGtmInstancesResult {
  * ```
  */
 export function getGtmInstancesOutput(args?: GetGtmInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGtmInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getGtmInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getGtmInstances:getGtmInstances", {
+        "ids": args.ids,
+        "lang": args.lang,
+        "resourceGroupId": args.resourceGroupId,
+    }, opts);
 }
 
 /**

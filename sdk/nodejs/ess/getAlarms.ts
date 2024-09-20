@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getAlarms(args?: GetAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getAlarms:getAlarms", {
         "ids": args.ids,
@@ -87,7 +86,15 @@ export interface GetAlarmsResult {
  * > **NOTE** Available in 1.72.0+
  */
 export function getAlarmsOutput(args?: GetAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmsResult> {
-    return pulumi.output(args).apply((a: any) => getAlarms(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ess/getAlarms:getAlarms", {
+        "ids": args.ids,
+        "metricType": args.metricType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
+    }, opts);
 }
 
 /**

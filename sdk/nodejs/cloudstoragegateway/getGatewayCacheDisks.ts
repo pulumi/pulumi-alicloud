@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayCacheDisks(args: GetGatewayCacheDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayCacheDisksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", {
         "gatewayId": args.gatewayId,
@@ -118,7 +117,13 @@ export interface GetGatewayCacheDisksResult {
  * ```
  */
 export function getGatewayCacheDisksOutput(args: GetGatewayCacheDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCacheDisksResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayCacheDisks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", {
+        "gatewayId": args.gatewayId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

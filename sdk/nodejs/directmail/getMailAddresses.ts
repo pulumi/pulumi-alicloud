@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getMailAddresses(args?: GetMailAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetMailAddressesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:directmail/getMailAddresses:getMailAddresses", {
         "ids": args.ids,
@@ -99,7 +98,15 @@ export interface GetMailAddressesResult {
  * ```
  */
 export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMailAddressesResult> {
-    return pulumi.output(args).apply((a: any) => getMailAddresses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:directmail/getMailAddresses:getMailAddresses", {
+        "ids": args.ids,
+        "keyWord": args.keyWord,
+        "outputFile": args.outputFile,
+        "sendtype": args.sendtype,
+        "status": args.status,
+    }, opts);
 }
 
 /**

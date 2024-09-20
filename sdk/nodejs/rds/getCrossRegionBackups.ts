@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCrossRegionBackups(args: GetCrossRegionBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionBackupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", {
         "backupId": args.backupId,
@@ -128,7 +127,18 @@ export interface GetCrossRegionBackupsResult {
  * ```
  */
 export function getCrossRegionBackupsOutput(args: GetCrossRegionBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionBackupsResult> {
-    return pulumi.output(args).apply((a: any) => getCrossRegionBackups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", {
+        "backupId": args.backupId,
+        "crossBackupId": args.crossBackupId,
+        "crossBackupRegion": args.crossBackupRegion,
+        "dbInstanceId": args.dbInstanceId,
+        "endTime": args.endTime,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "startTime": args.startTime,
+    }, opts);
 }
 
 /**

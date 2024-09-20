@@ -36,7 +36,6 @@ import * as utilities from "../utilities";
  */
 export function getNetworkPackages(args?: GetNetworkPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPackagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", {
         "ids": args.ids,
@@ -105,7 +104,13 @@ export interface GetNetworkPackagesResult {
  * ```
  */
 export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPackagesResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkPackages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getNetworkPackages:getNetworkPackages", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

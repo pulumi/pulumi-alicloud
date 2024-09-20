@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
@@ -119,7 +118,15 @@ export interface GetFileSystemsResult {
  * ```
  */
 export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
-    return pulumi.output(args).apply((a: any) => getFileSystems(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getFileSystems:getFileSystems", {
+        "descriptionRegex": args.descriptionRegex,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "protocolType": args.protocolType,
+        "storageType": args.storageType,
+    }, opts);
 }
 
 /**

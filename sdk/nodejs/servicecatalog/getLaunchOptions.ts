@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLaunchOptions(args: GetLaunchOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLaunchOptionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", {
         "ids": args.ids,
@@ -107,7 +106,13 @@ export interface GetLaunchOptionsResult {
  * ```
  */
 export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchOptionsResult> {
-    return pulumi.output(args).apply((a: any) => getLaunchOptions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "productId": args.productId,
+    }, opts);
 }
 
 /**

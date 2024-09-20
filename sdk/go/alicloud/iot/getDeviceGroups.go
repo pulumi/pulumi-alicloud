@@ -85,14 +85,20 @@ type GetDeviceGroupsResult struct {
 
 func GetDeviceGroupsOutput(ctx *pulumi.Context, args GetDeviceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDeviceGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeviceGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetDeviceGroupsResultOutput, error) {
 			args := v.(GetDeviceGroupsArgs)
-			r, err := GetDeviceGroups(ctx, &args, opts...)
-			var s GetDeviceGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDeviceGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:iot/getDeviceGroups:getDeviceGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeviceGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeviceGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeviceGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeviceGroupsResultOutput)
 }
 

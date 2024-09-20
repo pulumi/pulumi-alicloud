@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
         "enableDetails": args.enableDetails,
@@ -132,7 +131,18 @@ export interface GetPoliciesResult {
  * ```
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ram/getPolicies:getPolicies", {
+        "enableDetails": args.enableDetails,
+        "groupName": args.groupName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "roleName": args.roleName,
+        "type": args.type,
+        "userName": args.userName,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
         "ids": args.ids,
@@ -129,7 +128,18 @@ export interface GetZoneRecordsResult {
  * ```
  */
 export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
-    return pulumi.output(args).apply((a: any) => getZoneRecords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:pvtz/getZoneRecords:getZoneRecords", {
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "searchMode": args.searchMode,
+        "status": args.status,
+        "tag": args.tag,
+        "userClientIp": args.userClientIp,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

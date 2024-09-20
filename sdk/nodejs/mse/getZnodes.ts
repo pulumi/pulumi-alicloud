@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getZnodes(args: GetZnodesArgs, opts?: pulumi.InvokeOptions): Promise<GetZnodesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mse/getZnodes:getZnodes", {
         "acceptLanguage": args.acceptLanguage,
@@ -127,7 +126,15 @@ export interface GetZnodesResult {
  * ```
  */
 export function getZnodesOutput(args: GetZnodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZnodesResult> {
-    return pulumi.output(args).apply((a: any) => getZnodes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mse/getZnodes:getZnodes", {
+        "acceptLanguage": args.acceptLanguage,
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "path": args.path,
+    }, opts);
 }
 
 /**

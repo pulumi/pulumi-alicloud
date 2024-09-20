@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackupPolicies(args: GetBackupPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", {
         "dbClusterId": args.dbClusterId,
@@ -80,7 +79,11 @@ export interface GetBackupPoliciesResult {
  * ```
  */
 export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getBackupPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", {
+        "dbClusterId": args.dbClusterId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

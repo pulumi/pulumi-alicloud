@@ -82,14 +82,20 @@ type GetEnterpriseDatabasesResult struct {
 
 func GetEnterpriseDatabasesOutput(ctx *pulumi.Context, args GetEnterpriseDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseDatabasesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseDatabasesResult, error) {
+		ApplyT(func(v interface{}) (GetEnterpriseDatabasesResultOutput, error) {
 			args := v.(GetEnterpriseDatabasesArgs)
-			r, err := GetEnterpriseDatabases(ctx, &args, opts...)
-			var s GetEnterpriseDatabasesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEnterpriseDatabasesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", args, &rv, "", opts...)
+			if err != nil {
+				return GetEnterpriseDatabasesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEnterpriseDatabasesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEnterpriseDatabasesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEnterpriseDatabasesResultOutput)
 }
 

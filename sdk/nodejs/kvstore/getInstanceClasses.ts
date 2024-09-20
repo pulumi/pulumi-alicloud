@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
         "architecture": args.architecture,
@@ -187,7 +186,24 @@ export interface GetInstanceClassesResult {
  * ```
  */
 export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
+        "architecture": args.architecture,
+        "editionType": args.editionType,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
+        "instanceChargeType": args.instanceChargeType,
+        "nodeType": args.nodeType,
+        "outputFile": args.outputFile,
+        "packageType": args.packageType,
+        "performanceType": args.performanceType,
+        "productType": args.productType,
+        "seriesType": args.seriesType,
+        "shardNumber": args.shardNumber,
+        "sortedBy": args.sortedBy,
+        "storageType": args.storageType,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
@@ -98,7 +97,13 @@ export interface GetRouteEntriesResult {
  * ```
  */
 export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
-    return pulumi.output(args).apply((a: any) => getRouteEntries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getRouteEntries:getRouteEntries", {
+        "cidrBlock": args.cidrBlock,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "routeTableId": args.routeTableId,
+    }, opts);
 }
 
 /**

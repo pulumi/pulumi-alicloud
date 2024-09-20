@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getScimServerCredentials(args: GetScimServerCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetScimServerCredentialsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", {
         "directoryId": args.directoryId,
@@ -104,7 +103,13 @@ export interface GetScimServerCredentialsResult {
  * ```
  */
 export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
-    return pulumi.output(args).apply((a: any) => getScimServerCredentials(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", {
+        "directoryId": args.directoryId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

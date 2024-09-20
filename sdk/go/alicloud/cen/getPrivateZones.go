@@ -91,14 +91,20 @@ type GetPrivateZonesResult struct {
 
 func GetPrivateZonesOutput(ctx *pulumi.Context, args GetPrivateZonesOutputArgs, opts ...pulumi.InvokeOption) GetPrivateZonesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPrivateZonesResult, error) {
+		ApplyT(func(v interface{}) (GetPrivateZonesResultOutput, error) {
 			args := v.(GetPrivateZonesArgs)
-			r, err := GetPrivateZones(ctx, &args, opts...)
-			var s GetPrivateZonesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPrivateZonesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getPrivateZones:getPrivateZones", args, &rv, "", opts...)
+			if err != nil {
+				return GetPrivateZonesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPrivateZonesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPrivateZonesResultOutput), nil
+			}
+			return output, nil
 		}).(GetPrivateZonesResultOutput)
 }
 

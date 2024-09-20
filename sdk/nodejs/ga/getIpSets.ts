@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpSets(args: GetIpSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getIpSets:getIpSets", {
         "acceleratorId": args.acceleratorId,
@@ -94,7 +93,13 @@ export interface GetIpSetsResult {
  * ```
  */
 export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
-    return pulumi.output(args).apply((a: any) => getIpSets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getIpSets:getIpSets", {
+        "acceleratorId": args.acceleratorId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

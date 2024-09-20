@@ -94,14 +94,20 @@ type GetServerPlansResult struct {
 
 func GetServerPlansOutput(ctx *pulumi.Context, args GetServerPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerPlansResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerPlansResult, error) {
+		ApplyT(func(v interface{}) (GetServerPlansResultOutput, error) {
 			args := v.(GetServerPlansArgs)
-			r, err := GetServerPlans(ctx, &args, opts...)
-			var s GetServerPlansResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerPlansResult
+			secret, err := ctx.InvokePackageRaw("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerPlansResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerPlansResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerPlansResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerPlansResultOutput)
 }
 

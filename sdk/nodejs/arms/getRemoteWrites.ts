@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRemoteWrites(args: GetRemoteWritesArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteWritesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getRemoteWrites:getRemoteWrites", {
         "clusterId": args.clusterId,
@@ -118,7 +117,13 @@ export interface GetRemoteWritesResult {
  * ```
  */
 export function getRemoteWritesOutput(args: GetRemoteWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteWritesResult> {
-    return pulumi.output(args).apply((a: any) => getRemoteWrites(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getRemoteWrites:getRemoteWrites", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

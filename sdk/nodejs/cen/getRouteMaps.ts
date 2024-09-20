@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteMaps:getRouteMaps", {
         "cenId": args.cenId,
@@ -134,7 +133,16 @@ export interface GetRouteMapsResult {
  * ```
  */
 export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
-    return pulumi.output(args).apply((a: any) => getRouteMaps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getRouteMaps:getRouteMaps", {
+        "cenId": args.cenId,
+        "cenRegionId": args.cenRegionId,
+        "descriptionRegex": args.descriptionRegex,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transmitDirection": args.transmitDirection,
+    }, opts);
 }
 
 /**

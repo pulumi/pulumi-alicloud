@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getAckService:getAckService", {
         "enable": args.enable,
@@ -83,7 +82,11 @@ export interface GetAckServiceResult {
  * ```
  */
 export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
-    return pulumi.output(args).apply((a: any) => getAckService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getAckService:getAckService", {
+        "enable": args.enable,
+        "type": args.type,
+    }, opts);
 }
 
 /**

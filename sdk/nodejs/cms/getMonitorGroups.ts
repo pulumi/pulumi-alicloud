@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getMonitorGroups(args?: GetMonitorGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getMonitorGroups:getMonitorGroups", {
         "dynamicTagRuleId": args.dynamicTagRuleId,
@@ -129,7 +128,20 @@ export interface GetMonitorGroupsResult {
  * ```
  */
 export function getMonitorGroupsOutput(args?: GetMonitorGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getMonitorGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getMonitorGroups:getMonitorGroups", {
+        "dynamicTagRuleId": args.dynamicTagRuleId,
+        "ids": args.ids,
+        "includeTemplateHistory": args.includeTemplateHistory,
+        "keyword": args.keyword,
+        "monitorGroupName": args.monitorGroupName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "selectContactGroups": args.selectContactGroups,
+        "tags": args.tags,
+        "type": args.type,
+    }, opts);
 }
 
 /**

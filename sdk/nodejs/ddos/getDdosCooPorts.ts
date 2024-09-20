@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooPortsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", {
         "frontendPort": args.frontendPort,
@@ -100,7 +99,14 @@ export interface GetDdosCooPortsResult {
  * ```
  */
 export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
-    return pulumi.output(args).apply((a: any) => getDdosCooPorts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", {
+        "frontendPort": args.frontendPort,
+        "frontendProtocol": args.frontendProtocol,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

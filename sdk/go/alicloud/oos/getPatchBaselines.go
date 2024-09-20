@@ -56,14 +56,20 @@ type GetPatchBaselinesResult struct {
 
 func GetPatchBaselinesOutput(ctx *pulumi.Context, args GetPatchBaselinesOutputArgs, opts ...pulumi.InvokeOption) GetPatchBaselinesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPatchBaselinesResult, error) {
+		ApplyT(func(v interface{}) (GetPatchBaselinesResultOutput, error) {
 			args := v.(GetPatchBaselinesArgs)
-			r, err := GetPatchBaselines(ctx, &args, opts...)
-			var s GetPatchBaselinesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPatchBaselinesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:oos/getPatchBaselines:getPatchBaselines", args, &rv, "", opts...)
+			if err != nil {
+				return GetPatchBaselinesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPatchBaselinesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPatchBaselinesResultOutput), nil
+			}
+			return output, nil
 		}).(GetPatchBaselinesResultOutput)
 }
 

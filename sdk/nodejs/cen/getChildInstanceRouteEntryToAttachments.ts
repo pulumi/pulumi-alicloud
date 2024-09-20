@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getChildInstanceRouteEntryToAttachments(args: GetChildInstanceRouteEntryToAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetChildInstanceRouteEntryToAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", {
         "cenId": args.cenId,
@@ -120,7 +119,15 @@ export interface GetChildInstanceRouteEntryToAttachmentsResult {
  * ```
  */
 export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildInstanceRouteEntryToAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getChildInstanceRouteEntryToAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", {
+        "cenId": args.cenId,
+        "childInstanceRouteTableId": args.childInstanceRouteTableId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "serviceType": args.serviceType,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
+    }, opts);
 }
 
 /**

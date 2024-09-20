@@ -92,14 +92,20 @@ type GetBasicAccelerateIpsResult struct {
 
 func GetBasicAccelerateIpsOutput(ctx *pulumi.Context, args GetBasicAccelerateIpsOutputArgs, opts ...pulumi.InvokeOption) GetBasicAccelerateIpsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBasicAccelerateIpsResult, error) {
+		ApplyT(func(v interface{}) (GetBasicAccelerateIpsResultOutput, error) {
 			args := v.(GetBasicAccelerateIpsArgs)
-			r, err := GetBasicAccelerateIps(ctx, &args, opts...)
-			var s GetBasicAccelerateIpsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBasicAccelerateIpsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", args, &rv, "", opts...)
+			if err != nil {
+				return GetBasicAccelerateIpsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBasicAccelerateIpsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBasicAccelerateIpsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBasicAccelerateIpsResultOutput)
 }
 

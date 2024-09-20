@@ -87,14 +87,20 @@ type GetDesktopTypesResult struct {
 
 func GetDesktopTypesOutput(ctx *pulumi.Context, args GetDesktopTypesOutputArgs, opts ...pulumi.InvokeOption) GetDesktopTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDesktopTypesResult, error) {
+		ApplyT(func(v interface{}) (GetDesktopTypesResultOutput, error) {
 			args := v.(GetDesktopTypesArgs)
-			r, err := GetDesktopTypes(ctx, &args, opts...)
-			var s GetDesktopTypesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDesktopTypesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eds/getDesktopTypes:getDesktopTypes", args, &rv, "", opts...)
+			if err != nil {
+				return GetDesktopTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDesktopTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDesktopTypesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDesktopTypesResultOutput)
 }
 

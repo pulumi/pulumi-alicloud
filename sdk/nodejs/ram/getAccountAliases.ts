@@ -6,7 +6,6 @@ import * as utilities from "../utilities";
 
 export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
         "outputFile": args.outputFile,
@@ -32,7 +31,11 @@ export interface GetAccountAliasesResult {
     readonly outputFile?: string;
 }
 export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasesResult> {
-    return pulumi.output(args).apply((a: any) => getAccountAliases(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ram/getAccountAliases:getAccountAliases", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

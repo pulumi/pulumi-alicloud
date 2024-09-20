@@ -88,14 +88,20 @@ type GetCompliancePacksResult struct {
 
 func GetCompliancePacksOutput(ctx *pulumi.Context, args GetCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetCompliancePacksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCompliancePacksResult, error) {
+		ApplyT(func(v interface{}) (GetCompliancePacksResultOutput, error) {
 			args := v.(GetCompliancePacksArgs)
-			r, err := GetCompliancePacks(ctx, &args, opts...)
-			var s GetCompliancePacksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCompliancePacksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getCompliancePacks:getCompliancePacks", args, &rv, "", opts...)
+			if err != nil {
+				return GetCompliancePacksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCompliancePacksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCompliancePacksResultOutput), nil
+			}
+			return output, nil
 		}).(GetCompliancePacksResultOutput)
 }
 

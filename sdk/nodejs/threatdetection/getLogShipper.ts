@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getLogShipper(args?: GetLogShipperArgs, opts?: pulumi.InvokeOptions): Promise<GetLogShipperResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getLogShipper:getLogShipper", {
         "enable": args.enable,
@@ -100,7 +99,11 @@ export interface GetLogShipperResult {
  * ```
  */
 export function getLogShipperOutput(args?: GetLogShipperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogShipperResult> {
-    return pulumi.output(args).apply((a: any) => getLogShipper(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getLogShipper:getLogShipper", {
+        "enable": args.enable,
+    }, opts);
 }
 
 /**

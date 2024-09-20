@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceMeshesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", {
         "enableDetails": args.enableDetails,
@@ -81,7 +80,15 @@ export interface GetServiceMeshesResult {
  * > **NOTE:** Available since v1.138.0.
  */
 export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceMeshesResult> {
-    return pulumi.output(args).apply((a: any) => getServiceMeshes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

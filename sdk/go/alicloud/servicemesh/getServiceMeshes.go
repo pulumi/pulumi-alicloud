@@ -56,14 +56,20 @@ type GetServiceMeshesResult struct {
 
 func GetServiceMeshesOutput(ctx *pulumi.Context, args GetServiceMeshesOutputArgs, opts ...pulumi.InvokeOption) GetServiceMeshesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServiceMeshesResult, error) {
+		ApplyT(func(v interface{}) (GetServiceMeshesResultOutput, error) {
 			args := v.(GetServiceMeshesArgs)
-			r, err := GetServiceMeshes(ctx, &args, opts...)
-			var s GetServiceMeshesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServiceMeshesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args, &rv, "", opts...)
+			if err != nil {
+				return GetServiceMeshesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServiceMeshesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServiceMeshesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServiceMeshesResultOutput)
 }
 

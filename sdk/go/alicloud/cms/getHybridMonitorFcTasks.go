@@ -81,14 +81,20 @@ type GetHybridMonitorFcTasksResult struct {
 
 func GetHybridMonitorFcTasksOutput(ctx *pulumi.Context, args GetHybridMonitorFcTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorFcTasksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHybridMonitorFcTasksResult, error) {
+		ApplyT(func(v interface{}) (GetHybridMonitorFcTasksResultOutput, error) {
 			args := v.(GetHybridMonitorFcTasksArgs)
-			r, err := GetHybridMonitorFcTasks(ctx, &args, opts...)
-			var s GetHybridMonitorFcTasksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHybridMonitorFcTasksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", args, &rv, "", opts...)
+			if err != nil {
+				return GetHybridMonitorFcTasksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHybridMonitorFcTasksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHybridMonitorFcTasksResultOutput), nil
+			}
+			return output, nil
 		}).(GetHybridMonitorFcTasksResultOutput)
 }
 

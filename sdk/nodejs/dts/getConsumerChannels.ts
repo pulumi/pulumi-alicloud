@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConsumerChannels(args: GetConsumerChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerChannelsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getConsumerChannels:getConsumerChannels", {
         "dtsInstanceId": args.dtsInstanceId,
@@ -82,7 +81,12 @@ export interface GetConsumerChannelsResult {
  * ```
  */
 export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerChannelsResult> {
-    return pulumi.output(args).apply((a: any) => getConsumerChannels(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dts/getConsumerChannels:getConsumerChannels", {
+        "dtsInstanceId": args.dtsInstanceId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

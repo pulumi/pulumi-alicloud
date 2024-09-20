@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getChartRepositories(args: GetChartRepositoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetChartRepositoriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getChartRepositories:getChartRepositories", {
         "ids": args.ids,
@@ -101,7 +100,13 @@ export interface GetChartRepositoriesResult {
  * ```
  */
 export function getChartRepositoriesOutput(args: GetChartRepositoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartRepositoriesResult> {
-    return pulumi.output(args).apply((a: any) => getChartRepositories(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getChartRepositories:getChartRepositories", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

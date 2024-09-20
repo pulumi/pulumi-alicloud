@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", {
         "enable": args.enable,
@@ -102,7 +101,13 @@ export interface GetEndpointAclServiceResult {
  * ```
  */
 export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
-    return pulumi.output(args).apply((a: any) => getEndpointAclService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getEndpointAclService:getEndpointAclService", {
+        "enable": args.enable,
+        "endpointType": args.endpointType,
+        "instanceId": args.instanceId,
+        "moduleName": args.moduleName,
+    }, opts);
 }
 
 /**

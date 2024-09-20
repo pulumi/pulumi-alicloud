@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInterRegionTrafficQosQueues(args: GetInterRegionTrafficQosQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosQueuesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", {
         "ids": args.ids,
@@ -105,7 +104,13 @@ export interface GetInterRegionTrafficQosQueuesResult {
  * ```
  */
 export function getInterRegionTrafficQosQueuesOutput(args: GetInterRegionTrafficQosQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosQueuesResult> {
-    return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosQueues(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "trafficQosPolicyId": args.trafficQosPolicyId,
+    }, opts);
 }
 
 /**

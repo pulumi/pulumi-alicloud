@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  */
 export function getTlsCipherPolicies(args?: GetTlsCipherPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsCipherPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", {
         "ids": args.ids,
@@ -120,7 +119,16 @@ export interface GetTlsCipherPoliciesResult {
  * ```
  */
 export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getTlsCipherPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", {
+        "ids": args.ids,
+        "includeListener": args.includeListener,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "tlsCipherPolicyName": args.tlsCipherPolicyName,
+    }, opts);
 }
 
 /**

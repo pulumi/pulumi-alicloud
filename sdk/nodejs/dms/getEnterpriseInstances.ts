@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  */
 export function getEnterpriseInstances(args?: GetEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", {
         "envType": args.envType,
@@ -158,7 +157,20 @@ export interface GetEnterpriseInstancesResult {
  * ```
  */
 export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getEnterpriseInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", {
+        "envType": args.envType,
+        "instanceAliasRegex": args.instanceAliasRegex,
+        "instanceSource": args.instanceSource,
+        "instanceType": args.instanceType,
+        "nameRegex": args.nameRegex,
+        "netType": args.netType,
+        "outputFile": args.outputFile,
+        "searchKey": args.searchKey,
+        "status": args.status,
+        "tid": args.tid,
+    }, opts);
 }
 
 /**

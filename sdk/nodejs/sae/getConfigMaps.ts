@@ -42,7 +42,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConfigMaps(args: GetConfigMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigMapsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getConfigMaps:getConfigMaps", {
         "ids": args.ids,
@@ -125,7 +124,13 @@ export interface GetConfigMapsResult {
  * ```
  */
 export function getConfigMapsOutput(args: GetConfigMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapsResult> {
-    return pulumi.output(args).apply((a: any) => getConfigMaps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getConfigMaps:getConfigMaps", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "namespaceId": args.namespaceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -168,14 +168,20 @@ type GetForwardEntriesResult struct {
 
 func GetForwardEntriesOutput(ctx *pulumi.Context, args GetForwardEntriesOutputArgs, opts ...pulumi.InvokeOption) GetForwardEntriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetForwardEntriesResult, error) {
+		ApplyT(func(v interface{}) (GetForwardEntriesResultOutput, error) {
 			args := v.(GetForwardEntriesArgs)
-			r, err := GetForwardEntries(ctx, &args, opts...)
-			var s GetForwardEntriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetForwardEntriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getForwardEntries:getForwardEntries", args, &rv, "", opts...)
+			if err != nil {
+				return GetForwardEntriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetForwardEntriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetForwardEntriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetForwardEntriesResultOutput)
 }
 

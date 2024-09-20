@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
         "actionType": args.actionType,
@@ -211,7 +210,30 @@ export interface GetImagesResult {
  * ```
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply((a: any) => getImages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getImages:getImages", {
+        "actionType": args.actionType,
+        "architecture": args.architecture,
+        "dryRun": args.dryRun,
+        "imageFamily": args.imageFamily,
+        "imageId": args.imageId,
+        "imageName": args.imageName,
+        "imageOwnerId": args.imageOwnerId,
+        "instanceType": args.instanceType,
+        "isSupportCloudInit": args.isSupportCloudInit,
+        "isSupportIoOptimized": args.isSupportIoOptimized,
+        "mostRecent": args.mostRecent,
+        "nameRegex": args.nameRegex,
+        "osType": args.osType,
+        "outputFile": args.outputFile,
+        "owners": args.owners,
+        "resourceGroupId": args.resourceGroupId,
+        "snapshotId": args.snapshotId,
+        "status": args.status,
+        "tags": args.tags,
+        "usage": args.usage,
+    }, opts);
 }
 
 /**

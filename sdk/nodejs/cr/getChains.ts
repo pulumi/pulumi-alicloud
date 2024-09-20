@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getChains(args: GetChainsArgs, opts?: pulumi.InvokeOptions): Promise<GetChainsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getChains:getChains", {
         "enableDetails": args.enableDetails,
@@ -142,7 +141,16 @@ export interface GetChainsResult {
  * ```
  */
 export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChainsResult> {
-    return pulumi.output(args).apply((a: any) => getChains(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getChains:getChains", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "repoName": args.repoName,
+        "repoNamespaceName": args.repoNamespaceName,
+    }, opts);
 }
 
 /**

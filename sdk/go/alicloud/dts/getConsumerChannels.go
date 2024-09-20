@@ -73,14 +73,20 @@ type GetConsumerChannelsResult struct {
 
 func GetConsumerChannelsOutput(ctx *pulumi.Context, args GetConsumerChannelsOutputArgs, opts ...pulumi.InvokeOption) GetConsumerChannelsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConsumerChannelsResult, error) {
+		ApplyT(func(v interface{}) (GetConsumerChannelsResultOutput, error) {
 			args := v.(GetConsumerChannelsArgs)
-			r, err := GetConsumerChannels(ctx, &args, opts...)
-			var s GetConsumerChannelsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetConsumerChannelsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dts/getConsumerChannels:getConsumerChannels", args, &rv, "", opts...)
+			if err != nil {
+				return GetConsumerChannelsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetConsumerChannelsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetConsumerChannelsResultOutput), nil
+			}
+			return output, nil
 		}).(GetConsumerChannelsResultOutput)
 }
 

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getServerPlans(args?: GetServerPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetServerPlansResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", {
         "bandwidth": args.bandwidth,
@@ -125,7 +124,18 @@ export interface GetServerPlansResult {
  * ```
  */
 export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
-    return pulumi.output(args).apply((a: any) => getServerPlans(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", {
+        "bandwidth": args.bandwidth,
+        "core": args.core,
+        "diskSize": args.diskSize,
+        "flow": args.flow,
+        "ids": args.ids,
+        "memory": args.memory,
+        "outputFile": args.outputFile,
+        "platform": args.platform,
+    }, opts);
 }
 
 /**

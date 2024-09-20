@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
         "direction": args.direction,
@@ -151,7 +150,15 @@ export interface GetSecurityGroupRulesResult {
  * ```
  */
 export function getSecurityGroupRulesOutput(args: GetSecurityGroupRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupRulesResult> {
-    return pulumi.output(args).apply((a: any) => getSecurityGroupRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
+        "direction": args.direction,
+        "groupId": args.groupId,
+        "ipProtocol": args.ipProtocol,
+        "nicType": args.nicType,
+        "outputFile": args.outputFile,
+        "policy": args.policy,
+    }, opts);
 }
 
 /**

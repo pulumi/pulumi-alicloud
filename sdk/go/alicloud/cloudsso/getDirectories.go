@@ -90,14 +90,20 @@ type GetDirectoriesResult struct {
 
 func GetDirectoriesOutput(ctx *pulumi.Context, args GetDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetDirectoriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDirectoriesResult, error) {
+		ApplyT(func(v interface{}) (GetDirectoriesResultOutput, error) {
 			args := v.(GetDirectoriesArgs)
-			r, err := GetDirectories(ctx, &args, opts...)
-			var s GetDirectoriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDirectoriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudsso/getDirectories:getDirectories", args, &rv, "", opts...)
+			if err != nil {
+				return GetDirectoriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDirectoriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDirectoriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDirectoriesResultOutput)
 }
 

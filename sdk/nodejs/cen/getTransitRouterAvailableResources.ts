@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getTransitRouterAvailableResources(args?: GetTransitRouterAvailableResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterAvailableResourcesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", {
         "outputFile": args.outputFile,
@@ -85,7 +84,12 @@ export interface GetTransitRouterAvailableResourcesResult {
  * ```
  */
 export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterAvailableResources(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", {
+        "outputFile": args.outputFile,
+        "supportMulticast": args.supportMulticast,
+    }, opts);
 }
 
 /**

@@ -76,14 +76,20 @@ type LookupAlertResourceResult struct {
 
 func LookupAlertResourceOutput(ctx *pulumi.Context, args LookupAlertResourceOutputArgs, opts ...pulumi.InvokeOption) LookupAlertResourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAlertResourceResult, error) {
+		ApplyT(func(v interface{}) (LookupAlertResourceResultOutput, error) {
 			args := v.(LookupAlertResourceArgs)
-			r, err := LookupAlertResource(ctx, &args, opts...)
-			var s LookupAlertResourceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAlertResourceResult
+			secret, err := ctx.InvokePackageRaw("alicloud:log/getAlertResource:getAlertResource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAlertResourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAlertResourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAlertResourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAlertResourceResultOutput)
 }
 

@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetRestoreJobsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getRestoreJobs:getRestoreJobs", {
         "outputFile": args.outputFile,
@@ -131,7 +130,18 @@ export interface GetRestoreJobsResult {
  * ```
  */
 export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreJobsResult> {
-    return pulumi.output(args).apply((a: any) => getRestoreJobs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getRestoreJobs:getRestoreJobs", {
+        "outputFile": args.outputFile,
+        "restoreIds": args.restoreIds,
+        "restoreType": args.restoreType,
+        "sourceTypes": args.sourceTypes,
+        "status": args.status,
+        "targetBuckets": args.targetBuckets,
+        "targetFileSystemIds": args.targetFileSystemIds,
+        "targetInstanceIds": args.targetInstanceIds,
+        "vaultIds": args.vaultIds,
+    }, opts);
 }
 
 /**

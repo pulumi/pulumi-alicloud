@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.166.0+.
  */
 export function getKubernetesAddonMetadata(args: GetKubernetesAddonMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonMetadataResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", {
         "clusterId": args.clusterId,
@@ -59,7 +58,12 @@ export interface GetKubernetesAddonMetadataResult {
  * > **NOTE:** Available in 1.166.0+.
  */
 export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesAddonMetadata(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "version": args.version,
+    }, opts);
 }
 
 /**

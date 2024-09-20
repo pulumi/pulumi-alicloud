@@ -94,14 +94,20 @@ type GetImageCachesResult struct {
 
 func GetImageCachesOutput(ctx *pulumi.Context, args GetImageCachesOutputArgs, opts ...pulumi.InvokeOption) GetImageCachesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetImageCachesResult, error) {
+		ApplyT(func(v interface{}) (GetImageCachesResultOutput, error) {
 			args := v.(GetImageCachesArgs)
-			r, err := GetImageCaches(ctx, &args, opts...)
-			var s GetImageCachesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetImageCachesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eci/getImageCaches:getImageCaches", args, &rv, "", opts...)
+			if err != nil {
+				return GetImageCachesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetImageCachesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetImageCachesResultOutput), nil
+			}
+			return output, nil
 		}).(GetImageCachesResultOutput)
 }
 

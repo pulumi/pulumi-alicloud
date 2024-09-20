@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getJobTemplates(args?: GetJobTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetJobTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", {
         "ids": args.ids,
@@ -92,7 +91,12 @@ export interface GetJobTemplatesResult {
  * ```
  */
 export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getJobTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ehpc/getJobTemplates:getJobTemplates", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

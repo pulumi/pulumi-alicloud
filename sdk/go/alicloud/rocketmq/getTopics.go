@@ -112,14 +112,20 @@ type GetTopicsResult struct {
 
 func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulumi.InvokeOption) GetTopicsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTopicsResult, error) {
+		ApplyT(func(v interface{}) (GetTopicsResultOutput, error) {
 			args := v.(GetTopicsArgs)
-			r, err := GetTopics(ctx, &args, opts...)
-			var s GetTopicsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTopicsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rocketmq/getTopics:getTopics", args, &rv, "", opts...)
+			if err != nil {
+				return GetTopicsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTopicsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTopicsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTopicsResultOutput)
 }
 

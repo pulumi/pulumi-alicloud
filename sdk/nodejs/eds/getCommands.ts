@@ -63,7 +63,6 @@ import * as utilities from "../utilities";
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getCommands:getCommands", {
         "commandType": args.commandType,
@@ -177,7 +176,16 @@ export interface GetCommandsResult {
  * ```
  */
 export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
-    return pulumi.output(args).apply((a: any) => getCommands(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getCommands:getCommands", {
+        "commandType": args.commandType,
+        "contentEncoding": args.contentEncoding,
+        "desktopId": args.desktopId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

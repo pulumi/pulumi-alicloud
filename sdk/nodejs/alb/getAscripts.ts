@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getAscripts(args?: GetAscriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetAscriptsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getAscripts:getAscripts", {
         "ascriptName": args.ascriptName,
@@ -120,7 +119,16 @@ export interface GetAscriptsResult {
  * ```
  */
 export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAscriptsResult> {
-    return pulumi.output(args).apply((a: any) => getAscripts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getAscripts:getAscripts", {
+        "ascriptName": args.ascriptName,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

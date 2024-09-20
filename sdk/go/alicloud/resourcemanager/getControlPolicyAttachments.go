@@ -79,14 +79,20 @@ type GetControlPolicyAttachmentsResult struct {
 
 func GetControlPolicyAttachmentsOutput(ctx *pulumi.Context, args GetControlPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetControlPolicyAttachmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetControlPolicyAttachmentsResult, error) {
+		ApplyT(func(v interface{}) (GetControlPolicyAttachmentsResultOutput, error) {
 			args := v.(GetControlPolicyAttachmentsArgs)
-			r, err := GetControlPolicyAttachments(ctx, &args, opts...)
-			var s GetControlPolicyAttachmentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetControlPolicyAttachmentsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args, &rv, "", opts...)
+			if err != nil {
+				return GetControlPolicyAttachmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetControlPolicyAttachmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetControlPolicyAttachmentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetControlPolicyAttachmentsResultOutput)
 }
 

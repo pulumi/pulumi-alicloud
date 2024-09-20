@@ -42,14 +42,20 @@ type GetDomainGroupsResult struct {
 
 func GetDomainGroupsOutput(ctx *pulumi.Context, args GetDomainGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDomainGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDomainGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetDomainGroupsResultOutput, error) {
 			args := v.(GetDomainGroupsArgs)
-			r, err := GetDomainGroups(ctx, &args, opts...)
-			var s GetDomainGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDomainGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dns/getDomainGroups:getDomainGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetDomainGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDomainGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDomainGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetDomainGroupsResultOutput)
 }
 

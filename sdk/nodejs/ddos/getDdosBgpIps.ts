@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDdosBgpIps(args: GetDdosBgpIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpIpsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", {
         "ids": args.ids,
@@ -114,7 +113,16 @@ export interface GetDdosBgpIpsResult {
  * ```
  */
 export function getDdosBgpIpsOutput(args: GetDdosBgpIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpIpsResult> {
-    return pulumi.output(args).apply((a: any) => getDdosBgpIps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "productName": args.productName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

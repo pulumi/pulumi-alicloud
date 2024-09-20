@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getPortfolios(args?: GetPortfoliosArgs, opts?: pulumi.InvokeOptions): Promise<GetPortfoliosResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", {
         "ids": args.ids,
@@ -125,7 +124,19 @@ export interface GetPortfoliosResult {
  * ```
  */
 export function getPortfoliosOutput(args?: GetPortfoliosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortfoliosResult> {
-    return pulumi.output(args).apply((a: any) => getPortfolios(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getPortfolios:getPortfolios", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "productId": args.productId,
+        "scope": args.scope,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+    }, opts);
 }
 
 /**

@@ -81,14 +81,20 @@ type GetDomainTxtGuidResult struct {
 
 func GetDomainTxtGuidOutput(ctx *pulumi.Context, args GetDomainTxtGuidOutputArgs, opts ...pulumi.InvokeOption) GetDomainTxtGuidResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDomainTxtGuidResult, error) {
+		ApplyT(func(v interface{}) (GetDomainTxtGuidResultOutput, error) {
 			args := v.(GetDomainTxtGuidArgs)
-			r, err := GetDomainTxtGuid(ctx, &args, opts...)
-			var s GetDomainTxtGuidResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDomainTxtGuidResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args, &rv, "", opts...)
+			if err != nil {
+				return GetDomainTxtGuidResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDomainTxtGuidResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDomainTxtGuidResultOutput), nil
+			}
+			return output, nil
 		}).(GetDomainTxtGuidResultOutput)
 }
 

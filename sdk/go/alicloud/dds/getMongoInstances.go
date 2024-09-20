@@ -49,14 +49,20 @@ type GetMongoInstancesResult struct {
 
 func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputArgs, opts ...pulumi.InvokeOption) GetMongoInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMongoInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetMongoInstancesResultOutput, error) {
 			args := v.(GetMongoInstancesArgs)
-			r, err := GetMongoInstances(ctx, &args, opts...)
-			var s GetMongoInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMongoInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dds/getMongoInstances:getMongoInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetMongoInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMongoInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMongoInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetMongoInstancesResultOutput)
 }
 

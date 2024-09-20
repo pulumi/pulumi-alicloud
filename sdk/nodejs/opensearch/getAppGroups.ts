@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getAppGroups(args?: GetAppGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:opensearch/getAppGroups:getAppGroups", {
         "enableDetails": args.enableDetails,
@@ -139,7 +138,18 @@ export interface GetAppGroupsResult {
  * ```
  */
 export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getAppGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:opensearch/getAppGroups:getAppGroups", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

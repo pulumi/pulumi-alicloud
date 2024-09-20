@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicyAttachments(args?: GetPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAttachmentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", {
         "language": args.language,
@@ -125,7 +124,17 @@ export interface GetPolicyAttachmentsResult {
  * ```
  */
 export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyAttachments(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", {
+        "language": args.language,
+        "outputFile": args.outputFile,
+        "policyName": args.policyName,
+        "policyType": args.policyType,
+        "principalName": args.principalName,
+        "principalType": args.principalType,
+        "resourceGroupId": args.resourceGroupId,
+    }, opts);
 }
 
 /**

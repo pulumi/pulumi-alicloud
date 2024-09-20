@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getApps:getApps", {
         "ids": args.ids,
@@ -95,7 +94,14 @@ export interface GetAppsResult {
  * ```
  */
 export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
-    return pulumi.output(args).apply((a: any) => getApps(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getApps:getApps", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBastionHostInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", {
         "descriptionRegex": args.descriptionRegex,
@@ -44,7 +43,14 @@ export interface GetBastionHostInstancesResult {
     readonly tags?: {[key: string]: string};
 }
 export function getBastionHostInstancesOutput(args?: GetBastionHostInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBastionHostInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getBastionHostInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", {
+        "descriptionRegex": args.descriptionRegex,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

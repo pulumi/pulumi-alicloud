@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getAlidnsInstances(args?: GetAlidnsInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {
         "domainType": args.domainType,
@@ -101,7 +100,15 @@ export interface GetAlidnsInstancesResult {
  * ```
  */
 export function getAlidnsInstancesOutput(args?: GetAlidnsInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getAlidnsInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {
+        "domainType": args.domainType,
+        "ids": args.ids,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "userClientIp": args.userClientIp,
+    }, opts);
 }
 
 /**

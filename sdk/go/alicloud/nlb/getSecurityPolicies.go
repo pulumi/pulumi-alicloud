@@ -92,14 +92,20 @@ type GetSecurityPoliciesResult struct {
 
 func GetSecurityPoliciesOutput(ctx *pulumi.Context, args GetSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSecurityPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetSecurityPoliciesResultOutput, error) {
 			args := v.(GetSecurityPoliciesArgs)
-			r, err := GetSecurityPolicies(ctx, &args, opts...)
-			var s GetSecurityPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSecurityPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:nlb/getSecurityPolicies:getSecurityPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetSecurityPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSecurityPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSecurityPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSecurityPoliciesResultOutput)
 }
 

@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getTrafficMirrorFilters(args?: GetTrafficMirrorFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFiltersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", {
         "ids": args.ids,
@@ -124,7 +123,15 @@ export interface GetTrafficMirrorFiltersResult {
  * ```
  */
 export function getTrafficMirrorFiltersOutput(args?: GetTrafficMirrorFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFiltersResult> {
-    return pulumi.output(args).apply((a: any) => getTrafficMirrorFilters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "trafficMirrorFilterName": args.trafficMirrorFilterName,
+    }, opts);
 }
 
 /**

@@ -87,14 +87,20 @@ type GetEnterpriseProxyAccessesResult struct {
 
 func GetEnterpriseProxyAccessesOutput(ctx *pulumi.Context, args GetEnterpriseProxyAccessesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseProxyAccessesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseProxyAccessesResult, error) {
+		ApplyT(func(v interface{}) (GetEnterpriseProxyAccessesResultOutput, error) {
 			args := v.(GetEnterpriseProxyAccessesArgs)
-			r, err := GetEnterpriseProxyAccesses(ctx, &args, opts...)
-			var s GetEnterpriseProxyAccessesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEnterpriseProxyAccessesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args, &rv, "", opts...)
+			if err != nil {
+				return GetEnterpriseProxyAccessesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEnterpriseProxyAccessesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEnterpriseProxyAccessesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEnterpriseProxyAccessesResultOutput)
 }
 

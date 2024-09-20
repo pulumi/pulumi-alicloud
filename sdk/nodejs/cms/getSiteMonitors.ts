@@ -59,7 +59,6 @@ import * as utilities from "../utilities";
  */
 export function getSiteMonitors(args?: GetSiteMonitorsArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteMonitorsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getSiteMonitors:getSiteMonitors", {
         "ids": args.ids,
@@ -169,7 +168,14 @@ export interface GetSiteMonitorsResult {
  * ```
  */
 export function getSiteMonitorsOutput(args?: GetSiteMonitorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSiteMonitorsResult> {
-    return pulumi.output(args).apply((a: any) => getSiteMonitors(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getSiteMonitors:getSiteMonitors", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "taskId": args.taskId,
+        "taskType": args.taskType,
+    }, opts);
 }
 
 /**

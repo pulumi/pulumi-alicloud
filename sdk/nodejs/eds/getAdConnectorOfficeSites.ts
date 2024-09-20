@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getAdConnectorOfficeSites(args?: GetAdConnectorOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdConnectorOfficeSitesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", {
         "ids": args.ids,
@@ -107,7 +106,14 @@ export interface GetAdConnectorOfficeSitesResult {
  * ```
  */
 export function getAdConnectorOfficeSitesOutput(args?: GetAdConnectorOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorOfficeSitesResult> {
-    return pulumi.output(args).apply((a: any) => getAdConnectorOfficeSites(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

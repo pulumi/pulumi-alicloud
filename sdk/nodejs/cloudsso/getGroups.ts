@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getGroups:getGroups", {
         "directoryId": args.directoryId,
@@ -121,7 +120,14 @@ export interface GetGroupsResult {
  * ```
  */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudsso/getGroups:getGroups", {
+        "directoryId": args.directoryId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "provisionType": args.provisionType,
+    }, opts);
 }
 
 /**

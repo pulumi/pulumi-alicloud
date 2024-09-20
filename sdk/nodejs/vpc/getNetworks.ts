@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
         "cidrBlock": args.cidrBlock,
@@ -181,7 +180,26 @@ export interface GetNetworksResult {
  * ```
  */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getNetworks:getNetworks", {
+        "cidrBlock": args.cidrBlock,
+        "dhcpOptionsSetId": args.dhcpOptionsSetId,
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "isDefault": args.isDefault,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcName": args.vpcName,
+        "vpcOwnerId": args.vpcOwnerId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

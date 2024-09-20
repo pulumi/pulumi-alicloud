@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getNotifications:getNotifications", {
         "ids": args.ids,
@@ -91,7 +90,12 @@ export interface GetNotificationsResult {
  * ```
  */
 export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
-    return pulumi.output(args).apply((a: any) => getNotifications(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ess/getNotifications:getNotifications", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "scalingGroupId": args.scalingGroupId,
+    }, opts);
 }
 
 /**

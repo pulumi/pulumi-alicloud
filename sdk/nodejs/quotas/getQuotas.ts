@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getQuotas:getQuotas", {
         "dimensions": args.dimensions,
@@ -132,7 +131,19 @@ export interface GetQuotasResult {
  * ```
  */
 export function getQuotasOutput(args: GetQuotasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasResult> {
-    return pulumi.output(args).apply((a: any) => getQuotas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quotas/getQuotas:getQuotas", {
+        "dimensions": args.dimensions,
+        "groupCode": args.groupCode,
+        "keyWord": args.keyWord,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "quotaActionCode": args.quotaActionCode,
+        "quotaCategory": args.quotaCategory,
+        "sortField": args.sortField,
+        "sortOrder": args.sortOrder,
+    }, opts);
 }
 
 /**

@@ -102,14 +102,20 @@ type GetBaseInstancesResult struct {
 
 func GetBaseInstancesOutput(ctx *pulumi.Context, args GetBaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetBaseInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBaseInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetBaseInstancesResultOutput, error) {
 			args := v.(GetBaseInstancesArgs)
-			r, err := GetBaseInstances(ctx, &args, opts...)
-			var s GetBaseInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBaseInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ocean/getBaseInstances:getBaseInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetBaseInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBaseInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBaseInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetBaseInstancesResultOutput)
 }
 

@@ -97,14 +97,20 @@ type GetAntiBruteForceRulesResult struct {
 
 func GetAntiBruteForceRulesOutput(ctx *pulumi.Context, args GetAntiBruteForceRulesOutputArgs, opts ...pulumi.InvokeOption) GetAntiBruteForceRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAntiBruteForceRulesResult, error) {
+		ApplyT(func(v interface{}) (GetAntiBruteForceRulesResultOutput, error) {
 			args := v.(GetAntiBruteForceRulesArgs)
-			r, err := GetAntiBruteForceRules(ctx, &args, opts...)
-			var s GetAntiBruteForceRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAntiBruteForceRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetAntiBruteForceRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAntiBruteForceRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAntiBruteForceRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAntiBruteForceRulesResultOutput)
 }
 

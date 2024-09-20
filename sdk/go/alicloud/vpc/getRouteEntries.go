@@ -173,14 +173,20 @@ type GetRouteEntriesResult struct {
 
 func GetRouteEntriesOutput(ctx *pulumi.Context, args GetRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRouteEntriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRouteEntriesResult, error) {
+		ApplyT(func(v interface{}) (GetRouteEntriesResultOutput, error) {
 			args := v.(GetRouteEntriesArgs)
-			r, err := GetRouteEntries(ctx, &args, opts...)
-			var s GetRouteEntriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRouteEntriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getRouteEntries:getRouteEntries", args, &rv, "", opts...)
+			if err != nil {
+				return GetRouteEntriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRouteEntriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRouteEntriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetRouteEntriesResultOutput)
 }
 
