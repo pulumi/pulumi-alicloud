@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.157.0+.
  */
 export function getShardingNetworkPrivateAddresses(args: GetShardingNetworkPrivateAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPrivateAddressesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", {
         "dbInstanceId": args.dbInstanceId,
@@ -64,7 +63,13 @@ export interface GetShardingNetworkPrivateAddressesResult {
  * > **NOTE:** Available in v1.157.0+.
  */
 export function getShardingNetworkPrivateAddressesOutput(args: GetShardingNetworkPrivateAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPrivateAddressesResult> {
-    return pulumi.output(args).apply((a: any) => getShardingNetworkPrivateAddresses(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", {
+        "dbInstanceId": args.dbInstanceId,
+        "nodeId": args.nodeId,
+        "outputFile": args.outputFile,
+        "role": args.role,
+    }, opts);
 }
 
 /**

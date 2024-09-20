@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExecutions(args: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fnf/getExecutions:getExecutions", {
         "enableDetails": args.enableDetails,
@@ -113,7 +112,15 @@ export interface GetExecutionsResult {
  * ```
  */
 export function getExecutionsOutput(args: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
-    return pulumi.output(args).apply((a: any) => getExecutions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:fnf/getExecutions:getExecutions", {
+        "enableDetails": args.enableDetails,
+        "flowName": args.flowName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

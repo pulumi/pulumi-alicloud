@@ -92,14 +92,20 @@ type GetTransitRouterPrefixListAssociationsResult struct {
 
 func GetTransitRouterPrefixListAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterPrefixListAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterPrefixListAssociationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTransitRouterPrefixListAssociationsResult, error) {
+		ApplyT(func(v interface{}) (GetTransitRouterPrefixListAssociationsResultOutput, error) {
 			args := v.(GetTransitRouterPrefixListAssociationsArgs)
-			r, err := GetTransitRouterPrefixListAssociations(ctx, &args, opts...)
-			var s GetTransitRouterPrefixListAssociationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTransitRouterPrefixListAssociationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args, &rv, "", opts...)
+			if err != nil {
+				return GetTransitRouterPrefixListAssociationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTransitRouterPrefixListAssociationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTransitRouterPrefixListAssociationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTransitRouterPrefixListAssociationsResultOutput)
 }
 

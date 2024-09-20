@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getNetworkAcls(args?: GetNetworkAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAclsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNetworkAcls:getNetworkAcls", {
         "ids": args.ids,
@@ -120,7 +119,18 @@ export interface GetNetworkAclsResult {
  * ```
  */
 export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkAcls(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getNetworkAcls:getNetworkAcls", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "networkAclName": args.networkAclName,
+        "outputFile": args.outputFile,
+        "resourceId": args.resourceId,
+        "resourceType": args.resourceType,
+        "status": args.status,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

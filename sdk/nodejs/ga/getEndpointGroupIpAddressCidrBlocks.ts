@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEndpointGroupIpAddressCidrBlocks(args: GetEndpointGroupIpAddressCidrBlocksArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupIpAddressCidrBlocksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", {
         "acceleratorId": args.acceleratorId,
@@ -92,7 +91,12 @@ export interface GetEndpointGroupIpAddressCidrBlocksResult {
  * ```
  */
 export function getEndpointGroupIpAddressCidrBlocksOutput(args: GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupIpAddressCidrBlocksResult> {
-    return pulumi.output(args).apply((a: any) => getEndpointGroupIpAddressCidrBlocks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", {
+        "acceleratorId": args.acceleratorId,
+        "endpointGroupRegion": args.endpointGroupRegion,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

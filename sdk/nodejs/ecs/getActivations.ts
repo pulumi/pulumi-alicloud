@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getActivations(args?: GetActivationsArgs, opts?: pulumi.InvokeOptions): Promise<GetActivationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getActivations:getActivations", {
         "ids": args.ids,
@@ -90,7 +89,15 @@ export interface GetActivationsResult {
  * ```
  */
 export function getActivationsOutput(args?: GetActivationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActivationsResult> {
-    return pulumi.output(args).apply((a: any) => getActivations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getActivations:getActivations", {
+        "ids": args.ids,
+        "instanceName": args.instanceName,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

@@ -67,14 +67,20 @@ type GetReplicationVaultRegionsResult struct {
 
 func GetReplicationVaultRegionsOutput(ctx *pulumi.Context, args GetReplicationVaultRegionsOutputArgs, opts ...pulumi.InvokeOption) GetReplicationVaultRegionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetReplicationVaultRegionsResult, error) {
+		ApplyT(func(v interface{}) (GetReplicationVaultRegionsResultOutput, error) {
 			args := v.(GetReplicationVaultRegionsArgs)
-			r, err := GetReplicationVaultRegions(ctx, &args, opts...)
-			var s GetReplicationVaultRegionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetReplicationVaultRegionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", args, &rv, "", opts...)
+			if err != nil {
+				return GetReplicationVaultRegionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetReplicationVaultRegionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetReplicationVaultRegionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetReplicationVaultRegionsResultOutput)
 }
 

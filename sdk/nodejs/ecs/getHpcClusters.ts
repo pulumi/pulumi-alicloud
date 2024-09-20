@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getHpcClusters(args?: GetHpcClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetHpcClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getHpcClusters:getHpcClusters", {
         "ids": args.ids,
@@ -90,7 +89,13 @@ export interface GetHpcClustersResult {
  * ```
  */
 export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHpcClustersResult> {
-    return pulumi.output(args).apply((a: any) => getHpcClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getHpcClusters:getHpcClusters", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

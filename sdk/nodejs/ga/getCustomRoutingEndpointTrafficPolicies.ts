@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomRoutingEndpointTrafficPolicies(args: GetCustomRoutingEndpointTrafficPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointTrafficPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", {
         "acceleratorId": args.acceleratorId,
@@ -136,7 +135,18 @@ export interface GetCustomRoutingEndpointTrafficPoliciesResult {
  * ```
  */
 export function getCustomRoutingEndpointTrafficPoliciesOutput(args: GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointTrafficPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointTrafficPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", {
+        "acceleratorId": args.acceleratorId,
+        "address": args.address,
+        "endpointGroupId": args.endpointGroupId,
+        "endpointId": args.endpointId,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

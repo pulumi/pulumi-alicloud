@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsDedicatedHostClusters(args?: GetEcsDedicatedHostClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDedicatedHostClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", {
         "dedicatedHostClusterIds": args.dedicatedHostClusterIds,
@@ -144,7 +143,17 @@ export interface GetEcsDedicatedHostClustersResult {
  * ```
  */
 export function getEcsDedicatedHostClustersOutput(args?: GetEcsDedicatedHostClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDedicatedHostClustersResult> {
-    return pulumi.output(args).apply((a: any) => getEcsDedicatedHostClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", {
+        "dedicatedHostClusterIds": args.dedicatedHostClusterIds,
+        "dedicatedHostClusterName": args.dedicatedHostClusterName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

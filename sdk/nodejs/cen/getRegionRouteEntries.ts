@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegionRouteEntries(args: GetRegionRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionRouteEntriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", {
         "instanceId": args.instanceId,
@@ -80,7 +79,12 @@ export interface GetRegionRouteEntriesResult {
  * ```
  */
 export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionRouteEntriesResult> {
-    return pulumi.output(args).apply((a: any) => getRegionRouteEntries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", {
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+        "regionId": args.regionId,
+    }, opts);
 }
 
 /**

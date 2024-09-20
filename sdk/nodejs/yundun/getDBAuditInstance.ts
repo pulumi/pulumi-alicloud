@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
 
 export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDBAuditInstanceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
         "descriptionRegex": args.descriptionRegex,
@@ -44,7 +43,14 @@ export interface GetDBAuditInstanceResult {
     readonly tags?: {[key: string]: string};
 }
 export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBAuditInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getDBAuditInstance(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
+        "descriptionRegex": args.descriptionRegex,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

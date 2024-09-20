@@ -140,14 +140,20 @@ type GetSwitchesResult struct {
 
 func GetSwitchesOutput(ctx *pulumi.Context, args GetSwitchesOutputArgs, opts ...pulumi.InvokeOption) GetSwitchesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSwitchesResult, error) {
+		ApplyT(func(v interface{}) (GetSwitchesResultOutput, error) {
 			args := v.(GetSwitchesArgs)
-			r, err := GetSwitches(ctx, &args, opts...)
-			var s GetSwitchesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSwitchesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getSwitches:getSwitches", args, &rv, "", opts...)
+			if err != nil {
+				return GetSwitchesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSwitchesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSwitchesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSwitchesResultOutput)
 }
 

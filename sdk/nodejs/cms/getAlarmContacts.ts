@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getAlarmContacts(args?: GetAlarmContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getAlarmContacts:getAlarmContacts", {
         "chanelType": args.chanelType,
@@ -119,7 +118,15 @@ export interface GetAlarmContactsResult {
  * ```
  */
 export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactsResult> {
-    return pulumi.output(args).apply((a: any) => getAlarmContacts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getAlarmContacts:getAlarmContacts", {
+        "chanelType": args.chanelType,
+        "chanelValue": args.chanelValue,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

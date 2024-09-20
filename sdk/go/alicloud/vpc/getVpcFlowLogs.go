@@ -103,14 +103,20 @@ type GetVpcFlowLogsResult struct {
 
 func GetVpcFlowLogsOutput(ctx *pulumi.Context, args GetVpcFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetVpcFlowLogsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpcFlowLogsResult, error) {
+		ApplyT(func(v interface{}) (GetVpcFlowLogsResultOutput, error) {
 			args := v.(GetVpcFlowLogsArgs)
-			r, err := GetVpcFlowLogs(ctx, &args, opts...)
-			var s GetVpcFlowLogsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVpcFlowLogsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args, &rv, "", opts...)
+			if err != nil {
+				return GetVpcFlowLogsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVpcFlowLogsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVpcFlowLogsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVpcFlowLogsResultOutput)
 }
 

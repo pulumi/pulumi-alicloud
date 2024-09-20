@@ -87,14 +87,20 @@ type GetDispatchRulesResult struct {
 
 func GetDispatchRulesOutput(ctx *pulumi.Context, args GetDispatchRulesOutputArgs, opts ...pulumi.InvokeOption) GetDispatchRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDispatchRulesResult, error) {
+		ApplyT(func(v interface{}) (GetDispatchRulesResultOutput, error) {
 			args := v.(GetDispatchRulesArgs)
-			r, err := GetDispatchRules(ctx, &args, opts...)
-			var s GetDispatchRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDispatchRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:arms/getDispatchRules:getDispatchRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetDispatchRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDispatchRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDispatchRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDispatchRulesResultOutput)
 }
 

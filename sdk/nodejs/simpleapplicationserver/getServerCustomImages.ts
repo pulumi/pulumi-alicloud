@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getServerCustomImages(args?: GetServerCustomImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCustomImagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", {
         "ids": args.ids,
@@ -96,7 +95,13 @@ export interface GetServerCustomImagesResult {
  * ```
  */
 export function getServerCustomImagesOutput(args?: GetServerCustomImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCustomImagesResult> {
-    return pulumi.output(args).apply((a: any) => getServerCustomImages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

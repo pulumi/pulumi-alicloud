@@ -82,14 +82,20 @@ type GetPolicyVersionsResult struct {
 
 func GetPolicyVersionsOutput(ctx *pulumi.Context, args GetPolicyVersionsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPolicyVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetPolicyVersionsResultOutput, error) {
 			args := v.(GetPolicyVersionsArgs)
-			r, err := GetPolicyVersions(ctx, &args, opts...)
-			var s GetPolicyVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPolicyVersionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetPolicyVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPolicyVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPolicyVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetPolicyVersionsResultOutput)
 }
 

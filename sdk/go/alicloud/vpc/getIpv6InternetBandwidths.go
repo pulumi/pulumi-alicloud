@@ -104,14 +104,20 @@ type GetIpv6InternetBandwidthsResult struct {
 
 func GetIpv6InternetBandwidthsOutput(ctx *pulumi.Context, args GetIpv6InternetBandwidthsOutputArgs, opts ...pulumi.InvokeOption) GetIpv6InternetBandwidthsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv6InternetBandwidthsResult, error) {
+		ApplyT(func(v interface{}) (GetIpv6InternetBandwidthsResultOutput, error) {
 			args := v.(GetIpv6InternetBandwidthsArgs)
-			r, err := GetIpv6InternetBandwidths(ctx, &args, opts...)
-			var s GetIpv6InternetBandwidthsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv6InternetBandwidthsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv6InternetBandwidthsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv6InternetBandwidthsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv6InternetBandwidthsResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv6InternetBandwidthsResultOutput)
 }
 

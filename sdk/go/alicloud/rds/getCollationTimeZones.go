@@ -73,14 +73,20 @@ type GetCollationTimeZonesResult struct {
 
 func GetCollationTimeZonesOutput(ctx *pulumi.Context, args GetCollationTimeZonesOutputArgs, opts ...pulumi.InvokeOption) GetCollationTimeZonesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCollationTimeZonesResult, error) {
+		ApplyT(func(v interface{}) (GetCollationTimeZonesResultOutput, error) {
 			args := v.(GetCollationTimeZonesArgs)
-			r, err := GetCollationTimeZones(ctx, &args, opts...)
-			var s GetCollationTimeZonesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCollationTimeZonesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args, &rv, "", opts...)
+			if err != nil {
+				return GetCollationTimeZonesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCollationTimeZonesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCollationTimeZonesResultOutput), nil
+			}
+			return output, nil
 		}).(GetCollationTimeZonesResultOutput)
 }
 

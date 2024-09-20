@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {
         "instanceIds": args.instanceIds,
@@ -76,7 +75,12 @@ export interface GetBandwidthLimitsResult {
  * ```
  */
 export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthLimitsResult> {
-    return pulumi.output(args).apply((a: any) => getBandwidthLimits(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {
+        "instanceIds": args.instanceIds,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

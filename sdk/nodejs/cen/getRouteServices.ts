@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouteServices(args: GetRouteServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteServicesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteServices:getRouteServices", {
         "accessRegionId": args.accessRegionId,
@@ -135,7 +134,16 @@ export interface GetRouteServicesResult {
  * ```
  */
 export function getRouteServicesOutput(args: GetRouteServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteServicesResult> {
-    return pulumi.output(args).apply((a: any) => getRouteServices(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getRouteServices:getRouteServices", {
+        "accessRegionId": args.accessRegionId,
+        "cenId": args.cenId,
+        "host": args.host,
+        "hostRegionId": args.hostRegionId,
+        "hostVpcId": args.hostVpcId,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

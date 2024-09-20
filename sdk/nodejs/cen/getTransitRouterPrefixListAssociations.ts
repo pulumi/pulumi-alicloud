@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouterPrefixListAssociations(args: GetTransitRouterPrefixListAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterPrefixListAssociationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", {
         "ids": args.ids,
@@ -118,7 +117,18 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  * ```
  */
 export function getTransitRouterPrefixListAssociationsOutput(args: GetTransitRouterPrefixListAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPrefixListAssociationsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterPrefixListAssociations(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "ownerUid": args.ownerUid,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "prefixListId": args.prefixListId,
+        "status": args.status,
+        "transitRouterId": args.transitRouterId,
+        "transitRouterTableId": args.transitRouterTableId,
+    }, opts);
 }
 
 /**

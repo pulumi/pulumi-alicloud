@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidLoopsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", {
         "enableDetails": args.enableDetails,
@@ -128,7 +127,16 @@ export interface GetIndustrialPidLoopsResult {
  * ```
  */
 export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidLoopsResult> {
-    return pulumi.output(args).apply((a: any) => getIndustrialPidLoops(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pidLoopName": args.pidLoopName,
+        "pidProjectId": args.pidProjectId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

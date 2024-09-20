@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getTemplates:getTemplates", {
         "enableDetails": args.enableDetails,
@@ -114,7 +113,17 @@ export interface GetTemplatesResult {
  * ```
  */
 export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ros/getTemplates:getTemplates", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "shareType": args.shareType,
+        "tags": args.tags,
+        "templateName": args.templateName,
+    }, opts);
 }
 
 /**

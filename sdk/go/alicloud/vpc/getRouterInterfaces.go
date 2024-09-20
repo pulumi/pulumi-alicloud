@@ -108,14 +108,20 @@ type GetRouterInterfacesResult struct {
 
 func GetRouterInterfacesOutput(ctx *pulumi.Context, args GetRouterInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetRouterInterfacesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRouterInterfacesResult, error) {
+		ApplyT(func(v interface{}) (GetRouterInterfacesResultOutput, error) {
 			args := v.(GetRouterInterfacesArgs)
-			r, err := GetRouterInterfaces(ctx, &args, opts...)
-			var s GetRouterInterfacesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRouterInterfacesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args, &rv, "", opts...)
+			if err != nil {
+				return GetRouterInterfacesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRouterInterfacesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRouterInterfacesResultOutput), nil
+			}
+			return output, nil
 		}).(GetRouterInterfacesResultOutput)
 }
 

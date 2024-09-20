@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountDeletionCheckTask(args: GetAccountDeletionCheckTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDeletionCheckTaskResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", {
         "accountId": args.accountId,
@@ -97,7 +96,10 @@ export interface GetAccountDeletionCheckTaskResult {
  * ```
  */
 export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {
-    return pulumi.output(args).apply((a: any) => getAccountDeletionCheckTask(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", {
+        "accountId": args.accountId,
+    }, opts);
 }
 
 /**

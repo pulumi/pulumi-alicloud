@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getDeviceGroups(args?: GetDeviceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:iot/getDeviceGroups:getDeviceGroups", {
         "enableDetails": args.enableDetails,
@@ -107,7 +106,17 @@ export interface GetDeviceGroupsResult {
  * ```
  */
 export function getDeviceGroupsOutput(args?: GetDeviceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:iot/getDeviceGroups:getDeviceGroups", {
+        "enableDetails": args.enableDetails,
+        "groupName": args.groupName,
+        "ids": args.ids,
+        "iotInstanceId": args.iotInstanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "superGroupId": args.superGroupId,
+    }, opts);
 }
 
 /**

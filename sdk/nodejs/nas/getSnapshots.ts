@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getSnapshots:getSnapshots", {
         "fileSystemId": args.fileSystemId,
@@ -110,7 +109,16 @@ export interface GetSnapshotsResult {
  * ```
  */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getSnapshots:getSnapshots", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "snapshotName": args.snapshotName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

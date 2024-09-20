@@ -97,14 +97,20 @@ type GetInstanceClassInfosResult struct {
 
 func GetInstanceClassInfosOutput(ctx *pulumi.Context, args GetInstanceClassInfosOutputArgs, opts ...pulumi.InvokeOption) GetInstanceClassInfosResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceClassInfosResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceClassInfosResultOutput, error) {
 			args := v.(GetInstanceClassInfosArgs)
-			r, err := GetInstanceClassInfos(ctx, &args, opts...)
-			var s GetInstanceClassInfosResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceClassInfosResult
+			secret, err := ctx.InvokePackageRaw("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceClassInfosResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceClassInfosResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceClassInfosResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceClassInfosResultOutput)
 }
 

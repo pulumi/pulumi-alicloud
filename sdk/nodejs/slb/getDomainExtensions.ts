@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", {
         "frontendPort": args.frontendPort,
@@ -90,7 +89,13 @@ export interface GetDomainExtensionsResult {
  * ```
  */
 export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainExtensionsResult> {
-    return pulumi.output(args).apply((a: any) => getDomainExtensions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getDomainExtensions:getDomainExtensions", {
+        "frontendPort": args.frontendPort,
+        "ids": args.ids,
+        "loadBalancerId": args.loadBalancerId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

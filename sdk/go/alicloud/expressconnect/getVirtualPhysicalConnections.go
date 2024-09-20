@@ -80,14 +80,20 @@ type GetVirtualPhysicalConnectionsResult struct {
 
 func GetVirtualPhysicalConnectionsOutput(ctx *pulumi.Context, args GetVirtualPhysicalConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualPhysicalConnectionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVirtualPhysicalConnectionsResult, error) {
+		ApplyT(func(v interface{}) (GetVirtualPhysicalConnectionsResultOutput, error) {
 			args := v.(GetVirtualPhysicalConnectionsArgs)
-			r, err := GetVirtualPhysicalConnections(ctx, &args, opts...)
-			var s GetVirtualPhysicalConnectionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVirtualPhysicalConnectionsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", args, &rv, "", opts...)
+			if err != nil {
+				return GetVirtualPhysicalConnectionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVirtualPhysicalConnectionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVirtualPhysicalConnectionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVirtualPhysicalConnectionsResultOutput)
 }
 

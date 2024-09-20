@@ -117,14 +117,20 @@ type GetServiceHybridDoubleWritesResult struct {
 
 func GetServiceHybridDoubleWritesOutput(ctx *pulumi.Context, args GetServiceHybridDoubleWritesOutputArgs, opts ...pulumi.InvokeOption) GetServiceHybridDoubleWritesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServiceHybridDoubleWritesResult, error) {
+		ApplyT(func(v interface{}) (GetServiceHybridDoubleWritesResultOutput, error) {
 			args := v.(GetServiceHybridDoubleWritesArgs)
-			r, err := GetServiceHybridDoubleWrites(ctx, &args, opts...)
-			var s GetServiceHybridDoubleWritesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServiceHybridDoubleWritesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args, &rv, "", opts...)
+			if err != nil {
+				return GetServiceHybridDoubleWritesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServiceHybridDoubleWritesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServiceHybridDoubleWritesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServiceHybridDoubleWritesResultOutput)
 }
 

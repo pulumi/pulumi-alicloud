@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
         "category": args.category,
@@ -135,7 +134,18 @@ export interface GetInstanceEnginesResult {
  * ```
  */
 export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceEngines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getInstanceEngines:getInstanceEngines", {
+        "category": args.category,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
+        "instanceChargeType": args.instanceChargeType,
+        "multiZone": args.multiZone,
+        "outputFile": args.outputFile,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

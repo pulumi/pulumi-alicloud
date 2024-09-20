@@ -91,14 +91,20 @@ type GetBgpGroupsResult struct {
 
 func GetBgpGroupsOutput(ctx *pulumi.Context, args GetBgpGroupsOutputArgs, opts ...pulumi.InvokeOption) GetBgpGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBgpGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetBgpGroupsResultOutput, error) {
 			args := v.(GetBgpGroupsArgs)
-			r, err := GetBgpGroups(ctx, &args, opts...)
-			var s GetBgpGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBgpGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getBgpGroups:getBgpGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetBgpGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBgpGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBgpGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBgpGroupsResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAlertResource(args: GetAlertResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getAlertResource:getAlertResource", {
         "lang": args.lang,
@@ -87,7 +86,12 @@ export interface GetAlertResourceResult {
  * ```
  */
 export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertResourceResult> {
-    return pulumi.output(args).apply((a: any) => getAlertResource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:log/getAlertResource:getAlertResource", {
+        "lang": args.lang,
+        "project": args.project,
+        "type": args.type,
+    }, opts);
 }
 
 /**

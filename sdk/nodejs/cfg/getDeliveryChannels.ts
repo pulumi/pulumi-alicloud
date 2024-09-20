@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getDeliveryChannels(args?: GetDeliveryChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveryChannelsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", {
         "ids": args.ids,
@@ -114,7 +113,14 @@ export interface GetDeliveryChannelsResult {
  * ```
  */
 export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryChannelsResult> {
-    return pulumi.output(args).apply((a: any) => getDeliveryChannels(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

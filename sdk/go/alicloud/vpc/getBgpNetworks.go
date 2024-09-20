@@ -94,14 +94,20 @@ type GetBgpNetworksResult struct {
 
 func GetBgpNetworksOutput(ctx *pulumi.Context, args GetBgpNetworksOutputArgs, opts ...pulumi.InvokeOption) GetBgpNetworksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBgpNetworksResult, error) {
+		ApplyT(func(v interface{}) (GetBgpNetworksResultOutput, error) {
 			args := v.(GetBgpNetworksArgs)
-			r, err := GetBgpNetworks(ctx, &args, opts...)
-			var s GetBgpNetworksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBgpNetworksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getBgpNetworks:getBgpNetworks", args, &rv, "", opts...)
+			if err != nil {
+				return GetBgpNetworksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBgpNetworksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBgpNetworksResultOutput), nil
+			}
+			return output, nil
 		}).(GetBgpNetworksResultOutput)
 }
 

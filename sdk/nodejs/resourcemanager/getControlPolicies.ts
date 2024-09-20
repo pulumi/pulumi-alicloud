@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getControlPolicies(args?: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getControlPolicies:getControlPolicies", {
         "enableDetails": args.enableDetails,
@@ -108,7 +107,16 @@ export interface GetControlPoliciesResult {
  * ```
  */
 export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getControlPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getControlPolicies:getControlPolicies", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "language": args.language,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "policyType": args.policyType,
+    }, opts);
 }
 
 /**

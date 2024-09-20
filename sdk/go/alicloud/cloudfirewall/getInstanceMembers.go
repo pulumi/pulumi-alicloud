@@ -78,14 +78,20 @@ type GetInstanceMembersResult struct {
 
 func GetInstanceMembersOutput(ctx *pulumi.Context, args GetInstanceMembersOutputArgs, opts ...pulumi.InvokeOption) GetInstanceMembersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceMembersResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceMembersResultOutput, error) {
 			args := v.(GetInstanceMembersArgs)
-			r, err := GetInstanceMembers(ctx, &args, opts...)
-			var s GetInstanceMembersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceMembersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceMembersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceMembersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceMembersResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceMembersResultOutput)
 }
 

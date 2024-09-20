@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  */
 export function getOtsSnapshots(args?: GetOtsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetOtsSnapshotsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", {
         "endTime": args.endTime,
@@ -84,7 +83,14 @@ export interface GetOtsSnapshotsResult {
  * ```
  */
 export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsSnapshotsResult> {
-    return pulumi.output(args).apply((a: any) => getOtsSnapshots(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", {
+        "endTime": args.endTime,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "startTime": args.startTime,
+    }, opts);
 }
 
 /**

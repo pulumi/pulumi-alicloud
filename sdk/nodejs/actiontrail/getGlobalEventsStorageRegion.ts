@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGlobalEventsStorageRegion(opts?: pulumi.InvokeOptions): Promise<GetGlobalEventsStorageRegionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", {
     }, opts);
@@ -56,5 +55,7 @@ export interface GetGlobalEventsStorageRegionResult {
  * ```
  */
 export function getGlobalEventsStorageRegionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalEventsStorageRegionResult> {
-    return pulumi.output(getGlobalEventsStorageRegion(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", {
+    }, opts);
 }

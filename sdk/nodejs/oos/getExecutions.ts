@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getExecutions(args?: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getExecutions:getExecutions", {
         "category": args.category,
@@ -179,7 +178,27 @@ export interface GetExecutionsResult {
  * ```
  */
 export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
-    return pulumi.output(args).apply((a: any) => getExecutions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oos/getExecutions:getExecutions", {
+        "category": args.category,
+        "endDate": args.endDate,
+        "endDateAfter": args.endDateAfter,
+        "executedBy": args.executedBy,
+        "ids": args.ids,
+        "includeChildExecution": args.includeChildExecution,
+        "mode": args.mode,
+        "outputFile": args.outputFile,
+        "parentExecutionId": args.parentExecutionId,
+        "ramRole": args.ramRole,
+        "sortField": args.sortField,
+        "sortOrder": args.sortOrder,
+        "startDateAfter": args.startDateAfter,
+        "startDateBefore": args.startDateBefore,
+        "status": args.status,
+        "tags": args.tags,
+        "templateName": args.templateName,
+    }, opts);
 }
 
 /**

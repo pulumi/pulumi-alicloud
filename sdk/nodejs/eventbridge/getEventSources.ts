@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEventSources(args?: GetEventSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventSourcesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eventbridge/getEventSources:getEventSources", {
         "ids": args.ids,
@@ -90,7 +89,13 @@ export interface GetEventSourcesResult {
  * ```
  */
 export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourcesResult> {
-    return pulumi.output(args).apply((a: any) => getEventSources(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eventbridge/getEventSources:getEventSources", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

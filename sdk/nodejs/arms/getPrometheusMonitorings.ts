@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrometheusMonitorings(args: GetPrometheusMonitoringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusMonitoringsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", {
         "clusterId": args.clusterId,
@@ -132,7 +131,15 @@ export interface GetPrometheusMonitoringsResult {
  * ```
  */
 export function getPrometheusMonitoringsOutput(args: GetPrometheusMonitoringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusMonitoringsResult> {
-    return pulumi.output(args).apply((a: any) => getPrometheusMonitorings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "type": args.type,
+    }, opts);
 }
 
 /**

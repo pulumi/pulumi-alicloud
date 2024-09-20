@@ -83,14 +83,20 @@ type GetAlidnsInstancesResult struct {
 
 func GetAlidnsInstancesOutput(ctx *pulumi.Context, args GetAlidnsInstancesOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAlidnsInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetAlidnsInstancesResultOutput, error) {
 			args := v.(GetAlidnsInstancesArgs)
-			r, err := GetAlidnsInstances(ctx, &args, opts...)
-			var s GetAlidnsInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAlidnsInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetAlidnsInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAlidnsInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAlidnsInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAlidnsInstancesResultOutput)
 }
 

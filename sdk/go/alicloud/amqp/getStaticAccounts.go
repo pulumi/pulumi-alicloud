@@ -75,14 +75,20 @@ type GetStaticAccountsResult struct {
 
 func GetStaticAccountsOutput(ctx *pulumi.Context, args GetStaticAccountsOutputArgs, opts ...pulumi.InvokeOption) GetStaticAccountsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetStaticAccountsResult, error) {
+		ApplyT(func(v interface{}) (GetStaticAccountsResultOutput, error) {
 			args := v.(GetStaticAccountsArgs)
-			r, err := GetStaticAccounts(ctx, &args, opts...)
-			var s GetStaticAccountsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetStaticAccountsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:amqp/getStaticAccounts:getStaticAccounts", args, &rv, "", opts...)
+			if err != nil {
+				return GetStaticAccountsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetStaticAccountsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetStaticAccountsResultOutput), nil
+			}
+			return output, nil
 		}).(GetStaticAccountsResultOutput)
 }
 

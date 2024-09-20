@@ -81,14 +81,20 @@ type GetSubscriptionJobsResult struct {
 
 func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionJobsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubscriptionJobsResult, error) {
+		ApplyT(func(v interface{}) (GetSubscriptionJobsResultOutput, error) {
 			args := v.(GetSubscriptionJobsArgs)
-			r, err := GetSubscriptionJobs(ctx, &args, opts...)
-			var s GetSubscriptionJobsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSubscriptionJobsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args, &rv, "", opts...)
+			if err != nil {
+				return GetSubscriptionJobsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSubscriptionJobsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSubscriptionJobsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSubscriptionJobsResultOutput)
 }
 

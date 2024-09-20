@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getVirtualPhysicalConnections(args?: GetVirtualPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualPhysicalConnectionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", {
         "businessStatus": args.businessStatus,
@@ -126,7 +125,20 @@ export interface GetVirtualPhysicalConnectionsResult {
  * > **NOTE:** Available in 1.196.0+
  */
 export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualPhysicalConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => getVirtualPhysicalConnections(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", {
+        "businessStatus": args.businessStatus,
+        "ids": args.ids,
+        "isConfirmed": args.isConfirmed,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "parentPhysicalConnectionId": args.parentPhysicalConnectionId,
+        "virtualPhysicalConnectionIds": args.virtualPhysicalConnectionIds,
+        "virtualPhysicalConnectionStatus": args.virtualPhysicalConnectionStatus,
+        "vlanIds": args.vlanIds,
+        "vpconnAliUid": args.vpconnAliUid,
+    }, opts);
 }
 
 /**

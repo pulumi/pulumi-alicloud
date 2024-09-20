@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceClassInfos(args: GetInstanceClassInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassInfosResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", {
         "commodityCode": args.commodityCode,
@@ -118,7 +117,14 @@ export interface GetInstanceClassInfosResult {
  * ```
  */
 export function getInstanceClassInfosOutput(args: GetInstanceClassInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassInfosResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceClassInfos(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", {
+        "commodityCode": args.commodityCode,
+        "dbInstanceId": args.dbInstanceId,
+        "infos": args.infos,
+        "orderType": args.orderType,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

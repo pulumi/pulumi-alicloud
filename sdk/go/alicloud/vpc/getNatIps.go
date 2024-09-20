@@ -148,14 +148,20 @@ type GetNatIpsResult struct {
 
 func GetNatIpsOutput(ctx *pulumi.Context, args GetNatIpsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNatIpsResult, error) {
+		ApplyT(func(v interface{}) (GetNatIpsResultOutput, error) {
 			args := v.(GetNatIpsArgs)
-			r, err := GetNatIps(ctx, &args, opts...)
-			var s GetNatIpsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNatIpsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getNatIps:getNatIps", args, &rv, "", opts...)
+			if err != nil {
+				return GetNatIpsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNatIpsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNatIpsResultOutput), nil
+			}
+			return output, nil
 		}).(GetNatIpsResultOutput)
 }
 

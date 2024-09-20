@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBlockedRegions(args: GetBlockedRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetBlockedRegionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cdn/getBlockedRegions:getBlockedRegions", {
         "language": args.language,
@@ -72,7 +71,10 @@ export interface GetBlockedRegionsResult {
  * ```
  */
 export function getBlockedRegionsOutput(args: GetBlockedRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockedRegionsResult> {
-    return pulumi.output(args).apply((a: any) => getBlockedRegions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cdn/getBlockedRegions:getBlockedRegions", {
+        "language": args.language,
+    }, opts);
 }
 
 /**

@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressBooksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", {
         "groupType": args.groupType,
@@ -128,7 +127,14 @@ export interface GetAddressBooksResult {
  * ```
  */
 export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressBooksResult> {
-    return pulumi.output(args).apply((a: any) => getAddressBooks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", {
+        "groupType": args.groupType,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

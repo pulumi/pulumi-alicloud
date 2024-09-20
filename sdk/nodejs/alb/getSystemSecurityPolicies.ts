@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getSystemSecurityPolicies(args?: GetSystemSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemSecurityPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", {
         "ids": args.ids,
@@ -90,7 +89,13 @@ export interface GetSystemSecurityPoliciesResult {
  * ```
  */
 export function getSystemSecurityPoliciesOutput(args?: GetSystemSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemSecurityPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getSystemSecurityPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

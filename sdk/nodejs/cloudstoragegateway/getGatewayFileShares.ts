@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayFileShares(args: GetGatewayFileSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayFileSharesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", {
         "gatewayId": args.gatewayId,
@@ -111,7 +110,13 @@ export interface GetGatewayFileSharesResult {
  * ```
  */
 export function getGatewayFileSharesOutput(args: GetGatewayFileSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayFileSharesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayFileShares(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", {
+        "gatewayId": args.gatewayId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

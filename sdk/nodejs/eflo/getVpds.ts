@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getVpds(args?: GetVpdsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpdsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eflo/getVpds:getVpds", {
         "enableDetails": args.enableDetails,
@@ -145,7 +144,20 @@ export interface GetVpdsResult {
  * ```
  */
 export function getVpdsOutput(args?: GetVpdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpdsResult> {
-    return pulumi.output(args).apply((a: any) => getVpds(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eflo/getVpds:getVpds", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "vpdId": args.vpdId,
+        "vpdName": args.vpdName,
+    }, opts);
 }
 
 /**

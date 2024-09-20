@@ -130,14 +130,20 @@ type GetSecurityGroupsResult struct {
 
 func GetSecurityGroupsOutput(ctx *pulumi.Context, args GetSecurityGroupsOutputArgs, opts ...pulumi.InvokeOption) GetSecurityGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSecurityGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetSecurityGroupsResultOutput, error) {
 			args := v.(GetSecurityGroupsArgs)
-			r, err := GetSecurityGroups(ctx, &args, opts...)
-			var s GetSecurityGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSecurityGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getSecurityGroups:getSecurityGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetSecurityGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSecurityGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSecurityGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSecurityGroupsResultOutput)
 }
 

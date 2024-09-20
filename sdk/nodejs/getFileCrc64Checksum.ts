@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulumi.InvokeOptions): Promise<GetFileCrc64ChecksumResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
         "filename": args.filename,
@@ -74,7 +73,11 @@ export interface GetFileCrc64ChecksumResult {
  * ```
  */
 export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
-    return pulumi.output(args).apply((a: any) => getFileCrc64Checksum(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
+        "filename": args.filename,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

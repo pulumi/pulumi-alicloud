@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getRamDirectories(args?: GetRamDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRamDirectoriesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getRamDirectories:getRamDirectories", {
         "ids": args.ids,
@@ -102,7 +101,14 @@ export interface GetRamDirectoriesResult {
  * ```
  */
 export function getRamDirectoriesOutput(args?: GetRamDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRamDirectoriesResult> {
-    return pulumi.output(args).apply((a: any) => getRamDirectories(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getRamDirectories:getRamDirectories", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -53,7 +53,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,
@@ -198,7 +197,18 @@ export interface GetSnatEntriesResult {
  * ```
  */
 export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnatEntriesResult> {
-    return pulumi.output(args).apply((a: any) => getSnatEntries(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getSnatEntries:getSnatEntries", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "snatEntryName": args.snatEntryName,
+        "snatIp": args.snatIp,
+        "snatTableId": args.snatTableId,
+        "sourceCidr": args.sourceCidr,
+        "sourceVswitchId": args.sourceVswitchId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

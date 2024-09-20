@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVpcEndpointLinkedVpcs(args: GetVpcEndpointLinkedVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointLinkedVpcsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", {
         "ids": args.ids,
@@ -116,7 +115,14 @@ export interface GetVpcEndpointLinkedVpcsResult {
  * ```
  */
 export function getVpcEndpointLinkedVpcsOutput(args: GetVpcEndpointLinkedVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointLinkedVpcsResult> {
-    return pulumi.output(args).apply((a: any) => getVpcEndpointLinkedVpcs(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "moduleName": args.moduleName,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

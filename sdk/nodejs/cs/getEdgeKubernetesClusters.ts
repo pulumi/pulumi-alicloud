@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getEdgeKubernetesClusters(args?: GetEdgeKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeKubernetesClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", {
         "enableDetails": args.enableDetails,
@@ -100,7 +99,14 @@ export interface GetEdgeKubernetesClustersResult {
  * ```
  */
 export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
-    return pulumi.output(args).apply((a: any) => getEdgeKubernetesClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

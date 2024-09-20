@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getIpv4Gateways(args?: GetIpv4GatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv4GatewaysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", {
         "ids": args.ids,
@@ -110,7 +109,16 @@ export interface GetIpv4GatewaysResult {
  * ```
  */
 export function getIpv4GatewaysOutput(args?: GetIpv4GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv4GatewaysResult> {
-    return pulumi.output(args).apply((a: any) => getIpv4Gateways(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", {
+        "ids": args.ids,
+        "ipv4GatewayName": args.ipv4GatewayName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

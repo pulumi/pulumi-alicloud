@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  */
 export function getDirectories(args?: GetDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoriesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getDirectories:getDirectories", {
         "enableDetails": args.enableDetails,
@@ -106,7 +105,14 @@ export interface GetDirectoriesResult {
  * ```
  */
 export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoriesResult> {
-    return pulumi.output(args).apply((a: any) => getDirectories(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudsso/getDirectories:getDirectories", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getSmartagFlowLogs(args?: GetSmartagFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetSmartagFlowLogsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", {
         "description": args.description,
@@ -114,7 +113,17 @@ export interface GetSmartagFlowLogsResult {
  * ```
  */
 export function getSmartagFlowLogsOutput(args?: GetSmartagFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSmartagFlowLogsResult> {
-    return pulumi.output(args).apply((a: any) => getSmartagFlowLogs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", {
+        "description": args.description,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

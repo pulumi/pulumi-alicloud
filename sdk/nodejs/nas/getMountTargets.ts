@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getMountTargets:getMountTargets", {
         "accessGroupName": args.accessGroupName,
@@ -161,7 +160,19 @@ export interface GetMountTargetsResult {
  * ```
  */
 export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
-    return pulumi.output(args).apply((a: any) => getMountTargets(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getMountTargets:getMountTargets", {
+        "accessGroupName": args.accessGroupName,
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "mountTargetDomain": args.mountTargetDomain,
+        "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "type": args.type,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

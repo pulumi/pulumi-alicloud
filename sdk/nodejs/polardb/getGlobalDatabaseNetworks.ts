@@ -59,7 +59,6 @@ import * as utilities from "../utilities";
  */
 export function getGlobalDatabaseNetworks(args?: GetGlobalDatabaseNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDatabaseNetworksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", {
         "dbClusterId": args.dbClusterId,
@@ -190,7 +189,18 @@ export interface GetGlobalDatabaseNetworksResult {
  * ```
  */
 export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalDatabaseNetworks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", {
+        "dbClusterId": args.dbClusterId,
+        "description": args.description,
+        "gdnId": args.gdnId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

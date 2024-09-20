@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getHybridMonitorSlsTasks(args?: GetHybridMonitorSlsTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorSlsTasksResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", {
         "ids": args.ids,
@@ -99,7 +98,16 @@ export interface GetHybridMonitorSlsTasksResult {
  * ```
  */
 export function getHybridMonitorSlsTasksOutput(args?: GetHybridMonitorSlsTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorSlsTasksResult> {
-    return pulumi.output(args).apply((a: any) => getHybridMonitorSlsTasks(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", {
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

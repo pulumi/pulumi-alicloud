@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceSpecifications(args?: GetInstanceSpecificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSpecificationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", {
         "ids": args.ids,
@@ -77,7 +76,12 @@ export interface GetInstanceSpecificationsResult {
  * ```
  */
 export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSpecificationsResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceSpecifications(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

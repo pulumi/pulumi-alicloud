@@ -88,14 +88,20 @@ type GetKubernetesClustersResult struct {
 
 func GetKubernetesClustersOutput(ctx *pulumi.Context, args GetKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesClustersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKubernetesClustersResult, error) {
+		ApplyT(func(v interface{}) (GetKubernetesClustersResultOutput, error) {
 			args := v.(GetKubernetesClustersArgs)
-			r, err := GetKubernetesClusters(ctx, &args, opts...)
-			var s GetKubernetesClustersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKubernetesClustersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args, &rv, "", opts...)
+			if err != nil {
+				return GetKubernetesClustersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKubernetesClustersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKubernetesClustersResultOutput), nil
+			}
+			return output, nil
 		}).(GetKubernetesClustersResultOutput)
 }
 

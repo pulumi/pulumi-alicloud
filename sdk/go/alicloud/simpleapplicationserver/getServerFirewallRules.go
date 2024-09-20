@@ -79,14 +79,20 @@ type GetServerFirewallRulesResult struct {
 
 func GetServerFirewallRulesOutput(ctx *pulumi.Context, args GetServerFirewallRulesOutputArgs, opts ...pulumi.InvokeOption) GetServerFirewallRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerFirewallRulesResult, error) {
+		ApplyT(func(v interface{}) (GetServerFirewallRulesResultOutput, error) {
 			args := v.(GetServerFirewallRulesArgs)
-			r, err := GetServerFirewallRules(ctx, &args, opts...)
-			var s GetServerFirewallRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerFirewallRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerFirewallRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerFirewallRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerFirewallRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerFirewallRulesResultOutput)
 }
 

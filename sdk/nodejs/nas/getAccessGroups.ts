@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getAccessGroups:getAccessGroups", {
         "accessGroupName": args.accessGroupName,
@@ -144,7 +143,18 @@ export interface GetAccessGroupsResult {
  * ```
  */
 export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getAccessGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getAccessGroups:getAccessGroups", {
+        "accessGroupName": args.accessGroupName,
+        "accessGroupType": args.accessGroupType,
+        "description": args.description,
+        "fileSystemType": args.fileSystemType,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "type": args.type,
+        "useutcDateTime": args.useutcDateTime,
+    }, opts);
 }
 
 /**

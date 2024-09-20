@@ -179,14 +179,20 @@ type GetGatewayVcoRoutesResult struct {
 
 func GetGatewayVcoRoutesOutput(ctx *pulumi.Context, args GetGatewayVcoRoutesOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVcoRoutesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewayVcoRoutesResult, error) {
+		ApplyT(func(v interface{}) (GetGatewayVcoRoutesResultOutput, error) {
 			args := v.(GetGatewayVcoRoutesArgs)
-			r, err := GetGatewayVcoRoutes(ctx, &args, opts...)
-			var s GetGatewayVcoRoutesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewayVcoRoutesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewayVcoRoutesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewayVcoRoutesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewayVcoRoutesResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewayVcoRoutesResultOutput)
 }
 

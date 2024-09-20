@@ -87,14 +87,20 @@ type GetHybridMonitorDatasResult struct {
 
 func GetHybridMonitorDatasOutput(ctx *pulumi.Context, args GetHybridMonitorDatasOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorDatasResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHybridMonitorDatasResult, error) {
+		ApplyT(func(v interface{}) (GetHybridMonitorDatasResultOutput, error) {
 			args := v.(GetHybridMonitorDatasArgs)
-			r, err := GetHybridMonitorDatas(ctx, &args, opts...)
-			var s GetHybridMonitorDatasResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHybridMonitorDatasResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args, &rv, "", opts...)
+			if err != nil {
+				return GetHybridMonitorDatasResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHybridMonitorDatasResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHybridMonitorDatasResultOutput), nil
+			}
+			return output, nil
 		}).(GetHybridMonitorDatasResultOutput)
 }
 

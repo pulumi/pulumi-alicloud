@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getGroups:getGroups", {
         "nameRegex": args.nameRegex,
@@ -106,7 +105,15 @@ export interface GetGroupsResult {
  * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ram/getGroups:getGroups", {
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "policyName": args.policyName,
+        "policyType": args.policyType,
+        "userName": args.userName,
+    }, opts);
 }
 
 /**

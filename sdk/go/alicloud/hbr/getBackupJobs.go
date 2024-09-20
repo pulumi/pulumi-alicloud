@@ -142,14 +142,20 @@ type GetBackupJobsResult struct {
 
 func GetBackupJobsOutput(ctx *pulumi.Context, args GetBackupJobsOutputArgs, opts ...pulumi.InvokeOption) GetBackupJobsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBackupJobsResult, error) {
+		ApplyT(func(v interface{}) (GetBackupJobsResultOutput, error) {
 			args := v.(GetBackupJobsArgs)
-			r, err := GetBackupJobs(ctx, &args, opts...)
-			var s GetBackupJobsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBackupJobsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getBackupJobs:getBackupJobs", args, &rv, "", opts...)
+			if err != nil {
+				return GetBackupJobsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBackupJobsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBackupJobsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBackupJobsResultOutput)
 }
 

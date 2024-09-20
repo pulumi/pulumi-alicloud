@@ -116,14 +116,20 @@ type GetIpv6EgressRulesResult struct {
 
 func GetIpv6EgressRulesOutput(ctx *pulumi.Context, args GetIpv6EgressRulesOutputArgs, opts ...pulumi.InvokeOption) GetIpv6EgressRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpv6EgressRulesResult, error) {
+		ApplyT(func(v interface{}) (GetIpv6EgressRulesResultOutput, error) {
 			args := v.(GetIpv6EgressRulesArgs)
-			r, err := GetIpv6EgressRules(ctx, &args, opts...)
-			var s GetIpv6EgressRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIpv6EgressRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpv6EgressRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpv6EgressRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpv6EgressRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpv6EgressRulesResultOutput)
 }
 

@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAddressPools(args: GetAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressPoolsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAddressPools:getAddressPools", {
         "enableDetails": args.enableDetails,
@@ -117,7 +116,14 @@ export interface GetAddressPoolsResult {
  * ```
  */
 export function getAddressPoolsOutput(args: GetAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressPoolsResult> {
-    return pulumi.output(args).apply((a: any) => getAddressPools(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAddressPools:getAddressPools", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

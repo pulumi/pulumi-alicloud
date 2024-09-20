@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  */
 export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", {
         "ids": args.ids,
@@ -120,7 +119,16 @@ export interface GetSystemGroupsResult {
  * ```
  */
 export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getSystemGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:videosurveillance/getSystemGroups:getSystemGroups", {
+        "ids": args.ids,
+        "inProtocol": args.inProtocol,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

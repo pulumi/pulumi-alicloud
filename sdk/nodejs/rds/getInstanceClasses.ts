@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", {
         "category": args.category,
@@ -167,7 +166,23 @@ export interface GetInstanceClassesResult {
  * ```
  */
 export function getInstanceClassesOutput(args?: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getInstanceClasses:getInstanceClasses", {
+        "category": args.category,
+        "commodityCode": args.commodityCode,
+        "dbInstanceClass": args.dbInstanceClass,
+        "dbInstanceId": args.dbInstanceId,
+        "dbInstanceStorageType": args.dbInstanceStorageType,
+        "engine": args.engine,
+        "engineVersion": args.engineVersion,
+        "instanceChargeType": args.instanceChargeType,
+        "multiZone": args.multiZone,
+        "outputFile": args.outputFile,
+        "sortedBy": args.sortedBy,
+        "storageType": args.storageType,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

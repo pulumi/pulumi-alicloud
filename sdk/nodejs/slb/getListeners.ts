@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
         "descriptionRegex": args.descriptionRegex,
@@ -135,7 +134,14 @@ export interface GetListenersResult {
  * ```
  */
 export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
-    return pulumi.output(args).apply((a: any) => getListeners(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getListeners:getListeners", {
+        "descriptionRegex": args.descriptionRegex,
+        "frontendPort": args.frontendPort,
+        "loadBalancerId": args.loadBalancerId,
+        "outputFile": args.outputFile,
+        "protocol": args.protocol,
+    }, opts);
 }
 
 /**

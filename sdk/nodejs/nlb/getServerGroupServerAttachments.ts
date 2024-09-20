@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getServerGroupServerAttachments(args?: GetServerGroupServerAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupServerAttachmentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", {
         "ids": args.ids,
@@ -105,7 +104,15 @@ export interface GetServerGroupServerAttachmentsResult {
  * ```
  */
 export function getServerGroupServerAttachmentsOutput(args?: GetServerGroupServerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupServerAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getServerGroupServerAttachments(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "serverGroupId": args.serverGroupId,
+        "serverIds": args.serverIds,
+        "serverIps": args.serverIps,
+    }, opts);
 }
 
 /**

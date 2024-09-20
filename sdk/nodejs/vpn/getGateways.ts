@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
@@ -115,7 +114,18 @@ export interface GetGatewaysResult {
  * > **NOTE:** Available since v1.18.0.
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
-    return pulumi.output(args).apply((a: any) => getGateways(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpn/getGateways:getGateways", {
+        "businessStatus": args.businessStatus,
+        "enableIpsec": args.enableIpsec,
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
 /** @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
     pulumi.log.warn("getTables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getTables:getTables", {
         "ids": args.ids,
@@ -84,7 +83,14 @@ export interface GetTablesResult {
  */
 /** @deprecated alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
-    return pulumi.output(args).apply((a: any) => getTables(a, opts))
+    pulumi.log.warn("getTables is deprecated: alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables")
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oss/getTables:getTables", {
+        "ids": args.ids,
+        "instanceName": args.instanceName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

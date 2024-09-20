@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
@@ -206,7 +205,32 @@ export interface GetLoadBalancersResult {
  * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
-    return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getLoadBalancers:getLoadBalancers", {
+        "address": args.address,
+        "addressIpVersion": args.addressIpVersion,
+        "addressType": args.addressType,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "internetChargeType": args.internetChargeType,
+        "loadBalancerName": args.loadBalancerName,
+        "masterZoneId": args.masterZoneId,
+        "nameRegex": args.nameRegex,
+        "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "serverId": args.serverId,
+        "serverIntranetAddress": args.serverIntranetAddress,
+        "slaveZoneId": args.slaveZoneId,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+        "vswitchId": args.vswitchId,
+    }, opts);
 }
 
 /**

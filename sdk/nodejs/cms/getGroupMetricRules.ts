@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getGroupMetricRules(args?: GetGroupMetricRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMetricRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getGroupMetricRules:getGroupMetricRules", {
         "dimensions": args.dimensions,
@@ -132,7 +131,20 @@ export interface GetGroupMetricRulesResult {
  * ```
  */
 export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMetricRulesResult> {
-    return pulumi.output(args).apply((a: any) => getGroupMetricRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getGroupMetricRules:getGroupMetricRules", {
+        "dimensions": args.dimensions,
+        "enableState": args.enableState,
+        "groupId": args.groupId,
+        "groupMetricRuleName": args.groupMetricRuleName,
+        "ids": args.ids,
+        "metricName": args.metricName,
+        "nameRegex": args.nameRegex,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

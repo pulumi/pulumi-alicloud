@@ -36,7 +36,6 @@ import * as utilities from "../utilities";
  */
 export function getBaselineStrategies(args?: GetBaselineStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaselineStrategiesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", {
         "customType": args.customType,
@@ -126,7 +125,15 @@ export interface GetBaselineStrategiesResult {
  * ```
  */
 export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselineStrategiesResult> {
-    return pulumi.output(args).apply((a: any) => getBaselineStrategies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", {
+        "customType": args.customType,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "strategyIds": args.strategyIds,
+    }, opts);
 }
 
 /**

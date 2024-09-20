@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eflo/getSubnets:getSubnets", {
         "ids": args.ids,
@@ -165,7 +164,22 @@ export interface GetSubnetsResult {
  * ```
  */
 export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetsResult> {
-    return pulumi.output(args).apply((a: any) => getSubnets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eflo/getSubnets:getSubnets", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "subnetId": args.subnetId,
+        "subnetName": args.subnetName,
+        "type": args.type,
+        "vpdId": args.vpdId,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

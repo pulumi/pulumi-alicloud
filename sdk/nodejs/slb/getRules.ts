@@ -60,7 +60,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
         "frontendPort": args.frontendPort,
@@ -176,7 +175,14 @@ export interface GetRulesResult {
  * ```
  */
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:slb/getRules:getRules", {
+        "frontendPort": args.frontendPort,
+        "ids": args.ids,
+        "loadBalancerId": args.loadBalancerId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

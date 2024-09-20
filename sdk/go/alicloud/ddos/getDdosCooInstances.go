@@ -76,14 +76,20 @@ type GetDdosCooInstancesResult struct {
 
 func GetDdosCooInstancesOutput(ctx *pulumi.Context, args GetDdosCooInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDdosCooInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetDdosCooInstancesResultOutput, error) {
 			args := v.(GetDdosCooInstancesArgs)
-			r, err := GetDdosCooInstances(ctx, &args, opts...)
-			var s GetDdosCooInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDdosCooInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetDdosCooInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDdosCooInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDdosCooInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDdosCooInstancesResultOutput)
 }
 

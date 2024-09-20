@@ -40,14 +40,20 @@ type LookupMonitorGroupInstancesResult struct {
 
 func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGroupInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorGroupInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMonitorGroupInstancesResult, error) {
+		ApplyT(func(v interface{}) (LookupMonitorGroupInstancesResultOutput, error) {
 			args := v.(LookupMonitorGroupInstancesArgs)
-			r, err := LookupMonitorGroupInstances(ctx, &args, opts...)
-			var s LookupMonitorGroupInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMonitorGroupInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMonitorGroupInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMonitorGroupInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMonitorGroupInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMonitorGroupInstancesResultOutput)
 }
 

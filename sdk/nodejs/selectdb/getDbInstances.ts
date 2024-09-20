@@ -48,7 +48,6 @@ import * as utilities from "../utilities";
  */
 export function getDbInstances(args?: GetDbInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:selectdb/getDbInstances:getDbInstances", {
         "ids": args.ids,
@@ -134,7 +133,13 @@ export interface GetDbInstancesResult {
  * ```
  */
 export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getDbInstances(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:selectdb/getDbInstances:getDbInstances", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

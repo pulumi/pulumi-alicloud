@@ -83,14 +83,20 @@ type GetMailAddressesResult struct {
 
 func GetMailAddressesOutput(ctx *pulumi.Context, args GetMailAddressesOutputArgs, opts ...pulumi.InvokeOption) GetMailAddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMailAddressesResult, error) {
+		ApplyT(func(v interface{}) (GetMailAddressesResultOutput, error) {
 			args := v.(GetMailAddressesArgs)
-			r, err := GetMailAddresses(ctx, &args, opts...)
-			var s GetMailAddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMailAddressesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:directmail/getMailAddresses:getMailAddresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetMailAddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMailAddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMailAddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetMailAddressesResultOutput)
 }
 

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getPhysicalConnections(args?: GetPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", {
         "ids": args.ids,
@@ -108,7 +107,15 @@ export interface GetPhysicalConnectionsResult {
  * ```
  */
 export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => getPhysicalConnections(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", {
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

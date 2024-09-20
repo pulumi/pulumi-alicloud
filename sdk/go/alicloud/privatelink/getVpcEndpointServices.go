@@ -91,14 +91,20 @@ type GetVpcEndpointServicesResult struct {
 
 func GetVpcEndpointServicesOutput(ctx *pulumi.Context, args GetVpcEndpointServicesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointServicesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpcEndpointServicesResult, error) {
+		ApplyT(func(v interface{}) (GetVpcEndpointServicesResultOutput, error) {
 			args := v.(GetVpcEndpointServicesArgs)
-			r, err := GetVpcEndpointServices(ctx, &args, opts...)
-			var s GetVpcEndpointServicesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVpcEndpointServicesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args, &rv, "", opts...)
+			if err != nil {
+				return GetVpcEndpointServicesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVpcEndpointServicesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVpcEndpointServicesResultOutput), nil
+			}
+			return output, nil
 		}).(GetVpcEndpointServicesResultOutput)
 }
 

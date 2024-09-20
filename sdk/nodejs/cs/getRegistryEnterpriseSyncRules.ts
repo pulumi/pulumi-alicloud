@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", {
         "ids": args.ids,
@@ -138,7 +137,16 @@ export interface GetRegistryEnterpriseSyncRulesResult {
  * ```
  */
 export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseSyncRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "namespaceName": args.namespaceName,
+        "outputFile": args.outputFile,
+        "repoName": args.repoName,
+        "targetInstanceId": args.targetInstanceId,
+    }, opts);
 }
 
 /**

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getFlows(args?: GetFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fnf/getFlows:getFlows", {
         "ids": args.ids,
@@ -96,7 +95,14 @@ export interface GetFlowsResult {
  * ```
  */
 export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowsResult> {
-    return pulumi.output(args).apply((a: any) => getFlows(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:fnf/getFlows:getFlows", {
+        "ids": args.ids,
+        "limit": args.limit,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

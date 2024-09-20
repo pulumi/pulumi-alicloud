@@ -89,14 +89,20 @@ type GetResourceSharesResult struct {
 
 func GetResourceSharesOutput(ctx *pulumi.Context, args GetResourceSharesOutputArgs, opts ...pulumi.InvokeOption) GetResourceSharesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetResourceSharesResult, error) {
+		ApplyT(func(v interface{}) (GetResourceSharesResultOutput, error) {
 			args := v.(GetResourceSharesArgs)
-			r, err := GetResourceShares(ctx, &args, opts...)
-			var s GetResourceSharesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetResourceSharesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:resourcemanager/getResourceShares:getResourceShares", args, &rv, "", opts...)
+			if err != nil {
+				return GetResourceSharesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetResourceSharesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetResourceSharesResultOutput), nil
+			}
+			return output, nil
 		}).(GetResourceSharesResultOutput)
 }
 

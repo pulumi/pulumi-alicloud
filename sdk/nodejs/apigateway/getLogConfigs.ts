@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getLogConfigs(args?: GetLogConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetLogConfigsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getLogConfigs:getLogConfigs", {
         "ids": args.ids,
@@ -95,7 +94,13 @@ export interface GetLogConfigsResult {
  * ```
  */
 export function getLogConfigsOutput(args?: GetLogConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogConfigsResult> {
-    return pulumi.output(args).apply((a: any) => getLogConfigs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getLogConfigs:getLogConfigs", {
+        "ids": args.ids,
+        "logType": args.logType,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getTemplates:getTemplates", {
         "category": args.category,
@@ -173,7 +172,24 @@ export interface GetTemplatesResult {
  * ```
  */
 export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oos/getTemplates:getTemplates", {
+        "category": args.category,
+        "createdBy": args.createdBy,
+        "createdDate": args.createdDate,
+        "createdDateAfter": args.createdDateAfter,
+        "hasTrigger": args.hasTrigger,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "shareType": args.shareType,
+        "sortField": args.sortField,
+        "sortOrder": args.sortOrder,
+        "tags": args.tags,
+        "templateFormat": args.templateFormat,
+        "templateType": args.templateType,
+    }, opts);
 }
 
 /**

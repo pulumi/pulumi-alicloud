@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getDiskReplicaPairs(args?: GetDiskReplicaPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskReplicaPairsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", {
         "ids": args.ids,
@@ -95,7 +94,14 @@ export interface GetDiskReplicaPairsResult {
  * ```
  */
 export function getDiskReplicaPairsOutput(args?: GetDiskReplicaPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaPairsResult> {
-    return pulumi.output(args).apply((a: any) => getDiskReplicaPairs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "replicaGroupId": args.replicaGroupId,
+        "site": args.site,
+    }, opts);
 }
 
 /**

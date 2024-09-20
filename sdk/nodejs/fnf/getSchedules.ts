@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSchedules(args: GetSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSchedulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fnf/getSchedules:getSchedules", {
         "flowName": args.flowName,
@@ -103,7 +102,14 @@ export interface GetSchedulesResult {
  * ```
  */
 export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchedulesResult> {
-    return pulumi.output(args).apply((a: any) => getSchedules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:fnf/getSchedules:getSchedules", {
+        "flowName": args.flowName,
+        "ids": args.ids,
+        "limit": args.limit,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

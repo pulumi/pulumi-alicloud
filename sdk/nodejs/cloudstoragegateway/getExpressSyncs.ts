@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getExpressSyncs(args?: GetExpressSyncsArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressSyncsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", {
         "ids": args.ids,
@@ -92,7 +91,13 @@ export interface GetExpressSyncsResult {
  * ```
  */
 export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressSyncsResult> {
-    return pulumi.output(args).apply((a: any) => getExpressSyncs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

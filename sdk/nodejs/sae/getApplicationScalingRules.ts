@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getApplicationScalingRules(args: GetApplicationScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationScalingRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", {
         "appId": args.appId,
@@ -94,7 +93,12 @@ export interface GetApplicationScalingRulesResult {
  * ```
  */
 export function getApplicationScalingRulesOutput(args: GetApplicationScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationScalingRulesResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationScalingRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", {
+        "appId": args.appId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

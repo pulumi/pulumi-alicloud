@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLifecyclePolicies(args: GetLifecyclePoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecyclePoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", {
         "fileSystemId": args.fileSystemId,
@@ -111,7 +110,13 @@ export interface GetLifecyclePoliciesResult {
  * ```
  */
 export function getLifecyclePoliciesOutput(args: GetLifecyclePoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecyclePoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getLifecyclePolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

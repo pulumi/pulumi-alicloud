@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
         "ids": args.ids,
@@ -115,7 +114,16 @@ export interface GetBandwidthPackagesResult {
  * ```
  */
 export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
-    return pulumi.output(args).apply((a: any) => getBandwidthPackages(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

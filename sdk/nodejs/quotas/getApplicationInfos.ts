@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationInfosResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
         "dimensions": args.dimensions,
@@ -57,7 +56,18 @@ export interface GetApplicationInfosResult {
     readonly status?: string;
 }
 export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationInfosResult> {
-    return pulumi.output(args).apply((a: any) => getApplicationInfos(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
+        "dimensions": args.dimensions,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "keyWord": args.keyWord,
+        "outputFile": args.outputFile,
+        "productCode": args.productCode,
+        "quotaActionCode": args.quotaActionCode,
+        "quotaCategory": args.quotaCategory,
+        "status": args.status,
+    }, opts);
 }
 
 /**

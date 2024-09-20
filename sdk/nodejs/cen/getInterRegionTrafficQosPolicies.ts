@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInterRegionTrafficQosPolicies(args: GetInterRegionTrafficQosPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", {
         "ids": args.ids,
@@ -154,7 +153,18 @@ export interface GetInterRegionTrafficQosPoliciesResult {
  * ```
  */
 export function getInterRegionTrafficQosPoliciesOutput(args: GetInterRegionTrafficQosPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "trafficQosPolicyDescription": args.trafficQosPolicyDescription,
+        "trafficQosPolicyId": args.trafficQosPolicyId,
+        "trafficQosPolicyName": args.trafficQosPolicyName,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

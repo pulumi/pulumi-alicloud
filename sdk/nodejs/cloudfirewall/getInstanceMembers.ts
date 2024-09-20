@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceMembers(args?: GetInstanceMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceMembersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", {
         "currentPage": args.currentPage,
@@ -92,7 +91,15 @@ export interface GetInstanceMembersResult {
  * ```
  */
 export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceMembersResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceMembers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", {
+        "currentPage": args.currentPage,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

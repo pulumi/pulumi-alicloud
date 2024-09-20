@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getUserGroups:getUserGroups", {
         "ids": args.ids,
@@ -117,7 +116,14 @@ export interface GetUserGroupsResult {
  * ```
  */
 export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getUserGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bastionhost/getUserGroups:getUserGroups", {
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "userGroupName": args.userGroupName,
+    }, opts);
 }
 
 /**

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsInvocations(args?: GetEcsInvocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsInvocationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsInvocations:getEcsInvocations", {
         "commandId": args.commandId,
@@ -105,7 +104,17 @@ export interface GetEcsInvocationsResult {
  * ```
  */
 export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsInvocationsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsInvocations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsInvocations:getEcsInvocations", {
+        "commandId": args.commandId,
+        "contentEncoding": args.contentEncoding,
+        "ids": args.ids,
+        "invokeStatus": args.invokeStatus,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

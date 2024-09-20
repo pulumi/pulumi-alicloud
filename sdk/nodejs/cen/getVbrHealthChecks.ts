@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.98.0+
  */
 export function getVbrHealthChecks(args: GetVbrHealthChecksArgs, opts?: pulumi.InvokeOptions): Promise<GetVbrHealthChecksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", {
         "cenId": args.cenId,
@@ -86,7 +85,14 @@ export interface GetVbrHealthChecksResult {
  * > **NOTE:** Available in 1.98.0+
  */
 export function getVbrHealthChecksOutput(args: GetVbrHealthChecksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrHealthChecksResult> {
-    return pulumi.output(args).apply((a: any) => getVbrHealthChecks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", {
+        "cenId": args.cenId,
+        "outputFile": args.outputFile,
+        "vbrInstanceId": args.vbrInstanceId,
+        "vbrInstanceOwnerId": args.vbrInstanceOwnerId,
+        "vbrInstanceRegionId": args.vbrInstanceRegionId,
+    }, opts);
 }
 
 /**

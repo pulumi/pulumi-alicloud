@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getResourceShares(args: GetResourceSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceSharesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceShares:getResourceShares", {
         "ids": args.ids,
@@ -109,7 +108,15 @@ export interface GetResourceSharesResult {
  * ```
  */
 export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceSharesResult> {
-    return pulumi.output(args).apply((a: any) => getResourceShares(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getResourceShares:getResourceShares", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceShareName": args.resourceShareName,
+        "resourceShareOwner": args.resourceShareOwner,
+        "status": args.status,
+    }, opts);
 }
 
 /**

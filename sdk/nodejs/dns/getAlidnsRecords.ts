@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  */
 export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsRecordsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", {
         "direction": args.direction,
@@ -164,7 +163,26 @@ export interface GetAlidnsRecordsResult {
  * ## Example Usage
  */
 export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
-    return pulumi.output(args).apply((a: any) => getAlidnsRecords(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsRecords:getAlidnsRecords", {
+        "direction": args.direction,
+        "domainName": args.domainName,
+        "groupId": args.groupId,
+        "ids": args.ids,
+        "keyWord": args.keyWord,
+        "lang": args.lang,
+        "line": args.line,
+        "orderBy": args.orderBy,
+        "outputFile": args.outputFile,
+        "rrKeyWord": args.rrKeyWord,
+        "rrRegex": args.rrRegex,
+        "searchMode": args.searchMode,
+        "status": args.status,
+        "type": args.type,
+        "typeKeyWord": args.typeKeyWord,
+        "valueKeyWord": args.valueKeyWord,
+        "valueRegex": args.valueRegex,
+    }, opts);
 }
 
 /**

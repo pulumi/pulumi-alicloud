@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccessStrategies(args: GetAccessStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessStrategiesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAccessStrategies:getAccessStrategies", {
         "enableDetails": args.enableDetails,
@@ -125,7 +124,16 @@ export interface GetAccessStrategiesResult {
  * ```
  */
 export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessStrategiesResult> {
-    return pulumi.output(args).apply((a: any) => getAccessStrategies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAccessStrategies:getAccessStrategies", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "lang": args.lang,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "strategyMode": args.strategyMode,
+    }, opts);
 }
 
 /**

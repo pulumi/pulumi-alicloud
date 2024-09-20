@@ -93,14 +93,20 @@ type GetServiceQueuesResult struct {
 
 func GetServiceQueuesOutput(ctx *pulumi.Context, args GetServiceQueuesOutputArgs, opts ...pulumi.InvokeOption) GetServiceQueuesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServiceQueuesResult, error) {
+		ApplyT(func(v interface{}) (GetServiceQueuesResultOutput, error) {
 			args := v.(GetServiceQueuesArgs)
-			r, err := GetServiceQueues(ctx, &args, opts...)
-			var s GetServiceQueuesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServiceQueuesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:message/getServiceQueues:getServiceQueues", args, &rv, "", opts...)
+			if err != nil {
+				return GetServiceQueuesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServiceQueuesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServiceQueuesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServiceQueuesResultOutput)
 }
 

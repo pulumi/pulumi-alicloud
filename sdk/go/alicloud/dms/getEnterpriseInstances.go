@@ -108,14 +108,20 @@ type GetEnterpriseInstancesResult struct {
 
 func GetEnterpriseInstancesOutput(ctx *pulumi.Context, args GetEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEnterpriseInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetEnterpriseInstancesResultOutput, error) {
 			args := v.(GetEnterpriseInstancesArgs)
-			r, err := GetEnterpriseInstances(ctx, &args, opts...)
-			var s GetEnterpriseInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEnterpriseInstancesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetEnterpriseInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEnterpriseInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEnterpriseInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEnterpriseInstancesResultOutput)
 }
 

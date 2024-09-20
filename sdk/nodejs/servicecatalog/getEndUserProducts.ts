@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getEndUserProducts(args?: GetEndUserProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndUserProductsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", {
         "ids": args.ids,
@@ -107,7 +106,17 @@ export interface GetEndUserProductsResult {
  * ```
  */
 export function getEndUserProductsOutput(args?: GetEndUserProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndUserProductsResult> {
-    return pulumi.output(args).apply((a: any) => getEndUserProducts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+    }, opts);
 }
 
 /**

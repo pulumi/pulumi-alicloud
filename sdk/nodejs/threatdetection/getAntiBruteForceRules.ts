@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  */
 export function getAntiBruteForceRules(args?: GetAntiBruteForceRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiBruteForceRulesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", {
         "ids": args.ids,
@@ -113,7 +112,13 @@ export interface GetAntiBruteForceRulesResult {
  * ```
  */
 export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
-    return pulumi.output(args).apply((a: any) => getAntiBruteForceRules(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

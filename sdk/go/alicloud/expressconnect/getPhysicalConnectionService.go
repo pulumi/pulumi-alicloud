@@ -71,14 +71,20 @@ type GetPhysicalConnectionServiceResult struct {
 
 func GetPhysicalConnectionServiceOutput(ctx *pulumi.Context, args GetPhysicalConnectionServiceOutputArgs, opts ...pulumi.InvokeOption) GetPhysicalConnectionServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPhysicalConnectionServiceResult, error) {
+		ApplyT(func(v interface{}) (GetPhysicalConnectionServiceResultOutput, error) {
 			args := v.(GetPhysicalConnectionServiceArgs)
-			r, err := GetPhysicalConnectionService(ctx, &args, opts...)
-			var s GetPhysicalConnectionServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPhysicalConnectionServiceResult
+			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args, &rv, "", opts...)
+			if err != nil {
+				return GetPhysicalConnectionServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPhysicalConnectionServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPhysicalConnectionServiceResultOutput), nil
+			}
+			return output, nil
 		}).(GetPhysicalConnectionServiceResultOutput)
 }
 

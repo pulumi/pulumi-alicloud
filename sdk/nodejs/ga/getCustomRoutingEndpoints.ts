@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomRoutingEndpoints(args: GetCustomRoutingEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", {
         "acceleratorId": args.acceleratorId,
@@ -118,7 +117,16 @@ export interface GetCustomRoutingEndpointsResult {
  * ```
  */
 export function getCustomRoutingEndpointsOutput(args: GetCustomRoutingEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointsResult> {
-    return pulumi.output(args).apply((a: any) => getCustomRoutingEndpoints(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", {
+        "acceleratorId": args.acceleratorId,
+        "endpointGroupId": args.endpointGroupId,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

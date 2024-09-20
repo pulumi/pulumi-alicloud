@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsDeploymentSets(args?: GetEcsDeploymentSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDeploymentSetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", {
         "deploymentSetName": args.deploymentSetName,
@@ -108,7 +107,15 @@ export interface GetEcsDeploymentSetsResult {
  * ```
  */
 export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsDeploymentSets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", {
+        "deploymentSetName": args.deploymentSetName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "strategy": args.strategy,
+    }, opts);
 }
 
 /**

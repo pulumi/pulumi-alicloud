@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSslVpnServers:getSslVpnServers", {
         "ids": args.ids,
@@ -102,7 +101,14 @@ export interface GetSslVpnServersResult {
  * ```
  */
 export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnServersResult> {
-    return pulumi.output(args).apply((a: any) => getSslVpnServers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getSslVpnServers:getSslVpnServers", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "vpnGatewayId": args.vpnGatewayId,
+    }, opts);
 }
 
 /**

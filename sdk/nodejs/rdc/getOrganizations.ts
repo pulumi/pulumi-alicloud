@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  */
 export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rdc/getOrganizations:getOrganizations", {
         "ids": args.ids,
@@ -114,7 +113,14 @@ export interface GetOrganizationsResult {
  * ```
  */
 export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationsResult> {
-    return pulumi.output(args).apply((a: any) => getOrganizations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rdc/getOrganizations:getOrganizations", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "realPk": args.realPk,
+    }, opts);
 }
 
 /**

@@ -83,14 +83,20 @@ type GetConsumerGroupsResult struct {
 
 func GetConsumerGroupsOutput(ctx *pulumi.Context, args GetConsumerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetConsumerGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConsumerGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetConsumerGroupsResultOutput, error) {
 			args := v.(GetConsumerGroupsArgs)
-			r, err := GetConsumerGroups(ctx, &args, opts...)
-			var s GetConsumerGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetConsumerGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetConsumerGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetConsumerGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetConsumerGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetConsumerGroupsResultOutput)
 }
 

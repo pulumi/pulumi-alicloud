@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getPrefixLists(args?: GetPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPrefixLists:getPrefixLists", {
         "enableDetails": args.enableDetails,
@@ -104,7 +103,15 @@ export interface GetPrefixListsResult {
  * ```
  */
 export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListsResult> {
-    return pulumi.output(args).apply((a: any) => getPrefixLists(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getPrefixLists:getPrefixLists", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "prefixListName": args.prefixListName,
+    }, opts);
 }
 
 /**

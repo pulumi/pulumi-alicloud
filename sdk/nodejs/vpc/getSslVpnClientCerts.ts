@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {
         "ids": args.ids,
@@ -102,7 +101,14 @@ export interface GetSslVpnClientCertsResult {
  * ```
  */
 export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnClientCertsResult> {
-    return pulumi.output(args).apply((a: any) => getSslVpnClientCerts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "sslVpnServerId": args.sslVpnServerId,
+    }, opts);
 }
 
 /**

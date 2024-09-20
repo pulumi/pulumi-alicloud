@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getReceivers(args?: GetReceiversArgs, opts?: pulumi.InvokeOptions): Promise<GetReceiversResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:directmail/getReceivers:getReceivers", {
         "ids": args.ids,
@@ -102,7 +101,15 @@ export interface GetReceiversResult {
  * ```
  */
 export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReceiversResult> {
-    return pulumi.output(args).apply((a: any) => getReceivers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:directmail/getReceivers:getReceivers", {
+        "ids": args.ids,
+        "keyWord": args.keyWord,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -154,14 +154,20 @@ type GetSnatEntriesResult struct {
 
 func GetSnatEntriesOutput(ctx *pulumi.Context, args GetSnatEntriesOutputArgs, opts ...pulumi.InvokeOption) GetSnatEntriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSnatEntriesResult, error) {
+		ApplyT(func(v interface{}) (GetSnatEntriesResultOutput, error) {
 			args := v.(GetSnatEntriesArgs)
-			r, err := GetSnatEntries(ctx, &args, opts...)
-			var s GetSnatEntriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSnatEntriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:vpc/getSnatEntries:getSnatEntries", args, &rv, "", opts...)
+			if err != nil {
+				return GetSnatEntriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSnatEntriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSnatEntriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetSnatEntriesResultOutput)
 }
 

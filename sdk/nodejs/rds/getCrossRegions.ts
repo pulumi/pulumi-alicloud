@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  */
 export function getCrossRegions(args?: GetCrossRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getCrossRegions:getCrossRegions", {
         "outputFile": args.outputFile,
@@ -73,7 +72,11 @@ export interface GetCrossRegionsResult {
  * ```
  */
 export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionsResult> {
-    return pulumi.output(args).apply((a: any) => getCrossRegions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rds/getCrossRegions:getCrossRegions", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

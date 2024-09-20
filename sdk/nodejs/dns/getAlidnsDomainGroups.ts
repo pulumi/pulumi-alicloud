@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getAlidnsDomainGroups(args?: GetAlidnsDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", {
         "ids": args.ids,
@@ -93,7 +92,13 @@ export interface GetAlidnsDomainGroupsResult {
  * ```
  */
 export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getAlidnsDomainGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -181,7 +181,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDocumentResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getPolicyDocument:getPolicyDocument", {
         "outputFile": args.outputFile,
@@ -398,7 +397,13 @@ export interface GetPolicyDocumentResult {
  * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
  */
 export function getPolicyDocumentOutput(args?: GetPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyDocumentResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyDocument(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ram/getPolicyDocument:getPolicyDocument", {
+        "outputFile": args.outputFile,
+        "statements": args.statements,
+        "version": args.version,
+    }, opts);
 }
 
 /**

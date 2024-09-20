@@ -79,14 +79,20 @@ type GetMscSubContactVerificationMessageResult struct {
 
 func GetMscSubContactVerificationMessageOutput(ctx *pulumi.Context, args GetMscSubContactVerificationMessageOutputArgs, opts ...pulumi.InvokeOption) GetMscSubContactVerificationMessageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMscSubContactVerificationMessageResult, error) {
+		ApplyT(func(v interface{}) (GetMscSubContactVerificationMessageResultOutput, error) {
 			args := v.(GetMscSubContactVerificationMessageArgs)
-			r, err := GetMscSubContactVerificationMessage(ctx, &args, opts...)
-			var s GetMscSubContactVerificationMessageResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMscSubContactVerificationMessageResult
+			secret, err := ctx.InvokePackageRaw("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args, &rv, "", opts...)
+			if err != nil {
+				return GetMscSubContactVerificationMessageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMscSubContactVerificationMessageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMscSubContactVerificationMessageResultOutput), nil
+			}
+			return output, nil
 		}).(GetMscSubContactVerificationMessageResultOutput)
 }
 

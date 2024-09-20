@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getBackupPolicies(args?: GetBackupPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPoliciesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", {
         "currentPage": args.currentPage,
@@ -129,7 +128,18 @@ export interface GetBackupPoliciesResult {
  * ```
  */
 export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getBackupPolicies(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", {
+        "currentPage": args.currentPage,
+        "ids": args.ids,
+        "machineRemark": args.machineRemark,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

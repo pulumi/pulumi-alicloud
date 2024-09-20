@@ -127,14 +127,20 @@ type GetEipAddressesResult struct {
 
 func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetEipAddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEipAddressesResult, error) {
+		ApplyT(func(v interface{}) (GetEipAddressesResultOutput, error) {
 			args := v.(GetEipAddressesArgs)
-			r, err := GetEipAddresses(ctx, &args, opts...)
-			var s GetEipAddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEipAddressesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEipAddresses:getEipAddresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetEipAddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEipAddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEipAddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEipAddressesResultOutput)
 }
 

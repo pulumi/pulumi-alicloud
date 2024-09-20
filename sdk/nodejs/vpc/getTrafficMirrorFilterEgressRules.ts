@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTrafficMirrorFilterEgressRules(args: GetTrafficMirrorFilterEgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterEgressRulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", {
         "ids": args.ids,
@@ -106,7 +105,13 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
  * ```
  */
 export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
-    return pulumi.output(args).apply((a: any) => getTrafficMirrorFilterEgressRules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "trafficMirrorFilterId": args.trafficMirrorFilterId,
+    }, opts);
 }
 
 /**

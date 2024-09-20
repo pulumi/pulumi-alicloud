@@ -83,14 +83,20 @@ type GetGrantRuleToCensResult struct {
 
 func GetGrantRuleToCensOutput(ctx *pulumi.Context, args GetGrantRuleToCensOutputArgs, opts ...pulumi.InvokeOption) GetGrantRuleToCensResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGrantRuleToCensResult, error) {
+		ApplyT(func(v interface{}) (GetGrantRuleToCensResultOutput, error) {
 			args := v.(GetGrantRuleToCensArgs)
-			r, err := GetGrantRuleToCens(ctx, &args, opts...)
-			var s GetGrantRuleToCensResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGrantRuleToCensResult
+			secret, err := ctx.InvokePackageRaw("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args, &rv, "", opts...)
+			if err != nil {
+				return GetGrantRuleToCensResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGrantRuleToCensResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGrantRuleToCensResultOutput), nil
+			}
+			return output, nil
 		}).(GetGrantRuleToCensResultOutput)
 }
 

@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayBlockVolumes(args: GetGatewayBlockVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayBlockVolumesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", {
         "gatewayId": args.gatewayId,
@@ -117,7 +116,14 @@ export interface GetGatewayBlockVolumesResult {
  * ```
  */
 export function getGatewayBlockVolumesOutput(args: GetGatewayBlockVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayBlockVolumesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayBlockVolumes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", {
+        "gatewayId": args.gatewayId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

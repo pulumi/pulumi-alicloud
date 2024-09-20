@@ -99,14 +99,20 @@ type GetZnodesResult struct {
 
 func GetZnodesOutput(ctx *pulumi.Context, args GetZnodesOutputArgs, opts ...pulumi.InvokeOption) GetZnodesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetZnodesResult, error) {
+		ApplyT(func(v interface{}) (GetZnodesResultOutput, error) {
 			args := v.(GetZnodesArgs)
-			r, err := GetZnodes(ctx, &args, opts...)
-			var s GetZnodesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetZnodesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:mse/getZnodes:getZnodes", args, &rv, "", opts...)
+			if err != nil {
+				return GetZnodesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetZnodesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetZnodesResultOutput), nil
+			}
+			return output, nil
 		}).(GetZnodesResultOutput)
 }
 

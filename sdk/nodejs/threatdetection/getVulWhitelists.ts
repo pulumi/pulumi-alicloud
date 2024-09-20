@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getVulWhitelists(args?: GetVulWhitelistsArgs, opts?: pulumi.InvokeOptions): Promise<GetVulWhitelistsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", {
         "ids": args.ids,
@@ -90,7 +89,14 @@ export interface GetVulWhitelistsResult {
  * ```
  */
 export function getVulWhitelistsOutput(args?: GetVulWhitelistsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVulWhitelistsResult> {
-    return pulumi.output(args).apply((a: any) => getVulWhitelists(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

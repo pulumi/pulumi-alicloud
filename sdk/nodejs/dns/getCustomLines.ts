@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomLines(args: GetCustomLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomLinesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getCustomLines:getCustomLines", {
         "domainName": args.domainName,
@@ -107,7 +106,15 @@ export interface GetCustomLinesResult {
  * ```
  */
 export function getCustomLinesOutput(args: GetCustomLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomLinesResult> {
-    return pulumi.output(args).apply((a: any) => getCustomLines(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:dns/getCustomLines:getCustomLines", {
+        "domainName": args.domainName,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "lang": args.lang,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

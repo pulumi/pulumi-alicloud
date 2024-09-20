@@ -66,7 +66,6 @@ import * as utilities from "../utilities";
  */
 export function getTrafficMirrorSessions(args?: GetTrafficMirrorSessionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorSessionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", {
         "enabled": args.enabled,
@@ -208,7 +207,20 @@ export interface GetTrafficMirrorSessionsResult {
  * ```
  */
 export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorSessionsResult> {
-    return pulumi.output(args).apply((a: any) => getTrafficMirrorSessions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", {
+        "enabled": args.enabled,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "priority": args.priority,
+        "status": args.status,
+        "trafficMirrorFilterId": args.trafficMirrorFilterId,
+        "trafficMirrorSessionName": args.trafficMirrorSessionName,
+        "trafficMirrorSourceId": args.trafficMirrorSourceId,
+        "trafficMirrorTargetId": args.trafficMirrorTargetId,
+    }, opts);
 }
 
 /**

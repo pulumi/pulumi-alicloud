@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGreyTagRoutes(args: GetGreyTagRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetGreyTagRoutesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", {
         "appId": args.appId,
@@ -95,7 +94,13 @@ export interface GetGreyTagRoutesResult {
  * ```
  */
 export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGreyTagRoutesResult> {
-    return pulumi.output(args).apply((a: any) => getGreyTagRoutes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", {
+        "appId": args.appId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

@@ -88,14 +88,20 @@ type GetServerBackupPlansResult struct {
 
 func GetServerBackupPlansOutput(ctx *pulumi.Context, args GetServerBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerBackupPlansResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerBackupPlansResult, error) {
+		ApplyT(func(v interface{}) (GetServerBackupPlansResultOutput, error) {
 			args := v.(GetServerBackupPlansArgs)
-			r, err := GetServerBackupPlans(ctx, &args, opts...)
-			var s GetServerBackupPlansResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerBackupPlansResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerBackupPlansResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerBackupPlansResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerBackupPlansResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerBackupPlansResultOutput)
 }
 

@@ -98,14 +98,20 @@ type GetBasicAcceleratorsResult struct {
 
 func GetBasicAcceleratorsOutput(ctx *pulumi.Context, args GetBasicAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetBasicAcceleratorsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBasicAcceleratorsResult, error) {
+		ApplyT(func(v interface{}) (GetBasicAcceleratorsResultOutput, error) {
 			args := v.(GetBasicAcceleratorsArgs)
-			r, err := GetBasicAccelerators(ctx, &args, opts...)
-			var s GetBasicAcceleratorsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBasicAcceleratorsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getBasicAccelerators:getBasicAccelerators", args, &rv, "", opts...)
+			if err != nil {
+				return GetBasicAcceleratorsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBasicAcceleratorsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBasicAcceleratorsResultOutput), nil
+			}
+			return output, nil
 		}).(GetBasicAcceleratorsResultOutput)
 }
 

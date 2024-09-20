@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  */
 export function getVbrPconnAssociations(args?: GetVbrPconnAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetVbrPconnAssociationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", {
         "ids": args.ids,
@@ -97,7 +96,15 @@ export interface GetVbrPconnAssociationsResult {
  * ```
  */
 export function getVbrPconnAssociationsOutput(args?: GetVbrPconnAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrPconnAssociationsResult> {
-    return pulumi.output(args).apply((a: any) => getVbrPconnAssociations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "vbrId": args.vbrId,
+    }, opts);
 }
 
 /**

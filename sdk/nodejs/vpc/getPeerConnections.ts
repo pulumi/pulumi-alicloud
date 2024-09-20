@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getPeerConnections(args?: GetPeerConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeerConnectionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPeerConnections:getPeerConnections", {
         "ids": args.ids,
@@ -110,7 +109,16 @@ export interface GetPeerConnectionsResult {
  * ```
  */
 export function getPeerConnectionsOutput(args?: GetPeerConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeerConnectionsResult> {
-    return pulumi.output(args).apply((a: any) => getPeerConnections(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getPeerConnections:getPeerConnections", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "peerConnectionName": args.peerConnectionName,
+        "status": args.status,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

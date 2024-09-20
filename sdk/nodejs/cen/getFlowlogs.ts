@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
@@ -141,7 +140,18 @@ export interface GetFlowlogsResult {
  * ```
  */
 export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
-    return pulumi.output(args).apply((a: any) => getFlowlogs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getFlowlogs:getFlowlogs", {
+        "cenId": args.cenId,
+        "description": args.description,
+        "ids": args.ids,
+        "logStoreName": args.logStoreName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "projectName": args.projectName,
+        "status": args.status,
+    }, opts);
 }
 
 /**

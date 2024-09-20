@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecretVersions(args: GetSecretVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getSecretVersions:getSecretVersions", {
         "enableDetails": args.enableDetails,
@@ -113,7 +112,15 @@ export interface GetSecretVersionsResult {
  * ```
  */
 export function getSecretVersionsOutput(args: GetSecretVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getSecretVersions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:kms/getSecretVersions:getSecretVersions", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "includeDeprecated": args.includeDeprecated,
+        "outputFile": args.outputFile,
+        "secretName": args.secretName,
+        "versionStage": args.versionStage,
+    }, opts);
 }
 
 /**

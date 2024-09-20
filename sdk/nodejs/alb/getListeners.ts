@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getListeners:getListeners", {
         "enableDetails": args.enableDetails,
@@ -111,7 +110,17 @@ export interface GetListenersResult {
  * ```
  */
 export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
-    return pulumi.output(args).apply((a: any) => getListeners(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getListeners:getListeners", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "listenerIds": args.listenerIds,
+        "listenerProtocol": args.listenerProtocol,
+        "loadBalancerIds": args.loadBalancerIds,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

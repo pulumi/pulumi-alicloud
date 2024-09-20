@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
         "namePrefix": args.namePrefix,
@@ -94,7 +93,12 @@ export interface GetTopicSubscriptionsResult {
  * ```
  */
 export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
-    return pulumi.output(args).apply((a: any) => getTopicSubscriptions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
+        "namePrefix": args.namePrefix,
+        "outputFile": args.outputFile,
+        "topicName": args.topicName,
+    }, opts);
 }
 
 /**

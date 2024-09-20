@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getBgpGroups(args?: GetBgpGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getBgpGroups:getBgpGroups", {
         "ids": args.ids,
@@ -108,7 +107,15 @@ export interface GetBgpGroupsResult {
  * ```
  */
 export function getBgpGroupsOutput(args?: GetBgpGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getBgpGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:vpc/getBgpGroups:getBgpGroups", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "routerId": args.routerId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

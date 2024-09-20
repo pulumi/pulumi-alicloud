@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getSharedTargets(args?: GetSharedTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedTargetsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", {
         "ids": args.ids,
@@ -126,7 +125,14 @@ export interface GetSharedTargetsResult {
  * ```
  */
 export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedTargetsResult> {
-    return pulumi.output(args).apply((a: any) => getSharedTargets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getSharedTargets:getSharedTargets", {
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "resourceShareId": args.resourceShareId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

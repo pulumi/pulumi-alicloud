@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  */
 export function getMetricRuleTemplates(args?: GetMetricRuleTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleTemplatesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", {
         "enableDetails": args.enableDetails,
@@ -136,7 +135,17 @@ export interface GetMetricRuleTemplatesResult {
  * ```
  */
 export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getMetricRuleTemplates(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "metricRuleTemplateName": args.metricRuleTemplateName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "templateId": args.templateId,
+    }, opts);
 }
 
 /**

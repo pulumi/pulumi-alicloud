@@ -101,14 +101,20 @@ type GetTransitRouteTableAggregationsResult struct {
 
 func GetTransitRouteTableAggregationsOutput(ctx *pulumi.Context, args GetTransitRouteTableAggregationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouteTableAggregationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTransitRouteTableAggregationsResult, error) {
+		ApplyT(func(v interface{}) (GetTransitRouteTableAggregationsResultOutput, error) {
 			args := v.(GetTransitRouteTableAggregationsArgs)
-			r, err := GetTransitRouteTableAggregations(ctx, &args, opts...)
-			var s GetTransitRouteTableAggregationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTransitRouteTableAggregationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args, &rv, "", opts...)
+			if err != nil {
+				return GetTransitRouteTableAggregationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTransitRouteTableAggregationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTransitRouteTableAggregationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTransitRouteTableAggregationsResultOutput)
 }
 

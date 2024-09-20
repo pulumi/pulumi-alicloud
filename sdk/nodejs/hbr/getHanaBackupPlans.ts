@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHanaBackupPlans(args: GetHanaBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetHanaBackupPlansResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", {
         "clusterId": args.clusterId,
@@ -116,7 +115,17 @@ export interface GetHanaBackupPlansResult {
  * ```
  */
 export function getHanaBackupPlansOutput(args: GetHanaBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaBackupPlansResult> {
-    return pulumi.output(args).apply((a: any) => getHanaBackupPlans(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", {
+        "clusterId": args.clusterId,
+        "databaseName": args.databaseName,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "vaultId": args.vaultId,
+    }, opts);
 }
 
 /**

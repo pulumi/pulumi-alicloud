@@ -85,14 +85,20 @@ type GetServerGroupServerAttachmentsResult struct {
 
 func GetServerGroupServerAttachmentsOutput(ctx *pulumi.Context, args GetServerGroupServerAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupServerAttachmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServerGroupServerAttachmentsResult, error) {
+		ApplyT(func(v interface{}) (GetServerGroupServerAttachmentsResultOutput, error) {
 			args := v.(GetServerGroupServerAttachmentsArgs)
-			r, err := GetServerGroupServerAttachments(ctx, &args, opts...)
-			var s GetServerGroupServerAttachmentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServerGroupServerAttachmentsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args, &rv, "", opts...)
+			if err != nil {
+				return GetServerGroupServerAttachmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServerGroupServerAttachmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServerGroupServerAttachmentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetServerGroupServerAttachmentsResultOutput)
 }
 

@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomRoutingEndpointGroups(args: GetCustomRoutingEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", {
         "acceleratorId": args.acceleratorId,
@@ -147,7 +146,18 @@ export interface GetCustomRoutingEndpointGroupsResult {
  * ```
  */
 export function getCustomRoutingEndpointGroupsOutput(args: GetCustomRoutingEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", {
+        "acceleratorId": args.acceleratorId,
+        "endpointGroupId": args.endpointGroupId,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "status": args.status,
+    }, opts);
 }
 
 /**

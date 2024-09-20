@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     pulumi.log.warn("getInstances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getInstances:getInstances", {
         "ids": args.ids,
@@ -116,7 +115,15 @@ export interface GetInstancesResult {
  */
 /** @deprecated alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
+    pulumi.log.warn("getInstances is deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances")
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:oss/getInstances:getInstances", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

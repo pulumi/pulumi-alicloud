@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  */
 export function getSecondaryIndexes(args: GetSecondaryIndexesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecondaryIndexesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", {
         "ids": args.ids,
@@ -94,7 +93,14 @@ export interface GetSecondaryIndexesResult {
  * ## Example Usage
  */
 export function getSecondaryIndexesOutput(args: GetSecondaryIndexesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecondaryIndexesResult> {
-    return pulumi.output(args).apply((a: any) => getSecondaryIndexes(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", {
+        "ids": args.ids,
+        "instanceName": args.instanceName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tableName": args.tableName,
+    }, opts);
 }
 
 /**

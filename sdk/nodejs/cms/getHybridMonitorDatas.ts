@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHybridMonitorDatas(args: GetHybridMonitorDatasArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorDatasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", {
         "end": args.end,
@@ -110,7 +109,15 @@ export interface GetHybridMonitorDatasResult {
  * ```
  */
 export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorDatasResult> {
-    return pulumi.output(args).apply((a: any) => getHybridMonitorDatas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", {
+        "end": args.end,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+        "period": args.period,
+        "promSql": args.promSql,
+        "start": args.start,
+    }, opts);
 }
 
 /**

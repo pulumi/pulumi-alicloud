@@ -52,14 +52,20 @@ type GetHostEcsLevelInfosResult struct {
 
 func GetHostEcsLevelInfosOutput(ctx *pulumi.Context, args GetHostEcsLevelInfosOutputArgs, opts ...pulumi.InvokeOption) GetHostEcsLevelInfosResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHostEcsLevelInfosResult, error) {
+		ApplyT(func(v interface{}) (GetHostEcsLevelInfosResultOutput, error) {
 			args := v.(GetHostEcsLevelInfosArgs)
-			r, err := GetHostEcsLevelInfos(ctx, &args, opts...)
-			var s GetHostEcsLevelInfosResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHostEcsLevelInfosResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args, &rv, "", opts...)
+			if err != nil {
+				return GetHostEcsLevelInfosResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHostEcsLevelInfosResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHostEcsLevelInfosResultOutput), nil
+			}
+			return output, nil
 		}).(GetHostEcsLevelInfosResultOutput)
 }
 

@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDataFlows(args: GetDataFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetDataFlowsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getDataFlows:getDataFlows", {
         "fileSystemId": args.fileSystemId,
@@ -110,7 +109,13 @@ export interface GetDataFlowsResult {
  * ```
  */
 export function getDataFlowsOutput(args: GetDataFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataFlowsResult> {
-    return pulumi.output(args).apply((a: any) => getDataFlows(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:nas/getDataFlows:getDataFlows", {
+        "fileSystemId": args.fileSystemId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

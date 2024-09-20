@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getPlugins(args?: GetPluginsArgs, opts?: pulumi.InvokeOptions): Promise<GetPluginsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getPlugins:getPlugins", {
         "ids": args.ids,
@@ -116,7 +115,18 @@ export interface GetPluginsResult {
  * ```
  */
 export function getPluginsOutput(args?: GetPluginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginsResult> {
-    return pulumi.output(args).apply((a: any) => getPlugins(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getPlugins:getPlugins", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "pluginName": args.pluginName,
+        "pluginType": args.pluginType,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

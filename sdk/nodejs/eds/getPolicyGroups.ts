@@ -47,7 +47,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicyGroups(args?: GetPolicyGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getPolicyGroups:getPolicyGroups", {
         "ids": args.ids,
@@ -134,7 +133,14 @@ export interface GetPolicyGroupsResult {
  * ```
  */
 export function getPolicyGroupsOutput(args?: GetPolicyGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getPolicyGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eds/getPolicyGroups:getPolicyGroups", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

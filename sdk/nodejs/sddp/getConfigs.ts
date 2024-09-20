@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getConfigs(args?: GetConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sddp/getConfigs:getConfigs", {
         "ids": args.ids,
@@ -94,7 +93,13 @@ export interface GetConfigsResult {
  * ```
  */
 export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigsResult> {
-    return pulumi.output(args).apply((a: any) => getConfigs(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:sddp/getConfigs:getConfigs", {
+        "ids": args.ids,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

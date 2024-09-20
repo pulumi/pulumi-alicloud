@@ -85,14 +85,20 @@ type GetAggregateDeliveriesResult struct {
 
 func GetAggregateDeliveriesOutput(ctx *pulumi.Context, args GetAggregateDeliveriesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateDeliveriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAggregateDeliveriesResult, error) {
+		ApplyT(func(v interface{}) (GetAggregateDeliveriesResultOutput, error) {
 			args := v.(GetAggregateDeliveriesArgs)
-			r, err := GetAggregateDeliveries(ctx, &args, opts...)
-			var s GetAggregateDeliveriesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAggregateDeliveriesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args, &rv, "", opts...)
+			if err != nil {
+				return GetAggregateDeliveriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAggregateDeliveriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAggregateDeliveriesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAggregateDeliveriesResultOutput)
 }
 

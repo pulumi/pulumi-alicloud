@@ -74,14 +74,20 @@ type GetOtsSnapshotsResult struct {
 
 func GetOtsSnapshotsOutput(ctx *pulumi.Context, args GetOtsSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetOtsSnapshotsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOtsSnapshotsResult, error) {
+		ApplyT(func(v interface{}) (GetOtsSnapshotsResultOutput, error) {
 			args := v.(GetOtsSnapshotsArgs)
-			r, err := GetOtsSnapshots(ctx, &args, opts...)
-			var s GetOtsSnapshotsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOtsSnapshotsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args, &rv, "", opts...)
+			if err != nil {
+				return GetOtsSnapshotsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOtsSnapshotsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOtsSnapshotsResultOutput), nil
+			}
+			return output, nil
 		}).(GetOtsSnapshotsResultOutput)
 }
 

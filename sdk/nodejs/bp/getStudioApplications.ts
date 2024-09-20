@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getStudioApplications(args?: GetStudioApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStudioApplicationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bp/getStudioApplications:getStudioApplications", {
         "ids": args.ids,
@@ -135,7 +134,18 @@ export interface GetStudioApplicationsResult {
  * ```
  */
 export function getStudioApplicationsOutput(args?: GetStudioApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudioApplicationsResult> {
-    return pulumi.output(args).apply((a: any) => getStudioApplications(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:bp/getStudioApplications:getStudioApplications", {
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "maxResults": args.maxResults,
+        "nameRegex": args.nameRegex,
+        "orderType": args.orderType,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

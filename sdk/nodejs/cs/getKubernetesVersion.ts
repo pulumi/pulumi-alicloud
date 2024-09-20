@@ -66,7 +66,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", {
         "clusterType": args.clusterType,
@@ -169,7 +168,12 @@ export interface GetKubernetesVersionResult {
  * ```
  */
 export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesVersion(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesVersion:getKubernetesVersion", {
+        "clusterType": args.clusterType,
+        "kubernetesVersion": args.kubernetesVersion,
+        "profile": args.profile,
+    }, opts);
 }
 
 /**

@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  */
 export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessKubernetesClustersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", {
         "enableDetails": args.enableDetails,
@@ -112,7 +111,15 @@ export interface GetServerlessKubernetesClustersResult {
  * ```
  */
 export function getServerlessKubernetesClustersOutput(args?: GetServerlessKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessKubernetesClustersResult> {
-    return pulumi.output(args).apply((a: any) => getServerlessKubernetesClusters(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "kubeConfigFilePrefix": args.kubeConfigFilePrefix,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

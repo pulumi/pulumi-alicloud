@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getVaults:getVaults", {
         "ids": args.ids,
@@ -102,7 +101,15 @@ export interface GetVaultsResult {
  * ```
  */
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
-    return pulumi.output(args).apply((a: any) => getVaults(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:hbr/getVaults:getVaults", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "vaultType": args.vaultType,
+    }, opts);
 }
 
 /**

@@ -90,14 +90,20 @@ type GetAscriptsResult struct {
 
 func GetAscriptsOutput(ctx *pulumi.Context, args GetAscriptsOutputArgs, opts ...pulumi.InvokeOption) GetAscriptsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAscriptsResult, error) {
+		ApplyT(func(v interface{}) (GetAscriptsResultOutput, error) {
 			args := v.(GetAscriptsArgs)
-			r, err := GetAscripts(ctx, &args, opts...)
-			var s GetAscriptsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAscriptsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:alb/getAscripts:getAscripts", args, &rv, "", opts...)
+			if err != nil {
+				return GetAscriptsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAscriptsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAscriptsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAscriptsResultOutput)
 }
 

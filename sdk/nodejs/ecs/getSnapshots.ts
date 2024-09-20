@@ -58,7 +58,6 @@ import * as utilities from "../utilities";
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
         "category": args.category,
@@ -222,7 +221,26 @@ export interface GetSnapshotsResult {
  * * `outputFile` - (Optional) The name of output file that saves the filter results.
  */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
-    return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getSnapshots:getSnapshots", {
+        "category": args.category,
+        "dryRun": args.dryRun,
+        "encrypted": args.encrypted,
+        "ids": args.ids,
+        "kmsKeyId": args.kmsKeyId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "snapshotLinkId": args.snapshotLinkId,
+        "snapshotName": args.snapshotName,
+        "snapshotType": args.snapshotType,
+        "sourceDiskType": args.sourceDiskType,
+        "status": args.status,
+        "tags": args.tags,
+        "type": args.type,
+        "usage": args.usage,
+    }, opts);
 }
 
 /**

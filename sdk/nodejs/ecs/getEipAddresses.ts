@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getEipAddresses(args?: GetEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetEipAddressesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEipAddresses:getEipAddresses", {
         "addressName": args.addressName,
@@ -187,7 +186,28 @@ export interface GetEipAddressesResult {
  * ```
  */
 export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipAddressesResult> {
-    return pulumi.output(args).apply((a: any) => getEipAddresses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEipAddresses:getEipAddresses", {
+        "addressName": args.addressName,
+        "associatedInstanceId": args.associatedInstanceId,
+        "associatedInstanceType": args.associatedInstanceType,
+        "dryRun": args.dryRun,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
+        "ipAddress": args.ipAddress,
+        "ipAddresses": args.ipAddresses,
+        "isp": args.isp,
+        "lockReason": args.lockReason,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "resourceGroupId": args.resourceGroupId,
+        "segmentInstanceId": args.segmentInstanceId,
+        "status": args.status,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

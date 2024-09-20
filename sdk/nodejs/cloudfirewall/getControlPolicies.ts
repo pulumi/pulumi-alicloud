@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getControlPolicies(args: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", {
         "aclAction": args.aclAction,
@@ -154,7 +153,19 @@ export interface GetControlPoliciesResult {
  * ```
  */
 export function getControlPoliciesOutput(args: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getControlPolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", {
+        "aclAction": args.aclAction,
+        "aclUuid": args.aclUuid,
+        "description": args.description,
+        "destination": args.destination,
+        "direction": args.direction,
+        "ipVersion": args.ipVersion,
+        "lang": args.lang,
+        "outputFile": args.outputFile,
+        "proto": args.proto,
+        "source": args.source,
+    }, opts);
 }
 
 /**

@@ -90,14 +90,20 @@ type GetEcsLaunchTemplatesResult struct {
 
 func GetEcsLaunchTemplatesOutput(ctx *pulumi.Context, args GetEcsLaunchTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetEcsLaunchTemplatesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEcsLaunchTemplatesResult, error) {
+		ApplyT(func(v interface{}) (GetEcsLaunchTemplatesResultOutput, error) {
 			args := v.(GetEcsLaunchTemplatesArgs)
-			r, err := GetEcsLaunchTemplates(ctx, &args, opts...)
-			var s GetEcsLaunchTemplatesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEcsLaunchTemplatesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args, &rv, "", opts...)
+			if err != nil {
+				return GetEcsLaunchTemplatesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEcsLaunchTemplatesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEcsLaunchTemplatesResultOutput), nil
+			}
+			return output, nil
 		}).(GetEcsLaunchTemplatesResultOutput)
 }
 

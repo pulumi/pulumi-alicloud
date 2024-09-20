@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBasicEndpoints(args: GetBasicEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicEndpointsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBasicEndpoints:getBasicEndpoints", {
         "endpointGroupId": args.endpointGroupId,
@@ -147,7 +146,17 @@ export interface GetBasicEndpointsResult {
  * ```
  */
 export function getBasicEndpointsOutput(args: GetBasicEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicEndpointsResult> {
-    return pulumi.output(args).apply((a: any) => getBasicEndpoints(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getBasicEndpoints:getBasicEndpoints", {
+        "endpointGroupId": args.endpointGroupId,
+        "endpointId": args.endpointId,
+        "endpointType": args.endpointType,
+        "ids": args.ids,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

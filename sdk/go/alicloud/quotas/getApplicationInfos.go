@@ -52,14 +52,20 @@ type GetApplicationInfosResult struct {
 
 func GetApplicationInfosOutput(ctx *pulumi.Context, args GetApplicationInfosOutputArgs, opts ...pulumi.InvokeOption) GetApplicationInfosResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApplicationInfosResult, error) {
+		ApplyT(func(v interface{}) (GetApplicationInfosResultOutput, error) {
 			args := v.(GetApplicationInfosArgs)
-			r, err := GetApplicationInfos(ctx, &args, opts...)
-			var s GetApplicationInfosResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetApplicationInfosResult
+			secret, err := ctx.InvokePackageRaw("alicloud:quotas/getApplicationInfos:getApplicationInfos", args, &rv, "", opts...)
+			if err != nil {
+				return GetApplicationInfosResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetApplicationInfosResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetApplicationInfosResultOutput), nil
+			}
+			return output, nil
 		}).(GetApplicationInfosResultOutput)
 }
 

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", {
         "dedicatedHostId": args.dedicatedHostId,
@@ -165,7 +164,21 @@ export interface GetDedicatedHostsResult {
  * ```
  */
 export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
-    return pulumi.output(args).apply((a: any) => getDedicatedHosts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", {
+        "dedicatedHostId": args.dedicatedHostId,
+        "dedicatedHostName": args.dedicatedHostName,
+        "dedicatedHostType": args.dedicatedHostType,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "operationLocks": args.operationLocks,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

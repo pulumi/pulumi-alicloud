@@ -84,14 +84,20 @@ type GetScalingConfigurationsResult struct {
 
 func GetScalingConfigurationsOutput(ctx *pulumi.Context, args GetScalingConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetScalingConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetScalingConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (GetScalingConfigurationsResultOutput, error) {
 			args := v.(GetScalingConfigurationsArgs)
-			r, err := GetScalingConfigurations(ctx, &args, opts...)
-			var s GetScalingConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetScalingConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return GetScalingConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetScalingConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetScalingConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetScalingConfigurationsResultOutput)
 }
 

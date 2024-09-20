@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getSlsGroups(args?: GetSlsGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlsGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getSlsGroups:getSlsGroups", {
         "ids": args.ids,
@@ -108,7 +107,16 @@ export interface GetSlsGroupsResult {
  * ```
  */
 export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlsGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getSlsGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cms/getSlsGroups:getSlsGroups", {
+        "ids": args.ids,
+        "keyword": args.keyword,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

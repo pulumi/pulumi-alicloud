@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIntegrationExporters(args: GetIntegrationExportersArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationExportersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getIntegrationExporters:getIntegrationExporters", {
         "clusterId": args.clusterId,
@@ -105,7 +104,13 @@ export interface GetIntegrationExportersResult {
  * ```
  */
 export function getIntegrationExportersOutput(args: GetIntegrationExportersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationExportersResult> {
-    return pulumi.output(args).apply((a: any) => getIntegrationExporters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getIntegrationExporters:getIntegrationExporters", {
+        "clusterId": args.clusterId,
+        "ids": args.ids,
+        "integrationType": args.integrationType,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

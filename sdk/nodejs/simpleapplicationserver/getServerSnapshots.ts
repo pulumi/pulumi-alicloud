@@ -41,7 +41,6 @@ import * as utilities from "../utilities";
  */
 export function getServerSnapshots(args?: GetServerSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSnapshotsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", {
         "diskId": args.diskId,
@@ -134,7 +133,16 @@ export interface GetServerSnapshotsResult {
  * ```
  */
 export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSnapshotsResult> {
-    return pulumi.output(args).apply((a: any) => getServerSnapshots(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", {
+        "diskId": args.diskId,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

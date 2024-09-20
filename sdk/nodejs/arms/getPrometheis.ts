@@ -52,7 +52,6 @@ import * as utilities from "../utilities";
  */
 export function getPrometheis(args?: GetPrometheisArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheisResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getPrometheis:getPrometheis", {
         "enableDetails": args.enableDetails,
@@ -168,7 +167,16 @@ export interface GetPrometheisResult {
  * ```
  */
 export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheisResult> {
-    return pulumi.output(args).apply((a: any) => getPrometheis(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheis:getPrometheis", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

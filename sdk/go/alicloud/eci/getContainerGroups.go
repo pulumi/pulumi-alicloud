@@ -103,14 +103,20 @@ type GetContainerGroupsResult struct {
 
 func GetContainerGroupsOutput(ctx *pulumi.Context, args GetContainerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetContainerGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetContainerGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetContainerGroupsResultOutput, error) {
 			args := v.(GetContainerGroupsArgs)
-			r, err := GetContainerGroups(ctx, &args, opts...)
-			var s GetContainerGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetContainerGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:eci/getContainerGroups:getContainerGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetContainerGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetContainerGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetContainerGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetContainerGroupsResultOutput)
 }
 

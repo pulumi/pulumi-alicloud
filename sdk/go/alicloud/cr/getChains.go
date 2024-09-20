@@ -105,14 +105,20 @@ type GetChainsResult struct {
 
 func GetChainsOutput(ctx *pulumi.Context, args GetChainsOutputArgs, opts ...pulumi.InvokeOption) GetChainsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetChainsResult, error) {
+		ApplyT(func(v interface{}) (GetChainsResultOutput, error) {
 			args := v.(GetChainsArgs)
-			r, err := GetChains(ctx, &args, opts...)
-			var s GetChainsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetChainsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cr/getChains:getChains", args, &rv, "", opts...)
+			if err != nil {
+				return GetChainsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetChainsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetChainsResultOutput), nil
+			}
+			return output, nil
 		}).(GetChainsResultOutput)
 }
 

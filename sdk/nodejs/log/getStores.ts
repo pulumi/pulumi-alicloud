@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetStoresResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getStores:getStores", {
         "ids": args.ids,
@@ -92,7 +91,13 @@ export interface GetStoresResult {
  * ```
  */
 export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
-    return pulumi.output(args).apply((a: any) => getStores(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:log/getStores:getStores", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "project": args.project,
+    }, opts);
 }
 
 /**

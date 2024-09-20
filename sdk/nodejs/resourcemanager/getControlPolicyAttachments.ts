@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getControlPolicyAttachments(args: GetControlPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPolicyAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", {
         "language": args.language,
@@ -93,7 +92,13 @@ export interface GetControlPolicyAttachmentsResult {
  * ```
  */
 export function getControlPolicyAttachmentsOutput(args: GetControlPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPolicyAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getControlPolicyAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", {
+        "language": args.language,
+        "outputFile": args.outputFile,
+        "policyType": args.policyType,
+        "targetId": args.targetId,
+    }, opts);
 }
 
 /**

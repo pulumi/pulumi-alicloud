@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getModels(args: GetModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetModelsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getModels:getModels", {
         "groupId": args.groupId,
@@ -127,7 +126,16 @@ export interface GetModelsResult {
  * ```
  */
 export function getModelsOutput(args: GetModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelsResult> {
-    return pulumi.output(args).apply((a: any) => getModels(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:apigateway/getModels:getModels", {
+        "groupId": args.groupId,
+        "ids": args.ids,
+        "modelName": args.modelName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+    }, opts);
 }
 
 /**

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
         "groupIdRegex": args.groupIdRegex,
@@ -96,7 +95,16 @@ export interface GetGroupsResult {
  * ## Example Usage
  */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:rocketmq/getGroups:getGroups", {
+        "groupIdRegex": args.groupIdRegex,
+        "groupType": args.groupType,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

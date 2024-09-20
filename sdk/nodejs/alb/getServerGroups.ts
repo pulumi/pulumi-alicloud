@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  */
 export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getServerGroups:getServerGroups", {
         "enableDetails": args.enableDetails,
@@ -152,7 +151,20 @@ export interface GetServerGroupsResult {
  * ```
  */
 export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getServerGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:alb/getServerGroups:getServerGroups", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "serverGroupIds": args.serverGroupIds,
+        "serverGroupName": args.serverGroupName,
+        "status": args.status,
+        "tags": args.tags,
+        "vpcId": args.vpcId,
+    }, opts);
 }
 
 /**

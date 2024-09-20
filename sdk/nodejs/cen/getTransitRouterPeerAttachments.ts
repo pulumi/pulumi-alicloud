@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.128.0+
  */
 export function getTransitRouterPeerAttachments(args: GetTransitRouterPeerAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterPeerAttachmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", {
         "cenId": args.cenId,
@@ -98,7 +97,16 @@ export interface GetTransitRouterPeerAttachmentsResult {
  * > **NOTE:** Available in 1.128.0+
  */
 export function getTransitRouterPeerAttachmentsOutput(args: GetTransitRouterPeerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPeerAttachmentsResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouterPeerAttachments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", {
+        "cenId": args.cenId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
+        "transitRouterId": args.transitRouterId,
+    }, opts);
 }
 
 /**

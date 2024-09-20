@@ -103,14 +103,20 @@ type GetStudioApplicationsResult struct {
 
 func GetStudioApplicationsOutput(ctx *pulumi.Context, args GetStudioApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetStudioApplicationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetStudioApplicationsResult, error) {
+		ApplyT(func(v interface{}) (GetStudioApplicationsResultOutput, error) {
 			args := v.(GetStudioApplicationsArgs)
-			r, err := GetStudioApplications(ctx, &args, opts...)
-			var s GetStudioApplicationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetStudioApplicationsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:bp/getStudioApplications:getStudioApplications", args, &rv, "", opts...)
+			if err != nil {
+				return GetStudioApplicationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetStudioApplicationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetStudioApplicationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetStudioApplicationsResultOutput)
 }
 

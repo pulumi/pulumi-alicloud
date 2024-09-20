@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getProductAsEndUsers(args?: GetProductAsEndUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetProductAsEndUsersResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", {
         "ids": args.ids,
@@ -101,7 +100,15 @@ export interface GetProductAsEndUsersResult {
  * ```
  */
 export function getProductAsEndUsersOutput(args?: GetProductAsEndUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductAsEndUsersResult> {
-    return pulumi.output(args).apply((a: any) => getProductAsEndUsers(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+    }, opts);
 }
 
 /**

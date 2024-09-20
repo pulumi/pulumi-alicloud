@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  */
 export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceDirectoriesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", {
         "outputFile": args.outputFile,
@@ -70,7 +69,11 @@ export interface GetResourceDirectoriesResult {
  * ```
  */
 export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceDirectoriesResult> {
-    return pulumi.output(args).apply((a: any) => getResourceDirectories(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", {
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

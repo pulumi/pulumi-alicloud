@@ -85,14 +85,20 @@ type GetAlertContactGroupsResult struct {
 
 func GetAlertContactGroupsOutput(ctx *pulumi.Context, args GetAlertContactGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlertContactGroupsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAlertContactGroupsResult, error) {
+		ApplyT(func(v interface{}) (GetAlertContactGroupsResultOutput, error) {
 			args := v.(GetAlertContactGroupsArgs)
-			r, err := GetAlertContactGroups(ctx, &args, opts...)
-			var s GetAlertContactGroupsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAlertContactGroupsResult
+			secret, err := ctx.InvokePackageRaw("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args, &rv, "", opts...)
+			if err != nil {
+				return GetAlertContactGroupsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAlertContactGroupsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAlertContactGroupsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAlertContactGroupsResultOutput)
 }
 

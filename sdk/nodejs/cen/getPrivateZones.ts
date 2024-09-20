@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrivateZones(args: GetPrivateZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateZonesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getPrivateZones:getPrivateZones", {
         "cenId": args.cenId,
@@ -116,7 +115,14 @@ export interface GetPrivateZonesResult {
  * ```
  */
 export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZonesResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateZones(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getPrivateZones:getPrivateZones", {
+        "cenId": args.cenId,
+        "hostRegionId": args.hostRegionId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRoutersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouters:getTransitRouters", {
         "cenId": args.cenId,
@@ -122,7 +121,16 @@ export interface GetTransitRoutersResult {
  * ```
  */
 export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRoutersResult> {
-    return pulumi.output(args).apply((a: any) => getTransitRouters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouters:getTransitRouters", {
+        "cenId": args.cenId,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+        "transitRouterId": args.transitRouterId,
+        "transitRouterIds": args.transitRouterIds,
+    }, opts);
 }
 
 /**

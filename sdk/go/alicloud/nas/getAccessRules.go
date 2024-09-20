@@ -60,14 +60,20 @@ type GetAccessRulesResult struct {
 
 func GetAccessRulesOutput(ctx *pulumi.Context, args GetAccessRulesOutputArgs, opts ...pulumi.InvokeOption) GetAccessRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccessRulesResult, error) {
+		ApplyT(func(v interface{}) (GetAccessRulesResultOutput, error) {
 			args := v.(GetAccessRulesArgs)
-			r, err := GetAccessRules(ctx, &args, opts...)
-			var s GetAccessRulesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccessRulesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:nas/getAccessRules:getAccessRules", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccessRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccessRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccessRulesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccessRulesResultOutput)
 }
 

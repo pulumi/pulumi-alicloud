@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  */
 export function getMscSubContacts(args?: GetMscSubContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getMscSubContacts:getMscSubContacts", {
         "ids": args.ids,
@@ -92,7 +91,13 @@ export interface GetMscSubContactsResult {
  * ```
  */
 export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactsResult> {
-    return pulumi.output(args).apply((a: any) => getMscSubContacts(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:index/getMscSubContacts:getMscSubContacts", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

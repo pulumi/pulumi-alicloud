@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:databasegateway/getGateways:getGateways", {
         "enableDetails": args.enableDetails,
@@ -114,7 +113,16 @@ export interface GetGatewaysResult {
  * ```
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
-    return pulumi.output(args).apply((a: any) => getGateways(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:databasegateway/getGateways:getGateways", {
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "searchKey": args.searchKey,
+        "status": args.status,
+    }, opts);
 }
 
 /**

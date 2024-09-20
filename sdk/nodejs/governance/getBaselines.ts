@@ -55,7 +55,6 @@ import * as utilities from "../utilities";
  */
 export function getBaselines(args?: GetBaselinesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaselinesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:governance/getBaselines:getBaselines", {
         "ids": args.ids,
@@ -153,7 +152,13 @@ export interface GetBaselinesResult {
  * ```
  */
 export function getBaselinesOutput(args?: GetBaselinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselinesResult> {
-    return pulumi.output(args).apply((a: any) => getBaselines(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:governance/getBaselines:getBaselines", {
+        "ids": args.ids,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

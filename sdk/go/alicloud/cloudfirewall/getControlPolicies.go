@@ -105,14 +105,20 @@ type GetControlPoliciesResult struct {
 
 func GetControlPoliciesOutput(ctx *pulumi.Context, args GetControlPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetControlPoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetControlPoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetControlPoliciesResultOutput, error) {
 			args := v.(GetControlPoliciesArgs)
-			r, err := GetControlPolicies(ctx, &args, opts...)
-			var s GetControlPoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetControlPoliciesResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetControlPoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetControlPoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetControlPoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetControlPoliciesResultOutput)
 }
 

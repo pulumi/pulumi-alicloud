@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
         "consumerIdRegex": args.consumerIdRegex,
@@ -103,7 +102,13 @@ export interface GetConsumerGroupsResult {
  * ```
  */
 export function getConsumerGroupsOutput(args: GetConsumerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getConsumerGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
+        "consumerIdRegex": args.consumerIdRegex,
+        "ids": args.ids,
+        "instanceId": args.instanceId,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**

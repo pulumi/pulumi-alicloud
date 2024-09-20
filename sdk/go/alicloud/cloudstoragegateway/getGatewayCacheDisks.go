@@ -94,14 +94,20 @@ type GetGatewayCacheDisksResult struct {
 
 func GetGatewayCacheDisksOutput(ctx *pulumi.Context, args GetGatewayCacheDisksOutputArgs, opts ...pulumi.InvokeOption) GetGatewayCacheDisksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewayCacheDisksResult, error) {
+		ApplyT(func(v interface{}) (GetGatewayCacheDisksResultOutput, error) {
 			args := v.(GetGatewayCacheDisksArgs)
-			r, err := GetGatewayCacheDisks(ctx, &args, opts...)
-			var s GetGatewayCacheDisksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewayCacheDisksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewayCacheDisksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewayCacheDisksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewayCacheDisksResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewayCacheDisksResultOutput)
 }
 

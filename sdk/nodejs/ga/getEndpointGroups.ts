@@ -85,7 +85,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEndpointGroups(args: GetEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getEndpointGroups:getEndpointGroups", {
         "acceleratorId": args.acceleratorId,
@@ -241,7 +240,16 @@ export interface GetEndpointGroupsResult {
  * ```
  */
 export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getEndpointGroups(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getEndpointGroups:getEndpointGroups", {
+        "acceleratorId": args.acceleratorId,
+        "endpointGroupType": args.endpointGroupType,
+        "ids": args.ids,
+        "listenerId": args.listenerId,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getEcsImageComponents(args?: GetEcsImageComponentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImageComponentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", {
         "ids": args.ids,
@@ -122,7 +121,17 @@ export interface GetEcsImageComponentsResult {
  * ```
  */
 export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImageComponentsResult> {
-    return pulumi.output(args).apply((a: any) => getEcsImageComponents(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", {
+        "ids": args.ids,
+        "imageComponentName": args.imageComponentName,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "owner": args.owner,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

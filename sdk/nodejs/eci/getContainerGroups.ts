@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getContainerGroups(args?: GetContainerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getContainerGroups:getContainerGroups", {
         "containerGroupName": args.containerGroupName,
@@ -136,7 +135,22 @@ export interface GetContainerGroupsResult {
  * ```
  */
 export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getContainerGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eci/getContainerGroups:getContainerGroups", {
+        "containerGroupName": args.containerGroupName,
+        "enableDetails": args.enableDetails,
+        "ids": args.ids,
+        "limit": args.limit,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "status": args.status,
+        "tags": args.tags,
+        "vswitchId": args.vswitchId,
+        "withEvent": args.withEvent,
+        "zoneId": args.zoneId,
+    }, opts);
 }
 
 /**

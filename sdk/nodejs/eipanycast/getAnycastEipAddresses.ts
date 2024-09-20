@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getAnycastEipAddresses(args?: GetAnycastEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAnycastEipAddressesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", {
         "anycastEipAddressName": args.anycastEipAddressName,
@@ -138,7 +137,21 @@ export interface GetAnycastEipAddressesResult {
  * ```
  */
 export function getAnycastEipAddressesOutput(args?: GetAnycastEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnycastEipAddressesResult> {
-    return pulumi.output(args).apply((a: any) => getAnycastEipAddresses(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", {
+        "anycastEipAddressName": args.anycastEipAddressName,
+        "bindInstanceIds": args.bindInstanceIds,
+        "businessStatus": args.businessStatus,
+        "ids": args.ids,
+        "internetChargeType": args.internetChargeType,
+        "ipAddress": args.ipAddress,
+        "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
+        "paymentType": args.paymentType,
+        "serviceLocation": args.serviceLocation,
+        "status": args.status,
+    }, opts);
 }
 
 /**

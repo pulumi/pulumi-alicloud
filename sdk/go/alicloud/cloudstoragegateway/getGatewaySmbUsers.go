@@ -122,14 +122,20 @@ type GetGatewaySmbUsersResult struct {
 
 func GetGatewaySmbUsersOutput(ctx *pulumi.Context, args GetGatewaySmbUsersOutputArgs, opts ...pulumi.InvokeOption) GetGatewaySmbUsersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewaySmbUsersResult, error) {
+		ApplyT(func(v interface{}) (GetGatewaySmbUsersResultOutput, error) {
 			args := v.(GetGatewaySmbUsersArgs)
-			r, err := GetGatewaySmbUsers(ctx, &args, opts...)
-			var s GetGatewaySmbUsersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewaySmbUsersResult
+			secret, err := ctx.InvokePackageRaw("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewaySmbUsersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewaySmbUsersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewaySmbUsersResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewaySmbUsersResultOutput)
 }
 

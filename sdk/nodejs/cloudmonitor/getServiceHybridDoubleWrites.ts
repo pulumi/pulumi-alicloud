@@ -36,7 +36,6 @@ import * as utilities from "../utilities";
  */
 export function getServiceHybridDoubleWrites(args?: GetServiceHybridDoubleWritesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHybridDoubleWritesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", {
         "ids": args.ids,
@@ -138,7 +137,16 @@ export interface GetServiceHybridDoubleWritesResult {
  * ```
  */
 export function getServiceHybridDoubleWritesOutput(args?: GetServiceHybridDoubleWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceHybridDoubleWritesResult> {
-    return pulumi.output(args).apply((a: any) => getServiceHybridDoubleWrites(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", {
+        "ids": args.ids,
+        "namespace": args.namespace,
+        "outputFile": args.outputFile,
+        "sourceNamespace": args.sourceNamespace,
+        "sourceUserId": args.sourceUserId,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

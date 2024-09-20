@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBasicAccelerateIpEndpointRelations(args: GetBasicAccelerateIpEndpointRelationsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpEndpointRelationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", {
         "accelerateIpId": args.accelerateIpId,
@@ -121,7 +120,15 @@ export interface GetBasicAccelerateIpEndpointRelationsResult {
  * ```
  */
 export function getBasicAccelerateIpEndpointRelationsOutput(args: GetBasicAccelerateIpEndpointRelationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpEndpointRelationsResult> {
-    return pulumi.output(args).apply((a: any) => getBasicAccelerateIpEndpointRelations(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", {
+        "accelerateIpId": args.accelerateIpId,
+        "acceleratorId": args.acceleratorId,
+        "endpointId": args.endpointId,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+        "status": args.status,
+    }, opts);
 }
 
 /**

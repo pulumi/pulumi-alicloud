@@ -77,14 +77,20 @@ type GetEndpointGroupIpAddressCidrBlocksResult struct {
 
 func GetEndpointGroupIpAddressCidrBlocksOutput(ctx *pulumi.Context, args GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts ...pulumi.InvokeOption) GetEndpointGroupIpAddressCidrBlocksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEndpointGroupIpAddressCidrBlocksResult, error) {
+		ApplyT(func(v interface{}) (GetEndpointGroupIpAddressCidrBlocksResultOutput, error) {
 			args := v.(GetEndpointGroupIpAddressCidrBlocksArgs)
-			r, err := GetEndpointGroupIpAddressCidrBlocks(ctx, &args, opts...)
-			var s GetEndpointGroupIpAddressCidrBlocksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEndpointGroupIpAddressCidrBlocksResult
+			secret, err := ctx.InvokePackageRaw("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args, &rv, "", opts...)
+			if err != nil {
+				return GetEndpointGroupIpAddressCidrBlocksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEndpointGroupIpAddressCidrBlocksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEndpointGroupIpAddressCidrBlocksResultOutput), nil
+			}
+			return output, nil
 		}).(GetEndpointGroupIpAddressCidrBlocksResultOutput)
 }
 

@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getVersions(args?: GetVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicemesh/getVersions:getVersions", {
         "edition": args.edition,
@@ -89,7 +88,13 @@ export interface GetVersionsResult {
  * ```
  */
 export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("alicloud:servicemesh/getVersions:getVersions", {
+        "edition": args.edition,
+        "ids": args.ids,
+        "outputFile": args.outputFile,
+    }, opts);
 }
 
 /**
