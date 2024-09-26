@@ -502,10 +502,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CDN
 			"alicloud_cdn_domain": {
-				Tok: resource(cdnMod, "Domain"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(cdnMod, "Domain"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cdn_domain_config":          {Tok: resource(cdnMod, "DomainConfig")},
 			"alicloud_cdn_domain_new":             {Tok: resource(cdnMod, "DomainNew")},
@@ -668,23 +666,17 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CS
 			"alicloud_container_cluster": {
-				Tok: resource(csMod, "Cluster"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(csMod, "Cluster"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cs_application": {
-				Tok: resource(csMod, "Application"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(csMod, "Application"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cs_kubernetes": {Tok: resource(csMod, "Kubernetes")},
 			"alicloud_cs_swarm": {
-				Tok: resource(csMod, "Swarm"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(csMod, "Swarm"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cs_kubernetes_autoscaler":  {Tok: resource(csMod, "KubernetesAutoscaler")},
 			"alicloud_cs_managed_kubernetes":     {Tok: resource(csMod, "ManagedKubernetes")},
@@ -817,10 +809,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Eci
 			"alicloud_eci_openapi_image_cache": {
-				Tok: resource(eciMod, "OpenApiImageCache"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(eciMod, "OpenApiImageCache"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_eci_image_cache":     {Tok: resource(eciMod, "ImageCache")},
 			"alicloud_eci_container_group": {Tok: resource(eciMod, "ContainerGroup")},
@@ -857,10 +847,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snapshot":                 {Tok: resource(ecsMod, "Snapshot")},
 			"alicloud_snapshot_policy":          {Tok: resource(ecsMod, "SnapshotPolicy")},
 			"alicloud_copy_image": {
-				Tok: resource(ecsMod, "CopyImage"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(ecsMod, "CopyImage"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_image_import": {Tok: resource(ecsMod, "ImageImport")},
 			"alicloud_ecs_dedicated_host": {
@@ -972,10 +960,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_event_bridge_event_bus": {Tok: resource(eventBridgeMod, "EventBus")},
 			"alicloud_event_bridge_rule":      {Tok: resource(eventBridgeMod, "Rule")},
 			"alicloud_event_bridge_slr": {
-				Tok: resource(eventBridgeMod, "Slr"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(eventBridgeMod, "Slr"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_event_bridge_event_source":        {Tok: resource(eventBridgeMod, "EventSource")},
 			"alicloud_event_bridge_service_linked_role": {Tok: resource(eventBridgeMod, "ServiceLinkedRole")},
@@ -1229,10 +1215,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Quotas
 			"alicloud_quotas_application_info": {
-				Tok: resource(quotasMod, "ApplicationInfo"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(quotasMod, "ApplicationInfo"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_quotas_quota_alarm":       {Tok: resource(quotasMod, "QuotaAlarm")},
 			"alicloud_quotas_quota_application": {Tok: resource(quotasMod, "QuotaApplication")},
@@ -1423,10 +1407,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// VPC
 			"alicloud_subnet": {
-				Tok: resource(vpcMod, "Subnet"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:                resource(vpcMod, "Subnet"),
+				Docs:               &tfbridge.DocInfo{AllowMissing: true},
 				DeprecationMessage: "This resource has been deprecated and replaced by the Switch resource.",
 			},
 			"alicloud_vpc":                          {Tok: resource(vpcMod, "Network")},
@@ -1553,10 +1535,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Yundun
 			"alicloud_yundun_bastionhost_instance": {
-				Tok: resource(yundunMod, "BastionHostInstance"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  resource(yundunMod, "BastionHostInstance"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_yundun_dbaudit_instance": {Tok: resource(yundunMod, "DBAuditInstance")},
 		},
@@ -1735,10 +1715,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudStorageGateway
 			"alicloud_cloud_storage_gateway_storage_bundles": {
-				Tok: dataSource(cloudStorageGatewayMod, "getStorageBundles"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(cloudStorageGatewayMod, "getStorageBundles"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cloud_storage_gateway_service":               {Tok: dataSource(cloudStorageGatewayMod, "getService")},
 			"alicloud_cloud_storage_gateway_gateways":              {Tok: dataSource(cloudStorageGatewayMod, "getGateways")},
@@ -1765,10 +1743,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_service":              {Tok: dataSource(cmsMod, "getService")},
 			"alicloud_cms_monitor_groups":       {Tok: dataSource(cmsMod, "getMonitorGroups")},
 			"alicloud_cms_monitor_group_instanceses": {
-				Tok: dataSource(cmsMod, "getMonitorGroupInstances"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(cmsMod, "getMonitorGroupInstances"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_cms_metric_rule_black_lists":  {Tok: dataSource(cmsMod, "getMetricRuleBlackLists")},
 			"alicloud_cms_metric_rule_templates":    {Tok: dataSource(cmsMod, "getMetricRuleTemplates")},
@@ -1843,10 +1819,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Dds
 			"alicloud_mongo_instances": {
-				Tok: dataSource(ddsMod, "getMongoInstances"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(ddsMod, "getMongoInstances"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 
 			// Ddos
@@ -1999,10 +1973,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {
-				Tok: dataSource(elasticsearchMod, "getInstances"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(elasticsearchMod, "getInstances"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_elasticsearch_zones": {Tok: dataSource(elasticsearchMod, "getZones")},
 
@@ -2267,26 +2239,20 @@ func Provider() tfbridge.ProviderInfo {
 			// quotas
 			"alicloud_quotas_quotas": {Tok: dataSource(quotasMod, "getQuotas")},
 			"alicloud_quotas_application_infos": {
-				Tok: dataSource(quotasMod, "getApplicationInfos"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(quotasMod, "getApplicationInfos"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_quotas_quota_alarms":       {Tok: dataSource(quotasMod, "getQuotaAlarms")},
 			"alicloud_quotas_quota_applications": {Tok: dataSource(quotasMod, "getQuotaApplications")},
 
 			// Ram
 			"alicloud_ram_account_alias": {
-				Tok: dataSource(ramMod, "getAccountAlias"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(ramMod, "getAccountAlias"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_ram_account_aliases": {
-				Tok: dataSource(ramMod, "getAccountAliases"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(ramMod, "getAccountAliases"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_ram_groups":          {Tok: dataSource(ramMod, "getGroups")},
 			"alicloud_ram_policies":        {Tok: dataSource(ramMod, "getPolicies")},
@@ -2310,10 +2276,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_rds_cross_regions":         {Tok: dataSource(rdsMod, "getCrossRegions")},
 			"alicloud_rds_modify_parameter_logs": {Tok: dataSource(rdsMod, "getModifyParameterLogs")},
 			"alicloud_rds_parameter_groups": {
-				Tok: dataSource(rdsMod, "getRdsParameterGroups"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(rdsMod, "getRdsParameterGroups"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 
 			// ResourceManager
@@ -2453,10 +2417,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snat_entries":              {Tok: dataSource(vpcMod, "getSnatEntries")},
 			"alicloud_common_bandwidth_packages": {Tok: dataSource(vpcMod, "getCommonBandwidthPackages")},
 			"alicloud_enhanced_nat_available_zones": {
-				Tok: dataSource(vpcMod, "getEnhancedNatAvailableZones"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(vpcMod, "getEnhancedNatAvailableZones"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_havips":                     {Tok: dataSource(vpcMod, "getHavips")},
 			"alicloud_vpc_flow_logs":              {Tok: dataSource(vpcMod, "getVpcFlowLogs")},
@@ -2507,16 +2469,12 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Yundun
 			"alicloud_yundun_bastionhost_instances": {
-				Tok: dataSource(yundunMod, "getBastionHostInstances"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(yundunMod, "getBastionHostInstances"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_yundun_dbaudit_instance": {
-				Tok: dataSource(yundunMod, "getDBAuditInstance"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Tok:  dataSource(yundunMod, "getDBAuditInstance"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 
 			// Adb
