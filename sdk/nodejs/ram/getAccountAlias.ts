@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides an alias for the Alibaba Cloud account.
+ *
+ * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const aliasDs = alicloud.ram.getAccountAlias({
+ *     outputFile: "alias.txt",
+ * });
+ * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
+ * ```
+ */
 export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +33,9 @@ export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getAccountAlias.
  */
 export interface GetAccountAliasArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -23,6 +43,9 @@ export interface GetAccountAliasArgs {
  * A collection of values returned by getAccountAlias.
  */
 export interface GetAccountAliasResult {
+    /**
+     * Alias of the account.
+     */
     readonly accountAlias: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -30,6 +53,23 @@ export interface GetAccountAliasResult {
     readonly id: string;
     readonly outputFile?: string;
 }
+/**
+ * This data source provides an alias for the Alibaba Cloud account.
+ *
+ * > **NOTE:** Available since v1.0.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const aliasDs = alicloud.ram.getAccountAlias({
+ *     outputFile: "alias.txt",
+ * });
+ * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
+ * ```
+ */
 export function getAccountAliasOutput(args?: GetAccountAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,5 +82,8 @@ export function getAccountAliasOutput(args?: GetAccountAliasOutputArgs, opts?: p
  * A collection of arguments for invoking getAccountAlias.
  */
 export interface GetAccountAliasOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

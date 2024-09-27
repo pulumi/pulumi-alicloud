@@ -11,9 +11,63 @@ namespace Pulumi.AliCloud.Ram
 {
     public static class GetAccountAlias
     {
+        /// <summary>
+        /// This data source provides an alias for the Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var aliasDs = AliCloud.Ram.GetAccountAlias.Invoke(new()
+        ///     {
+        ///         OutputFile = "alias.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountAlias"] = aliasDs.Apply(getAccountAliasResult =&gt; getAccountAliasResult.AccountAlias),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAccountAliasResult> InvokeAsync(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides an alias for the Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var aliasDs = AliCloud.Ram.GetAccountAlias.Invoke(new()
+        ///     {
+        ///         OutputFile = "alias.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["accountAlias"] = aliasDs.Apply(getAccountAliasResult =&gt; getAccountAliasResult.AccountAlias),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAccountAliasResult> Invoke(GetAccountAliasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +75,9 @@ namespace Pulumi.AliCloud.Ram
 
     public sealed class GetAccountAliasArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -32,6 +89,9 @@ namespace Pulumi.AliCloud.Ram
 
     public sealed class GetAccountAliasInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -45,6 +105,9 @@ namespace Pulumi.AliCloud.Ram
     [OutputType]
     public sealed class GetAccountAliasResult
     {
+        /// <summary>
+        /// Alias of the account.
+        /// </summary>
         public readonly string AccountAlias;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

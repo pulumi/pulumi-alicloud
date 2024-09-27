@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides an alias for the Alibaba Cloud account.
+//
+// > **NOTE:** Available since v1.0.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			aliasDs, err := ram.LookupAccountAlias(ctx, &ram.LookupAccountAliasArgs{
+//				OutputFile: pulumi.StringRef("alias.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("accountAlias", aliasDs.AccountAlias)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccountAlias(ctx *pulumi.Context, args *LookupAccountAliasArgs, opts ...pulumi.InvokeOption) (*LookupAccountAliasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountAliasResult
@@ -23,11 +53,13 @@ func LookupAccountAlias(ctx *pulumi.Context, args *LookupAccountAliasArgs, opts 
 
 // A collection of arguments for invoking getAccountAlias.
 type LookupAccountAliasArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getAccountAlias.
 type LookupAccountAliasResult struct {
+	// Alias of the account.
 	AccountAlias string `pulumi:"accountAlias"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
@@ -55,6 +87,7 @@ func LookupAccountAliasOutput(ctx *pulumi.Context, args LookupAccountAliasOutput
 
 // A collection of arguments for invoking getAccountAlias.
 type LookupAccountAliasOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
@@ -77,6 +110,7 @@ func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutputWithCont
 	return o
 }
 
+// Alias of the account.
 func (o LookupAccountAliasResultOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountAliasResult) string { return v.AccountAlias }).(pulumi.StringOutput)
 }
