@@ -35,6 +35,9 @@ class GetAccountAliasResult:
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> str:
+        """
+        Alias of the account.
+        """
         return pulumi.get(self, "account_alias")
 
     @property
@@ -65,7 +68,22 @@ class AwaitableGetAccountAliasResult(GetAccountAliasResult):
 def get_account_alias(output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAliasResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides an alias for the Alibaba Cloud account.
+
+    > **NOTE:** Available since v1.0.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    alias_ds = alicloud.ram.get_account_alias(output_file="alias.txt")
+    pulumi.export("accountAlias", alias_ds.account_alias)
+    ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -82,6 +100,21 @@ def get_account_alias(output_file: Optional[str] = None,
 def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides an alias for the Alibaba Cloud account.
+
+    > **NOTE:** Available since v1.0.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    alias_ds = alicloud.ram.get_account_alias(output_file="alias.txt")
+    pulumi.export("accountAlias", alias_ds.account_alias)
+    ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

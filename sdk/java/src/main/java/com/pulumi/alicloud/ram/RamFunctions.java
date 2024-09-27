@@ -35,21 +35,273 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class RamFunctions {
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountAliasResult> getAccountAlias() {
         return getAccountAlias(GetAccountAliasArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountAliasResult> getAccountAliasPlain() {
         return getAccountAliasPlain(GetAccountAliasPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountAliasResult> getAccountAlias(GetAccountAliasArgs args) {
         return getAccountAlias(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountAliasResult> getAccountAliasPlain(GetAccountAliasPlainArgs args) {
         return getAccountAliasPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountAliasResult> getAccountAlias(GetAccountAliasArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ram/getAccountAlias:getAccountAlias", TypeShape.of(GetAccountAliasResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides an alias for the Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var aliasDs = RamFunctions.getAccountAlias(GetAccountAliasArgs.builder()
+     *             .outputFile("alias.txt")
+     *             .build());
+     * 
+     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountAliasResult> getAccountAliasPlain(GetAccountAliasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getAccountAlias:getAccountAlias", TypeShape.of(GetAccountAliasResult.class), args, Utilities.withVersion(options));
     }
